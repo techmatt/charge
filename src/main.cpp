@@ -1,10 +1,8 @@
 
 #include "main.h"
 
-int main()
+int SDL_main(int argc, char* argv[])
 {
     App app;
-    app.run();
-    cout << "Press any key to continue..." << endl;
-    cin.get();
+    return app.run();
 }

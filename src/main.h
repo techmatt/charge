@@ -1,4 +1,7 @@
 
+#include <SDL.h>
+#include <SDL_image.h>
+
 #include "mLib/mLib.h"
 
 using namespace ml;
