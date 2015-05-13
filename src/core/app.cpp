@@ -1,27 +1,14 @@
 
 #include "main.h"
 
-/*
-* Lesson 2: Don't Put Everything in Main
-*/
 //Screen attributes
-const int SCREEN_WIDTH = 640;
+/*const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-/*
-* Log an SDL error with some error message to the output stream of our choice
-* @param os The output stream to write the message too
-* @param msg The error message to write, format will be msg error: SDL_GetError()
-*/
 void logSDLError(std::ostream &os, const std::string &msg){
     os << msg << " error: " << SDL_GetError() << std::endl;
 }
-/*
-* Loads a BMP image into a texture on the rendering device
-* @param file The BMP image file to load
-* @param ren The renderer to load the texture onto
-* @return the loaded texture, or nullptr if something went wrong.
-*/
+
 SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren){
     SDL_Texture *texture = nullptr;
     //Load the image
@@ -40,14 +27,7 @@ SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren){
     }
     return texture;
 }
-/*
-* Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
-* the texture's width and height
-* @param tex The source texture we want to draw
-* @param ren The renderer we want to draw too
-* @param x The x coordinate to draw too
-* @param y The y coordinate to draw too
-*/
+
 void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y){
     //Setup the destination rectangle to be at the position we want
     SDL_Rect dst;
@@ -121,6 +101,64 @@ int App::run()
 
         //Update the screen
         SDL_RenderPresent(renderer);
+        //Take a quick break after all that hard work
+        SDL_Delay(1000);
+    }
+
+    //cleanup(background, image, renderer, window);
+
+    SDL_Quit();
+
+    cout << "Press any key to continue..." << endl;
+    cin.get();
+
+    return 0;
+}*/
+
+int App::run()
+{
+    //Start up SDL and make sure it went ok
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    {
+        SDL::logError("SDL_Init");
+        return 1;
+    }
+
+    //Setup our window and renderer
+    SDL_Window *window = SDL_CreateWindow("Charge!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    if (window == nullptr)
+    {
+        SDL::logError("CreateWindow");
+        SDL_Quit();
+        return 1;
+    }
+
+    RendererSDL renderer;
+    renderer.init(window);
+
+    //The textures we'll be using
+    const std::string resPath = "../";
+    Texture texBkg(renderer, resPath + "background.png");
+
+    //A sleepy rendering loop, wait for 3 seconds and render and present the screen each time
+    for (int i = 0; i < 3; ++i)
+    {
+        //Clear the window
+        SDL_RenderClear(renderer.SDL());
+
+        //Get the width and height from the texture so we know how much to move x,y by
+        //to tile it correctly
+        int bW, bH;
+        SDL_QueryTexture(texBkg.SDL(), NULL, NULL, &bW, &bH);
+        //We want to tile our background so draw it 4 times
+        renderer.render(texBkg, 0, 0);
+        renderer.render(texBkg, bW, 0);
+        renderer.render(texBkg, 0, bH);
+        renderer.render(texBkg, bW, bH);
+
+        //Update the screen
+        SDL_RenderPresent(renderer.SDL());
+
         //Take a quick break after all that hard work
         SDL_Delay(1000);
     }

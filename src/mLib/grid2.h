@@ -212,15 +212,25 @@ namespace ml
 			return m_data[y * m_dimX + x];
 		}
 
-		inline size_t getDimX() const
+		inline size_t dimX() const
 		{
 			return m_dimX;
 		}
 
-		inline size_t getDimY() const
+		inline size_t dimY() const
 		{
 			return m_dimY;
 		}
+
+        inline size_t width() const
+        {
+            return m_dimX;
+        }
+
+        inline size_t height() const
+        {
+            return m_dimY;
+        }
 
 		inline size_t getNumElements() const
 		{
@@ -232,12 +242,12 @@ namespace ml
 			return (m_dimX == m_dimY);
 		}
 
-		inline T* getPointer()
+		inline T* data()
 		{
 			return m_data;
 		}
 
-		inline const T* getPointer() const
+		inline const T* data() const
 		{
 			return m_data;
 		}
@@ -343,6 +353,7 @@ namespace ml
 	typedef Grid2<float> Grid2f;
 	typedef Grid2<double> Grid2d;
 
+    typedef Grid2<RGBColor> Bitmap;
 }
 
 #include "grid2.cpp"

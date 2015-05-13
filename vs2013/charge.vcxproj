@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\core\app.cpp" />
+    <ClCompile Include="..\src\core\SDLUtil.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
     <ClCompile Include="..\src\game\circuit.cpp" />
     <ClCompile Include="..\src\game\component.cpp" />
@@ -99,9 +100,11 @@
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
     <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
+    <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\app.h" />
+    <ClInclude Include="..\src\core\SDLUtil.h" />
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\circuit.h" />
     <ClInclude Include="..\src\game\component.h" />
@@ -118,6 +121,7 @@
     <ClInclude Include="..\src\mLib\utility.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
     <ClInclude Include="..\src\renderer\rendererSDL.h" />
+    <ClInclude Include="..\src\renderer\texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
