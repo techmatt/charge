@@ -13,6 +13,9 @@
     <Filter Include="core">
       <UniqueIdentifier>{7c67f955-21a9-4a99-947f-6f45839073b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="gameUI">
+      <UniqueIdentifier>{170058a9-d1c7-4640-9bb2-5b8dc8182cb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\board.cpp">
@@ -50,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="..\src\renderer\texture.cpp">
       <Filter>renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameUI\gameUI.cpp">
+      <Filter>gameUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="..\src\renderer\texture.h">
       <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\gameUI.h">
+      <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

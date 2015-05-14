@@ -85,6 +85,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\core\app.cpp" />
     <ClCompile Include="..\src\core\SDLUtil.cpp" />
+    <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
     <ClCompile Include="..\src\game\circuit.cpp" />
     <ClCompile Include="..\src\game\component.cpp" />
@@ -105,6 +106,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\core\app.h" />
     <ClInclude Include="..\src\core\SDLUtil.h" />
+    <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\circuit.h" />
     <ClInclude Include="..\src\game\component.h" />

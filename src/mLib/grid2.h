@@ -356,6 +356,6 @@ namespace ml
     typedef Grid2<RGBColor> Bitmap;
 }
 
-#include "grid2.cpp"
+#include "grid2.inl"
 
 #endif  // CORE_BASE_GRID2D_H_
