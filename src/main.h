@@ -1,4 +1,7 @@
 
+#ifndef __CHARGE_MAIN
+#define __CHARGE_MAIN
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -19,3 +22,5 @@ using namespace std;
 #include "game/gameState.h"
 
 #include "core/app.h"
+
+#endif
