@@ -228,21 +228,18 @@ namespace util
 
 	size_t getFileSize(const std::string &filename)
 	{
-		struct stat statbuf;
+		/*struct stat statbuf;
 		int success = stat(filename.c_str(), &statbuf);
 		MLIB_ASSERT_STR(success == 0, std::string("stat failed on ") + filename);
-		return statbuf.st_size;
-	}
-
-	// Create a process with the given command line, and wait until it returns
-	int runCommand(const std::string &executablePath, const std::string &commandLine, bool block)
-	{
-		return 0;
+		return statbuf.st_size;*/
+        cout << "TODO: implement getFileSize" << endl;
+        return 0;
 	}
 
 	void makeDirectory(const std::string &directory)
 	{
-		mkdir(directory.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+		//mkdir(directory.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+        cout << "TODO: implement makeDirectory" << endl;
 	}
 #endif
 }  // namespace util
