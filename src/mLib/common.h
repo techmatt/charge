@@ -46,18 +46,6 @@
 #include <complex>
 #include <queue> 
 
-
-namespace boost {
-namespace serialization {
-
-class access;
-
-}
-}
-
-namespace ml
-{
-
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -75,37 +63,17 @@ namespace ml
 #define NOEXCEPT
 #endif
 
-class MLibException : public std::exception {
-public:
-	MLibException(const std::string& what) : std::exception() {
-		m_msg = what;
-	}
-	MLibException(const char* what) : std::exception() {
-		m_msg = std::string(what);
-	}
-	const char* what() const NOEXCEPT {
-		return m_msg.c_str();
-	}
-private:
-	std::string m_msg;
-};
-
-
 #define FUNCTION_LINE_STRING (std::string(__FUNCTION__) + ":" + std::to_string(__LINE__))
 //#define FUNCTION_LINE_STRING (std::string(__FUNCTION__))
-
-#ifndef MLIB_EXCEPTION
-#define MLIB_EXCEPTION(s) ml::MLibException(std::string(__FUNCTION__).append(":").append(std::to_string(__LINE__)).append(": ").append(s).c_str())
-#endif
 
 //TODO clean that stuff up: we should have checks in debug but not in release... (i don't like 100 defines that change the behavior)
 #ifdef MLIB_ERROR_CHECK
 
 
-#define MLIB_WARNING(s) ml::warningFunctionMLIB(std::string(FUNCTION_LINE_STRING) + std::string() + ": " + std::string(s))
-#define MLIB_ERROR(s) ml::errorFunctionMLIB(std::string(FUNCTION_LINE_STRING) + ": " + std::string(s))
-#define MLIB_ASSERT_STR(b,s) { if(!(b)) ml::assertFunctionMLIB(b, std::string(FUNCTION_LINE_STRING) + ": " + std::string(s)); }
-#define MLIB_ASSERT(b) { if(!(b)) ml::assertFunctionMLIB(b, FUNCTION_LINE_STRING); }
+#define MLIB_WARNING(s) warningFunctionMLIB(std::string(FUNCTION_LINE_STRING) + std::string() + ": " + std::string(s))
+#define MLIB_ERROR(s) errorFunctionMLIB(std::string(FUNCTION_LINE_STRING) + ": " + std::string(s))
+#define MLIB_ASSERT_STR(b,s) { if(!(b)) assertFunctionMLIB(b, std::string(FUNCTION_LINE_STRING) + ": " + std::string(s)); }
+#define MLIB_ASSERT(b) { if(!(b)) assertFunctionMLIB(b, FUNCTION_LINE_STRING); }
 
 void warningFunctionMLIB(const std::string &description);
 void errorFunctionMLIB(const std::string &description);
@@ -136,21 +104,6 @@ void assertFunctionMLIB(bool statement, const std::string &description);
 #ifndef SAFE_RELEASE
 #define SAFE_RELEASE(p) { if (p) { p->Release();   (p)=nullptr; } }
 #endif
-
-//#ifndef V_RETURN
-//#define V_RETURN(hr) { if (FAILED(hr)) { return (hr); } }
-//#endif
-
-//#ifndef E_RETURN
-//#define E_RETURN(hr) { if(FAILED(hr)) { Console::log() << #hr << " " << hr << std::endl; } }
-//#endif
-
-#ifndef D3D_VALIDATE
-#define D3D_VALIDATE(statement) { HRESULT hr = statement;  if(FAILED(hr)) { MLIB_ERROR(#statement); } }
-#endif
-
-}  // namespace ml
-
 
 #ifndef UINT
 typedef unsigned int UINT;

@@ -5,8 +5,6 @@
 #include <Windows.h>
 #endif
 
-namespace ml {
-
 namespace util
 {
 	//
@@ -151,12 +149,12 @@ namespace util
 
     std::string fileNameFromPath(const std::string &path)
     {
-        return ml::util::split(ml::util::replace(path, '\\', '/'), '/').back();
+        return util::split(util::replace(path, '\\', '/'), '/').back();
     }
 
     std::string removeExtensions(const std::string &path)
     {
-        return ml::util::split(path, '.').front();
+        return util::split(path, '.').front();
     }
 
 	std::vector<std::string> getFileLines(const std::string &filename, UINT minLineLength)
@@ -243,5 +241,3 @@ namespace util
 	}
 #endif
 }  // namespace util
-
-}  // namespace ml

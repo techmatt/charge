@@ -9,8 +9,6 @@
 #include <fstream>
 #include <list>
 
-namespace ml {
-
 class ParameterFile {
 public:
 	ParameterFile(char separator = '=', bool caseSensitive = true) {
@@ -26,7 +24,7 @@ public:
 
 	void addParameterFile(const std::string& filename) {
 		std::ifstream file(filename);
-		if (!file.is_open()) throw MLIB_EXCEPTION(filename);
+        MLIB_ASSERT_STR(file.is_open(), "Failed to find file: " + filename);
 
 		while(!file.eof()) {
 			std::string line;
@@ -170,7 +168,5 @@ private:
 	bool m_CaseSensitive;
 	std::list<std::string> m_Filenames;
 };
-
-}  // namespace ml
 
 #endif  // CORE_UTIL_PARAMETERFILE_H_

@@ -12,7 +12,6 @@
 //////////////////////
 // native functions //
 //////////////////////
-namespace ml {
 
 namespace convert {
 	inline int toInt(const std::string& s) {
@@ -100,7 +99,5 @@ inline std::string& operator<<(std::string& s, const T& in) {
 	s += std::to_string(in);
 	return s;
 }
-
-}  // namespace ml
 
 #endif  // CORE_UTIL_STRINGUTILCONVERT_H_

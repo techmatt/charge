@@ -57,6 +57,9 @@
     <ClCompile Include="..\src\gameUI\gameUI.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\core\gameUtil.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -119,5 +122,29 @@
     <ClInclude Include="..\src\gameUI\gameUI.h">
       <Filter>gameUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\core\parameters.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\vec2.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\gameUtil.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\rect2.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\RGBColor.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\renderingNotes.txt" />
+    <Text Include="..\assets\parameters.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\mLib\grid2.inl">
+      <Filter>mLib</Filter>
+    </None>
   </ItemGroup>
 </Project>

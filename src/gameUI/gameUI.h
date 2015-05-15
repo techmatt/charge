@@ -2,11 +2,14 @@
 class GameUI
 {
 public:
-
+    void updateBackground();
+    void render();
 
 private:
-    Texture staticScene;
+    Texture finalRenderTarget;
 
     Texture background;
+
+    Texture wallpaper;
     
 };

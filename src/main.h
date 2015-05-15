@@ -7,9 +7,10 @@
 
 #include "mLib/mLib.h"
 
-using namespace ml;
 using namespace std;
 
+#include "core/parameters.h"
+#include "core/gameUtil.h"
 #include "core/SDLUtil.h"
 
 #include "renderer/renderer.h"
@@ -20,6 +21,8 @@ using namespace std;
 #include "game/circuit.h"
 #include "game/component.h"
 #include "game/gameState.h"
+
+#include "gameUI/gameUI.h"
 
 #include "core/app.h"
 

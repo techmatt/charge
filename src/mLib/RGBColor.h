@@ -1,9 +1,6 @@
 #ifndef CORE_GRAPHICS_RGBCOLOR_H_
 #define CORE_GRAPHICS_RGBCOLOR_H_
 
-namespace ml
-{
-
 struct RGBColor
 {
     RGBColor() {}
@@ -73,7 +70,5 @@ inline bool operator != (RGBColor left, RGBColor right)
 {
     return ((left.r != right.r) || (left.g != right.g) || (left.b != right.b));
 }
-
-}  // namespace ml
 
 #endif  // CORE_GRAPHICS_RGBCOLOR_H_

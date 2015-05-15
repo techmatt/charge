@@ -4,9 +4,6 @@
 #include <string>
 #include <vector>
 
-namespace ml
-{
-
 namespace util
 {
 	//TODO TEST
@@ -275,7 +272,5 @@ inline std::ostream& operator<<(std::ostream& s, const std::list<T>& l) {
 	}
 	return s;
 }
-
-}  // namespace ml
 
 #endif  // CORE_UTIL_STRINGUTIL_H__

@@ -7,9 +7,6 @@
 #include <vector>
 #include <sstream>
 
-namespace ml
-{
-
 namespace math
 {
 	static const double PI = 3.1415926535897932384626433832795028842;
@@ -612,8 +609,6 @@ namespace util
     }
 
 }  // namespace utility
-
-}  // namespace ml
 
 
 #endif  // CORE_UTIL_UTILITY_H_
