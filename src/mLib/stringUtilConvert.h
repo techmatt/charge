@@ -74,7 +74,15 @@ namespace convert {
 	template<> inline void to<bool>(const std::string& s, bool& res) {
 		res = toBool(s);
 	}
+    template<class U> inline void to(const std::string& s, vec2<U>& res) {
+        // TODO: abstract and extend to other vecN::"to"
+        std::string sFixed = util::removeChar(s, 'f');
+        if (util::contains(sFixed, ','))
+            sFixed = util::replace(sFixed, ',', ' ');
+        std::stringstream ss(sFixed);
 
+        ss >> res.x >> res.y;
+    }
 }  // namespace Convert
 
 namespace util {
@@ -91,6 +99,9 @@ namespace util {
 	template<class T> inline void convertTo(const std::string& s, T& res) {
 		convert::to<T>(s, res);
 	}
+    template<class U> inline void convertTo(const std::string& s, vec2<U>& res) {
+        convert::to(s, res);
+    }
 }  // namespace util
 
 //! stringstream functionality

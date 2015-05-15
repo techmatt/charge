@@ -90,8 +90,10 @@
     <ClCompile Include="..\src\core\SDLUtil.cpp" />
     <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
+    <ClCompile Include="..\src\game\charge.cpp" />
     <ClCompile Include="..\src\game\circuit.cpp" />
     <ClCompile Include="..\src\game\component.cpp" />
+    <ClCompile Include="..\src\game\database.cpp" />
     <ClCompile Include="..\src\game\gameState.cpp" />
     <ClCompile Include="..\src\main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -108,14 +110,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\app.h" />
+    <ClInclude Include="..\src\core\constants.h" />
     <ClInclude Include="..\src\core\gameUtil.h" />
     <ClInclude Include="..\src\core\parameters.h" />
     <ClInclude Include="..\src\core\SDLUtil.h" />
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\game\board.h" />
+    <ClInclude Include="..\src\game\charge.h" />
     <ClInclude Include="..\src\game\circuit.h" />
     <ClInclude Include="..\src\game\component.h" />
+    <ClInclude Include="..\src\game\database.h" />
     <ClInclude Include="..\src\game\gameState.h" />
+    <ClInclude Include="..\src\game\misc.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\mLib\common.h" />
     <ClInclude Include="..\src\mLib\grid2.h" />

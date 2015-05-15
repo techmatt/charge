@@ -23,10 +23,10 @@ public:
         return coordinateRemap(params().canonicalDims, windowDims, v);
     }
 
-    static vec2f canonicalToBoard(const vec2f &v)
+    static vec2f boardToCanonical(const vec2f &v)
     {
-        //return coordinateRemap(params().canonicalDims, windowDims, v);
-        return vec2f::origin();
+        return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);
     }
 
+    static vector< map< string, string > > readCSVFile(const string &filename);
 };

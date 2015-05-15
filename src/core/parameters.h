@@ -8,6 +8,8 @@ struct GameParameters
 
     void load(const ParameterFile &params)
     {
+        params.readParameter("assetDir", assetDir);
+
         params.readParameter("canonicalDims", canonicalDims);
 
         params.readParameter("boardDims", boardDims);
@@ -15,8 +17,13 @@ struct GameParameters
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
         params.readParameter("boardCanonicalCellSize", boardCanonicalCellSize);
 
-        //boardCanonicalRect = rect2f(
+        //
+        // derived parameters
+        //
+        boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(boardCanonicalCellSize) * boardDims);
     }
+
+    string assetDir;
 
     vec2f canonicalDims;
 
@@ -29,6 +36,8 @@ struct GameParameters
     // derived parameters
     //
     rect2f boardCanonicalRect;
+
+    Database *database;
 };
 
 extern GameParameters g_gameParams;
@@ -36,6 +45,11 @@ extern GameParameters g_gameParams;
 inline const GameParameters& params()
 {
     return g_gameParams;
+}
+
+inline const Database& database()
+{
+    return *g_gameParams.database;
 }
 
 inline GameParameters& mutableParams()
@@ -46,4 +60,6 @@ inline GameParameters& mutableParams()
 inline void initGameParams(const ParameterFile &params)
 {
     g_gameParams.load(params);
+    g_gameParams.database = new Database();
+    g_gameParams.database->init();
 }

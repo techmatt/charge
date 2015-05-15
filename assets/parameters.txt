@@ -1,4 +1,6 @@
 
+assetDir = ../assets/
+
 canonicalDims = 621, 414
 
 boardDims = 24, 24

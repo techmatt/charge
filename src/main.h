@@ -9,6 +9,15 @@
 
 using namespace std;
 
+//
+// Forward declarations
+//
+struct Board;
+struct Component;
+
+#include "core/constants.h"
+
+#include "game/database.h"
 #include "core/parameters.h"
 #include "core/gameUtil.h"
 #include "core/SDLUtil.h"
@@ -17,9 +26,11 @@ using namespace std;
 #include "renderer/rendererSDL.h"
 #include "renderer/texture.h"
 
-#include "game/board.h"
-#include "game/circuit.h"
+#include "game/misc.h"
 #include "game/component.h"
+#include "game/charge.h"
+#include "game/circuit.h"
+#include "game/board.h"
 #include "game/gameState.h"
 
 #include "gameUI/gameUI.h"
