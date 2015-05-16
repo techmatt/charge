@@ -11,7 +11,7 @@ int App::run()
     }
 
     //Setup our window and renderer
-    SDL_Window *window = SDL_CreateWindow("Charge!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+	SDL_Window *window = SDL_CreateWindow("Charge!", 100, 100, 1536, 1024, SDL_WINDOW_SHOWN);
     if (window == nullptr)
     {
         SDL::logError("CreateWindow");
@@ -31,35 +31,34 @@ int App::run()
 	GameState state;
 	state.init();
 
+	SDL_Event e;
     ui.init(renderer);
 
-    //A sleepy rendering loop, wait for 3 seconds and render and present the screen each time
-    for (int i = 0; i < 3; ++i)
+	bool quit = false;
+	while (!quit)
     {
+		while (SDL_PollEvent(&e)){
+			//If user closes the window
+			if (e.type == SDL_QUIT){
+				quit = true;
+			}
+			//If user presses any key
+			if (e.type == SDL_KEYDOWN){
+				quit = true;
+			}
+			//If user clicks the mouse
+			if (e.type == SDL_MOUSEBUTTONDOWN){
+				//quit = true;
+			}
+		}
+
         //Clear the window
         SDL_RenderClear(renderer.SDL());
-
-        //Get the width and height from the texture so we know how much to move x,y by
-        //to tile it correctly
-        /*int bW, bH;
-        Uint32 format;
-        int access;
-        int qA = SDL_PIXELFORMAT_BGRA8888;
-        int qB = SDL_PIXELFORMAT_ARGB8888;
-        SDL_QueryTexture(texBkg.SDL(), &format, &access, &bW, &bH);
-        //We want to tile our background so draw it 4 times
-        renderer.render(texBkg, 0, 0);
-        renderer.render(texBkg, bW, 0);
-        renderer.render(texBkg, 0, bH);
-        renderer.render(texBkg, bW, bH);*/
 
         ui.render(renderer, state);
 
         //Update the screen
         renderer.present();
-        
-        //Take a quick break after all that hard work
-        SDL_Delay(1000);
     }
 
     //cleanup(background, image, renderer, window);

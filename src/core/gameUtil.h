@@ -23,6 +23,11 @@ public:
         return coordinateRemap(params().canonicalDims, windowDims, v);
     }
 
+	static rect2f canonicalToWindow(const vec2f &windowDims, const rect2f &r)
+	{
+		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
+	}
+
     static vec2f boardToCanonical(const vec2f &v)
     {
         return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);

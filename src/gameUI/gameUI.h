@@ -13,5 +13,5 @@ private:
     Texture background;
 
 	Texture *borderTex;
-	
+	vec2i windowDims;
 };

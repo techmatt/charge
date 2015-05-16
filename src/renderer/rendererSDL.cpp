@@ -23,6 +23,11 @@ void RendererSDL::render(Texture &tex, int x, int y)
     SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect)
+{
+	render(tex, rect2i(destinationRect.min(), destinationRect.max()));
+}
+
 void RendererSDL::render(Texture &tex, const rect2i &destinationRect)
 {
     SDL_Rect dst;
