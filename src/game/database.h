@@ -23,6 +23,21 @@ struct ComponentInfo
     bool grayUpgrade;
 };
 
+enum ChargeType
+{
+    ChargeRed,
+    ChargeOrange,
+    ChargeYellow,
+    ChargeGreen,
+    ChargeBlue,
+
+    //
+    // Special colors used by certain types of buildings
+    //
+    ChargeNone,
+    ChargeGray,
+};
+
 struct Database
 {
     void init();
@@ -33,7 +48,7 @@ struct Database
         return *(components.at(componentName));
     }
 
-    Texture& getTexture(RendererSDL &renderer, const string &textureName);
+    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType charge = ChargeNone);
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;

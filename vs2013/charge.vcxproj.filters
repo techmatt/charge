@@ -66,6 +66,12 @@
     <ClCompile Include="..\src\game\database.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameUI\gameButton.cpp">
+      <Filter>gameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mLib\common.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -154,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\src\game\database.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\gameButton.h">
+      <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

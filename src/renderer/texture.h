@@ -11,6 +11,11 @@ public:
         initInternal();
         load(renderer, filename);
     }
+	Texture(RendererSDL &renderer, const Bitmap &bmp)
+	{
+		initInternal();
+		load(renderer, bmp);
+	}
     ~Texture()
     {
         releaseSDLMemrory();
@@ -31,6 +36,7 @@ public:
     }
 
     void load(RendererSDL &renderer, const string &filename);
+	void load(RendererSDL &renderer, const Bitmap &bmp);
 
     void loadRenderTarget(int width, int height);
 

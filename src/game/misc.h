@@ -20,18 +20,3 @@ enum ComponentPuzzleType
     ComponentPuzzlePiece,
     ComponentCopiedCircuit,
 };
-
-enum ChargeColorType
-{
-    ChargeColorRed,
-    ChargeColorOrange,
-    ChargeColorYellow,
-    ChargeColorGreen,
-    ChargeColorBlue,
-
-    //
-    // Special colors used by certain types of buildings
-    //
-    ChargeColorNone,
-    ChargeColorGray,
-};

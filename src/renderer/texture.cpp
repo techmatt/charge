@@ -8,6 +8,13 @@ void Texture::load(RendererSDL &renderer, const string &filename)
     initSDL(renderer);
 }
 
+void Texture::load(RendererSDL &renderer, const Bitmap &bmp)
+{
+	_renderTarget = false;
+	_bmp = bmp;
+	initSDL(renderer);
+}
+
 void Texture::loadRenderTarget(int width, int height)
 {
     _bmp.allocate(width, height);
@@ -27,7 +34,7 @@ void Texture::initSDL(RendererSDL &renderer)
     }
     else
     {
-        _SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0);
+		_SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0xFF000000);
         if (_SDLSurface == nullptr)
         {
             SDL::logError("SDL_CreateRGBSurfaceFrom");

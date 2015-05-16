@@ -36,6 +36,7 @@ class Texture;
 #include "game/board.h"
 #include "game/gameState.h"
 
+#include "gameUI/gameButton.h"
 #include "gameUI/gameUI.h"
 
 #include "core/app.h"

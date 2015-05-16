@@ -88,6 +88,7 @@
     <ClCompile Include="..\src\core\app.cpp" />
     <ClCompile Include="..\src\core\gameUtil.cpp" />
     <ClCompile Include="..\src\core\SDLUtil.cpp" />
+    <ClCompile Include="..\src\gameUI\gameButton.cpp" />
     <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
     <ClCompile Include="..\src\game\charge.cpp" />
@@ -99,6 +100,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\mLib\common.cpp" />
     <ClCompile Include="..\src\mLib\imageLoaderLodePNG.cpp" />
     <ClCompile Include="..\src\mLib\lodepng.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -114,6 +116,7 @@
     <ClInclude Include="..\src\core\gameUtil.h" />
     <ClInclude Include="..\src\core\parameters.h" />
     <ClInclude Include="..\src\core\SDLUtil.h" />
+    <ClInclude Include="..\src\gameUI\gameButton.h" />
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\charge.h" />

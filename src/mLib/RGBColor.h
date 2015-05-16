@@ -5,20 +5,20 @@ struct RGBColor
 {
     RGBColor() {}
     RGBColor(BYTE _r, BYTE _g, BYTE _b)
-	{
-		r = _r;
-		g = _g;
-		b = _b;
-		a = 255;
-	}
+    {
+        r = _r;
+        g = _g;
+        b = _b;
+        a = 255;
+    }
     RGBColor(BYTE _r, BYTE _g, BYTE _b, BYTE _a)
-	{
-		r = _r;
-		g = _g;
-		b = _b;
-		a = _a;
-	}
-	
+    {
+        r = _r;
+        g = _g;
+        b = _b;
+        a = _a;
+    }
+
     RGBColor flipBlueAndRed() const
     {
         return RGBColor(b, g, r, a);
@@ -35,27 +35,33 @@ struct RGBColor
         return RGBColor(255 - r, 255 - g, 255 - b, 255 - a);
     }
 
-	static UINT distL1(RGBColor a, RGBColor b)
-	{
-		return std::abs(int(a.r) - int(b.r)) +
-			std::abs(int(a.g) - int(b.g)) +
-			std::abs(int(a.b) - int(b.b));
-	}
+    static UINT distL1(RGBColor a, RGBColor b)
+    {
+        return std::abs(int(a.r) - int(b.r)) +
+            std::abs(int(a.g) - int(b.g)) +
+            std::abs(int(a.b) - int(b.b));
+    }
 
-	static UINT distL2(RGBColor a, RGBColor b)
-	{
-		int DiffR = int(a.r) - int(b.r);
-		int DiffG = int(a.g) - int(b.g);
-		int DiffB = int(a.b) - int(b.b);
-		return DiffR * DiffR + DiffG * DiffG + DiffB * DiffB;
-	}
+    static UINT distL2(RGBColor a, RGBColor b)
+    {
+        int DiffR = int(a.r) - int(b.r);
+        int DiffG = int(a.g) - int(b.g);
+        int DiffB = int(a.b) - int(b.b);
+        return DiffR * DiffR + DiffG * DiffG + DiffB * DiffB;
+    }
 
-	static RGBColor randomColor()
-	{
-		return RGBColor(rand() & 255, rand() & 255, rand() & 255);
-	}
+    static RGBColor randomColor()
+    {
+        return RGBColor(rand() & 255, rand() & 255, rand() & 255);
+    }
 
     BYTE r, g, b, a;
+};
+
+namespace Colors
+{
+    static RGBColor Magenta()  { return RGBColor(255, 0, 255); }
+    static RGBColor Cyan()	   { return RGBColor(255, 255, 0); }
 };
 
 //

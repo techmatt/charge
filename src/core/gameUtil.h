@@ -28,10 +28,37 @@ public:
 		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
 	}
 
+	static rect2f canonicalToWindow(const vec2i &windowDims, const rect2i &r)
+	{
+		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
+	}
+
     static vec2f boardToCanonical(const vec2f &v)
     {
         return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);
     }
+
+	static RGBColor chargeColor(ChargeType type)
+	{
+		switch (type)
+		{
+		case ChargeGray:
+			return RGBColor(128, 128, 128);
+		case ChargeRed:
+			return RGBColor(255, 0, 0);
+		case ChargeOrange:
+			return RGBColor(255, 128, 0);
+		case ChargeYellow:
+			return RGBColor(255, 255, 0);
+		case ChargeGreen:
+			return RGBColor(0, 200, 0);
+		case ChargeBlue:
+			return RGBColor(0, 0, 255);
+		case ChargeNone:
+			return RGBColor(255, 255, 255);
+		}
+		return RGBColor(0, 0, 0);
+	}
 
     static vector< map< string, string > > readCSVFile(const string &filename);
 };

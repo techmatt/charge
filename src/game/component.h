@@ -2,7 +2,7 @@
 struct Component
 {
     ComponentInfo info;
-    ChargeColorType color;
+    ChargeType color;
 
     //
     // locations always specify the top-left coordinate.
