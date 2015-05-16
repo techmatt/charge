@@ -24,7 +24,7 @@ void Texture::initSDL(RendererSDL &renderer)
     if (_renderTarget)
     {
         //SDL_PIXELFORMAT_ARGB8888 seems to be the default texture for windows
-        SDL_CreateTexture(renderer.SDL(), SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, _bmp.width(), _bmp.height());
+        SDL_CreateTexture(renderer.SDL(), SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, (int)_bmp.width(), (int)_bmp.height());
     }
     else
     {

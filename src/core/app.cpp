@@ -26,6 +26,9 @@ int App::run()
     const std::string resPath = "../";
     Texture texBkg(renderer, resPath + "background.png");
 
+    GameUI ui;
+    ui.init(renderer);
+
     //A sleepy rendering loop, wait for 3 seconds and render and present the screen each time
     for (int i = 0; i < 3; ++i)
     {
@@ -34,7 +37,7 @@ int App::run()
 
         //Get the width and height from the texture so we know how much to move x,y by
         //to tile it correctly
-        int bW, bH;
+        /*int bW, bH;
         Uint32 format;
         int access;
         int qA = SDL_PIXELFORMAT_BGRA8888;
@@ -44,7 +47,9 @@ int App::run()
         renderer.render(texBkg, 0, 0);
         renderer.render(texBkg, bW, 0);
         renderer.render(texBkg, 0, bH);
-        renderer.render(texBkg, bW, bH);
+        renderer.render(texBkg, bW, bH);*/
+
+        ui.render(renderer);
 
         //Update the screen
         renderer.present();

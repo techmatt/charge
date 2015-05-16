@@ -129,12 +129,12 @@ public:
     }
 
 	inline T& operator[](unsigned int i) {
-		assert(i < 2);
+        MLIB_ASSERT(i < 2);
 		return array[i];
 	}
 
 	inline const T& operator[](unsigned int i) const {
-		assert(i < 2);
+		MLIB_ASSERT(i < 2);
 		return array[i];
 	}
 

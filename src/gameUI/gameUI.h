@@ -3,12 +3,11 @@ class GameUI
 {
 public:
     void init(RendererSDL &r);
-    void updateBackground();
-    void render();
+    void updateBackground(RendererSDL &r);
+    void render(RendererSDL &r);
 
 private:
-    Texture backgroundRenderTarget;
+    Texture background;
 
     Texture wallpaper;
-    
 };

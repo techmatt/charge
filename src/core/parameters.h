@@ -47,7 +47,7 @@ inline const GameParameters& params()
     return g_gameParams;
 }
 
-inline const Database& database()
+inline Database& database()
 {
     return *g_gameParams.database;
 }

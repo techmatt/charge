@@ -8,6 +8,7 @@ public:
     }
     Texture(RendererSDL &renderer, const string &filename)
     {
+        initInternal();
         load(renderer, filename);
     }
     ~Texture()

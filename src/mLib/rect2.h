@@ -11,6 +11,12 @@ public:
         reset();
     }
 
+    rect2(FloatType _minX, FloatType _minY, FloatType _maxX, FloatType _maxY)
+    {
+        minB = vec2i(_minX, _minY);
+        maxB = vec2i(_maxX, _maxY);
+    }
+
     rect2(const vec2<FloatType>& minBound, const vec2<FloatType>& maxBound) {
         reset();
         minB = minBound;
