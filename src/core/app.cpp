@@ -35,7 +35,11 @@ int App::run()
         //Get the width and height from the texture so we know how much to move x,y by
         //to tile it correctly
         int bW, bH;
-        SDL_QueryTexture(texBkg.SDL(), NULL, NULL, &bW, &bH);
+        Uint32 format;
+        int access;
+        int qA = SDL_PIXELFORMAT_BGRA8888;
+        int qB = SDL_PIXELFORMAT_ARGB8888;
+        SDL_QueryTexture(texBkg.SDL(), &format, &access, &bW, &bH);
         //We want to tile our background so draw it 4 times
         renderer.render(texBkg, 0, 0);
         renderer.render(texBkg, bW, 0);
@@ -43,8 +47,8 @@ int App::run()
         renderer.render(texBkg, bW, bH);
 
         //Update the screen
-        SDL_RenderPresent(renderer.SDL());
-
+        renderer.present();
+        
         //Take a quick break after all that hard work
         SDL_Delay(1000);
     }

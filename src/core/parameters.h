@@ -57,9 +57,4 @@ inline GameParameters& mutableParams()
     return g_gameParams;
 }
 
-inline void initGameParams(const ParameterFile &params)
-{
-    g_gameParams.load(params);
-    g_gameParams.database = new Database();
-    g_gameParams.database->init();
-}
+void initGameParams(const ParameterFile &params);

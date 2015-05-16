@@ -10,8 +10,28 @@ public:
     {
         load(renderer, filename);
     }
+    ~Texture()
+    {
+        releaseSDLMemrory();
+    }
+
+    void releaseSDLMemrory()
+    {
+        if (_SDLTexture != nullptr)
+        {
+            SDL_DestroyTexture(_SDLTexture);
+            _SDLTexture = nullptr;
+        }
+        if (_SDLSurface != nullptr)
+        {
+            SDL_FreeSurface(_SDLSurface);
+            _SDLSurface = nullptr;
+        }
+    }
 
     void load(RendererSDL &renderer, const string &filename);
+
+    void loadRenderTarget(int width, int height);
 
     const Bitmap& bmp() const
     {
@@ -34,4 +54,5 @@ private:
     Bitmap _bmp;
     SDL_Texture* _SDLTexture;
     SDL_Surface* _SDLSurface;
+    bool _renderTarget;
 };

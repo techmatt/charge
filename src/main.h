@@ -14,11 +14,14 @@ using namespace std;
 //
 struct Board;
 struct Component;
+struct Database;
+class RendererSDL;
+class Texture;
 
 #include "core/constants.h"
 
-#include "game/database.h"
 #include "core/parameters.h"
+#include "game/database.h"
 #include "core/gameUtil.h"
 #include "core/SDLUtil.h"
 

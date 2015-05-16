@@ -23,3 +23,18 @@ void RendererSDL::render(Texture &tex, int x, int y)
 
     SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
+
+void RendererSDL::present()
+{
+    SDL_RenderPresent(_renderer);
+}
+
+void RendererSDL::setRenderTarget(Texture &target)
+{
+    SDL_SetRenderTarget(_renderer, target.SDL());
+}
+
+void RendererSDL::setDefaultRenderTarget()
+{
+    SDL_SetRenderTarget(_renderer, NULL);
+}

@@ -11,3 +11,13 @@ void Database::init()
         int b = 6;
     }
 }
+
+const Texture& Database::getTexture(RendererSDL &renderer, const string &textureName)
+{
+    if (textures.count(textureName) == 0)
+    {
+        const string filename = params().assetDir + "textures/" + textureName + ".png";
+        textures[textureName] = Texture(renderer, filename);
+    }
+    return textures.at(textureName);
+}

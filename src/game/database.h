@@ -33,5 +33,8 @@ struct Database
         return *(components.at(componentName));
     }
 
+    const Texture& getTexture(RendererSDL &renderer, const string &textureName);
+
     map<string, ComponentInfo*> components;
+    map<string, Texture> textures;
 };

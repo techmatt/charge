@@ -1,7 +1,12 @@
 
 #include "main.h"
 
-void gameUI()
+void GameUI::init(RendererSDL &r)
+{
+
+}
+
+void GameUI::updateBackground()
 {
 
 }
