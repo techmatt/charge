@@ -15,6 +15,11 @@ public:
 		array[0] = array[1] = 0;
 	}
 
+	vec2(size_t x, size_t y) {
+		array[0] = (T)x;
+		array[1] = (T)y;
+	}
+
 	vec2(T x, T y) {
 		array[0] = x;
 		array[1] = y;

@@ -12,12 +12,12 @@ void Database::init()
     }
 }
 
-const Texture& Database::getTexture(RendererSDL &renderer, const string &textureName)
+Texture& Database::getTexture(RendererSDL &renderer, const string &textureName)
 {
     if (textures.count(textureName) == 0)
     {
         const string filename = params().assetDir + "textures/" + textureName + ".png";
-        textures[textureName] = Texture(renderer, filename);
+        textures[textureName] = new Texture(renderer, filename);
     }
-    return textures.at(textureName);
+    return *textures.at(textureName);
 }

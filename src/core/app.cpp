@@ -27,6 +27,10 @@ int App::run()
     Texture texBkg(renderer, resPath + "background.png");
 
     GameUI ui;
+	
+	GameState state;
+	state.init();
+
     ui.init(renderer);
 
     //A sleepy rendering loop, wait for 3 seconds and render and present the screen each time
@@ -49,7 +53,7 @@ int App::run()
         renderer.render(texBkg, 0, bH);
         renderer.render(texBkg, bW, bH);*/
 
-        ui.render(renderer);
+        ui.render(renderer, state);
 
         //Update the screen
         renderer.present();

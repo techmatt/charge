@@ -1,33 +1,49 @@
 
 #include "main.h"
 
-void GameUI::init(RendererSDL &r)
+void GameUI::init(RendererSDL &renderer)
 {
-    wallpaper = database().getTexture(r, "Background");
+	borderTex = &database().getTexture(renderer, "Border");
 }
 
-void GameUI::updateBackground(RendererSDL &r)
+void GameUI::render(RendererSDL &renderer, GameState &state)
 {
-    r.setDefaultRenderTarget();
-    vec2i dims = r.getWindowSize();
+	updateBackground(renderer, state);
+
+	renderer.setDefaultRenderTarget();
+
+	renderer.render(background, 0, 0);
+}
+
+void GameUI::updateBackground(RendererSDL &renderer, GameState &state)
+{
+	//
+	// resize the background if needed
+	//
+	vec2i dims = renderer.getWindowSize();
     if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != dims)
     {
         cout << "Resizing render target: " << dims << endl;
         background.loadRenderTarget(dims.x, dims.y);
     }
 
-    r.setRenderTarget(background);
+	renderer.setRenderTarget(background);
 
-    r.render(wallpaper, rect2i(0, 0, dims.x, dims.y));
+	renderer.render(database().getTexture(renderer, "Background"), rect2i(0, 0, dims.x, dims.y));
+
+	renderBuildingGrid(renderer, state);
     
-    r.setDefaultRenderTarget();
+	renderer.setDefaultRenderTarget();
 }
 
-void GameUI::render(RendererSDL &r)
+void GameUI::renderBuildingGrid(RendererSDL &renderer, GameState &state)
 {
-    updateBackground(r);
-
-    r.setDefaultRenderTarget();
-
-    r.render(background, 0, 0);
+	for (auto &cell : state.board.cells)
+	{
+		if (cell.value.c == nullptr && !cell.value.blocked)
+		{
+			vec2i base = params().boardCanonicalStart + vec2i(cell.x, cell.y) * params().boardCanonicalCellSize;
+			renderer.render(*borderTex, rect2i(base, base + vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize)));
+		}
+	}
 }

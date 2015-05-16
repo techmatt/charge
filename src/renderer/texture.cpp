@@ -5,7 +5,6 @@ void Texture::load(RendererSDL &renderer, const string &filename)
 {
     _renderTarget = false;
     _bmp = LodePNG::load(filename);
-    LodePNG::save(_bmp, "test.png");
     initSDL(renderer);
 }
 

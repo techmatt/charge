@@ -20,14 +20,14 @@ struct GameParameters
         //
         // derived parameters
         //
-        boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(boardCanonicalCellSize) * boardDims);
+        boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(boardCanonicalCellSize) * vec2f(boardDims));
     }
 
     string assetDir;
 
     vec2f canonicalDims;
 
-    vec2f boardDims;
+    vec2i boardDims;
 
     vec2f boardCanonicalStart;
     int boardCanonicalCellSize;
