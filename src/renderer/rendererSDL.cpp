@@ -41,6 +41,17 @@ void RendererSDL::render(Texture &tex, const rect2i &destinationRect)
     SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
+void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle)
+{
+    SDL_Rect dst;
+    dst.x = destinationRect.min().x;
+    dst.y = destinationRect.min().y;
+    dst.w = destinationRect.extentX();
+    dst.h = destinationRect.extentY();
+
+    SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+}
+
 void RendererSDL::present()
 {
     SDL_RenderPresent(_renderer);

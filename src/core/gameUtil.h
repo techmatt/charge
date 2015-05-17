@@ -63,6 +63,12 @@ public:
         return screenRect;
     }
 
+    static vec2f boardToWindow(const vec2f &windowDims, const vec2i &boardCoord)
+    {
+        const vec2f canonical = params().boardCanonicalStart + boardCoord * params().boardCanonicalCellSize;
+        return GameUtil::canonicalToWindow(windowDims, canonical);
+    }
+
 	static RGBColor chargeColor(ChargeType type)
 	{
 		switch (type)
@@ -106,6 +112,13 @@ public:
         }
         return "Invalid";
     }
-
     static vector< map< string, string > > readCSVFile(const string &filename);
 };
+
+namespace math
+{
+    static rect2i round(const rect2f &r)
+    {
+        return rect2i(math::round(r.min()), math::round(r.max()));
+    }
+}

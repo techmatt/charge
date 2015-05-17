@@ -23,14 +23,14 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
 
         if (isHalfAlphaTexture)
         {
-            for (auto p : bmp)
+            for (const auto &p : bmp)
                 p.value.a = 128;
         }
         else
         {
             const RGBColor chargeSecondaryColor = GameUtil::chargeColor(chargeSecondary);
 
-            for (auto p : bmp)
+            for (const auto &p : bmp)
             {
                 if (p.value == Colors::Cyan())
                     p.value = RGBColor(255, 255, 255, 0);

@@ -14,6 +14,7 @@ public:
 
     void render(Texture &tex, int x, int y);
 	void render(Texture &tex, const rect2i &destinationRect);
+    void render(Texture &tex, const rect2i &destinationRect, float angle);
 	void render(Texture &tex, const rect2f &destinationRect);
 	void present();
     void setRenderTarget(Texture &target);

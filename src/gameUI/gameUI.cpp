@@ -144,6 +144,11 @@ void GameUI::updateBackground()
 
     renderComponents(true);
 
+    for (auto &component : app.state.components)
+    {
+        renderSpokes(*component);
+    }
+
 	for (auto &button : buttons)
 	{
         button.render(app.renderer, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
@@ -181,6 +186,44 @@ void GameUI::renderComponent(const Component &component)
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
         renderLocalizedComponent(*component.info, component.charge, screenRect);
+    }
+}
+
+void GameUI::renderSpokes(const Component &component)
+{
+    const vec2f myScreenPos = GameUtil::boardToWindow(windowDims, component.location.boardPos + vec2i(1, 1));
+
+    const auto &cells = app.state.board.cells;
+    for (int type = -1; type <= 1; type++)
+    {
+        for (int axis = 0; axis < 2; axis++)
+        {
+            vec2i offset;
+            if (axis == 0) offset = vec2i(-2, type);
+            if (axis == 1) offset = vec2i(type, -2);
+            UINT connectorIndex = (type + 1) * 2 + axis;
+            vec2i otherLocation = component.location.boardPos + offset;
+
+            if (cells.isValidCoordinate(otherLocation) && cells(otherLocation).c != nullptr)
+            {
+                const Component &otherComponent = *cells(otherLocation).c;
+                if (otherComponent.location.boardPos == otherLocation)
+                {
+                    const vec2f otherScreenPos = GameUtil::boardToWindow(windowDims, otherComponent.location.boardPos + vec2i(1, 1));
+                    
+                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                    const vec2f diff = myScreenPos - otherScreenPos;
+                    const float dist = diff.length();
+
+                    const vec2f variance(dist * 0.18f, dist * 0.045f);
+                    
+                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
+                    //const float angle = 180.0f;
+                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                    app.renderer.render(connectorTex, math::round(rect2f(middle - variance, middle + variance)), angle);
+                }
+            }
+        }
     }
 }
 

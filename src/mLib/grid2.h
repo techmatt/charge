@@ -209,6 +209,14 @@ public:
 #endif
         return m_data[y * m_dimX + x];
     }
+    inline T& operator() (const vec2i &v)
+    {
+        return (*this)(v.x, v.y);
+    }
+    inline const T& operator() (const vec2i &v) const
+    {
+        return (*this)(v.x, v.y);
+    }
 
     inline size_t dimX() const
     {
@@ -256,6 +264,11 @@ public:
     inline bool isValidCoordinate(int x, int y) const
     {
         return (x >= 0 && x < int(m_dimX) && y >= 0 && y < int(m_dimY));
+    }
+
+    inline bool isValidCoordinate(vec2i coord) const
+    {
+        return isValidCoordinate(coord.x, coord.y);
     }
 
     //

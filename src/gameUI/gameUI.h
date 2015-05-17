@@ -27,6 +27,8 @@ private:
     void renderComponent(const Component &component);
     void renderLocalizedComponent(const ComponentInfo &info, ChargeType charge, const rect2f &screenRect);
 
+    void renderSpokes(const Component &component);
+
 	void renderSelectionHighlight();
 
     void renderHoverComponent();
