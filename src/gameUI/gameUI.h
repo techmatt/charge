@@ -31,6 +31,10 @@ private:
 
     void renderHoverComponent();
 
+    void addHoverComponent();
+
+    vec2i hoverBoardLocation();
+
     Texture background;
 	vec2i windowDims;
 

@@ -13,7 +13,7 @@ struct ComponentInfo
         colorUpgrades = (m.at("Colored") == "yes");
         grayUpgrade = (m.at("Grayed") == "yes");
 
-        background = false;
+        background = true;
     }
 
     string name;
@@ -51,6 +51,7 @@ struct Database
         return *(components.at(componentName));
     }
 
+    Texture& getTexture(RendererSDL &renderer, const ComponentInfo &info, ChargeType charge = ChargeNone);
     Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType charge = ChargeNone);
 
     map<string, ComponentInfo*> components;

@@ -1,17 +1,23 @@
 
-struct BoardLocation
+struct GameLocation
 {
+    GameLocation() {}
+    GameLocation(const vec2i &_boardPos)
+    {
+        boardPos = _boardPos;
+        circuitPos = constants::invalidCoord;
+    }
     bool inCircuit() const
     {
-        return (circuit != constants::invalidCoord);
+        return (circuitPos != constants::invalidCoord);
     }
 
     //
-    // if we are in a circuit, pos is the circuit-relative coordinate
-    // otherwise, pos is the board position
+    // board is the position on the 24 x 24 game board.
+    // if we are talking about a circuit location, circuit is the position on the circuit at boardPos
     //
-    vec2i pos;
-    vec2i circuit;
+    vec2i boardPos;
+    vec2i circuitPos;
 };
 
 enum ComponentPuzzleType

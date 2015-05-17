@@ -12,11 +12,16 @@ void Database::init()
     }
 }
 
+Texture& Database::getTexture(RendererSDL &renderer, const ComponentInfo &info, ChargeType charge)
+{
+    return getTexture(renderer, info.name, charge);
+}
+
 Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType charge)
 {
     if (textures.count(textureName) == 0)
     {
-        const string filename = params().assetDir + "textures/" + textureName + ".png";
+        const string filename = params().assetDir + "textures/" + textureName + GameUtil::suffixFromCharge(charge) + ".png";
         MLIB_ASSERT_STR(util::fileExists(filename), "File not found");
         Bitmap bmp = LodePNG::load(filename);
 

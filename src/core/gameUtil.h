@@ -85,5 +85,27 @@ public:
 		return RGBColor(0, 0, 0);
 	}
 
+    static string suffixFromCharge(ChargeType type)
+    {
+        switch (type)
+        {
+        case ChargeGray:
+            return "Gray";
+        case ChargeRed:
+            return "Red";
+        case ChargeOrange:
+            return "Orange";
+        case ChargeYellow:
+            return "Yellow";
+        case ChargeGreen:
+            return "Green";
+        case ChargeBlue:
+            return "Blue";
+        case ChargeNone:
+            return "";
+        }
+        return "Invalid";
+    }
+
     static vector< map< string, string > > readCSVFile(const string &filename);
 };

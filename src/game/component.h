@@ -1,13 +1,25 @@
 
 struct Component
 {
-    ComponentInfo *info;
+    Component(const string &name, ChargeType _charge, const GameLocation &_location)
+    {
+        info = &database().getComponent(name);
+        charge = _charge;
+        location = _location;
+        lastChargeVisit = 0;
+        puzzleType = ComponentUser;
+        circuitBoard = nullptr;
+        absorbedCharge = ChargeNone;
+        timeUntilEmission = 0;
+        totalChargesRemaining = 0;
+    }
+    const ComponentInfo *info;
     ChargeType charge;
 
     //
     // locations always specify the top-left coordinate.
     //
-    BoardLocation location;
+    GameLocation location;
     int lastChargeVisit;
     int chargePreference;
     ComponentPuzzleType puzzleType;
