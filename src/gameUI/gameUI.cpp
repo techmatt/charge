@@ -6,6 +6,33 @@ void GameUI::init()
     selectedMenuComponent = nullptr;
 }
 
+void GameUI::mouseDown(Uint8 button, int x, int y)
+{
+    selectedMenuComponent = nullptr;
+
+    for (const auto &button : buttons)
+    {
+        const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), button.canonicalRect);
+        if (screenRect.intersects(vec2f((float)x, (float)y)))
+        {
+            if (button.type == ButtonComponent)
+            {
+                selectedMenuComponent = button.component;
+            }
+        }
+    }
+}
+
+void GameUI::mouseMove(Uint32 buttonState, int x, int y)
+{
+    mouseHoverCoord = vec2i(x, y);
+}
+
+void GameUI::keyDown(SDL_Keycode key)
+{
+
+}
+
 void GameUI::render()
 {
 	updateBackground();
@@ -13,6 +40,23 @@ void GameUI::render()
     app.renderer.setDefaultRenderTarget();
 
     app.renderer.render(background, 0, 0);
+
+    renderHoverComponent();
+}
+
+void GameUI::renderHoverComponent()
+{
+    if (selectedMenuComponent == nullptr)
+        return;
+
+    const vec2f boardCoordf = GameUtil::windowToBoard(windowDims, mouseHoverCoord);
+    const vec2i boardCoordi(math::round(boardCoordf) - vec2i(1, 1));
+
+    if (!math::between(boardCoordi.x, 0, 22) || !math::between(boardCoordi.y, 0, 22))
+        return;
+    
+    const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardCoordi, 2);
+    renderLocalizedComponent(*selectedMenuComponent, ChargeRed, screenRect);
 }
 
 void GameUI::updateButtonList()
@@ -25,11 +69,11 @@ void GameUI::updateButtonList()
 		{
             if (info.colorUpgrades)
             {
-                buttons.push_back(GameButton(info.name + "Red", info.menuCoordinate, ButtonType::ButtonComponent));
+                buttons.push_back(GameButton(info.name, "Red", info.menuCoordinate, ButtonType::ButtonComponent));
             }
             else
             {
-                buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent));
+                buttons.push_back(GameButton(info.name, "", info.menuCoordinate, ButtonType::ButtonComponent));
             }
 		}
 	}
@@ -59,7 +103,7 @@ void GameUI::updateBackground()
 
 	for (auto &button : buttons)
 	{
-        button.render(app.renderer, false);
+        button.render(app.renderer, (button.component == selectedMenuComponent));
 	}
     
     app.renderer.setDefaultRenderTarget();
@@ -72,26 +116,28 @@ void GameUI::renderBuildingGrid()
 	{
 		if (cell.value.c == nullptr && !cell.value.blocked)
 		{
-			const vec2i canonicalBase = params().boardCanonicalStart + vec2i(cell.x, cell.y) * params().boardCanonicalCellSize;
-			const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
-			const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+			const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, vec2i(cell.x, cell.y), 1);
             app.renderer.render(border, screenRect);
 		}
 	}
 }
 
-void GameUI::renderComponent(const Component &component)
+void GameUI::renderLocalizedComponent(const ComponentInfo &info, ChargeType charge, const rect2f &screenRect)
 {
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, component.info->name, component.charge);
+    Texture &componentTex = database().getTexture(app.renderer, info.name, charge);
 
+    app.renderer.render(baseTex, screenRect);
+    app.renderer.render(componentTex, screenRect);
+}
+
+void GameUI::renderComponent(const Component &component)
+{
+    
     if (!component.location.inCircuit())
     {
-        const vec2i canonicalBase = params().boardCanonicalStart + component.location.pos * params().boardCanonicalCellSize;
-        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + 2 * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
-        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
-        app.renderer.render(baseTex, screenRect);
-        app.renderer.render(componentTex, screenRect);
+        const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.pos, 2);
+        renderLocalizedComponent(*component.info, component.charge, screenRect);
     }
 }
 
@@ -102,22 +148,4 @@ void GameUI::renderComponents(bool background)
         if (component.info->background == background)
             renderComponent(component);
     }
-}
-
-void GameUI::mouseDown(Uint8 button, int x, int y)
-{
-    for (const auto &button : buttons)
-    {
-        //const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), canonicalRect);
-    }
-}
-
-void GameUI::mouseMove(Uint32 buttonState, int x, int y)
-{
-
-}
-
-void GameUI::keyDown(SDL_Keycode key)
-{
-
 }

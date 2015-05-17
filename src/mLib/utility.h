@@ -94,6 +94,11 @@ namespace math
 	}
 
     template<class T>
+    inline bool between(T x, T pMin, T pMax) {
+        return (x >= pMin && x <= pMax);
+    }
+
+    template<class T>
     inline long int floor(T x)
     {
         return (long int)std::floor(x);

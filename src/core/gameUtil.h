@@ -13,8 +13,8 @@ public:
     static vec2f coordinateRemap(const rect2f &start, const rect2f &end, const vec2f &v)
     {
         vec2f result;
-        result.x = math::linearMap(start.min().x, start.max().x, end.max().x, end.max().x, v.x);
-        result.y = math::linearMap(start.min().y, start.max().y, end.max().y, end.max().y, v.y);
+        result.x = math::linearMap(start.min().x, start.max().x, end.min().x, end.max().x, v.x);
+        result.y = math::linearMap(start.min().y, start.max().y, end.min().y, end.max().y, v.y);
         return result;
     }
 
@@ -33,9 +33,34 @@ public:
 		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
 	}
 
+    static vec2f windowToCanonical(const vec2f &windowDims, const vec2f &v)
+    {
+        return coordinateRemap(windowDims, params().canonicalDims, v);
+    }
+
     static vec2f boardToCanonical(const vec2f &v)
     {
         return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);
+    }
+
+    static vec2f canonicalToBoard(const vec2f &v)
+    {
+        return coordinateRemap(params().boardCanonicalRect, rect2f(vec2f::origin(), params().boardDims), v);
+    }
+
+    static vec2f windowToBoard(const vec2f &windowDims, const vec2f &v)
+    {
+        const vec2f canonical = windowToCanonical(windowDims, v);
+        return canonicalToBoard(canonical);
+        //return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);
+    }
+
+    static rect2f boardToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
+    {
+        const vec2i canonicalBase = params().boardCanonicalStart + boardCoord * params().boardCanonicalCellSize;
+        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
+        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+        return screenRect;
     }
 
 	static RGBColor chargeColor(ChargeType type)

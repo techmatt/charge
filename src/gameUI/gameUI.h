@@ -25,11 +25,16 @@ private:
 	
     void renderComponents(bool background);
     void renderComponent(const Component &component);
+    void renderLocalizedComponent(const ComponentInfo &info, ChargeType charge, const rect2f &screenRect);
 
 	void renderSelectionHighlight();
 
+    void renderHoverComponent();
+
     Texture background;
 	vec2i windowDims;
+
+    vec2i mouseHoverCoord;
 
 	vector<GameButton> buttons;
 
