@@ -1,8 +1,8 @@
 
 struct Component
 {
-    ComponentInfo info;
-    ChargeType color;
+    ComponentInfo *info;
+    ChargeType charge;
 
     //
     // locations always specify the top-left coordinate.
@@ -20,7 +20,7 @@ struct Component
     //
     // Amplifiers have absorbed a certain amount of charge
     //
-    int absorbedCharge;
+    ChargeType absorbedCharge;
 
     //
     // power sources emit at a certain rate

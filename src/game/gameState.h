@@ -4,7 +4,7 @@ struct GameState
 	void init();
 
     Board board;
-    vector<Component> component;
+    vector<Component> components;
     vector<Charge> charges;
     //vector<ExplodingCharge> explodingCharges;
 

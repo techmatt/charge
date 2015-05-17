@@ -12,6 +12,8 @@ struct ComponentInfo
 
         colorUpgrades = (m.at("Colored") == "yes");
         grayUpgrade = (m.at("Grayed") == "yes");
+
+        background = false;
     }
 
     string name;
@@ -21,6 +23,7 @@ struct ComponentInfo
 
     bool colorUpgrades;
     bool grayUpgrade;
+    bool background;
 };
 
 enum ChargeType

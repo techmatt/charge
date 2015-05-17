@@ -1,21 +1,21 @@
 
 #include "main.h"
 
-void GameUI::init(RendererSDL &renderer)
+void GameUI::init()
 {
-
+    selectedMenuComponent = nullptr;
 }
 
-void GameUI::render(RendererSDL &renderer, GameState &state)
+void GameUI::render()
 {
-	updateBackground(renderer, state);
+	updateBackground();
 
-	renderer.setDefaultRenderTarget();
+    app.renderer.setDefaultRenderTarget();
 
-	renderer.render(background, 0, 0);
+    app.renderer.render(background, 0, 0);
 }
 
-void GameUI::updateButtonList(GameState &state)
+void GameUI::updateButtonList()
 {
 	buttons.clear();
 	for (auto &p : database().components)
@@ -35,45 +35,89 @@ void GameUI::updateButtonList(GameState &state)
 	}
 }
 
-void GameUI::updateBackground(RendererSDL &renderer, GameState &state)
+void GameUI::updateBackground()
 {
 	//
 	// resize the background if needed
 	//
-	windowDims = renderer.getWindowSize();
+    windowDims = app.renderer.getWindowSize();
 	if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowDims)
     {
 		cout << "Resizing render target: " << windowDims << endl;
 		background.loadRenderTarget(windowDims.x, windowDims.y);
     }
 
-	updateButtonList(state);
+	updateButtonList();
 
-	renderer.setRenderTarget(background);
+    app.renderer.setRenderTarget(background);
 
-	renderer.render(database().getTexture(renderer, "Background"), rect2i(0, 0, windowDims.x, windowDims.y));
+    app.renderer.render(database().getTexture(app.renderer, "Background"), rect2i(0, 0, windowDims.x, windowDims.y));
 
-	renderBuildingGrid(renderer, state);
+	renderBuildingGrid();
+
+    renderComponents(true);
 
 	for (auto &button : buttons)
 	{
-		button.render(renderer, false);
+        button.render(app.renderer, false);
 	}
     
-	renderer.setDefaultRenderTarget();
+    app.renderer.setDefaultRenderTarget();
 }
 
-void GameUI::renderBuildingGrid(RendererSDL &renderer, GameState &state)
+void GameUI::renderBuildingGrid()
 {
-	Texture &border = database().getTexture(renderer, "Border");
-	for (auto &cell : state.board.cells)
+    Texture &border = database().getTexture(app.renderer, "Border");
+    for (auto &cell : app.state.board.cells)
 	{
 		if (cell.value.c == nullptr && !cell.value.blocked)
 		{
 			const vec2i canonicalBase = params().boardCanonicalStart + vec2i(cell.x, cell.y) * params().boardCanonicalCellSize;
 			const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
 			const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
-			renderer.render(border, screenRect);
+            app.renderer.render(border, screenRect);
 		}
 	}
+}
+
+void GameUI::renderComponent(const Component &component)
+{
+    Texture &baseTex = database().getTexture(app.renderer, "WireBase");
+    Texture &componentTex = database().getTexture(app.renderer, component.info->name, component.charge);
+
+    if (!component.location.inCircuit())
+    {
+        const vec2i canonicalBase = params().boardCanonicalStart + component.location.pos * params().boardCanonicalCellSize;
+        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + 2 * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
+        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+        app.renderer.render(baseTex, screenRect);
+        app.renderer.render(componentTex, screenRect);
+    }
+}
+
+void GameUI::renderComponents(bool background)
+{
+    for (auto &component : app.state.components)
+    {
+        if (component.info->background == background)
+            renderComponent(component);
+    }
+}
+
+void GameUI::mouseDown(Uint8 button, int x, int y)
+{
+    for (const auto &button : buttons)
+    {
+        //const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), canonicalRect);
+    }
+}
+
+void GameUI::mouseMove(Uint32 buttonState, int x, int y)
+{
+
+}
+
+void GameUI::keyDown(SDL_Keycode key)
+{
+
 }

@@ -34,16 +34,15 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
             for (auto &p : bmp)
             {
                 if (p.value == Colors::Cyan())
-                    p.value.a = 255;
-                else
                     p.value.a = 0;
+                else
+                    p.value.a = 255;
 
                 if (charge != ChargeNone && p.value == Colors::Magenta())
                 {
                     p.value = chargeColor;
                 }
             }
-
         }
 
         Texture *t = new Texture(renderer, bmp);

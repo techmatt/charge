@@ -61,7 +61,7 @@ struct RGBColor
 namespace Colors
 {
     static RGBColor Magenta()  { return RGBColor(255, 0, 255); }
-    static RGBColor Cyan()	   { return RGBColor(255, 255, 0); }
+    static RGBColor Cyan()	   { return RGBColor(0, 255, 255); }
 };
 
 //

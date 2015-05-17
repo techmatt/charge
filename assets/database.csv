@@ -16,7 +16,7 @@ TrapSprung,1,2,!,yes,yes,"Trap (Closed) @|A Trap behaves like a normal Wire for 
 TrapReset,2,2,!,yes,yes,Crank - Gray @|A Gray Crank will open the nearest Gray Trap. It behaves like a normal Wire for the charge.
 PowerSource,3,2,!,yes,no,Power Source - Red @|Red Power Sources produce red charge and send it to adjacent components.
 MegaHold,4,2,!,yes,no,"Goal Battery - Red @|Red Goal Batteries need to be filled with charge, and will only accept red charge. Once all goal towers are filled correctly, you win!"
-Goal,5,2,!,yes,no,"Goal - Red|Red Goals need to be filled with red charge.  Once all goal towers are filled correctly, you win!"
+ChargeGoal,5,2,!,yes,no,"Goal - Red|Red Goals need to be filled with red charge.  Once all goal towers are filled correctly, you win!"
 Blocker,5,3,!,no,no,Blocker|Blockers never allow charge to pass through them.
 WireMajorAccelerator,-1,-1,!,no,no,Wire - Major Accelerator @|Upgrading to a Major Accelerator causes all charges to pass through this Wire very quickly.
 WireMinorAccelerator,-1,-1,!,no,no,Wire - Minor Accelerator @|Upgrading to a Minor Accelerator causes all charges to pass through this Wire quickly.

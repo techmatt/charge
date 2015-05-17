@@ -19,46 +19,44 @@ int App::run()
         return 1;
     }
 
-    RendererSDL renderer;
-    renderer.init(window);
+    
+    data.renderer.init(window);
 
-    //The textures we'll be using
-    const std::string resPath = "../";
-    Texture texBkg(renderer, resPath + "background.png");
+    data.state.init();
 
-    GameUI ui;
-	
-	GameState state;
-	state.init();
+    data.ui.init();
 
-	SDL_Event e;
-    ui.init(renderer);
+    SDL_Event event;
 
 	bool quit = false;
 	while (!quit)
     {
-		while (SDL_PollEvent(&e)){
-			//If user closes the window
-			if (e.type == SDL_QUIT){
+		while (SDL_PollEvent(&event)){
+			if (event.type == SDL_QUIT)
+            {
 				quit = true;
 			}
-			//If user presses any key
-			if (e.type == SDL_KEYDOWN){
-				quit = true;
+			if (event.type == SDL_KEYDOWN)
+            {
+                data.ui.keyDown(event.key.keysym.sym);
 			}
-			//If user clicks the mouse
-			if (e.type == SDL_MOUSEBUTTONDOWN){
-				//quit = true;
+            if (event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                data.ui.mouseDown(event.button.button, event.button.x, event.button.y);
 			}
+            if (event.type == SDL_MOUSEMOTION)
+            {
+                data.ui.mouseMove(event.motion.state, event.motion.x, event.motion.y);
+            }
 		}
 
         //Clear the window
-        SDL_RenderClear(renderer.SDL());
+        SDL_RenderClear(data.renderer.SDL());
 
-        ui.render(renderer, state);
+        data.ui.render();
 
         //Update the screen
-        renderer.present();
+        data.renderer.present();
     }
 
     //cleanup(background, image, renderer, window);
