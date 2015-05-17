@@ -1,5 +1,5 @@
-#include <assert.h>
 #include "main.h"
+#include <assert.h>
 
 void warningFunctionMLIB(const std::string &description)
 {

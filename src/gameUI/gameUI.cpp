@@ -155,7 +155,7 @@ void GameUI::updateBackground()
 void GameUI::renderBuildingGrid()
 {
     Texture &border = database().getTexture(app.renderer, "Border");
-    for (auto cell : app.state.board.cells)
+    for (const auto &cell : app.state.board.cells)
 	{
 		//if (cell.value.c == nullptr && !cell.value.blocked)
         if (!cell.value.blocked)
