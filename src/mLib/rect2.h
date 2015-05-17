@@ -17,6 +17,18 @@ public:
         maxB = vec2i(_maxX, _maxY);
     }
 
+    rect2(const rect2 &r)
+    {
+        minB = r.minB;
+        maxB = r.maxB;
+    }
+
+    void operator = (const rect2 &r)
+    {
+        minB = r.minB;
+        maxB = r.maxB;
+    }
+
     rect2(const vec2<FloatType>& minBound, const vec2<FloatType>& maxBound) {
         reset();
         minB = minBound;

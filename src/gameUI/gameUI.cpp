@@ -94,7 +94,7 @@ void GameUI::renderHoverComponent()
     const vec2i boardLocation = hoverBoardLocation();
     if (boardLocation == constants::invalidCoord)
         return;
-    
+
     const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation, 2);
 
     renderLocalizedComponent(*selectedMenuComponent, selectedMenuComponent->defaultPrimaryCharge(), screenRect);
@@ -148,14 +148,14 @@ void GameUI::updateBackground()
 	{
         button.render(app.renderer, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
 	}
-    
+
     app.renderer.setDefaultRenderTarget();
 }
 
 void GameUI::renderBuildingGrid()
 {
     Texture &border = database().getTexture(app.renderer, "Border");
-    for (auto &cell : app.state.board.cells)
+    for (auto cell : app.state.board.cells)
 	{
 		//if (cell.value.c == nullptr && !cell.value.blocked)
         if (!cell.value.blocked)

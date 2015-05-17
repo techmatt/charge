@@ -10,7 +10,7 @@ void initGameParams(const ParameterFile &params)
     g_gameParams.database->init();
 }
 
-int SDL_main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     ParameterFile parameterFile("../assets/parameters.txt");
     initGameParams(parameterFile);

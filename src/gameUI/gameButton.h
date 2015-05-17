@@ -11,15 +11,16 @@ enum ButtonType
 struct GameButton
 {
 	GameButton() {}
-    GameButton(const string &_textureName, ChargeType _chargePrimary, ChargeType _chargeSecondary, const vec2i &menuCoord, ButtonType _type)
+  GameButton(const GameButton &g) {}
+	GameButton(const string &_textureName, ChargeType _chargePrimary, ChargeType _chargeSecondary, const vec2i &menuCoord, ButtonType _type)
 	{
         component = nullptr;
         textureName = _textureName;
         chargePrimary = _chargePrimary;
         chargeSecondary = _chargeSecondary;
-		type = _type;
-		vec2i base = params().menuCanonicalStart + menuCoord * params().menuCanonicalEntrySize;
-		canonicalRect = rect2i(base, base + params().boardCanonicalCellSize * vec2i(2, 2));
+        type = _type;
+		    vec2i base = params().menuCanonicalStart + menuCoord * params().menuCanonicalEntrySize;
+		    canonicalRect = rect2i(base, base + params().boardCanonicalCellSize * vec2i(2, 2));
 
         if (database().components.count(textureName) > 0)
         {
