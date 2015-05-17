@@ -1,4 +1,19 @@
 
+enum ChargeType
+{
+    ChargeRed,
+    ChargeOrange,
+    ChargeYellow,
+    ChargeGreen,
+    ChargeBlue,
+
+    //
+    // Special colors used by certain types of buildings
+    //
+    ChargeNone,
+    ChargeGray,
+};
+
 struct ComponentInfo
 {
     ComponentInfo() {}
@@ -16,6 +31,22 @@ struct ComponentInfo
         background = true;
     }
 
+    ChargeType defaultPrimaryCharge() const
+    {
+        if (colorUpgrades)
+            return ChargeRed;
+        return ChargeNone;
+    }
+
+    ChargeType defaultSecondaryCharge() const
+    {
+        if (name == "ChargeGoal" || name == "Hold")
+            return ChargeGray;
+        return ChargeNone;
+    }
+
+    
+    
     string name;
     string description;
     string hotkey;
@@ -24,21 +55,6 @@ struct ComponentInfo
     bool colorUpgrades;
     bool grayUpgrade;
     bool background;
-};
-
-enum ChargeType
-{
-    ChargeRed,
-    ChargeOrange,
-    ChargeYellow,
-    ChargeGreen,
-    ChargeBlue,
-
-    //
-    // Special colors used by certain types of buildings
-    //
-    ChargeNone,
-    ChargeGray,
 };
 
 struct Database
@@ -51,8 +67,7 @@ struct Database
         return *(components.at(componentName));
     }
 
-    Texture& getTexture(RendererSDL &renderer, const ComponentInfo &info, ChargeType charge = ChargeNone);
-    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType charge = ChargeNone);
+    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary = ChargeNone, ChargeType chargeSecondary = ChargeNone);
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;

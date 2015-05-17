@@ -6,22 +6,16 @@ void Database::init()
     for (auto &line : GameUtil::readCSVFile(params().assetDir + "database.csv"))
     {
         ComponentInfo *component = new ComponentInfo(line);
-        int a = 5;
         components[component->name] = component;
-        int b = 6;
     }
 }
 
-Texture& Database::getTexture(RendererSDL &renderer, const ComponentInfo &info, ChargeType charge)
+Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary)
 {
-    return getTexture(renderer, info.name, charge);
-}
-
-Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType charge)
-{
-    if (textures.count(textureName) == 0)
+    const string fullTextureName = textureName + GameUtil::suffixFromCharge(chargePrimary) + GameUtil::suffixFromCharge(chargeSecondary);
+    if (textures.count(fullTextureName) == 0)
     {
-        const string filename = params().assetDir + "textures/" + textureName + GameUtil::suffixFromCharge(charge) + ".png";
+        const string filename = params().assetDir + "textures/" + textureName + GameUtil::suffixFromCharge(chargePrimary) + ".png";
         MLIB_ASSERT_STR(util::fileExists(filename), "File not found");
         Bitmap bmp = LodePNG::load(filename);
 
@@ -34,18 +28,18 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
         }
         else
         {
-            const RGBColor chargeColor = GameUtil::chargeColor(charge);
+            const RGBColor chargeSecondaryColor = GameUtil::chargeColor(chargeSecondary);
 
             for (auto &p : bmp)
             {
                 if (p.value == Colors::Cyan())
-                    p.value.a = 0;
+                    p.value = RGBColor(255, 255, 255, 0);
                 else
                     p.value.a = 255;
 
-                if (charge != ChargeNone && p.value == Colors::Magenta())
+                if (p.value == Colors::Magenta())
                 {
-                    p.value = chargeColor;
+                    p.value = chargeSecondaryColor;
                 }
             }
         }
@@ -69,7 +63,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
             SDL_SetTextureBlendMode(t->SDL(), SDL_BLENDMODE_NONE);
         }
 
-        textures[textureName] = t;
+        textures[fullTextureName] = t;
     }
-    return *textures.at(textureName);
+    return *textures.at(fullTextureName);
 }

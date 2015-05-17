@@ -11,7 +11,9 @@ int App::run()
     }
 
     //Setup our window and renderer
-	SDL_Window *window = SDL_CreateWindow("Charge!", 100, 100, 1536, 1024, SDL_WINDOW_SHOWN);
+	//SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, 1536, 1024, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, 1620, 1080, SDL_WINDOW_SHOWN);
+
     if (window == nullptr)
     {
         SDL::logError("CreateWindow");

@@ -60,7 +60,7 @@ void GameUI::addHoverComponent()
 
     if (app.state.board.coordValidForNewComponent(boardLocation))
     {
-        Component *newComponent = new Component(selectedMenuComponent->name, ChargeRed, GameLocation(boardLocation));
+        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), GameLocation(boardLocation));
         app.state.addNewComponent(newComponent);
     }
 }
@@ -96,7 +96,8 @@ void GameUI::renderHoverComponent()
         return;
     
     const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation, 2);
-    renderLocalizedComponent(*selectedMenuComponent, ChargeRed, screenRect);
+
+    renderLocalizedComponent(*selectedMenuComponent, selectedMenuComponent->defaultPrimaryCharge(), screenRect);
 }
 
 void GameUI::updateButtonList()
@@ -107,14 +108,16 @@ void GameUI::updateButtonList()
         const ComponentInfo &info = *p.second;
         if (info.menuCoordinate.x != -1)
 		{
+            ChargeType primaryCharge = info.defaultPrimaryCharge();
+            ChargeType secondaryCharge = info.defaultSecondaryCharge();
+
             if (info.colorUpgrades)
-            {
-                buttons.push_back(GameButton(info.name, "Red", info.menuCoordinate, ButtonType::ButtonComponent));
-            }
-            else
-            {
-                buttons.push_back(GameButton(info.name, "", info.menuCoordinate, ButtonType::ButtonComponent));
-            }
+                primaryCharge = ChargeRed;
+
+            if (info.name == "ChargeGoal" || info.name == "Hold")
+                secondaryCharge = ChargeGray;
+
+            buttons.push_back(GameButton(info.name, primaryCharge, secondaryCharge, info.menuCoordinate, ButtonType::ButtonComponent));
 		}
 	}
 }
@@ -143,7 +146,7 @@ void GameUI::updateBackground()
 
 	for (auto &button : buttons)
 	{
-        button.render(app.renderer, (button.component == selectedMenuComponent));
+        button.render(app.renderer, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
 	}
     
     app.renderer.setDefaultRenderTarget();

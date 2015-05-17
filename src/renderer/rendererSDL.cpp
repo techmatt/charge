@@ -10,6 +10,8 @@ void RendererSDL::init(SDL_Window *window)
         SDL::logError("CreateRenderer");
         SDL_Quit();
     }
+
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
 void RendererSDL::render(Texture &tex, int x, int y)
