@@ -15,24 +15,37 @@ void GameState::addNewComponent(Component *component)
 
 void GameState::step()
 {
-    cout << "step: " << stepCount << endl;
     //
-    // Move charges
+    // Move and update charges
     //
-    for (int PassIndex = 0; PassIndex < 2; PassIndex++)
+
+    for (Charge &c : charges)
+        c.advance(*this);
+
+    for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
     {
-        for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
+        Charge &charge = charges[chargeIndex];
+        auto update = charge.interactWithDestination(*this);
+
+        if (update.destroyCharge)
         {
-            Charge &charge = charges[chargeIndex];
-            auto update = charge.update(*this, PassIndex == 1);
-            if (update.destroyCharge)
-            {
-                util::removeSwap(charges, chargeIndex);
-                chargeIndex--;
-            }
+            util::removeSwap(charges, chargeIndex);
+            chargeIndex--;
         }
     }
 
+    for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
+    {
+        Charge &charge = charges[chargeIndex];
+        auto update = charge.updateDestination(*this);
+
+        if (update.destroyCharge)
+        {
+            util::removeSwap(charges, chargeIndex);
+            chargeIndex--;
+        }
+    }
+    
     //
     // Update buildings
     //
@@ -61,4 +74,16 @@ void GameState::step()
     }
 
     stepCount++;
+}
+
+Component* GameState::getComponent(const GameLocation &pos)
+{
+    if (pos.inCircuit())
+    {
+        return board.cells(pos.boardPos).c->circuitBoard->cells(pos.circuitPos).c;
+    }
+    else
+    {
+        return board.cells(pos.boardPos).c;
+    }
 }

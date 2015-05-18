@@ -17,3 +17,6 @@ GAME UI
  * splash screen
  * level selection
  * blocker / boundary rendering
+
+ Questions
+  * Should we allow building any desired type on the circuit boundary?

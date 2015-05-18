@@ -11,98 +11,62 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
     randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
 }
 
-ChargeUpdateResult Charge::update(GameState &state, bool secondPass)
+void Charge::advance(GameState &state)
+{
+    if (timeInTransit < totalTransitTime)
+    {
+        timeInTransit++;
+    }
+}
+
+ChargeUpdateResult Charge::interactWithDestination(GameState &state)
 {
     ChargeUpdateResult result;
-    result.showDeathAnimation = true;
-    result.destroyCharge = false;
-    
-    Component *sourceCircuit = nullptr, *destCircuit = nullptr;
 
-    const auto &cells = state.board.cells;
-
-    if (destination.inCircuit())
-    {
-        destCircuit = cells(destination.boardPos).c;
-        result.destination = destCircuit->circuitBoard->cells(destination.circuitPos).c;
-    }
-    else
-    {
-        result.destination = cells(destination.boardPos).c;
-    }
-
-    if (secondPass && (result.destination == nullptr || !result.destination->info->holdsCharge))
+    if (timeInTransit < totalTransitTime)
     {
         return result;
     }
 
-    if (result.destination == nullptr)
+    
+
+    /*if (result.destination->info->holdsCharge)
+    {
+        result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
+    }*/
+
+    return result;
+}
+
+ChargeUpdateResult Charge::updateDestination(GameState &state)
+{
+    ChargeUpdateResult result;
+
+    if (timeInTransit < totalTransitTime)
+    {
+        return result;
+    }
+
+    if (findBestDestination(state))
+    {
+        return result;
+    }
+    else
     {
         result.destroyCharge = true;
         return result;
     }
 
-    if (source.inCircuit())
+    /*if (result.destination->info->holdsCharge)
     {
-        sourceCircuit = cells(source.boardPos).c;
-        result.source = sourceCircuit->circuitBoard->cells(source.circuitPos).c;
-    }
-    else
-    {
-        result.source = cells(source.boardPos).c;
-    }
+        result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
+    }*/
 
-    if (timeInTransit >= totalTransitTime)
-    {
-        //Assert(DestBuilding->Type() != BuildingCircuit && (SourceBuilding == NULL || SourceBuilding->Type() != BuildingCircuit), "Cannot move towards circuits");
-
-        if (result.destination->info->holdsCharge)
-        {
-            result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
-        }
-
-        //
-        // Handle towers that consume charge.  Do not allow amplifiers or splitters to consume the charge
-        // they just produced.
-        //
-        if (result.destination->info->holdsCharge)
-        {
-            if (result.destination->absorbedCharge == 0)
-            {
-                //result.destination->eatCharge(state, *this);
-            }
-        }
-        else if (totalTransitTime != 0)
-        {
-            result.destroyCharge = true;
-            return result;
-        }
-
-        //
-        // Find a new target in adjacent squares
-        //
-        if (findNewDestination(state, *result.destination, *result.source))
-        {
-            if (result.destination->info->holdsCharge)
-            {
-                result.destination->discharge();
-            }
-            return result;
-        }
-        else
-        {
-            result.source = result.destination;
-            return result;
-        }
-    }
-    else
-    {
-        if (!secondPass)
-        {
-            timeInTransit++;
-        }
-        return result;
-    }
+    //
+    // Handle towers that consume charge.  Do not allow amplifiers or splitters to consume the charge
+    // they just produced.
+    //
+    
 }
 
 void Charge::setNewDestination(GameState &state, Component &newDestination)
@@ -131,8 +95,11 @@ void Charge::setNewDestination(GameState &state, Component &newDestination)
     }*/
 }
 
-bool Charge::findNewDestination(GameState &state, Component &current, Component &previous)
+bool Charge::findBestDestination(GameState &state)
 {
+    Component *previous = state.getComponent(source);
+    Component *current = state.getComponent(destination);
+
     int adjacentCount;
     Component *adjacentComponents[6];
     if (!destination.inCircuit())
@@ -153,7 +120,7 @@ bool Charge::findNewDestination(GameState &state, Component &current, Component 
         Component *candidate = adjacentComponents[adjacentIndex];
 
         bool BuildingWillAccept = candidate->willAcceptCharge(state, *this);
-        bool IsPreviousBuilding = previous.location == candidate->location;
+        bool IsPreviousBuilding = previous->location == candidate->location;
 
         if (!IsPreviousBuilding &&
             BuildingWillAccept)
@@ -167,7 +134,7 @@ bool Charge::findNewDestination(GameState &state, Component &current, Component 
             }
         }
     }
-    if (bestComponent != NULL)
+    if (bestComponent != nullptr)
     {
         setNewDestination(state, *bestComponent);
         return true;
