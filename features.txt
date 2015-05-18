@@ -1,0 +1,19 @@
+
+Features to implement
+
+GAME MODEL
+ * components
+   * splitter
+   * amplifier
+   * teleporter
+   * ...
+ * circuits
+ * puzzle reset
+
+GAME UI
+ * puzzle speed control
+ * sound
+ * level editor
+ * splash screen
+ * level selection
+ * blocker / boundary rendering

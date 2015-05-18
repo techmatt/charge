@@ -26,6 +26,12 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
             for (const auto &p : bmp)
                 p.value.a = 128;
         }
+        else if (util::startsWith(textureName, "ChargeTexture"))
+        {
+            Bitmap chargeAlpha = LodePNG::load(params().assetDir + "textures/ChargeTextureAlpha.png");
+            for (const auto &p : chargeAlpha)
+                bmp(p.x, p.y).a = p.value.r;
+        }
         else
         {
             const RGBColor chargeSecondaryColor = GameUtil::chargeColor(chargeSecondary);

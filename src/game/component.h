@@ -10,8 +10,10 @@ struct Component
         puzzleType = ComponentUser;
         circuitBoard = nullptr;
         absorbedCharge = ChargeNone;
-        timeUntilEmission = 0;
-        totalChargesRemaining = 0;
+
+        timeUntilEmission = 60;
+        totalChargesRemaining = 0xFFFFFF;
+        
         chargePreference = 2;
     }
 

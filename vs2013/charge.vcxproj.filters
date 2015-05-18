@@ -168,6 +168,7 @@
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />
     <Text Include="..\assets\parameters.txt" />
+    <Text Include="..\features.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\mLib\grid2.inl">

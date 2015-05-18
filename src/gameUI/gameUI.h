@@ -31,10 +31,7 @@ inline int ticksFromSpeed(GameSpeed speed)
 class GameUI
 {
 public:
-    GameUI(AppData &_app) : app(_app)
-    {
-        mode = ModeDesign;
-    }
+    GameUI(AppData &_app) : app(_app) {}
     void init();
 	void render();
     void step();
@@ -78,4 +75,6 @@ private:
 	vector<GameButton> buttons;
 
     ComponentInfo *selectedMenuComponent;
+
+    Texture* chargeTextures[constants::maxChargeLevel];
 };

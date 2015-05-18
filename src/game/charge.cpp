@@ -8,6 +8,7 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
     destination = originLocation;
     timeInTransit = 0;
     totalTransitTime = 0;
+    randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
 }
 
 ChargeUpdateResult Charge::update(GameState &state, bool secondPass)

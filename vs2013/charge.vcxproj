@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\assets\parameters.txt" />
+    <Text Include="..\features.txt" />
     <Text Include="..\renderingNotes.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 
 void GameState::init()
 {
+    stepCount = 0;
 	board.cells.allocate(params().boardDims.x, params().boardDims.y);
 }
 
@@ -14,6 +15,7 @@ void GameState::addNewComponent(Component *component)
 
 void GameState::step()
 {
+    cout << "step: " << stepCount << endl;
     //
     // Move charges
     //

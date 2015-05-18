@@ -3,7 +3,15 @@
 
 void GameUI::init()
 {
+    mode = ModeDesign;
+    speed = Speed1x;
+
     selectedMenuComponent = nullptr;
+
+    for (int chargeLevel = 0; chargeLevel < constants::maxChargeLevel; chargeLevel++)
+    {
+        chargeTextures[chargeLevel] = &database().getTexture(app.renderer, "ChargeTexture" + to_string(chargeLevel));
+    }
 }
 
 void GameUI::step()
@@ -16,6 +24,8 @@ void GameUI::step()
             app.state.step();
         }
     }
+
+    
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -97,6 +107,11 @@ void GameUI::render()
 
     app.renderer.render(background, 0, 0);
 
+    for (const auto &charge : app.state.charges)
+    {
+        renderCharge(charge);
+    }
+    
     renderHoverComponent();
 }
 
@@ -273,65 +288,31 @@ void GameUI::renderComponents(bool background)
 
 void GameUI::renderCharge(const Charge &charge)
 {
-    vec2i screenSource, screenDest;
+    vec2f screenSource, screenDest;
 
-    /*float sourceScaleFactor = 1.0f + (C._Level - 1) * ChargeScaleWithLevelFactor;
-    float destScaleFactor = 1.0f + (C._Level - 1) * ChargeScaleWithLevelFactor;
+    float sourceScaleFactor = 1.0f + (int)charge.level * constants::chargeScaleWithLevelFactor;
+    float destScaleFactor = 1.0f + (int)charge.level * constants::chargeScaleWithLevelFactor;
 
     screenSource = charge.source.toScreenCoord(windowDims);
     screenDest = charge.destination.toScreenCoord(windowDims);
     
-    if (ActiveCircuit)
+    if (charge.source.boardPos == constants::invalidCoord)
     {
-        ScreenCoordinateEnd = CircuitCoordinateToScreenCoordinate(C._Destination.Location + Coordinate(1, 1));
-        ScreenCoordinateStart = CircuitCoordinateToScreenCoordinate(C._Source.Location + Coordinate(1, 1));
-    }
-    else
-    {
-        
-
-        if (C._Source.Circuit != Coordinate::Invalid)
-        {
-            StartScaleFactor = CircuitChargeSize;
-        }
-        if (C._Destination.Circuit != Coordinate::Invalid)
-        {
-            EndScaleFactor = CircuitChargeSize;
-        }
+        screenSource = screenDest;
     }
 
-    if (C._Source.Location == Coordinate::Invalid)
+    float s = 0.0f;
+    if (charge.totalTransitTime > 0)
     {
-        ScreenCoordinateStart = ScreenCoordinateEnd;
+        s = float(charge.timeInTransit) / float(charge.totalTransitTime);
     }
 
-    Vec2 VecStart = ScreenCoordinateStart.AsVec2();
-    Vec2 VecEnd = ScreenCoordinateEnd.AsVec2();
+    const vec2f screenFinal = math::lerp(screenSource, screenDest, s);
+    const float screenSize = math::lerp(sourceScaleFactor, destScaleFactor, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(windowDims);
 
-    float Factor = 0.0f;
-    if (C._TotalTransitTime > 0)
-    {
-        Factor = float(C._TimeInTransit) / float(C._TotalTransitTime);
-    }
-    Vec2 VecFinal = Vec2::Lerp(VecStart, VecEnd, Factor);
-    float ScaleFactor = Math::Lerp(StartScaleFactor, EndScaleFactor, Factor);
+    const float angle = charge.randomRotationOffset + app.state.stepCount / constants::stepsPerSecond * constants::chargeRotationsPerSecond;
 
-    Matrix4 Rotation = Matrix4::RotationZ(G.CurrentTime() * SecondsPerGameFrame * 2.0f * Math::PIf * ChargeSecondPerRotations + C.RandomValue() * 2.0f * Math::PIf);
-    //Matrix4 Jitter = Matrix4::Translation(Vec3(ChargeJitterMagnitude * pmrnd(), ChargeJitterMagnitude * pmrnd(), 0.0f));
-    Matrix4 Transform = Rotation * Matrix4::Scaling(Vec3(ScaleFactor, ScaleFactor, 1.0f)) * Matrix4::Translation(Vec3(VecFinal, ChargeLayerZDepth)) * InverseViewportMatrix;
+    const rect2i destinationRect(screenFinal - vec2f(screenSize), screenFinal + vec2f(screenSize));
 
-    GD.LoadMatrix(MatrixController(Transform));
-
-    if (UseTexturedCharges)
-    {
-        EnableAlphaBlending(GD, AlphaBlendingModeBuilding);
-        _TexturedChargeTextures[C.Level() - 1].Set(0);
-        _TexturedChargeMesh.Render();
-        DisableAlphaBlending(GD);
-    }
-    else
-    {
-        _SphereChargeTextures[C.Level() - 1].Set(0);
-        _SphereChargeMesh.Render();
-    }*/
+    app.renderer.render(*chargeTextures[charge.level], destinationRect, angle);
 }

@@ -69,6 +69,11 @@ public:
         return GameUtil::canonicalToWindow(windowDims, canonical);
     }
 
+    static float windowScaleFactor(const vec2f &windowDims)
+    {
+        return (float)windowDims.x / (float)params().canonicalDims.x;
+    }
+
 	static RGBColor chargeColor(ChargeType type)
 	{
 		switch (type)
