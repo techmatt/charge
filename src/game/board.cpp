@@ -25,3 +25,46 @@ void Board::addNewComponent(Component *component)
             c.c = component;
         }
 }
+
+void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int &resultCount)
+{
+    auto insertAdjacentBuilding = [&](const vec2i &offset)
+    {
+        if (cells.isValidCoordinate(offset) && cells(offset).c != nullptr)
+        {
+            Component *comp = cells(offset).c;
+            for (int componentIndex = 0; componentIndex < resultCount; componentIndex++)
+            {
+                if (result[componentIndex] == comp)
+                    return;
+            }
+            result[resultCount++] = comp;
+        }
+    };
+
+    resultCount = 0;
+
+    //
+    // Top row
+    //
+    insertAdjacentBuilding(vec2i(source.x + 0, source.y - 1));
+    insertAdjacentBuilding(vec2i(source.x + 1, source.y - 1));
+
+    //
+    // Right column
+    //
+    insertAdjacentBuilding(vec2i(source.x + 2, source.y + 0));
+    insertAdjacentBuilding(vec2i(source.x + 2, source.y + 1));
+
+    //
+    // Bottom row
+    //
+    insertAdjacentBuilding(vec2i(source.x + 0, source.y + 2));
+    insertAdjacentBuilding(vec2i(source.x + 1, source.y + 2));
+
+    //
+    // Left column
+    //
+    insertAdjacentBuilding(vec2i(source.x - 1, source.y + 0));
+    insertAdjacentBuilding(vec2i(source.x - 1, source.y + 1));
+}

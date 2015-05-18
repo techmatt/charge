@@ -17,8 +17,11 @@ struct GameParameters
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
         params.readParameter("boardCanonicalCellSize", boardCanonicalCellSize);
 
-		params.readParameter("menuCanonicalStart", menuCanonicalStart);
-		params.readParameter("menuCanonicalEntrySize", menuCanonicalEntrySize);
+        params.readParameter("componentMenuCanonicalStart", componentMenuCanonicalStart);
+        params.readParameter("componentMenuCanonicalEntrySize", componentMenuCanonicalEntrySize);
+
+        params.readParameter("puzzleMenuCanonicalStart", puzzleMenuCanonicalStart);
+        params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
         //
         // derived parameters
@@ -35,8 +38,11 @@ struct GameParameters
     vec2f boardCanonicalStart;
     int boardCanonicalCellSize;
 
-	vec2f menuCanonicalStart;
-	int menuCanonicalEntrySize;
+	vec2f componentMenuCanonicalStart;
+	int componentMenuCanonicalEntrySize;
+
+    vec2f puzzleMenuCanonicalStart;
+    int puzzleMenuCanonicalEntrySize;
 
     //
     // derived parameters

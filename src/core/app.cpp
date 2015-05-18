@@ -3,7 +3,6 @@
 
 int App::run()
 {
-    //Start up SDL and make sure it went ok
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
         SDL::logError("SDL_Init");
@@ -11,7 +10,6 @@ int App::run()
     }
 
     //Setup our window and renderer
-	//SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, 1536, 1024, SDL_WINDOW_SHOWN);
     SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, 1620, 1080, SDL_WINDOW_SHOWN);
 
     if (window == nullptr)
@@ -52,16 +50,20 @@ int App::run()
             }
 		}
 
-        //Clear the window
+        //
+        // advance the game
+        //
+        data.ui.step();
+
+        //
+        // render the game
+        //
         SDL_RenderClear(data.renderer.SDL());
 
         data.ui.render();
 
-        //Update the screen
         data.renderer.present();
     }
-
-    //cleanup(background, image, renderer, window);
 
     SDL_Quit();
 

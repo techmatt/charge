@@ -18,5 +18,7 @@ struct Board
     bool coordValidForNewComponent(const vec2i &v) const;
     void addNewComponent(Component *component);
 
+    void findAdjacentBuildings(const vec2i &source, Component *result[6], int &resultCount);
+
     Grid2<BoardCell> cells;
 };

@@ -1,10 +1,10 @@
 
 struct Component
 {
-    Component(const string &name, ChargeType _charge, const GameLocation &_location)
+    Component(const string &name, ChargeType _color, const GameLocation &_location)
     {
         info = &database().getComponent(name);
-        charge = _charge;
+        color = _color;
         location = _location;
         lastChargeVisit = 0;
         puzzleType = ComponentUser;
@@ -12,16 +12,25 @@ struct Component
         absorbedCharge = ChargeNone;
         timeUntilEmission = 0;
         totalChargesRemaining = 0;
+        chargePreference = 2;
     }
+
+    void discharge()
+    {
+        absorbedCharge = ChargeNone;
+    }
+    
+    bool willAcceptCharge(GameState &state, const Charge &charge);
+
     const ComponentInfo *info;
-    ChargeType charge;
+    ChargeType color;
 
     //
     // locations always specify the top-left coordinate.
     //
     GameLocation location;
     int lastChargeVisit;
-    int chargePreference;
+    int chargePreference; // value ranges from 0 to 4; default is 2
     ComponentPuzzleType puzzleType;
 
     //

@@ -6,6 +6,18 @@ void GameUI::init()
     selectedMenuComponent = nullptr;
 }
 
+void GameUI::step()
+{
+    if (mode == ModeExecuting)
+    {
+        const int tickCount = ticksFromSpeed(speed);
+        for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
+        {
+            app.state.step();
+        }
+    }
+}
+
 void GameUI::keyDown(SDL_Keycode key)
 {
     if (key == SDLK_ESCAPE)
@@ -34,6 +46,18 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
             if (button.type == ButtonComponent)
             {
                 selectedMenuComponent = button.component;
+            }
+            if (button.name == "Start")
+            {
+                mode = ModeExecuting;
+            }
+            if (button.name == "Stop")
+            {
+                mode = ModeDesign;
+            }
+            if (button.name == "Pause")
+            {
+                mode = ModePaused;
             }
         }
     }
@@ -103,6 +127,10 @@ void GameUI::renderHoverComponent()
 void GameUI::updateButtonList()
 {
 	buttons.clear();
+
+    //
+    // Add all buildable components
+    //
 	for (auto &p : database().components)
 	{
         const ComponentInfo &info = *p.second;
@@ -117,9 +145,16 @@ void GameUI::updateButtonList()
             if (info.name == "ChargeGoal" || info.name == "Hold")
                 secondaryCharge = ChargeGray;
 
-            buttons.push_back(GameButton(info.name, primaryCharge, secondaryCharge, info.menuCoordinate, ButtonType::ButtonComponent));
+            buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, primaryCharge, secondaryCharge));
 		}
 	}
+
+    //
+    // Add puzzle control buttons
+    //
+    buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl));
+    buttons.push_back(GameButton("Pause", vec2i(1, 0), ButtonType::ButtonPuzzleControl));
+    buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl));
 }
 
 void GameUI::updateBackground()
@@ -185,7 +220,7 @@ void GameUI::renderComponent(const Component &component)
     if (!component.location.inCircuit())
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
-        renderLocalizedComponent(*component.info, component.charge, screenRect);
+        renderLocalizedComponent(*component.info, component.color, screenRect);
     }
 }
 
@@ -234,4 +269,69 @@ void GameUI::renderComponents(bool background)
         if (component->info->background == background)
             renderComponent(*component);
     }
+}
+
+void GameUI::renderCharge(const Charge &charge)
+{
+    vec2i screenSource, screenDest;
+
+    /*float sourceScaleFactor = 1.0f + (C._Level - 1) * ChargeScaleWithLevelFactor;
+    float destScaleFactor = 1.0f + (C._Level - 1) * ChargeScaleWithLevelFactor;
+
+    screenSource = charge.source.toScreenCoord(windowDims);
+    screenDest = charge.destination.toScreenCoord(windowDims);
+    
+    if (ActiveCircuit)
+    {
+        ScreenCoordinateEnd = CircuitCoordinateToScreenCoordinate(C._Destination.Location + Coordinate(1, 1));
+        ScreenCoordinateStart = CircuitCoordinateToScreenCoordinate(C._Source.Location + Coordinate(1, 1));
+    }
+    else
+    {
+        
+
+        if (C._Source.Circuit != Coordinate::Invalid)
+        {
+            StartScaleFactor = CircuitChargeSize;
+        }
+        if (C._Destination.Circuit != Coordinate::Invalid)
+        {
+            EndScaleFactor = CircuitChargeSize;
+        }
+    }
+
+    if (C._Source.Location == Coordinate::Invalid)
+    {
+        ScreenCoordinateStart = ScreenCoordinateEnd;
+    }
+
+    Vec2 VecStart = ScreenCoordinateStart.AsVec2();
+    Vec2 VecEnd = ScreenCoordinateEnd.AsVec2();
+
+    float Factor = 0.0f;
+    if (C._TotalTransitTime > 0)
+    {
+        Factor = float(C._TimeInTransit) / float(C._TotalTransitTime);
+    }
+    Vec2 VecFinal = Vec2::Lerp(VecStart, VecEnd, Factor);
+    float ScaleFactor = Math::Lerp(StartScaleFactor, EndScaleFactor, Factor);
+
+    Matrix4 Rotation = Matrix4::RotationZ(G.CurrentTime() * SecondsPerGameFrame * 2.0f * Math::PIf * ChargeSecondPerRotations + C.RandomValue() * 2.0f * Math::PIf);
+    //Matrix4 Jitter = Matrix4::Translation(Vec3(ChargeJitterMagnitude * pmrnd(), ChargeJitterMagnitude * pmrnd(), 0.0f));
+    Matrix4 Transform = Rotation * Matrix4::Scaling(Vec3(ScaleFactor, ScaleFactor, 1.0f)) * Matrix4::Translation(Vec3(VecFinal, ChargeLayerZDepth)) * InverseViewportMatrix;
+
+    GD.LoadMatrix(MatrixController(Transform));
+
+    if (UseTexturedCharges)
+    {
+        EnableAlphaBlending(GD, AlphaBlendingModeBuilding);
+        _TexturedChargeTextures[C.Level() - 1].Set(0);
+        _TexturedChargeMesh.Render();
+        DisableAlphaBlending(GD);
+    }
+    else
+    {
+        _SphereChargeTextures[C.Level() - 1].Set(0);
+        _SphereChargeMesh.Render();
+    }*/
 }

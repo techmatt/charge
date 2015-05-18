@@ -9,5 +9,8 @@ boardCanonicalStart = 3, 3
 
 boardCanonicalCellSize = 16
 
-menuCanonicalStart = 394, 3
-menuCanonicalEntrySize = 35
+componentMenuCanonicalStart = 394, 3
+componentMenuCanonicalEntrySize = 35
+
+puzzleMenuCanonicalStart = 3, 390
+puzzleMenuCanonicalEntrySize = 24

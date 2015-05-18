@@ -29,6 +29,8 @@ struct ComponentInfo
         grayUpgrade = (m.at("Grayed") == "yes");
 
         background = true;
+
+        holdsCharge = (name == "Hold" || name == "ChargeGoal");
     }
 
     ChargeType defaultPrimaryCharge() const
@@ -55,6 +57,8 @@ struct ComponentInfo
     bool colorUpgrades;
     bool grayUpgrade;
     bool background;
+
+    bool holdsCharge;
 };
 
 struct Database

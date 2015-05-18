@@ -15,6 +15,8 @@ using namespace std;
 struct Board;
 struct Component;
 struct Database;
+struct GameState;
+struct Charge;
 class RendererSDL;
 class Texture;
 

@@ -18,7 +18,17 @@ struct GameLocation
     //
     vec2i boardPos;
     vec2i circuitPos;
+
+    vec2f toScreenCoord(const vec2f &windowDims) const
+    {
+        return GameUtil::boardToWindow(windowDims, boardPos + vec2i(1, 1));
+    }
 };
+
+inline bool operator == (const GameLocation &a, const GameLocation &b)
+{
+    return a.boardPos == b.boardPos && a.circuitPos == b.circuitPos;
+}
 
 enum ComponentPuzzleType
 {
