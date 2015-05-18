@@ -3,12 +3,14 @@ Features to implement
 
 GAME MODEL
  * components
-   * splitter
-   * amplifier
-   * teleporter
-   * ...
+    * splitter
+    * amplifier
+    * teleporter
+    * ...
  * circuits
  * puzzle reset
+ * level/save layout file
+
 
 GAME UI
  * puzzle speed control
@@ -17,3 +19,24 @@ GAME UI
  * splash screen
  * level selection
  * blocker / boundary rendering
+
+
+CHANGES
+ * Multi-select, modification of shared properties
+ * Copying and pasting arbitrary elements
+ * Multi-copy, rotation of multi-copied elements
+ * ability to copy between levels for both components and circuits
+ * make choice of teleport consistent when ambiguous
+ * fixes for charge movement in certain edge cases:
+    * charges should no longer pass through each other
+    * fix collision errors when charges cross wires with different speeds.
+
+CHANGES: GAME UI
+ * Ability to save/load multiple solutions for puzzles
+ * visual indicators for component state:
+    * recency of receiving charge
+    * direction that next charge will go (?)
+
+CHANGES: GAME PUZZLES
+ * Addition of a puzzle that relies on rotation non-invariance
+ * Creation of flavor-text for all puzzles
