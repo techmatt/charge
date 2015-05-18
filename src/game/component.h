@@ -4,6 +4,7 @@ struct Component
     Component(const string &name, ChargeType _color, const GameLocation &_location)
     {
         info = &database().getComponent(name);
+        baseInfo = info;
         color = _color;
         location = _location;
         lastChargeVisit = 0;
@@ -24,6 +25,11 @@ struct Component
     
     bool willAcceptCharge(GameState &state, const Charge &charge);
 
+    //
+    // baseInfo denotes the object's starting type, after a puzzle reset ex. TrapOpen
+    // info denotes to the object's current type, ex. TrapSprung
+    //
+    const ComponentInfo *baseInfo;
     const ComponentInfo *info;
     ChargeType color;
 

@@ -119,11 +119,12 @@ bool Charge::findBestDestination(GameState &state)
     {
         Component *candidate = adjacentComponents[adjacentIndex];
 
-        bool BuildingWillAccept = candidate->willAcceptCharge(state, *this);
-        bool IsPreviousBuilding = previous->location == candidate->location;
+        bool isPreviousBuilding = previous->location == candidate->location;
+        bool buildingWillAccept = candidate->willAcceptCharge(state, *this);
+        
 
-        if (!IsPreviousBuilding &&
-            BuildingWillAccept)
+        if (!isPreviousBuilding &&
+            buildingWillAccept)
         {
             double currentPreference = computePreference(state, *candidate);
 
