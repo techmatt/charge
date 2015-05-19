@@ -9,52 +9,54 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
     timeInTransit = 0;
     totalTransitTime = 0;
     randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
+
+    markedForDeletion = false;
+    showDeathAnimation = true;
 }
 
 void Charge::advance(GameState &state)
 {
+    if (markedForDeletion) return;
+
     if (timeInTransit < totalTransitTime)
     {
         timeInTransit++;
     }
+
+    Component *current = state.getComponent(destination);
+    if (current->deathTrapTimeLeft > 0)
+    {
+        markedForDeletion = true;
+    }
 }
 
-ChargeUpdateResult Charge::interactWithDestination(GameState &state)
+void Charge::interactWithDestination(GameState &state)
 {
-    ChargeUpdateResult result;
+    if (markedForDeletion) return;
 
     if (timeInTransit < totalTransitTime)
     {
-        return result;
+        return;
     }
-
-    
 
     /*if (result.destination->info->holdsCharge)
     {
         result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
     }*/
-
-    return result;
 }
 
-ChargeUpdateResult Charge::updateDestination(GameState &state)
+void Charge::updateDestination(GameState &state)
 {
-    ChargeUpdateResult result;
+    if (markedForDeletion) return;
+    if (timeInTransit < totalTransitTime) return;
 
-    if (timeInTransit < totalTransitTime)
+    if (!findBestDestination(state))
     {
-        return result;
-    }
-
-    if (findBestDestination(state))
-    {
-        return result;
-    }
-    else
-    {
-        result.destroyCharge = true;
-        return result;
+        Component *previous = state.getComponent(source);
+        Component *current = state.getComponent(destination);
+        previous->deathTrapTimeLeft = constants::deathTrapDuration;
+        current->deathTrapTimeLeft = constants::deathTrapDuration;
+        markedForDeletion = true;
     }
 
     /*if (result.destination->info->holdsCharge)
@@ -122,7 +124,6 @@ bool Charge::findBestDestination(GameState &state)
         bool isPreviousBuilding = previous->location == candidate->location;
         bool buildingWillAccept = candidate->willAcceptCharge(state, *this);
         
-
         if (!isPreviousBuilding &&
             buildingWillAccept)
         {
@@ -151,4 +152,9 @@ double Charge::computePreference(GameState &state, Component &targetComponent)
     preference += currentTimeDifference;
 
     return preference;
+}
+
+float Charge::rotationOffset(int gameTick) const
+{
+    return randomRotationOffset + gameTick / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
 }

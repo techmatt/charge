@@ -28,3 +28,16 @@ vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
 
     return result;
 }
+
+pair<vec2f, float> GameUtil::computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims)
+{
+    float scaleFactorA = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    float scaleFactorB = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+
+    vec2f screenA = locationA.toScreenCoord(windowDims);
+    vec2f screenB = locationB.toScreenCoord(windowDims);
+
+    const vec2f screenPos = math::lerp(screenA, screenB, s);
+    const float screenSize = math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(windowDims);
+    return make_pair(screenPos, screenSize);
+}

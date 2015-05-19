@@ -72,6 +72,9 @@
     <ClCompile Include="..\src\mLib\common.cpp">
       <Filter>mLib</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\game\explodingCharge.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\src\gameUI\gameButton.h">
       <Filter>gameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\explodingCharge.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

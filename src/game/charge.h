@@ -1,15 +1,4 @@
 
-struct ChargeUpdateResult
-{
-    ChargeUpdateResult()
-    {
-        destroyCharge = false;
-        showDeathAnimation = false;
-    }
-    bool destroyCharge;
-    bool showDeathAnimation;
-};
-
 struct Charge
 {
     Charge(const GameLocation &originLocation, ChargeType _level);
@@ -22,20 +11,28 @@ struct Charge
     //
     // if the charge has reached its destination, process the component
     //
-    ChargeUpdateResult interactWithDestination(GameState &state);
+    void interactWithDestination(GameState &state);
 
     //
     // if the charge has reached its destination, find a new component or destroy the charge if none can be found
     //
-    ChargeUpdateResult updateDestination(GameState &state);
+    void updateDestination(GameState &state);
 
     bool findBestDestination(GameState &state);
     void setNewDestination(GameState &state, Component &newDestination);
     
     double computePreference(GameState &state, Component &targetComponent);
 
+    float rotationOffset(int gameTick) const;
+
     ChargeType level;
     GameLocation source, destination;
     int timeInTransit, totalTransitTime;
     float randomRotationOffset;
+
+    //
+    // when the update kills a charge, we mark it for deletion so the game's tick function knows to remove it.
+    //
+    bool markedForDeletion;
+    bool showDeathAnimation;
 };

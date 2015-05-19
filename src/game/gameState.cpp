@@ -3,8 +3,17 @@
 
 void GameState::init()
 {
+    board.cells.allocate(params().boardDims.x, params().boardDims.y);
+    resetPuzzle();
+}
+
+void GameState::resetPuzzle()
+{
     stepCount = 0;
-	board.cells.allocate(params().boardDims.x, params().boardDims.y);
+    charges.clear();
+    explodingCharges.clear();
+    for (Component *c : components)
+        c->resetPuzzle();
 }
 
 void GameState::addNewComponent(Component *component)
@@ -16,41 +25,59 @@ void GameState::addNewComponent(Component *component)
 void GameState::step()
 {
     //
+    // Advance exploding charges
+    //
+
+    for (int chargeIndex = 0; chargeIndex < int(explodingCharges.size()); chargeIndex++)
+    {
+        ExplodingCharge &charge = explodingCharges[chargeIndex];
+        charge.advance();
+        if (charge.done())
+        {
+            util::removeSwap(explodingCharges, chargeIndex);
+            chargeIndex--;
+        }
+    }
+
+    //
     // Move and update charges
     //
 
     for (Charge &c : charges)
         c.advance(*this);
 
+    for (Charge &c : charges)
+        c.interactWithDestination(*this);
+
+    for (Charge &c : charges)
+        c.updateDestination(*this);
+
+    //
+    // Remove dead charges
+    //
     for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
     {
         Charge &charge = charges[chargeIndex];
-        auto update = charge.interactWithDestination(*this);
+        
+        if (charge.markedForDeletion && charge.showDeathAnimation)
+        {
+            explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, (float)charge.timeInTransit / (float)charge.totalTransitTime, charge.level, constants::explodingChargeDuration, charge.rotationOffset(stepCount), stepCount));
+        }
 
-        if (update.destroyCharge)
+        if (charge.markedForDeletion)
         {
             util::removeSwap(charges, chargeIndex);
             chargeIndex--;
         }
     }
 
-    for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
-    {
-        Charge &charge = charges[chargeIndex];
-        auto update = charge.updateDestination(*this);
-
-        if (update.destroyCharge)
-        {
-            util::removeSwap(charges, chargeIndex);
-            chargeIndex--;
-        }
-    }
-    
     //
     // Update buildings
     //
     for (const auto &component : components)
     {
+        component->tick();
+
         //
         // Power sources produce new charges
         //

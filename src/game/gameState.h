@@ -2,6 +2,7 @@
 struct GameState
 {
 	void init();
+    void resetPuzzle();
     void addNewComponent(Component *component);
     void step();
 
@@ -10,7 +11,7 @@ struct GameState
     Board board;
     vector<Component*> components;
     vector<Charge> charges;
-    //vector<ExplodingCharge> explodingCharges;
+    vector<ExplodingCharge> explodingCharges;
 
     int stepCount;
 };

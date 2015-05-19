@@ -95,6 +95,7 @@
     <ClCompile Include="..\src\game\circuit.cpp" />
     <ClCompile Include="..\src\game\component.cpp" />
     <ClCompile Include="..\src\game\database.cpp" />
+    <ClCompile Include="..\src\game\explodingCharge.cpp" />
     <ClCompile Include="..\src\game\gameState.cpp" />
     <ClCompile Include="..\src\main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -123,6 +124,7 @@
     <ClInclude Include="..\src\game\circuit.h" />
     <ClInclude Include="..\src\game\component.h" />
     <ClInclude Include="..\src\game\database.h" />
+    <ClInclude Include="..\src\game\explodingCharge.h" />
     <ClInclude Include="..\src\game\gameState.h" />
     <ClInclude Include="..\src\game\misc.h" />
     <ClInclude Include="..\src\main.h" />

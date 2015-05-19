@@ -8,21 +8,18 @@ struct Component
         color = _color;
         location = _location;
         lastChargeVisit = 0;
+        deathTrapTimeLeft = 0;
         puzzleType = ComponentUser;
         circuitBoard = nullptr;
-        absorbedCharge = ChargeNone;
 
-        timeUntilEmission = 60;
-        totalChargesRemaining = 0xFFFFFF;
+        resetPowerSource();
         
         chargePreference = 2;
     }
 
-    void discharge()
-    {
-        absorbedCharge = ChargeNone;
-    }
-    
+    void tick();
+    void resetPuzzle();
+    void resetPowerSource();
     bool willAcceptCharge(GameState &state, const Charge &charge);
 
     //
@@ -42,15 +39,15 @@ struct Component
     ComponentPuzzleType puzzleType;
 
     //
+    // When a charge blows up, other charges currently travelling to the tower also die.
+    //
+    int deathTrapTimeLeft;
+
+    //
     // If this is a circuit, it will need its own board.
     //
     Board *circuitBoard;
-
-    //
-    // Amplifiers have absorbed a certain amount of charge
-    //
-    ChargeType absorbedCharge;
-
+    
     //
     // power sources emit at a certain rate
     //

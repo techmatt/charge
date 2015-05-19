@@ -117,6 +117,9 @@ public:
         }
         return "Invalid";
     }
+
+    static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
+
     static vector< map< string, string > > readCSVFile(const string &filename);
 };
 

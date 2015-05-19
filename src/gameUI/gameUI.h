@@ -55,6 +55,7 @@ private:
     void renderSpokes(const Component &component);
 
     void renderCharge(const Charge &charge);
+    void renderExplodingCharge(const ExplodingCharge &charge);
 
 	void renderSelectionHighlight();
 
@@ -77,4 +78,6 @@ private:
     ComponentInfo *selectedMenuComponent;
 
     Texture* chargeTextures[constants::maxChargeLevel];
+
+    bool designActionTaken;
 };

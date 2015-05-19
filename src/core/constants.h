@@ -12,9 +12,13 @@ namespace constants
     static const int chargeTransitTime = 9;
     static const int maxChargeLevel = 5;
 
-    static const float chargeScaleWithLevelFactor = 0.25f;
+    static const float chargeScaleWithLevelFactor = 0.2f;
     static const float stepsPerSecond = 60.0f;
     static const float chargeRotationsPerSecond = 1.0f;
 
-    static const float canonicalChargeSize = 10.0f;
+    static const float canonicalChargeSize = 7.0f;
+
+    static const int deathTrapDuration = chargeRequiredTimeDifference + 2;
+
+    static const int explodingChargeDuration = 30;
 }

@@ -6,6 +6,7 @@ void GameUI::init()
     mode = ModeDesign;
     speed = Speed1x;
 
+    designActionTaken = false;
     selectedMenuComponent = nullptr;
 
     for (int chargeLevel = 0; chargeLevel < constants::maxChargeLevel; chargeLevel++)
@@ -16,6 +17,11 @@ void GameUI::init()
 
 void GameUI::step()
 {
+    if (designActionTaken && mode != ModeDesign)
+    {
+        mode = ModeDesign;
+        app.state.resetPuzzle();
+    }
     if (mode == ModeExecuting)
     {
         const int tickCount = ticksFromSpeed(speed);
@@ -60,10 +66,12 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
             if (button.name == "Start")
             {
                 mode = ModeExecuting;
+                designActionTaken = false;
             }
             if (button.name == "Stop")
             {
                 mode = ModeDesign;
+                app.state.resetPuzzle();
             }
             if (button.name == "Pause")
             {
@@ -96,6 +104,7 @@ void GameUI::addHoverComponent()
     {
         Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), GameLocation(boardLocation));
         app.state.addNewComponent(newComponent);
+        designActionTaken = true;
     }
 }
 
@@ -110,6 +119,11 @@ void GameUI::render()
     for (const auto &charge : app.state.charges)
     {
         renderCharge(charge);
+    }
+
+    for (const auto &charge : app.state.explodingCharges)
+    {
+        renderExplodingCharge(charge);
     }
     
     renderHoverComponent();
@@ -288,31 +302,26 @@ void GameUI::renderComponents(bool background)
 
 void GameUI::renderCharge(const Charge &charge)
 {
-    vec2f screenSource, screenDest;
+    const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
 
-    float sourceScaleFactor = 1.0f + (int)charge.level * constants::chargeScaleWithLevelFactor;
-    float destScaleFactor = 1.0f + (int)charge.level * constants::chargeScaleWithLevelFactor;
-
-    screenSource = charge.source.toScreenCoord(windowDims);
-    screenDest = charge.destination.toScreenCoord(windowDims);
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, windowDims);
     
-    if (charge.source.boardPos == constants::invalidCoord)
-    {
-        screenSource = screenDest;
-    }
+    const float angle = charge.rotationOffset(app.state.stepCount);
 
-    float s = 0.0f;
-    if (charge.totalTransitTime > 0)
-    {
-        s = float(charge.timeInTransit) / float(charge.totalTransitTime);
-    }
+    const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 
-    const vec2f screenFinal = math::lerp(screenSource, screenDest, s);
-    const float screenSize = math::lerp(sourceScaleFactor, destScaleFactor, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(windowDims);
+    app.renderer.render(*chargeTextures[charge.level], destinationRect, angle);
+}
 
-    const float angle = charge.randomRotationOffset + app.state.stepCount / constants::stepsPerSecond * constants::chargeRotationsPerSecond;
+void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
+{
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, windowDims);
 
-    const rect2i destinationRect(screenFinal - vec2f(screenSize), screenFinal + vec2f(screenSize));
+    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
+
+    const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
+
+    const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
     app.renderer.render(*chargeTextures[charge.level], destinationRect, angle);
 }
