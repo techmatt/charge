@@ -22,6 +22,7 @@ void GameUI::step()
         mode = ModeDesign;
         app.state.resetPuzzle();
     }
+
     if (mode == ModeExecuting)
     {
         const int tickCount = ticksFromSpeed(speed);
@@ -30,8 +31,6 @@ void GameUI::step()
             app.state.step();
         }
     }
-
-    
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -47,6 +46,13 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
     if (button == SDL_BUTTON_RIGHT)
     {
         selectedMenuComponent = nullptr;
+
+        const vec2i boardLocation = hoverBoardLocation();
+        if (app.state.board.cells.coordValid(boardLocation) && app.state.board.cells(boardLocation).c != nullptr)
+        {
+            designActionTaken = true;
+            app.state.removeComponent(app.state.board.cells(boardLocation).c);
+        }
     }
 
     if (button == SDL_BUTTON_LEFT)
@@ -268,7 +274,7 @@ void GameUI::renderSpokes(const Component &component)
             UINT connectorIndex = (type + 1) * 2 + axis;
             vec2i otherLocation = component.location.boardPos + offset;
 
-            if (cells.isValidCoordinate(otherLocation) && cells(otherLocation).c != nullptr)
+            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
                 if (otherComponent.location.boardPos == otherLocation)
@@ -317,7 +323,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 {
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, windowDims);
 
-    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
+    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
 
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
 

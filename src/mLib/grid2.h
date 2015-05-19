@@ -261,14 +261,14 @@ public:
     //
     // Query
     //
-    inline bool isValidCoordinate(int x, int y) const
+    inline bool coordValid(int x, int y) const
     {
         return (x >= 0 && x < int(m_dimX) && y >= 0 && y < int(m_dimY));
     }
 
-    inline bool isValidCoordinate(vec2i coord) const
+    inline bool coordValid(vec2i coord) const
     {
-        return isValidCoordinate(coord.x, coord.y);
+        return coordValid(coord.x, coord.y);
     }
 
     //

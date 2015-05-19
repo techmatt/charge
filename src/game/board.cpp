@@ -30,7 +30,7 @@ void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int
 {
     auto insertAdjacentBuilding = [&](const vec2i &offset)
     {
-        if (cells.isValidCoordinate(offset) && cells(offset).c != nullptr)
+        if (cells.coordValid(offset) && cells(offset).c != nullptr)
         {
             Component *comp = cells(offset).c;
             for (int componentIndex = 0; componentIndex < resultCount; componentIndex++)

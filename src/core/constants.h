@@ -15,6 +15,7 @@ namespace constants
     static const float chargeScaleWithLevelFactor = 0.2f;
     static const float stepsPerSecond = 60.0f;
     static const float chargeRotationsPerSecond = 1.0f;
+    static const float explodingChargeRotationFactor = 2.0f;
 
     static const float canonicalChargeSize = 7.0f;
 

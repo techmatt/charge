@@ -22,6 +22,16 @@ void GameState::addNewComponent(Component *component)
     board.addNewComponent(component);
 }
 
+void GameState::removeComponent(Component *component)
+{
+    for (auto &cell : board.cells)
+    {
+        if (cell.value.c == component) cell.value.c = nullptr;
+    }
+
+    util::removeSwap(components, util::findFirstIndex(components, component));
+}
+
 void GameState::step()
 {
     //

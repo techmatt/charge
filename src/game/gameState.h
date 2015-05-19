@@ -4,6 +4,7 @@ struct GameState
 	void init();
     void resetPuzzle();
     void addNewComponent(Component *component);
+    void removeComponent(Component *component);
     void step();
 
     Component* getComponent(const GameLocation &pos);
