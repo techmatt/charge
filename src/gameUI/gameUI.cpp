@@ -196,7 +196,7 @@ void GameUI::renderHoverComponent()
 
     const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation.boardPos, 2);
 
-    renderLocalizedComponent(*selectedMenuComponent, screenRect, ComponentModifiers(*selectedMenuComponent), false);
+    renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false);
 }
 
 void GameUI::updateButtonList()
@@ -292,7 +292,7 @@ void GameUI::updateBackground()
 
 	for (auto &button : buttons)
 	{
-        button.render(app.renderer, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
+        renderButton(button, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
 	}
 
     app.renderer.setDefaultRenderTarget();
@@ -312,19 +312,29 @@ void GameUI::renderBuildingGrid()
 	}
 }
 
-void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected)
+void GameUI::renderButton(const GameButton &button, bool selected)
 {
-    if (info.name == "Blocker" &&
+    Texture &borderTex = database().getTexture(app.renderer, "Border");
+    
+    const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), button.canonicalRect);
+    app.renderer.render(borderTex, screenRect);
+    
+    renderLocalizedComponent(button.name, screenRect, button.modifiers, selected, true);
+}
+
+void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton)
+{
+    if (!isButton && name == "Blocker" &&
         (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
         return;
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, info.name, modifiers.color, modifiers.secondaryColor);
+    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.secondaryColor);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     app.renderer.render(preferenceTex, screenRect);
 
-    if (info.name != "Blocker")
+    if (name != "Blocker")
         app.renderer.render(baseTex, screenRect);
 
     app.renderer.render(componentTex, screenRect);
@@ -343,12 +353,15 @@ void GameUI::renderComponent(const Component &component)
     if (!component.location.inCircuit())
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
-        renderLocalizedComponent(*component.info, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location));
+        renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
     }
 }
 
 void GameUI::renderSpokes(const Component &component)
 {
+    if (component.info->name == "Blocker")
+        return;
+
     const vec2f myScreenPos = GameUtil::boardToWindow(windowDims, component.location.boardPos + vec2i(1, 1));
 
     const auto &cells = app.state.board.cells;

@@ -23,8 +23,6 @@ struct GameButton
             component = database().components.at(name);
     }
 
-    void render(RendererSDL &renderer, bool selected);
-
     ComponentInfo *component;
     string name;
     ComponentModifiers modifiers;

@@ -50,12 +50,15 @@ private:
 	
     void renderComponents(bool background);
     void renderComponent(const Component &component);
-    void renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected);
 
     void renderSpokes(const Component &component);
 
     void renderCharge(const Charge &charge);
+
     void renderExplodingCharge(const ExplodingCharge &charge);
+
+    void renderButton(const GameButton &button, bool selected);
+    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton);
 
 	void renderSelectionHighlight();
 

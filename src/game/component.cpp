@@ -24,9 +24,14 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
         return false;
     }
 
-    if (info->name == "PowerSource" || info->name == "TrapSprung")
+    if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker")
     {
         return false;
+    }
+
+    if (info->name == "ChargeFilter")
+    {
+        return (charge.level == modifiers.color);
     }
 
     return true;
