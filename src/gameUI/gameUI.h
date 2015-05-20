@@ -80,7 +80,5 @@ private:
     // TODO: this should be a vector
     GameLocation selectedGameLocation;
 
-    Texture* chargeTextures[constants::maxChargeLevel];
-
     bool designActionTaken;
 };

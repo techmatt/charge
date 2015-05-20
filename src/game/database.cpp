@@ -10,6 +10,20 @@ void Database::init()
     }
 }
 
+void Database::initTextures(RendererSDL &renderer)
+{
+    for (int chargeLevel = 0; chargeLevel < constants::maxChargeLevel; chargeLevel++)
+    {
+        chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel));
+    }
+
+    for (int preferenceLevel = 0; preferenceLevel < constants::maxPreferenceLevel; preferenceLevel++)
+    {
+        preferenceTextures[preferenceLevel] = &getTexture(renderer, "PreferenceMask" + to_string(preferenceLevel));
+    }
+}
+
+
 Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary)
 {
     const string fullTextureName = textureName + GameUtil::suffixFromCharge(chargePrimary) + GameUtil::suffixFromCharge(chargeSecondary);
@@ -19,18 +33,22 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
         MLIB_ASSERT_STR(util::fileExists(filename), "File not found");
         Bitmap bmp = LodePNG::load(filename);
 
+        const string alphaFilename = util::replace(filename, ".png", "Alpha.png");
+
         bool isHalfAlphaTexture = (textureName == "Selector");
 
         if (isHalfAlphaTexture)
         {
             for (const auto &p : bmp)
-                p.value.a = 128;
+                p.value.a = 85;
         }
         else if (util::startsWith(textureName, "ChargeTexture"))
         {
-            Bitmap chargeAlpha = LodePNG::load(params().assetDir + "textures/ChargeTextureAlpha.png");
-            for (const auto &p : chargeAlpha)
-                bmp(p.x, p.y).a = p.value.r;
+            GameUtil::overlayAlpha(bmp, params().assetDir + "textures/ChargeTextureAlpha.png");
+        }
+        else if (util::fileExists(alphaFilename))
+        {
+            GameUtil::overlayAlpha(bmp, alphaFilename);
         }
         else
         {

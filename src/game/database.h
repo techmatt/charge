@@ -62,6 +62,7 @@ struct ComponentInfo
 struct Database
 {
     void init();
+    void initTextures(RendererSDL &renderer);
 
     const ComponentInfo& getComponent(const string &componentName) const
     {
@@ -73,4 +74,10 @@ struct Database
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;
+
+    //
+    // commonly accessed textures
+    //
+    Texture* chargeTextures[constants::maxChargeLevel];
+    Texture* preferenceTextures[constants::maxPreferenceLevel];
 };

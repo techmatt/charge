@@ -10,11 +10,6 @@ void GameUI::init()
 
     designActionTaken = false;
     selectedMenuComponent = nullptr;
-
-    for (int chargeLevel = 0; chargeLevel < constants::maxChargeLevel; chargeLevel++)
-    {
-        chargeTextures[chargeLevel] = &database().getTexture(app.renderer, "ChargeTexture" + to_string(chargeLevel));
-    }
 }
 
 void GameUI::step()
@@ -49,18 +44,60 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
 
     if (button == SDL_BUTTON_RIGHT)
     {
-        selectedMenuComponent = nullptr;
-
-        const GameLocation location = hoverBoardLocation(false);
-        if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
+        if (selectedMenuComponent != nullptr)
         {
-            designActionTaken = true;
-            app.state.removeComponent(app.state.board.cells(location.boardPos).c);
+            selectedMenuComponent = nullptr;
+        }
+        else
+        {
+            const GameLocation location = hoverBoardLocation(false);
+            if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
+            {
+                designActionTaken = true;
+                app.state.removeComponent(app.state.board.cells(location.boardPos).c);
+            }
         }
     }
 
     if (button == SDL_BUTTON_LEFT)
     {
+        for (const auto &button : buttons)
+        {
+            const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), button.canonicalRect);
+            Component *gameComponent = app.state.getComponent(selectedGameLocation);
+            if (screenRect.intersects(vec2f((float)x, (float)y)))
+            {
+                if (button.type == ButtonComponent)
+                {
+                    selectedMenuComponent = button.component;
+                    selectedGameLocation.boardPos = constants::invalidCoord;
+                }
+                if (button.type == ButtonChargeColor && gameComponent != nullptr)
+                {
+                    gameComponent->modifiers.color = button.modifiers.color;
+                }
+                if (button.type == ButtonChargePreference && gameComponent != nullptr)
+                {
+                    gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
+                }
+                if (button.name == "Start")
+                {
+                    mode = ModeExecuting;
+                    designActionTaken = false;
+                }
+                if (button.name == "Stop")
+                {
+                    mode = ModeDesign;
+                    app.state.resetPuzzle();
+                }
+                if (button.name == "Pause")
+                {
+                    mode = ModePaused;
+                }
+                return;
+            }
+        }
+
         if (selectedMenuComponent == nullptr)
         {
             selectedGameLocation = hoverBoardLocation(false);
@@ -68,32 +105,6 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
         else
         {
             addHoverComponent();
-        }
-    }
-
-    for (const auto &button : buttons)
-    {
-        const rect2f screenRect = GameUtil::canonicalToWindow(app.renderer.getWindowSize(), button.canonicalRect);
-        if (screenRect.intersects(vec2f((float)x, (float)y)))
-        {
-            if (button.type == ButtonComponent)
-            {
-                selectedMenuComponent = button.component;
-            }
-            if (button.name == "Start")
-            {
-                mode = ModeExecuting;
-                designActionTaken = false;
-            }
-            if (button.name == "Stop")
-            {
-                mode = ModeDesign;
-                app.state.resetPuzzle();
-            }
-            if (button.name == "Pause")
-            {
-                mode = ModePaused;
-            }
         }
     }
 }
@@ -220,14 +231,14 @@ void GameUI::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 5), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 3), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
             }
         }
         else
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 5), ButtonType::ButtonPreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
             }
         }
     }
@@ -293,7 +304,9 @@ void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &s
 {
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, info.name, modifiers.color, modifiers.secondaryColor);
-
+    Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
+    
+    app.renderer.render(preferenceTex, screenRect);
     app.renderer.render(baseTex, screenRect);
     app.renderer.render(componentTex, screenRect);
 
@@ -372,7 +385,7 @@ void GameUI::renderCharge(const Charge &charge)
 
     const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 
-    app.renderer.render(*chargeTextures[charge.level], destinationRect, angle);
+    app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
@@ -385,5 +398,5 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 
     const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
-    app.renderer.render(*chargeTextures[charge.level], destinationRect, angle);
+    app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
 }

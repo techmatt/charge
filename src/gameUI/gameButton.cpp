@@ -5,11 +5,13 @@ void GameButton::render(RendererSDL &renderer, bool selected)
 {
     Texture &borderTex = database().getTexture(renderer, "Border");
     Texture &baseTex = database().getTexture(renderer, "WireBase");
+    Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
 
     Texture &componentTex = database().getTexture(renderer, name, modifiers.color, modifiers.secondaryColor);
     
     const rect2f screenRect = GameUtil::canonicalToWindow(renderer.getWindowSize(), canonicalRect);
     renderer.render(borderTex, screenRect);
+    renderer.render(preferenceTex, screenRect);
     renderer.render(baseTex, screenRect);
     renderer.render(componentTex, screenRect);
 

@@ -118,6 +118,13 @@ public:
         return "Invalid";
     }
 
+    static void overlayAlpha(Bitmap &bmp, const string &filename)
+    {
+        Bitmap alpha = LodePNG::load(filename);
+        for (const auto &p : alpha)
+            bmp(p.x, p.y).a = p.value.r;
+    }
+
     static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
 
     static vector< map< string, string > > readCSVFile(const string &filename);

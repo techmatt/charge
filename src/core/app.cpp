@@ -22,6 +22,8 @@ int App::run()
     
     data.renderer.init(window);
 
+    database().initTextures(data.renderer);
+
     data.state.init();
 
     data.ui.init();
