@@ -15,6 +15,8 @@ struct BoardCell
 
 struct Board
 {
+    void updateBlockedGrid();
+
     bool coordValidForNewComponent(const vec2i &v) const;
     void addNewComponent(Component *component);
 

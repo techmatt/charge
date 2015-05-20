@@ -12,7 +12,10 @@ void GameButton::render(RendererSDL &renderer, bool selected)
     const rect2f screenRect = GameUtil::canonicalToWindow(renderer.getWindowSize(), canonicalRect);
     renderer.render(borderTex, screenRect);
     renderer.render(preferenceTex, screenRect);
-    renderer.render(baseTex, screenRect);
+
+    if (name != "Blocker")
+        renderer.render(baseTex, screenRect);
+
     renderer.render(componentTex, screenRect);
 
     if (selected)

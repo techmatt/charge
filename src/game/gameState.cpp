@@ -20,6 +20,7 @@ void GameState::addNewComponent(Component *component)
 {
     components.push_back(component);
     board.addNewComponent(component);
+    board.updateBlockedGrid();
 }
 
 void GameState::removeComponent(Component *component)
@@ -30,6 +31,8 @@ void GameState::removeComponent(Component *component)
     }
 
     util::removeSwap(components, util::findFirstIndex(components, component));
+
+    board.updateBlockedGrid();
 }
 
 void GameState::step()

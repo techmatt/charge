@@ -60,6 +60,7 @@ private:
 	void renderSelectionHighlight();
 
     void renderHoverComponent();
+    void removeHoverComponent();
 
     void addHoverComponent();
 

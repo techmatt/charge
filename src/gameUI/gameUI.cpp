@@ -38,6 +38,16 @@ void GameUI::keyDown(SDL_Keycode key)
     }
 }
 
+void GameUI::removeHoverComponent()
+{
+    const GameLocation location = hoverBoardLocation(false);
+    if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
+    {
+        designActionTaken = true;
+        app.state.removeComponent(app.state.board.cells(location.boardPos).c);
+    }
+}
+
 void GameUI::mouseDown(Uint8 button, int x, int y)
 {
     mouseHoverCoord = vec2i(x, y);
@@ -50,12 +60,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
         }
         else
         {
-            const GameLocation location = hoverBoardLocation(false);
-            if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
-            {
-                designActionTaken = true;
-                app.state.removeComponent(app.state.board.cells(location.boardPos).c);
-            }
+            removeHoverComponent();
         }
     }
 
@@ -74,10 +79,12 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 }
                 if (button.type == ButtonChargeColor && gameComponent != nullptr)
                 {
+                    designActionTaken = true;
                     gameComponent->modifiers.color = button.modifiers.color;
                 }
                 if (button.type == ButtonChargePreference && gameComponent != nullptr)
                 {
+                    designActionTaken = true;
                     gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
                 }
                 if (button.name == "Start")
@@ -117,6 +124,11 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     {
         addHoverComponent();
     }
+    if (buttonState & SDL_BUTTON_RMASK)
+    {
+        removeHoverComponent();
+    }
+    
 }
 
 void GameUI::addHoverComponent()
@@ -302,12 +314,19 @@ void GameUI::renderBuildingGrid()
 
 void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected)
 {
+    if (info.name == "Blocker" &&
+        (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
+        return;
+
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, info.name, modifiers.color, modifiers.secondaryColor);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     app.renderer.render(preferenceTex, screenRect);
-    app.renderer.render(baseTex, screenRect);
+
+    if (info.name != "Blocker")
+        app.renderer.render(baseTex, screenRect);
+
     app.renderer.render(componentTex, screenRect);
 
     if (selected)
@@ -346,7 +365,7 @@ void GameUI::renderSpokes(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.boardPos == otherLocation)
+                if (otherComponent.location.boardPos == otherLocation && otherComponent.info->name != "Blocker")
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(windowDims, otherComponent.location.boardPos + vec2i(1, 1));
                     
