@@ -19,6 +19,7 @@ GAME UI
  * splash screen
  * level selection
  * blocker / boundary rendering
+ * load old-style puzzles
 
 
 CHANGES

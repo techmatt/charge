@@ -146,7 +146,7 @@ bool Charge::findBestDestination(GameState &state)
 
 double Charge::computePreference(GameState &state, Component &targetComponent)
 {
-    double preference = targetComponent.chargePreference * 1000000.0;
+    double preference = targetComponent.modifiers.chargePreference * 1000000.0;
 
     const int currentTimeDifference = std::min(state.stepCount - targetComponent.lastChargeVisit, 900000);
     preference += currentTimeDifference;

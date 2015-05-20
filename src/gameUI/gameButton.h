@@ -2,22 +2,21 @@
 enum ButtonType
 {
     ButtonComponent,
-    ButtonUpgradeColor,
-    ButtonChangeDelay,
-    ButtonCircuitModifier,
+    ButtonChargeColor,
+    ButtonWireSpeed,
+    ButtonPreference,
     ButtonPuzzleControl,
 };
 
 struct GameButton
 {
     GameButton() {}
-    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, ChargeType _chargePrimary = ChargeNone, ChargeType _chargeSecondary = ChargeNone)
+    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const ComponentModifiers &_modifiers)
     {
         component = nullptr;
         name = _name;
-        chargePrimary = _chargePrimary;
-        chargeSecondary = _chargeSecondary;
         type = _type;
+        modifiers = _modifiers;
         canonicalRect = getCanonicalRect(menuCoord, type);
 
         if (database().components.count(name) > 0)
@@ -28,7 +27,7 @@ struct GameButton
 
     ComponentInfo *component;
     string name;
-    ChargeType chargePrimary, chargeSecondary;
+    ComponentModifiers modifiers;
     ButtonType type;
     rect2i canonicalRect;
 

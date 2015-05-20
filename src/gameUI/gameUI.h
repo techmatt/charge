@@ -50,7 +50,7 @@ private:
 	
     void renderComponents(bool background);
     void renderComponent(const Component &component);
-    void renderLocalizedComponent(const ComponentInfo &info, ChargeType charge, const rect2f &screenRect);
+    void renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers);
 
     void renderSpokes(const Component &component);
 
@@ -63,7 +63,7 @@ private:
 
     void addHoverComponent();
 
-    vec2i hoverBoardLocation();
+    GameLocation hoverBoardLocation() const;
 
     GameMode mode;
     GameSpeed speed;
@@ -76,6 +76,9 @@ private:
 	vector<GameButton> buttons;
 
     ComponentInfo *selectedMenuComponent;
+
+    // TODO: this should be a vector
+    GameLocation selectedGameLocation;
 
     Texture* chargeTextures[constants::maxChargeLevel];
 

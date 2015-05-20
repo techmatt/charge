@@ -47,8 +47,6 @@ struct ComponentInfo
         return ChargeNone;
     }
 
-    
-    
     string name;
     string description;
     string hotkey;

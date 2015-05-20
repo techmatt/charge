@@ -36,3 +36,12 @@ enum ComponentPuzzleType
     ComponentPuzzlePiece,
     ComponentCopiedCircuit,
 };
+
+enum WireSpeedType
+{
+    WireMajorDelay,
+    WireMinorDelay,
+    WireStandard,
+    WireMinorAccelerator,
+    WireMajorAccelerator,
+};

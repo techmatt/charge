@@ -100,7 +100,7 @@ void GameState::step()
             }
             else
             {
-                charges.push_back(Charge(component->location, component->color));
+                charges.push_back(Charge(component->location, component->modifiers.color));
                 component->lastChargeVisit = stepCount;
 
                 //TODO: parameterize this better

@@ -6,6 +6,8 @@ void GameUI::init()
     mode = ModeDesign;
     speed = Speed1x;
 
+    selectedGameLocation.boardPos = constants::invalidCoord;
+
     designActionTaken = false;
     selectedMenuComponent = nullptr;
 
@@ -47,17 +49,24 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
     {
         selectedMenuComponent = nullptr;
 
-        const vec2i boardLocation = hoverBoardLocation();
-        if (app.state.board.cells.coordValid(boardLocation) && app.state.board.cells(boardLocation).c != nullptr)
+        const GameLocation location = hoverBoardLocation();
+        if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
         {
             designActionTaken = true;
-            app.state.removeComponent(app.state.board.cells(boardLocation).c);
+            app.state.removeComponent(app.state.board.cells(location.boardPos).c);
         }
     }
 
     if (button == SDL_BUTTON_LEFT)
     {
-        addHoverComponent();
+        if (selectedMenuComponent == nullptr)
+        {
+            selectedGameLocation = hoverBoardLocation();
+        }
+        else
+        {
+            addHoverComponent();
+        }
     }
 
     for (const auto &button : buttons)
@@ -102,11 +111,11 @@ void GameUI::addHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const vec2i boardLocation = hoverBoardLocation();
-    if (boardLocation == constants::invalidCoord)
+    const GameLocation boardLocation = hoverBoardLocation();
+    if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
-    if (app.state.board.coordValidForNewComponent(boardLocation))
+    if (app.state.board.coordValidForNewComponent(boardLocation.boardPos))
     {
         Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), GameLocation(boardLocation));
         app.state.addNewComponent(newComponent);
@@ -135,28 +144,28 @@ void GameUI::render()
     renderHoverComponent();
 }
 
-vec2i GameUI::hoverBoardLocation()
+GameLocation GameUI::hoverBoardLocation() const
 {
     const vec2f boardCoordf = GameUtil::windowToBoard(windowDims, mouseHoverCoord);
     const vec2i boardCoordi(math::round(boardCoordf) - vec2i(1, 1));
 
-    if (!math::between(boardCoordi.x, 0, 22) || !math::between(boardCoordi.y, 0, 22))
-        return constants::invalidCoord;
+    if (!math::between(boardCoordi.x, 0, 23) || !math::between(boardCoordi.y, 0, 23))
+        return GameLocation(constants::invalidCoord);
 
-    return boardCoordi;
+    return GameLocation(boardCoordi);
 }
 void GameUI::renderHoverComponent()
 {
     if (selectedMenuComponent == nullptr)
         return;
 
-    const vec2i boardLocation = hoverBoardLocation();
-    if (boardLocation == constants::invalidCoord)
+    const GameLocation boardLocation = hoverBoardLocation();
+    if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
-    const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation, 2);
+    const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation.boardPos, 2);
 
-    renderLocalizedComponent(*selectedMenuComponent, selectedMenuComponent->defaultPrimaryCharge(), screenRect);
+    renderLocalizedComponent(*selectedMenuComponent, screenRect, ComponentModifiers(*selectedMenuComponent));
 }
 
 void GameUI::updateButtonList()
@@ -171,25 +180,56 @@ void GameUI::updateButtonList()
         const ComponentInfo &info = *p.second;
         if (info.menuCoordinate.x != -1)
 		{
-            ChargeType primaryCharge = info.defaultPrimaryCharge();
-            ChargeType secondaryCharge = info.defaultSecondaryCharge();
-
-            if (info.colorUpgrades)
-                primaryCharge = ChargeRed;
-
-            if (info.name == "ChargeGoal" || info.name == "Hold")
-                secondaryCharge = ChargeGray;
-
-            buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, primaryCharge, secondaryCharge));
+            buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
 		}
 	}
 
     //
+    // Add color, delay, and preference buttons
+    //
+    if (selectedMenuComponent != nullptr)
+    {
+        const ComponentInfo &info = *selectedMenuComponent;
+
+        vector<ChargeType> chargeLevels;
+        if (info.colorUpgrades)
+        {
+            for (int charge = (int)ChargeRed; charge <= (int)ChargeBlue; charge++)
+                chargeLevels.push_back((ChargeType)charge);
+        }
+        if (info.grayUpgrade)
+            chargeLevels.push_back(ChargeGray);
+
+        int chargeIndex = 0;
+        for (ChargeType charge : chargeLevels)
+        {
+            buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
+            chargeIndex++;
+        }
+
+        if (info.name == "Wire")
+        {
+            for (int speed = 0; speed <= 4; speed++)
+            {
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 5), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
+            }
+        }
+        else
+        {
+            for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
+            {
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 5), ButtonType::ButtonPreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+            }
+            
+        }
+    }
+
+    //
     // Add puzzle control buttons
     //
-    buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl));
-    buttons.push_back(GameButton("Pause", vec2i(1, 0), ButtonType::ButtonPuzzleControl));
-    buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl));
+    buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Pause", vec2i(1, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 }
 
 void GameUI::updateBackground()
@@ -241,10 +281,10 @@ void GameUI::renderBuildingGrid()
 	}
 }
 
-void GameUI::renderLocalizedComponent(const ComponentInfo &info, ChargeType charge, const rect2f &screenRect)
+void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers)
 {
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, info.name, charge);
+    Texture &componentTex = database().getTexture(app.renderer, info.name, modifiers.color, modifiers.secondaryColor);
 
     app.renderer.render(baseTex, screenRect);
     app.renderer.render(componentTex, screenRect);
@@ -255,7 +295,7 @@ void GameUI::renderComponent(const Component &component)
     if (!component.location.inCircuit())
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
-        renderLocalizedComponent(*component.info, component.color, screenRect);
+        renderLocalizedComponent(*component.info, screenRect, component.modifiers);
     }
 }
 

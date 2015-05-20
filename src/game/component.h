@@ -1,20 +1,47 @@
 
+struct ComponentModifiers
+{
+    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _secondaryColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard)
+    {
+        color = _color;
+        secondaryColor = _secondaryColor;
+        chargePreference = _chargePreference;
+        speed = _speed;
+    }
+    ComponentModifiers(const ComponentInfo &info)
+    {
+        color = info.defaultPrimaryCharge();
+        secondaryColor = info.defaultSecondaryCharge();
+        chargePreference = 2;
+        speed = WireStandard;
+    }
+    ChargeType color;
+    ChargeType secondaryColor;
+    int chargePreference; // value ranges from 0 to 4; default is 2
+
+    //
+    // At present, this is only planned for plain wires, but could in theory be supported for any type.
+    //
+    WireSpeedType speed;
+};
+
 struct Component
 {
     Component(const string &name, ChargeType _color, const GameLocation &_location)
     {
         info = &database().getComponent(name);
         baseInfo = info;
-        color = _color;
+        modifiers.color = _color;
         location = _location;
         lastChargeVisit = 0;
         deathTrapTimeLeft = 0;
         puzzleType = ComponentUser;
+        modifiers.speed = WireStandard;
         circuitBoard = nullptr;
 
         resetPowerSource();
         
-        chargePreference = 2;
+        modifiers.chargePreference = 2;
     }
 
     void tick();
@@ -28,14 +55,13 @@ struct Component
     //
     const ComponentInfo *baseInfo;
     const ComponentInfo *info;
-    ChargeType color;
-
+    ComponentModifiers modifiers;
+    
     //
     // locations always specify the top-left coordinate.
     //
     GameLocation location;
     int lastChargeVisit;
-    int chargePreference; // value ranges from 0 to 4; default is 2
     ComponentPuzzleType puzzleType;
 
     //
