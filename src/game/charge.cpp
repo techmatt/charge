@@ -57,6 +57,36 @@ void Charge::interactWithDestination(GameState &state)
         }
     }
 
+    if (current->info->name == "Splitter")
+    {
+        if (level != ChargeRed)
+        {
+            markedForDeletion = true;
+            showDeathAnimation = false;
+
+            switch (level)
+            {
+            case ChargeOrange:
+                current->chargesToEmit.push_back(ChargeRed);
+                current->chargesToEmit.push_back(ChargeRed);
+                break;
+            case ChargeYellow:
+                current->chargesToEmit.push_back(ChargeRed);
+                current->chargesToEmit.push_back(ChargeRed);
+                current->chargesToEmit.push_back(ChargeRed);
+                break;
+            case ChargeGreen:
+                current->chargesToEmit.push_back(ChargeOrange);
+                current->chargesToEmit.push_back(ChargeOrange);
+                break;
+            case ChargeBlue:
+                current->chargesToEmit.push_back(ChargeYellow);
+                current->chargesToEmit.push_back(ChargeYellow);
+                break;
+            }
+        }
+    }
+
     /*if (result.destination->info->holdsCharge)
     {
         result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
