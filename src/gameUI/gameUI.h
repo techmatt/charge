@@ -50,7 +50,7 @@ private:
 	
     void renderComponents(bool background);
     void renderComponent(const Component &component);
-    void renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers);
+    void renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected);
 
     void renderSpokes(const Component &component);
 
@@ -63,7 +63,7 @@ private:
 
     void addHoverComponent();
 
-    GameLocation hoverBoardLocation() const;
+    GameLocation hoverBoardLocation(bool constructionOffset) const;
 
     GameMode mode;
     GameSpeed speed;

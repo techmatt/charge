@@ -45,11 +45,13 @@ void GameUI::keyDown(SDL_Keycode key)
 
 void GameUI::mouseDown(Uint8 button, int x, int y)
 {
+    mouseHoverCoord = vec2i(x, y);
+
     if (button == SDL_BUTTON_RIGHT)
     {
         selectedMenuComponent = nullptr;
 
-        const GameLocation location = hoverBoardLocation();
+        const GameLocation location = hoverBoardLocation(false);
         if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
         {
             designActionTaken = true;
@@ -61,7 +63,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
     {
         if (selectedMenuComponent == nullptr)
         {
-            selectedGameLocation = hoverBoardLocation();
+            selectedGameLocation = hoverBoardLocation(false);
         }
         else
         {
@@ -111,7 +113,7 @@ void GameUI::addHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverBoardLocation();
+    const GameLocation boardLocation = hoverBoardLocation(true);
     if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
@@ -144,12 +146,18 @@ void GameUI::render()
     renderHoverComponent();
 }
 
-GameLocation GameUI::hoverBoardLocation() const
+GameLocation GameUI::hoverBoardLocation(bool constructionOffset) const
 {
     const vec2f boardCoordf = GameUtil::windowToBoard(windowDims, mouseHoverCoord);
-    const vec2i boardCoordi(math::round(boardCoordf) - vec2i(1, 1));
+    //cout << boardCoordf << endl;
 
-    if (!math::between(boardCoordi.x, 0, 23) || !math::between(boardCoordi.y, 0, 23))
+    vec2i boardCoordi;
+    if (constructionOffset)
+        boardCoordi = math::round(boardCoordf) - vec2i(1, 1);
+    else
+        boardCoordi = math::floor(boardCoordf);
+
+    if (!app.state.board.cells.coordValid(boardCoordi))
         return GameLocation(constants::invalidCoord);
 
     return GameLocation(boardCoordi);
@@ -159,13 +167,13 @@ void GameUI::renderHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverBoardLocation();
+    const GameLocation boardLocation = hoverBoardLocation(true);
     if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
     const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation.boardPos, 2);
 
-    renderLocalizedComponent(*selectedMenuComponent, screenRect, ComponentModifiers(*selectedMenuComponent));
+    renderLocalizedComponent(*selectedMenuComponent, screenRect, ComponentModifiers(*selectedMenuComponent), false);
 }
 
 void GameUI::updateButtonList()
@@ -187,9 +195,10 @@ void GameUI::updateButtonList()
     //
     // Add color, delay, and preference buttons
     //
-    if (selectedMenuComponent != nullptr)
+    Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+    if (selectedGameComponent != nullptr)
     {
-        const ComponentInfo &info = *selectedMenuComponent;
+        const ComponentInfo &info = *selectedGameComponent->info;
 
         vector<ChargeType> chargeLevels;
         if (info.colorUpgrades)
@@ -220,7 +229,6 @@ void GameUI::updateButtonList()
             {
                 buttons.push_back(GameButton(info.name, vec2i(chargePreference, 5), ButtonType::ButtonPreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
             }
-            
         }
     }
 
@@ -281,21 +289,29 @@ void GameUI::renderBuildingGrid()
 	}
 }
 
-void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers)
+void GameUI::renderLocalizedComponent(const ComponentInfo &info, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected)
 {
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, info.name, modifiers.color, modifiers.secondaryColor);
 
     app.renderer.render(baseTex, screenRect);
     app.renderer.render(componentTex, screenRect);
+
+    if (selected)
+    {
+        Texture &selectionTex = database().getTexture(app.renderer, "Selector");
+        app.renderer.render(selectionTex, screenRect);
+    }
 }
 
 void GameUI::renderComponent(const Component &component)
 {
+    Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+    
     if (!component.location.inCircuit())
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
-        renderLocalizedComponent(*component.info, screenRect, component.modifiers);
+        renderLocalizedComponent(*component.info, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location));
     }
 }
 

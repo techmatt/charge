@@ -1,7 +1,11 @@
 
 struct GameLocation
 {
-    GameLocation() {}
+    GameLocation()
+    {
+        boardPos = constants::invalidCoord;
+        circuitPos = constants::invalidCoord;
+    }
     GameLocation(const vec2i &_boardPos)
     {
         boardPos = _boardPos;

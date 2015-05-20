@@ -7,6 +7,7 @@ struct ComponentModifiers
         secondaryColor = _secondaryColor;
         chargePreference = _chargePreference;
         speed = _speed;
+        puzzleType = ComponentUser;
     }
     ComponentModifiers(const ComponentInfo &info)
     {
@@ -23,6 +24,8 @@ struct ComponentModifiers
     // At present, this is only planned for plain wires, but could in theory be supported for any type.
     //
     WireSpeedType speed;
+
+    ComponentPuzzleType puzzleType;
 };
 
 struct Component
@@ -35,7 +38,6 @@ struct Component
         location = _location;
         lastChargeVisit = 0;
         deathTrapTimeLeft = 0;
-        puzzleType = ComponentUser;
         modifiers.speed = WireStandard;
         circuitBoard = nullptr;
 
@@ -62,7 +64,6 @@ struct Component
     //
     GameLocation location;
     int lastChargeVisit;
-    ComponentPuzzleType puzzleType;
 
     //
     // When a charge blows up, other charges currently travelling to the tower also die.

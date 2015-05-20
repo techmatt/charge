@@ -115,6 +115,8 @@ void GameState::step()
 
 Component* GameState::getComponent(const GameLocation &pos)
 {
+    if (pos == constants::invalidCoord) return nullptr;
+
     if (pos.inCircuit())
     {
         return board.cells(pos.boardPos).c->circuitBoard->cells(pos.circuitPos).c;
