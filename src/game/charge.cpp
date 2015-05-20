@@ -16,7 +16,7 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
 
 void Charge::advance(GameState &state)
 {
-    if (markedForDeletion) return;
+    if (markedForDeletion || totalTransitTime == 0) return;
 
     if (timeInTransit < totalTransitTime)
     {
@@ -32,11 +32,29 @@ void Charge::advance(GameState &state)
 
 void Charge::interactWithDestination(GameState &state)
 {
-    if (markedForDeletion) return;
+    if (markedForDeletion || totalTransitTime == 0) return;
 
     if (timeInTransit < totalTransitTime)
     {
         return;
+    }
+
+    Component *current = state.getComponent(destination);
+
+    if (current->info->name == "Amplifier")
+    {
+        markedForDeletion = true;
+        showDeathAnimation = false;
+        if (current->modifiers.storedColor == ChargeNone)
+        {
+            current->modifiers.storedColor = level;
+        }
+        else
+        {
+            const ChargeType emittedLevel = (ChargeType)(std::min((int)current->modifiers.storedColor + (int)level, (int)ChargeBlue));
+            current->chargesToEmit.push_back(emittedLevel);
+            current->modifiers.storedColor = ChargeNone;
+        }
     }
 
     /*if (result.destination->info->holdsCharge)

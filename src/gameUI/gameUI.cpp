@@ -341,7 +341,7 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
         return;
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.secondaryColor, modifiers.speed);
+    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.storedColor, modifiers.speed);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     app.renderer.render(preferenceTex, screenRect);

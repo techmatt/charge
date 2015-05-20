@@ -91,25 +91,11 @@ void GameState::step()
     {
         component->tick();
 
-        //
-        // Power sources produce new charges
-        //
-        if (component->info->name == "PowerSource"
-            && component->totalChargesRemaining > 0)
+        while(component->chargesToEmit.size() > 0)
         {
-            if (component->timeUntilEmission > 0)
-            {
-                component->timeUntilEmission--;
-            }
-            else
-            {
-                charges.push_back(Charge(component->location, component->modifiers.color));
-                component->lastChargeVisit = stepCount;
-
-                //TODO: parameterize this better
-                component->timeUntilEmission = 60;
-                component->totalChargesRemaining--;
-            }
+            component->lastChargeVisit = stepCount;
+            charges.push_back(Charge(component->location, component->chargesToEmit.back()));
+            component->chargesToEmit.pop_back();
         }
     }
 

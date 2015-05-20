@@ -1,6 +1,9 @@
 
 Features to implement
 
+KNOWN BUGS
+ * charges can still sometimes pass through major delay wires in opposite directions
+
 GAME MODEL
  * components
     * splitter
@@ -38,6 +41,7 @@ CHANGES: GAME UI
     * recency of receiving charge
     * direction that next charge will go (?)
 	* charges left in power sources
+ * Amplifier colors should slowly fade with time
 
 CHANGES: GAME PUZZLES
  * better puzzle tutorial
@@ -46,3 +50,6 @@ CHANGES: GAME PUZZLES
 
 Questions
   * Should we allow building any desired type on the circuit boundary?
+  * what should FilteredAmplifier do? It could accumulate charge until it emits an "X", or just emit a maximum of "X",
+    or refuse to accept charge unless it will produce exactly "X", or we could get rid of them?
+	Should there be 5 colors of filtered amplifiers?

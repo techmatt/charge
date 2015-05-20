@@ -63,6 +63,6 @@ struct Database
     //
     // commonly accessed textures
     //
-    Texture* chargeTextures[constants::maxChargeLevel];
+    Texture* chargeTextures[constants::maxChargeLevel + 1];
     Texture* preferenceTextures[constants::maxPreferenceLevel];
 };

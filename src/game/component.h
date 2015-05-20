@@ -1,10 +1,10 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _secondaryColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard)
+    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _storedColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard)
     {
         color = _color;
-        secondaryColor = _secondaryColor;
+        storedColor = _storedColor;
         chargePreference = _chargePreference;
         speed = _speed;
         puzzleType = ComponentUser;
@@ -12,12 +12,12 @@ struct ComponentModifiers
     ComponentModifiers(const ComponentInfo &info)
     {
         color = info.defaultPrimaryCharge();
-        secondaryColor = info.defaultSecondaryCharge();
+        storedColor = info.defaultSecondaryCharge();
         chargePreference = 2;
         speed = WireStandard;
     }
     ChargeType color;
-    ChargeType secondaryColor;
+    ChargeType storedColor;
     int chargePreference; // value ranges from 0 to 4; default is 2
 
     //
@@ -74,7 +74,12 @@ struct Component
     // If this is a circuit, it will need its own board.
     //
     Board *circuitBoard;
-    
+
+    //
+    // some components can emit charges
+    //
+    vector<ChargeType> chargesToEmit;
+
     //
     // power sources emit at a certain rate
     //

@@ -12,9 +12,9 @@ void Database::init()
 
 void Database::initTextures(RendererSDL &renderer)
 {
-    for (int chargeLevel = 0; chargeLevel < constants::maxChargeLevel; chargeLevel++)
+    for (int chargeLevel = ChargeRed; chargeLevel <= ChargeBlue; chargeLevel++)
     {
-        chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel));
+        chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
     }
 
     for (int preferenceLevel = 0; preferenceLevel < constants::maxPreferenceLevel; preferenceLevel++)

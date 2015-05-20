@@ -5,6 +5,7 @@ void Component::resetPuzzle()
 {
     info = baseInfo;
     lastChargeVisit = -10000;
+    modifiers.storedColor = ChargeNone;
     resetPowerSource();
 }
 
@@ -41,4 +42,21 @@ void Component::tick()
 {
     if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
+
+    if (info->name == "PowerSource"
+        && totalChargesRemaining > 0)
+    {
+        if (timeUntilEmission > 0)
+        {
+            timeUntilEmission--;
+        }
+        else
+        {
+            chargesToEmit.push_back(modifiers.color);
+            
+            //TODO: parameterize this better
+            timeUntilEmission = 60;
+            totalChargesRemaining--;
+        }
+    }
 }

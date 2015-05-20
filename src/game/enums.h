@@ -17,15 +17,16 @@ enum WireSpeedType
 
 enum ChargeType
 {
-    ChargeRed,
-    ChargeOrange,
-    ChargeYellow,
-    ChargeGreen,
-    ChargeBlue,
-
+    ChargeNone = 0,
+    ChargeRed = 1,
+    ChargeOrange = 2,
+    ChargeYellow = 3,
+    ChargeGreen = 4,
+    ChargeBlue = 5,
+    
     //
-    // Special colors used by certain types of buildings
+    // Gray is a special color that may be used by certain types of buildings
     //
-    ChargeNone,
-    ChargeGray,
+    
+    ChargeGray = 6,
 };
