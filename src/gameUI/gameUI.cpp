@@ -87,6 +87,11 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                     designActionTaken = true;
                     gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
                 }
+                if (button.type == ButtonWireSpeed && gameComponent != nullptr)
+                {
+                    designActionTaken = true;
+                    gameComponent->modifiers.speed = button.modifiers.speed;
+                }
                 if (button.name == "Start")
                 {
                     mode = ModeExecuting;
@@ -232,25 +237,25 @@ void GameUI::updateButtonList()
         if (info.grayUpgrade)
             chargeLevels.push_back(ChargeGray);
 
-        int chargeIndex = 0;
-        for (ChargeType charge : chargeLevels)
+        for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
         {
-            buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
-            chargeIndex++;
+            buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
         }
 
         if (info.name == "Wire")
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 3), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
             }
         }
         else
         {
-            for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
+            int chargeIndex = 0;
+            for (ChargeType charge : chargeLevels)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
+                chargeIndex++;
             }
         }
     }
@@ -277,6 +282,8 @@ void GameUI::updateBackground()
 
 	updateButtonList();
 
+    Component *gameComponent = app.state.getComponent(selectedGameLocation);
+
     app.renderer.setRenderTarget(background);
 
     app.renderer.render(database().getTexture(app.renderer, "Background"), rect2i(0, 0, windowDims.x, windowDims.y));
@@ -292,7 +299,12 @@ void GameUI::updateBackground()
 
 	for (auto &button : buttons)
 	{
-        renderButton(button, (selectedMenuComponent != nullptr && button.component == selectedMenuComponent));
+        bool selected = false;
+        selected |= (selectedMenuComponent != nullptr && button.component == selectedMenuComponent);
+        selected |= (gameComponent != nullptr && button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
+        selected |= (gameComponent != nullptr && button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
+        selected |= (gameComponent != nullptr && button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
+        renderButton(button, selected);
 	}
 
     app.renderer.setDefaultRenderTarget();
@@ -329,7 +341,7 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
         return;
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.secondaryColor);
+    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.secondaryColor, modifiers.speed);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     app.renderer.render(preferenceTex, screenRect);

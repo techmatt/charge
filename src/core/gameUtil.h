@@ -118,6 +118,23 @@ public:
         return "Invalid";
     }
 
+    static string speedToTextureName(WireSpeedType speed)
+    {
+        switch (speed)
+        {
+        case WireMajorDelay:
+            return "WireMajorDelay";
+        case WireMinorDelay:
+            return "WireMinorDelay";
+        case WireMinorAccelerator:
+            return "WireMinorAccelerator";
+        case WireMajorAccelerator:
+            return "WireMajorAccelerator";
+        default:
+            return "invalid";
+        }
+    }
+
     static void overlayAlpha(Bitmap &bmp, const string &filename)
     {
         Bitmap alpha = LodePNG::load(filename);

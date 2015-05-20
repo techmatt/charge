@@ -24,8 +24,12 @@ void Database::initTextures(RendererSDL &renderer)
 }
 
 
-Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary)
+Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed)
 {
+    if (speed != WireStandard)
+    {
+        return getTexture(renderer, GameUtil::speedToTextureName(speed));
+    }
     const string fullTextureName = textureName + GameUtil::suffixFromCharge(chargePrimary) + GameUtil::suffixFromCharge(chargeSecondary);
     if (textures.count(fullTextureName) == 0)
     {

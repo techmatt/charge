@@ -21,6 +21,7 @@ struct GameLocation;
 class RendererSDL;
 class Texture;
 
+#include "game/enums.h"
 #include "core/constants.h"
 
 #include "core/parameters.h"

@@ -54,7 +54,7 @@ void Charge::updateDestination(GameState &state)
     {
         Component *previous = state.getComponent(source);
         Component *current = state.getComponent(destination);
-        previous->deathTrapTimeLeft = constants::deathTrapDuration;
+        //previous->deathTrapTimeLeft = constants::deathTrapDuration;
         current->deathTrapTimeLeft = constants::deathTrapDuration;
         markedForDeletion = true;
     }
@@ -79,22 +79,23 @@ void Charge::setNewDestination(GameState &state, Component &newDestination)
 
     timeInTransit = 0;
     totalTransitTime = constants::chargeTransitTime;
-    /*if (NewDestination->Type() == BuildingWireMinorDelay)
+    
+    if (newDestination.modifiers.speed == WireMinorDelay)
     {
-        _TotalTransitTime *= 2;
+        totalTransitTime *= 2;
     }
-    if (NewDestination->Type() == BuildingWireMajorDelay)
+    if (newDestination.modifiers.speed == WireMajorDelay)
     {
-        _TotalTransitTime *= 4;
-    }*/
-    /*if (NewDestination->Type() == BuildingWireMinorAccelerator)
-    {
-        _TotalTransitTime = _TotalTransitTime * 2 / 3;
+        totalTransitTime *= 4;
     }
-    if (NewDestination->Type() == BuildingWireMajorAccelerator)
+    if (newDestination.modifiers.speed == WireMinorAccelerator)
     {
-        _TotalTransitTime /= 2;
-    }*/
+        totalTransitTime = totalTransitTime * 2 / 3;
+    }
+    if (newDestination.modifiers.speed == WireMajorAccelerator)
+    {
+        totalTransitTime /= 2;
+    }
 }
 
 bool Charge::findBestDestination(GameState &state)
@@ -150,6 +151,9 @@ double Charge::computePreference(GameState &state, Component &targetComponent)
 
     const int currentTimeDifference = std::min(state.stepCount - targetComponent.lastChargeVisit, 900000);
     preference += currentTimeDifference;
+
+    if (targetComponent.deathTrapTimeLeft > 0)
+        preference = -1000000.0;
 
     return preference;
 }

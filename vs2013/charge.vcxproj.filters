@@ -170,6 +170,9 @@
     <ClInclude Include="..\src\game\explodingCharge.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\enums.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

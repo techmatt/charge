@@ -1,19 +1,4 @@
 
-enum ChargeType
-{
-    ChargeRed,
-    ChargeOrange,
-    ChargeYellow,
-    ChargeGreen,
-    ChargeBlue,
-
-    //
-    // Special colors used by certain types of buildings
-    //
-    ChargeNone,
-    ChargeGray,
-};
-
 struct ComponentInfo
 {
     ComponentInfo() {}
@@ -70,7 +55,7 @@ struct Database
         return *(components.at(componentName));
     }
 
-    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary = ChargeNone, ChargeType chargeSecondary = ChargeNone);
+    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary = ChargeNone, ChargeType chargeSecondary = ChargeNone, WireSpeedType speed = WireStandard);
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;

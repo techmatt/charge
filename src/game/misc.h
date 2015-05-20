@@ -33,19 +33,3 @@ inline bool operator == (const GameLocation &a, const GameLocation &b)
 {
     return a.boardPos == b.boardPos && a.circuitPos == b.circuitPos;
 }
-
-enum ComponentPuzzleType
-{
-    ComponentUser,
-    ComponentPuzzlePiece,
-    ComponentCopiedCircuit,
-};
-
-enum WireSpeedType
-{
-    WireMajorDelay,
-    WireMinorDelay,
-    WireStandard,
-    WireMinorAccelerator,
-    WireMajorAccelerator,
-};
