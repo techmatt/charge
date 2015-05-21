@@ -46,10 +46,16 @@ namespace convert {
         }
         return result;
     }
+
 	template<class T>
 	inline std::string toString(const T& val) {
 		return std::to_string(val);
 	}
+
+    template<>
+    inline std::string toString(const vec2i& val) {
+        return std::to_string(val.x) + " " + std::to_string(val.y);
+    }
 
     template<class T> inline void to(const std::string& s, T& res);
 

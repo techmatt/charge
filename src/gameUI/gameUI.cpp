@@ -36,6 +36,10 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         selectedMenuComponent = nullptr;
     }
+    if (key == SDLK_s)
+    {
+        app.state.savePuzzle("test.txt");
+    }
 }
 
 void GameUI::removeHoverComponent()
@@ -335,6 +339,17 @@ void GameUI::renderBuildingGrid()
             app.renderer.render(border, screenRect);
 		}
 	}
+
+    Component *circuit = activeCircuit();
+    if (circuit != nullptr)
+    {
+        for (const auto &cell : circuit->circuitBoard->cells)
+        {
+            const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, vec2i(cell.x, cell.y), 1);
+            app.renderer.render(border, screenRect);
+        }
+    }
+
 }
 
 void GameUI::renderButton(const GameButton &button, bool selected)
@@ -354,7 +369,7 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
         return;
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, name, modifiers.color, modifiers.storedColor, modifiers.speed);
+    Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     app.renderer.render(preferenceTex, screenRect);
@@ -375,7 +390,15 @@ void GameUI::renderComponent(const Component &component)
 {
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
     
-    if (!component.location.inCircuit())
+    if (component.location.inCircuit())
+    {
+        if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
+        {
+            const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, component.location.circuitPos, 2);
+            renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
+        }
+    }
+    else
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, component.location.boardPos, 2);
         renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
@@ -428,7 +451,9 @@ void GameUI::renderComponents(bool background)
     for (auto &component : app.state.components)
     {
         if (component->info->background == background)
+        {
             renderComponent(*component);
+        }
     }
 }
 
@@ -456,4 +481,14 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
     app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
+}
+
+Component* GameUI::activeCircuit()
+{
+    Component *c = app.state.getComponent(selectedGameLocation.boardPos);
+    if (c != nullptr && c->info->name == "Circuit")
+    {
+        return c;
+    }
+    return nullptr;
 }

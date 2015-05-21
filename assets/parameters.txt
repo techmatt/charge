@@ -6,6 +6,7 @@ canonicalDims = 621, 414
 boardDims = 24, 24
 
 boardCanonicalStart = 3, 3
+circuitCanonicalStart = 394, 180
 
 boardCanonicalCellSize = 16
 

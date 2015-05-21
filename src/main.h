@@ -18,6 +18,7 @@ struct Database;
 struct GameState;
 struct Charge;
 struct GameLocation;
+struct ComponentModifiers;
 class RendererSDL;
 class Texture;
 
@@ -37,7 +38,6 @@ class Texture;
 #include "game/component.h"
 #include "game/charge.h"
 #include "game/explodingCharge.h"
-#include "game/circuit.h"
 #include "game/board.h"
 #include "game/gameState.h"
 

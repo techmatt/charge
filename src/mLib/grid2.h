@@ -113,11 +113,11 @@ public:
         constIterator& operator++()
         {
             x++;
-            if (x == grid->getDimX())
+            if (x == grid->dimX())
             {
                 x = 0;
                 y++;
-                if (y == grid->getDimY())
+                if (y == grid->dimY())
                 {
                     grid = NULL;
                 }

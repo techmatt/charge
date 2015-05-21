@@ -11,6 +11,11 @@ struct GameLocation
         boardPos = _boardPos;
         circuitPos = constants::invalidCoord;
     }
+    GameLocation(const vec2i &_boardPos, const vec2i &_circuitPos)
+    {
+        boardPos = _boardPos;
+        circuitPos = _circuitPos;
+    }
     bool inCircuit() const
     {
         return (circuitPos != constants::invalidCoord);

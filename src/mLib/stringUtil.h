@@ -56,7 +56,7 @@ namespace util
     }
 
     //TODO TEST
-    inline std::string zeroPad(UINT value, UINT totalLength) {
+    inline std::string zeroPad(size_t value, size_t totalLength) {
         std::string result = std::to_string(value);
         while (result.size() < totalLength)
             result = "0" + result;

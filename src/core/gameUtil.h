@@ -63,6 +63,14 @@ public:
         return screenRect;
     }
 
+    static rect2f circuitToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
+    {
+        const vec2i canonicalBase = params().circuitCanonicalStart + boardCoord * params().boardCanonicalCellSize;
+        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
+        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+        return screenRect;
+    }
+
     static vec2f boardToWindow(const vec2f &windowDims, const vec2i &boardCoord)
     {
         const vec2f canonical = params().boardCanonicalStart + boardCoord * params().boardCanonicalCellSize;

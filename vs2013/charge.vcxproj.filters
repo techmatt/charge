@@ -21,9 +21,6 @@
     <ClCompile Include="..\src\game\board.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\game\circuit.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\game\component.cpp">
       <Filter>game</Filter>
     </ClCompile>
@@ -78,9 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\game\circuit.h">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\game\component.h">
@@ -172,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\src\game\enums.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\parameterTable.h">
+      <Filter>mLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -55,7 +55,9 @@ struct Database
         return *(components.at(componentName));
     }
 
-    Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary = ChargeNone, ChargeType chargeSecondary = ChargeNone, WireSpeedType speed = WireStandard);
+    Texture& getTexture(RendererSDL &renderer, const string &textureName);
+    Texture& getTexture(RendererSDL &renderer, const string &textureName, const ComponentModifiers &modifiers);
+    //Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;

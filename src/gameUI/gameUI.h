@@ -65,6 +65,8 @@ private:
 
     void addHoverComponent();
 
+    Component* activeCircuit();
+
     GameLocation hoverBoardLocation(bool constructionOffset) const;
 
     GameMode mode;

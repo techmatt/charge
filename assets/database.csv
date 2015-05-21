@@ -22,9 +22,7 @@ WireMajorAccelerator,-1,-1,!,no,no,Wire - Major Accelerator @|Upgrading to a Maj
 WireMinorAccelerator,-1,-1,!,no,no,Wire - Minor Accelerator @|Upgrading to a Minor Accelerator causes all charges to pass through this Wire quickly.
 WireMinorDelay,-1,-1,!,no,no,Wire - Minor Delay @|Upgrading to a Minor Delay causes all charges to pass through this Wire slowly.
 WireMajorDelay,-1,-1,!,no,no,Wire - Major Delay @|Upgrading to a Major Delay causes all charges to pass through this Wire very slowly.
-CircuitBoundaryBase,-1,-1,!,no,no,"Wire @|Wires are used to direct charge in any direction. Charge will move from a Wire to any available adjacent component, preferring components that have least recently received a charge."
-CircuitBoundaryBlocked,-1,-1,!,no,no,Blocker|Blockers never allow charge to pass through them.
-CircuitBoundaryOpen,-1,-1,!,no,no,Wall|Edge of the chip. Place a component adjacent to the chip to activate the edges. Only Wires and Blockers may be placed on edges.
+CircuitBoundary,-1,-1,!,no,no,"Wire @|Wires are used to direct charge in any direction. Charge will move from a Wire to any available adjacent component, preferring components that have least recently received a charge."
 CircuitPaste,-1,-1,V,no,no,Pastes the copied chip.
 CircuitRotate90,-1,-1,!,no,no,Rotates the selected chip 90 degrees clockwise.
 CircuitRotateN90,-1,-1,!,no,no,Rotates the selected chip 90 degrees counter-clockwise.

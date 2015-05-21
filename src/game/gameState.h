@@ -2,7 +2,13 @@
 struct GameState
 {
 	void init();
+    
+    void savePuzzle(const string &filename);
+    void loadPuzzle(const string &filename);
+
+    void clearBoard();
     void resetPuzzle();
+    
     void addNewComponent(Component *component);
     void removeComponent(Component *component);
     void step();

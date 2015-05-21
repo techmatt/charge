@@ -23,4 +23,6 @@ namespace constants
     static const int deathTrapDuration = chargeRequiredTimeDifference + 2;
 
     static const int explodingChargeDuration = 30;
+
+    static const int circuitBoardSize = 14;
 }

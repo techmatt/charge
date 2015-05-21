@@ -26,30 +26,46 @@ void Database::initTextures(RendererSDL &renderer)
     squareOpen = &getTexture(renderer, "SquareOpen");
 }
 
-
-Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed)
+Texture& Database::getTexture(RendererSDL &renderer, const string &textureName)
 {
-    if (speed != WireStandard)
+    return getTexture(renderer, textureName, ComponentModifiers());
+}
+
+//Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed)
+Texture& Database::getTexture(RendererSDL &renderer, const string &componentName, const ComponentModifiers &modifiers)
+{
+    if (modifiers.speed != WireStandard)
     {
-        return getTexture(renderer, GameUtil::speedToTextureName(speed));
+        return getTexture(renderer, GameUtil::speedToTextureName(modifiers.speed), ComponentModifiers());
     }
-    const string fullTextureName = textureName + GameUtil::suffixFromCharge(chargePrimary) + GameUtil::suffixFromCharge(chargeSecondary);
+
+    string baseTextureName = componentName + GameUtil::suffixFromCharge(modifiers.color);
+
+    if (modifiers.boundary == CircuitBoundaryOpen)
+        baseTextureName += "Open";
+    if (modifiers.boundary == CircuitBoundaryClosed)
+        baseTextureName += "Closed";
+
+    string fullTextureName = baseTextureName + GameUtil::suffixFromCharge(modifiers.storedColor);
+
+    
+
     if (textures.count(fullTextureName) == 0)
     {
-        const string filename = params().assetDir + "textures/" + textureName + GameUtil::suffixFromCharge(chargePrimary) + ".png";
+        const string filename = params().assetDir + "textures/" + baseTextureName + ".png";
         MLIB_ASSERT_STR(util::fileExists(filename), "File not found");
         Bitmap bmp = LodePNG::load(filename);
 
         const string alphaFilename = util::replace(filename, ".png", "Alpha.png");
 
-        bool isHalfAlphaTexture = (textureName == "Selector" || textureName == "SquareBlocked" || textureName == "SquareOpen");
+        bool isHalfAlphaTexture = (componentName == "Selector" || componentName == "SquareBlocked" || componentName == "SquareOpen");
 
         if (isHalfAlphaTexture)
         {
             for (const auto &p : bmp)
                 p.value.a = 95;
         }
-        else if (util::startsWith(textureName, "ChargeTexture"))
+        else if (util::startsWith(componentName, "ChargeTexture"))
         {
             GameUtil::overlayAlpha(bmp, params().assetDir + "textures/ChargeTextureAlpha.png");
         }
@@ -59,7 +75,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
         }
         else
         {
-            const RGBColor chargeSecondaryColor = GameUtil::chargeColor(chargeSecondary);
+            const RGBColor storedColor = GameUtil::chargeColor(modifiers.storedColor);
 
             for (const auto &p : bmp)
             {
@@ -70,7 +86,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
 
                 if (p.value == Colors::Magenta())
                 {
-                    p.value = chargeSecondaryColor;
+                    p.value = storedColor;
                 }
             }
         }
@@ -83,7 +99,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
 
         bool isAlphaTexture = true;
 
-        if (textureName == "Background") isAlphaTexture = false;
+        if (componentName == "Background") isAlphaTexture = false;
 
         if (isAlphaTexture)
         {

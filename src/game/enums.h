@@ -15,6 +15,13 @@ enum WireSpeedType
     WireMajorAccelerator,
 };
 
+enum CircuitBoundaryType
+{
+    CircuitBoundaryInvalid,
+    CircuitBoundaryOpen,
+    CircuitBoundaryClosed,
+};
+
 enum ChargeType
 {
     ChargeNone = 0,

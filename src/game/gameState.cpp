@@ -1,10 +1,40 @@
 
 #include "main.h"
 
-void GameState::init()
+void GameState::clearBoard()
 {
+    for (Component *c : components)
+        delete c;
+
     board.cells.allocate(params().boardDims.x, params().boardDims.y);
     resetPuzzle();
+}
+
+void GameState::init()
+{
+    clearBoard();
+}
+
+void GameState::savePuzzle(const string &filename)
+{
+    ParameterTable puzzleTable("Puzzle");
+    
+    //puzzleTable.setTable("board", board.toTable("Main"));
+    for (int componentIndex = 0; componentIndex < components.size(); componentIndex++)
+    {
+        const string componentName = "component" + util::zeroPad(componentIndex, 4);
+        const ParameterTable componentTable = components[componentIndex]->toTable(componentName);
+        puzzleTable.setTable(componentName, componentTable);
+    }
+
+    vector<string> lines;
+    puzzleTable.appendLines(lines);
+    util::saveLinesToFile(lines, filename);
+}
+
+void GameState::loadPuzzle(const string &filename)
+{
+    clearBoard();
 }
 
 void GameState::resetPuzzle()
@@ -19,8 +49,31 @@ void GameState::resetPuzzle()
 void GameState::addNewComponent(Component *component)
 {
     components.push_back(component);
+
     board.addNewComponent(component);
     board.updateBlockedGrid();
+
+    if (component->info->name == "Circuit")
+    {
+        component->circuitBoard = new Board();
+        component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
+
+        const int circuitEdge = constants::circuitBoardSize - 3;
+        for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)
+        {
+            Component *boundaryA = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, 0)));
+            addNewComponent(boundaryA);
+
+            //Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
+            //addNewComponent(boundaryB);
+
+            Component *boundaryC = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(0, i)));
+            addNewComponent(boundaryC);
+
+            //Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
+            //addNewComponent(boundaryD);
+        }
+    }
 }
 
 void GameState::removeComponent(Component *component)
@@ -31,6 +84,8 @@ void GameState::removeComponent(Component *component)
     }
 
     util::removeSwap(components, util::findFirstIndex(components, component));
+
+    delete component;
 
     board.updateBlockedGrid();
 }

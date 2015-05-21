@@ -10,6 +10,8 @@ typedef unsigned int UINT;
 
 #include "common.h"
 
+using namespace std;
+
 #include "utility.h"
 #include "stringUtil.h"
 
@@ -21,6 +23,7 @@ typedef unsigned int UINT;
 
 #include "stringUtilConvert.h"
 #include "parameterFile.h"
+#include "parameterTable.h"
 
 #include "imageLoaderLodePNG.h"
 

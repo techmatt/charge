@@ -3,21 +3,32 @@ struct ComponentModifiers
 {
     ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _storedColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard)
     {
+        init();
         color = _color;
         storedColor = _storedColor;
         chargePreference = _chargePreference;
         speed = _speed;
-        puzzleType = ComponentUser;
     }
     ComponentModifiers(const ComponentInfo &info)
     {
+        init();
         color = info.defaultPrimaryCharge();
         storedColor = info.defaultSecondaryCharge();
+    }
+
+    void init()
+    {
+        color = ChargeNone;
+        storedColor = ChargeNone;
+        boundary = CircuitBoundaryInvalid;
         chargePreference = 2;
         speed = WireStandard;
+        puzzleType = ComponentUser;
     }
+
     ChargeType color;
     ChargeType storedColor;
+    CircuitBoundaryType boundary;
     int chargePreference; // value ranges from 0 to 4; default is 2
 
     //
@@ -38,18 +49,22 @@ struct Component
         location = _location;
         lastChargeVisit = 0;
         deathTrapTimeLeft = 0;
-        modifiers.speed = WireStandard;
         circuitBoard = nullptr;
 
         resetPowerSource();
         
-        modifiers.chargePreference = 2;
+        if (name == "CircuitBoundary")
+        {
+            modifiers.boundary = CircuitBoundaryOpen;
+        }
     }
 
     void tick();
     void resetPuzzle();
     void resetPowerSource();
     bool willAcceptCharge(GameState &state, const Charge &charge);
+
+    ParameterTable toTable(const string &tableName) const;
 
     //
     // baseInfo denotes the object's starting type, after a puzzle reset ex. TrapOpen

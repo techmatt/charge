@@ -17,10 +17,17 @@ struct Board
 {
     void updateBlockedGrid();
 
+    bool isCircuitBoard() const
+    {
+        return (cells.dimX() == constants::circuitBoardSize);
+    }
+
     bool coordValidForNewComponent(const vec2i &v) const;
     void addNewComponent(Component *component);
 
     void findAdjacentBuildings(const vec2i &source, Component *result[6], int &resultCount);
+
+    //ParameterTable toTable(const string &tableName) const;
 
     Grid2<BoardCell> cells;
 };

@@ -60,3 +60,17 @@ void Component::tick()
         }
     }
 }
+
+ParameterTable Component::toTable(const string &tableName) const
+{
+    ParameterTable result("Component");
+
+    result.set("name", info->name);
+    result.set("color", modifiers.color);
+    result.set("chargePreference", modifiers.chargePreference);
+    result.set("speed", modifiers.speed);
+    result.set("boardPos", location.boardPos);
+    result.set("circuitPos", location.circuitPos);
+
+    return result;
+}

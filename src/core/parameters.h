@@ -15,6 +15,7 @@ struct GameParameters
         params.readParameter("boardDims", boardDims);
         
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
+        params.readParameter("circuitCanonicalStart", circuitCanonicalStart);
         params.readParameter("boardCanonicalCellSize", boardCanonicalCellSize);
 
         params.readParameter("componentMenuCanonicalStart", componentMenuCanonicalStart);
@@ -36,8 +37,9 @@ struct GameParameters
     vec2i boardDims;
 
     vec2f boardCanonicalStart;
+    vec2f circuitCanonicalStart;
     int boardCanonicalCellSize;
-
+    
 	vec2f componentMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
 

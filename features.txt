@@ -51,5 +51,3 @@ Questions
   * what should FilteredAmplifier do? It could accumulate charge until it emits an "X", or just emit a maximum of "X",
     or refuse to accept charge unless it will produce exactly "X", or we could get rid of them?
 	Should there be 5 colors of filtered amplifiers?
-  * some people found it confusing that red teleporters transport non-red charges. Assumed mapping between teleporter channels and charge colors.
-  * similar question for traps
