@@ -10,7 +10,9 @@ int App::run()
     }
 
     //Setup our window and renderer
-    SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, 1620, 1080, SDL_WINDOW_SHOWN);
+    int windowHeight = 1080;
+    int windowWidth = math::round(windowHeight * (float)params().canonicalDims.x / params().canonicalDims.y);
+    SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
 
     if (window == nullptr)
     {
@@ -19,7 +21,6 @@ int App::run()
         return 1;
     }
 
-    
     data.renderer.init(window);
 
     database().initTextures(data.renderer);

@@ -46,9 +46,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &componentName
     if (modifiers.boundary == CircuitBoundaryClosed)
         baseTextureName += "Closed";
 
-    string fullTextureName = baseTextureName + GameUtil::suffixFromCharge(modifiers.storedColor);
-
-    
+    const string fullTextureName = baseTextureName + GameUtil::suffixFromCharge(modifiers.storedColor);
 
     if (textures.count(fullTextureName) == 0)
     {

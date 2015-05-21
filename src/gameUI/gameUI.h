@@ -52,6 +52,7 @@ private:
     void renderComponent(const Component &component);
 
     void renderSpokes(const Component &component);
+    void renderSpokesCircuit(const Component &component);
 
     void renderCharge(const Charge &charge);
 

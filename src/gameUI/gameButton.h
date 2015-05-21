@@ -40,7 +40,7 @@ private:
         else
         {
             const vec2i base = params().componentMenuCanonicalStart + menuCoord * params().componentMenuCanonicalEntrySize;
-            return rect2i(base, base + params().boardCanonicalCellSize * vec2i(2, 2));
+            return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
     }
 };

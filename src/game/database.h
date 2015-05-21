@@ -32,6 +32,11 @@ struct ComponentInfo
         return ChargeNone;
     }
 
+    bool hasSpokes() const
+    {
+        return (name != "Blocker" && name != "Circuit");
+    }
+
     string name;
     string description;
     string hotkey;

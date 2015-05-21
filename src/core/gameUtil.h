@@ -57,23 +57,29 @@ public:
 
     static rect2f boardToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
     {
-        const vec2i canonicalBase = params().boardCanonicalStart + boardCoord * params().boardCanonicalCellSize;
-        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
+        const vec2i canonicalBase = params().boardCanonicalStart + boardCoord * params().canonicalCellSize;
+        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().canonicalCellSize, params().canonicalCellSize));
         const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
         return screenRect;
     }
 
     static rect2f circuitToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
     {
-        const vec2i canonicalBase = params().circuitCanonicalStart + boardCoord * params().boardCanonicalCellSize;
-        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().boardCanonicalCellSize, params().boardCanonicalCellSize));
+        const vec2i canonicalBase = params().circuitCanonicalStart + boardCoord * params().canonicalCellSize;
+        const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().canonicalCellSize, params().canonicalCellSize));
         const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
         return screenRect;
     }
 
     static vec2f boardToWindow(const vec2f &windowDims, const vec2i &boardCoord)
     {
-        const vec2f canonical = params().boardCanonicalStart + boardCoord * params().boardCanonicalCellSize;
+        const vec2f canonical = params().boardCanonicalStart + boardCoord * params().canonicalCellSize;
+        return GameUtil::canonicalToWindow(windowDims, canonical);
+    }
+
+    static vec2f circuitToWindow(const vec2f &windowDims, const vec2i &circuitCoord)
+    {
+        const vec2f canonical = params().circuitCanonicalStart + circuitCoord * params().canonicalCellSize;
         return GameUtil::canonicalToWindow(windowDims, canonical);
     }
 

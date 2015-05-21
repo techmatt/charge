@@ -79,7 +79,6 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 if (button.type == ButtonComponent)
                 {
                     selectedMenuComponent = button.component;
-                    selectedGameLocation.boardPos = constants::invalidCoord;
                 }
                 if (button.type == ButtonChargeColor && gameComponent != nullptr)
                 {
@@ -305,6 +304,12 @@ void GameUI::updateBackground()
 
     app.renderer.render(database().getTexture(app.renderer, "Background"), rect2i(0, 0, windowDims.x, windowDims.y));
 
+    if (activeCircuit() != nullptr)
+    {
+        const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
+        app.renderer.render(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(windowDims, rect));
+    }
+
 	renderBuildingGrid();
 
     renderComponents(true);
@@ -345,8 +350,13 @@ void GameUI::renderBuildingGrid()
     {
         for (const auto &cell : circuit->circuitBoard->cells)
         {
-            const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, vec2i(cell.x, cell.y), 1);
-            app.renderer.render(border, screenRect);
+            const bool xBoundary = (cell.x == 0 || cell.x == 1 || cell.x == constants::circuitBoardSize - 1 || cell.x == constants::circuitBoardSize - 2);
+            const bool yBoundary = (cell.y == 0 || cell.y == 1 || cell.y == constants::circuitBoardSize - 1 || cell.y == constants::circuitBoardSize - 2);
+            if (!xBoundary || !yBoundary)
+            {
+                const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, vec2i(cell.x, cell.y), 1);
+                app.renderer.render(border, screenRect);
+            }
         }
     }
 
@@ -407,12 +417,19 @@ void GameUI::renderComponent(const Component &component)
 
 void GameUI::renderSpokes(const Component &component)
 {
-    if (component.info->name == "Blocker")
+    if (!component.info->hasSpokes())
         return;
+
+    if (component.location.inCircuit())
+    {
+        renderSpokesCircuit(component);
+        return;
+    }
 
     const vec2f myScreenPos = GameUtil::boardToWindow(windowDims, component.location.boardPos + vec2i(1, 1));
 
     const auto &cells = app.state.board.cells;
+
     for (int type = -1; type <= 1; type++)
     {
         for (int axis = 0; axis < 2; axis++)
@@ -426,7 +443,7 @@ void GameUI::renderSpokes(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.boardPos == otherLocation && otherComponent.info->name != "Blocker")
+                if (otherComponent.location.boardPos == otherLocation && component.info->hasSpokes())
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(windowDims, otherComponent.location.boardPos + vec2i(1, 1));
                     
@@ -438,6 +455,47 @@ void GameUI::renderSpokes(const Component &component)
                     
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
+                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                    app.renderer.render(connectorTex, math::round(rect2f(middle - variance, middle + variance)), angle);
+                }
+            }
+        }
+    }
+}
+
+void GameUI::renderSpokesCircuit(const Component &component)
+{
+    if (selectedGameLocation.boardPos != component.location.boardPos)
+        return;
+
+    const vec2f myScreenPos = GameUtil::circuitToWindow(windowDims, component.location.circuitPos + vec2i(1, 1));
+
+    const auto &cells = activeCircuit()->circuitBoard->cells;
+
+    for (int type = -1; type <= 1; type++)
+    {
+        for (int axis = 0; axis < 2; axis++)
+        {
+            vec2i offset;
+            if (axis == 0) offset = vec2i(-2, type);
+            if (axis == 1) offset = vec2i(type, -2);
+            UINT connectorIndex = (type + 1) * 2 + axis;
+            vec2i otherLocation = component.location.circuitPos + offset;
+
+            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
+            {
+                const Component &otherComponent = *cells(otherLocation).c;
+                if (otherComponent.location.circuitPos == otherLocation && component.info->hasSpokes())
+                {
+                    const vec2f otherScreenPos = GameUtil::circuitToWindow(windowDims, otherComponent.location.circuitPos + vec2i(1, 1));
+
+                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                    const vec2f diff = myScreenPos - otherScreenPos;
+                    const float dist = diff.length();
+
+                    const vec2f variance(dist * 0.18f, dist * 0.045f);
+
+                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
                     app.renderer.render(connectorTex, math::round(rect2f(middle - variance, middle + variance)), angle);
                 }

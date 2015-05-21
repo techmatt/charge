@@ -16,7 +16,8 @@ struct GameParameters
         
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
         params.readParameter("circuitCanonicalStart", circuitCanonicalStart);
-        params.readParameter("boardCanonicalCellSize", boardCanonicalCellSize);
+        params.readParameter("circuitBackgroundCanonicalBoundarySize", circuitBackgroundCanonicalBoundarySize);
+        params.readParameter("canonicalCellSize", canonicalCellSize);
 
         params.readParameter("componentMenuCanonicalStart", componentMenuCanonicalStart);
         params.readParameter("componentMenuCanonicalEntrySize", componentMenuCanonicalEntrySize);
@@ -27,7 +28,7 @@ struct GameParameters
         //
         // derived parameters
         //
-        boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(boardCanonicalCellSize) * vec2f(boardDims));
+        boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(canonicalCellSize) * vec2f(boardDims));
     }
 
     string assetDir;
@@ -38,7 +39,8 @@ struct GameParameters
 
     vec2f boardCanonicalStart;
     vec2f circuitCanonicalStart;
-    int boardCanonicalCellSize;
+    float circuitBackgroundCanonicalBoundarySize;
+    int canonicalCellSize;
     
 	vec2f componentMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
