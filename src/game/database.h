@@ -65,4 +65,6 @@ struct Database
     //
     Texture* chargeTextures[constants::maxChargeLevel + 1];
     Texture* preferenceTextures[constants::maxPreferenceLevel];
+    Texture* squareBlocked;
+    Texture* squareOpen;
 };

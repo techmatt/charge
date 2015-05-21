@@ -95,7 +95,6 @@ void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int
     //
     // Top row
     //
-    insertAdjacentBuilding(vec2i(source.x + 0, source.y - 1));
     insertAdjacentBuilding(vec2i(source.x + 1, source.y - 1));
 
     //
@@ -107,12 +106,17 @@ void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int
     //
     // Bottom row
     //
-    insertAdjacentBuilding(vec2i(source.x + 0, source.y + 2));
     insertAdjacentBuilding(vec2i(source.x + 1, source.y + 2));
+    insertAdjacentBuilding(vec2i(source.x + 0, source.y + 2));
 
     //
     // Left column
     //
     insertAdjacentBuilding(vec2i(source.x - 1, source.y + 0));
     insertAdjacentBuilding(vec2i(source.x - 1, source.y + 1));
+
+    //
+    // Top row
+    //
+    insertAdjacentBuilding(vec2i(source.x + 0, source.y - 1));
 }

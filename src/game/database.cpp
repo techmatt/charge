@@ -21,6 +21,9 @@ void Database::initTextures(RendererSDL &renderer)
     {
         preferenceTextures[preferenceLevel] = &getTexture(renderer, "PreferenceMask" + to_string(preferenceLevel));
     }
+
+    squareBlocked = &getTexture(renderer, "SquareBlocked");
+    squareOpen = &getTexture(renderer, "SquareOpen");
 }
 
 
@@ -39,12 +42,12 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, 
 
         const string alphaFilename = util::replace(filename, ".png", "Alpha.png");
 
-        bool isHalfAlphaTexture = (textureName == "Selector");
+        bool isHalfAlphaTexture = (textureName == "Selector" || textureName == "SquareBlocked" || textureName == "SquareOpen");
 
         if (isHalfAlphaTexture)
         {
             for (const auto &p : bmp)
-                p.value.a = 85;
+                p.value.a = 95;
         }
         else if (util::startsWith(textureName, "ChargeTexture"))
         {

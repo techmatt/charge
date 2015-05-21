@@ -60,8 +60,6 @@ private:
     void renderButton(const GameButton &button, bool selected);
     void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton);
 
-	void renderSelectionHighlight();
-
     void renderHoverComponent();
     void removeHoverComponent();
 

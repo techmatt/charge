@@ -57,6 +57,51 @@ void Charge::interactWithDestination(GameState &state)
         }
     }
 
+    if (current->info->name == "TrapOpen")
+    {
+        current->info = &database().getComponent("TrapSprung");
+    }
+
+    if (current->info->name == "TrapReset")
+    {
+        if (current->modifiers.color == ChargeGray)
+        {
+            // TODO: find closest gray trap and reset it
+        }
+        else
+        {
+            for (auto &component : state.components)
+            {
+                if (component->modifiers.color == current->modifiers.color && component->info->name == "TrapSprung")
+                {
+                    component->info = &database().getComponent("TrapOpen");
+                }
+            }
+        }
+    }
+
+    if (current->info->name == "GateSwitch")
+    {
+        if (current->modifiers.color == ChargeGray)
+        {
+            // TODO: find closest gray door and reset it
+        }
+        else
+        {
+            for (auto &component : state.components)
+            {
+                if (component->modifiers.color == current->modifiers.color && component->info->name == "GateOpen")
+                {
+                    component->info = &database().getComponent("GateClosed");
+                }
+                else if (component->modifiers.color == current->modifiers.color && component->info->name == "GateClosed")
+                {
+                    component->info = &database().getComponent("GateOpen");
+                }
+            }
+        }
+    }
+
     if (current->info->name == "Splitter")
     {
         if (level != ChargeRed)

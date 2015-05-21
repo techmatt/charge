@@ -202,6 +202,19 @@ void GameUI::renderHoverComponent()
     const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation.boardPos, 2);
 
     renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false);
+
+    for (int xOffset = 0; xOffset <= 1; xOffset++)
+        for (int yOffset = 0; yOffset <= 1; yOffset++)
+        {
+            vec2i coord = boardLocation.boardPos + vec2i(xOffset, yOffset);
+            if (app.state.board.cells.coordValid(coord))
+            {
+                BoardCell &cell = app.state.board.cells(coord);
+                Texture *tex = (cell.c != nullptr || cell.blocked) ? database().squareBlocked : database().squareOpen;
+                const rect2f rect = GameUtil::boardToWindowRect(windowDims, coord, 1);
+                app.renderer.render(*tex, rect);
+            }
+        }
 }
 
 void GameUI::updateButtonList()

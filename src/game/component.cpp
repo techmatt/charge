@@ -25,7 +25,7 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
         return false;
     }
 
-    if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker")
+    if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker" || info->name == "GateClosed")
     {
         return false;
     }
