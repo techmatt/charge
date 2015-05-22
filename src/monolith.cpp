@@ -14,7 +14,7 @@
 // game source files
 //
 #include "game/board.cpp"
-#include "game/circuit.cpp"
+//#include "game/circuit.cpp"
 #include "game/charge.cpp"
 #include "game/component.cpp"
 #include "game/database.cpp"
