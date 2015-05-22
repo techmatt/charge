@@ -26,4 +26,5 @@ public:
 private:
     SDL_Renderer *_renderer;
     SDL_Window *_window;
+    SDL_GLContext _context;
 };

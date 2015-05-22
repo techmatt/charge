@@ -3,6 +3,13 @@
 
 void RendererSDL::init(SDL_Window *window)
 {
+    _context = SDL_GL_CreateContext(window);
+    if (_context == nullptr)
+    {
+        SDL::logError("CreateContext");
+        SDL_Quit();
+    }
+
 	_window = window;
 	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (_renderer == nullptr)
@@ -55,6 +62,7 @@ void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angl
 void RendererSDL::present()
 {
 	SDL_RenderPresent(_renderer);
+    SDL_GL_SwapWindow(_window);
 }
 
 void RendererSDL::setRenderTarget(Texture &target)
@@ -107,15 +115,15 @@ vec2i RendererSDL::getWindowStart()
 
 	if (width > constants::screenAspectRatio * height)
 	{
-		dim = floor(height * constants::screenAspectRatio);
-		result.x = floor((width - ((double)dim)) / 2.);
+		dim = (int)floor(height * constants::screenAspectRatio);
+        result.x = (int)floor((width - ((double)dim)) / 2.);
 		result.y = 0;
 	}
 
 	else
 	{
-		dim = floor(width / constants::screenAspectRatio);
-		result.x = floor((width - ((double)dim)) / 2.);
+        dim = (int)floor(width / constants::screenAspectRatio);
+        result.x = (int)floor((width - ((double)dim)) / 2.);
 		result.y = 0;
 	}
 
