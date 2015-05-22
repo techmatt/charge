@@ -1,6 +1,11 @@
 
 #include "main.h"
 
+Component::~Component()
+{
+    if (circuitBoard) delete circuitBoard;
+}
+
 void Component::resetPuzzle()
 {
     info = baseInfo;

@@ -155,13 +155,22 @@ void GameUI::addHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverLocation(true);
-    if (boardLocation.boardPos == constants::invalidCoord)
+    const GameLocation location = hoverLocation(true);
+    if (location.boardPos == constants::invalidCoord)
         return;
 
-    if (app.state.board.coordValidForNewComponent(boardLocation.boardPos))
+    if (location.inCircuit())
     {
-        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), GameLocation(boardLocation));
+        if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos))
+        {
+            Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
+            app.state.addNewComponent(newComponent);
+            designActionTaken = true;
+        }
+    }
+    else if (app.state.board.coordValidForNewComponent(location.boardPos))
+    {
+        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
         app.state.addNewComponent(newComponent);
         designActionTaken = true;
     }
@@ -169,6 +178,7 @@ void GameUI::addHoverComponent()
 
 void GameUI::render()
 {
+    // TODO: don't do this every frame
 	updateBackground();
 
     app.renderer.setDefaultRenderTarget();
@@ -215,25 +225,31 @@ void GameUI::renderHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverLocation(true);
-    if (boardLocation.boardPos == constants::invalidCoord)
+    const GameLocation location = hoverLocation(true);
+    if (!location.valid())
         return;
 
-    cout << boardLocation.boardPos << " -- " << boardLocation.circuitPos << endl;
+    if (location.inCircuit() && activeCircuit() == nullptr)
+        return;
 
-    const rect2f screenRect = GameUtil::locationToWindowRect(windowDims, boardLocation, 2);
+    const rect2f screenRect = GameUtil::locationToWindowRect(windowDims, location, 2);
     
     renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false);
+
+    const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
+    const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
 
     for (int xOffset = 0; xOffset <= 1; xOffset++)
         for (int yOffset = 0; yOffset <= 1; yOffset++)
         {
-            vec2i coord = boardLocation.boardPos + vec2i(xOffset, yOffset);
-            if (app.state.board.cells.coordValid(coord))
+            const vec2i coord = coordBase + vec2i(xOffset, yOffset);
+            if (board.cells.coordValid(coord))
             {
-                BoardCell &cell = app.state.board.cells(coord);
+                const BoardCell &cell = board.cells(coord);
                 Texture *tex = (cell.c != nullptr || cell.blocked) ? database().squareBlocked : database().squareOpen;
-                const rect2f rect = GameUtil::boardToWindowRect(windowDims, coord, 1);
+                const rect2f rect = location.inCircuit() ?
+                    GameUtil::circuitToWindowRect(windowDims, coord, 1) :
+                    GameUtil::boardToWindowRect(windowDims, coord, 1);
                 app.renderer.render(*tex, rect);
             }
         }
@@ -536,28 +552,43 @@ void GameUI::renderComponents(bool background)
 
 void GameUI::renderCharge(const Charge &charge)
 {
+    renderChargeCircuit(charge);
     const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
-
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, windowDims);
-    
-    const float angle = charge.rotationOffset(app.state.stepCount);
-
+    const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-
     app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 {
+    renderExplodingChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, windowDims);
-
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
-
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
-
     const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
-
     app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
+}
+
+void GameUI::renderChargeCircuit(const Charge &charge)
+{
+    if (!charge.source.inCircuit() || !charge.destination.inCircuit()) return;
+    if (activeCircuit() == nullptr || charge.source.boardPos != activeCircuit()->location.boardPos) return;
+
+    const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, windowDims);
+    const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
+    const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
+    app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
+}
+
+void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
+{
+    /*const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, windowDims);
+    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
+    const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
+    const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
+    app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);*/
 }
 
 Component* GameUI::activeCircuit() const

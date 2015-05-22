@@ -61,7 +61,7 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &componentName
         if (isHalfAlphaTexture)
         {
             for (const auto &p : bmp)
-                p.value.a = 95;
+                p.value.a = 105;
         }
         else if (util::startsWith(componentName, "ChargeTexture"))
         {

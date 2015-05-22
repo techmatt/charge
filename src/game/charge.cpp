@@ -7,7 +7,7 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
     source = originLocation;
     destination = originLocation;
     timeInTransit = 0;
-    totalTransitTime = 0;
+    totalTransitTime = 1;
     randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
 
     markedForDeletion = false;
@@ -198,14 +198,21 @@ bool Charge::findBestDestination(GameState &state)
 
     int adjacentCount;
     Component *adjacentComponents[6];
-    if (!destination.inCircuit())
+    if (current->location.inCircuit())
     {
-        state.board.findAdjacentBuildings(destination.boardPos, adjacentComponents, adjacentCount);
+        if (current->info->name == "CircuitBoundary")
+        {
+            // TODO
+            adjacentCount = 0;
+        }
+        else
+        {
+            state.getCircuit(current->location).circuitBoard->findAdjacentBuildings(current->location.boardPos, adjacentComponents, adjacentCount);
+        }
     }
     else
     {
-        //Building *CircuitBuilding = G.CircuitFromLocation(_Destination.Circuit);
-        //CircuitBuilding->CircuitBoard().FindAdjacentBuildings(_Destination.Location, AdjacentBuildings, AdjacentCount);
+        state.board.findAdjacentBuildings(destination.boardPos, adjacentComponents, adjacentCount);
     }
 
     double strongestPreference = 0.0;
@@ -249,9 +256,4 @@ double Charge::computePreference(GameState &state, Component &targetComponent)
         preference = -1000000.0;
 
     return preference;
-}
-
-float Charge::rotationOffset(int gameTick) const
-{
-    return randomRotationOffset + gameTick / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
 }

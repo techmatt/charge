@@ -40,6 +40,7 @@ void GameState::loadPuzzle(const string &filename)
 void GameState::resetPuzzle()
 {
     stepCount = 0;
+    globalRotationOffset = 0.0f;
     charges.clear();
     explodingCharges.clear();
     for (Component *c : components)
@@ -134,7 +135,7 @@ void GameState::step()
         
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
-            explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, (float)charge.timeInTransit / (float)charge.totalTransitTime, charge.level, constants::explodingChargeDuration, charge.rotationOffset(stepCount), stepCount));
+            explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, (float)charge.timeInTransit / (float)charge.totalTransitTime, charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
         }
 
         if (charge.markedForDeletion)
@@ -160,6 +161,15 @@ void GameState::step()
     }
 
     stepCount++;
+    globalRotationOffset += 1.0f / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
+    globalRotationOffset = fmod(globalRotationOffset, 360.0f);
+}
+
+Component& GameState::getCircuit(const GameLocation &pos)
+{
+    Component *c = getComponent(GameLocation(pos.boardPos));
+    MLIB_ASSERT_STR(c != nullptr && c->circuitBoard != nullptr, "circuit not found");
+    return *c;
 }
 
 Component* GameState::getComponent(const GameLocation &pos)
@@ -170,7 +180,7 @@ Component* GameState::getComponent(const GameLocation &pos)
 
     if (pos.inCircuit())
     {
-        MLIB_ASSERT_STR(component != nullptr && component->circuitBoard != nullptr, "No circit at location");
+        MLIB_ASSERT_STR(component != nullptr && component->circuitBoard != nullptr, "no circit at location");
         return component->circuitBoard->cells(pos.circuitPos).c;
     }
     else

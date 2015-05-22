@@ -58,6 +58,7 @@ struct Component
             modifiers.boundary = CircuitBoundaryOpen;
         }
     }
+    ~Component();
 
     void tick();
     void resetPuzzle();

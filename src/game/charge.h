@@ -23,8 +23,6 @@ struct Charge
     
     double computePreference(GameState &state, Component &targetComponent);
 
-    float rotationOffset(int gameTick) const;
-
     ChargeType level;
     GameLocation source, destination;
     int timeInTransit, totalTransitTime;

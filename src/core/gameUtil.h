@@ -89,6 +89,8 @@ public:
         return GameUtil::canonicalToWindow(windowDims, canonical);
     }
 
+    static vec2f miniBoardToWindow(const vec2f &windowDims, const GameLocation &location);
+
     static vec2f circuitToWindow(const vec2f &windowDims, const vec2i &circuitCoord)
     {
         const vec2f canonical = params().circuitCanonicalStart + circuitCoord * params().canonicalCellSize;
@@ -169,6 +171,7 @@ public:
     }
 
     static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
+    static pair<vec2f, float> computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
 
     static vector< map< string, string > > readCSVFile(const string &filename);
 };

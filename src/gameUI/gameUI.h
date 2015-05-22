@@ -55,8 +55,10 @@ private:
     void renderSpokesCircuit(const Component &component);
 
     void renderCharge(const Charge &charge);
-
     void renderExplodingCharge(const ExplodingCharge &charge);
+
+    void renderChargeCircuit(const Charge &charge);
+    void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButton(const GameButton &button, bool selected);
     void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton);

@@ -13,6 +13,8 @@ struct GameState
     void removeComponent(Component *component);
     void step();
 
+    Component& getCircuit(const GameLocation &pos);
+
     Component* getComponent(const GameLocation &pos);
  
     Board board;
@@ -21,4 +23,5 @@ struct GameState
     vector<ExplodingCharge> explodingCharges;
 
     int stepCount;
+    float globalRotationOffset;
 };

@@ -9,6 +9,15 @@ rect2f GameUtil::locationToWindowRect(const vec2f &windowDims, const GameLocatio
         return boardToWindowRect(windowDims, location.boardPos, size);
 }
 
+vec2f GameUtil::miniBoardToWindow(const vec2f &windowDims, const GameLocation &location)
+{
+    const vec2f canonicalStart = params().boardCanonicalStart + location.boardPos * params().canonicalCellSize;
+    const vec2f circuitOffset = vec2f(location.circuitPos) / float(params().circuitDims.x);
+
+    const vec2f canonical = canonicalStart + circuitOffset * (float)params().canonicalCellSize * 2.0f;
+    return GameUtil::canonicalToWindow(windowDims, canonical);
+}
+
 vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
 {
     const auto lines = util::getFileLines(filename);
@@ -39,13 +48,23 @@ vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
 
 pair<vec2f, float> GameUtil::computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims)
 {
-    float scaleFactorA = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
-    float scaleFactorB = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    const float scaleFactorA = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    const float scaleFactorB = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
 
-    vec2f screenA = locationA.toScreenCoord(windowDims);
-    vec2f screenB = locationB.toScreenCoord(windowDims);
+    const vec2f screenA = locationA.toScreenCoordMainBoard(windowDims);
+    const vec2f screenB = locationB.toScreenCoordMainBoard(windowDims);
 
     const vec2f screenPos = math::lerp(screenA, screenB, s);
     const float screenSize = math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(windowDims);
+    return make_pair(screenPos, screenSize);
+}
+
+pair<vec2f, float> GameUtil::computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims)
+{
+    const vec2f screenA = locationA.toScreenCoordCircuitBoard(windowDims);
+    const vec2f screenB = locationB.toScreenCoordCircuitBoard(windowDims);
+
+    const vec2f screenPos = math::lerp(screenA, screenB, s);
+    const float screenSize = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
     return make_pair(screenPos, screenSize);
 }
