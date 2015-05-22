@@ -25,4 +25,6 @@ namespace constants
     static const int explodingChargeDuration = 30;
 
     static const int circuitBoardSize = 14;
+
+	static const double screenAspectRatio = 1.5;  // width/height
 }

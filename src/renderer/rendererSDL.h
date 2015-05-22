@@ -21,6 +21,7 @@ public:
     void setDefaultRenderTarget();
 
     vec2i getWindowSize();
+	vec2i getWindowStart();
 
 private:
     SDL_Renderer *_renderer;
