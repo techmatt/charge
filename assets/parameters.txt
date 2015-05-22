@@ -12,7 +12,7 @@ circuitBackgroundCanonicalBoundarySize = 4
 canonicalCellSize = 16
 
 componentMenuCanonicalStart = 396, 3
-componentMenuCanonicalEntrySize = 35
+componentMenuCanonicalEntrySize = 37
 
 puzzleMenuCanonicalStart = 3, 390
 puzzleMenuCanonicalEntrySize = 24

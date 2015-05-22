@@ -25,10 +25,13 @@ struct GameParameters
         params.readParameter("puzzleMenuCanonicalStart", puzzleMenuCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
+        circuitDims = vec2i(constants::circuitBoardSize, constants::circuitBoardSize);
+
         //
         // derived parameters
         //
         boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(canonicalCellSize) * vec2f(boardDims));
+        circuitCanonicalRect = rect2f(circuitCanonicalStart, circuitCanonicalStart + float(canonicalCellSize) * vec2f(circuitDims));
     }
 
     string assetDir;
@@ -36,6 +39,7 @@ struct GameParameters
     vec2f canonicalDims;
 
     vec2i boardDims;
+    vec2i circuitDims;
 
     vec2f boardCanonicalStart;
     vec2f circuitCanonicalStart;
@@ -52,6 +56,7 @@ struct GameParameters
     // derived parameters
     //
     rect2f boardCanonicalRect;
+    rect2f circuitCanonicalRect;
 
     Database *database;
 };

@@ -44,11 +44,22 @@ void GameUI::keyDown(SDL_Keycode key)
 
 void GameUI::removeHoverComponent()
 {
-    const GameLocation location = hoverBoardLocation(false);
-    if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
+    const GameLocation location = hoverLocation(false);
+    if (location.inCircuit())
     {
-        designActionTaken = true;
-        app.state.removeComponent(app.state.board.cells(location.boardPos).c);
+        if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->cells.coordValid(location.circuitPos) && activeCircuit()->circuitBoard->cells(location.circuitPos).c != nullptr)
+        {
+            designActionTaken = true;
+            app.state.removeComponent(activeCircuit()->circuitBoard->cells(location.circuitPos).c);
+        }
+    }
+    else
+    {
+        if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
+        {
+            designActionTaken = true;
+            app.state.removeComponent(app.state.board.cells(location.boardPos).c);
+        }
     }
 }
 
@@ -115,7 +126,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
 
         if (selectedMenuComponent == nullptr)
         {
-            selectedGameLocation = hoverBoardLocation(false);
+            selectedGameLocation = hoverLocation(false);
         }
         else
         {
@@ -144,7 +155,7 @@ void GameUI::addHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverBoardLocation(true);
+    const GameLocation boardLocation = hoverLocation(true);
     if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
@@ -177,33 +188,41 @@ void GameUI::render()
     renderHoverComponent();
 }
 
-GameLocation GameUI::hoverBoardLocation(bool constructionOffset) const
+GameLocation GameUI::hoverLocation(bool constructionOffset) const
 {
     const vec2f boardCoordf = GameUtil::windowToBoard(windowDims, mouseHoverCoord);
-    //cout << boardCoordf << endl;
+    const vec2f circuitCoordf = GameUtil::windowToCircuit(windowDims, mouseHoverCoord);
 
-    vec2i boardCoordi;
-    if (constructionOffset)
-        boardCoordi = math::round(boardCoordf) - vec2i(1, 1);
-    else
-        boardCoordi = math::floor(boardCoordf);
+    const vec2i boardCoordi = constructionOffset ?
+        math::round(boardCoordf) - vec2i(1, 1) :
+        math::floor(boardCoordf);
 
-    if (!app.state.board.cells.coordValid(boardCoordi))
-        return GameLocation(constants::invalidCoord);
+    const vec2i circuitCoordi = constructionOffset ?
+        math::round(circuitCoordf) - vec2i(1, 1) :
+        math::floor(circuitCoordf);
 
-    return GameLocation(boardCoordi);
+    if (app.state.board.cells.coordValid(boardCoordi))
+        return GameLocation(boardCoordi);
+
+    if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->cells.coordValid(circuitCoordi))
+        return GameLocation(activeCircuit()->location.boardPos, circuitCoordi);
+
+
+    return GameLocation(constants::invalidCoord);
 }
 void GameUI::renderHoverComponent()
 {
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation boardLocation = hoverBoardLocation(true);
+    const GameLocation boardLocation = hoverLocation(true);
     if (boardLocation.boardPos == constants::invalidCoord)
         return;
 
-    const rect2f screenRect = GameUtil::boardToWindowRect(windowDims, boardLocation.boardPos, 2);
+    cout << boardLocation.boardPos << " -- " << boardLocation.circuitPos << endl;
 
+    const rect2f screenRect = GameUtil::locationToWindowRect(windowDims, boardLocation, 2);
+    
     renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false);
 
     for (int xOffset = 0; xOffset <= 1; xOffset++)
@@ -541,9 +560,9 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
-Component* GameUI::activeCircuit()
+Component* GameUI::activeCircuit() const
 {
-    Component *c = app.state.getComponent(selectedGameLocation.boardPos);
+    Component *c = app.state.getComponent(GameLocation(selectedGameLocation.boardPos));
     if (c != nullptr && c->info->name == "Circuit")
     {
         return c;

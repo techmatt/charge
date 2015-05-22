@@ -48,11 +48,21 @@ public:
         return coordinateRemap(params().boardCanonicalRect, rect2f(vec2f::origin(), params().boardDims), v);
     }
 
+    static vec2f canonicalToCircuit(const vec2f &v)
+    {
+        return coordinateRemap(params().circuitCanonicalRect, rect2f(vec2f::origin(), params().circuitDims), v);
+    }
+
     static vec2f windowToBoard(const vec2f &windowDims, const vec2f &v)
     {
         const vec2f canonical = windowToCanonical(windowDims, v);
         return canonicalToBoard(canonical);
-        //return coordinateRemap(rect2f(vec2f::origin(), params().boardDims), params().boardCanonicalRect, v);
+    }
+
+    static vec2f windowToCircuit(const vec2f &windowDims, const vec2f &v)
+    {
+        const vec2f canonical = windowToCanonical(windowDims, v);
+        return canonicalToCircuit(canonical);
     }
 
     static rect2f boardToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
@@ -63,14 +73,16 @@ public:
         return screenRect;
     }
 
-    static rect2f circuitToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
+    static rect2f circuitToWindowRect(const vec2f &windowDims, const vec2i &circuitCoord, int size)
     {
-        const vec2i canonicalBase = params().circuitCanonicalStart + boardCoord * params().canonicalCellSize;
+        const vec2i canonicalBase = params().circuitCanonicalStart + circuitCoord * params().canonicalCellSize;
         const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().canonicalCellSize, params().canonicalCellSize));
         const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
         return screenRect;
     }
 
+    static rect2f locationToWindowRect(const vec2f &windowDims, const GameLocation &location, int size);
+    
     static vec2f boardToWindow(const vec2f &windowDims, const vec2i &boardCoord)
     {
         const vec2f canonical = params().boardCanonicalStart + boardCoord * params().canonicalCellSize;

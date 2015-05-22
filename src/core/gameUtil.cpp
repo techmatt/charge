@@ -1,6 +1,14 @@
 
 #include "main.h"
 
+rect2f GameUtil::locationToWindowRect(const vec2f &windowDims, const GameLocation &location, int size)
+{
+    if (location.inCircuit())
+        return circuitToWindowRect(windowDims, location.circuitPos, size);
+    else
+        return boardToWindowRect(windowDims, location.boardPos, size);
+}
+
 vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
 {
     const auto lines = util::getFileLines(filename);

@@ -66,9 +66,9 @@ private:
 
     void addHoverComponent();
 
-    Component* activeCircuit();
+    Component* activeCircuit() const;
 
-    GameLocation hoverBoardLocation(bool constructionOffset) const;
+    GameLocation hoverLocation(bool constructionOffset) const;
 
     GameMode mode;
     GameSpeed speed;

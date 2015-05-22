@@ -58,20 +58,20 @@ void GameState::addNewComponent(Component *component)
         component->circuitBoard = new Board();
         component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
 
-        const int circuitEdge = constants::circuitBoardSize - 3;
+        const int circuitEdge = constants::circuitBoardSize - 2;
         for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)
         {
             Component *boundaryA = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, 0)));
             addNewComponent(boundaryA);
 
-            //Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
-            //addNewComponent(boundaryB);
+            Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
+            addNewComponent(boundaryB);
 
             Component *boundaryC = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(0, i)));
             addNewComponent(boundaryC);
 
-            //Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
-            //addNewComponent(boundaryD);
+            Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
+            addNewComponent(boundaryD);
         }
     }
 }
@@ -80,6 +80,11 @@ void GameState::removeComponent(Component *component)
 {
     for (auto &cell : board.cells)
     {
+        if (cell.value.c != nullptr && cell.value.c->circuitBoard != nullptr)
+        {
+            for (auto &cellInner : cell.value.c->circuitBoard->cells)
+                if (cellInner.value.c == component) cellInner.value.c = nullptr;
+        }
         if (cell.value.c == component) cell.value.c = nullptr;
     }
 
@@ -159,14 +164,17 @@ void GameState::step()
 
 Component* GameState::getComponent(const GameLocation &pos)
 {
-    if (pos == constants::invalidCoord) return nullptr;
+    if (!pos.valid()) return nullptr;
+
+    Component *component = board.cells(pos.boardPos).c;
 
     if (pos.inCircuit())
     {
-        return board.cells(pos.boardPos).c->circuitBoard->cells(pos.circuitPos).c;
+        MLIB_ASSERT_STR(component != nullptr && component->circuitBoard != nullptr, "No circit at location");
+        return component->circuitBoard->cells(pos.circuitPos).c;
     }
     else
     {
-        return board.cells(pos.boardPos).c;
+        return component;
     }
 }

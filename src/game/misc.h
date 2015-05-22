@@ -6,12 +6,12 @@ struct GameLocation
         boardPos = constants::invalidCoord;
         circuitPos = constants::invalidCoord;
     }
-    GameLocation(const vec2i &_boardPos)
+    explicit GameLocation(const vec2i &_boardPos)
     {
         boardPos = _boardPos;
         circuitPos = constants::invalidCoord;
     }
-    GameLocation(const vec2i &_boardPos, const vec2i &_circuitPos)
+    explicit GameLocation(const vec2i &_boardPos, const vec2i &_circuitPos)
     {
         boardPos = _boardPos;
         circuitPos = _circuitPos;
@@ -31,6 +31,11 @@ struct GameLocation
     vec2f toScreenCoord(const vec2f &windowDims) const
     {
         return GameUtil::boardToWindow(windowDims, boardPos + vec2i(1, 1));
+    }
+
+    bool valid() const
+    {
+        return boardPos != constants::invalidCoord;
     }
 };
 
