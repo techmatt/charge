@@ -3,6 +3,13 @@
 
 void RendererSDL::init(SDL_Window *window)
 {
+    _context = SDL_GL_CreateContext(window);
+    if (_context == nullptr)
+    {
+        SDL::logError("CreateContext");
+        SDL_Quit();
+    }
+
 	_window = window;
 	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (_renderer == nullptr)
@@ -61,6 +68,7 @@ void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angl
 void RendererSDL::present()
 {
 	SDL_RenderPresent(_renderer);
+    SDL_GL_SwapWindow(_window);
 }
 
 void RendererSDL::setRenderTarget(Texture &target)
