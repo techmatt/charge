@@ -13,15 +13,16 @@ public:
     }
 
     void render(Texture &tex, int x, int y);
-	void render(Texture &tex, const rect2i &destinationRect);
-    void render(Texture &tex, const rect2i &destinationRect, float angle);
-	void render(Texture &tex, const rect2f &destinationRect);
+	void render(Texture &tex, const rect2i &destinationRect, CoordinateFrame &frame);
+	void render(Texture &tex, const rect2i &destinationRect, float angle, CoordinateFrame &frame);
+	void render(Texture &tex, const rect2f &destinationRect, CoordinateFrame &frame);
+	void render(Texture &tex, const rect2f &destinationRect, float angle, CoordinateFrame &frame);
 	void present();
     void setRenderTarget(Texture &target);
     void setDefaultRenderTarget();
 
-    vec2i getWindowSize();
-	vec2i getWindowStart();
+    vec2i getWindowSize();				// this now returns the canonical dimensions always, for backwards compatability
+	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
 private:
     SDL_Renderer *_renderer;

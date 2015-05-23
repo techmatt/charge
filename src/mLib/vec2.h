@@ -137,6 +137,10 @@ public:
         return vec2(l.array[0] * r.array[0], l.array[1] * r.array[1]);
     }
 
+	static inline vec2 directQuotient(const vec2& l, const vec2& r) {
+		return vec2(l.array[0] / r.array[0], l.array[1] / r.array[1]);
+	}
+
 	inline T& operator[](unsigned int i) {
         MLIB_ASSERT(i < 2);
 		return array[i];

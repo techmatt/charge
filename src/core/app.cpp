@@ -10,8 +10,8 @@ int App::run()
     }
 
     //Setup our window and renderer
-    int windowHeight = 1080;
-    int windowWidth = math::round(windowHeight * (float)params().canonicalDims.x / params().canonicalDims.y);
+    int windowHeight = math::round(params().canonicalDims.y);
+    int windowWidth = math::round(params().canonicalDims.x);
 	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE);
 
     if (window == nullptr)

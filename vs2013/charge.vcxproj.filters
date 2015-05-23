@@ -72,6 +72,9 @@
     <ClCompile Include="..\src\game\explodingCharge.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameUI\coordinates.cpp">
+      <Filter>gameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="..\src\mLib\parameterTable.h">
       <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\coordinates.h">
+      <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

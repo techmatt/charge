@@ -25,6 +25,7 @@ class Texture;
 #include "game/enums.h"
 #include "core/constants.h"
 
+#include "gameUI/coordinates.h"
 #include "core/parameters.h"
 #include "game/database.h"
 #include "core/gameUtil.h"

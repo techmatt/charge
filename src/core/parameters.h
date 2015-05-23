@@ -32,6 +32,12 @@ struct GameParameters
         //
         boardCanonicalRect = rect2f(boardCanonicalStart, boardCanonicalStart + float(canonicalCellSize) * vec2f(boardDims));
         circuitCanonicalRect = rect2f(circuitCanonicalStart, circuitCanonicalStart + float(canonicalCellSize) * vec2f(circuitDims));
+
+		// The canonical frame covers the rendered area and runs from 0,0 to params().canonicalDims
+		boardInWindow = CoordinateFrame(boardCanonicalRect, vec2f(boardDims));
+		componentMenuInWindow = CoordinateFrame(boardCanonicalRect);
+		puzzleMenuInWindow = CoordinateFrame(puzzleMenuCanonicalStart);
+		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
 
     string assetDir;
@@ -51,6 +57,11 @@ struct GameParameters
 
     vec2f puzzleMenuCanonicalStart;
     int puzzleMenuCanonicalEntrySize;
+
+	CoordinateFrame boardInWindow;
+	CoordinateFrame componentMenuInWindow;
+	CoordinateFrame puzzleMenuInWindow;
+	CoordinateFrame circuitInWindow;
 
     //
     // derived parameters

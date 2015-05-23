@@ -31,6 +31,7 @@ public:
     rect2f transform(const GameLocation &in, int cellSize, CoordinateFrame start, CoordianteFrame end, const vec2i &windowDims)
 
     */
+	
 
     static vec2f coordinateRemap(const vec2f &dimStart, const vec2f &dimEnd, const vec2f &v)
     {

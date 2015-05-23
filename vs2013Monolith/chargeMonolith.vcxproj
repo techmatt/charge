@@ -87,9 +87,9 @@
   <ItemGroup>
     <ClInclude Include="..\src\core\app.h" />
     <ClInclude Include="..\src\core\SDLUtil.h" />
+    <ClInclude Include="..\src\gameUI\coordinates.h" />
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\game\board.h" />
-    <ClInclude Include="..\src\game\circuit.h" />
     <ClInclude Include="..\src\game\component.h" />
     <ClInclude Include="..\src\game\gameState.h" />
     <ClInclude Include="..\src\main.h" />
@@ -107,6 +107,7 @@
     <ClInclude Include="..\src\renderer\texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\gameUI\coordinates.cpp" />
     <ClCompile Include="..\src\monolith.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -21,9 +21,6 @@
     <ClInclude Include="..\src\game\board.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\game\circuit.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\game\component.h">
       <Filter>game</Filter>
     </ClInclude>
@@ -78,8 +75,10 @@
     <ClInclude Include="..\src\gameUI\gameUI.h">
       <Filter>gameUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\gameUI\coordinates.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\monolith.cpp" />
+    <ClCompile Include="..\src\gameUI\coordinates.cpp" />
   </ItemGroup>
 </Project>

@@ -25,31 +25,37 @@ void RendererSDL::render(Texture &tex, int x, int y)
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, CoordinateFrame &frame)
 {
-	render(tex, rect2i(destinationRect.min(), destinationRect.max()));
-}
-
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect)
-{
+	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
-	dst.x = destinationRect.min().x;
-	dst.y = destinationRect.min().y;
-	dst.w = destinationRect.extentX();
-	dst.h = destinationRect.extentY();
+	dst.x = (int) (transformedDestinationRect.min().x);
+	dst.y = (int) (transformedDestinationRect.min().y);
+	dst.w = (int) (transformedDestinationRect.max().x)-dst.x;
+	dst.h = (int) (transformedDestinationRect.max().y)-dst.y;
 
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle)
+void RendererSDL::render(Texture &tex, const rect2i &destinationRect, CoordinateFrame &frame)
 {
+	render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
+}
+
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, CoordinateFrame &frame)
+{
+	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
-	dst.x = destinationRect.min().x;
-	dst.y = destinationRect.min().y;
-	dst.w = destinationRect.extentX();
-	dst.h = destinationRect.extentY();
+	dst.x = (int)transformedDestinationRect.min().x;
+	dst.y = (int)transformedDestinationRect.min().y;
+	dst.w = (int)transformedDestinationRect.extentX();
+	dst.h = (int)transformedDestinationRect.extentY();
 
 	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+}
+void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle, CoordinateFrame &frame)
+{
+	render(tex, rect2f(destinationRect.min(), destinationRect.max()),angle, frame);
 }
 
 void RendererSDL::present()
@@ -67,57 +73,38 @@ void RendererSDL::setDefaultRenderTarget()
 	SDL_SetRenderTarget(_renderer, NULL);
 }
 
-//vec2i RendererSDL::getRenderTargetDimensions()
-//{
-//    SDL_Texture* target = SDL_GetRenderTarget(_renderer);
-//
-//    int width, height;
-//    Uint32 format;
-//    int access;
-//    SDL_QueryTexture(target, &format, &access, &width, &height);
-//
-//    return vec2i(width, height);
-//}
-
 vec2i RendererSDL::getWindowSize()
 {
-	vec2i result;
-	SDL_GetWindowSize(_window, &result.x, &result.y);
-
-	double width = (double)result.x;
-	double height = (double)result.y;
-
-	if (width > constants::screenAspectRatio * height)
-		result.x = (int) (height * constants::screenAspectRatio);
-	else
-		result.y = (int) floor(width / constants::screenAspectRatio);
-	
-	return result;
+	return vec2f(params().canonicalDims);
 }
 
-vec2i RendererSDL::getWindowStart()
+CoordinateFrame RendererSDL::getWindowCoordinateFrame()
 {
 	vec2i result;
-	SDL_GetWindowSize(_window, &result.x, &result.y);
+	SDL_GetWindowSize(_window, &result.x, &result.y);  // the actual window size
 
-	double width = (double)result.x;
-	double height = (double)result.y;
+	float height = (float)result.x;
+	float width = (float)result.y;
 
-	int dim;
+	vec2i canonical = RendererSDL::getWindowSize();   // the canonical window size
 
-	if (width > constants::screenAspectRatio * height)
+	float aspectRatio = ((float) canonical.y) / (float) canonical.x;
+
+	vec2f start;
+	vec2f end;
+
+	if (width > aspectRatio * height)
 	{
-		dim = floor(height * constants::screenAspectRatio);
-		result.x = floor((width - ((double)dim)) / 2.);
-		result.y = 0;
+		start = vec2f(0.0f,(width - height*aspectRatio) / 2.0f);
+		end = vec2f(height, (width + height*aspectRatio) / 2.0f);
 	}
-
 	else
 	{
-		dim = floor(width / constants::screenAspectRatio);
-		result.x = floor((width - ((double)dim)) / 2.);
-		result.y = 0;
+		start = vec2f((height - width/aspectRatio) / 2.0f,0.0f);
+		end = vec2f((height + width / aspectRatio) / 2.0f, width);
 	}
 
-	return result;
+	CoordinateFrame out = CoordinateFrame(start, end, vec2f(canonical));
+
+	return out;
 }

@@ -77,6 +77,7 @@ private:
 
     Texture background;
 	vec2i windowDims;
+	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vec2i mouseHoverCoord;
 
