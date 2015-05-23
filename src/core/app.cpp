@@ -18,7 +18,7 @@ int App::run()
     //Setup our window and renderer
     int windowHeight = math::round(params().canonicalDims.y);
     int windowWidth = math::round(params().canonicalDims.x);
-    SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
 
     if (window == nullptr)
     {

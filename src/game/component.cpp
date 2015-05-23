@@ -3,7 +3,10 @@
 
 Component::~Component()
 {
-    if (circuitBoard) delete circuitBoard;
+	if (circuitBoard)
+	{
+		delete circuitBoard;
+	}
 }
 
 void Component::resetPuzzle()

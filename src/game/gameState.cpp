@@ -57,7 +57,8 @@ void GameState::addNewComponent(Component *component)
     if (component->info->name == "Circuit")
     {
         component->circuitBoard = new Board();
-        component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
+		//component->circuitBoardFrame = new CoordinateFrame(component->location.boardPos, component->location.boardPos + 1, params().circuitDims);
+		component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
 
         const int circuitEdge = constants::circuitBoardSize - 2;
         for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)

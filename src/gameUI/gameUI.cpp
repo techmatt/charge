@@ -67,6 +67,8 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
 {
 	CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float) x,(float) y)));
+	x = mouseHoverCoord.x;
+	y = mouseHoverCoord.y;
 
     if (button == SDL_BUTTON_RIGHT)
     {
@@ -138,7 +140,10 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
 
 void GameUI::mouseMove(Uint32 buttonState, int x, int y)
 {
-    mouseHoverCoord = vec2i(x, y);
+	CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
+	mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
+	x = mouseHoverCoord.x;
+	y = mouseHoverCoord.y;
 
     if (buttonState & SDL_BUTTON_LMASK)
     {
@@ -328,11 +333,11 @@ void GameUI::updateBackground()
     windowDims = app.renderer.getWindowSize();
 	coordinateFrame = app.renderer.getWindowCoordinateFrame();
 
-	if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowDims)
+	/*if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowDims)
     {
 		cout << "Resizing render target: " << windowDims << endl;
 		background.loadRenderTarget(windowDims.x, windowDims.y);
-    }
+    }*/
 
 	updateButtonList();
 
@@ -438,14 +443,17 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
 void GameUI::renderComponent(const Component &component)
 {
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    
+   
     if (component.location.inCircuit())
     {
-        if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
+        // if the component is in the active circuit, render it in the selected circuit area
+		if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
         {
             const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, component.location.circuitPos, 2);
             renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
         }
+		// regardless, we'll need to render it in the main grid, but we'll wait until later
+
     }
     else
     {
@@ -453,6 +461,17 @@ void GameUI::renderComponent(const Component &component)
         renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
     }
 }
+void GameUI::renderCircuitComponent(const Component &component)
+{
+	if (!component.location.inCircuit())
+		return;
+	CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+	rect2f rect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
+	const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(rect));
+	renderLocalizedComponent(component.info->name, screenRect, component.modifiers, false, false);
+}
+
+
 
 void GameUI::renderSpokes(const Component &component)
 {
@@ -552,6 +571,13 @@ void GameUI::renderComponents(bool background)
             renderComponent(*component);
         }
     }
+	for (auto &component : app.state.components)
+	{
+		if (component->info->background == background)
+		{
+			renderCircuitComponent(*component);
+		}
+	}
 }
 
 void GameUI::renderCharge(const Charge &charge)

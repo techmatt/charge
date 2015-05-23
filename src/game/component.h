@@ -50,7 +50,7 @@ struct Component
         lastChargeVisit = 0;
         deathTrapTimeLeft = 0;
         circuitBoard = nullptr;
-
+		
         resetPowerSource();
         
         if (name == "CircuitBoundary")
