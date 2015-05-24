@@ -14,25 +14,35 @@ void GameState::init()
 {
     clearBoard();
 
-    circuitBoundaryNeighborOffsetTable.allocate(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2, constants::invalidCoord);
+    auto &tableA = circuitBoundaryNeighborOffsetTable;
+    auto &tableB = circuitBoundaryNeighborOffsetTableAligned;
+    tableA.allocate(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2, constants::invalidCoord);
+    tableB = tableA;
 
-    auto &table = circuitBoundaryNeighborOffsetTable;
+    tableA(0, 1) = vec2i(-2, -1);
+    tableA(0, 3) = vec2i(-2, 0);
+    tableA(0, 5) = vec2i(-2, 1);
 
-    table(0, 1) = vec2i(-2, -1);
-    table(0, 3) = vec2i(-2, 0);
-    table(0, 5) = vec2i(-2, 1);
+    tableA(6, 1) = vec2i(2, -1);
+    tableA(6, 3) = vec2i(2, 0);
+    tableA(6, 5) = vec2i(2, 1);
 
-    table(6, 1) = vec2i(2, -1);
-    table(6, 3) = vec2i(2, 0);
-    table(6, 5) = vec2i(2, 1);
+    tableA(1, 0) = vec2i(-1, -2);
+    tableA(3, 0) = vec2i(0, -2);
+    tableA(5, 0) = vec2i(1, -2);
 
-    table(1, 0) = vec2i(-1, -2);
-    table(3, 0) = vec2i(0, -2);
-    table(5, 0) = vec2i(1, -2);
+    tableA(1, 6) = vec2i(-1, 2);
+    tableA(3, 6) = vec2i(0, 2);
+    tableA(5, 6) = vec2i(1, 2);
 
-    table(1, 6) = vec2i(-1, 2);
-    table(3, 6) = vec2i(0, 2);
-    table(5, 6) = vec2i(1, 2);
+    
+    for (int i = 1; i <= 5; i++)
+    {
+        tableB(0, i) = vec2i(-2, 0);
+        tableB(6, i) = vec2i(2, 0);
+        tableB(i, 0) = vec2i(0, -2);
+        tableB(i, 6) = vec2i(0, 2);
+    }
 }
 
 void GameState::savePuzzle(const string &filename)
@@ -222,7 +232,7 @@ Component& GameState::getCircuit(const GameLocation &pos)
     return *c;
 }
 
-Component* GameState::getComponent(const GameLocation &pos)
+Component* GameState::getComponent(const GameLocation &pos, bool skipInactiveBoundary)
 {
     if (!pos.valid()) return nullptr;
 
@@ -230,8 +240,14 @@ Component* GameState::getComponent(const GameLocation &pos)
 
     if (pos.inCircuit())
     {
-        MLIB_ASSERT_STR(component != nullptr && component->circuitBoard != nullptr, "no circit at location");
-        return component->circuitBoard->cells(pos.circuitPos).c;
+        if (component == nullptr || component->circuitBoard == nullptr)
+        {
+            return nullptr;
+        }
+        Component *result = component->circuitBoard->cells(pos.circuitPos).c;
+        if (skipInactiveBoundary && result != nullptr && result->inactiveBoundary())
+            return nullptr;
+        return result;
     }
     else
     {
@@ -241,6 +257,10 @@ Component* GameState::getComponent(const GameLocation &pos)
 
 Component* GameState::findCircuitBoundaryNeighbor(Component &component)
 {
+    Component *alignedResult = findCircuitBoundaryNeighborAligned(component);
+    if (alignedResult != nullptr)
+        return alignedResult;
+
     const auto &table = circuitBoundaryNeighborOffsetTable;
     const vec2i worldOffset = table(component.location.circuitPos / 2);
     const vec2i worldCoord = worldOffset + component.location.boardPos;
@@ -252,6 +272,26 @@ Component* GameState::findCircuitBoundaryNeighbor(Component &component)
     Component *result = board.cells(worldCoord).c;
 
     if (result != nullptr && result->location.boardPos == worldCoord)
+        // TODO: for circuits, this needs to introspect into the circuit
+        return result;
+    else
+        return nullptr;
+}
+
+Component* GameState::findCircuitBoundaryNeighborAligned(Component &component)
+{
+    const auto &table = circuitBoundaryNeighborOffsetTableAligned;
+    const vec2i worldOffset = table(component.location.circuitPos / 2);
+    const vec2i worldCoord = worldOffset + component.location.boardPos;
+
+    if (worldOffset == constants::invalidCoord ||
+        !board.cells.coordValid(worldCoord))
+        return nullptr;
+
+    Component *result = board.cells(worldCoord).c;
+
+    if (result != nullptr && result->location.boardPos == worldCoord && result->info->name == "Circuit")
+        // TODO: this returns the circuit, but not the mapping into the circuit
         return result;
     else
         return nullptr;

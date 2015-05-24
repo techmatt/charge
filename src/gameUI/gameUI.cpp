@@ -69,8 +69,6 @@ void GameUI::removeHoverComponent()
             app.state.removeComponent(app.state.board.cells(location.boardPos).c);
         }
     }
-
-    selectedGameLocation.boardPos = constants::invalidCoord;
 }
 
 void GameUI::mouseDown(Uint8 button, int x, int y)
@@ -118,6 +116,11 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 {
                     designActionTaken = true;
                     gameComponent->modifiers.speed = button.modifiers.speed;
+                }
+                if (button.type == ButtonCircuitBoundary && gameComponent != nullptr)
+                {
+                    designActionTaken = true;
+                    gameComponent->modifiers.boundary = button.modifiers.boundary;
                 }
                 if (button.name == "Start")
                 {
@@ -177,7 +180,9 @@ void GameUI::addHoverComponent()
 
     if (location.inCircuit())
     {
-        if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos))
+        if (activeCircuit() != nullptr &&
+            activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos) &&
+            selectedMenuComponent->name != "Circuit")
         {
             Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
             app.state.addNewComponent(newComponent);
@@ -304,9 +309,12 @@ void GameUI::updateButtonList()
         if (info.grayUpgrade)
             chargeLevels.push_back(ChargeGray);
 
-        for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
+        if (selectedGameComponent->info->name != "Circuit")
         {
-            buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+            for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
+            {
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+            }
         }
 
         if (info.name == "Wire")
@@ -381,9 +389,13 @@ void GameUI::updateBackground()
 	{
         bool selected = false;
         selected |= (selectedMenuComponent != nullptr && button.component == selectedMenuComponent);
-        selected |= (gameComponent != nullptr && button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-        selected |= (gameComponent != nullptr && button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
-        selected |= (gameComponent != nullptr && button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
+        if (gameComponent != nullptr)
+        {
+            selected |= (button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
+        }
         renderButton(button, selected);
 	}
 
@@ -413,7 +425,7 @@ void GameUI::renderBuildingGrid()
             const bool yBoundary = (cell.y == 0 || cell.y == 1 || cell.y == constants::circuitBoardSize - 1 || cell.y == constants::circuitBoardSize - 2);
             const bool corner = xBoundary && yBoundary;
             const bool inactiveBoundary = (cell.value.c != nullptr && cell.value.c->inactiveBoundary());
-            if (!corner && !inactiveBoundary)
+            if (!corner && !inactiveBoundary) //if (!xBoundary && !yBoundary)
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, vec2i(cell.x, cell.y), 1);
 				app.renderer.render(border, screenRect, coordinateFrame);
@@ -445,7 +457,7 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
     
 	app.renderer.render(preferenceTex, screenRect, coordinateFrame);
 
-    if (name != "Blocker")
+    if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
 		app.renderer.render(baseTex, screenRect, coordinateFrame);
 
 	app.renderer.render(componentTex, screenRect, coordinateFrame);
