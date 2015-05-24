@@ -209,8 +209,9 @@ LegacyComponentInfo getLegacyInfo(LegacyComponentType type)
 
     case ComponentBlocker: return LegacyComponentInfo("Blocker");
 
+    //NOTE: I am not sure where exactly ComponentCircuitBoundaryOpen occurs; Open components seem to actually be represented as Base.
     case ComponentCircuitBoundaryOpen: return LegacyComponentInfo(CircuitBoundaryOpen);
-    case ComponentCircuitBoundaryBase: return LegacyComponentInfo(CircuitBoundaryInactive);
+    case ComponentCircuitBoundaryBase: return LegacyComponentInfo(CircuitBoundaryOpen);
     case ComponentCircuitBoundaryBlocked: return LegacyComponentInfo(CircuitBoundaryClosed);
 
     case ComponentHold: return LegacyComponentInfo("Hold");

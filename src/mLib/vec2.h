@@ -101,8 +101,7 @@ public:
 	}
 
 	inline vec2<T> operator/(T val) const {
-		T inv = (T)1/val;
-		return vec2<T>(array[0]*inv, array[1]*inv);
+		return vec2<T>(array[0] / val, array[1] / val);
 	}
 
 	inline vec2<T> operator-(const vec2& other) const {

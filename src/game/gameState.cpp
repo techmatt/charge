@@ -13,6 +13,13 @@ void GameState::clearBoard()
 void GameState::init()
 {
     clearBoard();
+
+    circuitBoundaryNeighborOffsetTable.allocate(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2, constants::invalidCoord);
+
+    auto &table = circuitBoundaryNeighborOffsetTable;
+    table(6, 1) = vec2i(2, -1);
+    table(6, 3) = vec2i(2, 0);
+    table(6, 5) = vec2i(2, 1);
 }
 
 void GameState::savePuzzle(const string &filename)
@@ -52,7 +59,6 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents)
     components.push_back(component);
 
     board.addNewComponent(component);
-    board.updateBlockedGrid();
 
     if (component->info->name == "Circuit")
     {
@@ -79,10 +85,16 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents)
             }
         }
     }
+
+    board.updateBlockedGrid();
+    updateCircuitBoundaries();
 }
 
 void GameState::removeComponent(Component *component)
 {
+    //
+    // TODO: make sure circuit's components are deleted correctly.
+    //
     for (auto &cell : board.cells)
     {
         if (cell.value.c != nullptr && cell.value.c->circuitBoard != nullptr)
@@ -98,6 +110,7 @@ void GameState::removeComponent(Component *component)
     delete component;
 
     board.updateBlockedGrid();
+    updateCircuitBoundaries();
 }
 
 void GameState::step()
@@ -190,5 +203,32 @@ Component* GameState::getComponent(const GameLocation &pos)
     else
     {
         return component;
+    }
+}
+
+Component* GameState::findCircuitBoundaryNeighbor(Component &component)
+{
+    const auto &table = circuitBoundaryNeighborOffsetTable;
+    const vec2i worldOffset = table(component.location.circuitPos / 2);
+    const vec2i worldCoord = worldOffset + component.location.boardPos;
+
+    if (worldOffset == constants::invalidCoord ||
+        !board.cells.coordValid(worldCoord))
+        return nullptr;
+
+    Component *result = board.cells(worldCoord).c;
+
+    if (result != nullptr && result->location.boardPos == worldCoord)
+        return result;
+    else
+        return nullptr;
+}
+
+void GameState::updateCircuitBoundaries()
+{
+    for (Component *c : components)
+    {
+        if (c->info->name == "CircuitBoundary")
+            c->circuitBoundaryNeighbor = findCircuitBoundaryNeighbor(*c);
     }
 }

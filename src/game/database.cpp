@@ -43,8 +43,6 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &componentName
 
     if (modifiers.boundary == CircuitBoundaryInvalid && componentName == "CircuitBoundary") // this is when the boundary is rendered as part of a UI button
         baseTextureName += "Open";
-    if (modifiers.boundary == CircuitBoundaryInactive)
-        baseTextureName += "Inactive";
     if (modifiers.boundary == CircuitBoundaryOpen)
         baseTextureName += "Open";
     if (modifiers.boundary == CircuitBoundaryClosed)

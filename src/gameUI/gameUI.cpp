@@ -400,7 +400,9 @@ void GameUI::renderBuildingGrid()
         {
             const bool xBoundary = (cell.x == 0 || cell.x == 1 || cell.x == constants::circuitBoardSize - 1 || cell.x == constants::circuitBoardSize - 2);
             const bool yBoundary = (cell.y == 0 || cell.y == 1 || cell.y == constants::circuitBoardSize - 1 || cell.y == constants::circuitBoardSize - 2);
-            if (!xBoundary || !yBoundary)
+            const bool corner = xBoundary && yBoundary;
+            const bool inactiveBoundary = (cell.value.c != nullptr && cell.value.c->inactiveBoundary());
+            if (!corner && !inactiveBoundary)
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, vec2i(cell.x, cell.y), 1);
 				app.renderer.render(border, screenRect, coordinateFrame);
@@ -453,8 +455,11 @@ void GameUI::renderComponent(const Component &component)
         // if the component is in the active circuit, render it in the selected circuit area
 		if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
         {
-            const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, component.location.circuitPos, 2);
-            renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
+            if (!component.inactiveBoundary())
+            {
+                const rect2f screenRect = GameUtil::circuitToWindowRect(windowDims, component.location.circuitPos, 2);
+                renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false);
+            }
         }
 		// regardless, we'll need to render it in the main grid, but we'll wait until later
 

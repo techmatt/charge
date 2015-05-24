@@ -18,7 +18,6 @@ enum WireSpeedType
 enum CircuitBoundaryType
 {
     CircuitBoundaryInvalid,
-    CircuitBoundaryInactive,
     CircuitBoundaryOpen,
     CircuitBoundaryClosed,
 };

@@ -50,6 +50,7 @@ struct Component
         lastChargeVisit = 0;
         deathTrapTimeLeft = 0;
         circuitBoard = nullptr;
+        circuitBoundaryNeighbor = nullptr;
 		
         resetPowerSource();
         
@@ -64,6 +65,11 @@ struct Component
     void resetPuzzle();
     void resetPowerSource();
     bool willAcceptCharge(GameState &state, const Charge &charge);
+
+    bool inactiveBoundary() const
+    {
+        return (info->name == "CircuitBoundary" && circuitBoundaryNeighbor == nullptr);
+    }
 
     ParameterTable toTable(const string &tableName) const;
 
@@ -101,4 +107,11 @@ struct Component
     //
     int timeUntilEmission;
     int totalChargesRemaining;
+
+    //
+    // The component on the other end of a circuit boundary connection. This can be derived
+    // from the board state, but is accessed often enough that it is convenient
+    // to store it here.
+    //
+    Component *circuitBoundaryNeighbor;
 };
