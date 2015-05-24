@@ -188,6 +188,9 @@
     <ClInclude Include="..\src\mLib\GLUtil.h">
       <Filter>mLib</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mLib\GLQuad.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />
