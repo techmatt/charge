@@ -1,12 +1,9 @@
 
 #include "main.h"
 
-/* Ensure we are using opengl's core profile only */
 // TODO: try and link glew statically instead
 //#define GL3_PROTOTYPES 1
 #include <gl/glew.h>
-
-#include <SDL.h>
 
 /* A simple function that will read a file into an allocated char pointer buffer */
 char* filetobuf(char *file)
@@ -244,10 +241,13 @@ int App::run()
     //
     // DO NOT set these, they will cause glewInit to fail
     //
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    if (!useOpenGL)
+    {
+        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
+    }
 
     //Setup our window and renderer
     int windowHeight = math::round(params().canonicalDims.y) * 2;
@@ -273,18 +273,10 @@ int App::run()
     GLenum err = glewInit();
     MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
 
-    cout << "GLEW version: " << glewGetString(GLEW_VERSION) << endl;
+    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
+    MLIB_ASSERT_STR(!(useOpenGL && VAOSupported != 0), "GL_ARB_vertex_array_object not supported");
 
-    int b = glewIsSupported("GL_ARB_vertex_array_object");
-    int c = glewIsSupported("GL_ARB_fragment_program");
-    
-    int a = GLEW_ARB_vertex_array_object;
-    int z = GLEW_ARB_fragment_program;
-    int z1 = GLEW_ARB_fragment_shader;
-    if (GLEW_ARB_vertex_array_object)
-    {
-        int a = 5;
-    }
+    //cout << "GLEW version: " << glewGetString(GLEW_VERSION) << endl;
     
     //drawscene(window);
 
