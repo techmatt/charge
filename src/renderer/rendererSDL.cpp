@@ -10,6 +10,10 @@ void RendererSDL::init(SDL_Window *window)
         SDL_Quit();
     }
 
+    SDL_GL_SetSwapInterval(1);
+
+    SDL_GL_MakeCurrent(window, _context);
+
 	_window = window;
 	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (_renderer == nullptr)
