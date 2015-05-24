@@ -5,6 +5,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+// TODO: try and link glew statically instead
+//#define GL3_PROTOTYPES 1
+#include <gl/glew.h>
+
 #include "mLib/mLib.h"
 
 using namespace std;
