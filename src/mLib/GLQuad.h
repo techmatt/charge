@@ -10,11 +10,11 @@ public:
             { 0.0, -1.0 }, /* Bottom point */
             { -1.0, 0.0 } }; /* Left point */
 
-        static const float colors[4][3] = {
-            { 1.0, 0.0, 0.0 }, /* Red */
-            { 0.0, 1.0, 0.0 }, /* Green */
-            { 0.0, 0.0, 1.0 }, /* Blue */
-            { 1.0, 1.0, 1.0 } }; /* White */
+        static const float texCoords[4][2] = {
+            { 0.0, 0.0, }, /* Red */
+            { 0.0, 1.0, }, /* Green */
+            { 1.0, 1.0, }, /* Blue */
+            { 1.0, 0.0, } }; /* White */
 
         /* Allocate and assign a Vertex Array Object to our handle */
         glGenVertexArrays(1, &vao);
@@ -43,10 +43,10 @@ public:
 
         /* Copy the color data from colors to our buffer */
         /* 12 * sizeof(GLfloat) is the size of the colors array, since it contains 12 GLfloat values */
-        glBufferData(GL_ARRAY_BUFFER, 12 * sizeof(GLfloat), colors, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), texCoords, GL_STATIC_DRAW);
 
         /* Specify that our color data is going into attribute index 1, and contains three floats per vertex */
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
         /* Enable attribute index 1 as being used */
         glEnableVertexAttribArray(1);
@@ -55,7 +55,7 @@ public:
     void render()
     {
         /* Invoke glDrawArrays telling that our data is a line loop and we want to draw 2-4 vertexes */
-        glDrawArrays(GL_LINE_LOOP, 0, 4);
+        glDrawArrays(GL_QUADS, 0, 4);
     }
 
 private:

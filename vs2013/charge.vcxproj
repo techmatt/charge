@@ -134,7 +134,6 @@
     <ClInclude Include="..\src\mLib\common.h" />
     <ClInclude Include="..\src\mLib\GLProgram.h" />
     <ClInclude Include="..\src\mLib\GLQuad.h" />
-    <ClInclude Include="..\src\mLib\GLUtil.h" />
     <ClInclude Include="..\src\mLib\grid2.h" />
     <ClInclude Include="..\src\mLib\imageLoaderLodePNG.h" />
     <ClInclude Include="..\src\mLib\lodepng.h" />

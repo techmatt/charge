@@ -185,9 +185,6 @@
     <ClInclude Include="..\src\mLib\GLProgram.h">
       <Filter>mLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mLib\GLUtil.h">
-      <Filter>mLib</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mLib\GLQuad.h">
       <Filter>mLib</Filter>
     </ClInclude>

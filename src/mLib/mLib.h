@@ -28,7 +28,6 @@ using namespace std;
 #include "imageLoaderLodePNG.h"
 
 #include "GLQuad.h"
-#include "GLUtil.h"
 #include "GLProgram.h"
 
 #endif  // MLIBCORE_H_
