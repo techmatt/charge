@@ -69,6 +69,8 @@ void GameUI::removeHoverComponent()
             app.state.removeComponent(app.state.board.cells(location.boardPos).c);
         }
     }
+
+    selectedGameLocation.boardPos = constants::invalidCoord;
 }
 
 void GameUI::mouseDown(Uint8 button, int x, int y)
@@ -286,7 +288,7 @@ void GameUI::updateButtonList()
 	}
 
     //
-    // Add color, delay, and preference buttons
+    // Add color, delay, preference, and boundary buttons
     //
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
     if (selectedGameComponent != nullptr)
@@ -313,6 +315,11 @@ void GameUI::updateButtonList()
             {
                 buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
             }
+        }
+        else if (info.name == "CircuitBoundary")
+        {
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, ChargeNone, 2, WireStandard, CircuitBoundaryOpen)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, ChargeNone, 2, WireStandard, CircuitBoundaryClosed)));
         }
         else
         {

@@ -105,6 +105,26 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents)
 
 void GameState::removeComponent(Component *component)
 {
+    if (component->circuitBoard != nullptr)
+    {
+        // we have to be careful here because we are deleting elements from the list we are iterating over.
+        while (true)
+        {
+            bool childFound = false;
+            for (Component *child : components)
+            {
+                if (child->location.inCircuit() && child->location.boardPos == component->location.boardPos)
+                {
+                    childFound = true;
+                    removeComponent(child);
+                    break;
+                }
+            }
+            if (!childFound)
+                break;
+        }
+    }
+
     //
     // TODO: make sure circuit's components are deleted correctly.
     //

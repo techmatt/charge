@@ -1,13 +1,14 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _storedColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard)
+    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _storedColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
     {
         init();
         color = _color;
         storedColor = _storedColor;
         chargePreference = _chargePreference;
         speed = _speed;
+        boundary = _boundary;
     }
     ComponentModifiers(const ComponentInfo &info)
     {
