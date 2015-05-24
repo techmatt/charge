@@ -10,9 +10,8 @@ void RendererSDL::init(SDL_Window *window)
         SDL_Quit();
     }
 
-    SDL_GL_SetSwapInterval(1);
-
-    SDL_GL_MakeCurrent(window, _context);
+    //SDL_GL_SetSwapInterval(1);
+    //SDL_GL_MakeCurrent(window, _context);
 
 	_window = window;
 	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -22,7 +21,7 @@ void RendererSDL::init(SDL_Window *window)
 		SDL_Quit();
 	}
 
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
+	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
 void RendererSDL::render(Texture &tex, int x, int y)

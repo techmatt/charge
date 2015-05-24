@@ -3,12 +3,10 @@
 
 /* Ensure we are using opengl's core profile only */
 // TODO: try and link glew statically instead
-#define GL3_PROTOTYPES 1
+//#define GL3_PROTOTYPES 1
 #include <gl/glew.h>
 
 #include <SDL.h>
-
-#define PROGRAM_NAME "Tutorial2"
 
 /* A simple function that will read a file into an allocated char pointer buffer */
 char* filetobuf(char *file)
@@ -243,9 +241,11 @@ int App::run()
         return 1;
     }
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-
+    //
+    // DO NOT set these, they will cause glewInit to fail
+    //
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
@@ -263,6 +263,29 @@ int App::run()
 
     data.renderer.init(window);
 
+    //
+    // glewInit must be called after the OpenGL context is created
+    //
+
+    // I hate OpenGL (http://stackoverflow.com/questions/8302625/segmentation-fault-at-glgenvertexarrays-1-vao)
+    //glewExperimental = GL_TRUE;
+
+    GLenum err = glewInit();
+    MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
+
+    cout << "GLEW version: " << glewGetString(GLEW_VERSION) << endl;
+
+    int b = glewIsSupported("GL_ARB_vertex_array_object");
+    int c = glewIsSupported("GL_ARB_fragment_program");
+    
+    int a = GLEW_ARB_vertex_array_object;
+    int z = GLEW_ARB_fragment_program;
+    int z1 = GLEW_ARB_fragment_shader;
+    if (GLEW_ARB_vertex_array_object)
+    {
+        int a = 5;
+    }
+    
     //drawscene(window);
 
     database().initTextures(data.renderer);
