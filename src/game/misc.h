@@ -28,17 +28,17 @@ struct GameLocation
     vec2i boardPos;
     vec2i circuitPos;
 
-    vec2f toScreenCoordMainBoard(const vec2f &windowDims) const
+    vec2f toScreenCoordMainBoard(const vec2f &canonicalDims) const
     {
         if (inCircuit())
-            return GameUtil::miniBoardToWindow(windowDims, GameLocation(boardPos, circuitPos + vec2i(1, 1)));
+            return GameUtil::miniBoardToWindow(canonicalDims, GameLocation(boardPos, circuitPos + vec2i(1, 1)));
         else
-            return GameUtil::boardToWindow(windowDims, boardPos + vec2i(1, 1));
+            return GameUtil::boardToWindow(canonicalDims, boardPos + vec2i(1, 1));
     }
 
-    vec2f toScreenCoordCircuitBoard(const vec2f &windowDims) const
+    vec2f toScreenCoordCircuitBoard(const vec2f &canonicalDims) const
     {
-        return GameUtil::circuitToWindow(windowDims, circuitPos + vec2i(1, 1));
+        return GameUtil::circuitToWindow(canonicalDims, circuitPos + vec2i(1, 1));
     }
 
     bool valid() const

@@ -1,21 +1,21 @@
 
 #include "main.h"
 
-rect2f GameUtil::locationToWindowRect(const vec2f &windowDims, const GameLocation &location, int size)
+rect2f GameUtil::locationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, int size)
 {
     if (location.inCircuit())
-        return circuitToWindowRect(windowDims, location.circuitPos, size);
+        return circuitToWindowRect(canonicalDims, location.circuitPos, size);
     else
-        return boardToWindowRect(windowDims, location.boardPos, size);
+        return boardToWindowRect(canonicalDims, location.boardPos, size);
 }
 
-vec2f GameUtil::miniBoardToWindow(const vec2f &windowDims, const GameLocation &location)
+vec2f GameUtil::miniBoardToWindow(const vec2f &canonicalDims, const GameLocation &location)
 {
     const vec2f canonicalStart = params().boardCanonicalStart + location.boardPos * params().canonicalCellSize;
     const vec2f circuitOffset = vec2f(location.circuitPos) / float(params().circuitDims.x);
 
     const vec2f canonical = canonicalStart + circuitOffset * (float)params().canonicalCellSize * 2.0f;
-    return GameUtil::canonicalToWindow(windowDims, canonical);
+    return GameUtil::canonicalToWindow(canonicalDims, canonical);
 }
 
 vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
@@ -46,23 +46,23 @@ vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
     return result;
 }
 
-pair<vec2f, float> GameUtil::computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims)
+pair<vec2f, float> GameUtil::computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims)
 {
     const float scaleFactorA = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
     const float scaleFactorB = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
 
-    const vec2f screenA = locationA.toScreenCoordMainBoard(windowDims);
-    const vec2f screenB = locationB.toScreenCoordMainBoard(windowDims);
+    const vec2f screenA = locationA.toScreenCoordMainBoard(canonicalDims);
+    const vec2f screenB = locationB.toScreenCoordMainBoard(canonicalDims);
 
     const vec2f screenPos = math::lerp(screenA, screenB, s);
-    const float screenSize = math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(windowDims);
+    const float screenSize = math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(canonicalDims);
     return make_pair(screenPos, screenSize);
 }
 
-pair<vec2f, float> GameUtil::computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims)
+pair<vec2f, float> GameUtil::computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims)
 {
-    const vec2f screenA = locationA.toScreenCoordCircuitBoard(windowDims);
-    const vec2f screenB = locationB.toScreenCoordCircuitBoard(windowDims);
+    const vec2f screenA = locationA.toScreenCoordCircuitBoard(canonicalDims);
+    const vec2f screenB = locationB.toScreenCoordCircuitBoard(canonicalDims);
 
     const vec2f screenPos = math::lerp(screenA, screenB, s);
     const float screenSize = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;

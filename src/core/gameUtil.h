@@ -18,24 +18,24 @@ public:
         return result;
     }
 
-    static vec2f canonicalToWindow(const vec2f &windowDims, const vec2f &v)
+    static vec2f canonicalToWindow(const vec2f &canonicalDims, const vec2f &v)
     {
-        return coordinateRemap(params().canonicalDims, windowDims, v);
+        return coordinateRemap(params().canonicalDims, canonicalDims, v);
     }
 
-	static rect2f canonicalToWindow(const vec2f &windowDims, const rect2f &r)
+	static rect2f canonicalToWindow(const vec2f &canonicalDims, const rect2f &r)
 	{
-		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
+		return rect2f(canonicalToWindow(canonicalDims, r.min()), canonicalToWindow(canonicalDims, r.max()));
 	}
 
-	static rect2f canonicalToWindow(const vec2i &windowDims, const rect2i &r)
+	static rect2f canonicalToWindow(const vec2i &canonicalDims, const rect2i &r)
 	{
-		return rect2f(canonicalToWindow(windowDims, r.min()), canonicalToWindow(windowDims, r.max()));
+		return rect2f(canonicalToWindow(canonicalDims, r.min()), canonicalToWindow(canonicalDims, r.max()));
 	}
 
-    static vec2f windowToCanonical(const vec2f &windowDims, const vec2f &v)
+    static vec2f windowToCanonical(const vec2f &canonicalDims, const vec2f &v)
     {
-        return coordinateRemap(windowDims, params().canonicalDims, v);
+        return coordinateRemap(canonicalDims, params().canonicalDims, v);
     }
 
     static vec2f boardToCanonical(const vec2f &v)
@@ -53,53 +53,53 @@ public:
         return coordinateRemap(params().circuitCanonicalRect, rect2f(vec2f::origin(), params().circuitDims), v);
     }
 
-    static vec2f windowToBoard(const vec2f &windowDims, const vec2f &v)
+    static vec2f windowToBoard(const vec2f &canonicalDims, const vec2f &v)
     {
-        const vec2f canonical = windowToCanonical(windowDims, v);
+        const vec2f canonical = windowToCanonical(canonicalDims, v);
         return canonicalToBoard(canonical);
     }
 
-    static vec2f windowToCircuit(const vec2f &windowDims, const vec2f &v)
+    static vec2f windowToCircuit(const vec2f &canonicalDims, const vec2f &v)
     {
-        const vec2f canonical = windowToCanonical(windowDims, v);
+        const vec2f canonical = windowToCanonical(canonicalDims, v);
         return canonicalToCircuit(canonical);
     }
 
-    static rect2f boardToWindowRect(const vec2f &windowDims, const vec2i &boardCoord, int size)
+    static rect2f boardToWindowRect(const vec2f &canonicalDims, const vec2i &boardCoord, int size)
     {
         const vec2i canonicalBase = params().boardCanonicalStart + boardCoord * params().canonicalCellSize;
         const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().canonicalCellSize, params().canonicalCellSize));
-        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+        const rect2f screenRect = GameUtil::canonicalToWindow(canonicalDims, canonicalRect);
         return screenRect;
     }
 
-    static rect2f circuitToWindowRect(const vec2f &windowDims, const vec2i &circuitCoord, int size)
+    static rect2f circuitToWindowRect(const vec2f &canonicalDims, const vec2i &circuitCoord, int size)
     {
         const vec2i canonicalBase = params().circuitCanonicalStart + circuitCoord * params().canonicalCellSize;
         const rect2f canonicalRect = rect2f(canonicalBase, canonicalBase + size * vec2i(params().canonicalCellSize, params().canonicalCellSize));
-        const rect2f screenRect = GameUtil::canonicalToWindow(windowDims, canonicalRect);
+        const rect2f screenRect = GameUtil::canonicalToWindow(canonicalDims, canonicalRect);
         return screenRect;
     }
 
-    static rect2f locationToWindowRect(const vec2f &windowDims, const GameLocation &location, int size);
+    static rect2f locationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, int size);
     
-    static vec2f boardToWindow(const vec2f &windowDims, const vec2i &boardCoord)
+    static vec2f boardToWindow(const vec2f &canonicalDims, const vec2i &boardCoord)
     {
         const vec2f canonical = params().boardCanonicalStart + boardCoord * params().canonicalCellSize;
-        return GameUtil::canonicalToWindow(windowDims, canonical);
+        return GameUtil::canonicalToWindow(canonicalDims, canonical);
     }
 
-    static vec2f miniBoardToWindow(const vec2f &windowDims, const GameLocation &location);
+    static vec2f miniBoardToWindow(const vec2f &canonicalDims, const GameLocation &location);
 
-    static vec2f circuitToWindow(const vec2f &windowDims, const vec2i &circuitCoord)
+    static vec2f circuitToWindow(const vec2f &canonicalDims, const vec2i &circuitCoord)
     {
         const vec2f canonical = params().circuitCanonicalStart + circuitCoord * params().canonicalCellSize;
-        return GameUtil::canonicalToWindow(windowDims, canonical);
+        return GameUtil::canonicalToWindow(canonicalDims, canonical);
     }
 
-    static float windowScaleFactor(const vec2f &windowDims)
+    static float windowScaleFactor(const vec2f &canonicalDims)
     {
-        return (float)windowDims.x / (float)params().canonicalDims.x;
+        return (float)canonicalDims.x / (float)params().canonicalDims.x;
     }
 
 	static RGBColor chargeColor(ChargeType type)
@@ -170,8 +170,13 @@ public:
             bmp(p.x, p.y).a = p.value.r;
     }
 
-    static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
-    static pair<vec2f, float> computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &windowDims);
+    static vec2f getCanonicalSize()
+    {
+        return params().canonicalDims;
+    }
+
+    static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
+    static pair<vec2f, float> computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
 
     static vector< map< string, string > > readCSVFile(const string &filename);
 };

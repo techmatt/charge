@@ -17,9 +17,22 @@ void GameState::init()
     circuitBoundaryNeighborOffsetTable.allocate(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2, constants::invalidCoord);
 
     auto &table = circuitBoundaryNeighborOffsetTable;
+
+    table(0, 1) = vec2i(-2, -1);
+    table(0, 3) = vec2i(-2, 0);
+    table(0, 5) = vec2i(-2, 1);
+
     table(6, 1) = vec2i(2, -1);
     table(6, 3) = vec2i(2, 0);
     table(6, 5) = vec2i(2, 1);
+
+    table(1, 0) = vec2i(-1, -2);
+    table(3, 0) = vec2i(0, -2);
+    table(5, 0) = vec2i(1, -2);
+
+    table(1, 6) = vec2i(-1, 2);
+    table(3, 6) = vec2i(0, 2);
+    table(5, 6) = vec2i(1, 2);
 }
 
 void GameState::savePuzzle(const string &filename)

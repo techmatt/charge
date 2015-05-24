@@ -81,20 +81,21 @@ void RendererSDL::setDefaultRenderTarget()
 	SDL_SetRenderTarget(_renderer, NULL);
 }
 
-vec2i RendererSDL::getWindowSize()
+vec2f RendererSDL::getWindowSize()
 {
-	return vec2f(params().canonicalDims);
+    vec2i result;
+    SDL_GetWindowSize(_window, &result.x, &result.y);
+	return vec2f(result);
 }
 
 CoordinateFrame RendererSDL::getWindowCoordinateFrame()
 {
-	vec2i result;
-	SDL_GetWindowSize(_window, &result.x, &result.y);  // the actual window size
+    const vec2f windowSize = getWindowSize();
 
-	float height = (float)result.x;
-	float width = (float)result.y;
+    float height = (float)windowSize.x;
+    float width = (float)windowSize.y;
 
-	vec2i canonical = RendererSDL::getWindowSize();   // the canonical window size
+	vec2i canonical = GameUtil::getCanonicalSize();
 
 	float aspectRatio = ((float) canonical.y) / (float) canonical.x;
 

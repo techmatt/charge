@@ -41,6 +41,7 @@ public:
     void keyDown(SDL_Keycode key);
 
 private:
+
     AppData &app;
 
 	void updateButtonList();
@@ -77,7 +78,7 @@ private:
     GameSpeed speed;
 
     Texture background;
-	vec2i windowDims;
+	vec2i canonicalDims;
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vec2i mouseHoverCoord;
