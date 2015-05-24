@@ -32,7 +32,7 @@ void RendererSDL::render(Texture &tex, int x, int y)
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
@@ -44,12 +44,12 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, Coordinate
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
 {
 	render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
@@ -60,7 +60,7 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angl
 
 	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
 }
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle, CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
 {
 	render(tex, rect2f(destinationRect.min(), destinationRect.max()),angle, frame);
 }
@@ -112,7 +112,5 @@ CoordinateFrame RendererSDL::getWindowCoordinateFrame()
 		end = vec2f((height + width / aspectRatio) / 2.0f, width);
 	}
 
-	CoordinateFrame out = CoordinateFrame(start, end, vec2f(canonical));
-
-	return out;
+    return CoordinateFrame(start, end, vec2f(canonical));
 }

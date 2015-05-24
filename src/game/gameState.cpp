@@ -47,7 +47,7 @@ void GameState::resetPuzzle()
         c->resetPuzzle();
 }
 
-void GameState::addNewComponent(Component *component)
+void GameState::addNewComponent(Component *component, bool addCircuitComponents)
 {
     components.push_back(component);
 
@@ -60,20 +60,23 @@ void GameState::addNewComponent(Component *component)
 		//component->circuitBoardFrame = new CoordinateFrame(component->location.boardPos, component->location.boardPos + 1, params().circuitDims);
 		component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
 
-        const int circuitEdge = constants::circuitBoardSize - 2;
-        for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)
+        if (addCircuitComponents)
         {
-            Component *boundaryA = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, 0)));
-            addNewComponent(boundaryA);
+            const int circuitEdge = constants::circuitBoardSize - 2;
+            for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)
+            {
+                Component *boundaryA = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, 0)));
+                addNewComponent(boundaryA);
 
-            Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
-            addNewComponent(boundaryB);
+                Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
+                addNewComponent(boundaryB);
 
-            Component *boundaryC = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(0, i)));
-            addNewComponent(boundaryC);
+                Component *boundaryC = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(0, i)));
+                addNewComponent(boundaryC);
 
-            Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
-            addNewComponent(boundaryD);
+                Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
+                addNewComponent(boundaryD);
+            }
         }
     }
 }

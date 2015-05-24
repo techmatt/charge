@@ -40,6 +40,10 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.state.savePuzzle("test.txt");
     }
+    if (key == SDLK_l)
+    {
+        LegacyLoader::load(params().assetDir + "levelsOld/DoItYourself.txt", app.state);
+    }
 }
 
 void GameUI::removeHoverComponent()

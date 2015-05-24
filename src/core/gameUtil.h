@@ -2,37 +2,6 @@
 class GameUtil
 {
 public:
-
-    /*
-    coordinate frame proposal:
-
-    enum CoordinateFrame
-    {
-        FrameWindow, // 0, 0 to windowDims
-        FrameNormalizedWindow, // normalized device coordiantes, 0,0 to 1,1
-        FrameCanonical, // 0, 0 to params().canonicalDims
-        FrameMainBoard, // 0, 0 to 24, 24
-        FrameCircuitBoard, // 0,0 to 7, 7
-        FrameComponentMenu, // 0, 0 to 6, 3 
-        FramePreferenceMenu, // 0, 0, to 5, 0
-        etc.
-    };
-
-    vec2f transform(const vec2f &in, CoordinateFrame start, CoordianteFrame end, const vec2i &windowDims)
-    rect2f transform(const rect2f &in, CoordinateFrame start, CoordianteFrame end, const vec2i &windowDims)
-    rect2f getMenuRect(const vec2i &in, CoordinateFrame menu, CoordianteFrame end, const vec2i &windowDims)
-
-    // if start is FrameMainBoard, this refers to the coordinate on the main board, including the circuitPos mini-board offset.
-    // if start is FrameCircuitBoard, this refers to the coordinate on the active circuit board, and ignores boardPos
-    // I think this should transform the top-left of "in", but different options are viable.
-    vec2f transform(const GameLocation &in, CoordinateFrame start, CoordianteFrame end, const vec2i &windowDims)
-
-    // transforms a rectangle starting at the top-left of "in" and of size (cellSize, cellSize) into the target coordinate frame.
-    rect2f transform(const GameLocation &in, int cellSize, CoordinateFrame start, CoordianteFrame end, const vec2i &windowDims)
-
-    */
-	
-
     static vec2f coordinateRemap(const vec2f &dimStart, const vec2f &dimEnd, const vec2f &v)
     {
         vec2f result;

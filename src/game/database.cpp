@@ -41,7 +41,11 @@ Texture& Database::getTexture(RendererSDL &renderer, const string &componentName
 
     string baseTextureName = componentName + GameUtil::suffixFromCharge(modifiers.color);
 
-    if (modifiers.boundary == CircuitBoundaryOpen || (modifiers.boundary == CircuitBoundaryInvalid && componentName == "CircuitBoundary"))
+    if (modifiers.boundary == CircuitBoundaryInvalid && componentName == "CircuitBoundary") // this is when the boundary is rendered as part of a UI button
+        baseTextureName += "Open";
+    if (modifiers.boundary == CircuitBoundaryInactive)
+        baseTextureName += "Inactive";
+    if (modifiers.boundary == CircuitBoundaryOpen)
         baseTextureName += "Open";
     if (modifiers.boundary == CircuitBoundaryClosed)
         baseTextureName += "Closed";

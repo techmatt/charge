@@ -18,6 +18,7 @@ enum WireSpeedType
 enum CircuitBoundaryType
 {
     CircuitBoundaryInvalid,
+    CircuitBoundaryInactive,
     CircuitBoundaryOpen,
     CircuitBoundaryClosed,
 };
@@ -32,7 +33,8 @@ enum ChargeType
     ChargeBlue = 5,
     
     //
-    // Gray is a special color that may be used by certain types of buildings
+    // Gray is a special color that may be used by certain types of components:
+    // * MegaHold -> a goal-mega-hold that accepts any type of charge
     //
     
     ChargeGray = 6,

@@ -75,6 +75,9 @@
     <ClCompile Include="..\src\gameUI\coordinates.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\game\legacyLoader.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="..\src\gameUI\coordinates.h">
       <Filter>gameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\legacyLoader.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,7 @@ class Texture;
 #include "game/explodingCharge.h"
 #include "game/board.h"
 #include "game/gameState.h"
+#include "game/legacyLoader.h"
 
 #include "gameUI/gameButton.h"
 #include "gameUI/gameUI.h"
