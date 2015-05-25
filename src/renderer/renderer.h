@@ -20,9 +20,6 @@ public:
 
     virtual RendererType type() = 0;
 
-    virtual void render(Texture &tex, int x, int y) = 0;
-    virtual void render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame) = 0;
-    virtual void render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame) = 0;
     virtual void render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame) = 0;
     virtual void render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame) = 0;
     virtual void present() = 0;

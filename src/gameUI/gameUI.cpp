@@ -204,7 +204,7 @@ void GameUI::render()
 
     app.renderer.setDefaultRenderTarget();
 
-    app.renderer.render(background, 0, 0);
+    app.renderer.render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()), coordinateFrame);
 
     for (const auto &charge : app.state.charges)
     {
@@ -271,7 +271,7 @@ void GameUI::renderHoverComponent()
                 const rect2f rect = location.inCircuit() ?
                     GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
                     GameUtil::boardToWindowRect(canonicalDims, coord, 1);
-                app.renderer.render(*tex, rect,coordinateFrame);
+                app.renderer.render(*tex, rect, coordinateFrame);
             }
         }
 }
@@ -368,7 +368,7 @@ void GameUI::updateBackground()
 
     app.renderer.setRenderTarget(background);
 
-	app.renderer.render(database().getTexture(app.renderer, "Background"), rect2i(0, 0, canonicalDims.x, canonicalDims.y), coordinateFrame);
+    app.renderer.render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), coordinateFrame);
 
     if (activeCircuit() != nullptr)
     {
@@ -546,7 +546,7 @@ void GameUI::renderSpokes(const Component &component)
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					app.renderer.render(connectorTex, math::round(rect2f(middle - variance, middle + variance)), angle, coordinateFrame);
+					app.renderer.render(connectorTex, rect2f(middle - variance, middle + variance), angle, coordinateFrame);
                 }
             }
         }
@@ -587,7 +587,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					app.renderer.render(connectorTex, math::round(rect2f(middle - variance, middle + variance)), angle, coordinateFrame);
+					app.renderer.render(connectorTex, rect2f(middle - variance, middle + variance), angle, coordinateFrame);
                 }
             }
         }
@@ -618,7 +618,7 @@ void GameUI::renderCharge(const Charge &charge)
     const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
-    const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
+    const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
 }
 
@@ -628,7 +628,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
-    const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
+    const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
 }
 
@@ -640,7 +640,7 @@ void GameUI::renderChargeCircuit(const Charge &charge)
     const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
-    const rect2i destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
+    const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
 }
 

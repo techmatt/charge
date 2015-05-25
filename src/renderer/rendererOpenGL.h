@@ -12,10 +12,7 @@ public:
         return RendererTypeOpenGL;
     }
 
-    void render(Texture &tex, int x, int y);
-	void render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame);
-    void render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame);
-    void render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame);
+	void render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame);
     void render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame);
 
     void clear();

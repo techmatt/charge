@@ -109,6 +109,9 @@ public:
 
             MLIB_ERROR("failed to link program");
         }
+
+        bind();
+        transformLocation = glGetUniformLocation(shaderProgram, "transform");
     }
 
     void bind()
@@ -118,6 +121,11 @@ public:
         GLint samplerLocation = glGetUniformLocation(shaderProgram, "sampler");
         glProgramUniform1i(shaderProgram, samplerLocation, 0);
         glActiveTexture(GL_TEXTURE0);
+    }
+
+    void setTransform(const mat4f &transform)
+    {
+        glUniformMatrix4fv(transformLocation, 1, false, transform.matrix);
     }
 
 private:
@@ -132,6 +140,8 @@ private:
 
     // OpenGL program handle
     GLuint shaderProgram;
+
+    GLint transformLocation;
 
     /*
     glUseProgram(0);

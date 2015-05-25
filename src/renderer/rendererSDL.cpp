@@ -14,17 +14,6 @@ void RendererSDL::init(SDL_Window *window)
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-void RendererSDL::render(Texture &tex, int x, int y)
-{
-	SDL_Rect dst;
-	dst.x = x;
-	dst.y = y;
-
-	SDL_QueryTexture(tex.SDL(), NULL, NULL, &dst.w, &dst.h);
-
-	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
-}
-
 void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
@@ -37,11 +26,6 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const Coor
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
-{
-	render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
-}
-
 void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
@@ -52,10 +36,6 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angl
 	dst.h = (int)transformedDestinationRect.extentY();
 
 	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
-}
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
-{
-	render(tex, rect2f(destinationRect.min(), destinationRect.max()),angle, frame);
 }
 
 void RendererSDL::clear()

@@ -66,9 +66,6 @@ int App::run()
 
         data.ui.render();
 
-        //if (frameIndex == 100)
-        //    drawscene(window, data.renderer);
-
         data.renderer.present();
     }
 

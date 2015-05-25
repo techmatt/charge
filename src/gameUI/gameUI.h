@@ -78,7 +78,7 @@ private:
     GameSpeed speed;
 
     Texture background;
-	vec2i canonicalDims;
+	vec2f canonicalDims;
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vec2i mouseHoverCoord;

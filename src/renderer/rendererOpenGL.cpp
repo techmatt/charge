@@ -34,11 +34,6 @@ void RendererOpenGL::init(SDL_Window *window)
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-void RendererOpenGL::render(Texture &tex, int x, int y)
-{
-	
-}
-
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
@@ -54,14 +49,10 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, const C
     else
         database().getTexture(*this, "Circuit").bindOpenGL();
 
+    _quadProgram.setTransform(mat4f::scale( (float)rand() / (float)RAND_MAX ));
     _quad.render();
 
 	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
-}
-
-void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
-{
-    
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
@@ -83,10 +74,6 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float a
     _quad.render();
 
 	//SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
-}
-void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
-{
-	render(tex, rect2f(destinationRect.min(), destinationRect.max()),angle, frame);
 }
 
 void RendererOpenGL::present()

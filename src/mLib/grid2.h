@@ -228,6 +228,11 @@ public:
         return m_dimY;
     }
 
+    inline vec2i dims() const
+    {
+        return vec2i(m_dimX, m_dimY);
+    }
+
     inline size_t width() const
     {
         return m_dimX;
