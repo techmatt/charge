@@ -1,46 +1,6 @@
 
 #include "main.h"
 
-void drawscene(SDL_Window *window, Renderer &renderer)
-{
-    GLQuad quad;
-    quad.init();
-
-    database().getTexture(renderer, "Background").bindOpenGL();
-
-    GLProgram program;
-    program.load("tutorial2.vert", "tutorial2.frag");
-    program.bind();
-
-    /* Loop our display increasing the number of shown vertexes each time.
-    * Start with 2 vertexes (a line) and increase to 3 (a triangle) and 4 (a diamond) */
-    for (int i = 2; i <= 4; i++)
-    {
-        /* Make our background black */
-        glClearColor(0.0, 0.0, 0.0, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glEnable(GL_TEXTURE_2D);
-
-        Texture &t = database().getTexture(renderer, "Background");
-        
-        t.bindOpenGL();
-
-        quad.render();
-
-        /* Swap our buffers to make our changes visible */
-        SDL_GL_SwapWindow(window);
-
-        /* Sleep for 2 seconds */
-        SDL_Delay(2000);
-    }
-
-    /* Cleanup all the things we bound and allocated */
-    
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-}
-
 int App::run()
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -62,9 +22,6 @@ int App::run()
     }
 
     data.renderer.init(window);
-
-    if (data.renderer.type() == RendererTypeOpenGL)
-        drawscene(window, data.renderer);
 
     database().initTextures(data.renderer);
 
@@ -107,6 +64,9 @@ int App::run()
         data.renderer.clear();
 
         data.ui.render();
+
+        //if (frameIndex == 100)
+        //    drawscene(window, data.renderer);
 
         data.renderer.present();
     }

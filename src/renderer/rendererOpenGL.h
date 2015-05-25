@@ -32,4 +32,7 @@ public:
 private:
     SDL_Window *_window;
     SDL_GLContext _context;
+
+    GLQuad _quad;
+    GLProgram _quadProgram;
 };

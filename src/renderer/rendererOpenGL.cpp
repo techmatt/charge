@@ -18,6 +18,13 @@ void RendererOpenGL::init(SDL_Window *window)
     int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
     MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
 
+    _quadProgram.load("tutorial2.vert", "tutorial2.frag");
+    _quadProgram.bind();
+
+    _quad.init();
+
+    glEnable(GL_TEXTURE_2D);
+
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
     //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -29,13 +36,7 @@ void RendererOpenGL::init(SDL_Window *window)
 
 void RendererOpenGL::render(Texture &tex, int x, int y)
 {
-	SDL_Rect dst;
-	dst.x = x;
-	dst.y = y;
-
-	//SDL_QueryTexture(tex.SDL(), NULL, NULL, &dst.w, &dst.h);
-
-	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
+	
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
@@ -47,12 +48,20 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, const C
 	dst.w = (int) (transformedDestinationRect.max().x)-dst.x;
 	dst.h = (int) (transformedDestinationRect.max().y)-dst.y;
 
+    //tex.bindOpenGL();
+    if (rand() % 2 == 0)
+        database().getTexture(*this, "Background").bindOpenGL();
+    else
+        database().getTexture(*this, "Circuit").bindOpenGL();
+
+    _quad.render();
+
 	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
 {
-	//render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
+    
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
@@ -64,6 +73,15 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float a
 	dst.w = (int)transformedDestinationRect.extentX();
 	dst.h = (int)transformedDestinationRect.extentY();
 
+    //tex.bindOpenGL();
+
+    if (rand() % 2 == 0)
+        database().getTexture(*this, "Background").bindOpenGL();
+    else
+        database().getTexture(*this, "Circuit").bindOpenGL();
+
+    _quad.render();
+
 	//SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
 }
 void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
@@ -73,8 +91,7 @@ void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, float a
 
 void RendererOpenGL::present()
 {
-	//SDL_RenderPresent(_renderer);
-    //SDL_GL_SwapWindow(_window);
+	SDL_GL_SwapWindow(_window);
 }
 
 void RendererOpenGL::setRenderTarget(Texture &target)
