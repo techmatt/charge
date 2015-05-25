@@ -30,6 +30,26 @@ void GameUI::step()
     }
 }
 
+void GameUI::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
+{
+    app.renderer.render(tex, frame.toContainer(destinationRect));
+}
+
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
+{
+    app.renderer.render(tex, frame.toContainer(destinationRect), angle);
+}
+
+void GameUI::render(Texture &tex, const rect2f &destinationRect)
+{
+    render(tex, destinationRect, coordinateFrame);
+}
+
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float angle)
+{
+    render(tex, destinationRect, angle, coordinateFrame);
+}
+
 void GameUI::keyDown(SDL_Keycode key)
 {
     if (key == SDLK_ESCAPE)
@@ -204,7 +224,7 @@ void GameUI::render()
 
     app.renderer.setDefaultRenderTarget();
 
-    app.renderer.render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()), coordinateFrame);
+    render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
 
     for (const auto &charge : app.state.charges)
     {
@@ -271,7 +291,7 @@ void GameUI::renderHoverComponent()
                 const rect2f rect = location.inCircuit() ?
                     GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
                     GameUtil::boardToWindowRect(canonicalDims, coord, 1);
-                app.renderer.render(*tex, rect, coordinateFrame);
+                render(*tex, rect);
             }
         }
 }
@@ -368,12 +388,12 @@ void GameUI::updateBackground()
 
     app.renderer.setRenderTarget(background);
 
-    app.renderer.render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), coordinateFrame);
+    render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims));
 
     if (activeCircuit() != nullptr)
     {
         const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
-		app.renderer.render(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), coordinateFrame);
+		render(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect));
     }
 
 	renderBuildingGrid();
@@ -412,7 +432,7 @@ void GameUI::renderBuildingGrid()
 		{
 			rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
 			const rect2f screenRect = params().boardInWindow.toContainer(rectangle);
-			app.renderer.render(border, screenRect, coordinateFrame);
+			render(border, screenRect);
 		}
 	}
 
@@ -428,7 +448,7 @@ void GameUI::renderBuildingGrid()
             if (!corner && !inactiveBoundary) //if (!xBoundary && !yBoundary)
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, vec2i(cell.x, cell.y), 1);
-				app.renderer.render(border, screenRect, coordinateFrame);
+				render(border, screenRect);
             }
         }
     }
@@ -440,7 +460,7 @@ void GameUI::renderButton(const GameButton &button, bool selected)
     Texture &borderTex = database().getTexture(app.renderer, "Border");
     
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-	app.renderer.render(borderTex, screenRect, coordinateFrame);
+	render(borderTex, screenRect);
     
     renderLocalizedComponent(button.name, screenRect, button.modifiers, selected, true);
 }
@@ -455,17 +475,17 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
     Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
-	app.renderer.render(preferenceTex, screenRect, coordinateFrame);
+	render(preferenceTex, screenRect);
 
     if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
-		app.renderer.render(baseTex, screenRect, coordinateFrame);
+		render(baseTex, screenRect);
 
-	app.renderer.render(componentTex, screenRect, coordinateFrame);
+	render(componentTex, screenRect);
 
     if (selected)
     {
         Texture &selectionTex = database().getTexture(app.renderer, "Selector");
-		app.renderer.render(selectionTex, screenRect, coordinateFrame);
+		render(selectionTex, screenRect);
     }
 }
 
@@ -546,7 +566,7 @@ void GameUI::renderSpokes(const Component &component)
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					app.renderer.render(connectorTex, rect2f(middle - variance, middle + variance), angle, coordinateFrame);
+					render(connectorTex, rect2f(middle - variance, middle + variance), angle);
                 }
             }
         }
@@ -587,7 +607,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					app.renderer.render(connectorTex, rect2f(middle - variance, middle + variance), angle, coordinateFrame);
+					render(connectorTex, rect2f(middle - variance, middle + variance), angle);
                 }
             }
         }
@@ -619,7 +639,7 @@ void GameUI::renderCharge(const Charge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
+	render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
@@ -629,7 +649,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
-	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
+	render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge)
@@ -641,7 +661,7 @@ void GameUI::renderChargeCircuit(const Charge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-	app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle, coordinateFrame);
+	render(*database().chargeTextures[charge.level], destinationRect, angle);
 }
 
 void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)

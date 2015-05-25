@@ -44,6 +44,12 @@ private:
 
     AppData &app;
 
+    void render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame);
+    void render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame);
+
+    void render(Texture &tex, const rect2f &destinationRect);
+    void render(Texture &tex, const rect2f &destinationRect, float angle);
+
 	void updateButtonList();
 
 	void updateBackground();

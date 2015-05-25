@@ -14,26 +14,24 @@ void RendererSDL::init(SDL_Window *window)
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect)
 {
-	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
-	dst.x = (int) (transformedDestinationRect.min().x);
-	dst.y = (int) (transformedDestinationRect.min().y);
-	dst.w = (int) (transformedDestinationRect.max().x)-dst.x;
-	dst.h = (int) (transformedDestinationRect.max().y)-dst.y;
+    dst.x = (int)(destinationRect.min().x);
+    dst.y = (int)(destinationRect.min().y);
+    dst.w = (int)(destinationRect.max().x) - dst.x;
+    dst.h = (int)(destinationRect.max().y) - dst.y;
 
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle)
 {
-	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
-	dst.x = (int)transformedDestinationRect.min().x;
-	dst.y = (int)transformedDestinationRect.min().y;
-	dst.w = (int)transformedDestinationRect.extentX();
-	dst.h = (int)transformedDestinationRect.extentY();
+    dst.x = (int)(destinationRect.min().x);
+    dst.y = (int)(destinationRect.min().y);
+    dst.w = (int)(destinationRect.max().x) - dst.x;
+    dst.h = (int)(destinationRect.max().y) - dst.y;
 
 	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
 }
