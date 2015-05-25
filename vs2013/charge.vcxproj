@@ -109,6 +109,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
+    <ClCompile Include="..\src\renderer\rendererOpenGL.cpp" />
     <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
     <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <ClInclude Include="..\src\mLib\utility.h" />
     <ClInclude Include="..\src\mLib\vec2.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
+    <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
     <ClInclude Include="..\src\renderer\rendererSDL.h" />
     <ClInclude Include="..\src\renderer\texture.h" />
   </ItemGroup>
@@ -157,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\mLib\grid2.inl" />
+    <None Include="tutorial2.frag" />
+    <None Include="tutorial2.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

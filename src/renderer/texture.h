@@ -38,6 +38,8 @@ public:
     void load(RendererSDL &renderer, const string &filename);
 	void load(RendererSDL &renderer, const Bitmap &bmp);
 
+    void bindOpenGL();
+
     void loadRenderTarget(int width, int height);
 
     const Bitmap& bmp() const
@@ -57,9 +59,11 @@ private:
         _SDLSurface = nullptr;
     }
     void initSDL(RendererSDL &renderer);
+    void initOpenGL();
 
     Bitmap _bmp;
     SDL_Texture* _SDLTexture;
     SDL_Surface* _SDLSurface;
+    GLuint _OpenGLTexture;
     bool _renderTarget;
 };

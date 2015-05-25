@@ -1,10 +1,12 @@
 
 #include "main.h"
 
-void drawscene(SDL_Window *window)
+void drawscene(SDL_Window *window, RendererSDL &renderer)
 {
     GLQuad quad;
     quad.init();
+
+    database().getTexture(renderer, "Background").bindOpenGL();
 
     GLProgram program;
     program.load("tutorial2.vert", "tutorial2.frag");
@@ -17,6 +19,12 @@ void drawscene(SDL_Window *window)
         /* Make our background black */
         glClearColor(0.0, 0.0, 0.0, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glEnable(GL_TEXTURE_2D);
+
+        Texture &t = database().getTexture(renderer, "Background");
+        
+        t.bindOpenGL();
 
         quad.render();
 
@@ -82,7 +90,7 @@ int App::run()
     //cout << "GLEW version: " << glewGetString(GLEW_VERSION) << endl;
     
     if (useOpenGL)
-        drawscene(window);
+        drawscene(window, data.renderer);
 
     database().initTextures(data.renderer);
 

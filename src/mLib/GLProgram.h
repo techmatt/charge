@@ -114,6 +114,10 @@ public:
     void bind()
     {
         glUseProgram(shaderProgram);
+
+        GLint samplerLocation = glGetUniformLocation(shaderProgram, "sampler");
+        glProgramUniform1i(shaderProgram, samplerLocation, 0);
+        glActiveTexture(GL_TEXTURE0);
     }
 
 private:

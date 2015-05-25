@@ -16,6 +16,9 @@
     <Filter Include="gameUI">
       <UniqueIdentifier>{170058a9-d1c7-4640-9bb2-5b8dc8182cb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{0e89afc4-841f-4bc6-b4e9-86efa7b47b92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\board.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\legacyLoader.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\renderer\rendererOpenGL.cpp">
+      <Filter>renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +194,9 @@
     <ClInclude Include="..\src\mLib\GLQuad.h">
       <Filter>mLib</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\renderer\rendererOpenGL.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />
@@ -197,6 +206,12 @@
   <ItemGroup>
     <None Include="..\src\mLib\grid2.inl">
       <Filter>mLib</Filter>
+    </None>
+    <None Include="tutorial2.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="tutorial2.vert">
+      <Filter>shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

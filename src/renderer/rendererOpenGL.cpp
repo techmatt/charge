@@ -1,7 +1,7 @@
 
 #include "main.h"
 
-void RendererSDL::init(SDL_Window *window)
+void RendererOpenGL::init(SDL_Window *window)
 {
     _context = SDL_GL_CreateContext(window);
     if (_context == nullptr)
@@ -14,28 +14,22 @@ void RendererSDL::init(SDL_Window *window)
     //SDL_GL_MakeCurrent(window, _context);
 
 	_window = window;
-	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (_renderer == nullptr)
-	{
-		SDL::logError("CreateRenderer");
-		SDL_Quit();
-	}
 
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
+	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-void RendererSDL::render(Texture &tex, int x, int y)
+void RendererOpenGL::render(Texture &tex, int x, int y)
 {
 	SDL_Rect dst;
 	dst.x = x;
 	dst.y = y;
 
-	SDL_QueryTexture(tex.SDL(), NULL, NULL, &dst.w, &dst.h);
+	//SDL_QueryTexture(tex.SDL(), NULL, NULL, &dst.w, &dst.h);
 
-	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
+	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
@@ -44,15 +38,15 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, const Coor
 	dst.w = (int) (transformedDestinationRect.max().x)-dst.x;
 	dst.h = (int) (transformedDestinationRect.max().y)-dst.y;
 
-	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
+	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
+void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame)
 {
-	render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
+	//render(tex, rect2f(destinationRect.min(), destinationRect.max()),frame);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
 {
 	rect2f transformedDestinationRect = frame.toContainer(destinationRect);
 	SDL_Rect dst;
@@ -61,37 +55,37 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angl
 	dst.w = (int)transformedDestinationRect.extentX();
 	dst.h = (int)transformedDestinationRect.extentY();
 
-	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+	//SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
 }
-void RendererSDL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
+void RendererOpenGL::render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame)
 {
 	render(tex, rect2f(destinationRect.min(), destinationRect.max()),angle, frame);
 }
 
-void RendererSDL::present()
+void RendererOpenGL::present()
 {
-	SDL_RenderPresent(_renderer);
-    SDL_GL_SwapWindow(_window);
+	//SDL_RenderPresent(_renderer);
+    //SDL_GL_SwapWindow(_window);
 }
 
-void RendererSDL::setRenderTarget(Texture &target)
+void RendererOpenGL::setRenderTarget(Texture &target)
 {
-	SDL_SetRenderTarget(_renderer, target.SDL());
+	//SDL_SetRenderTarget(_renderer, target.SDL());
 }
 
-void RendererSDL::setDefaultRenderTarget()
+void RendererOpenGL::setDefaultRenderTarget()
 {
-	SDL_SetRenderTarget(_renderer, NULL);
+	//SDL_SetRenderTarget(_renderer, NULL);
 }
 
-vec2f RendererSDL::getWindowSize()
+vec2f RendererOpenGL::getWindowSize()
 {
     vec2i result;
     SDL_GetWindowSize(_window, &result.x, &result.y);
 	return vec2f(result);
 }
 
-CoordinateFrame RendererSDL::getWindowCoordinateFrame()
+CoordinateFrame RendererOpenGL::getWindowCoordinateFrame()
 {
     const vec2f windowSize = getWindowSize();
 
