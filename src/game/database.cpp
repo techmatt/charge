@@ -10,7 +10,7 @@ void Database::init()
     }
 }
 
-void Database::initTextures(RendererSDL &renderer)
+void Database::initTextures(Renderer &renderer)
 {
     for (int chargeLevel = ChargeRed; chargeLevel <= ChargeBlue; chargeLevel++)
     {
@@ -26,13 +26,12 @@ void Database::initTextures(RendererSDL &renderer)
     squareOpen = &getTexture(renderer, "SquareOpen");
 }
 
-Texture& Database::getTexture(RendererSDL &renderer, const string &textureName)
+Texture& Database::getTexture(Renderer &renderer, const string &textureName)
 {
     return getTexture(renderer, textureName, ComponentModifiers());
 }
 
-//Texture& Database::getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed)
-Texture& Database::getTexture(RendererSDL &renderer, const string &componentName, const ComponentModifiers &modifiers)
+Texture& Database::getTexture(Renderer &renderer, const string &componentName, const ComponentModifiers &modifiers)
 {
     if (modifiers.speed != WireStandard)
     {

@@ -3,6 +3,7 @@ class Texture;
 
 class Renderer
 {
+public:
     virtual void init(SDL_Window *window) = 0;
 
     virtual SDL_Renderer* SDL()

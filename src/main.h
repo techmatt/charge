@@ -23,6 +23,7 @@ struct GameState;
 struct Charge;
 struct GameLocation;
 struct ComponentModifiers;
+class Renderer;
 class RendererSDL;
 class Texture;
 

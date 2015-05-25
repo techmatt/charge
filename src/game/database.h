@@ -52,7 +52,7 @@ struct ComponentInfo
 struct Database
 {
     void init();
-    void initTextures(RendererSDL &renderer);
+    void initTextures(Renderer &renderer);
 
     const ComponentInfo& getComponent(const string &componentName) const
     {
@@ -60,9 +60,9 @@ struct Database
         return *(components.at(componentName));
     }
 
-    Texture& getTexture(RendererSDL &renderer, const string &textureName);
-    Texture& getTexture(RendererSDL &renderer, const string &textureName, const ComponentModifiers &modifiers);
-    //Texture& getTexture(RendererSDL &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
+    Texture& getTexture(Renderer &renderer, const string &textureName);
+    Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers);
+    //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;

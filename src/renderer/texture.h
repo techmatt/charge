@@ -6,12 +6,12 @@ public:
     {
         initInternal();
     }
-    Texture(RendererSDL &renderer, const string &filename)
+    Texture(Renderer &renderer, const string &filename)
     {
         initInternal();
         load(renderer, filename);
     }
-	Texture(RendererSDL &renderer, const Bitmap &bmp)
+	Texture(Renderer &renderer, const Bitmap &bmp)
 	{
 		initInternal();
 		load(renderer, bmp);
@@ -35,8 +35,8 @@ public:
         }
     }
 
-    void load(RendererSDL &renderer, const string &filename);
-	void load(RendererSDL &renderer, const Bitmap &bmp);
+    void load(Renderer &renderer, const string &filename);
+	void load(Renderer &renderer, const Bitmap &bmp);
 
     void bindOpenGL();
 
@@ -58,7 +58,7 @@ private:
         _SDLTexture = nullptr;
         _SDLSurface = nullptr;
     }
-    void initSDL(RendererSDL &renderer);
+    void initSDL(Renderer &renderer);
     void initOpenGL();
 
     Bitmap _bmp;
