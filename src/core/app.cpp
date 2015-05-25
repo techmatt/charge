@@ -34,7 +34,8 @@ int App::run()
 	bool quit = false;
 	while (!quit)
     {
-		while (SDL_PollEvent(&event)){
+		while (SDL_PollEvent(&event))
+        {
 			if (event.type == SDL_QUIT)
             {
 				quit = true;

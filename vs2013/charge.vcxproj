@@ -138,6 +138,7 @@
     <ClInclude Include="..\src\mLib\grid2.h" />
     <ClInclude Include="..\src\mLib\imageLoaderLodePNG.h" />
     <ClInclude Include="..\src\mLib\lodepng.h" />
+    <ClInclude Include="..\src\mLib\matrix4.h" />
     <ClInclude Include="..\src\mLib\mLib.h" />
     <ClInclude Include="..\src\mLib\parameterFile.h" />
     <ClInclude Include="..\src\mLib\parameterTable.h" />
@@ -147,6 +148,8 @@
     <ClInclude Include="..\src\mLib\stringUtilConvert.h" />
     <ClInclude Include="..\src\mLib\utility.h" />
     <ClInclude Include="..\src\mLib\vec2.h" />
+    <ClInclude Include="..\src\mLib\vec3.h" />
+    <ClInclude Include="..\src\mLib\vec4.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
     <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
     <ClInclude Include="..\src\renderer\rendererSDL.h" />

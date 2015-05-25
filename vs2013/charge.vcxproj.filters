@@ -197,6 +197,15 @@
     <ClInclude Include="..\src\renderer\rendererOpenGL.h">
       <Filter>renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mLib\vec3.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\vec4.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\matrix4.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

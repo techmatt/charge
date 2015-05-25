@@ -16,7 +16,11 @@ using namespace std;
 #include "stringUtil.h"
 
 #include "vec2.h"
+#include "vec3.h"
+#include "vec4.h"
 #include "rect2.h"
+
+#include "matrix4.h"
 
 #include "RGBColor.h"
 #include "grid2.h"
