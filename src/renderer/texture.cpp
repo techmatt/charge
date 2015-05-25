@@ -5,16 +5,24 @@ void Texture::load(Renderer &renderer, const string &filename)
 {
     _renderTarget = false;
     _bmp = LodePNG::load(filename);
-    initSDL(renderer);
-    //initOpenGL();
+
+    if (renderer.type() == RendererTypeSDL)
+        initSDL(renderer);
+
+    if (renderer.type() == RendererTypeOpenGL)
+        initOpenGL();
 }
 
 void Texture::load(Renderer &renderer, const Bitmap &bmp)
 {
 	_renderTarget = false;
 	_bmp = bmp;
-	initSDL(renderer);
-    //initOpenGL();
+
+    if (renderer.type() == RendererTypeSDL)
+        initSDL(renderer);
+
+    if (renderer.type() == RendererTypeOpenGL)
+        initOpenGL();
 }
 
 void Texture::loadRenderTarget(int width, int height)

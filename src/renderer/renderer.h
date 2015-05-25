@@ -1,6 +1,12 @@
 
 class Texture;
 
+enum RendererType
+{
+    RendererTypeSDL,
+    RendererTypeOpenGL,
+};
+
 class Renderer
 {
 public:
@@ -8,9 +14,11 @@ public:
 
     virtual SDL_Renderer* SDL()
     {
-        MLIB_ERROR("SDL renderer not supported on this renderer");
+        MLIB_ERROR("SDL not supported on this renderer");
         return nullptr;
     }
+
+    virtual RendererType type() = 0;
 
     virtual void render(Texture &tex, int x, int y) = 0;
     virtual void render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame) = 0;
@@ -20,6 +28,7 @@ public:
     virtual void present() = 0;
     virtual void setRenderTarget(Texture &target) = 0;
     virtual void setDefaultRenderTarget() = 0;
+    virtual void clear() = 0;
 
     virtual vec2f getWindowSize() = 0;
 

@@ -3,6 +3,8 @@
 
 void RendererOpenGL::init(SDL_Window *window)
 {
+    _window = window;
+
     _context = SDL_GL_CreateContext(window);
     if (_context == nullptr)
     {
@@ -10,11 +12,18 @@ void RendererOpenGL::init(SDL_Window *window)
         SDL_Quit();
     }
 
+    GLenum err = glewInit();
+    MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
+
+    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
+    MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
+
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    //SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
     //SDL_GL_SetSwapInterval(1);
     //SDL_GL_MakeCurrent(window, _context);
-
-	_window = window;
-
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
@@ -111,4 +120,10 @@ CoordinateFrame RendererOpenGL::getWindowCoordinateFrame()
 	}
 
     return CoordinateFrame(start, end, vec2f(canonical));
+}
+
+void RendererOpenGL::clear()
+{
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
 }

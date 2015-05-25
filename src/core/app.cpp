@@ -1,7 +1,7 @@
 
 #include "main.h"
 
-void drawscene(SDL_Window *window, RendererSDL &renderer)
+void drawscene(SDL_Window *window, Renderer &renderer)
 {
     GLQuad quad;
     quad.init();
@@ -49,17 +49,6 @@ int App::run()
         return 1;
     }
 
-    //
-    // DO NOT set these, they will cause glewInit to fail
-    //
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if (!useOpenGL)
-    {
-        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
-    }
-
     //Setup our window and renderer
     int windowHeight = math::round(params().canonicalDims.y) * 2;
     int windowWidth = math::round(params().canonicalDims.x) * 2;
@@ -74,22 +63,7 @@ int App::run()
 
     data.renderer.init(window);
 
-    //
-    // glewInit must be called after the OpenGL context is created
-    //
-
-    // I hate OpenGL (http://stackoverflow.com/questions/8302625/segmentation-fault-at-glgenvertexarrays-1-vao)
-    //glewExperimental = GL_TRUE;
-
-    GLenum err = glewInit();
-    MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
-
-    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
-    MLIB_ASSERT_STR(!(useOpenGL && VAOSupported == 0), "GL_ARB_vertex_array_object not supported");
-
-    //cout << "GLEW version: " << glewGetString(GLEW_VERSION) << endl;
-    
-    if (useOpenGL)
+    if (data.renderer.type() == RendererTypeOpenGL)
         drawscene(window, data.renderer);
 
     database().initTextures(data.renderer);
@@ -130,7 +104,7 @@ int App::run()
         //
         // render the game
         //
-        SDL_RenderClear(data.renderer.SDL());
+        data.renderer.clear();
 
         data.ui.render();
 

@@ -4,8 +4,6 @@
 // this file is for static game constants that are never going to change
 //
 
-static const bool useOpenGL = false;
-
 namespace constants
 {
     static const vec2i invalidCoord(-100, -100);

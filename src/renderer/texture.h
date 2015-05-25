@@ -1,4 +1,9 @@
 
+
+//
+// this *could* be astracted into TextureSDL and TextureGL, but for now it is unified.
+//
+
 class Texture
 {
 public:
@@ -11,11 +16,11 @@ public:
         initInternal();
         load(renderer, filename);
     }
-	Texture(Renderer &renderer, const Bitmap &bmp)
-	{
-		initInternal();
-		load(renderer, bmp);
-	}
+    Texture(Renderer &renderer, const Bitmap &bmp)
+    {
+        initInternal();
+        load(renderer, bmp);
+    }
     ~Texture()
     {
         releaseSDLMemrory();
@@ -36,7 +41,7 @@ public:
     }
 
     void load(Renderer &renderer, const string &filename);
-	void load(Renderer &renderer, const Bitmap &bmp);
+    void load(Renderer &renderer, const Bitmap &bmp);
 
     void bindOpenGL();
 

@@ -7,10 +7,17 @@ class RendererSDL : public Renderer
 public:
     void init(SDL_Window *window);
 
+    RendererType type()
+    {
+        return RendererTypeSDL;
+    }
+
     SDL_Renderer* SDL()
     {
         return _renderer;
     }
+
+    void clear();
 
     void render(Texture &tex, int x, int y);
 	void render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame);
@@ -28,5 +35,4 @@ public:
 private:
     SDL_Renderer *_renderer;
     SDL_Window *_window;
-    SDL_GLContext _context;
 };
