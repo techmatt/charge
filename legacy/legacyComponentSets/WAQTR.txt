@@ -1,0 +1,50 @@
+PowerSourceRed	0	0	-1	-1	!	N	PowerSourceRed	PowerSourceOrange	PowerSourceYellow	PowerSourceGreen	PowerSourceBlue	None	None	None	Periodically emits a charge.
+Wire	Infinity	0	0	0	1	Y	WireMajorAccelerator	WireMinorAccelerator	Wire	WireMinorDelay	WireMajorDelay	None	None	None	Charge flows through wire towers.
+Splitter	0	0	1	0	2	Y	None	None	None	None	None	None	None	None	Splits a charge into smaller charges.  Level 5 charges get split into two level 3 charges, generating an extra charge.
+Amplifier	Infinity	0	2	0	3	Y	None	None	None	None	None	None	None	None	After receiving two charges, emits a charge one level higher than the largest stored charge.
+AmplifierL1	Infinity	0	3	0	4	Y	AmplifierL1	AmplifierL2	AmplifierL3	AmplifierL4	None	None	None	None	After receiving two level 1 charges, emits a level 2 charge.  Only level 1 charges can enter this tower.
+Streamer	0	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	Breaks a large charge into level 1 charges.
+TeleportRedSource	Infinity	0	-1	-1	!	Y	TeleportRedSource	TeleportOrangeSource	TeleportYellowSource	TeleportGreenSource	TeleportBlueSource	None	None	None	Teleports a charge to the closest red teleport destination within range.
+TeleportRedDestination	Infinity	0	-1	-1	!	Y	TeleportRedDestination	TeleportOrangeDestination	TeleportYellowDestination	TeleportGreenDestination	TeleportBlueDestination	None	None	None	Destination for red teleport towers.
+Circuit	0	0	-1	-1	!	N	CircuitCopy	CircuitRotate90	CircuitRotateN90	CircuitFlipHorizontal	CircuitFlipVertical	None	None	None	Contains other circuit components.  Saves space.
+RedChargeFilter	0	0	-1	-1	!	Y	RedChargeFilter	OrangeChargeFilter	YellowChargeFilter	GreenChargeFilter	BlueChargeFilter	None	None	None	None
+RedChargeGoal	0	0	-1	-1	!	Y	RedChargeGoal	OrangeChargeGoal	YellowChargeGoal	GreenChargeGoal	BlueChargeGoal	None	None	None	None
+Blocker	0	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+Hold	0	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	Holds one charge until there is a place for it to travel.  Will not send charge back the way it came.
+CircuitPaste	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+Multiplexer	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	A switch for charge.
+WireMajorAccelerator	Infinity	0	-1	-1	!	Y	WireMajorAccelerator	WireMinorAccelerator	Wire	WireMinorDelay	WireMajorDelay	None	None	None	When charge reaches a junction, it will only choose a rejector tower if there are no alternatives.
+WireMinorAccelerator	Infinity	0	-1	-1	!	Y	WireMajorAccelerator	WireMinorAccelerator	Wire	WireMinorDelay	WireMajorDelay	None	None	None	When charge reaches a junction, it will always prefer to jump to an acceptor tower over any other tower.
+WireMinorDelay	Infinity	0	-1	-1	!	Y	WireMajorAccelerator	WireMinorAccelerator	Wire	WireMinorDelay	WireMajorDelay	None	None	None	Charge takes longer to pass through a delay tower.
+WireMajorDelay	Infinity	0	-1	-1	!	Y	WireMajorAccelerator	WireMinorAccelerator	Wire	WireMinorDelay	WireMajorDelay	None	None	None	Charge travels faster through an accelerator tower.
+TeleportOrangeSource	Infinity	0	-1	-1	!	Y	TeleportRedSource	TeleportOrangeSource	TeleportYellowSource	TeleportGreenSource	TeleportBlueSource	None	None	None	None
+TeleportYellowSource	Infinity	0	-1	-1	!	Y	TeleportRedSource	TeleportOrangeSource	TeleportYellowSource	TeleportGreenSource	TeleportBlueSource	None	None	None	None
+TeleportGreenSource	Infinity	0	-1	-1	!	Y	TeleportRedSource	TeleportOrangeSource	TeleportYellowSource	TeleportGreenSource	TeleportBlueSource	None	None	None	None
+TeleportBlueSource	Infinity	0	-1	-1	!	Y	TeleportRedSource	TeleportOrangeSource	TeleportYellowSource	TeleportGreenSource	TeleportBlueSource	None	None	None	None
+TeleportOrangeDestination	Infinity	0	-1	-1	!	Y	TeleportRedDestination	TeleportOrangeDestination	TeleportYellowDestination	TeleportGreenDestination	TeleportBlueDestination	None	None	None	None
+TeleportYellowDestination	Infinity	0	-1	-1	!	Y	TeleportRedDestination	TeleportOrangeDestination	TeleportYellowDestination	TeleportGreenDestination	TeleportBlueDestination	None	None	None	None
+TeleportGreenDestination	Infinity	0	-1	-1	!	Y	TeleportRedDestination	TeleportOrangeDestination	TeleportYellowDestination	TeleportGreenDestination	TeleportBlueDestination	None	None	None	None
+TeleportBlueDestination	Infinity	0	-1	-1	!	Y	TeleportRedDestination	TeleportOrangeDestination	TeleportYellowDestination	TeleportGreenDestination	TeleportBlueDestination	None	None	None	None
+CircuitBoundaryBase	Infinity	0	-1	-1	!	N	CircuitBoundaryBase	CircuitBoundaryBlocked	None	None	None	None	None	None	Circuit wall.
+CircuitBoundaryBlocked	Infinity	0	-1	-1	!	N	CircuitBoundaryBase	CircuitBoundaryBlocked	None	None	None	None	None	None	Circuit wall.
+CircuitBoundaryOpen	Infinity	0	-1	-1	!	N	None	None	None	None	None	None	None	None	Circuit wall.
+AmplifierL2	Infinity	0	-1	-1	!	Y	AmplifierL1	AmplifierL2	AmplifierL3	AmplifierL4	None	None	None	None	None
+AmplifierL3	Infinity	0	-1	-1	!	Y	AmplifierL1	AmplifierL2	AmplifierL3	AmplifierL4	None	None	None	None	None
+AmplifierL4	Infinity	0	-1	-1	!	Y	AmplifierL1	AmplifierL2	AmplifierL3	AmplifierL4	None	None	None	None	None
+CircuitRotate90	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+CircuitRotateN90	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+CircuitFlipHorizontal	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+CircuitFlipVertical	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+CircuitCopy	Infinity	0	-1	-1	!	Y	None	None	None	None	None	None	None	None	None
+PowerSourceOrange	Infinity	0	-1	-1	!	Y	PowerSourceRed	PowerSourceOrange	PowerSourceYellow	PowerSourceGreen	PowerSourceBlue	None	None	None	Periodically emits a charge.
+PowerSourceYellow	Infinity	0	-1	-1	!	Y	PowerSourceRed	PowerSourceOrange	PowerSourceYellow	PowerSourceGreen	PowerSourceBlue	None	None	None	Periodically emits a charge.
+PowerSourceGreen	Infinity	0	-1	-1	!	Y	PowerSourceRed	PowerSourceOrange	PowerSourceYellow	PowerSourceGreen	PowerSourceBlue	None	None	None	Periodically emits a charge.
+PowerSourceBlue	Infinity	0	-1	-1	!	Y	PowerSourceRed	PowerSourceOrange	PowerSourceYellow	PowerSourceGreen	PowerSourceBlue	None	None	None	Periodically emits a charge.
+OrangeChargeFilter	Infinity	0	-1	-1	!	Y	RedChargeFilter	OrangeChargeFilter	YellowChargeFilter	GreenChargeFilter	BlueChargeFilter	None	None	None	None
+YellowChargeFilter	Infinity	0	-1	-1	!	Y	RedChargeFilter	OrangeChargeFilter	YellowChargeFilter	GreenChargeFilter	BlueChargeFilter	None	None	None	None
+GreenChargeFilter	Infinity	0	-1	-1	!	Y	RedChargeFilter	OrangeChargeFilter	YellowChargeFilter	GreenChargeFilter	BlueChargeFilter	None	None	None	None
+BlueChargeFilter	Infinity	0	-1	-1	!	Y	RedChargeFilter	OrangeChargeFilter	YellowChargeFilter	GreenChargeFilter	BlueChargeFilter	None	None	None	None
+OrangeChargeGoal	Infinity	0	-1	-1	!	Y	RedChargeGoal	OrangeChargeGoal	YellowChargeGoal	GreenChargeGoal	BlueChargeGoal	None	None	None	None
+YellowChargeGoal	Infinity	0	-1	-1	!	Y	RedChargeGoal	OrangeChargeGoal	YellowChargeGoal	GreenChargeGoal	BlueChargeGoal	None	None	None	None
+GreenChargeGoal	Infinity	0	-1	-1	!	Y	RedChargeGoal	OrangeChargeGoal	YellowChargeGoal	GreenChargeGoal	BlueChargeGoal	None	None	None	None
+BlueChargeGoal	Infinity	0	-1	-1	!	Y	RedChargeGoal	OrangeChargeGoal	YellowChargeGoal	GreenChargeGoal	BlueChargeGoal	None	None	None	None

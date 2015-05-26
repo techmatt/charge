@@ -1,0 +1,80 @@
+Easy	The Path to Success	IntroWire.txt	IntroWire_Sol.txt	W.txt	Welcome to Charge!  Click on or hover over components for additional information.	0	100000	N	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	The Road to Hell	IntroBlocker.txt	IntroBlocker_Sol.txt	W.txt	Obstacles may prevent you from taking the most direct path.	0	100000	N	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Kinder Garden	IntroColors.txt	IntroColors_Sol.txt	W.txt	There are five colors of charge, ordered red, orange, yellow, green, and blue.	0	100000	N	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Speed Racer	SpeedTest.txt	SpeedTest_Sol.txt	W.txt	Some puzzles have a time limit.  You can upgrade Wires by clicking on them.	0	100000	N	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Sensitivity Training	IntroAccept.txt	IntroAccept_Sol.txt	W.txt	You can modify wires to control the flow of charge.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Dealing with Rejection	IntroReject.txt	IntroReject_Sol.txt	W.txt	Affinity levels can be positive or negative.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	A Stitch in Time	IntroDischarge.txt	IntroDischarge_Sol.txt	W.txt	Some Goals will not hold charge indefinitely.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Power to the People	IntroAmp.txt	IntroAmp_Sol.txt	WA.txt	Some components let you affect charge level.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Lemon-aid	Lemon-aid.txt	Lemon-aid_Sol.txt	WA.txt	Charges can interfere with each other in undesired ways.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	There and Back Again	SirAmpsalot.txt	SirAmpsalot_Sol.txt	WA.txt	Charges won't go backwards unless redirected.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Tower of Babel	IntroSplitter.txt	IntroSplitter_Sol.txt	W.txt	Higher level charges split into more/stronger parts.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	One Small Step	SingleCharge.txt	SingleCharge_Sol.txt	WSA.txt	Splitting and Ampiflying can act in complimentary ways.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	One Giant Leap	SingleChargeTricky.txt	SingleChargeTricky_Sol.txt	WSA.txt	You might learn something new from the official solutions.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	A-mazing Grace	IntroArrow.txt	IntroArrow_Sol.txt	W.txt	Arrows can restrict where charges flow.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Ding Dong Ditch	IntroSwitch.txt	IntroSwitch_Sol.txt	WSA.txt	Buttons and Doors can let charges control themselves.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Minimum Security	IntroJumper.txt	IntroJumper_Sol.txt	WTR.txt	New components can overcome new obstacles.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Double Trouble	DoubleTrouble.txt	DoubleTrouble_Sol.txt	W.txt	Charges will only stay in Goals if they can't move somewhere new.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Beam Me Up	SeperateUnequal.txt	SeperateUnequal_Sol.txt	WSATR.txt	You can hold down spacebar to speed up the game.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Six String Samurai	SixStringSamurai.txt	SixStringSamurai_Sol.txt	WSA.txt	Charges prefer less recently used components.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Easy	Reindeer Games	ReindeerGames.txt	ReindeerGames_Sol.txt	WTR(rg).txt	Some puzzles are harder than they seem.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	The Green-Eyed Monster	ThreeGreens.txt	ThreeGreens_Sol.txt	WSA.txt	It's important to remember what you have learned.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Stations of Life	IntroColorAmp.txt	IntroColorAmp_Sol.txt	WQ.txt	Colored Amplifiers can be more efficient than regular ones.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	A Penny Saved	ColorTrain.txt	ColorTrain_Sol.txt	WQ.txt	Efficiency in both space and charge is important.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Red Tide	RedWave.txt	RedWave_Sol.txt	WSA.txt	Delays and Accelerators can help to prevent charge destruction.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Moment of Glory	IntroTimer.txt	IntroTimer_Sol.txt	WSA.txt	Sometimes you have nothing better to do than wait.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Cram Time	Merger.txt	Merger_Sol.txt	W.txt	Use Wires to separate a group of charges.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	It's a Trap!	IntroTrap.txt	IntroTrap_Sol.txt	W.txt	Traps force you to consider other options.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Trapasaurus	SimpleTrap.txt	SimpleTrap_Sol.txt	WG.txt	Traps can be useful.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Bonanza	BlockerBonanza.txt	BlockerBonanza_Sol.txt	G.txt	Traps can be tricky.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Hold Your Horses	IntroHold.txt	IntroHold_Sol.txt	WH.txt	Sometimes Delays and Accelerators are insufficient.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Open Sesame	IntroColorTrap.txt	IntroColorTrap_Sol.txt	WSATRGC.txt	Cranks let you open Traps of the corresponding color.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	A Silver Lining	GrayIntro.txt	GrayIntro_Sol.txt	WODBGC.txt	Gray Traps/Doors are only affected by the nearest Crank/Button.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	We Require More	TheIncredibleHulk.txt	TheIncredibleHulk_Sol.txt	WBG.txt	A Gray Button will only ever affect a single Gray Door.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Cornered	TrapCharge.txt	TrapCharge_Sol.txt	W.txt	Timing can be everything.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Doom House	DoomHouse.txt	DoomHouse_Sol.txt	W.txt	Some puzzles must be taken one step at a time.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Different Strokes	RainbowRoad.txt	RainbowRoad_Sol.txt	WSAQ.txt	One Amplifier can have multiple uses.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Labyrinth	FilterMaze.txt	FilterMaze_Sol.txt	WF.txt	Some taskss are easier with the right components.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	In Soviet Russia	ButtonParade.txt	ButtonParade_Sol.txt	WHODB.txt	... charge waits for you!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Medium	Infinite Possibilities	IntroInfinite.txt	IntroInfinite_Sol.txt	WSAQTR.txt	Finite input can beget infinite output.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	New Horizons	IntroCircuit.txt	IntroCircuit_Sol.txt	WSAQTRX.txt	Chips can eliminate certain space constraints.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Punch the Keys	ColorButtons.txt	ColorButtons_Sol.txt	WF.txt	Pay attention to the already existing chips.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	One With Nothing	OneWIthNothing.txt	OneWithNothing_Sol.txt	Nothing.txt	You take what you can get.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	To Each His Own	ColorSort.txt	ColorSort_Sol.txt	WSAQFX.txt	Chips you build now might come in handy later.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Creative License	RainbowDoors.txt	RainbowDoors_Sol.txt	WSAQTR.txt	Sitting back and thinking can sometimes produce better results.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	One for All	Streamer.txt	Streamer_Sol.txt	WSXH.txt	Sometimes lots of small charges are more useful than larger ones.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Wishing Well	PoorMansBattery.txt	PoorMansBattery_Sol.txt	WTRXHODBF.txt	Charge is a precious resource.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Infinite Regress	PossiblyImpossible.txt	PossiblyImpossible_Sol.txt	W.txt	NEED HINT	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Trick or Treat	Trickery.txt	Trickery_Sol.txt	Nothing.txt	All levels have a solution.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Smörgåsbord	Middle.txt	Middle_Sol.txt	WXGC(l).txt	Sometimes, working with short bursts of charge is important.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Déjà Vu	SingleChargeSuperTricky.txt	SingleChargeSuperTricky_Sol.txt	WSA.txt	You should be able to handle this one.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Batter Up	IntroBattery.txt	IntroBattery_Sol.txt	W.txt	A new component has appeared!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Jacob's Ladder	SwapLadder.txt	SwapLadder_Sol.txt	WXHODBF.txt	Batteries have different colors too.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Thinking Inside the Box	MisfitRevisited.txt	MisfitRevisited_Sol.txt	Nothing.txt	NEED HINT	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Ye Who Enter Here	YeWhoEnterHere.txt	YeWhoEnterHere_Sol.txt	WSAQFTRD.txt	Abandon all hope.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Ramming Speed	RammingSpeed.txt	RammingSpeed_Sol.txt	WAQFHODBGXC.txt	NEED HINT	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Compressor	Squish.txt	Squish_Sol.txt	WTXG.txt	Figuring out what's going on is the key to some puzzles.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Web We Weave	GateWeb.txt	GateWeb_Sol.txt	WXGC(l).txt	NEED HINT	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Mob Rule	StackMachine.txt	StackMachine_Sol.txt	WHODB.txt	You can use your own Doors and Buttons to control timing.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	The Butterfly Effect	Inconnect.txt	Inconnect_Sol.txt	Nothing.txt	Some puzzles have multiple solutions.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Misfit Mayhem	ColorThroughput.txt	ColorThroughput_Sol.txt	Nothing.txt	If you find yourself impatient, remember the spacebar.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Fun For the Whole Family	FunForTheWholeFamily.txt	FunForTheWholeFamily_Sol.txt	WSA.txt	Or not.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Size Isn't Everything	ColorDowngrade.txt	ColorDowngrade_Sol.txt	WSAQFTRXHODB.txt	Shave and a haircut, one chip.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Brave New World	TheMachine.txt	TheMachine_Sol.txt	WAQTRX.txt	It has such charges in it.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Turn the Other Cheek	SixReversal.txt	SixReversal_Sol.txt	WTRFHODBGXC.txt	Fools rush in where angels fear to tread.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Hard	Double Cross	Clogger.txt	Clogger_Sol.txt	WSAQFTRXHODB.txt	And now for something completely different...	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Rocket Science	OnePieceMissing.txt	OnePieceMissing_Sol.txt	WSAQFTRXHODB.txt	Four out of five rocket surgeons agree.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Overengineering	LocalDoors.txt	LocalDoors_Sol.txt	Nothing.txt	Just give up.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Do-Se-Do	Swapper.txt	Swapper_Sol.txt	WXHODB.txt	I just wish I had time for one more bowl of Chili.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Deus Ex Machina	TheMachine2.txt	TheMachine2_Sol.txt	WTRFHODBGXC.txt	Boss time!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	The Three Stooges	StreamManipulation.txt	StreamManipulation_Sol.txt	Nothing.txt	You should be used to this by now.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Pride Parade	ColorSortDeluxe.txt	ColorSortDeluxe_Sol.txt	WTRFHODBGXC.txt	All together now!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Power Overwhelming	IntroBigBattery.txt	IntroBigBattery_Sol.txt	WTR.txt	Must have energy!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Quantity Control	DPSSpike.txt	DPSSpike_Sol.txt	WSAQFTRXHODB.txt	Greedier than most.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Jigsaw	Jigsaw.txt	Jigsaw_Sol.txt	Nothing.txt	Made easier for your protection.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Turing Complete	Turing.txt	Turing_Sol.txt	WHODB.txt	Proof by construction.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Really Hard	Doppleganger	Doppleganger.txt	Doppleganger_Sol.txt	EverythingRedPower.txt	NEED HINT	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Impossible	Chargin' Up	RainbowInsert.txt	RainbowInsert_Sol.txt	WTRFHODBGXC.txt	Some levels have lasers.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Impossible	Line Dancing	OneOfThose.txt	OneOfThose_Sol.txt	WTXG.txt	We'll wait while you get a pen.	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Impossible	Chips Ahoy	DoItYourself.txt	DoItYourself_Sol.txt	WTRFHDOB(royl)GXC.txt	Do it yourself!	0	100000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
+Impossible	Final Destination	MaxDPS.txt	MaxDPS_Sol.txt	Everything.txt	Good luck!	0	1000000000	Y	0	Infinity	0	Infinity	0	Infinity	0	Infinity	0	Infinity
