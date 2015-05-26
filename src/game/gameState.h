@@ -25,6 +25,11 @@ struct GameState
     Component& getCircuit(const GameLocation &pos);
 
     Component* getComponent(const GameLocation &pos, bool skipInactiveBoundary = true);
+
+    //
+    // returns the number of neighbors.
+    //
+    int findNeighboringComponents(Component &component, Component *neighbors[6]);
  
     Board board;
     vector<Component*> components;

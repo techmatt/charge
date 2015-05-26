@@ -276,9 +276,6 @@ public:
         return coordValid(coord.x, coord.y);
     }
 
-    //
-    // TODO: rename
-    //
     void setRow(size_t row, const std::vector<T> &values)
     {
         for (size_t col = 0; col < m_dimY; col++) m_data[row * m_dimX + col] = values[col];

@@ -136,9 +136,6 @@ void GameState::removeComponent(Component *component)
         }
     }
 
-    //
-    // TODO: make sure circuit's components are deleted correctly.
-    //
     for (auto &cell : board.cells)
     {
         if (cell.value.c != nullptr && cell.value.c->circuitBoard != nullptr)
@@ -306,3 +303,24 @@ void GameState::updateCircuitBoundaries()
             c->circuitBoundaryNeighbor = findCircuitBoundaryNeighbor(*c);
     }
 }
+
+int GameState::findNeighboringComponents(Component &component, Component *neighbors[6])
+{
+    if (component.location.inCircuit())
+    {
+        if (component.info->name == "CircuitBoundary")
+        {
+            // TODO: the circuit boundary connects to either another component in the circuit, a component on the mian board, or a component in another circuit.
+            return 0;
+        }
+        else
+        {
+            return getCircuit(component.location).circuitBoard->findNeighboringComponents(component.location.circuitPos, neighbors);
+        }
+    }
+    else
+    {
+        return board.findNeighboringComponents(component.location.boardPos, neighbors);
+    }
+}
+

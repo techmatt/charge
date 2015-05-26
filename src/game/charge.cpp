@@ -196,31 +196,15 @@ bool Charge::findBestDestination(GameState &state)
     Component *previous = state.getComponent(source);
     Component *current = state.getComponent(destination);
 
-    int adjacentCount;
-    Component *adjacentComponents[6];
-    if (current->location.inCircuit())
-    {
-        if (current->info->name == "CircuitBoundary")
-        {
-            // TODO
-            adjacentCount = 0;
-        }
-        else
-        {
-            state.getCircuit(current->location).circuitBoard->findAdjacentBuildings(current->location.boardPos, adjacentComponents, adjacentCount);
-        }
-    }
-    else
-    {
-        state.board.findAdjacentBuildings(destination.boardPos, adjacentComponents, adjacentCount);
-    }
-
+    Component *neighboringComponents[6];
+    int neighborCount = state.findNeighboringComponents(*current, neighboringComponents);
+    
     double strongestPreference = 0.0;
     Component *bestComponent = nullptr;
 
-    for (int adjacentIndex = 0; adjacentIndex < adjacentCount; adjacentIndex++)
+    for (int adjacentIndex = 0; adjacentIndex < neighborCount; adjacentIndex++)
     {
-        Component *candidate = adjacentComponents[adjacentIndex];
+        Component *candidate = neighboringComponents[adjacentIndex];
 
         bool isPreviousBuilding = previous->location == candidate->location;
         bool buildingWillAccept = candidate->willAcceptCharge(state, *this);

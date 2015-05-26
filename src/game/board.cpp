@@ -81,23 +81,22 @@ void Board::addNewComponent(Component *component)
         }
 }
 
-void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int &resultCount)
+int Board::findNeighboringComponents(const vec2i &source, Component *neighbors[6])
 {
+    int neighborCount = 0;
     auto insertAdjacentBuilding = [&](const vec2i &offset)
     {
         if (cells.coordValid(offset) && cells(offset).c != nullptr)
         {
             Component *comp = cells(offset).c;
-            for (int componentIndex = 0; componentIndex < resultCount; componentIndex++)
+            for (int componentIndex = 0; componentIndex < neighborCount; componentIndex++)
             {
-                if (result[componentIndex] == comp)
+                if (neighbors[componentIndex] == comp)
                     return;
             }
-            result[resultCount++] = comp;
+            neighbors[neighborCount++] = comp;
         }
     };
-
-    resultCount = 0;
 
     //
     // Top row
@@ -126,6 +125,8 @@ void Board::findAdjacentBuildings(const vec2i &source, Component *result[6], int
     // Top row
     //
     insertAdjacentBuilding(vec2i(source.x + 0, source.y - 1));
+
+    return neighborCount;
 }
 
 /*ParameterTable Board::toTable(const string &tableName) const

@@ -214,7 +214,7 @@ public:
   //! If this vec3 is non-zero, then normalize it, else return
 	inline void normalizeIfNonzero() {
 		const T l = length();
-    if (l == static_cast<T>(0)) { return; }  // TODO: Better to check against epsilon tolerance
+    if (l == static_cast<T>(0)) { return; }
     const T val = static_cast<T>(1) / l;
 		array[0] *= val;
 		array[1] *= val;

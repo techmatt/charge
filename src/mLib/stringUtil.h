@@ -6,7 +6,6 @@
 
 namespace util
 {
-	//TODO TEST
 	inline bool startsWith(const std::string& str, const std::string& startCandidate) {
 		if (str.length() < startCandidate.length()) { return false; }
 		for (size_t i = 0; i < startCandidate.length(); i++) {
@@ -15,7 +14,6 @@ namespace util
 		return true;
 	}
 
-	//TODO TEST
 	inline bool endsWith(const std::string& str, const std::string& endCandidate) {
 		if (str.length() < endCandidate.length()) { return false; }
 		for (size_t i = 0; i < endCandidate.length(); i++) {
@@ -24,7 +22,6 @@ namespace util
 		return true;
 	}
 
-	//TODO TEST
 	inline bool exactMatchAtOffset(const std::string& str, const std::string& find, size_t offset) {
 		size_t MatchLength = 0;
 		for (size_t i = 0; i + offset < str.length() && i < find.length(); i++) {
@@ -36,7 +33,6 @@ namespace util
 		return false;
 	}
 
-    //TODO TEST
     inline bool contains(const std::string& str, const std::string& find) {
         for (size_t i = 0; i < str.length(); i++)
         {
@@ -55,7 +51,6 @@ namespace util
         return false;
     }
 
-    //TODO TEST
     inline std::string zeroPad(size_t value, size_t totalLength) {
         std::string result = std::to_string(value);
         while (result.size() < totalLength)
@@ -63,7 +58,6 @@ namespace util
         return result;
     }
 
-	//TODO TEST
 	inline std::string replace(const std::string& str, const std::string& find, const std::string& replace) {
 		std::string result;
 		for (size_t i = 0; i < str.length(); i++) {
@@ -75,7 +69,6 @@ namespace util
 		return result;
 	}
 
-    //TODO TEST
     inline std::string remove(const std::string& str, const std::string& find) {
         return replace(str, find, "");
     }
@@ -91,7 +84,6 @@ namespace util
 		return util::replace(str, std::string(1, find), std::string(1, replace));
 	}
 
-	//TODO TEST
 	inline std::vector<std::string> split(const std::string& str, const std::string& separator, bool pushEmptyStrings = false) {
 		MLIB_ASSERT_STR(separator.length() >= 1, "empty seperator");
 		std::vector<std::string> result;

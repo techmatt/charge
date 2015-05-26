@@ -81,7 +81,6 @@ namespace convert {
 		res = toBool(s);
 	}
     template<class U> inline void to(const std::string& s, vec2<U>& res) {
-        // TODO: abstract and extend to other vecN::"to"
         std::string sFixed = util::removeChar(s, 'f');
         if (util::contains(sFixed, ','))
             sFixed = util::replace(sFixed, ',', ' ');
