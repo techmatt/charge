@@ -88,7 +88,7 @@ private:
 	void updateBackgroundObjects();
 	void renderBuildingGrid();
 	
-    void renderComponents(bool background);
+    void renderComponents();
     void renderComponent(const Component &component);
 	void renderCircuitComponent(const Component &component);
 
@@ -102,7 +102,7 @@ private:
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButton(const GameButton &button, bool selected);
-    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground);
+    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset);
 
     void renderHoverComponent();
     void removeHoverComponent();
@@ -116,8 +116,7 @@ private:
     GameMode mode;
     GameSpeed speed;
 
-    Texture background;
-	vec2f canonicalDims;
+    vec2f canonicalDims;
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vec2i mouseHoverCoord;

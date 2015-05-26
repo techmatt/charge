@@ -26,6 +26,6 @@ namespace constants
 
     static const int circuitBoardSize = 14;
 
-    static const vec2f connectorDims[3] = { vec2f(0.18f, 0.05f), vec2f(0.2f, 0.054f), vec2f(0.18f, 0.05f) };
+    static const vec2f connectorDims[3] = { vec2f(0.18f, 0.05f), vec2f(0.2f, 0.056f), vec2f(0.18f, 0.05f) };
 
 }

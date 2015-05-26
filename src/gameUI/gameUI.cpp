@@ -5,9 +5,11 @@ namespace depthLayers
 {
     static const float selection = 0.9f;
     static const float hoverComponent = 0.1f;
+    static const float hoverComponentGrid = 0.05f;
     static const float background = 1.0f;
     static const float spokes = 0.95f;
-    static const float component = 1.0f;
+    static const float component = 0.9f;
+    static const float miniCircuitOffset = 0.2f;
 }
 
 void GameUI::init()
@@ -255,7 +257,7 @@ void GameUI::render()
         //    background.loadRenderTarget(windowSize.x, windowSize.y);
         
         //app.renderer.setDefaultRenderTarget();
-
+        //render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
     }
 
     //
@@ -265,9 +267,6 @@ void GameUI::render()
     {
         render(o);
     }
-
-    //app.renderer.setDefaultRenderTarget();
-    //render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
 
     for (const auto &charge : app.state.charges)
     {
@@ -318,7 +317,7 @@ void GameUI::renderHoverComponent()
 
     const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
     
-    renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false, false);
+    renderLocalizedComponent(selectedMenuComponent->name, screenRect, ComponentModifiers(*selectedMenuComponent), false, false, false, depthLayers::hoverComponent);
 
     const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
     const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
@@ -334,7 +333,7 @@ void GameUI::renderHoverComponent()
                 const rect2f rect = location.inCircuit() ?
                     GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
                     GameUtil::boardToWindowRect(canonicalDims, coord, 1);
-                render(*tex, rect, depthLayers::hoverComponent);
+                render(*tex, rect, depthLayers::hoverComponentGrid);
             }
         }
 }
@@ -431,7 +430,7 @@ void GameUI::updateBackgroundObjects()
 
 	renderBuildingGrid();
 
-    renderComponents(true);
+    renderComponents();
 
     for (auto &component : app.state.components)
     {
@@ -495,10 +494,10 @@ void GameUI::renderButton(const GameButton &button, bool selected)
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
     addBackgroundObject(borderTex, screenRect, depthLayers::background);
     
-    renderLocalizedComponent(button.name, screenRect, button.modifiers, selected, true, true);
+    renderLocalizedComponent(button.name, screenRect, button.modifiers, selected, true, true, 0.0f);
 }
 
-void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground)
+void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset)
 {
     if (!isButton && name == "Blocker" &&
         (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
@@ -509,6 +508,7 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
     auto record = [&](Texture &tex, const rect2f &rect, float depth) {
+        depth -= depthOffset;
         if (isBackground)
             addBackgroundObject(tex, rect, depth);
         else
@@ -541,7 +541,7 @@ void GameUI::renderComponent(const Component &component)
             if (!component.inactiveBoundary())
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
-                renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true);
+                renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true, 0.0f);
             }
         }
 		// regardless, we'll need to render it in the main grid, but we'll wait until later
@@ -550,7 +550,7 @@ void GameUI::renderComponent(const Component &component)
     else
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(canonicalDims, component.location.boardPos, 2);
-        renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true);
+        renderLocalizedComponent(component.info->name, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true, 0.0f);
     }
 }
 
@@ -558,10 +558,10 @@ void GameUI::renderCircuitComponent(const Component &component)
 {
 	if (!component.location.inCircuit() || component.inactiveBoundary())
 		return;
-	CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
-	rect2f rect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
-	const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(rect));
-    renderLocalizedComponent(component.info->name, screenRect, component.modifiers, false, false, true);
+    const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+    const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
+    const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
+    renderLocalizedComponent(component.info->name, screenRect, component.modifiers, false, false, true, depthLayers::miniCircuitOffset);
 }
 
 void GameUI::renderSpokes(const Component &component)
@@ -660,21 +660,15 @@ void GameUI::renderSpokesCircuit(const Component &component)
     }
 }
 
-void GameUI::renderComponents(bool background)
+void GameUI::renderComponents()
 {
     for (auto &component : app.state.components)
     {
-        if (component->info->background == background)
-        {
-            renderComponent(*component);
-        }
+        renderComponent(*component);
     }
 	for (auto &component : app.state.components)
 	{
-		if (component->info->background == background)
-		{
-			renderCircuitComponent(*component);
-		}
+        renderCircuitComponent(*component);
 	}
 }
 
