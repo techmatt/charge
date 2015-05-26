@@ -28,6 +28,21 @@ inline int ticksFromSpeed(GameSpeed speed)
     }
 }
 
+struct UIRenderObject
+{
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, float _rotation = 0.0f)
+    {
+        tex = &_tex;
+        rect = _rect;
+        depth = _depth;
+        rotation = _rotation;
+    }
+    Texture *tex;
+    rect2f rect;
+    float depth;
+    float rotation;
+};
+
 class GameUI
 {
 public:
@@ -50,9 +65,22 @@ private:
     void render(Texture &tex, const rect2f &destinationRect, float depth);
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
 
+    void render(const UIRenderObject &o)
+    {
+        if (o.rotation == 0.0f)
+            render(*o.tex, o.rect, o.depth);
+        else
+            render(*o.tex, o.rect, o.depth, o.rotation);
+    }
+
+    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, float rotation = 0.0f)
+    {
+        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, rotation));
+    }
+
 	void updateButtonList();
 
-	void updateBackground();
+	void updateBackgroundObjects();
 	void renderBuildingGrid();
 	
     void renderComponents(bool background);
@@ -69,7 +97,7 @@ private:
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButton(const GameButton &button, bool selected);
-    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton);
+    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground);
 
     void renderHoverComponent();
     void removeHoverComponent();
@@ -97,4 +125,6 @@ private:
     GameLocation selectedGameLocation;
 
     bool designActionTaken;
+
+    vector<UIRenderObject> backgroundObjects;
 };
