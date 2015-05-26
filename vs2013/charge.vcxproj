@@ -91,6 +91,7 @@
     <ClCompile Include="..\src\core\SDLUtil.cpp" />
     <ClCompile Include="..\src\gameUI\coordinates.cpp" />
     <ClCompile Include="..\src\gameUI\gameButton.cpp" />
+    <ClCompile Include="..\src\gameUI\gameController.cpp" />
     <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\gameUI\puzzleManager.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="..\src\core\SDLUtil.h" />
     <ClInclude Include="..\src\gameUI\coordinates.h" />
     <ClInclude Include="..\src\gameUI\gameButton.h" />
+    <ClInclude Include="..\src\gameUI\gameController.h" />
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\gameUI\puzzleManager.h" />
     <ClInclude Include="..\src\game\board.h" />

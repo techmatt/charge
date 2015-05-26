@@ -87,6 +87,9 @@
     <ClCompile Include="..\src\gameUI\puzzleManager.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameUI\gameController.cpp">
+      <Filter>gameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -210,6 +213,9 @@
       <Filter>mLib</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gameUI\puzzleManager.h">
+      <Filter>gameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\gameController.h">
       <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>

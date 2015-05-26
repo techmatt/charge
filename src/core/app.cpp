@@ -29,6 +29,8 @@ int App::run()
 
     data.ui.init();
 
+    data.controller.init();
+
     data.puzzles.init();
 
     SDL_Event event;
@@ -59,7 +61,7 @@ int App::run()
         //
         // advance the game
         //
-        data.ui.step();
+        data.controller.step();
 
         //
         // render the game

@@ -15,32 +15,9 @@ namespace depthLayers
 
 void GameUI::init()
 {
-    mode = ModeDesign;
-    speed = Speed1x;
-
     selectedGameLocation.boardPos = constants::invalidCoord;
-
-    designActionTaken = false;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
-}
-
-void GameUI::step()
-{
-    if (designActionTaken && mode != ModeDesign)
-    {
-        mode = ModeDesign;
-        app.state.resetPuzzle();
-    }
-
-    if (mode == ModeExecuting)
-    {
-        const int tickCount = ticksFromSpeed(speed);
-        for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
-        {
-            app.state.step();
-        }
-    }
 }
 
 void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const CoordinateFrame &frame)
@@ -74,36 +51,24 @@ void GameUI::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, o.rotation);
 }
 
-void GameUI::loadPuzzle(const string &filename)
-{
-    LegacyLoader::load(filename, app.state);
-    backgroundDirty = true;
-}
-
 void GameUI::keyDown(SDL_Keycode key)
 {
     if (key == SDLK_ESCAPE)
     {
         selectedMenuComponent = nullptr;
     }
-    if (key == SDLK_s)
-    {
-        app.state.savePuzzle("test.txt");
-    }
-    if (key == SDLK_l)
-    {
-        LegacyLoader::load(params().assetDir + "levelsOld/DoItYourself.txt", app.state);
-    }
     if (key == SDLK_LEFT)
     {
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
-        loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        backgroundDirty = true;
         
     }
     if (key == SDLK_RIGHT)
     {
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle + 1, app.puzzles.puzzleList.size());
-        loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        backgroundDirty = true;
     }
 }
 
@@ -118,7 +83,7 @@ void GameUI::removeHoverComponent()
             if (circuitComponent != nullptr && circuitComponent->info->name != "CircuitBoundary")
             {
                 backgroundDirty = true;
-                designActionTaken = true;
+                app.controller.designActionTaken = true;
                 app.state.removeComponent(activeCircuit()->circuitBoard->cells(location.circuitPos).c);
             }
         }
@@ -128,7 +93,7 @@ void GameUI::removeHoverComponent()
         if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
         {
             backgroundDirty = true;
-            designActionTaken = true;
+            app.controller.designActionTaken = true;
             app.state.removeComponent(app.state.board.cells(location.boardPos).c);
         }
     }
@@ -172,37 +137,37 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 }
                 if (button.type == ButtonChargeColor && gameComponent != nullptr)
                 {
-                    designActionTaken = true;
+                    app.controller.designActionTaken = true;
                     gameComponent->modifiers.color = button.modifiers.color;
                 }
                 if (button.type == ButtonChargePreference && gameComponent != nullptr)
                 {
-                    designActionTaken = true;
+                    app.controller.designActionTaken = true;
                     gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
                 }
                 if (button.type == ButtonWireSpeed && gameComponent != nullptr)
                 {
-                    designActionTaken = true;
+                    app.controller.designActionTaken = true;
                     gameComponent->modifiers.speed = button.modifiers.speed;
                 }
                 if (button.type == ButtonCircuitBoundary && gameComponent != nullptr)
                 {
-                    designActionTaken = true;
+                    app.controller.designActionTaken = true;
                     gameComponent->modifiers.boundary = button.modifiers.boundary;
                 }
                 if (button.name == "Start")
                 {
-                    designActionTaken = false;
-                    mode = ModeExecuting;
+                    app.controller.designActionTaken = false;
+                    app.controller.puzzleMode = ModeExecuting;
                 }
                 if (button.name == "Stop")
                 {
-                    mode = ModeDesign;
+                    app.controller.puzzleMode = ModeDesign;
                     app.state.resetPuzzle();
                 }
                 if (button.name == "Pause")
                 {
-                    mode = ModePaused;
+                    app.controller.puzzleMode = ModePaused;
                 }
                 return;
             }
@@ -254,7 +219,7 @@ void GameUI::addHoverComponent()
         {
             Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
             app.state.addNewComponent(newComponent);
-            designActionTaken = true;
+            app.controller.designActionTaken = true;
             backgroundDirty = true;
         }
     }
@@ -262,7 +227,7 @@ void GameUI::addHoverComponent()
     {
         Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
         app.state.addNewComponent(newComponent);
-        designActionTaken = true;
+        app.controller.designActionTaken = true;
         backgroundDirty = true;
     }
 }

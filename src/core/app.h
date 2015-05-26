@@ -1,10 +1,11 @@
 
 struct AppData
 {
-    AppData() : ui(*this)
+    AppData() : ui(*this), controller(*this)
     {
-
+        
     }
+    GameController controller;
     GameUI ui;
     GameState state;
     PuzzleManager puzzles;

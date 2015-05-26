@@ -1,31 +1,4 @@
 
-enum GameMode
-{
-    ModeDesign,
-    ModeExecuting,
-    ModePaused,
-};
-
-enum GameSpeed
-{
-    Speed1x,
-    Speed2x,
-    Speed10x,
-    Speed50x,
-};
-
-inline int ticksFromSpeed(GameSpeed speed)
-{
-    switch (speed)
-    {
-    case Speed1x: return 1;
-    case Speed2x: return 2;
-    case Speed10x: return 10;
-    case Speed50x: return 50;
-    default: return 0;
-    }
-}
-
 struct UIRenderObject
 {
     UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, const Component *_dynamicComponent = nullptr, float _rotation = 0.0f)
@@ -59,7 +32,6 @@ public:
     GameUI(AppData &_app) : app(_app) {}
     void init();
 	void render();
-    void step();
     
     void mouseDown(Uint8 button, int x, int y);
     void mouseMove(Uint32 buttonState, int x, int y);
@@ -83,8 +55,6 @@ private:
     }
 
 	void updateButtonList();
-
-    void loadPuzzle(const string &filename);
 
 	void updateBackgroundObjects();
 	void renderBuildingGrid();
@@ -114,9 +84,6 @@ private:
 
     GameLocation hoverLocation(bool constructionOffset) const;
 
-    GameMode mode;
-    GameSpeed speed;
-
     vec2f canonicalDims;
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
@@ -129,7 +96,6 @@ private:
     // TODO: this should be a vector
     GameLocation selectedGameLocation;
 
-    bool designActionTaken;
     bool backgroundDirty;
 
     vector<UIRenderObject> backgroundObjects;

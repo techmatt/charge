@@ -6,11 +6,10 @@ KNOWN BUGS
 
 GAME MODEL
  * components
-    * splitter
-    * amplifier
     * teleporter
     * ...
  * circuits
+ * mega-circuit-holds
  * puzzle reset
  * level/save layout file
 
@@ -45,9 +44,3 @@ CHANGES: GAME PUZZLES
  * better puzzle tutorial
  * Addition of a puzzle that relies on rotation non-invariance
  * Creation of flavor-text for all puzzles
-
-Questions
-  * Should we allow building any desired type on the circuit boundary?
-  * what should FilteredAmplifier do? It could accumulate charge until it emits an "X", or just emit a maximum of "X",
-    or refuse to accept charge unless it will produce exactly "X", or we could get rid of them?
-	Should there be 5 colors of filtered amplifiers?

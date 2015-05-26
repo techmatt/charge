@@ -54,6 +54,7 @@ class Texture;
 #include "gameUI/gameButton.h"
 #include "gameUI/puzzleManager.h"
 #include "gameUI/gameUI.h"
+#include "gameUI/gameController.h"
 
 #include "core/app.h"
 
