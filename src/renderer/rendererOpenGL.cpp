@@ -25,6 +25,11 @@ void RendererOpenGL::init(SDL_Window *window)
 
     glEnable(GL_TEXTURE_2D);
 
+    glDisable(GL_DEPTH_TEST);
+
+    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
+    glEnable(GL_BLEND);
+
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
     //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -32,6 +37,14 @@ void RendererOpenGL::init(SDL_Window *window)
     //SDL_GL_SetSwapInterval(1);
     //SDL_GL_MakeCurrent(window, _context);
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
+}
+
+mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect)
+{
+    const mat4f scaleA = mat4f::scale(rect.extentX(), rect.extentY(), 1.0f);
+    const mat4f translate = mat4f::translation(rect.min().x, rect.min().y, 0.0f);
+    const mat4f windowToNDC = mat4f::translation(-1.0f, 1.0f, 0.0f) * mat4f::scale(2.0f / _windowSize.x, -2.0f / _windowSize.y, 1.0f);
+    return windowToNDC * translate * scaleA;
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
@@ -43,15 +56,8 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
     tex.bindOpenGL();
-    /*if (rand() % 2 == 0)
-        database().getTexture(*this, "Background").bindOpenGL();
-    else
-        database().getTexture(*this, "Circuit").bindOpenGL();*/
-
-    _quadProgram.setTransform(mat4f::scale( (float)rand() / (float)RAND_MAX ));
+    _quadProgram.setTransform(makeWindowTransform(destinationRect));
     _quad.render();
-
-	//SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float angle)
@@ -77,6 +83,8 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float a
 void RendererOpenGL::present()
 {
 	SDL_GL_SwapWindow(_window);
+
+    _windowSize = getWindowSize();
 }
 
 void RendererOpenGL::setRenderTarget(Texture &target)
@@ -128,4 +136,6 @@ void RendererOpenGL::clear()
 {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
+
+    _windowSize = getWindowSize();
 }

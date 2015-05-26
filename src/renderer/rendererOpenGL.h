@@ -21,15 +21,18 @@ public:
     void setRenderTarget(Texture &target);
     void setDefaultRenderTarget();
     
-
     vec2f getWindowSize();
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
 private:
+    mat4f makeWindowTransform(const rect2f &rect);
+
     SDL_Window *_window;
     SDL_GLContext _context;
 
     GLQuad _quad;
     GLProgram _quadProgram;
+
+    vec2f _windowSize;
 };

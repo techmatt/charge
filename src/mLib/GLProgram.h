@@ -125,7 +125,7 @@ public:
 
     void setTransform(const mat4f &transform)
     {
-        glUniformMatrix4fv(transformLocation, 1, false, transform.matrix);
+        glUniformMatrix4fv(transformLocation, 1, true, transform.matrix);
     }
 
 private:

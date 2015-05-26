@@ -222,9 +222,9 @@ void GameUI::render()
     // TODO: don't do this every frame
 	updateBackground();
 
-    app.renderer.setDefaultRenderTarget();
+    //app.renderer.setDefaultRenderTarget();
 
-    render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
+    //render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
 
     for (const auto &charge : app.state.charges)
     {
@@ -386,7 +386,7 @@ void GameUI::updateBackground()
 
     Component *gameComponent = app.state.getComponent(selectedGameLocation);
 
-    app.renderer.setRenderTarget(background);
+    //app.renderer.setRenderTarget(background);
 
     render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims));
 
