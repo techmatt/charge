@@ -37,11 +37,16 @@ struct UIRenderObject
         depth = _depth;
         rotation = _rotation;
     }
+    float depth;
     Texture *tex;
     rect2f rect;
-    float depth;
     float rotation;
 };
+
+inline bool operator < (const UIRenderObject &a, const UIRenderObject &b)
+{
+    return a.depth > b.depth;
+}
 
 class GameUI
 {
@@ -125,6 +130,7 @@ private:
     GameLocation selectedGameLocation;
 
     bool designActionTaken;
+    bool backgroundDirty;
 
     vector<UIRenderObject> backgroundObjects;
 };

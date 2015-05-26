@@ -18,6 +18,7 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
 
     designActionTaken = false;
+    backgroundDirty = true;
     selectedMenuComponent = nullptr;
 }
 
@@ -85,6 +86,7 @@ void GameUI::removeHoverComponent()
             Component *circuitComponent = activeCircuit()->circuitBoard->cells(location.circuitPos).c;
             if (circuitComponent != nullptr && circuitComponent->info->name != "CircuitBoundary")
             {
+                backgroundDirty = true;
                 designActionTaken = true;
                 app.state.removeComponent(activeCircuit()->circuitBoard->cells(location.circuitPos).c);
             }
@@ -94,6 +96,7 @@ void GameUI::removeHoverComponent()
     {
         if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
         {
+            backgroundDirty = true;
             designActionTaken = true;
             app.state.removeComponent(app.state.board.cells(location.boardPos).c);
         }
@@ -106,6 +109,11 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float) x,(float) y)));
 	x = mouseHoverCoord.x;
 	y = mouseHoverCoord.y;
+
+    //
+    // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
+    //
+    backgroundDirty = true;
 
     if (button == SDL_BUTTON_RIGHT)
     {
@@ -153,8 +161,8 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 }
                 if (button.name == "Start")
                 {
-                    mode = ModeExecuting;
                     designActionTaken = false;
+                    mode = ModeExecuting;
                 }
                 if (button.name == "Stop")
                 {
@@ -216,6 +224,7 @@ void GameUI::addHoverComponent()
             Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
             app.state.addNewComponent(newComponent);
             designActionTaken = true;
+            backgroundDirty = true;
         }
     }
     else if (app.state.board.coordValidForNewComponent(location.boardPos))
@@ -223,14 +232,35 @@ void GameUI::addHoverComponent()
         Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
         app.state.addNewComponent(newComponent);
         designActionTaken = true;
+        backgroundDirty = true;
     }
 }
 
 void GameUI::render()
 {
-    // TODO: don't do this every frame
-	updateBackgroundObjects();
+    canonicalDims = GameUtil::getCanonicalSize();
+    coordinateFrame = app.renderer.getWindowCoordinateFrame();
 
+    if (backgroundDirty)
+    {
+        backgroundDirty = false;
+
+        updateBackgroundObjects();
+
+        //
+        // resize the background if needed
+        //
+        //const vec2i windowSize = app.renderer.getWindowSize();
+        //if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowSize)
+        //    background.loadRenderTarget(windowSize.x, windowSize.y);
+        
+        //app.renderer.setDefaultRenderTarget();
+
+    }
+
+    //
+    // TODO: render to off-screen buffer instead of re-rendering background every time
+    //
     for (const UIRenderObject &o : backgroundObjects)
     {
         render(o);
@@ -383,18 +413,6 @@ void GameUI::updateButtonList()
 
 void GameUI::updateBackgroundObjects()
 {
-	//
-	// resize the background if needed
-	//
-    canonicalDims = GameUtil::getCanonicalSize();
-	coordinateFrame = app.renderer.getWindowCoordinateFrame();
-
-    const vec2i windowSize = app.renderer.getWindowSize();
-	if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowSize)
-    {
-        background.loadRenderTarget(windowSize.x, windowSize.y);
-    }
-
     backgroundObjects.clear();
 
 	updateButtonList();
@@ -434,7 +452,7 @@ void GameUI::updateBackgroundObjects()
         renderButton(button, selected);
 	}
 
-    app.renderer.setDefaultRenderTarget();
+    stable_sort(backgroundObjects.begin(), backgroundObjects.end());
 }
 
 void GameUI::renderBuildingGrid()
