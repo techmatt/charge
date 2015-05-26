@@ -72,6 +72,11 @@ struct Component
         return (info->name == "CircuitBoundary" && circuitBoundaryNeighbor == nullptr);
     }
 
+    bool hasSpokes() const
+    {
+        return (info->name != "Blocker" && !inactiveBoundary());
+    }
+
     ParameterTable toTable(const string &tableName) const;
 
     //

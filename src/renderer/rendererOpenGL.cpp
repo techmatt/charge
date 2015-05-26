@@ -5,6 +5,8 @@ void RendererOpenGL::init(SDL_Window *window)
 {
     _window = window;
 
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
+
     _context = SDL_GL_CreateContext(window);
     if (_context == nullptr)
     {
@@ -25,7 +27,9 @@ void RendererOpenGL::init(SDL_Window *window)
 
     glEnable(GL_TEXTURE_2D);
 
-    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
+
+    glDepthFunc(GL_LEQUAL);
 
     glEnable(GL_BLEND);
 
@@ -150,7 +154,7 @@ CoordinateFrame RendererOpenGL::getWindowCoordinateFrame()
 void RendererOpenGL::clear()
 {
     glClearColor(0.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     updateWindowSize();
 }

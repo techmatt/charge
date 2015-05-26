@@ -525,7 +525,7 @@ void GameUI::renderCircuitComponent(const Component &component)
 
 void GameUI::renderSpokes(const Component &component)
 {
-    if (!component.info->hasSpokes())
+    if (!component.hasSpokes())
         return;
 
     if (component.location.inCircuit())
@@ -551,7 +551,7 @@ void GameUI::renderSpokes(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.boardPos == otherLocation && component.info->hasSpokes())
+                if (otherComponent.location.boardPos == otherLocation && component.hasSpokes())
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
                     
@@ -573,9 +573,9 @@ void GameUI::renderSpokes(const Component &component)
 
 void GameUI::renderSpokesCircuit(const Component &component)
 {
-    if (selectedGameLocation.boardPos != component.location.boardPos)
+    if (activeCircuit() == nullptr || activeCircuit()->location.boardPos != component.location.boardPos)
         return;
-
+    
     const vec2f myScreenPos = GameUtil::circuitToWindow(canonicalDims, component.location.circuitPos + vec2i(1, 1));
 
     const auto &cells = activeCircuit()->circuitBoard->cells;
@@ -593,7 +593,14 @@ void GameUI::renderSpokesCircuit(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.circuitPos == otherLocation && component.info->hasSpokes())
+                bool renderSpokes = true;
+                renderSpokes &= component.hasSpokes();
+                renderSpokes &= otherComponent.location.circuitPos == otherLocation;
+                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryClosed;
+                renderSpokes &= !otherComponent.inactiveBoundary();
+                renderSpokes &= !otherComponent.inactiveBoundary();
+                renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
+                if (renderSpokes)
                 {
                     const vec2f otherScreenPos = GameUtil::circuitToWindow(canonicalDims, otherComponent.location.circuitPos + vec2i(1, 1));
 
