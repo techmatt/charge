@@ -3,13 +3,14 @@
 
 namespace depthLayers
 {
-    static const float selection = 0.9f;
-    static const float hoverComponent = 0.1f;
-    static const float hoverComponentGrid = 0.05f;
-    static const float background = 1.0f;
-    static const float spokes = 0.95f;
-    static const float component = 0.9f;
-    static const float miniCircuitOffset = 0.2f;
+    const float selection = 0.9f;
+    const float charge = 0.01f;
+    const float hoverComponent = 0.1f;
+    const float hoverComponentGrid = 0.05f;
+    const float background = 1.0f;
+    const float spokes = 0.95f;
+    const float component = 0.9f;
+    const float miniCircuitOffset = 0.2f;
 }
 
 void GameUI::init()
@@ -268,6 +269,8 @@ void GameUI::render()
         render(o);
     }
 
+    renderHoverComponent();
+
     for (const auto &charge : app.state.charges)
     {
         renderCharge(charge);
@@ -277,8 +280,6 @@ void GameUI::render()
     {
         renderExplodingCharge(charge);
     }
-    
-    renderHoverComponent();
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -679,7 +680,7 @@ void GameUI::renderCharge(const Charge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-	render(*database().chargeTextures[charge.level], destinationRect, angle);
+	render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
@@ -689,7 +690,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
-	render(*database().chargeTextures[charge.level], destinationRect, angle);
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge)
@@ -701,7 +702,7 @@ void GameUI::renderChargeCircuit(const Charge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-	render(*database().chargeTextures[charge.level], destinationRect, angle);
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
