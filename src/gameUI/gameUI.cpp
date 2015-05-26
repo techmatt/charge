@@ -695,6 +695,7 @@ void GameUI::renderChargeCircuit(const Charge &charge)
     const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
+
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
     render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }

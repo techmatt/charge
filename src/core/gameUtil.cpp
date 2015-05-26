@@ -48,23 +48,26 @@ vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
 
 pair<vec2f, float> GameUtil::computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims)
 {
-    const float scaleFactorA = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
-    const float scaleFactorB = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    const float chargeStrengthFactor = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    const float scaleFactorA = locationA.inCircuit() ? 0.35f : 1.0f;
+    const float scaleFactorB = locationB.inCircuit() ? 0.35f : 1.0f;
 
     const vec2f screenA = locationA.toScreenCoordMainBoard(canonicalDims);
     const vec2f screenB = locationB.toScreenCoordMainBoard(canonicalDims);
 
     const vec2f screenPos = math::lerp(screenA, screenB, s);
-    const float screenSize = math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(canonicalDims);
+    const float screenSize = chargeStrengthFactor * math::lerp(scaleFactorA, scaleFactorB, s) * constants::canonicalChargeSize * GameUtil::windowScaleFactor(canonicalDims);
     return make_pair(screenPos, screenSize);
 }
 
 pair<vec2f, float> GameUtil::computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims)
 {
+    const float chargeStrengthFactor = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+
     const vec2f screenA = locationA.toScreenCoordCircuitBoard(canonicalDims);
     const vec2f screenB = locationB.toScreenCoordCircuitBoard(canonicalDims);
 
     const vec2f screenPos = math::lerp(screenA, screenB, s);
-    const float screenSize = 1.0f + (int)level * constants::chargeScaleWithLevelFactor;
+    const float screenSize = chargeStrengthFactor * constants::canonicalChargeSize * GameUtil::windowScaleFactor(canonicalDims);
     return make_pair(screenPos, screenSize);
 }
