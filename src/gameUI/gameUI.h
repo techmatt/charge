@@ -30,17 +30,24 @@ inline int ticksFromSpeed(GameSpeed speed)
 
 struct UIRenderObject
 {
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, float _rotation = 0.0f)
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, const Component *_dynamicComponent = nullptr, float _rotation = 0.0f)
     {
         tex = &_tex;
         rect = _rect;
         depth = _depth;
         rotation = _rotation;
+        dynamicComponent = _dynamicComponent;
     }
     float depth;
     Texture *tex;
     rect2f rect;
     float rotation;
+
+    //
+    // when component is not null, its texture is used instead of tex.
+    //
+    const Component *dynamicComponent;
+
 };
 
 inline bool operator < (const UIRenderObject &a, const UIRenderObject &b)
@@ -70,17 +77,11 @@ private:
     void render(Texture &tex, const rect2f &destinationRect, float depth);
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
 
-    void render(const UIRenderObject &o)
-    {
-        if (o.rotation == 0.0f)
-            render(*o.tex, o.rect, o.depth);
-        else
-            render(*o.tex, o.rect, o.depth, o.rotation);
-    }
+    void render(const UIRenderObject &o);
 
-    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, float rotation = 0.0f)
+    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, const Component *dynamicComponent = nullptr, float rotation = 0.0f)
     {
-        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, rotation));
+        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, dynamicComponent, rotation));
     }
 
 	void updateButtonList();
@@ -102,7 +103,7 @@ private:
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButton(const GameButton &button, bool selected);
-    void renderLocalizedComponent(const string &name, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset);
+    void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset);
 
     void renderHoverComponent();
     void removeHoverComponent();
