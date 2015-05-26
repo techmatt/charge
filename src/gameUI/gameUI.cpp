@@ -1,6 +1,15 @@
 
 #include "main.h"
 
+namespace depthLayers
+{
+    static const float selection = 0.9f;
+    static const float hoverComponent = 0.1f;
+    static const float background = 1.0f;
+    static const float spokes = 0.95f;
+    static const float component = 1.0f;
+}
+
 void GameUI::init()
 {
     mode = ModeDesign;
@@ -30,24 +39,24 @@ void GameUI::step()
     }
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const CoordinateFrame &frame)
 {
-    app.renderer.render(tex, frame.toContainer(destinationRect));
+    app.renderer.render(tex, frame.toContainer(destinationRect), depth);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const CoordinateFrame &frame)
 {
-    app.renderer.render(tex, frame.toContainer(destinationRect), angle);
+    app.renderer.render(tex, frame.toContainer(destinationRect), depth, rotation);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth)
 {
-    render(tex, destinationRect, coordinateFrame);
+    render(tex, destinationRect, depth, coordinateFrame);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float angle)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation)
 {
-    render(tex, destinationRect, angle, coordinateFrame);
+    render(tex, destinationRect, depth, rotation, coordinateFrame);
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -291,7 +300,7 @@ void GameUI::renderHoverComponent()
                 const rect2f rect = location.inCircuit() ?
                     GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
                     GameUtil::boardToWindowRect(canonicalDims, coord, 1);
-                render(*tex, rect);
+                render(*tex, rect, depthLayers::hoverComponent);
             }
         }
 }
@@ -388,12 +397,12 @@ void GameUI::updateBackground()
 
     //app.renderer.setRenderTarget(background);
 
-    render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims));
+    render(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
     if (activeCircuit() != nullptr)
     {
         const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
-		render(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect));
+        render(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
     }
 
 	renderBuildingGrid();
@@ -430,9 +439,9 @@ void GameUI::renderBuildingGrid()
 		//if (cell.value.c == nullptr && !cell.value.blocked)
         if (!cell.value.blocked)
 		{
-			rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
+			const rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
 			const rect2f screenRect = params().boardInWindow.toContainer(rectangle);
-			render(border, screenRect);
+            render(border, screenRect, depthLayers::background);
 		}
 	}
 
@@ -448,7 +457,7 @@ void GameUI::renderBuildingGrid()
             if (!corner && !inactiveBoundary) //if (!xBoundary && !yBoundary)
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, vec2i(cell.x, cell.y), 1);
-				render(border, screenRect);
+                render(border, screenRect, depthLayers::background);
             }
         }
     }
@@ -460,7 +469,7 @@ void GameUI::renderButton(const GameButton &button, bool selected)
     Texture &borderTex = database().getTexture(app.renderer, "Border");
     
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-	render(borderTex, screenRect);
+    render(borderTex, screenRect, depthLayers::background);
     
     renderLocalizedComponent(button.name, screenRect, button.modifiers, selected, true);
 }
@@ -475,17 +484,17 @@ void GameUI::renderLocalizedComponent(const string &name, const rect2f &screenRe
     Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
     
-	render(preferenceTex, screenRect);
+	render(preferenceTex, screenRect, 1.0f);
 
     if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
-		render(baseTex, screenRect);
+        render(baseTex, screenRect, 1.0f);
 
-	render(componentTex, screenRect);
+    render(componentTex, screenRect, depthLayers::component);
 
     if (selected)
     {
         Texture &selectionTex = database().getTexture(app.renderer, "Selector");
-		render(selectionTex, screenRect);
+        render(selectionTex, screenRect, depthLayers::selection);
     }
 }
 
@@ -564,7 +573,7 @@ void GameUI::renderSpokes(const Component &component)
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					render(connectorTex, rect2f(middle - variance, middle + variance), angle);
+					render(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
                 }
             }
         }
@@ -612,7 +621,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-					render(connectorTex, rect2f(middle - variance, middle + variance), angle);
+                    render(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
                 }
             }
         }

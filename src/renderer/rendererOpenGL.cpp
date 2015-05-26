@@ -53,18 +53,17 @@ void RendererOpenGL::updateWindowSize()
     glViewport(0, 0, (int)_windowSize.x, (int)_windowSize.y);
 }
 
-mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect)
+mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth)
 {
     const mat4f scaleA = mat4f::scale(rect.extentX(), rect.extentY(), 1.0f);
-    const mat4f translate = mat4f::translation(rect.min().x, rect.min().y, 0.0f);
+    const mat4f translate = mat4f::translation(rect.min().x, rect.min().y, depth);
     return _windowToNDC * translate * scaleA;
 }
 
-mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float rotation)
+mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth, float rotation)
 {
     const mat4f scaleA = mat4f::scale(rect.extentX(), rect.extentY(), 1.0f);
-    const mat4f translateA = mat4f::translation(rect.min().x, rect.min().y, 0.0f);
-
+    const mat4f translateA = mat4f::translation(rect.min().x, rect.min().y, depth);
 
     const mat4f translateB = mat4f::translation(vec3f(-rect.center(), 0.0f));
     const mat4f rotate = mat4f::rotationZ(rotation);
@@ -73,7 +72,7 @@ mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float rotation)
     return _windowToNDC * translateC * rotate * translateB * translateA * scaleA;
 }
 
-void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth)
 {
 	SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -82,11 +81,11 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
     tex.bindOpenGL();
-    _quadProgram.setTransform(makeWindowTransform(destinationRect));
+    _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
     _quad.render();
 }
 
-void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float rotation)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation)
 {
     SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -96,7 +95,7 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float r
 
     tex.bindOpenGL();
 
-    _quadProgram.setTransform(makeWindowTransform(destinationRect, rotation));
+    _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
     _quad.render();
 }
 

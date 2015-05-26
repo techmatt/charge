@@ -44,11 +44,11 @@ private:
 
     AppData &app;
 
-    void render(Texture &tex, const rect2f &destinationRect, const CoordinateFrame &frame);
-    void render(Texture &tex, const rect2f &destinationRect, float angle, const CoordinateFrame &frame);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, const CoordinateFrame &frame);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const CoordinateFrame &frame);
 
-    void render(Texture &tex, const rect2f &destinationRect);
-    void render(Texture &tex, const rect2f &destinationRect, float angle);
+    void render(Texture &tex, const rect2f &destinationRect, float depth);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
 
 	void updateButtonList();
 

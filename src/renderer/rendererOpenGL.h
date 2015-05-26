@@ -12,8 +12,8 @@ public:
         return RendererTypeOpenGL;
     }
 
-	void render(Texture &tex, const rect2f &destinationRect);
-    void render(Texture &tex, const rect2f &destinationRect, float angle);
+	void render(Texture &tex, const rect2f &destinationRect, float depth);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
 
     void clear();
 	void present();
@@ -28,8 +28,8 @@ public:
 private:
     void updateWindowSize();
 
-    mat4f makeWindowTransform(const rect2f &rect);
-    mat4f makeWindowTransform(const rect2f &rect, float rotation);
+    mat4f makeWindowTransform(const rect2f &rect, float depth);
+    mat4f makeWindowTransform(const rect2f &rect, float depth, float rotation);
 
     SDL_Window *_window;
     SDL_GLContext _context;
