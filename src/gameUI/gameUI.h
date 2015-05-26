@@ -84,6 +84,8 @@ private:
 
 	void updateButtonList();
 
+    void loadPuzzle(const string &filename);
+
 	void updateBackgroundObjects();
 	void renderBuildingGrid();
 	

@@ -279,6 +279,10 @@ void LegacyLoader::load(const string &filename, GameState &result)
 
     vector<LegacyComponent> components(componentCount);
 
+    // some files encode the buildable-component list directly as the second line of the file. ignore it.
+    if (util::startsWith(lines[1], "true") || util::startsWith(lines[1], "false"))
+        lineIndex++;
+
     for (int componentIndex = 0; componentIndex < componentCount; componentIndex++)
     {
         LegacyComponent &c = components[componentIndex];

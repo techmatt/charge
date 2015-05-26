@@ -29,6 +29,8 @@ int App::run()
 
     data.ui.init();
 
+    data.puzzles.init();
+
     SDL_Event event;
 
 	bool quit = false;

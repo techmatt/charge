@@ -74,6 +74,12 @@ void GameUI::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, o.rotation);
 }
 
+void GameUI::loadPuzzle(const string &filename)
+{
+    LegacyLoader::load(filename, app.state);
+    backgroundDirty = true;
+}
+
 void GameUI::keyDown(SDL_Keycode key)
 {
     if (key == SDLK_ESCAPE)
@@ -87,6 +93,17 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_l)
     {
         LegacyLoader::load(params().assetDir + "levelsOld/DoItYourself.txt", app.state);
+    }
+    if (key == SDLK_LEFT)
+    {
+        app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
+        loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        
+    }
+    if (key == SDLK_RIGHT)
+    {
+        app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle + 1, app.puzzles.puzzleList.size());
+        loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
     }
 }
 

@@ -7,6 +7,7 @@ struct AppData
     }
     GameUI ui;
     GameState state;
+    PuzzleManager puzzles;
     RendererOpenGL renderer;
     //RendererSDL renderer;
 };

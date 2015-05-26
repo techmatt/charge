@@ -8,8 +8,7 @@ struct PuzzleManager
 {
     void init();
 
-
-    vector<PuzzleInfo> puzzles;
+    vector<PuzzleInfo> puzzleList;
 
     int currentPuzzle;
 };
