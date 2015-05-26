@@ -585,7 +585,7 @@ void GameUI::renderComponent(const Component &component)
 
 void GameUI::renderCircuitComponent(const Component &component)
 {
-	if (!component.location.inCircuit() || component.inactiveBoundary())
+	if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryClosed)
 		return;
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
@@ -621,7 +621,7 @@ void GameUI::renderSpokes(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.boardPos == otherLocation && component.hasSpokes())
+                if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes())
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
                     
@@ -664,11 +664,9 @@ void GameUI::renderSpokesCircuit(const Component &component)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
                 bool renderSpokes = true;
-                renderSpokes &= component.hasSpokes();
                 renderSpokes &= otherComponent.location.circuitPos == otherLocation;
                 renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryClosed;
-                renderSpokes &= !otherComponent.inactiveBoundary();
-                renderSpokes &= !otherComponent.inactiveBoundary();
+                renderSpokes &= otherComponent.hasSpokes();
                 renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
                 if (renderSpokes)
                 {
