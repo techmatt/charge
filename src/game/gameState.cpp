@@ -5,6 +5,7 @@ void GameState::clearBoard()
 {
     for (Component *c : components)
         delete c;
+    components.clear();
 
     board.cells.allocate(params().boardDims.x, params().boardDims.y);
     resetPuzzle();

@@ -27,9 +27,12 @@ void RendererOpenGL::init(SDL_Window *window)
 
     glDisable(GL_DEPTH_TEST);
 
-    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
     glEnable(GL_BLEND);
 
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glBlendEquation(GL_FUNC_ADD);
+    
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
     //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -39,12 +42,31 @@ void RendererOpenGL::init(SDL_Window *window)
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
+void RendererOpenGL::updateWindowSize()
+{
+    _windowSize = getWindowSize();
+    _windowToNDC = mat4f::translation(-1.0f, 1.0f, 0.0f) * mat4f::scale(2.0f / _windowSize.x, -2.0f / _windowSize.y, 1.0f);
+    glViewport(0, 0, (int)_windowSize.x, (int)_windowSize.y);
+}
+
 mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect)
 {
     const mat4f scaleA = mat4f::scale(rect.extentX(), rect.extentY(), 1.0f);
     const mat4f translate = mat4f::translation(rect.min().x, rect.min().y, 0.0f);
-    const mat4f windowToNDC = mat4f::translation(-1.0f, 1.0f, 0.0f) * mat4f::scale(2.0f / _windowSize.x, -2.0f / _windowSize.y, 1.0f);
-    return windowToNDC * translate * scaleA;
+    return _windowToNDC * translate * scaleA;
+}
+
+mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float rotation)
+{
+    const mat4f scaleA = mat4f::scale(rect.extentX(), rect.extentY(), 1.0f);
+    const mat4f translateA = mat4f::translation(rect.min().x, rect.min().y, 0.0f);
+
+
+    const mat4f translateB = mat4f::translation(vec3f(-rect.center(), 0.0f));
+    const mat4f rotate = mat4f::rotationZ(rotation);
+    const mat4f translateC = mat4f::translation(vec3f(rect.center(), 0.0f));
+
+    return _windowToNDC * translateC * rotate * translateB * translateA * scaleA;
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
@@ -60,7 +82,7 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect)
     _quad.render();
 }
 
-void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float angle)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float rotation)
 {
     SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -68,23 +90,16 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float a
     dst.w = (int)(destinationRect.max().x) - dst.x;
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
-    //tex.bindOpenGL();
+    tex.bindOpenGL();
 
-    /*if (rand() % 2 == 0)
-        database().getTexture(*this, "Background").bindOpenGL();
-    else
-        database().getTexture(*this, "Circuit").bindOpenGL();
-
-    _quad.render();*/
-
-	//SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+    _quadProgram.setTransform(makeWindowTransform(destinationRect, rotation));
+    _quad.render();
 }
 
 void RendererOpenGL::present()
 {
 	SDL_GL_SwapWindow(_window);
-
-    _windowSize = getWindowSize();
+    updateWindowSize();
 }
 
 void RendererOpenGL::setRenderTarget(Texture &target)
@@ -137,5 +152,5 @@ void RendererOpenGL::clear()
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    _windowSize = getWindowSize();
+    updateWindowSize();
 }

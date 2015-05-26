@@ -26,7 +26,10 @@ public:
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
 private:
+    void updateWindowSize();
+
     mat4f makeWindowTransform(const rect2f &rect);
+    mat4f makeWindowTransform(const rect2f &rect, float rotation);
 
     SDL_Window *_window;
     SDL_GLContext _context;
@@ -35,4 +38,5 @@ private:
     GLProgram _quadProgram;
 
     vec2f _windowSize;
+    mat4f _windowToNDC;
 };

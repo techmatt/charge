@@ -7,8 +7,8 @@ struct AppData
     }
     GameUI ui;
     GameState state;
-    //RendererOpenGL renderer;
-    RendererSDL renderer;
+    RendererOpenGL renderer;
+    //RendererSDL renderer;
 };
 
 class App

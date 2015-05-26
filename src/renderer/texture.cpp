@@ -1,4 +1,4 @@
-
+﻿
 #include "main.h"
 
 void Texture::load(Renderer &renderer, const string &filename)
@@ -65,12 +65,25 @@ void Texture::initSDL(Renderer &renderer)
 
 void Texture::initOpenGL()
 {
+    glEnable(GL_TEXTURE_2D);
+
     glGenTextures(1, &_OpenGLTexture);
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)_bmp.dimX(), (GLsizei)_bmp.dimY(), 0, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
-    
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+    const GLsizei width = (GLsizei)_bmp.width();
+    const GLsizei height = (GLsizei)_bmp.height();
+
+    int mipMapCount = (int)log2((double)std::min(width, height));
+    mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
+
+    glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
+
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
 void Texture::bindOpenGL()

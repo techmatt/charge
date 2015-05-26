@@ -9,9 +9,8 @@ out vec2 ex_TexCoord;
 
 uniform mat4 transform;
 
-void main(void) {
- 
+void main(void)
+{
     gl_Position = transform * vec4(in_Position, 0.0, 1.0);
- 
     ex_TexCoord = in_TexCoord;
 }

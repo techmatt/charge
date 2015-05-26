@@ -523,8 +523,6 @@ void GameUI::renderCircuitComponent(const Component &component)
 	renderLocalizedComponent(component.info->name, screenRect, component.modifiers, false, false);
 }
 
-
-
 void GameUI::renderSpokes(const Component &component)
 {
     if (!component.info->hasSpokes())
@@ -561,7 +559,7 @@ void GameUI::renderSpokes(const Component &component)
                     const vec2f diff = myScreenPos - otherScreenPos;
                     const float dist = diff.length();
 
-                    const vec2f variance(dist * 0.18f, dist * 0.045f);
+                    const vec2f variance = constants::connectorDims[type + 1] * dist;
                     
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
@@ -603,7 +601,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
                     const vec2f diff = myScreenPos - otherScreenPos;
                     const float dist = diff.length();
 
-                    const vec2f variance(dist * 0.18f, dist * 0.045f);
+                    const vec2f variance = constants::connectorDims[type + 1] * dist;
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
