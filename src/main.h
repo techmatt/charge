@@ -23,9 +23,11 @@ struct GameState;
 struct Charge;
 struct GameLocation;
 struct ComponentModifiers;
+struct AppData;
 class Renderer;
 class RendererSDL;
 class Texture;
+
 
 #include "game/enums.h"
 #include "core/constants.h"
@@ -50,6 +52,7 @@ class Texture;
 #include "game/legacyLoader.h"
 
 #include "gameUI/gameButton.h"
+#include "gameUI/puzzleManager.h"
 #include "gameUI/gameUI.h"
 
 #include "core/app.h"

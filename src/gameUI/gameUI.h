@@ -1,6 +1,4 @@
 
-struct AppData;
-
 enum GameMode
 {
     ModeDesign,
