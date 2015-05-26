@@ -20,24 +20,24 @@ void GameUI::init()
     selectedMenuComponent = nullptr;
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const CoordinateFrame &frame)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame)
 {
-    app.renderer.render(tex, frame.toContainer(destinationRect), depth);
+    app.renderer.render(tex, frame.toContainer(destinationRect), depth, color);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const CoordinateFrame &frame)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color, const CoordinateFrame &frame)
 {
-    app.renderer.render(tex, frame.toContainer(destinationRect), depth, rotation);
+    app.renderer.render(tex, frame.toContainer(destinationRect), depth, rotation, color);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
-    render(tex, destinationRect, depth, coordinateFrame);
+    render(tex, destinationRect, depth, color, coordinateFrame);
 }
 
-void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation)
+void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
 {
-    render(tex, destinationRect, depth, rotation, coordinateFrame);
+    render(tex, destinationRect, depth, rotation, color, coordinateFrame);
 }
 
 void GameUI::render(const UIRenderObject &o)
@@ -369,7 +369,7 @@ void GameUI::updateButtonList()
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultSecondaryCharge(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultStoredCharge(), chargePreference)));
             }
         }
 
@@ -681,7 +681,10 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+
+    const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
+
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge)

@@ -228,10 +228,10 @@
     <None Include="..\src\mLib\grid2.inl">
       <Filter>mLib</Filter>
     </None>
-    <None Include="tutorial2.frag">
+    <None Include="..\assets\shaders\quad.frag">
       <Filter>shaders</Filter>
     </None>
-    <None Include="tutorial2.vert">
+    <None Include="..\assets\shaders\quad.vert">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

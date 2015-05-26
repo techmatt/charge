@@ -7,21 +7,21 @@ class RendererOpenGL : public Renderer
 public:
     void init(SDL_Window *window);
 
-    RendererType type()
+    RendererType type() override
     {
         return RendererTypeOpenGL;
     }
 
-	void render(Texture &tex, const rect2f &destinationRect, float depth);
-    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color) override;
 
-    void clear();
-	void present();
+    void clear() override;
+    void present() override;
 
-    void setRenderTarget(Texture &target);
-    void setDefaultRenderTarget();
+    void setRenderTarget(Texture &target) override;
+    void setDefaultRenderTarget() override;
     
-    vec2f getWindowSize();
+    vec2f getWindowSize() override;
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 

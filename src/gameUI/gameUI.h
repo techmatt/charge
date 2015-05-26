@@ -41,11 +41,11 @@ private:
 
     AppData &app;
 
-    void render(Texture &tex, const rect2f &destinationRect, float depth, const CoordinateFrame &frame);
-    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const CoordinateFrame &frame);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color, const CoordinateFrame &frame);
 
-    void render(Texture &tex, const rect2f &destinationRect, float depth);
-    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation);
+    void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+    void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
     void render(const UIRenderObject &o);
 

@@ -13,7 +13,7 @@ void Component::resetPuzzle()
 {
     info = baseInfo;
     lastChargeVisit = -10000;
-    modifiers.storedColor = ChargeNone;
+    modifiers.storedColor = info->defaultStoredCharge();
     resetPowerSource();
 }
 

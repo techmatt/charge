@@ -25,7 +25,7 @@ struct ComponentInfo
         return ChargeNone;
     }
 
-    ChargeType defaultSecondaryCharge() const
+    ChargeType defaultStoredCharge() const
     {
         if (name == "ChargeGoal" || name == "Hold")
             return ChargeGray;

@@ -112,6 +112,7 @@ public:
 
         bind();
         transformLocation = glGetUniformLocation(shaderProgram, "transform");
+        colorLocation = glGetUniformLocation(shaderProgram, "color");
     }
 
     void bind()
@@ -128,6 +129,11 @@ public:
         glUniformMatrix4fv(transformLocation, 1, true, transform.matrix);
     }
 
+    void setColor(const vec4f &color)
+    {
+        glUniform4f(colorLocation, color.x, color.y, color.z, color.w);
+    }
+
 private:
 
     //
@@ -142,6 +148,7 @@ private:
     GLuint shaderProgram;
 
     GLint transformLocation;
+    GLint colorLocation;
 
     /*
     glUseProgram(0);

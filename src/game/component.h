@@ -14,7 +14,7 @@ struct ComponentModifiers
     {
         init();
         color = info.defaultPrimaryCharge();
-        storedColor = info.defaultSecondaryCharge();
+        storedColor = info.defaultStoredCharge();
     }
 
     void init()
@@ -53,12 +53,12 @@ struct Component
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
 		
-        resetPowerSource();
-        
         if (name == "CircuitBoundary")
         {
             modifiers.boundary = CircuitBoundaryOpen;
         }
+
+        resetPuzzle();
     }
     ~Component();
 

@@ -73,7 +73,7 @@ mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth, float
     return _windowToNDC * translateC * rotate * translateB * translateA * scaleA;
 }
 
-void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
 	SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -83,10 +83,11 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
 
     tex.bindOpenGL();
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
+    _quadProgram.setColor(color);
     _quad.render();
 }
 
-void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation)
+void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
 {
     SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -95,8 +96,8 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
     tex.bindOpenGL();
-
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
+    _quadProgram.setColor(color);
     _quad.render();
 }
 
