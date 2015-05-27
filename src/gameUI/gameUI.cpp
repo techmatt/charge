@@ -64,7 +64,7 @@ void GameUI::keyDown(SDL_Keycode key)
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
         app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
         backgroundDirty = true;
-        
+
     }
     if (key == SDLK_RIGHT)
     {
@@ -94,7 +94,7 @@ void GameUI::removeHoverComponent()
     {
         if (!app.state.board.cells.coordValid(location.boardPos))
             return;
-        
+
         Component *c = app.state.board.cells(location.boardPos).c;
         if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzlePiece)
             return;
@@ -107,10 +107,10 @@ void GameUI::removeHoverComponent()
 
 void GameUI::mouseDown(Uint8 button, int x, int y)
 {
-	CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
-    mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float) x,(float) y)));
-	x = mouseHoverCoord.x;
-	y = mouseHoverCoord.y;
+    CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
+    mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
+    x = mouseHoverCoord.x;
+    y = mouseHoverCoord.y;
 
     //
     // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
@@ -192,10 +192,10 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
 
 void GameUI::mouseMove(Uint32 buttonState, int x, int y)
 {
-	CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
-	mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
-	x = mouseHoverCoord.x;
-	y = mouseHoverCoord.y;
+    CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
+    mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
+    x = mouseHoverCoord.x;
+    y = mouseHoverCoord.y;
 
     if (buttonState & SDL_BUTTON_LMASK)
     {
@@ -205,7 +205,7 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     {
         removeHoverComponent();
     }
-    
+
 }
 
 void GameUI::addHoverComponent()
@@ -255,7 +255,7 @@ void GameUI::render()
         //const vec2i windowSize = app.renderer.getWindowSize();
         //if (vec2i((int)background.bmp().width(), (int)background.bmp().height()) != windowSize)
         //    background.loadRenderTarget(windowSize.x, windowSize.y);
-        
+
         //app.renderer.setDefaultRenderTarget();
         //render(background, rect2f(vec2f(0.0f, 0.0f), background.bmp().dims()));
     }
@@ -318,7 +318,7 @@ void GameUI::renderHoverComponent()
         return;
 
     const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
-    
+
     renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, ComponentModifiers(*selectedMenuComponent), false, false, false, depthLayers::hoverComponent);
 
     const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
@@ -342,19 +342,19 @@ void GameUI::renderHoverComponent()
 
 void GameUI::updateButtonList()
 {
-	buttons.clear();
+    buttons.clear();
 
     //
     // Add all buildable components
     //
-	for (auto &p : database().components)
-	{
+    for (auto &p : database().components)
+    {
         const ComponentInfo &info = *p.second;
         if (info.menuCoordinate.x != -1)
-		{
+        {
             buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
-		}
-	}
+        }
+    }
 
     //
     // Add color, delay, preference, and boundary buttons
@@ -416,21 +416,21 @@ void GameUI::updateBackgroundObjects()
 {
     backgroundObjects.clear();
 
-	updateButtonList();
+    updateButtonList();
 
     Component *gameComponent = app.state.getComponent(selectedGameLocation);
 
     //app.renderer.setRenderTarget(background);
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
-    
+
     if (activeCircuit() != nullptr)
     {
         const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
         addBackgroundObject(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
     }
 
-	renderBuildingGrid();
+    renderBuildingGrid();
 
     renderComponents();
 
@@ -439,8 +439,8 @@ void GameUI::updateBackgroundObjects()
         renderSpokes(*component);
     }
 
-	for (auto &button : buttons)
-	{
+    for (auto &button : buttons)
+    {
         bool selected = false;
         selected |= (selectedMenuComponent != nullptr && button.component == selectedMenuComponent);
         if (gameComponent != nullptr)
@@ -451,7 +451,7 @@ void GameUI::updateBackgroundObjects()
             selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
         }
         renderButton(button, selected);
-	}
+    }
 
     stable_sort(backgroundObjects.begin(), backgroundObjects.end());
 }
@@ -460,103 +460,113 @@ void GameUI::renderBuildingGrid()
 {
     Texture &border = database().getTexture(app.renderer, "Border");
     const auto &cells = app.state.board.cells;
-    for (const auto &cell : cells)
-	{
-        if (!cell.value.blocked)
+
+    //
+    // the extent is expanded by 1 to draw the border tiles
+    //
+    for (int x = -1; x <= (int)cells.dimX(); x++)
+    {
+        for (int y = -1; y <= (int)cells.dimY(); y++)
         {
-            //
-            // this is legacy code that could be refactored at some point
-            //
-            bool LeftBlocked = false;
-            bool RightBlocked = false;
-            bool TopBlocked = false;
-            bool BottomBlocked = false;
-            bool TopLeftBlocked = false;
-            bool TopRightBlocked = false;
-            bool BottomLeftBlocked = false;
-            bool BottomRightBlocked = false;
-
-            const vec2i baseOffset = vec2i(cell.x, cell.y);
-            for (UINT OffsetIndex = 0; OffsetIndex < 8; OffsetIndex++)
-            {
-                vec2i offset = baseOffset;
-                if (OffsetIndex == 0) offset += vec2i(-1, 0);
-                if (OffsetIndex == 1) offset += vec2i(1, 0);
-                if (OffsetIndex == 2) offset += vec2i(0, -1);
-                if (OffsetIndex == 3) offset += vec2i(0, 1);
-                if (OffsetIndex == 4) offset += vec2i(-1, -1);
-                if (OffsetIndex == 5) offset += vec2i(1, -1);
-                if (OffsetIndex == 6) offset += vec2i(-1, 1);
-                if (OffsetIndex == 7) offset += vec2i(1, 1);
-
-                if (cells.coordValid(offset) && cells(offset).blocked)
-                {
-                    if (OffsetIndex == 0) LeftBlocked = true;
-                    if (OffsetIndex == 1) RightBlocked = true;
-                    if (OffsetIndex == 2) TopBlocked = true;
-                    if (OffsetIndex == 3) BottomBlocked = true;
-                    if (OffsetIndex == 4) TopLeftBlocked = true;
-                    if (OffsetIndex == 5) TopRightBlocked = true;
-                    if (OffsetIndex == 6) BottomLeftBlocked = true;
-                    if (OffsetIndex == 7) BottomRightBlocked = true;
-                }
-            }
-
-            UINT boundaryIndex = 8;
-            if (LeftBlocked && !RightBlocked && TopBlocked && !BottomBlocked) boundaryIndex = 0;
-            else if (LeftBlocked && !RightBlocked && !TopBlocked && BottomBlocked) boundaryIndex = 1;
-            else if (!LeftBlocked && RightBlocked && TopBlocked && !BottomBlocked) boundaryIndex = 2;
-            else if (!LeftBlocked && RightBlocked && !TopBlocked && BottomBlocked) boundaryIndex = 3;
-            else if (!LeftBlocked && RightBlocked && TopBlocked && BottomBlocked)
-            {
-                boundaryIndex = 4;
-                if (!TopRightBlocked) boundaryIndex = 13;
-                if (!BottomRightBlocked) boundaryIndex = 14;
-            }
-            else if (LeftBlocked && !RightBlocked && TopBlocked && BottomBlocked)
-            {
-                boundaryIndex = 5;
-                if (!TopLeftBlocked) boundaryIndex = 15;
-                if (!BottomLeftBlocked) boundaryIndex = 16;
-            }
-            else if (LeftBlocked && RightBlocked && !TopBlocked && BottomBlocked)
-            {
-                boundaryIndex = 6;
-                if (!BottomLeftBlocked) boundaryIndex = 17;
-                if (!BottomRightBlocked) boundaryIndex = 18;
-            }
-            else if (LeftBlocked && RightBlocked && TopBlocked && !BottomBlocked)
-            {
-                boundaryIndex = 7;
-                if (!TopLeftBlocked) boundaryIndex = 19;
-                if (!TopRightBlocked) boundaryIndex = 20;
-            }
-            else if (LeftBlocked && RightBlocked && !TopBlocked && !BottomBlocked)
-            {
-                boundaryIndex = 21;
-            }
-
-            else if (!LeftBlocked && !RightBlocked && TopBlocked && BottomBlocked)
-            {
-                boundaryIndex = 22;
-            }
-
-
-            if (boundaryIndex == 8)
-            {
-                if (!TopLeftBlocked) boundaryIndex = 9;
-                else if (!TopRightBlocked) boundaryIndex = 10;
-                else if (!BottomLeftBlocked) boundaryIndex = 11;
-                else if (!BottomRightBlocked) boundaryIndex = 12;
-            }
-
-            boundaryIndex = 8;
-
-            const rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
+            const rect2f rectangle = rect2f(vec2f((float)x, (float)y), vec2f(x + 1.0f, y + 1.0f));
             const rect2f screenRect = params().boardInWindow.toContainer(rectangle);
-            addBackgroundObject(*database().boundaryTextures[boundaryIndex], screenRect, depthLayers::background);
+
+            if (cells.coordValid(x, y) && !cells(x, y).blocked)
+            {
+                addBackgroundObject(border, screenRect, depthLayers::background);
+            }
+            else
+            {
+                //
+                // this is legacy code that could be refactored at some point
+                //
+                bool leftBlocked = false;
+                bool rightBlocked = false;
+                bool topBlocked = false;
+                bool bottomBlocked = false;
+                bool topLeftBlocked = false;
+                bool topRightBlocked = false;
+                bool bottomLeftBlocked = false;
+                bool bottomRightBlocked = false;
+
+                const vec2i baseOffset = vec2i(x, y);
+                for (UINT OffsetIndex = 0; OffsetIndex < 8; OffsetIndex++)
+                {
+                    vec2i offset = baseOffset;
+                    if (OffsetIndex == 0) offset += vec2i(-1, 0);
+                    if (OffsetIndex == 1) offset += vec2i(1, 0);
+                    if (OffsetIndex == 2) offset += vec2i(0, -1);
+                    if (OffsetIndex == 3) offset += vec2i(0, 1);
+                    if (OffsetIndex == 4) offset += vec2i(-1, -1);
+                    if (OffsetIndex == 5) offset += vec2i(1, -1);
+                    if (OffsetIndex == 6) offset += vec2i(-1, 1);
+                    if (OffsetIndex == 7) offset += vec2i(1, 1);
+
+                    if (!cells.coordValid(offset) || cells(offset).blocked)
+                    {
+                        if (OffsetIndex == 0) leftBlocked = true;
+                        if (OffsetIndex == 1) rightBlocked = true;
+                        if (OffsetIndex == 2) topBlocked = true;
+                        if (OffsetIndex == 3) bottomBlocked = true;
+                        if (OffsetIndex == 4) topLeftBlocked = true;
+                        if (OffsetIndex == 5) topRightBlocked = true;
+                        if (OffsetIndex == 6) bottomLeftBlocked = true;
+                        if (OffsetIndex == 7) bottomRightBlocked = true;
+                    }
+                }
+
+                UINT boundaryIndex = 8;
+                if (leftBlocked && !rightBlocked && topBlocked && !bottomBlocked) boundaryIndex = 0;
+                else if (leftBlocked && !rightBlocked && !topBlocked && bottomBlocked) boundaryIndex = 1;
+                else if (!leftBlocked && rightBlocked && topBlocked && !bottomBlocked) boundaryIndex = 2;
+                else if (!leftBlocked && rightBlocked && !topBlocked && bottomBlocked) boundaryIndex = 3;
+                else if (!leftBlocked && rightBlocked && topBlocked && bottomBlocked)
+                {
+                    boundaryIndex = 4;
+                    if (!topRightBlocked) boundaryIndex = 13;
+                    if (!bottomRightBlocked) boundaryIndex = 14;
+                }
+                else if (leftBlocked && !rightBlocked && topBlocked && bottomBlocked)
+                {
+                    boundaryIndex = 5;
+                    if (!topLeftBlocked) boundaryIndex = 15;
+                    if (!bottomLeftBlocked) boundaryIndex = 16;
+                }
+                else if (leftBlocked && rightBlocked && !topBlocked && bottomBlocked)
+                {
+                    boundaryIndex = 6;
+                    if (!bottomLeftBlocked) boundaryIndex = 17;
+                    if (!bottomRightBlocked) boundaryIndex = 18;
+                }
+                else if (leftBlocked && rightBlocked && topBlocked && !bottomBlocked)
+                {
+                    boundaryIndex = 7;
+                    if (!topLeftBlocked) boundaryIndex = 19;
+                    if (!topRightBlocked) boundaryIndex = 20;
+                }
+                else if (leftBlocked && rightBlocked && !topBlocked && !bottomBlocked)
+                {
+                    boundaryIndex = 21;
+                }
+
+                else if (!leftBlocked && !rightBlocked && topBlocked && bottomBlocked)
+                {
+                    boundaryIndex = 22;
+                }
+
+
+                if (boundaryIndex == 8)
+                {
+                    if (!topLeftBlocked) boundaryIndex = 9;
+                    else if (!topRightBlocked) boundaryIndex = 10;
+                    else if (!bottomLeftBlocked) boundaryIndex = 11;
+                    else if (!bottomRightBlocked) boundaryIndex = 12;
+                }
+
+                addBackgroundObject(*database().boundaryTextures[boundaryIndex], screenRect, depthLayers::background);
+            }
         }
-	}
+    }
 
     Component *circuit = activeCircuit();
     if (circuit != nullptr)
@@ -579,10 +589,10 @@ void GameUI::renderBuildingGrid()
 void GameUI::renderButton(const GameButton &button, bool selected)
 {
     Texture &borderTex = database().getTexture(app.renderer, "Border");
-    
+
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
     addBackgroundObject(borderTex, screenRect, depthLayers::background);
-    
+
     renderLocalizedComponent(button.name, nullptr, screenRect, button.modifiers, selected, true, true, 0.0f);
 }
 
@@ -595,7 +605,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
-    
+
     auto record = [&](Texture &tex, const rect2f &rect, float depth, const Component *component) {
         depth -= depthOffset;
         if (isBackground)
@@ -614,7 +624,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
     if (selected)
     {
         bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
-            
+
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
         record(selectionTex, screenRect, depthLayers::selection, nullptr);
     }
@@ -623,11 +633,11 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 void GameUI::renderComponent(const Component &component)
 {
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-   
+
     if (component.location.inCircuit())
     {
         // if the component is in the active circuit, render it in the selected circuit area
-		if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
+        if (activeCircuit() != nullptr && component.location.boardPos == activeCircuit()->location.boardPos)
         {
             if (!component.inactiveBoundary())
             {
@@ -635,7 +645,7 @@ void GameUI::renderComponent(const Component &component)
                 renderLocalizedComponent(component.info->name, &component, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true, 0.0f);
             }
         }
-		// regardless, we'll need to render it in the main grid, but we'll wait until later
+        // regardless, we'll need to render it in the main grid, but we'll wait until later
 
     }
     else
@@ -647,8 +657,8 @@ void GameUI::renderComponent(const Component &component)
 
 void GameUI::renderCircuitComponent(const Component &component)
 {
-	if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryClosed)
-		return;
+    if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryClosed)
+        return;
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
@@ -686,13 +696,13 @@ void GameUI::renderSpokes(const Component &component)
                 if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes())
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
-                    
+
                     const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
                     const vec2f diff = myScreenPos - otherScreenPos;
                     const float dist = diff.length();
 
                     const vec2f variance = constants::connectorDims[type + 1] * dist;
-                    
+
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
@@ -707,7 +717,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 {
     if (activeCircuit() == nullptr || activeCircuit()->location.boardPos != component.location.boardPos)
         return;
-    
+
     const vec2f myScreenPos = GameUtil::circuitToWindow(canonicalDims, component.location.circuitPos + vec2i(1, 1));
 
     const auto &cells = activeCircuit()->circuitBoard->cells;
@@ -755,10 +765,10 @@ void GameUI::renderComponents()
     {
         renderComponent(*component);
     }
-	for (auto &component : app.state.components)
-	{
+    for (auto &component : app.state.components)
+    {
         renderCircuitComponent(*component);
-	}
+    }
 }
 
 void GameUI::renderCharge(const Charge &charge)
@@ -768,7 +778,7 @@ void GameUI::renderCharge(const Charge &charge)
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-	render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)

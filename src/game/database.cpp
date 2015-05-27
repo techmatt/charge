@@ -83,10 +83,10 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
             const RGBColor magentaColor = GameUtil::chargeColor(modifiers.storedColor);
             for (const auto &p : bmp)
             {
-                if (p.value == Colors::Cyan())
+                if (p.value == Colors::Magenta())
                     p.value = border.bmp()(p.x, p.y);
 
-                if (p.value == Colors::Magenta())
+                if (p.value == Colors::Cyan())
                     p.value = RGBColor(255, 255, 255, 0);
                 else
                     p.value.a = 255;
