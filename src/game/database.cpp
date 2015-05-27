@@ -17,6 +17,11 @@ void Database::initTextures(Renderer &renderer)
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
     }
 
+    for (int boundary = 0; boundary < boundaryTextureCount; boundary++)
+    {
+        boundaryTextures[boundary] = &getTexture(renderer, "BoundaryTextures" + to_string(boundary));
+    }
+
     for (int preferenceLevel = 0; preferenceLevel < constants::maxPreferenceLevel; preferenceLevel++)
     {
         preferenceTextures[preferenceLevel] = &getTexture(renderer, "PreferenceMask" + to_string(preferenceLevel));
@@ -72,10 +77,24 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         {
             GameUtil::overlayAlpha(bmp, alphaFilename);
         }
+        else if (util::startsWith(componentName, "BoundaryTextures"))
+        {
+            Texture &border = getTexture(renderer, "Border");
+            const RGBColor magentaColor = GameUtil::chargeColor(modifiers.storedColor);
+            for (const auto &p : bmp)
+            {
+                if (p.value == Colors::Cyan())
+                    p.value = border.bmp()(p.x, p.y);
+
+                if (p.value == Colors::Magenta())
+                    p.value = RGBColor(255, 255, 255, 0);
+                else
+                    p.value.a = 255;
+            }
+        }
         else
         {
-            const RGBColor storedColor = GameUtil::chargeColor(modifiers.storedColor);
-
+            const RGBColor magentaColor = GameUtil::chargeColor(modifiers.storedColor);
             for (const auto &p : bmp)
             {
                 if (p.value == Colors::Cyan())
@@ -85,10 +104,13 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
 
                 if (p.value == Colors::Magenta())
                 {
-                    p.value = storedColor;
+                    p.value = magentaColor;
                 }
             }
         }
+
+        
+
 
         Texture *t = new Texture(renderer, bmp);
 

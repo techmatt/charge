@@ -459,15 +459,103 @@ void GameUI::updateBackgroundObjects()
 void GameUI::renderBuildingGrid()
 {
     Texture &border = database().getTexture(app.renderer, "Border");
-    for (const auto &cell : app.state.board.cells)
+    const auto &cells = app.state.board.cells;
+    for (const auto &cell : cells)
 	{
-		//if (cell.value.c == nullptr && !cell.value.blocked)
         if (!cell.value.blocked)
-		{
-			const rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
-			const rect2f screenRect = params().boardInWindow.toContainer(rectangle);
-            addBackgroundObject(border, screenRect, depthLayers::background);
-		}
+        {
+            //
+            // this is legacy code that could be refactored at some point
+            //
+            bool LeftBlocked = false;
+            bool RightBlocked = false;
+            bool TopBlocked = false;
+            bool BottomBlocked = false;
+            bool TopLeftBlocked = false;
+            bool TopRightBlocked = false;
+            bool BottomLeftBlocked = false;
+            bool BottomRightBlocked = false;
+
+            const vec2i baseOffset = vec2i(cell.x, cell.y);
+            for (UINT OffsetIndex = 0; OffsetIndex < 8; OffsetIndex++)
+            {
+                vec2i offset = baseOffset;
+                if (OffsetIndex == 0) offset += vec2i(-1, 0);
+                if (OffsetIndex == 1) offset += vec2i(1, 0);
+                if (OffsetIndex == 2) offset += vec2i(0, -1);
+                if (OffsetIndex == 3) offset += vec2i(0, 1);
+                if (OffsetIndex == 4) offset += vec2i(-1, -1);
+                if (OffsetIndex == 5) offset += vec2i(1, -1);
+                if (OffsetIndex == 6) offset += vec2i(-1, 1);
+                if (OffsetIndex == 7) offset += vec2i(1, 1);
+
+                if (cells.coordValid(offset) && cells(offset).blocked)
+                {
+                    if (OffsetIndex == 0) LeftBlocked = true;
+                    if (OffsetIndex == 1) RightBlocked = true;
+                    if (OffsetIndex == 2) TopBlocked = true;
+                    if (OffsetIndex == 3) BottomBlocked = true;
+                    if (OffsetIndex == 4) TopLeftBlocked = true;
+                    if (OffsetIndex == 5) TopRightBlocked = true;
+                    if (OffsetIndex == 6) BottomLeftBlocked = true;
+                    if (OffsetIndex == 7) BottomRightBlocked = true;
+                }
+            }
+
+            UINT boundaryIndex = 8;
+            if (LeftBlocked && !RightBlocked && TopBlocked && !BottomBlocked) boundaryIndex = 0;
+            else if (LeftBlocked && !RightBlocked && !TopBlocked && BottomBlocked) boundaryIndex = 1;
+            else if (!LeftBlocked && RightBlocked && TopBlocked && !BottomBlocked) boundaryIndex = 2;
+            else if (!LeftBlocked && RightBlocked && !TopBlocked && BottomBlocked) boundaryIndex = 3;
+            else if (!LeftBlocked && RightBlocked && TopBlocked && BottomBlocked)
+            {
+                boundaryIndex = 4;
+                if (!TopRightBlocked) boundaryIndex = 13;
+                if (!BottomRightBlocked) boundaryIndex = 14;
+            }
+            else if (LeftBlocked && !RightBlocked && TopBlocked && BottomBlocked)
+            {
+                boundaryIndex = 5;
+                if (!TopLeftBlocked) boundaryIndex = 15;
+                if (!BottomLeftBlocked) boundaryIndex = 16;
+            }
+            else if (LeftBlocked && RightBlocked && !TopBlocked && BottomBlocked)
+            {
+                boundaryIndex = 6;
+                if (!BottomLeftBlocked) boundaryIndex = 17;
+                if (!BottomRightBlocked) boundaryIndex = 18;
+            }
+            else if (LeftBlocked && RightBlocked && TopBlocked && !BottomBlocked)
+            {
+                boundaryIndex = 7;
+                if (!TopLeftBlocked) boundaryIndex = 19;
+                if (!TopRightBlocked) boundaryIndex = 20;
+            }
+            else if (LeftBlocked && RightBlocked && !TopBlocked && !BottomBlocked)
+            {
+                boundaryIndex = 21;
+            }
+
+            else if (!LeftBlocked && !RightBlocked && TopBlocked && BottomBlocked)
+            {
+                boundaryIndex = 22;
+            }
+
+
+            if (boundaryIndex == 8)
+            {
+                if (!TopLeftBlocked) boundaryIndex = 9;
+                else if (!TopRightBlocked) boundaryIndex = 10;
+                else if (!BottomLeftBlocked) boundaryIndex = 11;
+                else if (!BottomRightBlocked) boundaryIndex = 12;
+            }
+
+            boundaryIndex = 8;
+
+            const rect2f rectangle = rect2f(vec2f(cell.x, cell.y), vec2f(cell.x + 1, cell.y + 1));
+            const rect2f screenRect = params().boardInWindow.toContainer(rectangle);
+            addBackgroundObject(*database().boundaryTextures[boundaryIndex], screenRect, depthLayers::background);
+        }
 	}
 
     Component *circuit = activeCircuit();

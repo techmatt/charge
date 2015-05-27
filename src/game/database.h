@@ -65,8 +65,12 @@ struct Database
     //
     // commonly accessed textures
     //
+    static const int boundaryTextureCount = 23;
+    Texture* boundaryTextures[boundaryTextureCount];
     Texture* chargeTextures[constants::maxChargeLevel + 1];
     Texture* preferenceTextures[constants::maxPreferenceLevel];
     Texture* squareBlocked;
     Texture* squareOpen;
+
+    
 };

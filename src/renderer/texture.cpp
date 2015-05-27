@@ -10,10 +10,6 @@ void Texture::drawText(TTF_Font *font, const char *text, RGBColor color)
     for (int y = 0; y < surface->h; y++)
         memcpy(&_bmp(0, y), (BYTE *)surface->pixels + y * surface->pitch, sizeof(RGBColor) * _bmp.width());
 
-    LodePNG::save(_bmp, "test.png");
-    
-    
-
     initOpenGL(false);
 
     SDL_FreeSurface(surface);
