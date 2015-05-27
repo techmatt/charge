@@ -99,4 +99,6 @@ private:
     bool backgroundDirty;
 
     vector<UIRenderObject> backgroundObjects;
+
+    Texture levelName;
 };

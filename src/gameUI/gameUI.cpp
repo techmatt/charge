@@ -18,6 +18,8 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
+
+    levelName.drawText(app.renderer.font(), "test!", RGBColor(255, 128, 128));
 }
 
 void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame)
@@ -277,6 +279,8 @@ void GameUI::render()
     {
         renderExplodingCharge(charge);
     }
+
+    render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const

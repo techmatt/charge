@@ -25,6 +25,11 @@ public:
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
+    TTF_Font* font()
+    {
+        return _font;
+    }
+
 private:
     void updateWindowSize();
 
@@ -33,6 +38,11 @@ private:
 
     SDL_Window *_window;
     SDL_GLContext _context;
+    
+    //
+    // we could abstract fonts into its own class, if needed
+    //
+    TTF_Font *_font;
 
     GLQuad _quad;
     GLProgram _quadProgram;

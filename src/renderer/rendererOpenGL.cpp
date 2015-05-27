@@ -37,6 +37,8 @@ void RendererOpenGL::init(SDL_Window *window)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glBlendEquation(GL_FUNC_ADD);
+
+    _font = TTF_OpenFont((params().assetDir + "fonts/arial.ttf").c_str(), 50);
     
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);

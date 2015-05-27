@@ -1,6 +1,24 @@
 ﻿
 #include "main.h"
 
+void Texture::drawText(TTF_Font *font, const char *text, RGBColor color)
+{
+    const SDL_Color SDLColor = { color.r, color.g, color.b, 128 };
+    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text, SDLColor);
+
+    _bmp.allocate(surface->w, surface->h);
+    for (int y = 0; y < surface->h; y++)
+        memcpy(&_bmp(0, y), (BYTE *)surface->pixels + y * surface->pitch, sizeof(RGBColor) * _bmp.width());
+
+    LodePNG::save(_bmp, "test.png");
+    
+    
+
+    initOpenGL(false);
+
+    SDL_FreeSurface(surface);
+}
+
 void Texture::load(Renderer &renderer, const string &filename)
 {
     _renderTarget = false;
@@ -10,7 +28,7 @@ void Texture::load(Renderer &renderer, const string &filename)
         initSDL(renderer);
 
     if (renderer.type() == RendererTypeOpenGL)
-        initOpenGL();
+        initOpenGL(true);
 }
 
 void Texture::load(Renderer &renderer, const Bitmap &bmp)
@@ -22,7 +40,7 @@ void Texture::load(Renderer &renderer, const Bitmap &bmp)
         initSDL(renderer);
 
     if (renderer.type() == RendererTypeOpenGL)
-        initOpenGL();
+        initOpenGL(true);
 }
 
 void Texture::loadRenderTarget(int width, int height)
@@ -63,7 +81,7 @@ void Texture::initSDL(Renderer &renderer)
     //SDL_FreeSurface(loadedImage);
 }
 
-void Texture::initOpenGL()
+void Texture::initOpenGL(bool useMipmaps)
 {
     glEnable(GL_TEXTURE_2D);
 
@@ -73,17 +91,29 @@ void Texture::initOpenGL()
     const GLsizei width = (GLsizei)_bmp.width();
     const GLsizei height = (GLsizei)_bmp.height();
 
-    int mipMapCount = (int)log2((double)std::min(width, height));
-    mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
+    if (useMipmaps)
+    {
+        int mipMapCount = (int)log2((double)std::min(width, height));
+        mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
 
-    glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
+        glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
 
-    glGenerateMipmap(GL_TEXTURE_2D);
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    }
+    else
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    }
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
 void Texture::bindOpenGL()

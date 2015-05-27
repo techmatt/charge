@@ -13,8 +13,8 @@ public:
 
     rect2(FloatType _minX, FloatType _minY, FloatType _maxX, FloatType _maxY)
     {
-        minB = vec2i(_minX, _minY);
-        maxB = vec2i(_maxX, _maxY);
+        minB = vec2<FloatType>(_minX, _minY);
+        maxB = vec2<FloatType>(_maxX, _maxY);
     }
 
     rect2(const rect2 &r)

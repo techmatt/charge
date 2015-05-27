@@ -9,6 +9,8 @@ int App::run()
         return 1;
     }
 
+    TTF_Init();
+
     //Setup our window and renderer
     int windowHeight = math::round(params().canonicalDims.y) * 2;
     int windowWidth = math::round(params().canonicalDims.x) * 2;

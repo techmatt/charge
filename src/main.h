@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_TTF.h>
 
 // TODO: try and link glew statically instead
 //#define GL3_PROTOTYPES 1
