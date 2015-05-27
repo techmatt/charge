@@ -702,11 +702,17 @@ void GameUI::renderChargeCircuit(const Charge &charge)
 
 void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
 {
-    /*const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
+    if (!charge.locationA.inCircuit() || !charge.locationB.inCircuit()) return;
+    if (activeCircuit() == nullptr || charge.locationA.boardPos != activeCircuit()->location.boardPos) return;
+
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
-    const rect2i destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
-    app.renderer.render(*database().chargeTextures[charge.level], destinationRect, angle);*/
+    const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
+
+    const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
+
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
 Component* GameUI::activeCircuit() const
