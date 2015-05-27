@@ -9,7 +9,7 @@ struct GameState
     void clearBoard();
     void resetPuzzle();
     
-    void addNewComponent(Component *component, bool addCircuitComponents = true);
+    void addNewComponent(Component *component, bool addCircuitComponents = true, bool updateConnections = true);
     void removeComponent(Component *component);
     void step();
 

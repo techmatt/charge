@@ -34,7 +34,8 @@ void Charge::interactWithDestination(GameState &state)
 {
     if (markedForDeletion || totalTransitTime == 0) return;
 
-    if (timeInTransit < totalTransitTime)
+    if (timeInTransit < totalTransitTime ||
+        source == destination) // do not interact with the charge origin
     {
         return;
     }
@@ -203,10 +204,7 @@ bool Charge::findBestDestination(GameState &state)
 	for (Component* c : current->connections)
 	{
 		if (c != nullptr)
-		{
-			neighboringComponents[neighborCount]=c;
-			neighborCount++;
-		}
+            neighboringComponents[neighborCount++] = c;
 	}
 	//end figuring out the neighboring components
 

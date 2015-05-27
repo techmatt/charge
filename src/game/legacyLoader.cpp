@@ -333,7 +333,7 @@ void LegacyLoader::load(const string &filename, GameState &result)
         if (c.legacyType == ComponentCircuit)
         {
             Component *newC = new Component("Circuit", ChargeNone, c.location);
-            result.addNewComponent(newC, false);
+            result.addNewComponent(newC, false, false);
         }
     }
 
@@ -350,7 +350,14 @@ void LegacyLoader::load(const string &filename, GameState &result)
             newC->modifiers.boundary = info.boundary;
             newC->modifiers.puzzleType = c.puzzleType;
             newC->modifiers.speed = info.speed;
-            result.addNewComponent(newC);
+            result.addNewComponent(newC, false, false);
         }
     }
+
+    //
+    // normally this is done in addNewComponent, but this is actually noticably slower
+    //
+    result.board.updateBlockedGrid();
+    result.updateCircuitBoundaries();
+    result.updateComponentConnections();
 }
