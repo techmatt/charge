@@ -197,8 +197,20 @@ bool Charge::findBestDestination(GameState &state)
     Component *current = state.getComponent(destination);
 
     Component *neighboringComponents[6];
-    int neighborCount = state.findNeighboringComponents(*current, neighboringComponents);
-    
+    //int neighborCount = state.findNeighboringComponents(*current, neighboringComponents);
+	// I'm sure there's a way to select from vectors using lambda functions, but whatever.
+	int neighborCount = 0;
+	for (Component* c : current->connections)
+	{
+		if (c != nullptr)
+		{
+			neighboringComponents[neighborCount]=c;
+			neighborCount++;
+		}
+	}
+	//end figuring out the neighboring components
+
+
     double strongestPreference = 0.0;
     Component *bestComponent = nullptr;
 

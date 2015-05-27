@@ -340,17 +340,37 @@ int GameState::findNeighboringComponents(Component &component, Component *neighb
 
 
 
+
+
+
+
+
+
+
+// This should be run after any change to the board and possibly right before playing the simulation.
+void GameState::updateComponentConnections()
+{
+	for (const auto &component : components)
+	{
+		// clear the last attempt to find connections
+		if (component->circuitBoard != nullptr) continue;
+		for (int i = 0; i < 12; i++)
+			component->connections[i] = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
+	}
+}
+
 Component* GameState::connectableComponentAtRelativePosition(Component* component, vec2i relativePosition)
 {
 	GameLocation pos = GameLocation(component->location);
-	bool cInCircuit = component->location.inCircuit();
+	bool cInCircuit = false;
 
-	if (cInCircuit)
+	if (component->location.inCircuit())
 		// check if the displacement would send it off the bounds of the circuit.  If it would, displace the circuit instead
 		if (0 > pos.circuitPos.x || pos.circuitPos.x >= constants::circuitBoardSize || 0 > pos.circuitPos.y || pos.circuitPos.y >= constants::circuitBoardSize)
 		{
 			pos.circuitPos = constants::invalidCoord;
 			pos.boardPos += relativePosition;
+			cInCircuit = true;
 		}
 		else
 		{
@@ -372,7 +392,7 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 
 
 
-	bool tInCircuit = (component->circuitBoard != nullptr); //is the target going to be a component in some circuit?
+	bool tInCircuit = (target->circuitBoard != nullptr); //is the target going to be a component in some circuit?
 	if (!cInCircuit && !tInCircuit)
 		return target;
 	// now deal with connectsion where one of the parts is in a circuit
@@ -387,12 +407,14 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 	if (!cInCircuit && tInCircuit)
 	{
 		// the target is in the position indicated by BoardToCircuitLocation
-		pos.circuitPos = BoardToCircuitTargetLocation(relativePosition);
+		pos.circuitPos = 2*BoardToCircuitTargetLocation(relativePosition);
 		if (pos.circuitPos == constants::invalidCoord) return nullptr;//this shouldn't happen
+		Component* out = getComponent(pos);
+		Component* out2 = target->circuitBoard->cells(pos.circuitPos).c;
 		return getComponent(pos);
 	}
 	if (cInCircuit && tInCircuit) {
-		pos.circuitPos = CircuitToCircuitTargetLocation(relativePosition,component->location.circuitPos);
+		pos.circuitPos = 2*CircuitToCircuitTargetLocation(relativePosition,component->location.circuitPos/2);
 		if (pos.circuitPos == constants::invalidCoord) return nullptr;//this one might happen
 		return getComponent(pos);
 	}
@@ -460,16 +482,4 @@ vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circui
 	if (displacement == vec2i(1, 2) && circuitPosition == vec2i(5, 6)) return vec2i(1,0);
 
 	return constants::invalidCoord;
-}
-
-// This should be run after any change to the board and possibly right before playing the simulation.
-void GameState::updateComponentConnections()
-{
-	for (const auto &component : components)
-	{
-		// clear the last attempt to find connections
-		if (component->circuitBoard != nullptr) continue;
-		for (int i = 0; i < 12; i++)
-			component->connections[i] = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
-	}
 }
