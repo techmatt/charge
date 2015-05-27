@@ -365,17 +365,17 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 	bool cInCircuit = false;
 
 	if (component->location.inCircuit())
+	{
 		// check if the displacement would send it off the bounds of the circuit.  If it would, displace the circuit instead
+		pos.circuitPos += relativePosition;
+
 		if (0 > pos.circuitPos.x || pos.circuitPos.x >= constants::circuitBoardSize || 0 > pos.circuitPos.y || pos.circuitPos.y >= constants::circuitBoardSize)
 		{
 			pos.circuitPos = constants::invalidCoord;
 			pos.boardPos += relativePosition;
 			cInCircuit = true;
 		}
-		else
-		{
-			pos.circuitPos += relativePosition;
-		}
+	}
 	else
 		pos.boardPos += relativePosition;
 
@@ -392,14 +392,14 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 
 
 
-	bool tInCircuit = (target->circuitBoard != nullptr); //is the target going to be a component in some circuit?
+	bool tInCircuit = (target->circuitBoard != nullptr); //is the target going to be a component in some other circuit?
 	if (!cInCircuit && !tInCircuit)
 		return target;
-	// now deal with connectsion where one of the parts is in a circuit
+	// now deal with connection where one of the parts is in a circuit
 	if (cInCircuit && !tInCircuit)
 	{
 		// we check whether the connection actually exists.  This isn't the prettiest way of doing this, but it works
-		if (component->location.circuitPos == BoardToCircuitTargetLocation(-1 * relativePosition))
+		if (component->location.circuitPos == 2*BoardToCircuitTargetLocation(-1 * relativePosition))
 			return target;
 		else
 			return nullptr;
@@ -409,8 +409,6 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 		// the target is in the position indicated by BoardToCircuitLocation
 		pos.circuitPos = 2*BoardToCircuitTargetLocation(relativePosition);
 		if (pos.circuitPos == constants::invalidCoord) return nullptr;//this shouldn't happen
-		Component* out = getComponent(pos);
-		Component* out2 = target->circuitBoard->cells(pos.circuitPos).c;
 		return getComponent(pos);
 	}
 	if (cInCircuit && tInCircuit) {
@@ -452,11 +450,11 @@ vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circui
 	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 4)) return vec2i(6,4);
 	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 5)) return vec2i(6,5);
 
-	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 1)) return vec2i(6, 1);
-	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 2)) return vec2i(6, 2);
-	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 3)) return vec2i(6, 3);
-	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 4)) return vec2i(6, 4);
-	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 5)) return vec2i(6, 5);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 1)) return vec2i(0, 1);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 2)) return vec2i(0, 2);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 3)) return vec2i(0, 3);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 4)) return vec2i(0, 4);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 5)) return vec2i(0, 5);
 
 	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(1,0)) return vec2i(6, 1);
 	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(2,0)) return vec2i(6, 2);

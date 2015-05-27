@@ -35,7 +35,7 @@ namespace constants
 		vec2i(1, -2),
 		vec2i(2, -1),
 		vec2i(2, 0),
-		vec2i(2, -1),
+		vec2i(2, 1),
 		vec2i(1, 2),
 		vec2i(0, 2),
 		vec2i(-1, 2),
