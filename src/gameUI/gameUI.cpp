@@ -90,12 +90,16 @@ void GameUI::removeHoverComponent()
     }
     else
     {
-        if (app.state.board.cells.coordValid(location.boardPos) && app.state.board.cells(location.boardPos).c != nullptr)
-        {
-            backgroundDirty = true;
-            app.controller.designActionTaken = true;
-            app.state.removeComponent(app.state.board.cells(location.boardPos).c);
-        }
+        if (!app.state.board.cells.coordValid(location.boardPos))
+            return;
+        
+        Component *c = app.state.board.cells(location.boardPos).c;
+        if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzlePiece)
+            return;
+
+        backgroundDirty = true;
+        app.controller.designActionTaken = true;
+        app.state.removeComponent(app.state.board.cells(location.boardPos).c);
     }
 }
 
@@ -517,7 +521,9 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 
     if (selected)
     {
-        Texture &selectionTex = database().getTexture(app.renderer, "Selector");
+        bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
+            
+        Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
         record(selectionTex, screenRect, depthLayers::selection, nullptr);
     }
 }

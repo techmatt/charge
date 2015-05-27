@@ -57,7 +57,7 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
 
         const string alphaFilename = util::replace(filename, ".png", "Alpha.png");
 
-        bool isHalfAlphaTexture = (componentName == "Selector" || componentName == "SquareBlocked" || componentName == "SquareOpen");
+        bool isHalfAlphaTexture = (componentName == "Selector" || componentName == "PuzzleSelector" || componentName == "SquareBlocked" || componentName == "SquareOpen");
 
         if (isHalfAlphaTexture)
         {
