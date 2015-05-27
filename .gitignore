@@ -101,3 +101,4 @@
 /vs2013/x64/Release/gameUtil.obj
 /vs2013/x64/Release/legacyLoader.obj
 *.obj
+*.ipch

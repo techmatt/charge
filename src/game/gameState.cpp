@@ -112,6 +112,7 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents)
 
     board.updateBlockedGrid();
     updateCircuitBoundaries();
+	updateComponentConnections();
 }
 
 void GameState::removeComponent(Component *component)
@@ -152,6 +153,7 @@ void GameState::removeComponent(Component *component)
 
     board.updateBlockedGrid();
     updateCircuitBoundaries();
+	updateComponentConnections();
 }
 
 void GameState::step()
@@ -234,10 +236,21 @@ Component* GameState::getComponent(const GameLocation &pos, bool skipInactiveBou
 {
     if (!pos.valid()) return nullptr;
 
+	if (0 > pos.boardPos.x || pos.boardPos.x >= params().boardDims.x)
+		return nullptr;
+	if (0 > pos.boardPos.y || pos.boardPos.y >= params().boardDims.y)
+		return nullptr;
+
     Component *component = board.cells(pos.boardPos).c;
 
     if (pos.inCircuit())
     {
+		if (0 > pos.circuitPos.x || pos.circuitPos.x>=constants::circuitBoardSize)
+			return nullptr;
+		if (0 > pos.circuitPos.y || pos.circuitPos.y>=constants::circuitBoardSize)
+			return nullptr;
+
+
         if (component == nullptr || component->circuitBoard == nullptr)
         {
             return nullptr;
@@ -282,8 +295,7 @@ Component* GameState::findCircuitBoundaryNeighborAligned(Component &component)
     const vec2i worldOffset = table(component.location.circuitPos / 2);
     const vec2i worldCoord = worldOffset + component.location.boardPos;
 
-    if (worldOffset == constants::invalidCoord ||
-        !board.cells.coordValid(worldCoord))
+    if (worldOffset == constants::invalidCoord ||!board.cells.coordValid(worldCoord))
         return nullptr;
 
     Component *result = board.cells(worldCoord).c;
@@ -324,3 +336,140 @@ int GameState::findNeighboringComponents(Component &component, Component *neighb
     }
 }
 
+
+
+
+
+Component* GameState::connectableComponentAtRelativePosition(Component* component, vec2i relativePosition)
+{
+	GameLocation pos = GameLocation(component->location);
+	bool cInCircuit = component->location.inCircuit();
+
+	if (cInCircuit)
+		// check if the displacement would send it off the bounds of the circuit.  If it would, displace the circuit instead
+		if (0 > pos.circuitPos.x || pos.circuitPos.x >= constants::circuitBoardSize || 0 > pos.circuitPos.y || pos.circuitPos.y >= constants::circuitBoardSize)
+		{
+			pos.circuitPos = constants::invalidCoord;
+			pos.boardPos += relativePosition;
+		}
+		else
+		{
+			pos.circuitPos += relativePosition;
+		}
+	else
+		pos.boardPos += relativePosition;
+
+	// find the component we think might be there
+	Component *target = getComponent(pos);
+	if (target == nullptr) return nullptr;
+
+	// verify that it is exactly there.
+	if (target->location != pos) return nullptr;
+
+	// circuit edges cannot connect to each other
+	if (component->info->name =="CircuitBoundary"&& target->info->name == "CircuitBoundary")
+		return nullptr;
+
+
+
+	bool tInCircuit = (component->circuitBoard != nullptr); //is the target going to be a component in some circuit?
+	if (!cInCircuit && !tInCircuit)
+		return target;
+	// now deal with connectsion where one of the parts is in a circuit
+	if (cInCircuit && !tInCircuit)
+	{
+		// we check whether the connection actually exists.  This isn't the prettiest way of doing this, but it works
+		if (component->location.circuitPos == BoardToCircuitTargetLocation(-1 * relativePosition))
+			return target;
+		else
+			return nullptr;
+	}
+	if (!cInCircuit && tInCircuit)
+	{
+		// the target is in the position indicated by BoardToCircuitLocation
+		pos.circuitPos = BoardToCircuitTargetLocation(relativePosition);
+		if (pos.circuitPos == constants::invalidCoord) return nullptr;//this shouldn't happen
+		return getComponent(pos);
+	}
+	if (cInCircuit && tInCircuit) {
+		pos.circuitPos = CircuitToCircuitTargetLocation(relativePosition,component->location.circuitPos);
+		if (pos.circuitPos == constants::invalidCoord) return nullptr;//this one might happen
+		return getComponent(pos);
+	}
+
+	return nullptr; // THIS SHOULD NEVER BE REACHED
+}
+
+// This is really ugly, but there are only a couple tens of things to check, for both of these so it works.
+// Screw pretty, generalizable code.
+vec2i GameState::BoardToCircuitTargetLocation(vec2i displacement) {
+	// the four cardinal directions
+	if (displacement == vec2i(2, 0)) return vec2i(0, 3);
+	if (displacement == vec2i(-2, 0)) return vec2i(6, 3);
+	if (displacement == vec2i(0,2)) return vec2i(3,0);
+	if (displacement == vec2i(0,-2)) return vec2i(3, 6);
+
+	// the 8 offset directions
+	if (displacement == vec2i(2, 1)) return vec2i(0,1);
+	if (displacement == vec2i(2, -1)) return  vec2i(0,5);
+	if (displacement == vec2i(-2, 1)) return vec2i(6, 1);
+	if (displacement == vec2i(-2, -1)) return vec2i(6,5);
+	if (displacement == vec2i(1,2)) return vec2i(1,0);
+	if (displacement == vec2i(-1,2)) return vec2i(5, 0);
+	if (displacement == vec2i(1,-2)) return vec2i(1, 6);
+	if (displacement == vec2i(-1,-2)) return vec2i(5, 6);
+
+	return constants::invalidCoord;
+}
+
+vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circuitPosition) {
+	// the four cardinal directions
+	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 1)) return vec2i(6,1);
+	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 2)) return vec2i(6,2);
+	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 3)) return vec2i(6,3);
+	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 4)) return vec2i(6,4);
+	if (displacement == vec2i(-2, 0) && circuitPosition == vec2i(0, 5)) return vec2i(6,5);
+
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 1)) return vec2i(6, 1);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 2)) return vec2i(6, 2);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 3)) return vec2i(6, 3);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 4)) return vec2i(6, 4);
+	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 5)) return vec2i(6, 5);
+
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(1,0)) return vec2i(6, 1);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(2,0)) return vec2i(6, 2);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(3,0)) return vec2i(6, 3);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(4,0)) return vec2i(6, 4);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(5,0)) return vec2i(6, 5);
+
+	if (displacement == vec2i(0,2) && circuitPosition == vec2i(1,6)) return vec2i(1,0);
+	if (displacement == vec2i(0, 2) && circuitPosition == vec2i(2, 6)) return vec2i(2, 0);
+	if (displacement == vec2i(0, 2) && circuitPosition == vec2i(3, 6)) return vec2i(3, 0);
+	if (displacement == vec2i(0, 2) && circuitPosition == vec2i(4, 6)) return vec2i(4, 0);
+	if (displacement == vec2i(0, 2) && circuitPosition == vec2i(5, 6)) return vec2i(5, 0);
+
+
+	// the 8 offset directions
+	if (displacement == vec2i(-2, -1) && circuitPosition == vec2i(0, 1)) return vec2i(6,5);
+	if (displacement == vec2i(-2, 1) && circuitPosition == vec2i(0, 5)) return vec2i(6,1);
+	if (displacement == vec2i(2, -1) && circuitPosition == vec2i(6, 1)) return vec2i(0, 5);
+	if (displacement == vec2i(2, 1) && circuitPosition == vec2i(6, 5)) return vec2i(0, 1);
+	if (displacement == vec2i(-1, -2) && circuitPosition == vec2i(1, 0)) return vec2i(5,6);
+	if (displacement == vec2i(1, -2) && circuitPosition == vec2i(5, 0)) return vec2i(1,6);
+	if (displacement == vec2i(-1, 2) && circuitPosition == vec2i(1, 6)) return vec2i(5,0);
+	if (displacement == vec2i(1, 2) && circuitPosition == vec2i(5, 6)) return vec2i(1,0);
+
+	return constants::invalidCoord;
+}
+
+// This should be run after any change to the board and possibly right before playing the simulation.
+void GameState::updateComponentConnections()
+{
+	for (const auto &component : components)
+	{
+		// clear the last attempt to find connections
+		if (component->circuitBoard != nullptr) continue;
+		for (int i = 0; i < 12; i++)
+			component->connections[i] = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
+	}
+}

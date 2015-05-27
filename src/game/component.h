@@ -52,6 +52,7 @@ struct Component
         deathTrapTimeLeft = 0;
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
+		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
 		
         if (name == "CircuitBoundary")
         {
@@ -120,4 +121,17 @@ struct Component
     // to store it here.
     //
     Component *circuitBoundaryNeighbor;
+
+	//
+	// A list of things this component is connected to.  Updated every time a component is added or deleted.
+	// connections should have 8 elements, corresponding to each of the 12 positions a component can be connected to it.
+	// They are [above, above-right, right-above, right, right-below, below-right, below, below-left, left-bellow, left, left-above, above-left]
+	//
+	// this will override circuitBoundaryNeighbor.
+	vector<Component*> connections;
+
+	// Gets the actual physical location of the circuit in the board frame.
+	rect2f boardFrameLocation() const;
+	rect2f circuitFrameLocation() const;
+
 };

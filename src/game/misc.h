@@ -21,6 +21,24 @@ struct GameLocation
         return (circuitPos != constants::invalidCoord);
     }
 
+	bool operator== (const GameLocation &target)
+	{
+		if (inCircuit() != target.inCircuit())
+			return false;
+
+		if (boardPos != target.boardPos)
+			return false;
+
+		if (inCircuit() && circuitPos != target.circuitPos)
+			return false;
+
+		return true;
+	}
+	bool operator!=(const GameLocation target)
+	{
+		return !(*this == target);
+	}
+
     //
     // board is the position on the 24 x 24 game board.
     // if we are talking about a circuit location, circuit is the position on the circuit at boardPos

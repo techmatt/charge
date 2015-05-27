@@ -43,4 +43,13 @@ struct GameState
     // to the neighboring component. Aligned refers to the case where two circuits are perfectly aligned.
     Grid2<vec2i> circuitBoundaryNeighborOffsetTable;
     Grid2<vec2i> circuitBoundaryNeighborOffsetTableAligned;
+	// an uglier implementation of the same because I don't understand how to access Matt's
+	vec2i BoardToCircuitTargetLocation(vec2i displacement);
+	vec2i CircuitToCircuitTargetLocation(vec2i displacement, vec2i circuitPosition);
+
+
+
+	Component* connectableComponentAtRelativePosition(Component* component, vec2i relativePosition);
+	void updateComponentConnections();
+
 };

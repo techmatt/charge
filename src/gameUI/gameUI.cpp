@@ -478,7 +478,6 @@ void GameUI::renderBuildingGrid()
             }
         }
     }
-
 }
 
 void GameUI::renderButton(const GameButton &button, bool selected)

@@ -28,4 +28,22 @@ namespace constants
 
     static const vec2f connectorDims[3] = { vec2f(0.18f, 0.05f), vec2f(0.2f, 0.056f), vec2f(0.18f, 0.05f) };
 
+
+	// A slightly different approach to forming connections.
+	static const vector<vec2i> nearbyComponents = {
+		vec2i(0, -2),
+		vec2i(1, -2),
+		vec2i(2, -1),
+		vec2i(2, 0),
+		vec2i(2, -1),
+		vec2i(1, 2),
+		vec2i(0, 2),
+		vec2i(-1, 2),
+		vec2i(-2, 1),
+		vec2i(-2, 0),
+		vec2i(-2, -1),
+		vec2i(-1, -2)
+	};  // relative positions for nearby components.  There are 12 different places they can be.
+
+
 }
