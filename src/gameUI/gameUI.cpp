@@ -59,18 +59,23 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         selectedMenuComponent = nullptr;
     }
+
+    auto loadPuzzle = [&]()
+    {
+        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        backgroundDirty = true;
+        selectedGameLocation.boardPos = constants::invalidCoord;
+    };
+
     if (key == SDLK_LEFT)
     {
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
-        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
-        backgroundDirty = true;
-
+        loadPuzzle();
     }
     if (key == SDLK_RIGHT)
     {
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle + 1, app.puzzles.puzzleList.size());
-        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
-        backgroundDirty = true;
+        loadPuzzle();
     }
 }
 
@@ -165,6 +170,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 {
                     app.controller.designActionTaken = false;
                     app.controller.puzzleMode = ModeExecuting;
+                    app.state.resetPuzzle();
                 }
                 if (button.name == "Stop")
                 {
@@ -785,7 +791,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 {
     renderExplodingChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
-    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
+    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) * constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
@@ -813,7 +819,7 @@ void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
     if (activeCircuit() == nullptr || charge.locationA.boardPos != activeCircuit()->location.boardPos) return;
 
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
-    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
+    const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) * constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
     const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 

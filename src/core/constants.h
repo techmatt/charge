@@ -14,7 +14,8 @@ namespace constants
     static const int maxPreferenceLevel = 5;
 
     static const float chargeScaleWithLevelFactor = 0.15f;
-    static const float stepsPerSecond = 60.0f;
+    static const int stepsPerSecond = 60;
+    static const float secondsPerStep = 1.0f / (float)stepsPerSecond;
     static const float chargeRotationsPerSecond = 0.5f;
     static const float explodingChargeRotationFactor = 2.0f;
 

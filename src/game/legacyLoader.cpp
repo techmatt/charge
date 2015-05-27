@@ -350,6 +350,22 @@ void LegacyLoader::load(const string &filename, GameState &result)
             newC->modifiers.boundary = info.boundary;
             newC->modifiers.puzzleType = c.puzzleType;
             newC->modifiers.speed = info.speed;
+
+            /*
+            Legacy field meanings:
+            Power source
+            _Fields[0] = 0; -> emission delay in seconds
+            _Fields[1] = 1; -> secondsPerEmission
+            _Fields[2] = 1000; -> charges remaining
+            */
+
+            if (info.name == "PowerSource")
+            {
+                newC->secondsBeforeFirstEmission = c.fieldValues[0];
+                newC->secondsPerEmission = c.fieldValues[1];
+                newC->totalCharges = c.fieldValues[2];
+            }
+
             result.addNewComponent(newC, false, false);
         }
     }
@@ -360,4 +376,5 @@ void LegacyLoader::load(const string &filename, GameState &result)
     result.board.updateBlockedGrid();
     result.updateCircuitBoundaries();
     result.updateComponentConnections();
+    result.resetPuzzle();
 }

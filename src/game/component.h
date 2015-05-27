@@ -54,6 +54,13 @@ struct Component
         circuitBoundaryNeighbor = nullptr;
 		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
 		
+        //
+        // default power source values
+        //
+        totalCharges = 0xFFFFFF;
+        secondsPerEmission = 1;
+        secondsBeforeFirstEmission = 1;
+
         if (name == "CircuitBoundary")
         {
             modifiers.boundary = CircuitBoundaryOpen;
@@ -112,8 +119,15 @@ struct Component
     //
     // power sources emit at a certain rate
     //
-    int timeUntilEmission;
+    int stepsUntilEmission;
     int totalChargesRemaining;
+
+    //
+    // power source properties
+    //
+    int totalCharges;
+    int secondsPerEmission;
+    int secondsBeforeFirstEmission;
 
     //
     // The component on the other end of a circuit boundary connection. This can be derived

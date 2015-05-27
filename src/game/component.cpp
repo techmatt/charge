@@ -19,8 +19,8 @@ void Component::resetPuzzle()
 
 void Component::resetPowerSource()
 {
-    timeUntilEmission = 60;
-    totalChargesRemaining = 0xFFFFFF;
+    stepsUntilEmission = secondsBeforeFirstEmission * constants::stepsPerSecond;
+    totalChargesRemaining = totalCharges;
 }
 
 bool Component::willAcceptCharge(GameState &state, const Charge &charge)
@@ -54,16 +54,15 @@ void Component::tick()
     if (info->name == "PowerSource"
         && totalChargesRemaining > 0)
     {
-        if (timeUntilEmission > 0)
+        if (stepsUntilEmission > 0)
         {
-            timeUntilEmission--;
+            stepsUntilEmission--;
         }
         else
         {
             chargesToEmit.push_back(modifiers.color);
             
-            //TODO: parameterize this better
-            timeUntilEmission = 60;
+            stepsUntilEmission = secondsPerEmission * constants::stepsPerSecond;
             totalChargesRemaining--;
         }
     }

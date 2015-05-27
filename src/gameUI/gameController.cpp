@@ -29,5 +29,6 @@ void GameController::step()
 void GameController::loadPuzzle(const string &filename)
 {
     LegacyLoader::load(filename, app.state);
+    app.state.resetPuzzle();
     designActionTaken = true;
 }

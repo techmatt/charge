@@ -232,7 +232,7 @@ void GameState::step()
     }
 
     stepCount++;
-    globalRotationOffset += 1.0f / constants::stepsPerSecond * constants::chargeRotationsPerSecond * 360.0f;
+    globalRotationOffset += constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f;
     globalRotationOffset = fmod(globalRotationOffset, 360.0f);
 }
 
