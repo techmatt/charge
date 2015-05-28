@@ -13,7 +13,7 @@ void Component::resetPuzzle()
 {
     info = baseInfo;
     lastChargeVisit = -10000;
-    modifiers.storedColor = info->defaultStoredCharge();
+    storedCharge = ChargeNone;
     resetPowerSource();
 }
 
@@ -50,6 +50,13 @@ void Component::tick()
 {
     if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
+
+    if (info->hasStoredChargeLayer)
+    {
+        const float s = 0.95f;
+        vec4f targetColor = storedCharge == ChargeNone ? GameUtil::chargeColor(ChargeGray) : GameUtil::chargeColor(storedCharge);
+        modifiers.storedChargeColor = modifiers.storedChargeColor * s + targetColor * (1.0f - s);
+    }
 
     if (info->name == "PowerSource"
         && totalChargesRemaining > 0)

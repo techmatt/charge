@@ -44,13 +44,12 @@ void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, fl
 
 void GameUI::render(const UIRenderObject &o)
 {
-    Texture &t = o.dynamicComponent == nullptr ? *o.tex :
-        database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers);
+    vec4f color = o.dynamicComponent == nullptr ? o.color : o.dynamicComponent->modifiers.storedChargeColor;
 
     if (o.rotation == 0.0f)
-        render(t, o.rect, o.depth);
+        render(*o.tex, o.rect, o.depth, color);
     else
-        render(t, o.rect, o.depth, o.rotation);
+        render(*o.tex, o.rect, o.depth, o.rotation, color);
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -383,7 +382,7 @@ void GameUI::updateButtonList()
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultStoredCharge(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultStoredChargeColor(), chargePreference)));
             }
         }
 
@@ -391,13 +390,13 @@ void GameUI::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, ChargeNone, 2, (WireSpeedType)speed)));
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, Colors::Gray(), 2, (WireSpeedType)speed)));
             }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, ChargeNone, 2, WireStandard, CircuitBoundaryOpen)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, ChargeNone, 2, WireStandard, CircuitBoundaryClosed)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryOpen)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryClosed)));
         }
         else
         {
@@ -612,27 +611,33 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
     Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
 
-    auto record = [&](Texture &tex, const rect2f &rect, float depth, const Component *component) {
+    auto record = [&](Texture &tex, const rect2f &rect, float depth, const vec4f &color, const Component *component) {
         depth -= depthOffset;
         if (isBackground)
-            addBackgroundObject(tex, rect, depth, component);
+            addBackgroundObject(tex, rect, depth, color, component);
         else
-            render(tex, rect, depth);
+            render(tex, rect, depth, color);
     };
 
-    record(preferenceTex, screenRect, 1.0f, nullptr);
+    record(preferenceTex, screenRect, 1.0f, Colors::White(), nullptr);
 
     if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
-        record(baseTex, screenRect, 1.0f, nullptr);
+        record(baseTex, screenRect, 1.0f, Colors::White(), nullptr);
 
-    record(componentTex, screenRect, depthLayers::component, dynamicComponent);
+    record(componentTex, screenRect, depthLayers::component, Colors::White(), nullptr);
+
+    if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
+    {
+        Texture &chargeLayerTex = database().getTexture(app.renderer, name, modifiers, true);
+        record(chargeLayerTex, screenRect, depthLayers::component, GameUtil::chargeColor(ChargeGray), dynamicComponent);
+    }
 
     if (selected)
     {
         bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
 
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
-        record(selectionTex, screenRect, depthLayers::selection, nullptr);
+        record(selectionTex, screenRect, depthLayers::selection, Colors::White(), nullptr);
     }
 }
 
@@ -712,7 +717,7 @@ void GameUI::renderSpokes(const Component &component)
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, nullptr, angle);
+                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, Colors::White(), nullptr, angle);
                 }
             }
         }
@@ -758,7 +763,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, nullptr, angle);
+                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, Colors::White(), nullptr, angle);
                 }
             }
         }

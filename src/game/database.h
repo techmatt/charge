@@ -16,6 +16,7 @@ struct ComponentInfo
         background = true;
 
         holdsCharge = (name == "Hold" || name == "ChargeGoal");
+        hasStoredChargeLayer = (name == "Amplifier" || name == "FilteredAmplifier" || holdsCharge);
     }
 
     ChargeType defaultPrimaryCharge() const
@@ -25,11 +26,9 @@ struct ComponentInfo
         return ChargeNone;
     }
 
-    ChargeType defaultStoredCharge() const
+    RGBColor defaultStoredChargeColor() const
     {
-        if (name == "ChargeGoal" || name == "Hold")
-            return ChargeGray;
-        return ChargeNone;
+        return Colors::Gray();
     }
 
     string name;
@@ -42,12 +41,19 @@ struct ComponentInfo
     bool background;
 
     bool holdsCharge;
+
+    bool hasStoredChargeLayer;
 };
 
 struct Database
 {
     void init();
     void initTextures(Renderer &renderer);
+
+    bool hasComponent(const string &componentName) const
+    {
+        return (components.count(componentName) > 0);
+    }
 
     const ComponentInfo& getComponent(const string &componentName) const
     {
@@ -56,7 +62,7 @@ struct Database
     }
 
     Texture& getTexture(Renderer &renderer, const string &textureName);
-    Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers);
+    Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);
     //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
 
     map<string, ComponentInfo*> components;

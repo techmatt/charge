@@ -1,19 +1,22 @@
 
 struct UIRenderObject
 {
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, const Component *_dynamicComponent = nullptr, float _rotation = 0.0f)
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr, float _rotation = 0.0f)
     {
         tex = &_tex;
         rect = _rect;
         depth = _depth;
         rotation = _rotation;
+        color = _color;
         dynamicComponent = _dynamicComponent;
     }
-    float depth;
+
     Texture *tex;
+    float depth;
     rect2f rect;
     float rotation;
-
+    vec4f color;
+    
     //
     // when component is not null, its texture is used instead of tex.
     //
@@ -49,9 +52,9 @@ private:
 
     void render(const UIRenderObject &o);
 
-    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, const Component *dynamicComponent = nullptr, float rotation = 0.0f)
+    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *dynamicComponent = nullptr, float rotation = 0.0f)
     {
-        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, dynamicComponent, rotation));
+        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, color, dynamicComponent, rotation));
     }
 
 	void updateButtonList();

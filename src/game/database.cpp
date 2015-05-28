@@ -36,7 +36,7 @@ Texture& Database::getTexture(Renderer &renderer, const string &textureName)
     return getTexture(renderer, textureName, ComponentModifiers());
 }
 
-Texture& Database::getTexture(Renderer &renderer, const string &componentName, const ComponentModifiers &modifiers)
+Texture& Database::getTexture(Renderer &renderer, const string &componentName, const ComponentModifiers &modifiers, bool getStoredChargeLayer)
 {
     if (modifiers.speed != WireStandard)
     {
@@ -52,7 +52,7 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
     if (modifiers.boundary == CircuitBoundaryClosed)
         baseTextureName += "Closed";
 
-    const string fullTextureName = baseTextureName + GameUtil::suffixFromCharge(modifiers.storedColor);
+    const string fullTextureName = baseTextureName + (getStoredChargeLayer ? "StoredCharge" : "");
 
     if (textures.count(fullTextureName) == 0)
     {
@@ -80,7 +80,6 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         else if (util::startsWith(componentName, "BoundaryTextures"))
         {
             Texture &border = getTexture(renderer, "Border");
-            const RGBColor magentaColor = GameUtil::chargeColor(modifiers.storedColor);
             for (const auto &p : bmp)
             {
                 if (p.value == Colors::Magenta())
@@ -92,9 +91,18 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
                     p.value.a = 255;
             }
         }
+        else if (getStoredChargeLayer)
+        {
+            for (const auto &p : bmp)
+            {
+                if (p.value == Colors::Magenta())
+                    p.value = RGBColor(255, 255, 255, 255);
+                else
+                    p.value = RGBColor(0, 0, 0, 0);
+            }
+        }
         else
         {
-            const RGBColor magentaColor = GameUtil::chargeColor(modifiers.storedColor);
             for (const auto &p : bmp)
             {
                 if (p.value == Colors::Cyan())
@@ -104,13 +112,10 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
 
                 if (p.value == Colors::Magenta())
                 {
-                    p.value = magentaColor;
+                    p.value = RGBColor(0, 0, 0, 255);
                 }
             }
         }
-
-        
-
 
         Texture *t = new Texture(renderer, bmp);
 

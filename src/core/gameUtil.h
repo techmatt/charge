@@ -107,7 +107,7 @@ public:
 		switch (type)
 		{
 		case ChargeGray:
-			return RGBColor(128, 128, 128);
+            return RGBColor(150, 150, 150);
 		case ChargeRed:
 			return RGBColor(255, 0, 0);
 		case ChargeOrange:

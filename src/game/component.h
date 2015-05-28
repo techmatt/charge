@@ -1,11 +1,10 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeNone, ChargeType _storedColor = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
+    ComponentModifiers(ChargeType _color = ChargeNone, RGBColor _storedChargeColor = Colors::Gray(), int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
     {
         init();
         color = _color;
-        storedColor = _storedColor;
         chargePreference = _chargePreference;
         speed = _speed;
         boundary = _boundary;
@@ -14,13 +13,13 @@ struct ComponentModifiers
     {
         init();
         color = info.defaultPrimaryCharge();
-        storedColor = info.defaultStoredCharge();
+        storedChargeColor = info.defaultStoredChargeColor();
     }
 
     void init()
     {
         color = ChargeNone;
-        storedColor = ChargeNone;
+        storedChargeColor = GameUtil::chargeColor(ChargeGray);
         boundary = CircuitBoundaryInvalid;
         chargePreference = 2;
         speed = WireStandard;
@@ -28,7 +27,7 @@ struct ComponentModifiers
     }
 
     ChargeType color;
-    ChargeType storedColor;
+    vec4f storedChargeColor;
     CircuitBoundaryType boundary;
     int chargePreference; // value ranges from 0 to 4; default is 2
 
@@ -53,7 +52,7 @@ struct Component
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
 		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
-		
+        
         //
         // default power source values
         //
@@ -102,14 +101,19 @@ struct Component
     int lastChargeVisit;
 
     //
-    // When a charge blows up, other charges currently travelling to the tower also die.
+    // when a charge blows up, other charges currently travelling to the tower also die.
     //
     int deathTrapTimeLeft;
 
     //
-    // If this is a circuit, it will need its own board.
+    // if this is a circuit, it will need its own board.
     //
     Board *circuitBoard;
+
+    //
+    // some components store charge
+    //
+    ChargeType storedCharge;
 
     //
     // some components can emit charges

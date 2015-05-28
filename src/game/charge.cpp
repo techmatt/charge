@@ -46,15 +46,16 @@ void Charge::interactWithDestination(GameState &state)
     {
         markedForDeletion = true;
         showDeathAnimation = false;
-        if (current->modifiers.storedColor == ChargeNone)
+        if (current->storedCharge == ChargeNone)
         {
-            current->modifiers.storedColor = level;
+            current->storedCharge = level;
         }
         else
         {
-            const ChargeType emittedLevel = (ChargeType)(std::min((int)current->modifiers.storedColor + (int)level, (int)ChargeBlue));
+            const ChargeType emittedLevel = (ChargeType)(std::min((int)current->storedCharge + (int)level, (int)ChargeBlue));
             current->chargesToEmit.push_back(emittedLevel);
-            current->modifiers.storedColor = ChargeNone;
+            current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
+            current->storedCharge = ChargeNone;
         }
     }
 

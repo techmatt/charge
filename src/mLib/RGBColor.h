@@ -55,6 +55,12 @@ struct RGBColor
         return RGBColor(rand() & 255, rand() & 255, rand() & 255);
     }
 
+    operator vec4f()
+    {
+        static const float rcp = 1.0f / 255.0f;
+        return vec4f(r * rcp, g * rcp, b * rcp, a * rcp);
+    }
+
     BYTE r, g, b, a;
 };
 
@@ -62,6 +68,9 @@ namespace Colors
 {
     static RGBColor Magenta()  { return RGBColor(255, 0, 255); }
     static RGBColor Cyan()	   { return RGBColor(0, 255, 255); }
+    static RGBColor Gray()	   { return RGBColor(128, 128, 128); }
+    static RGBColor White()	   { return RGBColor(255, 255, 255); }
+    static RGBColor Black()	   { return RGBColor(0, 0, 0); }
 };
 
 //
