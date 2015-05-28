@@ -1,17 +1,35 @@
 
+enum UIRenderType
+{
+    UIRenderStandard,
+    UIRenderStoredCharge,
+};
+
 struct UIRenderObject
 {
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr, float _rotation = 0.0f)
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, float _rotation)
     {
         tex = &_tex;
         rect = _rect;
         depth = _depth;
         rotation = _rotation;
+        color = vec4f(1.0f, 1.0f, 1.0f, 1.0f);
+        dynamicComponent = nullptr;
+    }
+
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, UIRenderType _type = UIRenderStandard, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr)
+    {
+        tex = &_tex;
+        rect = _rect;
+        depth = _depth;
+        rotation = 0.0f;
         color = _color;
+        type = _type;
         dynamicComponent = _dynamicComponent;
     }
 
     Texture *tex;
+    UIRenderType type;
     float depth;
     rect2f rect;
     float rotation;
@@ -52,9 +70,14 @@ private:
 
     void render(const UIRenderObject &o);
 
-    void addBackgroundObject(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *dynamicComponent = nullptr, float rotation = 0.0f)
+    void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, float rotation)
     {
-        backgroundObjects.push_back(UIRenderObject(tex, destinationRect, depth, color, dynamicComponent, rotation));
+        backgroundObjects.push_back(UIRenderObject(tex, rect, depth, rotation));
+    }
+
+    void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, UIRenderType type = UIRenderStandard, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *dynamicComponent = nullptr)
+    {
+        backgroundObjects.push_back(UIRenderObject(tex, rect, depth, type, color, dynamicComponent));
     }
 
 	void updateButtonList();

@@ -43,6 +43,12 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
         return (charge.level == modifiers.color);
     }
 
+    if (info->name == "FilteredAmplifier")
+    {
+        const int combinedCharge = (int)storedCharge + (int)charge.level;
+        return (storedCharge == ChargeNone || (combinedCharge >= modifiers.color));
+    }
+
     return true;
 }
 

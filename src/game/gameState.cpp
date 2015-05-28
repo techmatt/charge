@@ -213,18 +213,10 @@ void GameState::step()
     //
     for (const auto &component : components)
     {
-        if (component->info->name == "Amplifier")
-        {
-            int a = 5;
-        }
         component->tick();
 
         while(component->chargesToEmit.size() > 0)
         {
-            if (component->info->name == "Amplifier")
-            {
-                int a = 5;
-            }
             component->lastChargeVisit = stepCount;
             charges.push_back(Charge(component->location, component->chargesToEmit.back()));
             component->chargesToEmit.pop_back();

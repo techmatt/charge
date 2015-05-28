@@ -59,6 +59,23 @@ void Charge::interactWithDestination(GameState &state)
         }
     }
 
+    if (current->info->name == "FilteredAmplifier")
+    {
+        markedForDeletion = true;
+        showDeathAnimation = false;
+        if (current->storedCharge == ChargeNone)
+        {
+            current->storedCharge = (ChargeType)std::min((int)level, (int)current->modifiers.color);
+        }
+        else
+        {
+            const ChargeType emittedLevel = current->modifiers.color;
+            current->chargesToEmit.push_back(emittedLevel);
+            current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
+            current->storedCharge = ChargeNone;
+        }
+    }
+
     if (current->info->name == "TrapOpen")
     {
         current->info = &database().getComponent("TrapSprung");

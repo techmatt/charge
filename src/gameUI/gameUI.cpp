@@ -44,12 +44,13 @@ void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, fl
 
 void GameUI::render(const UIRenderObject &o)
 {
-    vec4f color = o.dynamicComponent == nullptr ? o.color : o.dynamicComponent->modifiers.storedChargeColor;
+    const vec4f color = (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge) ? o.dynamicComponent->modifiers.storedChargeColor : o.color;
+    Texture &t = (o.dynamicComponent != nullptr && o.type == UIRenderStandard) ? database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers) : *o.tex;
 
     if (o.rotation == 0.0f)
-        render(*o.tex, o.rect, o.depth, color);
+        render(t, o.rect, o.depth, color);
     else
-        render(*o.tex, o.rect, o.depth, o.rotation, color);
+        render(t, o.rect, o.depth, o.rotation, color);
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -378,7 +379,7 @@ void GameUI::updateButtonList()
         if (info.grayUpgrade)
             chargeLevels.push_back(ChargeGray);
 
-        if (selectedGameComponent->info->name != "Circuit")
+        if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker")
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
@@ -605,31 +606,32 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 {
     if (!isButton && name == "Blocker" &&
         (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
+        //(app.state.getComponent(selectedGameLocation) == nullptr || app.state.getComponent(selectedGameLocation)->info->name != "Blocker"))
         return;
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
     Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
 
-    auto record = [&](Texture &tex, const rect2f &rect, float depth, const vec4f &color, const Component *component) {
+    auto record = [&](Texture &tex, const rect2f &rect, float depth, UIRenderType type, const vec4f &color, const Component *component) {
         depth -= depthOffset;
         if (isBackground)
-            addBackgroundObject(tex, rect, depth, color, component);
+            addBackgroundObject(tex, rect, depth, type, color, component);
         else
             render(tex, rect, depth, color);
     };
 
-    record(preferenceTex, screenRect, 1.0f, Colors::White(), nullptr);
+    record(preferenceTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
 
     if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
-        record(baseTex, screenRect, 1.0f, Colors::White(), nullptr);
+        record(baseTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
 
-    record(componentTex, screenRect, depthLayers::component, Colors::White(), nullptr);
+    record(componentTex, screenRect, depthLayers::component, UIRenderStandard, Colors::White(), dynamicComponent);
 
     if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
     {
         Texture &chargeLayerTex = database().getTexture(app.renderer, name, modifiers, true);
-        record(chargeLayerTex, screenRect, depthLayers::component, GameUtil::chargeColor(ChargeGray), dynamicComponent);
+        record(chargeLayerTex, screenRect, depthLayers::component, UIRenderStoredCharge, GameUtil::chargeColor(ChargeGray), dynamicComponent);
     }
 
     if (selected)
@@ -637,7 +639,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
         bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
 
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
-        record(selectionTex, screenRect, depthLayers::selection, Colors::White(), nullptr);
+        record(selectionTex, screenRect, depthLayers::selection, UIRenderStandard, Colors::White(), nullptr);
     }
 }
 
@@ -717,7 +719,7 @@ void GameUI::renderSpokes(const Component &component)
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     //const float angle = 180.0f;
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, Colors::White(), nullptr, angle);
+                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
                 }
             }
         }
@@ -763,7 +765,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 
                     Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
                     const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, Colors::White(), nullptr, angle);
+                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
                 }
             }
         }
