@@ -696,6 +696,27 @@ void GameUI::renderSpokes(const Component &component)
 
     const auto &cells = app.state.board.cells;
 
+    auto drawCircuitConnection = [&](const Component &a, const Component &b)
+    {
+        auto test = [&](const Component &circuit, const Component &board)
+        {
+            for (Component *connection : board.connections)
+            {
+                if (connection != nullptr && connection->location.boardPos == circuit.location.boardPos && connection->modifiers.boundary == CircuitBoundaryOpen)
+                    return true;
+            }
+            return false;
+        };
+        if (a.info->name == "Circuit" && b.info->name == "Circuit")
+            return false;
+        else if (a.info->name != "Circuit" && b.info->name != "Circuit")
+            return true;
+        else if (a.info->name == "Circuit" && b.info->name != "Circuit")
+            return test(a, b);
+        //if (a.info->name != "Circuit" && b.info->name == "Circuit")
+            return test(b, a);
+    };
+
     for (int type = -1; type <= 1; type++)
     {
         for (int axis = 0; axis < 2; axis++)
@@ -709,7 +730,10 @@ void GameUI::renderSpokes(const Component &component)
             if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
             {
                 const Component &otherComponent = *cells(otherLocation).c;
-                if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes())
+                
+                bool circuitTest = drawCircuitConnection(component, otherComponent);
+
+                if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes() && circuitTest)
                 {
                     const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
 
