@@ -461,11 +461,11 @@ vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circui
 	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 4)) return vec2i(0, 4);
 	if (displacement == vec2i(2, 0) && circuitPosition == vec2i(6, 5)) return vec2i(0, 5);
 
-	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(1,0)) return vec2i(6, 1);
-	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(2,0)) return vec2i(6, 2);
-	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(3,0)) return vec2i(6, 3);
-	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(4,0)) return vec2i(6, 4);
-	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(5,0)) return vec2i(6, 5);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(1,0)) return vec2i(1, 6);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(2,0)) return vec2i(2, 6);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(3,0)) return vec2i(3, 6);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(4,0)) return vec2i(4, 6);
+	if (displacement == vec2i(0,-2) && circuitPosition == vec2i(5,0)) return vec2i(5, 6);
 
 	if (displacement == vec2i(0,2) && circuitPosition == vec2i(1,6)) return vec2i(1,0);
 	if (displacement == vec2i(0, 2) && circuitPosition == vec2i(2, 6)) return vec2i(2, 0);
