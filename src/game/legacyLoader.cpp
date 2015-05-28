@@ -163,6 +163,8 @@ LegacyComponentInfo getLegacyInfo(LegacyComponentType type)
 {
     switch (type)
     {
+    case ComponentCircuit: return LegacyComponentInfo("Circuit");
+
     case ComponentPowerSourceRed: return LegacyComponentInfo("PowerSource", ChargeRed);
     case ComponentPowerSourceOrange: return LegacyComponentInfo("PowerSource", ChargeOrange);
     case ComponentPowerSourceYellow: return LegacyComponentInfo("PowerSource", ChargeYellow);
@@ -332,7 +334,11 @@ void LegacyLoader::load(const string &filename, GameState &result)
     {
         if (c.legacyType == ComponentCircuit)
         {
+            auto info = getLegacyInfo(c.legacyType);
             Component *newC = new Component("Circuit", ChargeNone, c.location);
+
+            newC->modifiers.puzzleType = c.puzzleType;
+
             result.addNewComponent(newC, false, false);
         }
     }

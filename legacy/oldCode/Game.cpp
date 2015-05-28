@@ -427,14 +427,14 @@ void Game::SaveToPuzzleFile(const String &Filename, bool SaveAsPuzzle)
 		{
 			File << CurBuilding->Fields()[FieldIndex] << '\t';
 		}
-    if(SaveAsPuzzle)
-    {
-        File << UINT(BuildingPuzzlePiece) << '\t';
-    }
-    else
-    {
-        File << UINT(CurBuilding->PuzzlePiece()) << '\t';
-    }
+        if(SaveAsPuzzle)
+        {
+            File << UINT(BuildingPuzzlePiece) << '\t';
+        }
+        else
+        {
+            File << UINT(CurBuilding->PuzzlePiece()) << '\t';
+        }
 		File << endl;
 		//File << CurBuilding->PuzzlePiece() << endl;
 

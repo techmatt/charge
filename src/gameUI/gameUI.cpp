@@ -82,32 +82,14 @@ void GameUI::keyDown(SDL_Keycode key)
 void GameUI::removeHoverComponent()
 {
     const GameLocation location = hoverLocation(false);
-    if (location.inCircuit())
-    {
-        if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->cells.coordValid(location.circuitPos))
-        {
-            Component *circuitComponent = activeCircuit()->circuitBoard->cells(location.circuitPos).c;
-            if (circuitComponent != nullptr && circuitComponent->info->name != "CircuitBoundary")
-            {
-                backgroundDirty = true;
-                app.controller.designActionTaken = true;
-                app.state.removeComponent(activeCircuit()->circuitBoard->cells(location.circuitPos).c);
-            }
-        }
-    }
-    else
-    {
-        if (!app.state.board.cells.coordValid(location.boardPos))
-            return;
+    
+    Component *c = app.state.getComponent(location);
+    if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzlePiece || c->info->name == "CircuitBoundary")
+        return;
 
-        Component *c = app.state.board.cells(location.boardPos).c;
-        if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzlePiece)
-            return;
-
-        backgroundDirty = true;
-        app.controller.designActionTaken = true;
-        app.state.removeComponent(app.state.board.cells(location.boardPos).c);
-    }
+    backgroundDirty = true;
+    app.controller.designActionTaken = true;
+    app.state.removeComponent(c);
 }
 
 void GameUI::mouseDown(Uint8 button, int x, int y)
@@ -451,7 +433,7 @@ void GameUI::updateBackgroundObjects()
     for (auto &button : buttons)
     {
         bool selected = false;
-        selected |= (selectedMenuComponent != nullptr && button.component == selectedMenuComponent);
+        selected |= (button.type == ButtonComponent && selectedMenuComponent == button.component);
         if (gameComponent != nullptr)
         {
             selected |= (button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
