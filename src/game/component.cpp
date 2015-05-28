@@ -29,25 +29,22 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
     int requiredTimeDifference = constants::chargeRequiredTimeDifference;
 
     if (currentTimeDifference < requiredTimeDifference)
-    {
         return false;
-    }
 
     if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker" || info->name == "GateClosed")
-    {
         return false;
-    }
 
     if (info->name == "ChargeFilter")
-    {
         return (charge.level == modifiers.color);
-    }
 
     if (info->name == "FilteredAmplifier")
     {
         const int combinedCharge = (int)storedCharge + (int)charge.level;
         return (storedCharge == ChargeNone || (combinedCharge >= modifiers.color));
     }
+
+    if (modifiers.boundary == CircuitBoundaryClosed)
+        return false;
 
     return true;
 }

@@ -9,12 +9,15 @@ struct GameState
     void clearBoard();
     void resetPuzzle();
     
+    void updateComponentConnections();
+    void updateCircuitBoundaries();
+    void updateAll();
+
     void addNewComponent(Component *component, bool addCircuitComponents = true, bool updateConnections = true);
-    void removeComponent(Component *component);
+    void removeComponent(Component *component, bool updateConnections = true);
     void step();
 
-    void updateCircuitBoundaries();
-
+    
     // given a circuit boundary component, find its neighbor on the board, if any.
     // this may give a component on either the board or on another circuit.
     Component* findCircuitBoundaryNeighbor(Component &component);
@@ -50,6 +53,4 @@ struct GameState
 
 
 	Component* connectableComponentAtRelativePosition(Component* component, vec2i relativePosition);
-	void updateComponentConnections();
-
 };

@@ -373,8 +373,6 @@ void LegacyLoader::load(const string &filename, GameState &result)
     //
     // normally this is done in addNewComponent, but this is actually noticably slower
     //
-    result.board.updateBlockedGrid();
-    result.updateCircuitBoundaries();
-    result.updateComponentConnections();
+    result.updateAll();
     result.resetPuzzle();
 }

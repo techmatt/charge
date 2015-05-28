@@ -40,6 +40,8 @@ public:
     void step();
 
     void loadPuzzle(const string &filename);
+
+    void recordDesignAction();
     
     GamePuzzleMode puzzleMode;
     GameEditorMode editorMode;

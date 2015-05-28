@@ -32,3 +32,9 @@ void GameController::loadPuzzle(const string &filename)
     app.state.resetPuzzle();
     designActionTaken = true;
 }
+
+void GameController::recordDesignAction()
+{
+    app.state.updateAll();
+    designActionTaken = true;
+}

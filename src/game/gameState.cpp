@@ -111,14 +111,17 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents,
     }
 
     if (updateConnections)
-    {
-        board.updateBlockedGrid();
-        updateCircuitBoundaries();
-        updateComponentConnections();
-    }
+        updateAll();
 }
 
-void GameState::removeComponent(Component *component)
+void GameState::updateAll()
+{
+    board.updateBlockedGrid();
+    updateCircuitBoundaries();
+    updateComponentConnections();
+}
+
+void GameState::removeComponent(Component *component, bool updateConnections)
 {
     if (component->circuitBoard != nullptr)
     {
@@ -131,7 +134,7 @@ void GameState::removeComponent(Component *component)
                 if (child->location.inCircuit() && child->location.boardPos == component->location.boardPos)
                 {
                     childFound = true;
-                    removeComponent(child);
+                    removeComponent(child, false);
                     break;
                 }
             }
@@ -154,9 +157,8 @@ void GameState::removeComponent(Component *component)
 
     delete component;
 
-    board.updateBlockedGrid();
-    updateCircuitBoundaries();
-	updateComponentConnections();
+    if (updateConnections)
+        updateAll();
 }
 
 void GameState::step()

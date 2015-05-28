@@ -146,25 +146,28 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 {
                     selectedMenuComponent = button.component;
                 }
-                if (button.type == ButtonChargeColor && gameComponent != nullptr)
+                if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentUser)
                 {
-                    app.controller.designActionTaken = true;
-                    gameComponent->modifiers.color = button.modifiers.color;
-                }
-                if (button.type == ButtonChargePreference && gameComponent != nullptr)
-                {
-                    app.controller.designActionTaken = true;
-                    gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
-                }
-                if (button.type == ButtonWireSpeed && gameComponent != nullptr)
-                {
-                    app.controller.designActionTaken = true;
-                    gameComponent->modifiers.speed = button.modifiers.speed;
-                }
-                if (button.type == ButtonCircuitBoundary && gameComponent != nullptr)
-                {
-                    app.controller.designActionTaken = true;
-                    gameComponent->modifiers.boundary = button.modifiers.boundary;
+                    if (button.type == ButtonChargeColor)
+                    {
+                        gameComponent->modifiers.color = button.modifiers.color;
+                        app.controller.recordDesignAction();
+                    }
+                    if (button.type == ButtonChargePreference)
+                    {
+                        gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
+                        app.controller.recordDesignAction();
+                    }
+                    if (button.type == ButtonWireSpeed)
+                    {
+                        gameComponent->modifiers.speed = button.modifiers.speed;
+                        app.controller.recordDesignAction();
+                    }
+                    if (button.type == ButtonCircuitBoundary)
+                    {
+                        gameComponent->modifiers.boundary = button.modifiers.boundary;
+                        app.controller.recordDesignAction();
+                    }
                 }
                 if (button.name == "Start")
                 {
@@ -366,7 +369,7 @@ void GameUI::updateButtonList()
     // Add color, delay, preference, and boundary buttons
     //
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    if (selectedGameComponent != nullptr)
+    if (selectedGameComponent != nullptr && selectedGameComponent->modifiers.puzzleType == ComponentUser)
     {
         const ComponentInfo &info = *selectedGameComponent->info;
 
@@ -379,7 +382,7 @@ void GameUI::updateButtonList()
         if (info.grayUpgrade)
             chargeLevels.push_back(ChargeGray);
 
-        if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker")
+        if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker" && selectedGameComponent->info->name != "PowerSource")
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
