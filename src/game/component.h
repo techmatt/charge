@@ -51,7 +51,11 @@ struct Component
         deathTrapTimeLeft = 0;
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
+
+		// deal with the twelve connections.  I should really make a connection object, but fuck that.
 		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
+		connectionBlocked = { false, false, false, false, false, false, false, false, false, false, false, false };
+		connectionDesired = { false, false, false, false, false, false, false, false, false, false, false, false };
 
         //
         // default power source values
@@ -154,6 +158,8 @@ struct Component
 	//
 	// this will override circuitBoundaryNeighbor.
 	vector<Component*> connections;
+	vector<bool> connectionBlocked;
+	vector<bool> connectionDesired;
 
 	// Gets the actual physical location of the circuit in the board frame.
 	rect2f boardFrameLocation() const;

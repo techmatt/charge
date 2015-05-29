@@ -39,7 +39,7 @@ struct Charge
 	// whether the charge has already been processed this tick
 	//
 	bool resolvedThisTick;
-	
+	bool notMovingBecauseOfDesiredConnection;
 	//
 	// whether the charge was held last tick
 	//
@@ -54,4 +54,5 @@ struct Charge
 	// an intermediate step in calculating charge destinations
 	//
 	Component* intendedDestination;
+	int intendedConnectionIndex;
 };

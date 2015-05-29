@@ -22,21 +22,18 @@ void Charge::advance(GameState &state)
     if (markedForDeletion || totalTransitTime == 0) return;
 
 	// chrage is moving.
-	if (timeInTransit < totalTransitTime)
+	if (timeInTransit < totalTransitTime && source != destination)
 	{
 		timeInTransit++;
-
-		//if (timeInTransit == totalTransitTime)
-		//	willInteract = true;
-
 		resolvedThisTick = true;
-	}
 	
-    Component *current = state.getComponent(destination);
-    /*if (current->deathTrapTimeLeft > 0)
-    {
-        markedForDeletion = true;
-    }*/
+		//seach for the source and destination and block off the corresponding things
+		Component* sourceComponent = state.getComponent(source);
+		Component* destinationComponent = state.getComponent(destination);
+
+		destinationComponent->connectionBlocked[(intendedConnectionIndex + 6) % 12] = true;
+	
+	}
 }
 
 void Charge::interactWithDestination(GameState &state)
@@ -194,7 +191,9 @@ void Charge::updateDestination(GameState &state)
 
 void Charge::setNewDestination(GameState &state, Component &newDestination)
 {
-    source = destination;
+	newDestination.connectionBlocked[(intendedConnectionIndex + 6) % 12] = true; //block off the things coming in the opposite direction
+	
+	source = destination;
     destination = newDestination.location;
     newDestination.lastChargeVisit = state.stepCount;
 
@@ -226,12 +225,15 @@ bool Charge::findBestDestination(GameState &state)
 
     double strongestPreference = 0.0;
     Component *bestComponent = nullptr;
+	int bestIndex = -1;
 
     for (int adjacentIndex = 0; adjacentIndex < 12; adjacentIndex++)
     {
+		if (current->connectionBlocked[adjacentIndex]) continue;
+			
 		Component *candidate = current->connections[adjacentIndex];//neighboringComponents[adjacentIndex];
-
 		if (candidate == nullptr) continue;
+
 
         bool isPreviousBuilding = previous->location == candidate->location;
         bool buildingWillAccept = candidate->willAcceptCharge(state, *this);
@@ -244,6 +246,7 @@ bool Charge::findBestDestination(GameState &state)
             if (currentPreference > strongestPreference)
             {
                 strongestPreference = currentPreference;
+				bestIndex = adjacentIndex;
                 bestComponent = candidate;
             }
         }
@@ -251,8 +254,9 @@ bool Charge::findBestDestination(GameState &state)
     if (bestComponent != nullptr)
     {
 		intendedDestination = bestComponent;
+		intendedConnectionIndex = bestIndex;
 		bestComponent->sourceOfLastChargeToAttemptToMoveHere = source;
-        //setNewDestination(state, *bestComponent);
+		bestComponent->connectionDesired[(intendedConnectionIndex + 6) % 12] = true;
         return true;
     }
     return false;

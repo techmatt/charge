@@ -190,15 +190,23 @@ void GameState::step()
 		component->numChargesTargetingThisTick = 0;
 		component->holdingCharge = false;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
+
+		for (int i = 0; i < 12; i++) {
+			component->connectionBlocked[i] = false;
+			component->connectionDesired[i] = false;
+		}
 	}
 
 	for (Charge &c : charges)
 	{
 		c.resolvedThisTick = false;
 		c.advance(*this);
+		Component* destination = getComponent(c.destination);
+		Component* source = getComponent(c.source);
+
 		if (c.held) {
-			getComponent(c.destination)->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
-			getComponent(c.destination)->holdingCharge = true;
+			destination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+			destination->holdingCharge = true;
 		} 
 		c.held = false;
 	}
@@ -231,10 +239,30 @@ void GameState::step()
 			}
 		}
 
+		// check to see whether there are intermediate-wire collisions
+		for (Charge &c : charges)
+		{
+			if (c.resolvedThisTick) continue;
+			Component* destination = getComponent(c.destination);
+
+			// if the movement attempt dies because the charge connection, it doesn't count as hitting the target
+			if (destination->connectionDesired[c.intendedConnectionIndex])
+			{
+				c.intendedDestination->numChargesTargetingThisTick--;
+				c.notMovingBecauseOfDesiredConnection = true;
+				destination->connectionBlocked[c.intendedConnectionIndex] = true;
+				keepAttempting = true;
+			}
+			else
+				c.notMovingBecauseOfDesiredConnection = false;
+		}
+		
 		// attempt to move the charges there.  If theres somewhere for them to go
 		for (Charge &c : charges)
 		{
 			if (c.resolvedThisTick) continue;
+			if (c.notMovingBecauseOfDesiredConnection) continue;
+
 			if (c.intendedDestination->numChargesTargetingThisTick == 1)
 			{
 				c.setNewDestination(*this, *c.intendedDestination);
@@ -258,15 +286,13 @@ void GameState::step()
 		//if (!(getComponent(c.source)->willAcceptCharge(*this,c)))
 		//	c.source = c.destination; //if we can't go back, forget the original source
 
-		// this is a less aggressive strategy: only trigger release if a blocker was removed.
+		// this is a less aggressive strategy: only trigger release if a blocker/held charge was removed.
 		Component* source = getComponent(c.source);
 		if (source->info->name == "TrapSprung" || source->info->name == "GateClosed")
 			c.source = c.destination;
 		if (source->holdingCharge)
 			c.source = c.destination;
 	}
-
-
 
 	// now deal with charges that interact with their location
     for (Charge &c : charges)
