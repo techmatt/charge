@@ -52,7 +52,7 @@ struct Component
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
 		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
-        
+
         //
         // default power source values
         //
@@ -120,6 +120,13 @@ struct Component
     //
     vector<ChargeType> chargesToEmit;
 
+	//
+	// used in the ticks to deal with multiple charges approaching the same location
+	// willTrigger indicates that the component will be processed at the end of the tick
+	//
+	int numChargesTargetingThisTick;
+	bool willTrigger;
+
     //
     // power sources emit at a certain rate
     //
@@ -152,4 +159,9 @@ struct Component
 	rect2f boardFrameLocation() const;
 	rect2f circuitFrameLocation() const;
 
+	//
+	// last charge visited's 
+	//
+
+	
 };

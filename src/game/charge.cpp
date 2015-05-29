@@ -6,28 +6,37 @@ Charge::Charge(const GameLocation &originLocation, ChargeType _level)
     level = _level;
     source = originLocation;
     destination = originLocation;
+
     timeInTransit = 0;
     totalTransitTime = 1;
     randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
 
     markedForDeletion = false;
     showDeathAnimation = true;
+
+	held = false;
 }
 
 void Charge::advance(GameState &state)
 {
     if (markedForDeletion || totalTransitTime == 0) return;
 
-    if (timeInTransit < totalTransitTime)
-    {
-        timeInTransit++;
-    }
+	// chrage is moving.
+	if (timeInTransit < totalTransitTime)
+	{
+		timeInTransit++;
 
+		//if (timeInTransit == totalTransitTime)
+		//	willInteract = true;
+
+		resolvedThisTick = true;
+	}
+	
     Component *current = state.getComponent(destination);
-    if (current->deathTrapTimeLeft > 0)
+    /*if (current->deathTrapTimeLeft > 0)
     {
         markedForDeletion = true;
-    }
+    }*/
 }
 
 void Charge::interactWithDestination(GameState &state)
@@ -251,7 +260,8 @@ bool Charge::findBestDestination(GameState &state)
     }
     if (bestComponent != nullptr)
     {
-        setNewDestination(state, *bestComponent);
+		intendedDestination = bestComponent;
+        //setNewDestination(state, *bestComponent);
         return true;
     }
     return false;

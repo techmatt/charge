@@ -51,7 +51,10 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
 
 void Component::tick()
 {
-    if (deathTrapTimeLeft > 0)
+	// reset whether charges are targetting 
+	numChargesTargetingThisTick = 0;
+	
+	if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
 
     if (info->hasStoredChargeLayer)

@@ -163,33 +163,107 @@ void GameState::removeComponent(Component *component, bool updateConnections)
 
 void GameState::step()
 {
-    //
-    // Advance exploding charges
-    //
+	//
+	// Advance exploding charges
+	//
 
-    for (int chargeIndex = 0; chargeIndex < int(explodingCharges.size()); chargeIndex++)
-    {
-        ExplodingCharge &charge = explodingCharges[chargeIndex];
-        charge.advance();
-        if (charge.done())
-        {
-            util::removeSwap(explodingCharges, chargeIndex);
-            chargeIndex--;
-        }
-    }
+	for (int chargeIndex = 0; chargeIndex < int(explodingCharges.size()); chargeIndex++)
+	{
+		ExplodingCharge &charge = explodingCharges[chargeIndex];
+		charge.advance();
+		if (charge.done())
+		{
+			util::removeSwap(explodingCharges, chargeIndex);
+			chargeIndex--;
+		}
+	}
 
-    //
-    // Move and update charges
-    //
+	//
+	// Move and update charges
+	//
 
-    for (Charge &c : charges)
-        c.advance(*this);
+	// reset components
+	for (const auto &component : components)
+	{
+		component->willTrigger = false;
+		component->tick();
+		component->numChargesTargetingThisTick = 0;
+	}
 
+	for (Charge &c : charges)
+	{
+		c.resolvedThisTick = false;
+		c.advance(*this);
+		if (c.held) {
+			getComponent(c.destination)->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+		} 
+		c.held = false;
+	}
+	
+	// We are going to try multiple times to move all the charges.  This should allow us to deal sanely with charges that try to move to the same location
+	bool keepAttempting = true;
+	while (keepAttempting)
+	{
+		keepAttempting = false;
+
+		//figure out what the best destination is for all the remaining charges
+		for (Charge &c : charges)
+		{
+			if (c.resolvedThisTick) continue;
+			bool hasDestination = c.findBestDestination(*this);
+			if (!hasDestination)  // charge has nowhere to go.  Kill it or hold it.
+			{
+				if (getComponent(c.destination)->info->holdsCharge) {
+					c.held = true;
+				}
+				else
+				{
+					c.markedForDeletion = true;
+				}
+				c.resolvedThisTick = true;
+			}
+
+			c.intendedDestination->numChargesTargetingThisTick++;
+		}
+
+		// attempt to move the charges there.  If theres somewhere for them to go
+		for (Charge &c : charges)
+		{
+			if (c.resolvedThisTick) continue;
+			if (c.intendedDestination->numChargesTargetingThisTick == 1)
+			{
+				c.setNewDestination(*this, *c.intendedDestination);
+				c.resolvedThisTick = true;
+			}
+			else
+			{
+				keepAttempting = true;
+				c.intendedDestination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+			}
+		}
+
+	}
+
+	// check all the held charges to see whether they should forget their sources
+	for (Charge &c : charges)
+	{
+		if (!c.held) continue;
+		
+		// this is a slightly more aggressive forgeting strategy: having charges pass by will trigger release
+		//if (!(getComponent(c.source)->willAcceptCharge(*this,c)))
+		//	c.source = c.destination; //if we can't go back, forget the original source
+
+		// this is a less aggressive strategy: only trigger release if a blocker was removed.
+		Component* source = getComponent(c.source);
+		if (source->info->name == "TrapSprung" || source->info->name == "GateClosed")
+			c.source = c.destination;
+	}
+
+
+
+	// now deal with charges that interact with their location
     for (Charge &c : charges)
         c.interactWithDestination(*this);
-
-    for (Charge &c : charges)
-        c.updateDestination(*this);
 
     //
     // Remove dead charges
@@ -215,7 +289,7 @@ void GameState::step()
     //
     for (const auto &component : components)
     {
-        component->tick();
+        //component->tick();
 
         while(component->chargesToEmit.size() > 0)
         {

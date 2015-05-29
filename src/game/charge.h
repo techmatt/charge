@@ -25,6 +25,7 @@ struct Charge
 
     ChargeType level;
     GameLocation source, destination;
+
     int timeInTransit, totalTransitTime;
     float randomRotationOffset;
 
@@ -33,4 +34,24 @@ struct Charge
     //
     bool markedForDeletion;
     bool showDeathAnimation;
+
+	//
+	// whether the charge has already been processed this tick
+	//
+	bool resolvedThisTick;
+	
+	//
+	// whether the charge was held last tick
+	//
+	bool held;
+
+	//
+	// will interact with destination
+	//
+	//bool willInteract;
+
+	//
+	// an intermediate step in calculating charge destinations
+	//
+	Component* intendedDestination;
 };
