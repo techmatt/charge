@@ -166,9 +166,9 @@ struct Component
 	rect2f circuitFrameLocation() const;
 
 	//
-	// is holding charge
+	// type of held charge (or ChargeNone)
 	//
-	bool holdingCharge;
+	ChargeType heldCharge;
 
 	//
 	// this is needed to deal with splitters

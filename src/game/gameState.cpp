@@ -188,7 +188,7 @@ void GameState::step()
 		component->willTrigger = false;
 		component->tick();
 		component->numChargesTargetingThisTick = 0;
-		component->holdingCharge = false;
+        component->heldCharge = ChargeNone;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
 
 		for (int i = 0; i < 12; i++) {
@@ -206,7 +206,7 @@ void GameState::step()
 
 		if (c.held) {
 			destination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
-			destination->holdingCharge = true;
+            destination->heldCharge = c.level;
 		} 
 		c.held = false;
 	}
@@ -290,7 +290,7 @@ void GameState::step()
 		Component* source = getComponent(c.source);
 		if (source->info->name == "TrapSprung" || source->info->name == "GateClosed")
 			c.source = c.destination;
-		if (source->holdingCharge)
+		if (source->heldCharge != ChargeNone)
 			c.source = c.destination;
 	}
 

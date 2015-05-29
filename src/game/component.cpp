@@ -59,8 +59,12 @@ void Component::tick()
 
     if (info->hasStoredChargeLayer)
     {
-        const float s = 0.95f;
-        vec4f targetColor = storedCharge == ChargeNone ? GameUtil::chargeColor(ChargeGray) : GameUtil::chargeColor(storedCharge);
+        const float s = 0.96f;
+        vec4f targetColor = GameUtil::chargeColor(ChargeGray);
+
+        if (storedCharge != ChargeNone) targetColor = GameUtil::chargeColor(storedCharge);
+        if (heldCharge != ChargeNone) targetColor = GameUtil::chargeColor(heldCharge);
+
         modifiers.storedChargeColor = modifiers.storedChargeColor * s + targetColor * (1.0f - s);
     }
 
