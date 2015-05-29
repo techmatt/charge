@@ -163,4 +163,9 @@ struct Component
 	// is holding charge
 	//
 	bool holdingCharge;
+
+	//
+	// this is needed to deal with splitters
+	//
+	GameLocation sourceOfLastChargeToAttemptToMoveHere;
 };

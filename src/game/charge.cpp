@@ -251,6 +251,7 @@ bool Charge::findBestDestination(GameState &state)
     if (bestComponent != nullptr)
     {
 		intendedDestination = bestComponent;
+		bestComponent->sourceOfLastChargeToAttemptToMoveHere = source;
         //setNewDestination(state, *bestComponent);
         return true;
     }

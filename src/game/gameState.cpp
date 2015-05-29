@@ -189,6 +189,7 @@ void GameState::step()
 		component->tick();
 		component->numChargesTargetingThisTick = 0;
 		component->holdingCharge = false;
+		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
 	}
 
 	for (Charge &c : charges)
