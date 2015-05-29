@@ -358,7 +358,8 @@ void GameUI::updateButtonList()
         vector<ChargeType> chargeLevels;
         if (info.colorUpgrades)
         {
-            for (int charge = (int)ChargeRed; charge <= (int)ChargeBlue; charge++)
+            ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
+            for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
                 chargeLevels.push_back((ChargeType)charge);
         }
         if (info.grayUpgrade)
@@ -737,7 +738,9 @@ void GameUI::renderSpokes(const Component &component)
 
 void GameUI::renderSpokesCircuit(const Component &component)
 {
-    if (activeCircuit() == nullptr || activeCircuit()->location.boardPos != component.location.boardPos)
+    if (activeCircuit() == nullptr ||
+        activeCircuit()->location.boardPos != component.location.boardPos ||
+        component.modifiers.boundary == CircuitBoundaryClosed)
         return;
 
     const vec2f myScreenPos = GameUtil::circuitToWindow(canonicalDims, component.location.circuitPos + vec2i(1, 1));
@@ -819,6 +822,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 void GameUI::renderChargeCircuit(const Charge &charge)
 {
     if (!charge.source.inCircuit() || !charge.destination.inCircuit()) return;
+    if (charge.source.boardPos != charge.destination.boardPos) return;
     if (activeCircuit() == nullptr || charge.source.boardPos != activeCircuit()->location.boardPos) return;
 
     const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);

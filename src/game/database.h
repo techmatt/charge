@@ -21,6 +21,8 @@ struct ComponentInfo
 
     ChargeType defaultPrimaryCharge() const
     {
+        if (name == "FilteredAmplifier")
+            return ChargeOrange;
         if (colorUpgrades)
             return ChargeRed;
         return ChargeNone;
