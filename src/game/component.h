@@ -160,8 +160,7 @@ struct Component
 	rect2f circuitFrameLocation() const;
 
 	//
-	// last charge visited's 
+	// is holding charge
 	//
-
-	
+	bool holdingCharge;
 };

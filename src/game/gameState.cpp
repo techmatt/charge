@@ -188,6 +188,7 @@ void GameState::step()
 		component->willTrigger = false;
 		component->tick();
 		component->numChargesTargetingThisTick = 0;
+		component->holdingCharge = false;
 	}
 
 	for (Charge &c : charges)
@@ -196,6 +197,7 @@ void GameState::step()
 		c.advance(*this);
 		if (c.held) {
 			getComponent(c.destination)->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+			getComponent(c.destination)->holdingCharge = true;
 		} 
 		c.held = false;
 	}
@@ -222,8 +224,10 @@ void GameState::step()
 				}
 				c.resolvedThisTick = true;
 			}
-
-			c.intendedDestination->numChargesTargetingThisTick++;
+			else // there's a destination. mark it.
+			{
+				c.intendedDestination->numChargesTargetingThisTick++;
+			}
 		}
 
 		// attempt to move the charges there.  If theres somewhere for them to go
@@ -256,6 +260,8 @@ void GameState::step()
 		// this is a less aggressive strategy: only trigger release if a blocker was removed.
 		Component* source = getComponent(c.source);
 		if (source->info->name == "TrapSprung" || source->info->name == "GateClosed")
+			c.source = c.destination;
+		if (source->holdingCharge)
 			c.source = c.destination;
 	}
 
