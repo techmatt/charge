@@ -49,17 +49,11 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
     return true;
 }
 
-void Component::tick()
+void Component::tickGraphics()
 {
-	// reset whether charges are targetting 
-	numChargesTargetingThisTick = 0;
-	
-	if (deathTrapTimeLeft > 0)
-        deathTrapTimeLeft--;
-
     if (info->hasStoredChargeLayer)
     {
-        const float s = 0.96f;
+        const float s = 0.95f;
         vec4f targetColor = GameUtil::chargeColor(ChargeGray);
 
         if (storedCharge != ChargeNone) targetColor = GameUtil::chargeColor(storedCharge);
@@ -67,6 +61,15 @@ void Component::tick()
 
         modifiers.storedChargeColor = modifiers.storedChargeColor * s + targetColor * (1.0f - s);
     }
+}
+
+void Component::tick()
+{
+	// reset whether charges are targetting 
+	numChargesTargetingThisTick = 0;
+	
+	if (deathTrapTimeLeft > 0)
+        deathTrapTimeLeft--;
 
     if (info->name == "PowerSource"
         && totalChargesRemaining > 0)

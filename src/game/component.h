@@ -74,6 +74,7 @@ struct Component
     ~Component();
 
     void tick();
+    void tickGraphics();
     void resetPuzzle();
     void resetPowerSource();
     bool willAcceptCharge(GameState &state, const Charge &charge);

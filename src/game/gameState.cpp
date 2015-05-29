@@ -70,6 +70,7 @@ void GameState::loadPuzzle(const string &filename)
 
 void GameState::resetPuzzle()
 {
+    victory = false;
     stepCount = 0;
     globalRotationOffset = 0.0f;
     charges.clear();
@@ -163,6 +164,17 @@ void GameState::removeComponent(Component *component, bool updateConnections)
 
 void GameState::step()
 {
+    for (Component * c : components)
+    {
+        c->tickGraphics();
+    }
+
+    globalRotationOffset += constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f;
+    globalRotationOffset = fmod(globalRotationOffset, 360.0f);
+
+    if (victory)
+        return;
+
 	//
 	// Advance exploding charges
 	//
@@ -318,12 +330,10 @@ void GameState::step()
     }
 
     //
-    // Update buildings
+    // Emit charges from components
     //
     for (const auto &component : components)
     {
-        //component->tick();
-
         while(component->chargesToEmit.size() > 0)
         {
             component->lastChargeVisit = stepCount;
@@ -332,9 +342,25 @@ void GameState::step()
         }
     }
 
+    //
+    // check victory conditions
+    //
+    victory = true;
+    bool chargeGoalFound = false; // useful so people can still experiment with levels even with no goals
+    for (const auto &component : components)
+    {
+        if (component->info->name == "ChargeGoal")
+        {
+            chargeGoalFound = true;
+            if(component->heldCharge != component->modifiers.color)
+                victory = false;
+        }
+    }
+
+    if (!chargeGoalFound)
+        victory = false;
+    
     stepCount++;
-    globalRotationOffset += constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f;
-    globalRotationOffset = fmod(globalRotationOffset, 360.0f);
 }
 
 Component& GameState::getCircuit(const GameLocation &pos)
