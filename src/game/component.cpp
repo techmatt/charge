@@ -25,12 +25,15 @@ void Component::resetPowerSource()
 
 bool Component::willAcceptCharge(GameState &state, const Charge &charge)
 {
+	if (charge.source == sourceOfLastChargeToAttemptToMoveHere)
+		return false;
+
     int currentTimeDifference = state.stepCount - lastChargeVisit;
     int requiredTimeDifference = constants::chargeRequiredTimeDifference;
 
-    if (currentTimeDifference < requiredTimeDifference)
+    if (currentTimeDifference < requiredTimeDifference && info->name != "MegaHold") //Mega holds can accept multiple charges simultaniously.
         return false;
-
+	
     if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker" || info->name == "GateClosed")
         return false;
 
@@ -65,9 +68,6 @@ void Component::tickGraphics()
 
 void Component::tick()
 {
-	// reset whether charges are targetting 
-	numChargesTargetingThisTick = 0;
-	
 	if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
 
