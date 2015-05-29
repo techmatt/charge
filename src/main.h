@@ -53,6 +53,7 @@ class Texture;
 #include "game/legacyLoader.h"
 
 #include "gameUI/gameButton.h"
+#include "gameUI/dialog.h"
 #include "gameUI/puzzleManager.h"
 #include "gameUI/gameUI.h"
 #include "gameUI/gameController.h"

@@ -25,12 +25,9 @@ struct ComponentInfo
             return ChargeOrange;
         if (colorUpgrades)
             return ChargeRed;
+        if (util::endsWith(name, "GrayProxy"))
+            return ChargeGray;
         return ChargeNone;
-    }
-
-    RGBColor defaultStoredChargeColor() const
-    {
-        return Colors::Gray();
     }
 
     string name;

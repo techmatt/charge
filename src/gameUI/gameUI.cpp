@@ -271,7 +271,7 @@ void GameUI::render()
         renderExplodingCharge(charge);
     }
 
-    render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
+    //render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -343,7 +343,12 @@ void GameUI::updateButtonList()
         const ComponentInfo &info = *p.second;
         if (info.menuCoordinate.x != -1)
         {
-            buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
+            const ComponentInfo *realInfo = &info;
+            if (util::endsWith(info.name, "GrayProxy"))
+            {
+                realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
+            }
+            buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
         }
     }
 
@@ -369,7 +374,7 @@ void GameUI::updateButtonList()
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultStoredChargeColor(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), chargePreference)));
             }
         }
 
@@ -377,13 +382,13 @@ void GameUI::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, Colors::Gray(), 2, (WireSpeedType)speed)));
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, 2, (WireSpeedType)speed)));
             }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryOpen)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryClosed)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryOpen)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryClosed)));
         }
         else
         {
