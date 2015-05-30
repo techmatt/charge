@@ -103,8 +103,8 @@ ParameterTable Component::toTable(const string &tableName) const
 }
 
 rect2f Component::boardFrameLocation() const {
-	if (!(location.inCircuit())) return rect2f(vec2f(location.boardPos), location.boardPos + vec2f(1.0f, 1.0f));
-	CoordinateFrame frame = CoordinateFrame(location.circuitPos, location.circuitPos + vec2f(1.0f, 1.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+	if (!(location.inCircuit())) return rect2f(vec2f(location.boardPos), location.boardPos + vec2f(2.0f, 2.0f));
+	CoordinateFrame frame = CoordinateFrame(location.boardPos, location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
 	return frame.toContainer(rect2f(location.circuitPos, location.circuitPos + vec2f(1.0f, 1.0f)));
 }
 

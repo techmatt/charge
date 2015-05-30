@@ -91,7 +91,9 @@ void Charge::interactWithDestination(GameState &state)
     {
         if (current->modifiers.color == ChargeGray)
         {
-            // TODO: find closest gray trap and reset it
+            // find closest gray trap and reset it
+			if (current->target!=nullptr && current->target->info->name == "TrapSprung")
+				current->target->info = &database().getComponent("TrapOpen");
         }
         else
         {
@@ -109,8 +111,12 @@ void Charge::interactWithDestination(GameState &state)
     {
         if (current->modifiers.color == ChargeGray)
         {
-            // TODO: find closest gray door and reset it
-        }
+			// find closest gray door and reset it
+			if (current->target != nullptr && current->target->info->name == "GateOpen")
+				current->target->info = &database().getComponent("GateClosed");
+			else if (current->target != nullptr && current->target->info->name == "GateClosed")
+				current->target->info = &database().getComponent("GateOpen");
+		}
         else
         {
             for (auto &component : state.components)

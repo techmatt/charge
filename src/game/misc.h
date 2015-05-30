@@ -54,8 +54,8 @@ struct GameLocation
 
 	vec2f boardFrameLocationOfCenter() const {
 		if (!(this->inCircuit())) return (this->boardPos + vec2f(1.0f, 1.0f));
-		CoordinateFrame frame = CoordinateFrame(this->circuitPos, this->circuitPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
-		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f));
+		CoordinateFrame frame = CoordinateFrame(this->boardPos, this->boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f);
 	}
 
 
@@ -96,7 +96,7 @@ struct GameLocation
 		double angle = math::radiansToDegrees(atan2f((float)diff.y, (float) diff.x));
 		if (angle + .00001 > 360.0) angle += .00001 - 360.0;
 
-		distance += angle * 0.0000001;
+		distance += angle * 0.000000001;
 
 		return distance;
 	}
