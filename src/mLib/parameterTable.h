@@ -9,6 +9,7 @@ public:
     {
         name = "unnamed";
     }
+
     ParameterTable(const string &tableName)
     {
         name = tableName;
@@ -59,6 +60,13 @@ public:
     int getInt(const string &parameterName) const
     {
         return convert::toInt(getString(parameterName));
+    }
+
+    vec2i getVec2i(const string &parameterName) const
+    {
+        vec2i result;
+        convert::to(getString(parameterName), result);
+        return result;
     }
 
     ParameterTable getTable(const string &parameterName) const
@@ -112,8 +120,8 @@ public:
             {
                 auto words = util::split(paramHeader, '~');
                 vector<string> &value = params[words[0]];
-                int lineCount = convert::toInt(words[1]);
-                for (int lineIndex = 0; lineIndex < lineCount; lineIndex++)
+                const int paramLineCount = convert::toInt(words[1]);
+                for (int paramLineIndex = 0; paramLineIndex < paramLineCount; paramLineIndex++)
                 {
                     value.push_back(lines[lineIndex++]);
                 }

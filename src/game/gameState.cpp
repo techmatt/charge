@@ -50,7 +50,8 @@ void GameState::savePuzzle(const string &filename)
 {
     ParameterTable puzzleTable("Puzzle");
     
-    //puzzleTable.setTable("board", board.toTable("Main"));
+    puzzleTable.setInt("componentCount", (int)components.size());
+
     for (int componentIndex = 0; componentIndex < components.size(); componentIndex++)
     {
         const string componentName = "component" + util::zeroPad(componentIndex, 4);
@@ -66,6 +67,45 @@ void GameState::savePuzzle(const string &filename)
 void GameState::loadPuzzle(const string &filename)
 {
     clearBoard();
+
+    ParameterTable puzzleTable;
+    int lineIndex = 0;
+    puzzleTable.fromLines(util::getFileLines(filename), lineIndex);
+
+    const int componentCount = puzzleTable.getInt("componentCount");
+
+    vector<Component*> newComponents;
+
+    //
+    // load all components
+    //
+    for (int componentIndex = 0; componentIndex < componentCount; componentIndex++)
+    {
+        const string componentName = "component" + util::zeroPad(componentIndex, 4);
+        ParameterTable componentTable = puzzleTable.getTable(componentName);
+        Component *newComponent = Component::fromTable(componentTable);
+        newComponents.push_back(newComponent);
+    }
+
+    //
+    // add all circuits
+    //
+    for (Component* c : newComponents)
+        if (c->info->name == "Circuit")
+            addNewComponent(c, false, false);
+
+    //
+    // add all non-circuits
+    //
+    for (Component* c : newComponents)
+        if (c->info->name != "Circuit")
+            addNewComponent(c, false, false);
+
+    //
+    // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.
+    //
+    updateAll();
+    resetPuzzle();
 }
 
 void GameState::resetPuzzle()

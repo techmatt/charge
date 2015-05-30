@@ -367,9 +367,9 @@ void LegacyLoader::load(const string &filename, GameState &result)
 
             if (info.name == "PowerSource")
             {
-                newC->secondsBeforeFirstEmission = c.fieldValues[0];
-                newC->secondsPerEmission = c.fieldValues[1];
-                newC->totalCharges = c.fieldValues[2];
+                newC->intrinsics.secondsBeforeFirstEmission = c.fieldValues[0];
+                newC->intrinsics.secondsPerEmission = c.fieldValues[1];
+                newC->intrinsics.totalCharges = c.fieldValues[2];
             }
 
             result.addNewComponent(newC, false, false);

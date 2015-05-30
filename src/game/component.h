@@ -38,6 +38,29 @@ struct ComponentModifiers
     ComponentPuzzleType puzzleType;
 };
 
+//
+// These are per-component properties, such as the total number of charges on a power source.
+// They do not change during the course of a puzzle.
+//
+struct ComponentIntrinsics
+{
+    ComponentIntrinsics()
+    {
+        //
+        // default power source values
+        //
+        totalCharges = 0xFFFFFF;
+        secondsPerEmission = 1;
+        secondsBeforeFirstEmission = 1;
+    }
+    //
+    // power source properties
+    //
+    int totalCharges;
+    int secondsPerEmission;
+    int secondsBeforeFirstEmission;
+};
+
 struct Component
 {
     Component(const string &name, ChargeType _color, const GameLocation &_location)
@@ -55,13 +78,6 @@ struct Component
 		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
 		connectionBlocked = { false, false, false, false, false, false, false, false, false, false, false, false };
 		connectionDesired = { false, false, false, false, false, false, false, false, false, false, false, false };
-
-        //
-        // default power source values
-        //
-        totalCharges = 0xFFFFFF;
-        secondsPerEmission = 1;
-        secondsBeforeFirstEmission = 1;
 
         if (name == "CircuitBoundary")
         {
@@ -88,7 +104,11 @@ struct Component
         return (info->name != "Blocker" && !inactiveBoundary());
     }
 
+    //
+    // saving and loading
+    //
     ParameterTable toTable(const string &tableName) const;
+    static Component* fromTable(const ParameterTable &table);
 
     //
     // baseInfo denotes the object's starting type, after a puzzle reset ex. TrapOpen
@@ -97,6 +117,7 @@ struct Component
     const ComponentInfo *baseInfo;
     const ComponentInfo *info;
     ComponentModifiers modifiers;
+    ComponentIntrinsics intrinsics;
     
     //
     // locations always specify the top-left coordinate.
@@ -136,13 +157,6 @@ struct Component
     //
     int stepsUntilEmission;
     int totalChargesRemaining;
-
-    //
-    // power source properties
-    //
-    int totalCharges;
-    int secondsPerEmission;
-    int secondsBeforeFirstEmission;
 
     //
     // The component on the other end of a circuit boundary connection. This can be derived

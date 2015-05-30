@@ -19,8 +19,8 @@ void Component::resetPuzzle()
 
 void Component::resetPowerSource()
 {
-    stepsUntilEmission = secondsBeforeFirstEmission * constants::stepsPerSecond;
-    totalChargesRemaining = totalCharges;
+    stepsUntilEmission = intrinsics.secondsBeforeFirstEmission * constants::stepsPerSecond;
+    totalChargesRemaining = intrinsics.totalCharges;
 }
 
 bool Component::willAcceptCharge(GameState &state, const Charge &charge)
@@ -82,7 +82,7 @@ void Component::tick()
         {
             chargesToEmit.push_back(modifiers.color);
             
-            stepsUntilEmission = secondsPerEmission * constants::stepsPerSecond;
+            stepsUntilEmission = intrinsics.secondsPerEmission * constants::stepsPerSecond;
             totalChargesRemaining--;
         }
     }
@@ -93,11 +93,34 @@ ParameterTable Component::toTable(const string &tableName) const
     ParameterTable result("Component");
 
     result.set("name", info->name);
-    result.set("color", modifiers.color);
-    result.set("chargePreference", modifiers.chargePreference);
-    result.set("speed", modifiers.speed);
+    result.set("color", (int)modifiers.color);
     result.set("boardPos", location.boardPos);
     result.set("circuitPos", location.circuitPos);
+
+    result.set("chargePreference", (int)modifiers.chargePreference);
+    result.set("speed", (int)modifiers.speed);
+    result.set("boundary", (int)modifiers.boundary);
+    result.set("puzzleType", modifiers.puzzleType);
+
+    result.set("secondsBeforeFirstEmission", intrinsics.secondsBeforeFirstEmission);
+    result.set("secondsPerEmission", intrinsics.secondsPerEmission);
+    result.set("totalCharges", intrinsics.totalCharges);
+
+    return result;
+}
+
+Component* Component::fromTable(const ParameterTable &table)
+{
+    Component *result = new Component(table.getString("name"), (ChargeType)table.getInt("color"), GameLocation(table.getVec2i("boardPos"), table.getVec2i("circuitPos")));
+
+    result->modifiers.chargePreference = table.getInt("chargePreference");
+    result->modifiers.speed = (WireSpeedType)table.getInt("speed");
+    result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
+    result->modifiers.puzzleType = (ComponentPuzzleType)table.getInt("puzzleType");
+
+    result->intrinsics.secondsBeforeFirstEmission = table.getInt("secondsBeforeFirstEmission");
+    result->intrinsics.secondsPerEmission = table.getInt("secondsPerEmission");
+    result->intrinsics.totalCharges = table.getInt("totalCharges");
 
     return result;
 }
