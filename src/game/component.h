@@ -1,7 +1,7 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeNone, RGBColor _storedChargeColor = Colors::Gray(), int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
+    ComponentModifiers(ChargeType _color = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
     {
         init();
         color = _color;
@@ -13,7 +13,6 @@ struct ComponentModifiers
     {
         init();
         color = info.defaultPrimaryCharge();
-        storedChargeColor = info.defaultStoredChargeColor();
     }
 
     void init()

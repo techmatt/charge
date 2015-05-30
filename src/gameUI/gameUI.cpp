@@ -67,6 +67,12 @@ void GameUI::keyDown(SDL_Keycode key)
         selectedGameLocation.boardPos = constants::invalidCoord;
     };
 
+    if (key == SDLK_0)
+    {
+        ParameterFile parameterFile("../assets/parameters.txt");
+        g_gameParams.load(parameterFile);
+    }
+
     if (key == SDLK_LEFT)
     {
         app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
@@ -127,6 +133,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 if (button.type == ButtonComponent)
                 {
                     selectedMenuComponent = button.component;
+                    selectedMenuComponentColor = button.modifiers.color;
                 }
                 if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentUser)
                 {
@@ -214,7 +221,7 @@ void GameUI::addHoverComponent()
             activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos) &&
             selectedMenuComponent->name != "Circuit")
         {
-            Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
+            Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponentColor, location);
             app.state.addNewComponent(newComponent);
             app.controller.designActionTaken = true;
             backgroundDirty = true;
@@ -222,7 +229,7 @@ void GameUI::addHoverComponent()
     }
     else if (app.state.board.coordValidForNewComponent(location.boardPos))
     {
-        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponent->defaultPrimaryCharge(), location);
+        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponentColor, location);
         app.state.addNewComponent(newComponent);
         app.controller.designActionTaken = true;
         backgroundDirty = true;
@@ -271,7 +278,7 @@ void GameUI::render()
         renderExplodingCharge(charge);
     }
 
-    render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
+    //render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -310,7 +317,7 @@ void GameUI::renderHoverComponent()
 
     const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
 
-    renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, ComponentModifiers(*selectedMenuComponent), false, false, false, depthLayers::hoverComponent);
+    renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, ComponentModifiers(selectedMenuComponentColor), false, false, false, depthLayers::hoverComponent);
 
     const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
     const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
@@ -343,7 +350,12 @@ void GameUI::updateButtonList()
         const ComponentInfo &info = *p.second;
         if (info.menuCoordinate.x != -1)
         {
-            buttons.push_back(GameButton(info.name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
+            const ComponentInfo *realInfo = &info;
+            if (util::endsWith(info.name, "GrayProxy"))
+            {
+                realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
+            }
+            buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
         }
     }
 
@@ -356,20 +368,18 @@ void GameUI::updateButtonList()
         const ComponentInfo &info = *selectedGameComponent->info;
 
         vector<ChargeType> chargeLevels;
-        if (info.colorUpgrades)
+        if (info.colorUpgrades && selectedGameComponent->modifiers.color != ChargeGray)
         {
             ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
             for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
                 chargeLevels.push_back((ChargeType)charge);
         }
-        if (info.grayUpgrade)
-            chargeLevels.push_back(ChargeGray);
 
         if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker" && selectedGameComponent->info->name != "PowerSource")
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(info.defaultPrimaryCharge(), info.defaultStoredChargeColor(), chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(selectedGameComponent->modifiers.color, chargePreference)));
             }
         }
 
@@ -377,13 +387,13 @@ void GameUI::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, Colors::Gray(), 2, (WireSpeedType)speed)));
+                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, 2, (WireSpeedType)speed)));
             }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryOpen)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, Colors::Gray(), 2, WireStandard, CircuitBoundaryClosed)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryOpen)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryClosed)));
         }
         else
         {
@@ -434,7 +444,7 @@ void GameUI::updateBackgroundObjects()
     for (auto &button : buttons)
     {
         bool selected = false;
-        selected |= (button.type == ButtonComponent && selectedMenuComponent == button.component);
+        selected |= (button.type == ButtonComponent && selectedMenuComponent == button.component && selectedMenuComponentColor == button.modifiers.color);
         if (gameComponent != nullptr)
         {
             selected |= (button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);

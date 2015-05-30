@@ -11,7 +11,6 @@ struct ComponentInfo
         hotkey = m.at("Hotkey");
 
         colorUpgrades = (m.at("Colored") == "yes");
-        grayUpgrade = (m.at("Grayed") == "yes");
 
         background = true;
 
@@ -25,12 +24,9 @@ struct ComponentInfo
             return ChargeOrange;
         if (colorUpgrades)
             return ChargeRed;
+        if (util::endsWith(name, "GrayProxy"))
+            return ChargeGray;
         return ChargeNone;
-    }
-
-    RGBColor defaultStoredChargeColor() const
-    {
-        return Colors::Gray();
     }
 
     string name;
@@ -39,7 +35,6 @@ struct ComponentInfo
     vec2i menuCoordinate;
 
     bool colorUpgrades;
-    bool grayUpgrade;
     bool background;
 
     bool holdsCharge;
