@@ -58,7 +58,7 @@ void Charge::interactWithDestination(GameState &state)
         }
         else
         {
-            const ChargeType emittedLevel = (ChargeType)(std::min((int)current->storedCharge + (int)level, (int)ChargeBlue));
+            const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeBlue));
             current->chargesToEmit.push_back(emittedLevel);
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
             current->storedCharge = ChargeNone;

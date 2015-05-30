@@ -60,6 +60,13 @@ void GameUI::keyDown(SDL_Keycode key)
         selectedMenuComponent = nullptr;
     }
 
+    if (key == SDLK_RETURN)
+    {
+        app.controller.designActionTaken = false;
+        app.controller.puzzleMode = ModeExecuting;
+        app.state.resetPuzzle();
+    }
+
     auto loadPuzzle = [&]()
     {
         app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
