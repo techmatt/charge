@@ -6,6 +6,7 @@ void GameController::init()
     puzzleMode = ModeDesign;
     speed = Speed1x;
     designActionTaken = false;
+    editorMode = ModeEditLevel;
 }
 
 void GameController::step()

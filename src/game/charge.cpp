@@ -31,7 +31,7 @@ void Charge::advance(GameState &state)
 		Component* sourceComponent = state.getComponent(source);
 		Component* destinationComponent = state.getComponent(destination);
 
-		destinationComponent->connectionBlocked[(intendedConnectionIndex + 6) % 12] = true;
+		destinationComponent->connections[(intendedConnectionIndex + 6) % 12].blocked = true;
 	
 	}
 }
@@ -212,7 +212,7 @@ void Charge::updateDestination(GameState &state)
 
 void Charge::setNewDestination(GameState &state, Component &newDestination, bool teleport)
 {
-	newDestination.connectionBlocked[(intendedConnectionIndex + 6) % 12] = true; //block off the things coming in the opposite direction
+	newDestination.connections[(intendedConnectionIndex + 6) % 12].blocked = true; //block off the things coming in the opposite direction
 	
 	source = destination;
     destination = newDestination.location;
@@ -257,9 +257,9 @@ bool Charge::findBestDestination(GameState &state)
 
     for (int adjacentIndex = 0; adjacentIndex < 12; adjacentIndex++)
     {
-		if (current->connectionBlocked[adjacentIndex]) continue;
+		if (current->connections[adjacentIndex].blocked) continue;
 			
-		Component *candidate = current->connections[adjacentIndex];//neighboringComponents[adjacentIndex];
+		Component *candidate = current->connections[adjacentIndex].component;
 		if (candidate == nullptr) continue;
 
 
@@ -284,7 +284,7 @@ bool Charge::findBestDestination(GameState &state)
 		intendedDestination = bestComponent;
 		intendedConnectionIndex = bestIndex;
 		bestComponent->sourceOfLastChargeToAttemptToMoveHere = source;
-		bestComponent->connectionDesired[(intendedConnectionIndex + 6) % 12] = true;
+		bestComponent->connections[(intendedConnectionIndex + 6) % 12].desired = true;
         return true;
     }
     return false;

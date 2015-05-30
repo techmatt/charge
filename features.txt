@@ -7,6 +7,13 @@ SPLASH SCREEN
  * Play mode has an exit to the splash screen, that then connects back to the level editor, to avoid people getting confused about what mode they are in.
  * "puzzle solved" screen can have the option to save an additional solution (1st solution saved by default.)
 
+PLAY MODE
+ * select level (or go to relative level)
+ * load saved progress (last save, regardless of whether it was a good solution)
+ * load most recent user-solution
+ * load other user-solutions
+ * load provided solution(s)
+
 KNOWN BUGS
  * charges can still sometimes pass through major delay wires in opposite directions
 

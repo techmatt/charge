@@ -717,9 +717,9 @@ void GameUI::renderSpokes(const Component &component)
     {
         auto test = [&](const Component &circuit, const Component &board)
         {
-            for (Component *connection : board.connections)
+            for (const Connection &connection : board.connections)
             {
-                if (connection != nullptr && connection->location.boardPos == circuit.location.boardPos && connection->modifiers.boundary == CircuitBoundaryOpen)
+                if (connection.component != nullptr && connection.component->location.boardPos == circuit.location.boardPos && connection.component->modifiers.boundary == CircuitBoundaryOpen)
                     return true;
             }
             return false;

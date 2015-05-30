@@ -61,6 +61,19 @@ struct ComponentIntrinsics
     int secondsBeforeFirstEmission;
 };
 
+struct Connection
+{
+    Connection()
+    {
+        component = nullptr;
+        blocked = false;
+        desired = false;
+    }
+    Component *component;
+    bool blocked;
+    bool desired;
+};
+
 struct Component
 {
     Component(const string &name, ChargeType _color, const GameLocation &_location)
@@ -74,11 +87,8 @@ struct Component
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
 
-		// deal with the twelve connections.  I should really make a connection object, but fuck that.
-		connections = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
-		connectionBlocked = { false, false, false, false, false, false, false, false, false, false, false, false };
-		connectionDesired = { false, false, false, false, false, false, false, false, false, false, false, false };
-
+        connections.resize(12);
+		
         if (name == "CircuitBoundary")
         {
             modifiers.boundary = CircuitBoundaryOpen;
@@ -171,9 +181,7 @@ struct Component
 	// They are [above, above-right, right-above, right, right-below, below-right, below, below-left, left-bellow, left, left-above, above-left]
 	//
 	// this will override circuitBoundaryNeighbor.
-	vector<Component*> connections;
-	vector<bool> connectionBlocked;
-	vector<bool> connectionDesired;
+    vector<Connection> connections;
 
 	// Gets the actual physical location of the circuit in the board frame.
 	rect2f boardFrameLocation() const;

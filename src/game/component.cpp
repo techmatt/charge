@@ -14,6 +14,7 @@ void Component::resetPuzzle()
     info = baseInfo;
     lastChargeVisit = -10000;
     storedCharge = ChargeNone;
+    modifiers.storedChargeColor = GameUtil::chargeColor(ChargeGray);
     resetPowerSource();
 }
 

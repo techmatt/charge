@@ -243,10 +243,11 @@ void GameState::step()
         component->heldCharge = ChargeNone;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
 
-		for (int i = 0; i < 12; i++) {
-			component->connectionBlocked[i] = false;
-			component->connectionDesired[i] = false;
-		}
+        for (Connection &connection : component->connections)
+        {
+            connection.blocked = false;
+            connection.desired = false;
+        }
 	}
 
 	for (Charge &c : charges)
@@ -298,11 +299,12 @@ void GameState::step()
 			Component* destination = getComponent(c.destination);
 
 			// if the movement attempt dies because the charge connection, it doesn't count as hitting the target
-			if (destination->connectionDesired[c.intendedConnectionIndex])
+            auto &connection = destination->connections[c.intendedConnectionIndex];
+			if (connection.desired)
 			{
 				c.intendedDestination->numChargesTargetingThisTick--;
 				c.notMovingBecauseOfDesiredConnection = true;
-				destination->connectionBlocked[c.intendedConnectionIndex] = true;
+				connection.blocked = true;
 				keepAttempting = true;
 			}
 			else
@@ -533,7 +535,7 @@ void GameState::updateComponentConnections()
 		// clear the last attempt to find connections
 		if (component->circuitBoard != nullptr) continue;
 		for (int i = 0; i < 12; i++)
-			component->connections[i] = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
+			component->connections[i].component = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
 
 		if (component->info->name == "TeleportSource" || component->info->name == "TrapReset" || component->info->name == "GateSwitch")
 			component->target = findClosestMatch(component);
