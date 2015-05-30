@@ -173,6 +173,18 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 {
                     app.controller.puzzleMode = ModePaused;
                 }
+                if (button.name == "Save")
+                {
+                    const string filename = FileDialog::showSave();
+                    if (filename.size() > 0)
+                        app.state.savePuzzle(filename);
+                }
+                if (button.name == "Load")
+                {
+                    const string filename = FileDialog::showOpen();
+                    if (filename.size() > 0)
+                        app.state.loadPuzzle(filename);
+                }
                 return;
             }
         }
@@ -412,6 +424,8 @@ void GameUI::updateButtonList()
     buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Pause", vec2i(1, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Save", vec2i(4, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Load", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 }
 
 void GameUI::updateBackgroundObjects()

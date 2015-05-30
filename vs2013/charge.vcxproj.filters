@@ -93,6 +93,9 @@
     <ClCompile Include="..\src\gameUI\dialog.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\mLib\FileDialog.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="..\src\gameUI\dialog.h">
       <Filter>gameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mLib\FileDialog.h">
+      <Filter>mLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

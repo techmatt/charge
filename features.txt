@@ -1,18 +1,17 @@
 
 Features to implement
 
+SPLASH SCREEN
+ * Play!
+ * Level editor (different background etc. to make it very clear?)
+ * Play mode has an exit to the splash screen, that then connects back to the level editor, to avoid people getting confused about what mode they are in.
+ * "puzzle solved" screen can have the option to save an additional solution (1st solution saved by default.)
+
 KNOWN BUGS
  * charges can still sometimes pass through major delay wires in opposite directions
 
 GAME MODEL
- * components
-    * teleporter
-    * ...
- * circuits
  * mega-circuit-holds
- * puzzle reset
- * level/save layout file
-
 
 GAME UI
  * puzzle speed control

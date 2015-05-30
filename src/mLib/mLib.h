@@ -34,4 +34,6 @@ using namespace std;
 #include "GLQuad.h"
 #include "GLProgram.h"
 
+#include "FileDialog.h"
+
 #endif  // MLIBCORE_H_

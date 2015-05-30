@@ -107,6 +107,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\mLib\common.cpp" />
+    <ClCompile Include="..\src\mLib\FileDialog.cpp" />
     <ClCompile Include="..\src\mLib\imageLoaderLodePNG.cpp" />
     <ClCompile Include="..\src\mLib\lodepng.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -140,6 +141,7 @@
     <ClInclude Include="..\src\game\misc.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\mLib\common.h" />
+    <ClInclude Include="..\src\mLib\FileDialog.h" />
     <ClInclude Include="..\src\mLib\GLProgram.h" />
     <ClInclude Include="..\src\mLib\GLQuad.h" />
     <ClInclude Include="..\src\mLib\grid2.h" />
