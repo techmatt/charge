@@ -57,7 +57,9 @@ void GameUI::keyDown(SDL_Keycode key)
 {
     if (key == SDLK_ESCAPE)
     {
+        backgroundDirty = true;
         selectedMenuComponent = nullptr;
+        selectedGameLocation.boardPos = constants::invalidCoord;
     }
 
     if (key == SDLK_RETURN)
@@ -336,7 +338,7 @@ void GameUI::renderHoverComponent()
 
     const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
 
-    renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, ComponentModifiers(selectedMenuComponentColor), false, false, false, depthLayers::hoverComponent);
+    renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, depthLayers::hoverComponent, IconState(ComponentModifiers(selectedMenuComponentColor), false, false));
 
     const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
     const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
@@ -616,23 +618,23 @@ void GameUI::renderButton(const GameButton &button, bool selected)
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
     addBackgroundObject(borderTex, screenRect, depthLayers::background);
 
-    renderLocalizedComponent(button.name, nullptr, screenRect, button.modifiers, selected, true, true, 0.0f);
+    renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
 }
 
-void GameUI::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset)
+void GameUI::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
 {
-    if (!isButton && name == "Blocker" &&
+    /*if (!isButton && name == "Blocker" &&
         (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
         //(app.state.getComponent(selectedGameLocation) == nullptr || app.state.getComponent(selectedGameLocation)->info->name != "Blocker"))
-        return;
+        return;*/
 
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
-    Texture &componentTex = database().getTexture(app.renderer, name, modifiers);
-    Texture &preferenceTex = *database().preferenceTextures[modifiers.chargePreference];
+    Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
+    Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
 
     auto record = [&](Texture &tex, const rect2f &rect, float depth, UIRenderType type, const vec4f &color, const Component *component) {
         depth -= depthOffset;
-        if (isBackground)
+        if (icon.background)
             addBackgroundObject(tex, rect, depth, type, color, component);
         else
             render(tex, rect, depth, color);
@@ -640,18 +642,18 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 
     record(preferenceTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
 
-    if (name != "Blocker" && modifiers.boundary != CircuitBoundaryClosed)
+    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryClosed)
         record(baseTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
 
     record(componentTex, screenRect, depthLayers::component, UIRenderStandard, Colors::White(), dynamicComponent);
 
     if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
     {
-        Texture &chargeLayerTex = database().getTexture(app.renderer, name, modifiers, true);
+        Texture &chargeLayerTex = database().getTexture(app.renderer, name, icon.modifiers, true);
         record(chargeLayerTex, screenRect, depthLayers::component, UIRenderStoredCharge, GameUtil::chargeColor(ChargeGray), dynamicComponent);
     }
 
-    if (selected)
+    if (icon.selected)
     {
         bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
 
@@ -663,6 +665,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 void GameUI::renderComponent(const Component &component)
 {
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+    const bool selected = (selectedGameComponent != nullptr && component.location == selectedGameComponent->location);
 
     if (component.location.inCircuit())
     {
@@ -672,7 +675,7 @@ void GameUI::renderComponent(const Component &component)
             if (!component.inactiveBoundary())
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
-                renderLocalizedComponent(component.info->name, &component, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true, 0.0f);
+                renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected));
             }
         }
         // regardless, we'll need to render it in the main grid, but we'll wait until later
@@ -681,7 +684,7 @@ void GameUI::renderComponent(const Component &component)
     else
     {
         const rect2f screenRect = GameUtil::boardToWindowRect(canonicalDims, component.location.boardPos, 2);
-        renderLocalizedComponent(component.info->name, &component, screenRect, component.modifiers, (selectedGameComponent != nullptr && component.location == selectedGameComponent->location), false, true, 0.0f);
+        renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected));
     }
 }
 
@@ -692,7 +695,7 @@ void GameUI::renderCircuitComponent(const Component &component)
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
-    renderLocalizedComponent(component.info->name, &component, screenRect, component.modifiers, false, false, true, depthLayers::miniCircuitOffset);
+    renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffset, IconState(component.modifiers, false));
 }
 
 void GameUI::renderSpokes(const Component &component)

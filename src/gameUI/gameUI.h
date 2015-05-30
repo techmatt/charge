@@ -42,6 +42,23 @@ struct UIRenderObject
 
 };
 
+struct IconState
+{
+    IconState(const ComponentModifiers &_modifiers, bool _selected, bool _background = true)
+        : modifiers(_modifiers)
+    {
+        buildable = false;
+        pressed = false;
+        selected = _selected;
+        background = _background;
+    }
+    const ComponentModifiers &modifiers;
+    bool selected;
+    bool buildable;
+    bool pressed;
+    bool background;
+};
+
 inline bool operator < (const UIRenderObject &a, const UIRenderObject &b)
 {
     return a.depth > b.depth;
@@ -99,7 +116,7 @@ private:
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButton(const GameButton &button, bool selected);
-    void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, const ComponentModifiers &modifiers, bool selected, bool isButton, bool isBackground, float depthOffset);
+    void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon);
 
     void renderHoverComponent();
     void removeHoverComponent();
