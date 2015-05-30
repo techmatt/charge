@@ -55,7 +55,7 @@ struct GameLocation
 	vec2f boardFrameLocationOfCenter() const {
 		if (!(this->inCircuit())) return (this->boardPos + vec2f(1.0f, 1.0f));
 		CoordinateFrame frame = CoordinateFrame(this->boardPos, this->boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
-		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f);
+		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f));
 	}
 
 
