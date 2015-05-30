@@ -19,8 +19,9 @@ struct Charge
     void updateDestination(GameState &state);
 
     bool findBestDestination(GameState &state);
-    void setNewDestination(GameState &state, Component &newDestination);
-    
+    //void setNewDestination(GameState &state, Component &newDestination);
+	void setNewDestination(GameState &state, Component &newDestination, bool teleport = false);
+
     double computePreference(GameState &state, Component &targetComponent);
 
     ChargeType level;

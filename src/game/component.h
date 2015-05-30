@@ -175,4 +175,9 @@ struct Component
 	// this is needed to deal with splitters
 	//
 	GameLocation sourceOfLastChargeToAttemptToMoveHere;
+
+	//
+	// the location that a teleporter/switch/gear will target
+	//
+	Component* target;
 };

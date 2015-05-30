@@ -494,6 +494,9 @@ void GameState::updateComponentConnections()
 		if (component->circuitBoard != nullptr) continue;
 		for (int i = 0; i < 12; i++)
 			component->connections[i] = connectableComponentAtRelativePosition(component, constants::nearbyComponents[i]);
+
+		if (component->info->name == "TeleportSource" || component->info->name == "TrapReset" || component->info->name == "GateSwitch")
+			component->target = findClosestMatch(component);
 	}
 }
 
@@ -618,4 +621,42 @@ vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circui
 	if (displacement == vec2i(1, 2) && circuitPosition == vec2i(5, 6)) return vec2i(1,0);
 
 	return constants::invalidCoord;
+}
+
+
+Component* GameState::findClosestMatch(Component *start) {
+	// this finds the closest component of the corresponding type.  It allways prioritizes components that are in the same circuit.
+	float minDist = 1000.0f;
+	Component* bestComponent = nullptr;
+
+	for (const auto &c : components)
+	{
+		// check if the target component is the type of component that we want.
+		if (start->info->name == "TeleportSource")
+		{
+			if (c->info->name != "TeleportDestination" || start->modifiers.color != c->modifiers.color)
+				continue;
+		}
+		else if (start->info->name == "TrapReset")
+		{
+			if (start->modifiers.color != ChargeGray || c->modifiers.color != ChargeGray || (c->info->name != "TrapOpen" && c->info->name != "TrapSprung"))
+				continue;
+		}
+		else if (start->info->name == "GateSwitch")
+		{
+			if (start->modifiers.color != ChargeGray || c->modifiers.color != ChargeGray || (c->info->name != "GateOpen" && c->info->name != "GateClosed"))
+				continue;
+		}
+		else continue;
+
+		// minimize
+		float dist = (float) (start->location.modifiedDistanceTo(c->location));
+		if (dist < minDist)
+		{
+			minDist = dist;
+			bestComponent = c;
+		}
+	}
+
+	return bestComponent;
 }

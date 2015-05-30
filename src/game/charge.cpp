@@ -161,6 +161,21 @@ void Charge::interactWithDestination(GameState &state)
     {
         result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
     }*/
+
+	if (current->info->name == "TeleportSource")
+	{
+		// if the teleporter has no target, kill the charge
+		if (current->target == nullptr || !current->target->willAcceptCharge(state, *this))
+		{
+			markedForDeletion = true;
+			showDeathAnimation = false;
+		}
+		else
+		{
+			setNewDestination(state,*(current->target), true);
+		}
+	}
+
 }
 
 void Charge::updateDestination(GameState &state)
@@ -189,7 +204,7 @@ void Charge::updateDestination(GameState &state)
     
 }
 
-void Charge::setNewDestination(GameState &state, Component &newDestination)
+void Charge::setNewDestination(GameState &state, Component &newDestination, bool teleport)
 {
 	newDestination.connectionBlocked[(intendedConnectionIndex + 6) % 12] = true; //block off the things coming in the opposite direction
 	
@@ -200,6 +215,13 @@ void Charge::setNewDestination(GameState &state, Component &newDestination)
     timeInTransit = 0;
     totalTransitTime = constants::chargeTransitTime;
     
+	if (teleport)
+	{
+		totalTransitTime += 1;
+		return;
+	}
+
+
     if (newDestination.modifiers.speed == WireMinorDelay)
     {
         totalTransitTime *= 2;

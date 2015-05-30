@@ -54,4 +54,6 @@ struct GameState
 
 
 	Component* connectableComponentAtRelativePosition(Component* component, vec2i relativePosition);
+
+
 };

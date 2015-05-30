@@ -46,6 +46,20 @@ struct GameLocation
     vec2i boardPos;
     vec2i circuitPos;
 
+	rect2f boardFrameLocation() const {
+		if (!(this->inCircuit())) return rect2f(vec2f(this->boardPos), this->boardPos + vec2f(2.0f, 2.0f));
+		CoordinateFrame frame = CoordinateFrame(this->circuitPos, this->circuitPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+		return frame.toContainer(rect2f(this->circuitPos, this->circuitPos + vec2f(2.0f, 2.0f)));
+	}
+
+	vec2f boardFrameLocationOfCenter() const {
+		if (!(this->inCircuit())) return (this->boardPos + vec2f(1.0f, 1.0f));
+		CoordinateFrame frame = CoordinateFrame(this->circuitPos, this->circuitPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
+		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f));
+	}
+
+
+
     vec2f toScreenCoordMainBoard(const vec2f &canonicalDims) const
     {
         if (inCircuit())
@@ -63,6 +77,29 @@ struct GameLocation
     {
         return boardPos != constants::invalidCoord;
     }
+
+
+	// returns a distance measurement which is used for teleporters and such
+	double modifiedDistanceTo(const GameLocation loc) {
+		if (*this == loc) return 100000.0;
+
+		double distance = 0.0;
+
+		if (boardPos != loc.boardPos)
+			distance += 100; //prioritize things on the same square
+
+		// use the actual length
+		vec2d diff = loc.boardFrameLocationOfCenter() - this->boardFrameLocationOfCenter();
+		distance += diff.length();
+
+		// add in an additional bit for the angle
+		double angle = math::radiansToDegrees(atan2f((float)diff.y, (float) diff.x));
+		if (angle + .00001 > 360.0) angle += .00001 - 360.0;
+
+		distance += angle * 0.0000001;
+
+		return distance;
+	}
 };
 
 inline bool operator == (const GameLocation &a, const GameLocation &b)
