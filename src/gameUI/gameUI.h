@@ -47,15 +47,11 @@ struct IconState
     IconState(const ComponentModifiers &_modifiers, bool _selected, bool _background = true)
         : modifiers(_modifiers)
     {
-        buildable = false;
-        pressed = false;
         selected = _selected;
         background = _background;
     }
     const ComponentModifiers &modifiers;
     bool selected;
-    bool buildable;
-    bool pressed;
     bool background;
 };
 

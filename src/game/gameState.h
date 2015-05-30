@@ -43,6 +43,12 @@ struct GameState
     vec2i CircuitToCircuitTargetLocation(vec2i displacement, vec2i circuitPosition);
 
     Board board;
+
+    //
+    // The set of components that can be built. Stored in GameState because it is saved and loaded with each puzzle.
+    //
+    ComponentBuildState buildableComponents;
+    
     vector<Component*> components;
     vector<Charge> charges;
     vector<ExplodingCharge> explodingCharges;

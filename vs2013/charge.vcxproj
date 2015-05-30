@@ -133,6 +133,7 @@
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\charge.h" />
     <ClInclude Include="..\src\game\component.h" />
+    <ClInclude Include="..\src\game\componentBuildState.h" />
     <ClInclude Include="..\src\game\database.h" />
     <ClInclude Include="..\src\game\enums.h" />
     <ClInclude Include="..\src\game\explodingCharge.h" />

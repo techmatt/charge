@@ -127,6 +127,34 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
         {
             removeHoverComponent();
         }
+
+        if (app.controller.editorMode == ModeEditLevel)
+        {
+            for (const auto &button : buttons)
+            {
+                const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
+                Component *gameComponent = app.state.getComponent(selectedGameLocation);
+                if (screenRect.intersects(vec2f((float)x, (float)y)))
+                {
+                    if (button.type == ButtonComponent)
+                    {
+                        bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
+                        const auto &info = database().getComponent(button.name);
+                        if (database().getComponent(button.name).colorUpgrades)
+                        {
+                            ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
+                            for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
+                                app.state.buildableComponents.setBuild(button.name, ComponentModifiers((ChargeType)charge), !buildable);
+                        }
+                        else
+                        {
+                            app.state.buildableComponents.setBuild(button.name, button.modifiers, !buildable);
+                        }
+                    }
+                    return;
+                }
+            }
+        }
     }
 
     if (button == SDL_BUTTON_LEFT)
@@ -632,11 +660,20 @@ void GameUI::renderBuildingGrid()
 void GameUI::renderButton(const GameButton &button, bool selected)
 {
     Texture &borderTex = database().getTexture(app.renderer, "Border");
-
+    
     const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
     addBackgroundObject(borderTex, screenRect, depthLayers::background);
 
     renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
+
+    if (app.controller.editorMode == ModeEditLevel &&
+        app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
+        (button.type == ButtonComponent || button.type == ButtonChargeColor))
+    {
+        Texture &constructionTex = database().getTexture(app.renderer, "Construction");
+        const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
+        addBackgroundObject(constructionTex, screenRect, depthLayers::component);
+    }
 }
 
 void GameUI::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
@@ -752,8 +789,9 @@ void GameUI::renderSpokes(const Component &component)
             return true;
         else if (a.info->name == "Circuit" && b.info->name != "Circuit")
             return test(a, b);
-        //if (a.info->name != "Circuit" && b.info->name == "Circuit")
+        if (a.info->name != "Circuit" && b.info->name == "Circuit")
             return test(b, a);
+        return false;
     };
 
     for (int type = -1; type <= 1; type++)

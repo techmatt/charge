@@ -230,6 +230,9 @@
     <ClInclude Include="..\src\mLib\FileDialog.h">
       <Filter>mLib</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\componentBuildState.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

@@ -18,6 +18,13 @@ struct RGBColor
         b = _b;
         a = _a;
     }
+    RGBColor(const vec4f &v)
+    {
+        r = util::boundToByte(v.r * 255.0f);
+        g = util::boundToByte(v.g * 255.0f);
+        b = util::boundToByte(v.b * 255.0f);
+        a = util::boundToByte(v.a * 255.0f);
+    }
 
     RGBColor flipBlueAndRed() const
     {

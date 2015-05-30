@@ -30,6 +30,8 @@ namespace constants
 
     static const vec2f connectorDims[3] = { vec2f(0.18f, 0.05f), vec2f(0.2f, 0.056f), vec2f(0.18f, 0.05f) };
 
+    static const char *fileExtension = ".pzl";
+
 
 	// A slightly different approach to forming connections.
 	static const vector<vec2i> nearbyComponents = {

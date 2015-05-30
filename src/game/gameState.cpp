@@ -11,6 +11,8 @@ void GameState::clearBoard()
     resetPuzzle();
 
     name = "untitled";
+
+    buildableComponents.loadDefaults();
 }
 
 void GameState::init()
