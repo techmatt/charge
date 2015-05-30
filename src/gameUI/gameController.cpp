@@ -7,6 +7,7 @@ void GameController::init()
     speed = Speed1x;
     designActionTaken = false;
     editorMode = ModeEditLevel;
+    currentPuzzleIndex = 0;
 }
 
 void GameController::step()

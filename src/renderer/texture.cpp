@@ -1,14 +1,26 @@
 ﻿
 #include "main.h"
 
-void Texture::drawText(TTF_Font *font, const char *text, RGBColor color)
+void Texture::drawText(TTF_Font *font, const string &text, RGBColor color)
 {
-    const SDL_Color SDLColor = { color.r, color.g, color.b, 128 };
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text, SDLColor);
+    if (text.size() == 0)
+    {
+        return;
+    }
+
+    const SDL_Color SDLColor = { color.r, color.g, color.b, color.a };
+    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text.c_str(), SDLColor);
 
     _bmp.allocate(surface->w, surface->h);
     for (int y = 0; y < surface->h; y++)
         memcpy(&_bmp(0, y), (BYTE *)surface->pixels + y * surface->pitch, sizeof(RGBColor) * _bmp.width());
+
+    for (auto &p : _bmp)
+    {
+        const BYTE b = p.value.b;
+        p.value.b = p.value.r;
+        p.value.r = b;
+    }
 
     initOpenGL(false);
 

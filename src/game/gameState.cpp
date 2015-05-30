@@ -9,6 +9,8 @@ void GameState::clearBoard()
 
     board.cells.allocate(params().boardDims.x, params().boardDims.y);
     resetPuzzle();
+
+    name = "untitled";
 }
 
 void GameState::init()
@@ -67,6 +69,8 @@ void GameState::savePuzzle(const string &filename)
 void GameState::loadPuzzle(const string &filename)
 {
     clearBoard();
+
+    name = util::removeExtensions(util::fileNameFromPath(filename));
 
     ParameterTable puzzleTable;
     int lineIndex = 0;
@@ -515,17 +519,6 @@ int GameState::findNeighboringComponents(Component &component, Component *neighb
         return board.findNeighboringComponents(component.location.boardPos, neighbors);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // This should be run after any change to the board and possibly right before playing the simulation.
 void GameState::updateComponentConnections()

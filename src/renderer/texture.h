@@ -48,7 +48,7 @@ public:
     void load(Renderer &renderer, const string &filename);
     void load(Renderer &renderer, const Bitmap &bmp);
 
-    void drawText(TTF_Font *font, const char *text, RGBColor color);
+    void drawText(TTF_Font *font, const string &text, RGBColor color);
 
     void bindOpenGL();
 

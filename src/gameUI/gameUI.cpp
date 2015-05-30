@@ -18,8 +18,6 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
-
-    levelName.drawText(app.renderer.font(), "test!", RGBColor(255, 128, 128));
 }
 
 void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame)
@@ -71,7 +69,7 @@ void GameUI::keyDown(SDL_Keycode key)
 
     auto loadPuzzle = [&]()
     {
-        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.puzzles.currentPuzzle].name);
+        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
         backgroundDirty = true;
         selectedGameLocation.boardPos = constants::invalidCoord;
     };
@@ -84,12 +82,12 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_LEFT)
     {
-        app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle - 1, app.puzzles.puzzleList.size());
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, app.puzzles.puzzleList.size());
         loadPuzzle();
     }
     if (key == SDLK_RIGHT)
     {
-        app.puzzles.currentPuzzle = math::mod(app.puzzles.currentPuzzle + 1, app.puzzles.puzzleList.size());
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, app.puzzles.puzzleList.size());
         loadPuzzle();
     }
 }
@@ -238,9 +236,14 @@ void GameUI::addHoverComponent()
 
     if (location.inCircuit())
     {
+        const bool cornerX = location.circuitPos.x == 0 || location.circuitPos.x == constants::circuitBoardSize - 2;
+        const bool cornerY = location.circuitPos.y == 0 || location.circuitPos.y == constants::circuitBoardSize - 2;
+
         if (activeCircuit() != nullptr &&
             activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos) &&
-            selectedMenuComponent->name != "Circuit")
+            !(cornerX && cornerY) &&
+            selectedMenuComponent->name != "Circuit" &&
+            selectedMenuComponent->name != "Blocker")
         {
             Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponentColor, location);
             app.state.addNewComponent(newComponent);
@@ -299,7 +302,7 @@ void GameUI::render()
         renderExplodingCharge(charge);
     }
 
-    //render(levelName, rect2f(10.0f, 10.0f, 100.0f, 100.0f), 0.001f);
+    render(levelName, rect2f(1.0f, 1.0f, 200.0f, 20.0f), 0.001f);
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -315,7 +318,8 @@ GameLocation GameUI::hoverLocation(bool constructionOffset) const
         math::round(circuitCoordf) - vec2i(1, 1) :
         math::floor(circuitCoordf);
 
-    if (app.state.board.cells.coordValid(boardCoordi))
+    const auto &cells = app.state.board.cells;
+    if (cells.coordValid(boardCoordi))
         return GameLocation(boardCoordi);
 
     if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->cells.coordValid(circuitCoordi))
@@ -329,12 +333,21 @@ void GameUI::renderHoverComponent()
     if (selectedMenuComponent == nullptr)
         return;
 
-    const GameLocation location = hoverLocation(true);
+    GameLocation location = hoverLocation(true);
+    location.boardPos.x = std::min(location.boardPos.x, (int)app.state.board.cells.dimX() - 2);
+    location.boardPos.y = std::min(location.boardPos.y, (int)app.state.board.cells.dimY() - 2);
+
     if (!location.valid())
         return;
 
     if (location.inCircuit() && activeCircuit() == nullptr)
         return;
+
+    if (location.inCircuit())
+    {
+        location.circuitPos.x = std::min(location.circuitPos.x, constants::circuitBoardSize - 2);
+        location.circuitPos.y = std::min(location.circuitPos.y, constants::circuitBoardSize - 2);
+    }
 
     const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
 
@@ -439,6 +452,11 @@ void GameUI::updateButtonList()
 
 void GameUI::updateBackgroundObjects()
 {
+    //
+    // update text
+    //
+    levelName.drawText(app.renderer.font(), app.state.name, RGBColor(255, 128, 128));
+
     backgroundObjects.clear();
 
     updateButtonList();
@@ -666,6 +684,10 @@ void GameUI::renderComponent(const Component &component)
 {
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
     const bool selected = (selectedGameComponent != nullptr && component.location == selectedGameComponent->location);
+
+    if (component.info->name == "Blocker" &&
+        (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
+        return;
 
     if (component.location.inCircuit())
     {

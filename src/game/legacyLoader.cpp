@@ -376,6 +376,8 @@ void LegacyLoader::load(const string &filename, GameState &result)
         }
     }
 
+    result.name = util::removeExtensions(util::fileNameFromPath(filename));
+
     //
     // normally this is done in addNewComponent, but this is actually noticably slower
     //

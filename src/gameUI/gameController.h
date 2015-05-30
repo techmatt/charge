@@ -49,6 +49,8 @@ public:
     GameSpeed speed;
     bool designActionTaken;
 
+    int currentPuzzleIndex;
+
 private:
     AppData &app;
 };
