@@ -118,6 +118,7 @@ private:
 	vector<GameButton> buttons;
 
     ComponentInfo *selectedMenuComponent;
+    ChargeType selectedMenuComponentColor;
 
     // TODO: this should be a vector
     GameLocation selectedGameLocation;

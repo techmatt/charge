@@ -1,17 +1,17 @@
 
 assetDir = ../assets/
 
-canonicalDims = 680, 464
+canonicalDims = 668, 464
 
 boardDims = 24, 24
 
-boardCanonicalStart = 5, 27
-circuitCanonicalStart = 400, 180
+boardCanonicalStart = 8, 27
+circuitCanonicalStart = 418, 215
 circuitBackgroundCanonicalBoundarySize = 4
 
 canonicalCellSize = 16
 
-componentMenuCanonicalStart = 400, 5
+componentMenuCanonicalStart = 403, 8
 componentMenuCanonicalEntrySize = 37
 
 puzzleMenuCanonicalStart = 7, 420
