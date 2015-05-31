@@ -1,6 +1,19 @@
 
 struct ComponentBuildState
 {
+    ComponentBuildState()
+    {
+
+    }
+
+    ComponentBuildState(const ParameterTable &table)
+    {
+        for (auto &p : table.params)
+        {
+            components.insert(p.first);
+        }
+    }
+
     void loadDefaults()
     {
         components.clear();
@@ -38,6 +51,16 @@ struct ComponentBuildState
         components.erase(annotation);
         if (newState)
             components.insert(annotation);
+    }
+
+    ParameterTable toTable() const
+    {
+        ParameterTable result("ComponentBuildState");
+
+        for (const string &s : components)
+            result.setString(s, "1");
+        
+        return result;
     }
     
     set<string> components;

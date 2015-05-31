@@ -97,7 +97,7 @@ void GameUI::removeHoverComponent()
     const GameLocation location = hoverLocation(false);
     
     Component *c = app.state.getComponent(location);
-    if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzlePiece || c->info->name == "CircuitBoundary")
+    if (c == nullptr || (app.controller.puzzleMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
         return;
 
     backgroundDirty = true;
@@ -133,12 +133,11 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
             for (const auto &button : buttons)
             {
                 const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-                Component *gameComponent = app.state.getComponent(selectedGameLocation);
                 if (screenRect.intersects(vec2f((float)x, (float)y)))
                 {
                     if (button.type == ButtonComponent)
                     {
-                        bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
+                        const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
                         const auto &info = database().getComponent(button.name);
                         if (database().getComponent(button.name).colorUpgrades)
                         {
@@ -150,6 +149,10 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                         {
                             app.state.buildableComponents.setBuild(button.name, button.modifiers, !buildable);
                         }
+                    }
+                    if (button.type == ButtonChargeColor)
+                    {
+                        app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
                     }
                     return;
                 }
@@ -170,7 +173,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                     selectedMenuComponent = button.component;
                     selectedMenuComponentColor = button.modifiers.color;
                 }
-                if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentUser)
+                if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
                 {
                     if (button.type == ButtonChargeColor)
                     {
@@ -207,6 +210,14 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                 if (button.name == "Pause")
                 {
                     app.controller.puzzleMode = ModePaused;
+                }
+                if (button.name == "ModePuzzle")
+                {
+                    app.controller.editorMode = ModePlayLevel;
+                }
+                if (button.name == "ModeLevelEditor")
+                {
+                    app.controller.editorMode = ModeEditLevel;
                 }
                 if (button.name == "Save")
                 {
@@ -417,7 +428,8 @@ void GameUI::updateButtonList()
             {
                 realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
             }
-            buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
+            if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
+                buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
         }
     }
 
@@ -425,17 +437,9 @@ void GameUI::updateButtonList()
     // Add color, delay, preference, and boundary buttons
     //
     Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    if (selectedGameComponent != nullptr && selectedGameComponent->modifiers.puzzleType == ComponentUser)
+    if (selectedGameComponent != nullptr && !(app.controller.puzzleMode == ModePlayLevel && selectedGameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
     {
         const ComponentInfo &info = *selectedGameComponent->info;
-
-        vector<ChargeType> chargeLevels;
-        if (info.colorUpgrades && selectedGameComponent->modifiers.color != ChargeGray)
-        {
-            ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
-            for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
-                chargeLevels.push_back((ChargeType)charge);
-        }
 
         if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker" && selectedGameComponent->info->name != "PowerSource")
         {
@@ -459,10 +463,19 @@ void GameUI::updateButtonList()
         }
         else
         {
+            vector<ChargeType> chargeLevels;
+            if (info.colorUpgrades && selectedGameComponent->modifiers.color != ChargeGray)
+            {
+                ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
+                for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
+                    chargeLevels.push_back((ChargeType)charge);
+            }
+
             int chargeIndex = 0;
             for (ChargeType charge : chargeLevels)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
+                if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
+                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
                 chargeIndex++;
             }
         }
@@ -476,6 +489,8 @@ void GameUI::updateButtonList()
     buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Save", vec2i(4, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Load", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModePuzzle", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModeLevelEditor", vec2i(8, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 }
 
 void GameUI::updateBackgroundObjects()
@@ -710,7 +725,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 
     if (icon.selected)
     {
-        bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece);
+        bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece && app.controller.editorMode == ModePlayLevel);
 
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
         record(selectionTex, screenRect, depthLayers::selection, UIRenderStandard, Colors::White(), nullptr);
