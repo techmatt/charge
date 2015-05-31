@@ -113,7 +113,8 @@ private:
     void renderChargeCircuit(const Charge &charge);
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
-    void renderButton(const GameButton &button, bool selected);
+    void renderButtonBackground(const GameButton &button, bool selected);
+    void renderButtonForeground(const GameButton &button, bool selected);
     void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon);
 
     void renderHoverComponent();

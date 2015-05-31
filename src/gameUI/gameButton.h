@@ -7,6 +7,7 @@ enum ButtonType
     ButtonCircuitBoundary,
     ButtonChargePreference,
     ButtonPuzzleControl,
+    ButtonComponentAttribute,
 };
 
 struct GameButton
@@ -23,12 +24,21 @@ struct GameButton
         if (database().components.count(name) > 0)
             component = database().components.at(name);
     }
+    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const string &_text)
+    {
+        component = nullptr;
+        name = _name;
+        type = _type;
+        canonicalRect = getCanonicalRect(menuCoord, type);
+        text = _text;
+    }
 
     ComponentInfo *component;
     string name;
-    ComponentModifiers modifiers;
     ButtonType type;
     rect2i canonicalRect;
+    ComponentModifiers modifiers;
+    string text;
 
 private:
     static rect2i getCanonicalRect(const vec2i &menuCoord, ButtonType type)
@@ -37,6 +47,11 @@ private:
         {
             const vec2i base = params().puzzleMenuCanonicalStart + menuCoord * params().puzzleMenuCanonicalEntrySize;
             return rect2i(base, base + params().puzzleMenuCanonicalEntrySize - 4);
+        }
+        else if (type == ButtonComponentAttribute)
+        {
+            const vec2i base = params().attributeMenuCanonicalStart + vec2f::directProduct(menuCoord, params().attributeMenuCanonicalEntrySize);
+            return rect2i(base, base + params().attributeMenuCanonicalEntrySize - 4);
         }
         else
         {

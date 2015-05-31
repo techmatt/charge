@@ -25,6 +25,9 @@ struct GameParameters
         params.readParameter("puzzleMenuCanonicalStart", puzzleMenuCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
+        params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
+        params.readParameter("attributeMenuCanonicalEntrySize", attributeMenuCanonicalEntrySize);
+
         circuitDims = vec2i(constants::circuitBoardSize, constants::circuitBoardSize);
 
         //
@@ -57,6 +60,9 @@ struct GameParameters
 
     vec2f puzzleMenuCanonicalStart;
     int puzzleMenuCanonicalEntrySize;
+
+    vec2f attributeMenuCanonicalStart;
+    vec2f attributeMenuCanonicalEntrySize;
 
 	CoordinateFrame boardInWindow;
 	CoordinateFrame componentMenuInWindow;

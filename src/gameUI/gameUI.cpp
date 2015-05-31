@@ -25,7 +25,7 @@ Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color
 {
     if (textCache.count(text) == 0)
     {
-        Texture *t = new Texture(app.renderer.font(), app.state.name, color);
+        Texture *t = new Texture(app.renderer.font(), text, color);
         textCache[text] = t;
     }
     return *textCache[text];
@@ -124,7 +124,7 @@ void GameUI::removeHoverComponent()
     app.state.removeComponent(c);
 }
 
-void GameUI::mouseDown(Uint8 button, int x, int y)
+void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 {
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
@@ -136,7 +136,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
     //
     backgroundDirty = true;
 
-    if (button == SDL_BUTTON_RIGHT)
+    if (mouseButton == SDL_BUTTON_RIGHT)
     {
         if (selectedMenuComponent != nullptr)
         {
@@ -146,121 +146,151 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
         {
             removeHoverComponent();
         }
-
-        if (app.controller.editorMode == ModeEditLevel)
-        {
-            for (const auto &button : buttons)
-            {
-                const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-                if (screenRect.intersects(vec2f((float)x, (float)y)))
-                {
-                    if (button.type == ButtonComponent)
-                    {
-                        const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
-                        const auto &info = database().getComponent(button.name);
-                        if (database().getComponent(button.name).colorUpgrades && button.modifiers.color != ChargeGray)
-                        {
-                            ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
-                            for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
-                                app.state.buildableComponents.setBuild(button.name, ComponentModifiers((ChargeType)charge), !buildable);
-                        }
-                        else
-                        {
-                            app.state.buildableComponents.setBuild(button.name, button.modifiers, !buildable);
-                        }
-                    }
-                    if (button.type == ButtonChargeColor)
-                    {
-                        app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
-                    }
-                    return;
-                }
-            }
-        }
     }
 
-    if (button == SDL_BUTTON_LEFT)
+    if (mouseButton == SDL_BUTTON_LEFT)
     {
-        for (const auto &button : buttons)
-        {
-            const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-            Component *gameComponent = app.state.getComponent(selectedGameLocation);
-            if (screenRect.intersects(vec2f((float)x, (float)y)))
-            {
-                if (button.type == ButtonComponent)
-                {
-                    selectedMenuComponent = button.component;
-                    selectedMenuComponentColor = button.modifiers.color;
-                }
-                if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
-                {
-                    if (button.type == ButtonChargeColor)
-                    {
-                        gameComponent->modifiers.color = button.modifiers.color;
-                        app.controller.recordDesignAction();
-                    }
-                    if (button.type == ButtonChargePreference)
-                    {
-                        gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
-                        app.controller.recordDesignAction();
-                    }
-                    if (button.type == ButtonWireSpeed)
-                    {
-                        gameComponent->modifiers.speed = button.modifiers.speed;
-                        app.controller.recordDesignAction();
-                    }
-                    if (button.type == ButtonCircuitBoundary)
-                    {
-                        gameComponent->modifiers.boundary = button.modifiers.boundary;
-                        app.controller.recordDesignAction();
-                    }
-                }
-                if (button.name == "Start")
-                {
-                    app.controller.designActionTaken = false;
-                    app.controller.puzzleMode = ModeExecuting;
-                    app.state.resetPuzzle();
-                }
-                if (button.name == "Stop")
-                {
-                    app.controller.puzzleMode = ModeDesign;
-                    app.state.resetPuzzle();
-                }
-                if (button.name == "Pause")
-                {
-                    app.controller.puzzleMode = ModePaused;
-                }
-                if (button.name == "ModePuzzle")
-                {
-                    app.controller.editorMode = ModePlayLevel;
-                }
-                if (button.name == "ModeLevelEditor")
-                {
-                    app.controller.editorMode = ModeEditLevel;
-                }
-                if (button.name == "Save")
-                {
-                    const string filename = FileDialog::showSave();
-                    if (filename.size() > 0)
-                        app.state.savePuzzle(filename);
-                }
-                if (button.name == "Load")
-                {
-                    const string filename = FileDialog::showOpen();
-                    if (filename.size() > 0)
-                        app.state.loadPuzzle(filename);
-                }
-                return;
-            }
-        }
-
         if (selectedMenuComponent == nullptr)
         {
-            selectedGameLocation = hoverLocation(false);
+            GameLocation hover = hoverLocation(false);
+            if (hover.valid())
+                selectedGameLocation = hover;
         }
         else
         {
             addHoverComponent();
+        }
+    }
+
+    const GameButton *hitButton = nullptr;
+    for (const auto &button : buttons)
+    {
+        const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
+        if (screenRect.intersects(vec2f((float)x, (float)y)))
+        {
+            hitButton = &button;
+        }
+    }
+    if (hitButton == nullptr)
+        return;
+    const GameButton &button = *hitButton;
+
+    //buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
+    //buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
+    //buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
+
+    int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
+    Component *gameComponent = app.state.getComponent(selectedGameLocation);
+    if (gameComponent != nullptr && button.type == ButtonComponentAttribute && app.controller.editorMode == ModeEditLevel)
+    {
+        if (button.name == "TotalCharge")
+        {
+            gameComponent->intrinsics.totalCharges = math::mod(gameComponent->intrinsics.totalCharges + delta, 0xFFFFFF);
+        }
+        if (button.name == "FirstEmission")
+        {
+            gameComponent->intrinsics.secondsBeforeFirstEmission = math::clamp(gameComponent->intrinsics.secondsBeforeFirstEmission + delta, 0, 1000);
+        }
+        if (button.name == "EmissionFrequency")
+        {
+            gameComponent->intrinsics.secondsPerEmission = math::clamp(gameComponent->intrinsics.secondsPerEmission + delta, 1, 1000);
+        }
+    }
+    
+    if (mouseButton == SDL_BUTTON_RIGHT && app.controller.editorMode == ModeEditLevel)
+    {
+        if (button.type == ButtonComponent)
+        {
+            const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
+            const auto &info = database().getComponent(button.name);
+            if (database().getComponent(button.name).colorUpgrades && button.modifiers.color != ChargeGray)
+            {
+                ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
+                for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
+                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers((ChargeType)charge), !buildable);
+            }
+            else
+            {
+                app.state.buildableComponents.setBuild(button.name, button.modifiers, !buildable);
+            }
+        }
+        if (button.type == ButtonChargeColor)
+        {
+            app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
+        }
+    }
+
+    if (mouseButton == SDL_BUTTON_LEFT)
+    {
+        if (button.type == ButtonComponent)
+        {
+            selectedMenuComponent = button.component;
+            selectedMenuComponentColor = button.modifiers.color;
+        }
+        if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
+        {
+            if (button.type == ButtonChargeColor)
+            {
+                gameComponent->modifiers.color = button.modifiers.color;
+                app.controller.recordDesignAction();
+            }
+            if (button.type == ButtonChargePreference)
+            {
+                gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
+                app.controller.recordDesignAction();
+            }
+            if (button.type == ButtonWireSpeed)
+            {
+                gameComponent->modifiers.speed = button.modifiers.speed;
+                app.controller.recordDesignAction();
+            }
+            if (button.type == ButtonCircuitBoundary)
+            {
+                gameComponent->modifiers.boundary = button.modifiers.boundary;
+                app.controller.recordDesignAction();
+            }
+        }
+        if (button.name == "Start")
+        {
+            app.controller.designActionTaken = false;
+            app.controller.puzzleMode = ModeExecuting;
+            app.state.resetPuzzle();
+        }
+        if (button.name == "Stop")
+        {
+            app.controller.puzzleMode = ModeDesign;
+            app.state.resetPuzzle();
+        }
+        if (button.name == "Pause")
+        {
+            app.controller.puzzleMode = ModePaused;
+        }
+        if (button.name == "ModePuzzle")
+        {
+            app.controller.editorMode = ModePlayLevel;
+        }
+        if (button.name == "ModeLevelEditor")
+        {
+            app.controller.editorMode = ModeEditLevel;
+        }
+        if (button.name == "Save")
+        {
+            string filename = FileDialog::showSave();
+            if (filename.size() > 0)
+            {
+                if (util::endsWith(filename, ".pzl"))
+                    filename = util::remove(filename, ".pzl");
+                filename = util::replace(filename, '.', ' ');
+                filename = util::replace(filename, ',', ' ');
+                filename += ".pzl";
+                app.state.savePuzzle(filename);
+            }
+        }
+        if (button.name == "Load")
+        {
+            const string filename = FileDialog::showOpen();
+            if (filename.size() > 0)
+                app.state.loadPuzzle(filename);
         }
     }
 }
@@ -346,6 +376,11 @@ void GameUI::render()
     for (const UIRenderObject &o : backgroundObjects)
     {
         render(o);
+    }
+
+    for (const auto &button : buttons)
+    {
+        renderButtonForeground(button, false);
     }
 
     renderHoverComponent();
@@ -510,6 +545,16 @@ void GameUI::updateButtonList()
     buttons.push_back(GameButton("Load", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("ModePuzzle", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("ModeLevelEditor", vec2i(8, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+
+    //
+    // Add power source indicators
+    //
+    if (selectedGameComponent != nullptr && selectedGameComponent->info->name == "PowerSource")
+    {
+        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
+        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
+        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
+    }
 }
 
 void GameUI::updateBackgroundObjects()
@@ -550,7 +595,7 @@ void GameUI::updateBackgroundObjects()
             selected |= (button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
             selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
         }
-        renderButton(button, selected);
+        renderButtonBackground(button, selected);
     }
 
     stable_sort(backgroundObjects.begin(), backgroundObjects.end());
@@ -686,22 +731,33 @@ void GameUI::renderBuildingGrid()
     }
 }
 
-void GameUI::renderButton(const GameButton &button, bool selected)
+void GameUI::renderButtonForeground(const GameButton &button, bool selected)
 {
-    Texture &borderTex = database().getTexture(app.renderer, "Border");
-    
-    const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-    addBackgroundObject(borderTex, screenRect, depthLayers::background);
-
-    renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
-
-    if (app.controller.editorMode == ModeEditLevel &&
-        app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
-        (button.type == ButtonComponent || button.type == ButtonChargeColor))
+    if (button.type == ButtonComponentAttribute)
     {
-        Texture &constructionTex = database().getTexture(app.renderer, "Construction");
+        renderText(getFontTexture(button.text, 24.0f, Colors::Black()), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+    }
+}
+
+void GameUI::renderButtonBackground(const GameButton &button, bool selected)
+{
+    if (button.type != ButtonComponentAttribute)
+    {
+        Texture &borderTex = database().getTexture(app.renderer, "Border");
+
         const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-        addBackgroundObject(constructionTex, screenRect, depthLayers::component);
+        addBackgroundObject(borderTex, screenRect, depthLayers::background);
+
+        renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
+
+        if (app.controller.editorMode == ModeEditLevel &&
+            app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
+            (button.type == ButtonComponent || button.type == ButtonChargeColor))
+        {
+            Texture &constructionTex = database().getTexture(app.renderer, "Construction");
+            const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
+            addBackgroundObject(constructionTex, screenRect, depthLayers::component);
+        }
     }
 }
 

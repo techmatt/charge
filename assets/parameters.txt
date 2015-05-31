@@ -16,3 +16,6 @@ componentMenuCanonicalEntrySize = 37
 
 puzzleMenuCanonicalStart = 7, 420
 puzzleMenuCanonicalEntrySize = 24
+
+attributeMenuCanonicalStart = 240, 415
+attributeMenuCanonicalEntrySize = 100, 15
