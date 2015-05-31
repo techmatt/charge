@@ -5,6 +5,7 @@ namespace depthLayers
 {
     const float selection = 0.9f;
     const float charge = 0.01f;
+    const float font = 0.02f;
     const float hoverComponent = 0.1f;
     const float hoverComponentGrid = 0.05f;
     const float background = 1.0f;
@@ -18,6 +19,16 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
+}
+
+Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
+{
+    if (textCache.count(text) == 0)
+    {
+        Texture *t = new Texture(app.renderer.font(), app.state.name, color);
+        textCache[text] = t;
+    }
+    return *textCache[text];
 }
 
 void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame)
@@ -49,6 +60,14 @@ void GameUI::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, color);
     else
         render(t, o.rect, o.depth, o.rotation, color);
+}
+
+void GameUI::renderText(Texture &tex, const vec2f &start, const float height, const vec4f &color)
+{
+    const float aspect = (float)tex.bmp().dimX() / (float)tex.bmp().dimY();
+    const float width = aspect * height;
+    const rect2f rect(start, vec2f(start.x + width, start.y + height));
+    app.renderer.render(tex, coordinateFrame.toContainer(rect), depthLayers::font, color);
 }
 
 void GameUI::keyDown(SDL_Keycode key)
@@ -97,7 +116,7 @@ void GameUI::removeHoverComponent()
     const GameLocation location = hoverLocation(false);
     
     Component *c = app.state.getComponent(location);
-    if (c == nullptr || (app.controller.puzzleMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
+    if (c == nullptr || (app.controller.editorMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
         return;
 
     backgroundDirty = true;
@@ -139,7 +158,7 @@ void GameUI::mouseDown(Uint8 button, int x, int y)
                     {
                         const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
                         const auto &info = database().getComponent(button.name);
-                        if (database().getComponent(button.name).colorUpgrades)
+                        if (database().getComponent(button.name).colorUpgrades && button.modifiers.color != ChargeGray)
                         {
                             ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
                             for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
@@ -341,7 +360,7 @@ void GameUI::render()
         renderExplodingCharge(charge);
     }
 
-    render(levelName, rect2f(1.0f, 1.0f, 200.0f, 20.0f), 0.001f);
+    renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -495,11 +514,6 @@ void GameUI::updateButtonList()
 
 void GameUI::updateBackgroundObjects()
 {
-    //
-    // update text
-    //
-    levelName.drawText(app.renderer.font(), app.state.name, RGBColor(255, 128, 128));
-
     backgroundObjects.clear();
 
     updateButtonList();

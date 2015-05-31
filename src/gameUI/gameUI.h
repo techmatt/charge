@@ -81,6 +81,8 @@ private:
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
+    void renderText(Texture &tex, const vec2f &start, const float height, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
     void render(const UIRenderObject &o);
 
     void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, float rotation)
@@ -119,6 +121,8 @@ private:
 
     void addHoverComponent();
 
+    Texture& getFontTexture(const string &text, float height, RGBColor color);
+
     Component* activeCircuit() const;
 
     GameLocation hoverLocation(bool constructionOffset) const;
@@ -140,5 +144,5 @@ private:
 
     vector<UIRenderObject> backgroundObjects;
 
-    Texture levelName;
+    map<string, Texture*> textCache;
 };

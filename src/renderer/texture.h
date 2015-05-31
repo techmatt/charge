@@ -11,7 +11,7 @@ public:
     {
         initInternal();
     }
-    Texture(TTF_Font *font, const char *text, RGBColor color)
+    Texture(TTF_Font *font, const string &text, RGBColor color)
     {
         initInternal();
         drawText(font, text, color);
@@ -28,10 +28,11 @@ public:
     }
     ~Texture()
     {
-        releaseSDLMemrory();
+        releaseSDLMemory();
+        releaseOpenGLMemory();
     }
 
-    void releaseSDLMemrory()
+    void releaseSDLMemory()
     {
         if (_SDLTexture != nullptr)
         {
@@ -43,6 +44,11 @@ public:
             SDL_FreeSurface(_SDLSurface);
             _SDLSurface = nullptr;
         }
+    }
+
+    void releaseOpenGLMemory()
+    {
+        if (_OpenGLTexture != 0) glDeleteTextures(1, &_OpenGLTexture);
     }
 
     void load(Renderer &renderer, const string &filename);
@@ -69,6 +75,7 @@ private:
     {
         _SDLTexture = nullptr;
         _SDLSurface = nullptr;
+        _OpenGLTexture = 0;
     }
     void initSDL(Renderer &renderer);
     void initOpenGL(bool useMipmaps);

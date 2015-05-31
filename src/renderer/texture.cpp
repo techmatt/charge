@@ -59,7 +59,7 @@ void Texture::loadRenderTarget(int width, int height)
 
 void Texture::initSDL(Renderer &renderer)
 {
-    releaseSDLMemrory();
+    releaseSDLMemory();
 
     _SDLTexture = nullptr;
     

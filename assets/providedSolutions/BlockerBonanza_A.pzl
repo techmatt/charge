@@ -1,0 +1,499 @@
+Puzzle~40~498
+buildableComponents~2
+ComponentBuildState~1~1
+TrapOpenGray=1
+component0000~12
+Component~11~11
+boardPos=4 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+speed=2
+totalCharges=3
+component0001~12
+Component~11~11
+boardPos=20 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=3
+name=ChargeGoal
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0002~12
+Component~11~11
+boardPos=14 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Amplifier
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0003~12
+Component~11~11
+boardPos=6 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0004~12
+Component~11~11
+boardPos=8 11
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0005~12
+Component~11~11
+boardPos=10 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0006~12
+Component~11~11
+boardPos=12 11
+boundary=0
+chargePreference=0
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0007~12
+Component~11~11
+boardPos=13 9
+boundary=0
+chargePreference=0
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0008~12
+Component~11~11
+boardPos=15 9
+boundary=0
+chargePreference=1
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0009~12
+Component~11~11
+boardPos=16 11
+boundary=0
+chargePreference=0
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0010~12
+Component~11~11
+boardPos=15 13
+boundary=0
+chargePreference=1
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0011~12
+Component~11~11
+boardPos=13 13
+boundary=0
+chargePreference=0
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0012~12
+Component~11~11
+boardPos=18 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0013~12
+Component~11~11
+boardPos=5 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0014~12
+Component~11~11
+boardPos=7 8
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0015~12
+Component~11~11
+boardPos=9 8
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0016~12
+Component~11~11
+boardPos=11 8
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0017~12
+Component~11~11
+boardPos=5 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0018~12
+Component~11~11
+boardPos=7 14
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0019~12
+Component~11~11
+boardPos=9 14
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0020~12
+Component~11~11
+boardPos=11 14
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0021~12
+Component~11~11
+boardPos=15 7
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0022~12
+Component~11~11
+boardPos=13 6
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0023~12
+Component~11~11
+boardPos=11 5
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0024~12
+Component~11~11
+boardPos=9 5
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0025~12
+Component~11~11
+boardPos=7 5
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0026~12
+Component~11~11
+boardPos=5 6
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0027~12
+Component~11~11
+boardPos=3 7
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0028~12
+Component~11~11
+boardPos=2 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0029~12
+Component~11~11
+boardPos=1 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0030~12
+Component~11~11
+boardPos=2 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0031~12
+Component~11~11
+boardPos=3 15
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0032~12
+Component~11~11
+boardPos=5 16
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0033~12
+Component~11~11
+boardPos=7 17
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0034~12
+Component~11~11
+boardPos=9 17
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0035~12
+Component~11~11
+boardPos=11 17
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0036~12
+Component~11~11
+boardPos=13 16
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0037~12
+Component~11~11
+boardPos=15 15
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=6
+name=TrapOpen
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=38
