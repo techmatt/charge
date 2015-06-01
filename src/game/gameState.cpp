@@ -371,7 +371,7 @@ void GameState::step()
         
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
-            explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, (float)charge.timeInTransit / (float)charge.totalTransitTime, charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
+            explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, charge.interpolation(), charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
         }
 
         if (charge.markedForDeletion)
@@ -389,7 +389,9 @@ void GameState::step()
         while(component->chargesToEmit.size() > 0)
         {
             component->lastChargeVisit = stepCount;
-            charges.push_back(Charge(component->location, component->chargesToEmit.back()));
+            auto toEmit = component->chargesToEmit.back();
+            charges.push_back(Charge(component->location, toEmit.first));
+            charges.back().source = toEmit.second;
             component->chargesToEmit.pop_back();
         }
     }

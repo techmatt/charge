@@ -3,7 +3,6 @@ enum GamePuzzleMode
 {
     ModeDesign,
     ModeExecuting,
-    ModePaused,
 };
 
 enum GameEditorMode
@@ -14,6 +13,7 @@ enum GameEditorMode
 
 enum GameSpeed
 {
+    Speed0x,
     Speed1x,
     Speed2x,
     Speed10x,
@@ -24,6 +24,7 @@ inline int ticksFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
+    case Speed0x: return 0;
     case Speed1x: return 1;
     case Speed2x: return 2;
     case Speed10x: return 10;

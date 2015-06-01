@@ -252,9 +252,16 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         if (button.name == "Start")
         {
-            app.controller.designActionTaken = false;
-            app.controller.puzzleMode = ModeExecuting;
-            app.state.resetPuzzle();
+            if (app.controller.puzzleMode == ModeExecuting)
+            {
+                app.controller.speed = Speed1x;
+            }
+            else
+            {
+                app.controller.designActionTaken = false;
+                app.controller.puzzleMode = ModeExecuting;
+                app.state.resetPuzzle();
+            }
         }
         if (button.name == "Stop")
         {
@@ -263,7 +270,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         if (button.name == "Pause")
         {
-            app.controller.puzzleMode = ModePaused;
+            app.controller.speed = Speed0x;
         }
         if (button.name == "ModePuzzle")
         {
@@ -538,13 +545,15 @@ void GameUI::updateButtonList()
     //
     // Add puzzle control buttons
     //
-    buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Pause", vec2i(1, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Stop", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Save", vec2i(4, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Load", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModePuzzle", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModeLevelEditor", vec2i(8, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    if (app.controller.puzzleMode != ModeExecuting || (app.controller.puzzleMode == ModeExecuting && app.controller.speed == Speed0x))
+        buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    else if (app.controller.puzzleMode == ModeExecuting)
+        buttons.push_back(GameButton("Pause", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Stop", vec2i(1, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Save", vec2i(3, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Load", vec2i(4, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModePuzzle", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModeLevelEditor", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
     //
     // Add power source indicators
@@ -978,8 +987,7 @@ void GameUI::renderComponents()
 void GameUI::renderCharge(const Charge &charge)
 {
     renderChargeCircuit(charge);
-    const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
-    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, s, charge.level, canonicalDims);
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
     render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
@@ -1004,8 +1012,7 @@ void GameUI::renderChargeCircuit(const Charge &charge)
     if (charge.source.boardPos != charge.destination.boardPos) return;
     if (activeCircuit() == nullptr || charge.source.boardPos != activeCircuit()->location.boardPos) return;
 
-    const float s = float(charge.timeInTransit) / float(charge.totalTransitTime);
-    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, s, charge.level, canonicalDims);
+    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
 
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));

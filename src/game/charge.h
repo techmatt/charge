@@ -24,6 +24,12 @@ struct Charge
 
     double computePreference(GameState &state, Component &targetComponent);
 
+    float interpolation() const
+    {
+        if (totalTransitTime == 1) return 1.0f;
+        return (float)timeInTransit / (float)totalTransitTime;
+    }
+
     ChargeType level;
     GameLocation source, destination;
 

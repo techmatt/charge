@@ -81,7 +81,7 @@ void Component::tick()
         }
         else
         {
-            chargesToEmit.push_back(modifiers.color);
+            chargesToEmit.push_back( make_pair(modifiers.color, location) );
             
             stepsUntilEmission = intrinsics.secondsPerEmission * constants::stepsPerSecond;
             totalChargesRemaining--;

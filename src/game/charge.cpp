@@ -22,7 +22,7 @@ void Charge::advance(GameState &state)
     if (markedForDeletion || totalTransitTime == 0) return;
 
 	// chrage is moving.
-	if (timeInTransit < totalTransitTime && source != destination)
+	if (timeInTransit < totalTransitTime && source != destination && totalTransitTime != 1)
 	{
 		timeInTransit++;
 		resolvedThisTick = true;
@@ -59,7 +59,7 @@ void Charge::interactWithDestination(GameState &state)
         else
         {
             const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeBlue));
-            current->chargesToEmit.push_back(emittedLevel);
+            current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
             current->storedCharge = ChargeNone;
         }
@@ -76,7 +76,7 @@ void Charge::interactWithDestination(GameState &state)
         else
         {
             const ChargeType emittedLevel = current->modifiers.color;
-            current->chargesToEmit.push_back(emittedLevel);
+            current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
             current->storedCharge = ChargeNone;
         }
@@ -140,24 +140,28 @@ void Charge::interactWithDestination(GameState &state)
             markedForDeletion = true;
             showDeathAnimation = false;
 
+            auto red = make_pair(ChargeRed, source);
+            auto orange = make_pair(ChargeOrange, source);
+            auto yellow = make_pair(ChargeYellow, source);
+
             switch (level)
             {
             case ChargeOrange:
-                current->chargesToEmit.push_back(ChargeRed);
-                current->chargesToEmit.push_back(ChargeRed);
+                current->chargesToEmit.push_back(red);
+                current->chargesToEmit.push_back(red);
                 break;
             case ChargeYellow:
-                current->chargesToEmit.push_back(ChargeRed);
-                current->chargesToEmit.push_back(ChargeRed);
-                current->chargesToEmit.push_back(ChargeRed);
+                current->chargesToEmit.push_back(red);
+                current->chargesToEmit.push_back(red);
+                current->chargesToEmit.push_back(red);
                 break;
             case ChargeGreen:
-                current->chargesToEmit.push_back(ChargeOrange);
-                current->chargesToEmit.push_back(ChargeOrange);
+                current->chargesToEmit.push_back(orange);
+                current->chargesToEmit.push_back(orange);
                 break;
             case ChargeBlue:
-                current->chargesToEmit.push_back(ChargeYellow);
-                current->chargesToEmit.push_back(ChargeYellow);
+                current->chargesToEmit.push_back(yellow);
+                current->chargesToEmit.push_back(yellow);
                 break;
             }
         }

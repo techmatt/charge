@@ -151,9 +151,10 @@ struct Component
     ChargeType storedCharge;
 
     //
-    // some components can emit charges
+    // some components can emit charges. These are pairs of the charge to emit, and the
+    // direction the generated charge came from.
     //
-    vector<ChargeType> chargesToEmit;
+    vector< pair<ChargeType, GameLocation> > chargesToEmit;
 
 	//
 	// used in the ticks to deal with multiple charges approaching the same location
