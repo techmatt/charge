@@ -72,6 +72,8 @@ void GameUI::renderText(Texture &tex, const vec2f &start, const float height, co
 
 void GameUI::keyDown(SDL_Keycode key)
 {
+	const Uint8 *keys = SDL_GetKeyboardState(NULL);
+
     if (key == SDLK_ESCAPE)
     {
         backgroundDirty = true;
@@ -103,12 +105,38 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, app.puzzles.puzzleList.size());
         loadPuzzle();
+		app.backBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, app.puzzles.puzzleList.size());
         loadPuzzle();
+		app.backBuffer.reset(app.state);
     }
+	if (key == SDLK_z)
+	{
+		// undo and redo
+		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+			if (keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_LSHIFT])
+				app.backBuffer.forward(app.state);
+			else 
+				app.backBuffer.back(app.state);
+		}
+	}
+
+	if (key == SDLK_c)
+	{
+		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+		//TODO COPY
+		}
+	}
+
+	if (key == SDLK_v)
+	{
+		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+			//TODO PASTE
+		}
+	}
 }
 
 void GameUI::removeHoverComponent()
@@ -296,8 +324,11 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         if (button.name == "Load")
         {
             const string filename = FileDialog::showOpen();
-            if (filename.size() > 0)
-                app.state.loadPuzzle(filename);
+			if (filename.size() > 0)
+			{
+				app.state.loadPuzzle(filename);
+				app.backBuffer.reset(app.state);
+			}
         }
     }
 }
@@ -344,6 +375,8 @@ void GameUI::addHoverComponent()
             app.state.addNewComponent(newComponent);
             app.controller.designActionTaken = true;
             backgroundDirty = true;
+
+			app.backBuffer.save(app.state); //saves to the backwards/forwards buffer
         }
     }
     else if (app.state.board.coordValidForNewComponent(location.boardPos))
@@ -352,6 +385,8 @@ void GameUI::addHoverComponent()
         app.state.addNewComponent(newComponent);
         app.controller.designActionTaken = true;
         backgroundDirty = true;
+
+		app.backBuffer.save(app.state); //saves to the backwards/forwards buffer
     }
 }
 

@@ -11,6 +11,9 @@ struct AppData
     PuzzleManager puzzles;
     RendererOpenGL renderer;
     //RendererSDL renderer;
+	
+	ComponentSet copyBuffer;
+	BackBuffer backBuffer = BackBuffer();
 };
 
 class App

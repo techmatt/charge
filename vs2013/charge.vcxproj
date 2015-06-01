@@ -96,6 +96,7 @@
     <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\gameUI\puzzleManager.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
+    <ClCompile Include="..\src\game\buffer.cpp" />
     <ClCompile Include="..\src\game\charge.cpp" />
     <ClCompile Include="..\src\game\component.cpp" />
     <ClCompile Include="..\src\game\database.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\gameUI\puzzleManager.h" />
     <ClInclude Include="..\src\game\board.h" />
+    <ClInclude Include="..\src\game\buffer.h" />
     <ClInclude Include="..\src\game\charge.h" />
     <ClInclude Include="..\src\game\component.h" />
     <ClInclude Include="..\src\game\componentBuildState.h" />

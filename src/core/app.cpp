@@ -29,6 +29,9 @@ int App::run()
 
     data.state.init();
 
+	data.backBuffer.init();
+	data.backBuffer.reset(data.state);
+
     data.ui.init();
 
     data.controller.init();

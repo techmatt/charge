@@ -49,5 +49,5 @@ namespace constants
 		vec2i(-1, -2)
 	};  // relative positions for nearby components.  There are 12 different places they can be.
 
-
+	static const int bufferSize = 100;
 }

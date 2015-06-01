@@ -96,6 +96,9 @@
     <ClCompile Include="..\src\mLib\FileDialog.cpp">
       <Filter>mLib</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\game\buffer.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -231,6 +234,9 @@
       <Filter>mLib</Filter>
     </ClInclude>
     <ClInclude Include="..\src\game\componentBuildState.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\buffer.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

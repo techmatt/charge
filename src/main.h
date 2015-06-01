@@ -25,6 +25,7 @@ struct Charge;
 struct GameLocation;
 struct ComponentModifiers;
 struct AppData;
+struct BackBuffer;
 class Renderer;
 class RendererSDL;
 class Texture;
@@ -44,6 +45,7 @@ class Texture;
 #include "renderer/rendererOpenGL.h"
 #include "renderer/texture.h"
 
+
 #include "game/misc.h"
 #include "game/component.h"
 #include "game/charge.h"
@@ -58,6 +60,8 @@ class Texture;
 #include "gameUI/puzzleManager.h"
 #include "gameUI/gameUI.h"
 #include "gameUI/gameController.h"
+#include "game/buffer.h"
+
 
 #include "core/app.h"
 
