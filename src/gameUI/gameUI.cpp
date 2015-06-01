@@ -118,9 +118,9 @@ void GameUI::keyDown(SDL_Keycode key)
 		// undo and redo
 		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
 			if (keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_LSHIFT])
-				app.backBuffer.forward(app.state,app.ui);
+				app.backBuffer.forward(app.state);
 			else 
-				app.backBuffer.back(app.state,app.ui);
+				app.backBuffer.back(app.state);
             backgroundDirty = true;
 		}
 	}

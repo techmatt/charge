@@ -99,6 +99,9 @@
     <ClCompile Include="..\src\game\buffer.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameUI\selection.cpp">
+      <Filter>gameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="..\src\game\buffer.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\selection.h">
+      <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

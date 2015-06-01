@@ -12,7 +12,6 @@ struct AppData
     RendererOpenGL renderer;
     //RendererSDL renderer;
 	
-	ComponentSet copyBuffer;
 	BackBuffer backBuffer;// = BackBuffer();
 };
 

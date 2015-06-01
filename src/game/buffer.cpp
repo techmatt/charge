@@ -181,3 +181,7 @@ ComponentSet* ComponentSet::allToBuffer(const GameState &state)
 	
 	return out;
 }
+
+
+
+

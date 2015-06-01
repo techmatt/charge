@@ -97,7 +97,7 @@ struct BackBuffer
 
 		buffer[current] = ComponentSet::allToBuffer(state);
 	}
-	void back(GameState &state,GameUI &ui)
+	void back(GameState &state)
 	{
 		if (current == maxBackward) return;
 		//ui.selectedGameLocation = GameLocation();
@@ -105,7 +105,7 @@ struct BackBuffer
 		state.clearBoard();
 		buffer[current]->addToComponents(state,vec2i(0,0));
 	}
-	void forward(GameState &state, GameUI &ui)
+	void forward(GameState &state)
 	{
 		if (current == maxForward) return;
 		//ui.selectedGameLocation = GameLocation();
