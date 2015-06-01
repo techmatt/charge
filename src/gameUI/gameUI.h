@@ -71,6 +71,10 @@ public:
     void mouseMove(Uint32 buttonState, int x, int y);
     void keyDown(SDL_Keycode key);
 
+
+	// TODO: this should be a vector
+	GameLocation selectedGameLocation;
+
 private:
 
     AppData &app;
@@ -137,9 +141,6 @@ private:
 
     ComponentInfo *selectedMenuComponent;
     ChargeType selectedMenuComponentColor;
-
-    // TODO: this should be a vector
-    GameLocation selectedGameLocation;
 
     bool backgroundDirty;
 

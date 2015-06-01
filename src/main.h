@@ -24,8 +24,9 @@ struct GameState;
 struct Charge;
 struct GameLocation;
 struct ComponentModifiers;
-struct AppData;
 struct BackBuffer;
+struct ComponentSet;
+struct AppData;
 class Renderer;
 class RendererSDL;
 class Texture;
@@ -62,7 +63,8 @@ class Texture;
 #include "gameUI/gameController.h"
 #include "game/buffer.h"
 
-
 #include "core/app.h"
+
+
 
 #endif

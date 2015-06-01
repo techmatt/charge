@@ -118,9 +118,9 @@ void GameUI::keyDown(SDL_Keycode key)
 		// undo and redo
 		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
 			if (keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_LSHIFT])
-				app.backBuffer.forward(app.state);
+				app.backBuffer.forward(app.state,app.ui);
 			else 
-				app.backBuffer.back(app.state);
+				app.backBuffer.back(app.state,app.ui);
 		}
 	}
 
@@ -150,6 +150,7 @@ void GameUI::removeHoverComponent()
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
+	app.backBuffer.save(app.state);
 }
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y)

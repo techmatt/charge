@@ -13,7 +13,7 @@ struct AppData
     //RendererSDL renderer;
 	
 	ComponentSet copyBuffer;
-	BackBuffer backBuffer = BackBuffer();
+	BackBuffer backBuffer;// = BackBuffer();
 };
 
 class App
