@@ -121,6 +121,7 @@ void GameUI::keyDown(SDL_Keycode key)
 				app.backBuffer.forward(app.state);
 			else 
 				app.backBuffer.back(app.state);
+            backgroundDirty = true;
 		}
 	}
 
