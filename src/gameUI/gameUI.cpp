@@ -121,6 +121,7 @@ void GameUI::keyDown(SDL_Keycode key)
 				app.backBuffer.forward(app.state,app.ui);
 			else 
 				app.backBuffer.back(app.state,app.ui);
+            backgroundDirty = true;
 		}
 	}
 
@@ -215,14 +216,17 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         if (button.name == "TotalCharge")
         {
             gameComponent->intrinsics.totalCharges = math::mod(gameComponent->intrinsics.totalCharges + delta, 0xFFFFFF);
+            app.controller.recordDesignAction();
         }
         if (button.name == "FirstEmission")
         {
             gameComponent->intrinsics.secondsBeforeFirstEmission = math::clamp(gameComponent->intrinsics.secondsBeforeFirstEmission + delta, 0, 1000);
+            app.controller.recordDesignAction();
         }
         if (button.name == "EmissionFrequency")
         {
             gameComponent->intrinsics.secondsPerEmission = math::clamp(gameComponent->intrinsics.secondsPerEmission + delta, 1, 1000);
+            app.controller.recordDesignAction();
         }
     }
     
@@ -244,6 +248,10 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             }
         }
         if (button.type == ButtonChargeColor)
+        {
+            app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
+        }
+        if (button.type == ButtonWireSpeed)
         {
             app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
         }
@@ -550,7 +558,9 @@ void GameUI::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, ComponentModifiers(ChargeNone, 2, (WireSpeedType)speed)));
+                ComponentModifiers modifier(ChargeNone, 2, (WireSpeedType)speed);
+                if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(info.name, modifier))
+                    buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, modifier));
             }
         }
         else if (info.name == "CircuitBoundary")
@@ -797,7 +807,7 @@ void GameUI::renderButtonBackground(const GameButton &button, bool selected)
 
         if (app.controller.editorMode == ModeEditLevel &&
             app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
-            (button.type == ButtonComponent || button.type == ButtonChargeColor))
+            (button.type == ButtonComponent || button.type == ButtonChargeColor || button.type == ButtonWireSpeed))
         {
             Texture &constructionTex = database().getTexture(app.renderer, "Construction");
             const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);

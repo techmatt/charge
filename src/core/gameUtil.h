@@ -146,6 +146,24 @@ public:
         return "Invalid";
     }
 
+    static string suffixFromSpeed(WireSpeedType speed)
+    {
+        switch (speed)
+        {
+        case WireMajorDelay:
+            return "MajorDelay";
+        case WireMinorDelay:
+            return "MinorDelay";
+        case WireStandard:
+            return "";
+        case WireMinorAccelerator:
+            return "MinorAccelerator";
+        case WireMajorAccelerator:
+            return "MajorAccelerator";
+        }
+        return "Invalid";
+    }
+
     static string speedToTextureName(WireSpeedType speed)
     {
         switch (speed)

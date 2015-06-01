@@ -27,6 +27,11 @@ struct ComponentBuildState
         components.insert("FilteredAmplifierGreen");
         components.insert("FilteredAmplifierBlue");
 
+        components.insert("WireMajorDelay");
+        components.insert("WireMinorDelay");
+        components.insert("WireMinorAccelerator");
+        components.insert("WireMajorAccelerator");
+
         recordColoredComponent("TeleportSource", false);
         recordColoredComponent("TeleportDestination", false);
         recordColoredComponent("ChargeFilter", false);
@@ -76,6 +81,6 @@ private:
 
     string annotateComponent(const string &componentName, const ComponentModifiers &modifiers)
     {
-        return componentName + GameUtil::suffixFromCharge(modifiers.color);
+        return componentName + GameUtil::suffixFromCharge(modifiers.color) + GameUtil::suffixFromSpeed(modifiers.speed);
     }
 };
