@@ -289,16 +289,11 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         if (button.name == "Start")
         {
-            if (app.controller.puzzleMode == ModeExecuting)
-            {
+            app.controller.designActionTaken = false;
+            app.controller.puzzleMode = ModeExecuting;
+            app.state.resetPuzzle();
+            if (app.controller.speed == Speed0x)
                 app.controller.speed = Speed1x;
-            }
-            else
-            {
-                app.controller.designActionTaken = false;
-                app.controller.puzzleMode = ModeExecuting;
-                app.state.resetPuzzle();
-            }
         }
         if (button.name == "Stop")
         {
@@ -340,7 +335,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 			}
         }
 
-        for (int speed = (int)Speed1x; speed <= (int)Speed50x; speed++)
+        for (int speed = (int)Speed0x; speed <= (int)Speed50x; speed++)
             if (button.name == buttonNameFromSpeed((GameSpeed)speed))
             {
                 app.controller.speed = (GameSpeed)speed;
@@ -597,18 +592,17 @@ void GameUI::updateButtonList()
     //
     // Add puzzle control buttons
     //
-    if (app.controller.puzzleMode != ModeExecuting || (app.controller.puzzleMode == ModeExecuting && app.controller.speed == Speed0x))
+    if (app.controller.puzzleMode == ModeDesign)
         buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    else if (app.controller.puzzleMode == ModeExecuting)
-        buttons.push_back(GameButton("Pause", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Stop", vec2i(1, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Save", vec2i(3, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Load", vec2i(4, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModePuzzle", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModeLevelEditor", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    if (app.controller.puzzleMode == ModeExecuting)
+        buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
-    for (int speed = (int)Speed1x; speed <= (int)Speed50x; speed++)
-        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed - 1, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    for (int speed = (int)Speed0x; speed <= (int)Speed50x; speed++)
+        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
     //
     // Add power source indicators

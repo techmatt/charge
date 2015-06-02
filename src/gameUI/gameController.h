@@ -37,7 +37,7 @@ inline string buttonNameFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
-    case Speed0x: return "invalid";
+    case Speed0x: return "speedPause";
     case Speed1x: return "speedX1";
     case Speed3x: return "speedX3";
     case Speed10x: return "speedX10";
