@@ -3,8 +3,10 @@
 #define __CHARGE_MAIN
 
 #include <SDL.h>
+#include <SDL_audio.h>
 #include <SDL_image.h>
 #include <SDL_TTF.h>
+#include <SDL_mixer.h>
 
 // TODO: try and link glew statically instead
 //#define GL3_PROTOTYPES 1
@@ -41,11 +43,13 @@ class Texture;
 #include "core/gameUtil.h"
 #include "core/SDLUtil.h"
 
+#include "audio/audioDevice.h"
+#include "audio/audioSample.h"
+
 #include "renderer/renderer.h"
 #include "renderer/rendererSDL.h"
 #include "renderer/rendererOpenGL.h"
 #include "renderer/texture.h"
-
 
 #include "game/misc.h"
 #include "game/component.h"

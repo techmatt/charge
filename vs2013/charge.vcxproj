@@ -121,6 +121,8 @@
     <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\audio\audioDevice.h" />
+    <ClInclude Include="..\src\audio\audioSample.h" />
     <ClInclude Include="..\src\core\app.h" />
     <ClInclude Include="..\src\core\constants.h" />
     <ClInclude Include="..\src\core\gameUtil.h" />

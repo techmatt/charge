@@ -8,6 +8,7 @@ void GameController::init()
     designActionTaken = false;
     editorMode = ModeEditLevel;
     currentPuzzleIndex = 0;
+    fractionalSpeedTicksLeft = 0;
 }
 
 void GameController::step()
@@ -20,10 +21,19 @@ void GameController::step()
 
     if (puzzleMode == ModeExecuting)
     {
-        const int tickCount = ticksFromSpeed(speed);
-        for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
+        if (fractionalSpeedTicksLeft)
         {
-            app.state.step();
+            fractionalSpeedTicksLeft--;
+        }
+        else
+        {
+            const int tickCount = ticksFromSpeed(speed);
+            if (speed == SpeedQuarter)
+                fractionalSpeedTicksLeft = 3;
+            for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
+            {
+                app.state.step();
+            }
         }
     }
 }

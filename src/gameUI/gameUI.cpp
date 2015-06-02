@@ -335,7 +335,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 			}
         }
 
-        for (int speed = (int)Speed0x; speed <= (int)Speed50x; speed++)
+        for (int speed = (int)Speed0x; speed <= (int)Speed5x; speed++)
             if (button.name == buttonNameFromSpeed((GameSpeed)speed))
             {
                 app.controller.speed = (GameSpeed)speed;
@@ -601,7 +601,7 @@ void GameUI::updateButtonList()
     buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
-    for (int speed = (int)Speed0x; speed <= (int)Speed50x; speed++)
+    for (int speed = (int)Speed0x; speed <= (int)Speed5x; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
     //
