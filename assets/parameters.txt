@@ -1,7 +1,7 @@
 
 assetDir = ../assets/
 
-canonicalDims = 668, 464
+canonicalDims = 672, 464
 
 boardDims = 24, 24
 
@@ -14,7 +14,7 @@ canonicalCellSize = 16
 componentMenuCanonicalStart = 403, 8
 componentMenuCanonicalEntrySize = 37
 
-puzzleMenuCanonicalStart = 7, 420
+puzzleMenuCanonicalStart = 7, 418
 puzzleMenuCanonicalEntrySize = 24
 
 attributeMenuCanonicalStart = 240, 415

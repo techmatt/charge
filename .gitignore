@@ -102,3 +102,4 @@
 /vs2013/x64/Release/legacyLoader.obj
 *.obj
 *.ipch
+vs2013/x64/Debug/charge.tlog/unsuccessfulbuild

@@ -339,6 +339,12 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 				app.backBuffer.reset(app.state);
 			}
         }
+
+        for (int speed = (int)Speed1x; speed <= (int)Speed50x; speed++)
+            if (button.name == buttonNameFromSpeed((GameSpeed)speed))
+            {
+                app.controller.speed = (GameSpeed)speed;
+            }
     }
 }
 
@@ -601,6 +607,9 @@ void GameUI::updateButtonList()
     buttons.push_back(GameButton("ModePuzzle", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("ModeLevelEditor", vec2i(7, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
+    for (int speed = (int)Speed1x; speed <= (int)Speed50x; speed++)
+        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed - 1, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+
     //
     // Add power source indicators
     //
@@ -649,6 +658,12 @@ void GameUI::updateBackgroundObjects()
             selected |= (button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
             selected |= (button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
             selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
+        }
+        if (button.type == ButtonPuzzleControl)
+        {
+            selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
+            selected |= (button.name == "ModePuzzle" && app.controller.editorMode == ModePlayLevel);
+            selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == ModeEditLevel);
         }
         renderButtonBackground(button, selected);
     }
