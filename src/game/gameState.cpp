@@ -414,6 +414,9 @@ void GameState::step(AppData &app)
 
     if (!chargeGoalFound)
         victory = false;
+
+    if (victory)
+        app.audio.playEffect("Victory");
     
     stepCount++;
 }

@@ -148,6 +148,8 @@ private:
 
     map<string, Texture*> textCache;
 
+    RenderTarget trailTexture;
+
 	// Various sets of stored lists of components used for placement and 
 	ComponentSelection selectedComponents;
 	ComponentSet copyBuffer;

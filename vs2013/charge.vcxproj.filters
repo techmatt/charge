@@ -102,6 +102,9 @@
     <ClCompile Include="..\src\gameUI\selection.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\renderer\renderTarget.cpp">
+      <Filter>renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -246,6 +249,9 @@
       <Filter>gameUI</Filter>
     </ClInclude>
     <ClInclude Include="..\src\audio\audioDevice.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\renderer\renderTarget.h">
       <Filter>renderer</Filter>
     </ClInclude>
   </ItemGroup>

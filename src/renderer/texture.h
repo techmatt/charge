@@ -58,8 +58,6 @@ public:
 
     void bindOpenGL();
 
-    void loadRenderTarget(int width, int height);
-
     const Bitmap& bmp() const
     {
         return _bmp;
@@ -84,5 +82,4 @@ private:
     SDL_Texture* _SDLTexture;
     SDL_Surface* _SDLSurface;
     GLuint _OpenGLTexture;
-    bool _renderTarget;
 };

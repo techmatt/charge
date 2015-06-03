@@ -1,5 +1,6 @@
 
 //http://lazyfoo.net/tutorials/SDL/21_sound_effects_and_music/index.php
+//https://www.freesound.org/people/grunz/sounds/109662/
 
 class AudioDevice
 {
@@ -28,7 +29,9 @@ public:
         Mix_PlayMusic(music, -1);
 
         playSoundEffects = true;
-        playMusic = true;
+        playMusic = false;
+
+        setMusic(playMusic);
     }
 
     void playEffect(const string &name)
