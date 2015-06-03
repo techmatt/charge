@@ -3,6 +3,8 @@
 
 void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 {
+    _dimensions = dimensions;
+
     glEnable(GL_TEXTURE_2D);
 
     glGenTextures(1, &_texture);
@@ -34,12 +36,13 @@ void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 
 void RenderTarget::bindAsRenderTarget()
 {
-    glBindFramebuffer(GL_TEXTURE_2D, _frameBuffer);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, _frameBuffer);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
 }
 
 void RenderTarget::unbindRenderTarget()
 {
-    glBindFramebuffer(GL_TEXTURE_2D, 0);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 }
 
 void RenderTarget::bindAsTexture()
@@ -51,9 +54,9 @@ Bitmap RenderTarget::getImage()
 {
     Bitmap result(_dimensions.x, _dimensions.y);
 
-    glBindFramebuffer(GL_TEXTURE_2D, _frameBuffer);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, _frameBuffer);
     glReadPixels(0, 0, _dimensions.x, _dimensions.y, GL_RGBA, GL_UNSIGNED_BYTE, result.data());
-    glBindFramebuffer(GL_TEXTURE_2D, 0);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
 
     return result;
 }

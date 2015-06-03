@@ -19,6 +19,8 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
+
+    trailTexture.init(app.renderer, vec2i(app.renderer.getWindowSize()));
 }
 
 Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
@@ -456,6 +458,14 @@ void GameUI::render()
     }
 
     renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
+
+    glDisable(GL_DEPTH_TEST);
+
+    trailTexture.bindAsRenderTarget();
+    glClearColor(0.5f, 0.5f, 0.7f, 0.4f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    trailTexture.unbindRenderTarget();
+    //LodePNG::save(trailTexture.getImage(), "test.png");
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
