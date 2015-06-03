@@ -11,7 +11,7 @@ struct Charge
     //
     // if the charge has reached its destination, process the component
     //
-    void interactWithDestination(GameState &state);
+    void interactWithDestination(GameState &state, AppData &app);
 
     //
     // if the charge has reached its destination, find a new component or destroy the charge if none can be found

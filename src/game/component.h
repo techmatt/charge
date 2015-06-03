@@ -98,7 +98,7 @@ struct Component
     }
     ~Component();
 
-    void tick();
+    void tick(AppData &app);
     void tickGraphics();
     void resetPuzzle();
     void resetPowerSource();

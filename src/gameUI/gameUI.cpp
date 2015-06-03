@@ -105,22 +105,22 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, app.puzzles.puzzleList.size());
         loadPuzzle();
-		app.backBuffer.reset(app.state);
+		app.undoBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, app.puzzles.puzzleList.size());
         loadPuzzle();
-		app.backBuffer.reset(app.state);
+		app.undoBuffer.reset(app.state);
     }
 	if (key == SDLK_z)
 	{
 		// undo and redo
 		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
 			if (keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_LSHIFT])
-				app.backBuffer.forward(app.state);
+				app.undoBuffer.forward(app.state);
 			else 
-				app.backBuffer.back(app.state);
+				app.undoBuffer.back(app.state);
             backgroundDirty = true;
 		}
 	}
@@ -151,7 +151,7 @@ void GameUI::removeHoverComponent()
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
-	app.backBuffer.save(app.state);
+	app.undoBuffer.save(app.state);
 }
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
@@ -312,6 +312,14 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         {
             app.controller.editorMode = ModeEditLevel;
         }
+        if (button.name == "Music")
+        {
+            app.audio.setMusic(!app.audio.playMusic);
+        }
+        if (button.name == "SoundEffect")
+        {
+            app.audio.playSoundEffects = !app.audio.playSoundEffects;
+        }
         if (button.name == "Save")
         {
             string filename = FileDialog::showSave();
@@ -331,7 +339,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 			if (filename.size() > 0)
 			{
 				app.state.loadPuzzle(filename);
-				app.backBuffer.reset(app.state);
+				app.undoBuffer.reset(app.state);
 			}
         }
 
@@ -386,7 +394,7 @@ void GameUI::addHoverComponent()
             app.controller.designActionTaken = true;
             backgroundDirty = true;
 
-			app.backBuffer.save(app.state); //saves to the backwards/forwards buffer
+			app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
         }
     }
     else if (app.state.board.coordValidForNewComponent(location.boardPos))
@@ -396,7 +404,7 @@ void GameUI::addHoverComponent()
         app.controller.designActionTaken = true;
         backgroundDirty = true;
 
-		app.backBuffer.save(app.state); //saves to the backwards/forwards buffer
+		app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
     }
 }
 
@@ -604,6 +612,9 @@ void GameUI::updateButtonList()
     for (int speed = (int)Speed0x; speed <= (int)Speed5x; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
 
+    buttons.push_back(GameButton("Music", vec2i(6, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("SoundEffect", vec2i(7, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+
     //
     // Add power source indicators
     //
@@ -658,6 +669,8 @@ void GameUI::updateBackgroundObjects()
             selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
             selected |= (button.name == "ModePuzzle" && app.controller.editorMode == ModePlayLevel);
             selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == ModeEditLevel);
+            selected |= (button.name == "Music" && app.audio.playMusic);
+            selected |= (button.name == "SoundEffect" && app.audio.playSoundEffects);
         }
         renderButtonBackground(button, selected);
     }

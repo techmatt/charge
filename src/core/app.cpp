@@ -23,14 +23,16 @@ int App::run()
         return 1;
     }
 
+    data.audio.init();
+
     data.renderer.init(window);
 
     database().initTextures(data.renderer);
 
     data.state.init();
 
-	data.backBuffer.init();
-	data.backBuffer.reset(data.state);
+	data.undoBuffer.init();
+	data.undoBuffer.reset(data.state);
 
     data.ui.init();
 

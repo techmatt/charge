@@ -67,7 +67,7 @@ void Component::tickGraphics()
     }
 }
 
-void Component::tick()
+void Component::tick(AppData &app)
 {
 	if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
@@ -81,6 +81,8 @@ void Component::tick()
         }
         else
         {
+            // TODO: make a good power source sound
+            //app.audio.playEffect("PowerSource");
             chargesToEmit.push_back( make_pair(modifiers.color, location) );
             
             stepsUntilEmission = intrinsics.secondsPerEmission * constants::stepsPerSecond;

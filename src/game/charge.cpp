@@ -36,7 +36,7 @@ void Charge::advance(GameState &state)
 	}
 }
 
-void Charge::interactWithDestination(GameState &state)
+void Charge::interactWithDestination(GameState &state, AppData &app)
 {
     if (markedForDeletion || totalTransitTime == 0) return;
 
@@ -54,10 +54,12 @@ void Charge::interactWithDestination(GameState &state)
         showDeathAnimation = false;
         if (current->storedCharge == ChargeNone)
         {
+            app.audio.playEffect("AmpCharge");
             current->storedCharge = level;
         }
         else
         {
+            app.audio.playEffect("AmpDischarge");
             const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeBlue));
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
@@ -71,10 +73,12 @@ void Charge::interactWithDestination(GameState &state)
         showDeathAnimation = false;
         if (current->storedCharge == ChargeNone)
         {
+            app.audio.playEffect("AmpCharge");
             current->storedCharge = (ChargeType)std::min((int)level, (int)current->modifiers.color);
         }
         else
         {
+            app.audio.playEffect("AmpDischarge");
             const ChargeType emittedLevel = current->modifiers.color;
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
@@ -135,6 +139,7 @@ void Charge::interactWithDestination(GameState &state)
 
     if (current->info->name == "Splitter")
     {
+        app.audio.playEffect("Splitter");
         if (level != ChargeRed)
         {
             markedForDeletion = true;

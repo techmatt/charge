@@ -15,7 +15,7 @@ struct GameState
 
     void addNewComponent(Component *component, bool addCircuitComponents = true, bool updateConnections = true);
     void removeComponent(Component *component, bool updateConnections = true);
-    void step();
+    void step(AppData &app);
 
     
     // given a circuit boundary component, find its neighbor on the board, if any.

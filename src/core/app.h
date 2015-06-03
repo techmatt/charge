@@ -11,8 +11,9 @@ struct AppData
     PuzzleManager puzzles;
     RendererOpenGL renderer;
     //RendererSDL renderer;
+    AudioDevice audio;
 	
-	BackBuffer backBuffer;// = BackBuffer();
+	UndoBuffer undoBuffer;
 };
 
 class App

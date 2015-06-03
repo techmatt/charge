@@ -32,7 +32,7 @@ void GameController::step()
                 fractionalSpeedTicksLeft = 3;
             for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
             {
-                app.state.step();
+                app.state.step(app);
             }
         }
     }

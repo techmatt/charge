@@ -1,91 +1,69 @@
 
-#if 0
-struct AudioSample
-{
-
-    void load(const string &filename)
-    {
-        // the specs, length and buffer of our wav are filled
-        if (SDL_LoadWAV(filename.c_str(), &spec, &buffer, &length) == NULL)
-        {
-            cout << "Failed to load " << filename << endl;
-            return;
-        }
-
-        // set the callback function
-        spec.callback = audioCallback;
-        spec.userdata = this;
-        // set our global static variables
-        audio_pos = wav_buffer; // copy sound buffer
-        audio_len = wav_length; // copy file length
-
-        /* Open the audio device */
-        if (SDL_OpenAudio(&wav_spec, NULL) < 0){
-            fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-            exit(-1);
-        }
-
-        /* Start playing */
-        SDL_PauseAudio(0);
-
-        // wait until we're don't playing
-        while (audio_len > 0) {
-            SDL_Delay(100);
-        }
-
-        // shut everything down
-        SDL_CloseAudio();
-        SDL_FreeWAV(wav_buffer);
-    }
-
-    Uint32 length;
-    Uint8 *buffer;
-    SDL_AudioSpec spec;
-};
+//http://lazyfoo.net/tutorials/SDL/21_sound_effects_and_music/index.php
 
 class AudioDevice
 {
-    static void audioCallback(void *userData, Uint8 *stream, int requestedLength)
+public:
+    AudioDevice()
     {
-        AudioSample &sample = *(AudioSample *)userData;
-        if (sample.length == 0)
-            return;
-
-        int samplesToProcess = (requestedLength > sample.length ? sample.length : requestedLength);
-        SDL_MixAudio(stream, audio_pos, len, SDL_MIX_MAXVOLUME);// mix from one buffer into another
-
-        audio_pos += len;
-        audio_len -= len;
+        music = nullptr;
     }
 
     void init()
     {
-        SDL_AudioSpec desiredSpec;
-        SDL_AudioDeviceID dev;
-
-        SDL_zero(desiredSpec);
-        desiredSpec.freq = 44100;
-        desiredSpec.format = AUDIO_F32;
-        desiredSpec.channels = 2;
-        desiredSpec.samples = 4096;
-        desiredSpec.callback = audioCallback;
-
-        dev = SDL_OpenAudioDevice(NULL, 0, &desiredSpec, &spec, SDL_AUDIO_ALLOW_ANY_CHANGE);
-        if (dev == 0)
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
         {
-            cout << "Failed to open audio: " << SDL_GetError() << endl;
+            cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << endl;
             return;
         }
 
-        SDL_PauseAudioDevice(dev, 0);  // start audio playing.
-        //SDL_Delay(5000);  // let the audio callback play some sound for 5 seconds.
-        //SDL_CloseAudioDevice(dev);
+        const string musicFilename = params().assetDir + "sounds/Music.wav";
+        music = Mix_LoadMUS(musicFilename.c_str());
+        if (music == nullptr)
+        {
+            cout << "Failed to load music file: " << musicFilename << endl;
+            return;
+        }
+
+        Mix_PlayMusic(music, -1);
+
+        playSoundEffects = true;
+        playMusic = true;
     }
 
-    RunningAudioSample channels
+    void playEffect(const string &name)
+    {
+        if (!playSoundEffects)
+            return;
+        if (audioEffects.count(name) == 0)
+        {
+            const string filename = params().assetDir + "sounds/" + name + ".wav";
+            Mix_Chunk *newEffect = Mix_LoadWAV(filename.c_str());
+            if (newEffect == NULL)
+            {
+                cout << "Failed to load sound file: " << name << endl;
+                return;
+            }
+            audioEffects[name] = newEffect;
+        }
+        
+        Mix_Chunk *effect = audioEffects[name];
+        Mix_PlayChannel(-1, effect, 0);
+    }
 
-    SDL_AudioSpec spec;
-    SDL_AudioDeviceID device; 
+    void setMusic(bool newPlayState)
+    {
+        if (newPlayState)
+            Mix_ResumeMusic();
+        else
+            Mix_PauseMusic();
+        playMusic = newPlayState;
+    }
+
+    bool playSoundEffects;
+    bool playMusic;
+
+private:
+    map<string, Mix_Chunk *> audioEffects;
+    Mix_Music *music;
 };
-
-#endif

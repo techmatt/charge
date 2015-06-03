@@ -70,7 +70,7 @@ struct ComponentSet
 	static ComponentSet* allToBuffer(const GameState &state);
 };
 
-struct BackBuffer
+struct UndoBuffer
 {
 	void init() {
 		int current=0;

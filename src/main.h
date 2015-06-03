@@ -26,7 +26,7 @@ struct GameState;
 struct Charge;
 struct GameLocation;
 struct ComponentModifiers;
-struct BackBuffer;
+struct UndoBuffer;
 struct ComponentSet;
 struct AppData;
 class Renderer;
@@ -44,7 +44,6 @@ class Texture;
 #include "core/SDLUtil.h"
 
 #include "audio/audioDevice.h"
-#include "audio/audioSample.h"
 
 #include "renderer/renderer.h"
 #include "renderer/rendererSDL.h"

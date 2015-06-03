@@ -212,7 +212,7 @@ void GameState::removeComponent(Component *component, bool updateConnections)
         updateAll();
 }
 
-void GameState::step()
+void GameState::step(AppData &app)
 {
     for (Component * c : components)
     {
@@ -248,7 +248,7 @@ void GameState::step()
 	for (const auto &component : components)
 	{
 		component->willTrigger = false;
-		component->tick();
+		component->tick(app);
 		component->numChargesTargetingThisTick = 0;
         component->heldCharge = ChargeNone;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
@@ -360,7 +360,7 @@ void GameState::step()
 
 	// now deal with charges that interact with their location
     for (Charge &c : charges)
-        c.interactWithDestination(*this);
+        c.interactWithDestination(*this, app);
 
     //
     // Remove dead charges
@@ -371,6 +371,7 @@ void GameState::step()
         
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
+            app.audio.playEffect("ChargeDeath");
             explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, charge.interpolation(), charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
         }
 

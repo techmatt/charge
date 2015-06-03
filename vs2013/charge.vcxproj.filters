@@ -19,9 +19,6 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{0e89afc4-841f-4bc6-b4e9-86efa7b47b92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="audio">
-      <UniqueIdentifier>{37d42db2-63be-4a22-b5a2-701ddff3a07c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\board.cpp">
@@ -249,10 +246,7 @@
       <Filter>gameUI</Filter>
     </ClInclude>
     <ClInclude Include="..\src\audio\audioDevice.h">
-      <Filter>audio</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\audio\audioSample.h">
-      <Filter>audio</Filter>
+      <Filter>renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
