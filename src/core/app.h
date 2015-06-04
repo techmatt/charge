@@ -5,6 +5,16 @@ struct AppData
     {
         
     }
+
+    void playEffect(const string &name, const GameLocation &location)
+    {
+        Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
+        if (!location.inCircuit() || (selectedComponent != nullptr && selectedComponent->location.boardPos == location.boardPos))
+        {
+            audio.playEffect(name, false);
+        }
+    }
+
     GameController controller;
     GameUI ui;
     GameState state;

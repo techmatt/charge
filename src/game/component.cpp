@@ -83,7 +83,7 @@ void Component::tick(AppData &app)
         else
         {
             // TODO: make a good power source sound
-            //app.audio.playEffect("PowerSource");
+            //app.playEffect("PowerSource");
             chargesToEmit.push_back( make_pair(modifiers.color, location) );
             
             stepsUntilEmission = intrinsics.secondsPerEmission * constants::stepsPerSecond;

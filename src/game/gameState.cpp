@@ -375,7 +375,7 @@ void GameState::step(AppData &app)
         
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
-            app.audio.playEffect("ChargeDeath", charge.destination.inCircuit());
+            app.playEffect("ChargeDeath", charge.destination);
             explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, charge.interpolation(), charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
         }
 

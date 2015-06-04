@@ -187,7 +187,9 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         {
             GameLocation hover = hoverLocation(false);
             if (hover.valid())
+            {
                 selectedGameLocation = hover;
+            }
         }
         else
         {

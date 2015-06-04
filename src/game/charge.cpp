@@ -54,12 +54,12 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
         showDeathAnimation = false;
         if (current->storedCharge == ChargeNone)
         {
-            app.audio.playEffect("AmpCharge", current->location.inCircuit());
+            app.playEffect("AmpCharge", current->location);
             current->storedCharge = level;
         }
         else
         {
-            app.audio.playEffect("AmpDischarge", current->location.inCircuit());
+            app.playEffect("AmpDischarge", current->location);
             const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeBlue));
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
@@ -73,12 +73,12 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
         showDeathAnimation = false;
         if (current->storedCharge == ChargeNone)
         {
-            app.audio.playEffect("AmpCharge", current->location.inCircuit());
+            app.playEffect("AmpCharge", current->location);
             current->storedCharge = (ChargeType)std::min((int)level, (int)current->modifiers.color);
         }
         else
         {
-            app.audio.playEffect("AmpDischarge", current->location.inCircuit());
+            app.playEffect("AmpDischarge", current->location);
             const ChargeType emittedLevel = current->modifiers.color;
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
@@ -139,7 +139,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 
     if (current->info->name == "Splitter")
     {
-        app.audio.playEffect("Splitter", current->location.inCircuit());
+        app.playEffect("Splitter", current->location);
         if (level != ChargeRed)
         {
             markedForDeletion = true;
@@ -187,7 +187,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 		}
 		else
 		{
-            app.audio.playEffect("Teleporter", current->location.inCircuit());
+            app.playEffect("Teleporter", current->location);
 			setNewDestination(state,*(current->target), true);
 		}
 	}
