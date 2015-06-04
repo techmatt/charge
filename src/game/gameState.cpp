@@ -123,6 +123,7 @@ void GameState::resetPuzzle()
     victory = false;
     stepCount = 0;
     globalRotationOffset = 0.0f;
+    victoryChargeScaleFactor = 1.0f;
     charges.clear();
     explodingCharges.clear();
     for (Component *c : components)
@@ -223,7 +224,10 @@ void GameState::step(AppData &app)
     globalRotationOffset = fmod(globalRotationOffset, 360.0f);
 
     if (victory)
+    {
+        victoryChargeScaleFactor = min(victoryChargeScaleFactor * 1.01f, 1.5f);
         return;
+    }
 
 	//
 	// Advance exploding charges

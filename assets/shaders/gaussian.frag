@@ -32,7 +32,7 @@ void main(void) {
 
 	vec4 v = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3 + c4 * w4;
 
-	v = vec4(v.xyz * 1.04f, v.w);
+	v = vec4(v.xyz * 1.05f, v.w * 1.01f);
 	//float alpha = 0.0f;
 	//float alpha = min(1.0, length(v.xyz));
 	//v.w = alpha;

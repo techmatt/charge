@@ -114,9 +114,9 @@ private:
     void renderSpokesCircuit(const Component &component);
 
     void renderCharge(const Charge &charge, bool trailRender);
-    void renderExplodingCharge(const ExplodingCharge &charge, bool trailRender);
+    void renderExplodingCharge(const ExplodingCharge &charge);
 
-    void renderChargeCircuit(const Charge &charge);
+    void renderChargeCircuit(const Charge &charge, bool trailRender);
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderButtonBackground(const GameButton &button, bool selected);

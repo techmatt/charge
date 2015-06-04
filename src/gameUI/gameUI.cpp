@@ -449,6 +449,10 @@ void GameUI::render()
         renderButtonForeground(button, false);
     }
 
+    //if (GetAsyncKeyState(VK_F10))
+    if (app.controller.speed <= Speed3x)
+        renderTrails();
+
     for (const auto &charge : app.state.charges)
     {
         renderCharge(charge, false);
@@ -456,15 +460,12 @@ void GameUI::render()
 
     for (const auto &charge : app.state.explodingCharges)
     {
-        renderExplodingCharge(charge, false);
+        renderExplodingCharge(charge);
     }
 
     renderHoverComponent();
 
     renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
-
-    //if (GetAsyncKeyState(VK_F10))
-    renderTrails();
 }
 
 void GameUI::renderTrails()
@@ -1151,10 +1152,15 @@ void GameUI::renderComponents()
 
 void GameUI::renderCharge(const Charge &charge, bool trailRender)
 {
-    renderChargeCircuit(charge);
+    renderChargeCircuit(charge, trailRender);
     pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
+    
     if (trailRender)
         screen.second *= constants::trailExpansionFactor;
+    
+    Component *component = app.state.getComponent(charge.destination);
+    if (component != nullptr && component->heldCharge == charge.level && component->info->name == "ChargeGoal")
+        screen.second *= app.state.victoryChargeScaleFactor;
 
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
@@ -1162,15 +1168,12 @@ void GameUI::renderCharge(const Charge &charge, bool trailRender)
     render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
-void GameUI::renderExplodingCharge(const ExplodingCharge &charge, bool trailRender)
+void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 {
     renderExplodingChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) * constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
-    
-    float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
-    if (trailRender)
-        scale *= constants::trailExpansionFactor;
+    const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
 
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
@@ -1179,14 +1182,21 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge, bool trailRend
     render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
-void GameUI::renderChargeCircuit(const Charge &charge)
+void GameUI::renderChargeCircuit(const Charge &charge, bool trailRender)
 {
     if (!charge.source.inCircuit() || !charge.destination.inCircuit()) return;
     if (charge.source.boardPos != charge.destination.boardPos) return;
     if (activeCircuit() == nullptr || charge.source.boardPos != activeCircuit()->location.boardPos) return;
 
-    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
+    pair<vec2f, float> screen = GameUtil::computeChargeScreenPosCircuit(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
+
+    if (trailRender)
+        screen.second *= constants::trailExpansionFactor;
+
+    Component *component = app.state.getComponent(charge.destination);
+    if (component != nullptr && component->heldCharge == charge.level && component->info->name == "ChargeGoal")
+        screen.second *= app.state.victoryChargeScaleFactor;
 
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
     render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);

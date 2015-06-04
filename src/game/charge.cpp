@@ -183,7 +183,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 		if (current->target == nullptr || !current->target->willAcceptCharge(state, *this))
 		{
 			markedForDeletion = true;
-			showDeathAnimation = false;
+			showDeathAnimation = true;
 		}
 		else
 		{

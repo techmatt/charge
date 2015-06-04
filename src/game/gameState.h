@@ -57,6 +57,8 @@ struct GameState
     float globalRotationOffset;
     bool victory;
 
+    float victoryChargeScaleFactor;
+
     //
     // semantic puzzle name
     //

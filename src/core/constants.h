@@ -21,7 +21,7 @@ namespace constants
 
     static const float canonicalChargeSize = 6.5f;
 
-    static const float trailExpansionFactor = 1.15f;
+    static const float trailExpansionFactor = 1.25f;
 
     static const int deathTrapDuration = chargeRequiredTimeDifference + 2;
 
