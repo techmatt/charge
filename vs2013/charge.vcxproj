@@ -178,6 +178,8 @@
     <Text Include="..\renderingNotes.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\assets\shaders\gaussian.frag" />
+    <None Include="..\assets\shaders\gaussian.vert" />
     <None Include="..\assets\shaders\quad.frag" />
     <None Include="..\assets\shaders\quad.vert" />
     <None Include="..\src\mLib\grid2.inl" />

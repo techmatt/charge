@@ -31,6 +31,11 @@ public:
 
     void bindAsTexture();
 
+    vec2i dimensions() const
+    {
+        return _dimensions;
+    }
+
 private:
     void initInternal()
     {

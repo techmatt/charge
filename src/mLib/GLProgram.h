@@ -113,6 +113,7 @@ public:
         bind();
         transformLocation = glGetUniformLocation(shaderProgram, "transform");
         colorLocation = glGetUniformLocation(shaderProgram, "color");
+        kernelOffsetLocation = glGetUniformLocation(shaderProgram, "kernelOffset");
     }
 
     void bind()
@@ -134,6 +135,11 @@ public:
         glUniform4f(colorLocation, color.x, color.y, color.z, color.w);
     }
 
+    void setKernelOffset(const vec2f &kernelOffset)
+    {
+        glUniform2f(kernelOffsetLocation, kernelOffset.x, kernelOffset.y);
+    }
+
 private:
 
     //
@@ -149,6 +155,7 @@ private:
 
     GLint transformLocation;
     GLint colorLocation;
+    GLint kernelOffsetLocation;
 
     /*
     glUseProgram(0);

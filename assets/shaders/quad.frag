@@ -10,4 +10,5 @@ uniform vec4 color;
  
 void main(void) {
 	gl_FragColor = texture(sampler, ex_TexCoord).xyzw * color;
+	//gl_FragColor = vec4(texture(sampler, ex_TexCoord).xyz, 0.5f) * color;
 }

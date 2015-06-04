@@ -89,6 +89,8 @@ private:
 
     void render(const UIRenderObject &o);
 
+    void renderTrails();
+
     void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, float rotation)
     {
         backgroundObjects.push_back(UIRenderObject(tex, rect, depth, rotation));
@@ -111,8 +113,8 @@ private:
     void renderSpokes(const Component &component);
     void renderSpokesCircuit(const Component &component);
 
-    void renderCharge(const Charge &charge);
-    void renderExplodingCharge(const ExplodingCharge &charge);
+    void renderCharge(const Charge &charge, bool trailRender);
+    void renderExplodingCharge(const ExplodingCharge &charge, bool trailRender);
 
     void renderChargeCircuit(const Charge &charge);
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
@@ -148,7 +150,8 @@ private:
 
     map<string, Texture*> textCache;
 
-    RenderTarget trailTexture;
+    RenderTarget trailTexture0;
+    RenderTarget trailTexture1;
 
 	// Various sets of stored lists of components used for placement and 
 	ComponentSelection selectedComponents;

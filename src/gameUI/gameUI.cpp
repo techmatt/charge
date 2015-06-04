@@ -20,7 +20,8 @@ void GameUI::init()
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
 
-    trailTexture.init(app.renderer, vec2i(app.renderer.getWindowSize()));
+    trailTexture0.init(app.renderer, vec2i(app.renderer.getWindowSize()));
+    trailTexture1.init(app.renderer, vec2i(app.renderer.getWindowSize()));
 }
 
 Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
@@ -449,23 +450,96 @@ void GameUI::render()
 
     for (const auto &charge : app.state.charges)
     {
-        renderCharge(charge);
+        renderCharge(charge, false);
     }
 
     for (const auto &charge : app.state.explodingCharges)
     {
-        renderExplodingCharge(charge);
+        renderExplodingCharge(charge, false);
     }
 
     renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
 
+    renderTrails();
+}
+
+#include <Windows.h>
+
+void GameUI::renderTrails()
+{
     glDisable(GL_DEPTH_TEST);
 
-    trailTexture.bindAsRenderTarget();
-    glClearColor(0.5f, 0.5f, 0.7f, 0.4f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    trailTexture.unbindRenderTarget();
-    //LodePNG::save(trailTexture.getImage(), "test.png");
+    //
+    // additively render charges to trailTexture0
+    //
+    trailTexture0.bindAsRenderTarget();
+    
+    //glClear(GL_COLOR_BUFFER_BIT);
+    //app.renderer.render(database().getTexture(app.renderer, "Border"), rect2f(100.0f, 100.0f, 150.0f, 150.0f), 0.5f, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+    for (const auto &charge : app.state.charges)
+        renderCharge(charge, true);
+    for (const auto &charge : app.state.explodingCharges)
+        renderExplodingCharge(charge, true);
+
+    for (const UIRenderObject &o : backgroundObjects)
+    {
+        if (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge)
+        {
+            const vec4f color = o.dynamicComponent->modifiers.storedChargeColor;
+            //Texture &t = database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers);
+            Texture &t = *o.tex;
+            render(t, o.rect, o.depth, color);
+        }
+    }
+
+    trailTexture0.unbindRenderTarget();
+
+    //LodePNG::save(trailTexture0.getImage(), "trailTextureA.png");
+
+    //
+    // blur in X to trailTexture1
+    //
+    trailTexture1.bindAsRenderTarget();
+
+    trailTexture0.bindAsTexture();
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    app.renderer.renderGaussian(vec2f(1.0f, 0.0f) / (float)trailTexture0.dimensions().x);
+    
+    trailTexture1.unbindRenderTarget();
+
+    //LodePNG::save(trailTexture1.getImage(), "trailTextureB.png");
+
+    //
+    // blur in Y back to trailTexture0
+    //
+    trailTexture0.bindAsRenderTarget();
+
+    trailTexture1.bindAsTexture();
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
+
+    trailTexture0.unbindRenderTarget();
+
+    //LodePNG::save(trailTexture0.getImage(), "trailTextureC.png");
+
+    //
+    // render to screen
+    //
+
+    trailTexture0.bindAsTexture();
+    app.renderer.renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 0.0f));
+
+    glEnable(GL_DEPTH_TEST);
+
+    if (GetAsyncKeyState(VK_F8))
+    {
+        cout << "Saving trail textures..." << endl;
+        LodePNG::save(trailTexture0.getImage(), "trailTexture0.png");
+        LodePNG::save(trailTexture1.getImage(), "trailTexture1.png");
+    }
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
@@ -1062,16 +1136,25 @@ void GameUI::renderComponents()
     }
 }
 
-void GameUI::renderCharge(const Charge &charge)
+void GameUI::renderCharge(const Charge &charge, bool trailRender)
 {
     renderChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+
+    if (trailRender)
+    {
+        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+    }
+    else
+    {
+        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+    }
+
 }
 
-void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
+void GameUI::renderExplodingCharge(const ExplodingCharge &charge, bool trailRender)
 {
     renderExplodingChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
@@ -1081,7 +1164,14 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 
     const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
 
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
+    if (trailRender)
+    {
+        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
+    }
+    else
+    {
+        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
+    }
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge)

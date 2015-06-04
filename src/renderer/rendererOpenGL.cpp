@@ -21,6 +21,9 @@ void RendererOpenGL::init(SDL_Window *window)
     MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
 
     const string shaderDir = params().assetDir + "shaders/";
+
+    _gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
+
     _quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
     _quadProgram.bind();
 
@@ -37,6 +40,8 @@ void RendererOpenGL::init(SDL_Window *window)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glBlendEquation(GL_FUNC_ADD);
+
+    _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
 
     _font = TTF_OpenFont((params().assetDir + "fonts/arial.ttf").c_str(), 50);
     
@@ -101,6 +106,31 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
     _quadProgram.setColor(color);
     _quad.render();
+}
+
+void RendererOpenGL::renderFullScreen(const vec4f &color)
+{
+    _quadProgram.setTransform(_quadToNDC);
+    _quadProgram.setColor(color);
+    _quad.render();
+}
+
+void RendererOpenGL::renderGaussian(const vec2f &kernelOffset)
+{
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    _gaussianProgram.bind();
+
+    _gaussianProgram.setTransform(_quadToNDC);
+    _gaussianProgram.setColor(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+    _gaussianProgram.setKernelOffset(kernelOffset);
+    _quad.render();
+
+    _quadProgram.bind();
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
 void RendererOpenGL::present()

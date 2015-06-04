@@ -15,6 +15,9 @@ public:
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color) override;
 
+    void renderFullScreen(const vec4f &color);
+    void renderGaussian(const vec2f &kernelOffset);
+
     void clear() override;
     void present() override;
 
@@ -46,7 +49,9 @@ private:
 
     GLQuad _quad;
     GLProgram _quadProgram;
+    GLProgram _gaussianProgram;
 
     vec2f _windowSize;
     mat4f _windowToNDC;
+    mat4f _quadToNDC;
 };

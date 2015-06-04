@@ -29,9 +29,11 @@ void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 
     glBindFramebuffer(GL_TEXTURE_2D, 0);
     
-    //to render:
-    //glBindFramebuffer
-    //glBindFramebuffer(null)
+    bindAsRenderTarget();
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    unbindRenderTarget();
 }
 
 void RenderTarget::bindAsRenderTarget()
