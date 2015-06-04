@@ -41,12 +41,10 @@ class Texture;
 #include "core/parameters.h"
 #include "game/database.h"
 #include "core/gameUtil.h"
-#include "core/SDLUtil.h"
 
 #include "audio/audioDevice.h"
 
 #include "renderer/renderer.h"
-#include "renderer/rendererSDL.h"
 #include "renderer/rendererOpenGL.h"
 #include "renderer/texture.h"
 #include "renderer/renderTarget.h"

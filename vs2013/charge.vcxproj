@@ -88,7 +88,6 @@
   <ItemGroup>
     <ClCompile Include="..\src\core\app.cpp" />
     <ClCompile Include="..\src\core\gameUtil.cpp" />
-    <ClCompile Include="..\src\core\SDLUtil.cpp" />
     <ClCompile Include="..\src\gameUI\coordinates.cpp" />
     <ClCompile Include="..\src\gameUI\dialog.cpp" />
     <ClCompile Include="..\src\gameUI\gameButton.cpp" />
@@ -117,7 +116,6 @@
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
     <ClCompile Include="..\src\renderer\rendererOpenGL.cpp" />
-    <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
     <ClCompile Include="..\src\renderer\renderTarget.cpp" />
     <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
@@ -127,7 +125,6 @@
     <ClInclude Include="..\src\core\constants.h" />
     <ClInclude Include="..\src\core\gameUtil.h" />
     <ClInclude Include="..\src\core\parameters.h" />
-    <ClInclude Include="..\src\core\SDLUtil.h" />
     <ClInclude Include="..\src\gameUI\coordinates.h" />
     <ClInclude Include="..\src\gameUI\dialog.h" />
     <ClInclude Include="..\src\gameUI\gameButton.h" />
@@ -168,7 +165,6 @@
     <ClInclude Include="..\src\mLib\vec4.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
     <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
-    <ClInclude Include="..\src\renderer\rendererSDL.h" />
     <ClInclude Include="..\src\renderer\renderTarget.h" />
     <ClInclude Include="..\src\renderer\texture.h" />
   </ItemGroup>

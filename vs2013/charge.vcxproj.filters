@@ -39,16 +39,10 @@
     <ClCompile Include="..\src\mLib\utility.cpp">
       <Filter>mLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\renderer\rendererSDL.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\main.cpp">
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\core\app.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\core\SDLUtil.cpp">
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\renderer\texture.cpp">
@@ -146,16 +140,10 @@
     <ClInclude Include="..\src\renderer\renderer.h">
       <Filter>renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\renderer\rendererSDL.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\main.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\app.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\core\SDLUtil.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\renderer\texture.h">

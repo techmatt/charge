@@ -1,5 +1,9 @@
 
+RendererSDL is not supported
+
 #include "main.h"
+
+
 
 void RendererSDL::init(SDL_Window *window)
 {

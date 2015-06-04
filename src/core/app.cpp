@@ -5,7 +5,7 @@ int App::run()
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
     {
-        SDL::logError("SDL_Init");
+        cout << "SDL_Init error: " << SDL_GetError() << endl;
         return 1;
     }
 
@@ -18,8 +18,7 @@ int App::run()
 
     if (window == nullptr)
     {
-        SDL::logError("CreateWindow");
-        SDL_Quit();
+        cout << "SDL_CreateWindow error: " << SDL_GetError() << endl;
         return 1;
     }
 

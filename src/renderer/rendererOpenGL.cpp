@@ -10,7 +10,7 @@ void RendererOpenGL::init(SDL_Window *window)
     _context = SDL_GL_CreateContext(window);
     if (_context == nullptr)
     {
-        SDL::logError("CreateContext");
+        cout << "SDL_GL_CreateContext error: " << SDL_GetError() << endl;
         SDL_Quit();
     }
 

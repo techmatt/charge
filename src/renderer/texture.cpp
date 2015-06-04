@@ -53,12 +53,14 @@ void Texture::initSDL(Renderer &renderer)
 {
     releaseSDLMemory();
 
+    cout << "SDL textures not supported anymore" << endl;
+
     _SDLTexture = nullptr;
     
     //SDL_PIXELFORMAT_ARGB8888 seems to be the default texture for windows
     //SDL_CreateTexture(renderer.SDL(), SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, (int)_bmp.width(), (int)_bmp.height());
 
-    _SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0xFF000000);
+    /*_SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0xFF000000);
     if (_SDLSurface == nullptr)
     {
         SDL::logError("SDL_CreateRGBSurfaceFrom");
@@ -71,7 +73,7 @@ void Texture::initSDL(Renderer &renderer)
     {
         SDL::logError("SDL_CreateTextureFromSurface");
         return;
-    }
+    }*/
 
     //SDL_FreeSurface(loadedImage);
 }
