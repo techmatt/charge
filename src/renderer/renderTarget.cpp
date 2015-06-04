@@ -23,11 +23,11 @@ void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 
     glGenFramebuffers(1, &_frameBuffer);
 
-    glBindFramebuffer(GL_TEXTURE_2D, _frameBuffer);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, _frameBuffer);
 
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
 
-    glBindFramebuffer(GL_TEXTURE_2D, 0);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     
     bindAsRenderTarget();
 
@@ -39,7 +39,7 @@ void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 void RenderTarget::bindAsRenderTarget()
 {
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, _frameBuffer);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
+    //glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
 }
 
 void RenderTarget::unbindRenderTarget()

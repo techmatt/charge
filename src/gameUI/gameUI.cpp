@@ -1,6 +1,9 @@
 
 #include "main.h"
 
+// GetAsyncKeyState
+#include <Windows.h>
+
 namespace depthLayers
 {
     const float selection = 0.9f;
@@ -446,8 +449,6 @@ void GameUI::render()
         renderButtonForeground(button, false);
     }
 
-    renderHoverComponent();
-
     for (const auto &charge : app.state.charges)
     {
         renderCharge(charge, false);
@@ -458,17 +459,18 @@ void GameUI::render()
         renderExplodingCharge(charge, false);
     }
 
+    renderHoverComponent();
+
     renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
 
+    //if (GetAsyncKeyState(VK_F10))
     renderTrails();
 }
-
-#include <Windows.h>
 
 void GameUI::renderTrails()
 {
     glDisable(GL_DEPTH_TEST);
-
+    
     //
     // additively render charges to trailTexture0
     //
@@ -479,12 +481,14 @@ void GameUI::renderTrails()
 
     for (const auto &charge : app.state.charges)
         renderCharge(charge, true);
-    for (const auto &charge : app.state.explodingCharges)
-        renderExplodingCharge(charge, true);
+    //for (const auto &charge : app.state.explodingCharges)
+    //    renderExplodingCharge(charge, true);
 
     for (const UIRenderObject &o : backgroundObjects)
     {
-        if (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge)
+        if (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge &&
+            //(o.dynamicComponent->storedCharge != ChargeNone || o.dynamicComponent->heldCharge != ChargeNone) &&
+            (o.dynamicComponent->info->name == "ChargeGoal" && o.dynamicComponent->heldCharge == o.dynamicComponent->modifiers.color))
         {
             const vec4f color = o.dynamicComponent->modifiers.storedChargeColor;
             //Texture &t = database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers);
@@ -502,6 +506,7 @@ void GameUI::renderTrails()
     //
     trailTexture1.bindAsRenderTarget();
 
+    glDisable(GL_BLEND);
     trailTexture0.bindAsTexture();
 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -518,9 +523,11 @@ void GameUI::renderTrails()
 
     trailTexture1.bindAsTexture();
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    //glClear(GL_COLOR_BUFFER_BIT);
     app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
 
+    glEnable(GL_BLEND);
     trailTexture0.unbindRenderTarget();
 
     //LodePNG::save(trailTexture0.getImage(), "trailTextureC.png");
@@ -529,9 +536,15 @@ void GameUI::renderTrails()
     // render to screen
     //
 
-    trailTexture0.bindAsTexture();
-    app.renderer.renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 0.0f));
+    //app.renderer.clear();
+    //trailTexture0.bindAsTexture();
+    //app.renderer.render(database().getTexture(app.renderer, "Border"), rect2f(100.0f, 100.0f, 250.0f, 250.0f), 0.5f, vec4f(1.0f, 1.0f, 1.0f, 0.5f));
 
+    trailTexture0.bindAsTexture();
+    //app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
+    app.renderer.renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+    //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
     if (GetAsyncKeyState(VK_F8))
@@ -1139,19 +1152,14 @@ void GameUI::renderComponents()
 void GameUI::renderCharge(const Charge &charge, bool trailRender)
 {
     renderChargeCircuit(charge);
-    const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
+    pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.source, charge.destination, charge.interpolation(), charge.level, canonicalDims);
+    if (trailRender)
+        screen.second *= constants::trailExpansionFactor;
+
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 
-    if (trailRender)
-    {
-        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
-    }
-    else
-    {
-        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
-    }
-
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge, bool trailRender)
@@ -1159,19 +1167,16 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge, bool trailRend
     renderExplodingChargeCircuit(charge);
     const pair<vec2f, float> screen = GameUtil::computeChargeScreenPos(charge.locationA, charge.locationB, charge.interpolation, charge.level, canonicalDims);
     const float angle = charge.baseRotationOffset + (app.state.stepCount - charge.birthTick) * constants::secondsPerStep * constants::chargeRotationsPerSecond * 360.0f * constants::explodingChargeRotationFactor;
-    const float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
+    
+    float scale = screen.second * math::lerp(1.0f, 3.0f, charge.percentDone());
+    if (trailRender)
+        scale *= constants::trailExpansionFactor;
+
     const rect2f destinationRect(screen.first - vec2f(scale), screen.first + vec2f(scale));
 
     const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
 
-    if (trailRender)
-    {
-        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
-    }
-    else
-    {
-        render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
-    }
+    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge)

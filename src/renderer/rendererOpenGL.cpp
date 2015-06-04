@@ -102,6 +102,9 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     dst.w = (int)(destinationRect.max().x) - dst.x;
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+
     tex.bindOpenGL();
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
     _quadProgram.setColor(color);
@@ -110,6 +113,9 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
 
 void RendererOpenGL::renderFullScreen(const vec4f &color)
 {
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
     _quadProgram.setTransform(_quadToNDC);
     _quadProgram.setColor(color);
     _quad.render();
@@ -128,9 +134,6 @@ void RendererOpenGL::renderGaussian(const vec2f &kernelOffset)
     _quad.render();
 
     _quadProgram.bind();
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
 void RendererOpenGL::present()
