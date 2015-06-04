@@ -22,9 +22,6 @@ void GameUI::init()
     selectedGameLocation.boardPos = constants::invalidCoord;
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
-
-    trailTexture0.init(app.renderer, vec2i(app.renderer.getWindowSize()));
-    trailTexture1.init(app.renderer, vec2i(app.renderer.getWindowSize()));
 }
 
 Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
@@ -470,6 +467,14 @@ void GameUI::render()
 
 void GameUI::renderTrails()
 {
+    if (trailTexture0.dimensions() != app.renderer.getWindowSize())
+    {
+        trailTexture0.init(app.renderer, app.renderer.getWindowSize());
+        trailTexture1.init(app.renderer, app.renderer.getWindowSize());
+
+        trailTexture0.clear(vec4f(0.0f, 0.0f, 0.0f, 0.0f));
+    }
+
     glDisable(GL_DEPTH_TEST);
     
     //

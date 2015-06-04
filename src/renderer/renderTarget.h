@@ -20,9 +20,18 @@ public:
     {
         if (_texture != 0) glDeleteTextures(1, &_texture);
         if (_frameBuffer != 0) glDeleteFramebuffers(1, &_frameBuffer);
+        _dimensions = vec2i(0, 0);
     }
 
     void init(Renderer &renderer, const vec2i &dimensions);
+
+    void clear(const vec4f &color)
+    {
+        bindAsRenderTarget();
+        glClearColor(color.r, color.g, color.b, color.a);
+        glClear(GL_COLOR_BUFFER_BIT);
+        unbindRenderTarget();
+    }
 
     void bindAsRenderTarget();
     void unbindRenderTarget();
@@ -37,13 +46,7 @@ public:
     }
 
 private:
-    void initInternal()
-    {
-        _texture = 0;
-    }
-    void initSDL(Renderer &renderer);
-    void initOpenGL(bool useMipmaps);
-
+    
     vec2i _dimensions;
     GLuint _texture;
     GLuint _frameBuffer;

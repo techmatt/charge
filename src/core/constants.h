@@ -13,7 +13,7 @@ namespace constants
     static const int maxChargeLevel = 5;
     static const int maxPreferenceLevel = 5;
 
-    static const float chargeScaleWithLevelFactor = 0.1f;
+    static const float chargeScaleWithLevelFactor = 0.07f;
     static const int stepsPerSecond = 60;
     static const float secondsPerStep = 1.0f / (float)stepsPerSecond;
     static const float chargeRotationsPerSecond = 0.5f;
@@ -21,7 +21,7 @@ namespace constants
 
     static const float canonicalChargeSize = 6.5f;
 
-    static const float trailExpansionFactor = 1.25f;
+    static const float trailExpansionFactor = 1.2f;
 
     static const int deathTrapDuration = chargeRequiredTimeDifference + 2;
 

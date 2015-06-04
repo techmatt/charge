@@ -57,11 +57,11 @@ void RendererSDL::setDefaultRenderTarget()
 	SDL_SetRenderTarget(_renderer, NULL);
 }
 
-vec2f RendererSDL::getWindowSize()
+vec2i RendererSDL::getWindowSize()
 {
     vec2i result;
     SDL_GetWindowSize(_window, &result.x, &result.y);
-	return vec2f(result);
+	return result;
 }
 
 CoordinateFrame RendererSDL::getWindowCoordinateFrame()

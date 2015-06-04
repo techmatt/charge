@@ -27,7 +27,7 @@ public:
     void setRenderTarget(Texture &target);
     void setDefaultRenderTarget();
 
-    vec2f getWindowSize();
+    vec2i getWindowSize();
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 

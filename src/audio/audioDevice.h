@@ -34,6 +34,14 @@ public:
         setMusic(playMusic);
     }
 
+    void playEffect(const string &name, bool soft)
+    {
+        if (soft)
+            playEffect(name + "Soft");
+        else
+            playEffect(name);
+    }
+
     void playEffect(const string &name)
     {
         if (!playSoundEffects)

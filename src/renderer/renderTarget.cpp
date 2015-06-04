@@ -3,6 +3,7 @@
 
 void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 {
+    releaseMemory();
     _dimensions = dimensions;
 
     glEnable(GL_TEXTURE_2D);
