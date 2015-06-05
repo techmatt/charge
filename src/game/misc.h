@@ -106,6 +106,8 @@ inline bool operator == (const GameLocation &a, const GameLocation &b)
 {
     return a.boardPos == b.boardPos && a.circuitPos == b.circuitPos;
 }
+
+// this is the only operator we currently need to define.
 inline bool operator < (const GameLocation &a, const GameLocation &b)
 {
 	if (a.boardPos.x < b.boardPos.x) return true;
