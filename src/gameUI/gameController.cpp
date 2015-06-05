@@ -9,6 +9,8 @@ void GameController::init()
     editorMode = ModeEditLevel;
     currentPuzzleIndex = 0;
     fractionalSpeedTicksLeft = 0;
+
+    loadCurrentPuzzle();
 }
 
 void GameController::step()
@@ -35,6 +37,16 @@ void GameController::step()
                 app.state.step(app);
             }
         }
+
+        if (app.state.victory)
+        {
+            speed = Speed1x;
+            const string defaultSolution = params().assetDir + "providedSolutions/" + database().puzzles[app.controller.currentPuzzleIndex].filename + "_A.pzl";
+            if (!util::fileExists(defaultSolution))
+            {
+                app.state.savePuzzle(defaultSolution);
+            }
+        }
     }
 }
 
@@ -48,6 +60,14 @@ void GameController::loadLegacyPuzzle(const string &filename)
 {
     LegacyLoader::load(filename, app.state);
     designActionTaken = true;
+}
+
+void GameController::loadCurrentPuzzle()
+{
+    const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
+    app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
+    app.ui.backgroundDirty = true;
+    app.ui.selection.empty();
 }
 
 void GameController::recordDesignAction()

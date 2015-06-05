@@ -102,15 +102,6 @@ void GameUI::keyDown(SDL_Keycode key)
         app.state.resetPuzzle();
     }
 
-    auto loadPuzzle = [&]()
-    {
-        //app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
-        const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
-        app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
-        backgroundDirty = true;
-		selection.empty();
-    };
-
     if (key == SDLK_0)
     {
         ParameterFile parameterFile("../assets/parameters.txt");
@@ -120,13 +111,13 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_LEFT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
-        loadPuzzle();
+        app.controller.loadCurrentPuzzle();
 		app.undoBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-        loadPuzzle();
+        app.controller.loadCurrentPuzzle();
 		app.undoBuffer.reset(app.state);
     }
 	if (key == SDLK_z)

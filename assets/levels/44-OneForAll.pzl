@@ -1477,8 +1477,8 @@ boundary=0
 chargePreference=2
 circuitPos=4 6
 color=0
-name=Wire
-puzzleType=1
+name=Hold
+puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
@@ -3034,11 +3034,11 @@ component0229~12
 Component~11~11
 boardPos=4 5
 boundary=0
-chargePreference=2
+chargePreference=4
 circuitPos=-100 -100
 color=0
 name=Wire
-puzzleType=1
+puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2

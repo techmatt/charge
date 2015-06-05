@@ -75,9 +75,7 @@ public:
 	// the list of selected components
 	ComponentSelection selection;
 
-
-	// TODO: this should be a vector
-	//GameLocation selectedGameLocation;
+    bool backgroundDirty;
 
 private:
 
@@ -147,8 +145,6 @@ private:
 
     ComponentInfo *selectedMenuComponent;
     ChargeType selectedMenuComponentColor;
-
-    bool backgroundDirty;
 
     vector<UIRenderObject> backgroundObjects;
 
