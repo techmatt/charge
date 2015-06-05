@@ -1,4 +1,4 @@
-Puzzle~38~523
+Puzzle~41~562
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -521,4 +521,43 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=36
+component0036~12
+Component~11~11
+boardPos=15 13
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0037~12
+Component~11~11
+boardPos=15 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Amplifier
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0038~12
+Component~11~11
+boardPos=17 12
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Amplifier
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=39
