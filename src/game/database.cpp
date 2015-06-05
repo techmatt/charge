@@ -8,6 +8,11 @@ void Database::init()
         ComponentInfo *component = new ComponentInfo(line);
         components[component->name] = component;
     }
+
+    for (auto &line : GameUtil::readCSVFile(params().assetDir + "levels.csv"))
+    {
+        puzzles.push_back(PuzzleInfo(line));
+    }
 }
 
 void Database::initTextures(Renderer &renderer)
