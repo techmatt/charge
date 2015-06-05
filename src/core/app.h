@@ -9,9 +9,9 @@ struct AppData
     void playEffect(const string &name, const GameLocation &location)
     {
         Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
-        if (!location.inCircuit() || (selectedComponent != nullptr && selectedComponent->location.boardPos == location.boardPos))
+        if (!location.inCircuit() || (selectedComponent != nullptr && selectedComponent->location.boardPos == location.boardPos) || name == "ChargeDeath")
         {
-            audio.playEffect(name, false);
+            audio.playEffect(name, location.inCircuit());
         }
     }
 
