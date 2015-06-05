@@ -112,13 +112,16 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
         app.controller.loadCurrentPuzzle();
-		app.undoBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
         app.controller.loadCurrentPuzzle();
-		app.undoBuffer.reset(app.state);
+		
+    }
+    if (key == SDLK_UP)
+    {
+        app.controller.loadCurrentProvidedSolution();
     }
 	if (key == SDLK_z)
 	{

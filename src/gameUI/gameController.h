@@ -55,8 +55,9 @@ public:
 
     void loadLegacyPuzzle(const string &filename);
     void loadPuzzle(const string &filename, const string &puzzleName);
-
+    
     void loadCurrentPuzzle();
+    void loadCurrentProvidedSolution();
 
     void recordDesignAction();
     
