@@ -48,6 +48,12 @@ struct ComponentDefiningProperties
 struct ComponentSet
 {
 	ComponentSet() { components = {}; }
+	ComponentSet(const ComponentInfo* info, const ChargeType color)
+	{
+		Component* temp = new Component(info->name, color, GameLocation(vec2i(0,0)));
+		components = { new 	ComponentDefiningProperties(temp)};
+		delete(temp);
+	}
 	~ComponentSet()
 	{
 		for (ComponentDefiningProperties* c : components)
@@ -67,7 +73,11 @@ struct ComponentSet
 	void addToComponents(GameState &state, vec2i offset);
 	void addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset);
 
+	// create new component sets
 	static ComponentSet* allToBuffer(const GameState &state);
+	static ComponentSet* toBuffer(const vector<Component*> components);
+
+	bool isEmpty() { return components.size() == 0; }
 };
 
 struct UndoBuffer

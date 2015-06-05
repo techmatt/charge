@@ -168,20 +168,22 @@ void ComponentSet::addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offs
 }
 
 ComponentSet* ComponentSet::allToBuffer(const GameState &state)
+{return ComponentSet::toBuffer(state.components);}
+
+ComponentSet* ComponentSet::toBuffer(const vector<Component*> components)
 {
 	// takes all the components on the board and stores them in a vector
 	//int length = state.components.size();
 	ComponentSet* out = new ComponentSet();
 
-	for (Component* c : state.components)
+	for (Component* c : components)
 	{
 		ComponentDefiningProperties* cProp = new ComponentDefiningProperties(c);
 		out->components.push_back(cProp); // I think that this will successfully reserve the data.
 	}
-	
+
 	return out;
 }
-
 
 
 
