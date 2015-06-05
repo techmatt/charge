@@ -68,7 +68,8 @@ public:
 	void render();
     
     void mouseDown(Uint8 button, int x, int y);
-    void mouseMove(Uint32 buttonState, int x, int y);
+	void mouseUp(Uint8 button, int x, int y);
+	void mouseMove(Uint32 buttonState, int x, int y);
     void keyDown(SDL_Keycode key);
 
 
@@ -162,4 +163,8 @@ private:
 	ComponentSet* copyBuffer=nullptr;
 	ComponentSet* activePlacementBuffer=nullptr;
 	bool currentlyMoving;
+
+	// the location that the person clicked.  Used for clicking and dragging.
+	GameLocation clickLocation;
+	vec2f clickScreenLocation;
 };

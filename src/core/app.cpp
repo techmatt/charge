@@ -58,6 +58,10 @@ int App::run()
             {
                 data.ui.mouseDown(event.button.button, event.button.x, event.button.y);
 			}
+			if (event.type == SDL_MOUSEBUTTONUP)
+			{
+				data.ui.mouseUp(event.button.button, event.button.x, event.button.y);
+			}
             if (event.type == SDL_MOUSEMOTION)
             {
                 data.ui.mouseMove(event.motion.state, event.motion.x, event.motion.y);

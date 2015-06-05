@@ -173,11 +173,63 @@ void GameUI::removeHoverComponent()
     if (c == nullptr || (app.controller.editorMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
         return;
 
+	//remove from selection
+	selection.remove(c);
+
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
 	app.undoBuffer.save(app.state);
 }
+
+void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
+{
+	const Uint8 *keys = SDL_GetKeyboardState(NULL);
+
+	// we only do this for left clicks
+	if (mouseButton != SDL_BUTTON_LEFT)
+		return;
+
+	// no dragging if we are placing things
+	if (activePlacementBuffer != nullptr && !activePlacementBuffer->isEmpty())
+		return;
+
+
+	// the current coordinates
+	CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
+	mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
+	x = mouseHoverCoord.x;
+	y = mouseHoverCoord.y;
+	GameLocation hover = hoverLocation(false);
+
+	// TODO: do stuff when releasing the button
+	vec2f mouseDelta = mouseHoverCoord - clickScreenLocation;
+	if (mouseDelta.length() > constants::dragThreshold)
+	{
+		// The mouse was dragged
+	}
+	else
+	{
+		// Just a click
+		if (hover.valid())
+		{
+			Component* hoverComponent = app.state.getComponent(hover);
+			if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+				if (hoverComponent != nullptr)
+					selection.toggle(hoverComponent);
+			}
+			else
+			{
+				//selectedGameLocation = hover;
+				if (hoverComponent != nullptr)
+					selection.newSelectionFromComponent(hoverComponent);
+			}
+		}
+
+	}
+	backgroundDirty = true;
+}
+
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 {
@@ -213,20 +265,10 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 		if (activePlacementBuffer == nullptr || activePlacementBuffer->isEmpty())
         {
             GameLocation hover = hoverLocation(false);
-            if (hover.valid())
-            {
-				Component* hoverComponent = app.state.getComponent(hover);
-				if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
-					if (hoverComponent != nullptr)
-						selection.toggle(hoverComponent);
-				}
-				else
-				{
-					//selectedGameLocation = hover;
-					if (hoverComponent != nullptr)
-						selection.newSelectionFromComponent(hoverComponent);
-				}
-            }
+			clickLocation = hover;
+			clickScreenLocation = mouseHoverCoord;
+
+            // stuff that was gets processed when the mouse is released, in case of a click and drag event
         }
         else
         {

@@ -52,4 +52,6 @@ namespace constants
 	};  // relative positions for nearby components.  There are 12 different places they can be.
 
 	static const int bufferSize = 100;
+
+	static float dragThreshold = 3.0f;
 }

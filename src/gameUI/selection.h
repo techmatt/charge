@@ -63,7 +63,6 @@ struct ComponentSelection {
 			if (components[i] == c)
 			{
 				components.erase(components.begin() + i);
-				//updateSelectionGrid();
 				return;
 			}
 	}
