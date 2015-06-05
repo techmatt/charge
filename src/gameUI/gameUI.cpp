@@ -102,14 +102,6 @@ void GameUI::keyDown(SDL_Keycode key)
         app.state.resetPuzzle();
     }
 
-    auto loadPuzzle = [&]()
-    {
-        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
-        backgroundDirty = true;
-        //selectedGameLocation.boardPos = constants::invalidCoord;
-		selection.empty();
-    };
-
     if (key == SDLK_0)
     {
         ParameterFile parameterFile("../assets/parameters.txt");
@@ -118,14 +110,14 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_LEFT)
     {
-        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, app.puzzles.puzzleList.size());
-        loadPuzzle();
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
+        app.controller.loadCurrentPuzzle();
 		app.undoBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
-        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, app.puzzles.puzzleList.size());
-        loadPuzzle();
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
+        app.controller.loadCurrentPuzzle();
 		app.undoBuffer.reset(app.state);
     }
 	if (key == SDLK_z)
@@ -154,7 +146,7 @@ void GameUI::keyDown(SDL_Keycode key)
 		}
 	}
 
-	if (key == SDLK_DELETE||key==SDLK_BACKSPACE)
+	if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
 	{
 		//delete all the selected components
 		for (Component *c : app.ui.selection.components)
@@ -179,6 +171,7 @@ void GameUI::removeHoverComponent()
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
+    selection.remove(c);
 	app.undoBuffer.save(app.state);
 }
 
@@ -426,7 +419,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             const string filename = FileDialog::showOpen();
 			if (filename.size() > 0)
 			{
-				app.state.loadPuzzle(filename);
+                app.state.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
 				app.undoBuffer.reset(app.state);
 			}
         }

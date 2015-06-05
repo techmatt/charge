@@ -329,8 +329,8 @@ namespace util
             vec.push_back(e);
     }
 
-    template<class T>
-    bool contains(const std::vector<T> &vec, const T &element)
+    template<class T, class U>
+    bool contains(const std::vector<T> &vec, const U &element)
     {
         for(const T &e : vec)
             if(e == element)

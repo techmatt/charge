@@ -4,7 +4,7 @@ struct GameState
 	void init();
     
     void savePuzzle(const string &filename);
-    void loadPuzzle(const string &filename);
+    void loadPuzzle(const string &filename, const string &puzzleName);
 
     void clearBoard();
     void resetPuzzle();

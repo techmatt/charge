@@ -42,6 +42,21 @@ struct ComponentInfo
     bool hasStoredChargeLayer;
 };
 
+struct PuzzleInfo
+{
+    PuzzleInfo() {}
+    PuzzleInfo(const map<string, string> &m)
+    {
+        name = m.at("Puzzle name");
+        filename = m.at("Puzzle file");
+        index = convert::toInt(m.at("Number"));
+    }
+
+    int index;
+    string name;
+    string filename;
+};
+
 struct Database
 {
     void init();
@@ -64,6 +79,7 @@ struct Database
 
     map<string, ComponentInfo*> components;
     map<string, Texture*> textures;
+    vector<PuzzleInfo> puzzles;
 
     //
     // commonly accessed textures

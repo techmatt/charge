@@ -53,7 +53,10 @@ public:
     void init();
     void step();
 
-    void loadPuzzle(const string &filename);
+    void loadLegacyPuzzle(const string &filename);
+    void loadPuzzle(const string &filename, const string &puzzleName);
+
+    void loadCurrentPuzzle();
 
     void recordDesignAction();
     
