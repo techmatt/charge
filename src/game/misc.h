@@ -106,3 +106,19 @@ inline bool operator == (const GameLocation &a, const GameLocation &b)
 {
     return a.boardPos == b.boardPos && a.circuitPos == b.circuitPos;
 }
+inline bool operator < (const GameLocation &a, const GameLocation &b)
+{
+	if (a.boardPos.x < b.boardPos.x) return true;
+	else if (a.boardPos.x > b.boardPos.x) return false;
+	
+	if (a.boardPos.y < b.boardPos.y) return true;
+	else if (a.boardPos.y > b.boardPos.y) return false;
+
+	if (a.circuitPos.x < b.circuitPos.x) return true;
+	else if (a.boardPos.x > b.boardPos.x) return false;
+
+	if (a.circuitPos.y < b.circuitPos.y) return true;
+	else if (a.circuitPos.y > b.circuitPos.y) return false;
+
+	return false; //equal
+}

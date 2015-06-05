@@ -370,13 +370,17 @@ void GameState::step(AppData &app)
     //
     // Remove dead charges
     //
+	set<GameLocation> explodingChargesLocations = {};
     for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
     {
         Charge &charge = charges[chargeIndex];
         
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
-            app.playEffect("ChargeDeath", charge.destination);
+           //add this charge to the list of where charges explode, then delete the charge
+			explodingChargesLocations.insert(charge.destination);
+
+			app.playEffect("ChargeDeath", charge.destination);
             explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, charge.interpolation(), charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
         }
 
@@ -386,6 +390,25 @@ void GameState::step(AppData &app)
             chargeIndex--;
         }
     }
+	
+	//
+	// Remove charges that chain off the first set of charge deaths
+	//
+	for (int chargeIndex = 0; chargeIndex < int(charges.size()); chargeIndex++)
+	{
+		Charge &charge = charges[chargeIndex];
+
+		if (explodingChargesLocations.find(charge.destination)!=explodingChargesLocations.end())
+		{
+			// this charge is targeting a place where a charge exploded.  Remove it.
+			app.playEffect("ChargeDeath", charge.destination);
+			explodingCharges.push_back(ExplodingCharge(charge.source, charge.destination, charge.interpolation(), charge.level, constants::explodingChargeDuration, charge.randomRotationOffset + globalRotationOffset, stepCount));
+		
+			util::removeSwap(charges, chargeIndex);
+			chargeIndex--;
+		}
+	}
+
 
     //
     // Emit charges from components
