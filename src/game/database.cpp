@@ -3,7 +3,7 @@
 
 void Database::init()
 {
-    for (auto &line : GameUtil::readCSVFile(params().assetDir + "database.csv"))
+    for (auto &line : GameUtil::readCSVFile(params().assetDir + "components.csv"))
     {
         ComponentInfo *component = new ComponentInfo(line);
         components[component->name] = component;
