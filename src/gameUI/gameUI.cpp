@@ -19,7 +19,9 @@ namespace depthLayers
 
 void GameUI::init()
 {
-    selectedGameLocation.boardPos = constants::invalidCoord;
+    //selectedGameLocation.boardPos = constants::invalidCoord;
+	selection.empty();
+
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
 
@@ -84,10 +86,13 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         backgroundDirty = true;
         selectedMenuComponent = nullptr;
+		
 		delete(activePlacementBuffer);
 		activePlacementBuffer = nullptr;
 
-        selectedGameLocation.boardPos = constants::invalidCoord;
+        //selectedGameLocation.boardPos = constants::invalidCoord;
+		selection.empty();
+
     }
 
     if (key == SDLK_RETURN)
@@ -101,7 +106,8 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
         backgroundDirty = true;
-        selectedGameLocation.boardPos = constants::invalidCoord;
+        //selectedGameLocation.boardPos = constants::invalidCoord;
+		selection.empty();
     };
 
     if (key == SDLK_0)
@@ -147,6 +153,16 @@ void GameUI::keyDown(SDL_Keycode key)
 			//TODO PASTE
 		}
 	}
+
+	if (key == SDLK_DELETE||key==SDLK_BACKSPACE)
+	{
+		//delete all the selected components
+		for (Component *c : app.ui.selection.components)
+			app.state.removeComponent(c, false);
+		selection.empty();
+		app.state.updateAll();
+		backgroundDirty = true;
+	}
 }
 
 void GameUI::removeHoverComponent()
@@ -165,6 +181,9 @@ void GameUI::removeHoverComponent()
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 {
+
+	const Uint8 *keys = SDL_GetKeyboardState(NULL);
+
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
     x = mouseHoverCoord.x;
@@ -196,7 +215,17 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             GameLocation hover = hoverLocation(false);
             if (hover.valid())
             {
-                selectedGameLocation = hover;
+				Component* hoverComponent = app.state.getComponent(hover);
+				if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+					if (hoverComponent != nullptr)
+						selection.toggle(hoverComponent);
+				}
+				else
+				{
+					//selectedGameLocation = hover;
+					if (hoverComponent != nullptr)
+						selection.newSelectionFromComponent(hoverComponent);
+				}
             }
         }
         else
@@ -223,7 +252,8 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
     //buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
 
     int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
-    Component *gameComponent = app.state.getComponent(selectedGameLocation);
+    //Component *gameComponent = app.state.getComponent(selectedGameLocation);
+	Component* gameComponent = selection.singleElement();
     if (gameComponent != nullptr && button.type == ButtonComponentAttribute && app.controller.editorMode == ModeEditLevel)
     {
         if (button.name == "TotalCharge")
@@ -668,7 +698,8 @@ void GameUI::updateButtonList()
     //
     // Add color, delay, preference, and boundary buttons
     //
-    Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+    //Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+	Component *selectedGameComponent = selection.singleElement();
     if (selectedGameComponent != nullptr && !(app.controller.puzzleMode == ModePlayLevel && selectedGameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
     {
         const ComponentInfo &info = *selectedGameComponent->info;
@@ -750,7 +781,8 @@ void GameUI::updateBackgroundObjects()
 
     updateButtonList();
 
-    Component *gameComponent = app.state.getComponent(selectedGameLocation);
+    //Component *gameComponent = app.state.getComponent(selectedGameLocation);
+	Component *gameComponent = selection.singleElement();
 
     //app.renderer.setRenderTarget(background);
 
@@ -999,8 +1031,11 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
 
 void GameUI::renderComponent(const Component &component)
 {
-    Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    const bool selected = (selectedGameComponent != nullptr && component.location == selectedGameComponent->location);
+    //Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
+	//Component *selectedGameComponent = selection.singleElement();
+
+    //const bool selected = (selectedGameComponent != nullptr && component.location == selectedGameComponent->location);
+	const bool selected = selection.isIn(&component) || (selection.selectionIsInCircuit && selection.circuitLocation == component.location.boardPos && !component.location.inCircuit());
 
     if (component.info->name == "Blocker" &&
         (selectedMenuComponent == nullptr || selectedMenuComponent->name != "Blocker"))
@@ -1239,7 +1274,9 @@ void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
 
 Component* GameUI::activeCircuit() const
 {
-    Component *c = app.state.getComponent(GameLocation(selectedGameLocation.boardPos));
+    //Component *c = app.state.getComponent(GameLocation(selectedGameLocation.boardPos));
+	Component *c = app.ui.selection.singleElementOrCircuit(&app.state);
+
     if (c != nullptr && c->info->name == "Circuit")
     {
         return c;

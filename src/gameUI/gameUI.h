@@ -72,8 +72,12 @@ public:
     void keyDown(SDL_Keycode key);
 
 
+	// the list of selected components
+	ComponentSelection selection;
+
+
 	// TODO: this should be a vector
-	GameLocation selectedGameLocation;
+	//GameLocation selectedGameLocation;
 
 private:
 

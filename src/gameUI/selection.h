@@ -9,11 +9,26 @@ struct ComponentSelection {
 	// check whether the selection is in the circuit
 	// bool selectionIsInCircuit() { return (cells.dimX() == constants::circuitBoardSize) }
 
+	void empty() {
+		components.clear();
+		circuitLocation = constants::invalidCoord;
+		selectionIsInCircuit = false;
+	}
+
 	// creates a new selection set
 	void newSelectionFromComponent(Component *c) {
 		components.clear();
 		selectionIsInCircuit = c->location.inCircuit();
-		if (selectionIsInCircuit) circuitLocation = c->location.boardPos;
+		if (selectionIsInCircuit)
+		{
+			circuitLocation = c->location.boardPos;
+			selectionIsInCircuit = true;
+		}
+		else
+		{
+			circuitLocation = constants::invalidCoord;
+			selectionIsInCircuit = false;
+		}
 
 		components.push_back(c);
 	}
@@ -31,7 +46,7 @@ struct ComponentSelection {
 
 	// Checks whether the component is already in the selection buffer
 	// this should actually be pretty fast because the selection has at most 144 pointers in it.
-	bool isIn(Component* c)
+	bool isIn(const Component* c)
 	{
 		for (int i = 0; i < components.size(); i++)
 			if (components[i] == c)
@@ -66,4 +81,15 @@ struct ComponentSelection {
 		if (components.size() == 1) return components[0];
 		return nullptr;
 	}
+
+	// also returns the circuit that's selected
+	Component* singleElementOrCircuit(GameState *state)
+	{
+		if (selectionIsInCircuit)
+			return state->getComponent(GameLocation(circuitLocation));
+		
+		if (components.size() == 1) return components[0];
+		return nullptr;
+	}
+
 };
