@@ -104,9 +104,10 @@ void GameUI::keyDown(SDL_Keycode key)
 
     auto loadPuzzle = [&]()
     {
-        app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
+        //app.controller.loadPuzzle(params().assetDir + "../legacy/levelsOld/" + app.puzzles.puzzleList[app.controller.currentPuzzleIndex].name);
+        const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
+        app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
         backgroundDirty = true;
-        //selectedGameLocation.boardPos = constants::invalidCoord;
 		selection.empty();
     };
 
@@ -118,13 +119,13 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_LEFT)
     {
-        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, app.puzzles.puzzleList.size());
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
         loadPuzzle();
 		app.undoBuffer.reset(app.state);
     }
     if (key == SDLK_RIGHT)
     {
-        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, app.puzzles.puzzleList.size());
+        app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
         loadPuzzle();
 		app.undoBuffer.reset(app.state);
     }
@@ -154,7 +155,7 @@ void GameUI::keyDown(SDL_Keycode key)
 		}
 	}
 
-	if (key == SDLK_DELETE||key==SDLK_BACKSPACE)
+	if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
 	{
 		//delete all the selected components
 		for (Component *c : app.ui.selection.components)
@@ -176,6 +177,7 @@ void GameUI::removeHoverComponent()
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
+    selection.remove(c);
 	app.undoBuffer.save(app.state);
 }
 
@@ -384,7 +386,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             const string filename = FileDialog::showOpen();
 			if (filename.size() > 0)
 			{
-				app.state.loadPuzzle(filename);
+                app.state.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
 				app.undoBuffer.reset(app.state);
 			}
         }

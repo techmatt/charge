@@ -70,11 +70,12 @@ void GameState::savePuzzle(const string &filename)
     util::saveLinesToFile(lines, filename);
 }
 
-void GameState::loadPuzzle(const string &filename)
+void GameState::loadPuzzle(const string &filename, const string &puzzleName)
 {
     clearBoard();
 
-    name = util::removeExtensions(util::fileNameFromPath(filename));
+    //name = util::removeExtensions(util::fileNameFromPath(filename));
+    name = puzzleName;
 
     ParameterTable puzzleTable;
     int lineIndex = 0;

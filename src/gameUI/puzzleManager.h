@@ -6,5 +6,6 @@ struct PuzzleManager
 {
     void init();
 
+private:
     vector<PuzzleInfo> puzzleList;
 };

@@ -38,10 +38,15 @@ void GameController::step()
     }
 }
 
-void GameController::loadPuzzle(const string &filename)
+void GameController::loadPuzzle(const string &filename, const string &puzzleName)
+{
+    app.state.loadPuzzle(filename, puzzleName);
+    designActionTaken = true;
+}
+
+void GameController::loadLegacyPuzzle(const string &filename)
 {
     LegacyLoader::load(filename, app.state);
-    app.state.resetPuzzle();
     designActionTaken = true;
 }
 

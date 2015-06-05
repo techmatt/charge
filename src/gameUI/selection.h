@@ -1,6 +1,8 @@
 
-struct ComponentSelection {
-	// just consists of a vector of the selected components.  This should work without any intermediate steps because we're very limited in the number of things we can select.
+struct ComponentSelection
+{
+    // just consists of a vector of the selected components.  This should work without any intermediate steps because we're very limited in the number of things we can select.
+    // It can be very dangerous to maintain this as Component*, since components get deleted.
 	vector<Component*> components;
 	vec2i circuitLocation;
 	bool selectionIsInCircuit;
@@ -48,24 +50,15 @@ struct ComponentSelection {
 	// this should actually be pretty fast because the selection has at most 144 pointers in it.
 	bool isIn(const Component* c)
 	{
-		for (int i = 0; i < components.size(); i++)
-			if (components[i] == c)
-			{
-				return true;
-			}
-		return false;
+        return util::contains(components, c);
 	}
 
 	// searches through the selection buffer and removes a single component
 	void remove(Component* c)
 	{
-		for (int i = 0; i < components.size(); i++)
-			if (components[i] == c)
-			{
-				components.erase(components.begin() + i);
-				//updateSelectionGrid();
-				return;
-			}
+        // use util::removeSlow if you need to preserve order
+        if (isIn(c))
+            util::removeSwap(components, util::findFirstIndex(components, c));
 	}
 
 	//adds or removes a component at a given location depending on whether it's in the buffer already
