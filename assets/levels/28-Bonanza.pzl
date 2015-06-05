@@ -1,0 +1,44 @@
+Puzzle~5~43
+buildableComponents~2
+ComponentBuildState~1~1
+TrapOpenGray=1
+component0000~12
+Component~11~11
+boardPos=4 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+speed=2
+totalCharges=3
+component0001~12
+Component~11~11
+boardPos=20 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=3
+name=ChargeGoal
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0002~12
+Component~11~11
+boardPos=14 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Amplifier
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=3
