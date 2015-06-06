@@ -1,68 +1,45 @@
+
+//
+// The minimal set of information needed to define a component.  This probably overlaps with some of the code for saving and loading the circuit.
+//
 struct ComponentDefiningProperties
 {
-	ComponentDefiningProperties(Component* c)
+	ComponentDefiningProperties(const Component &c)
 	{
-		baseInfo = c->baseInfo;
-		location = c->location;
-		color = c->modifiers.color;
-		speed = c->modifiers.speed;
-		preference = c->modifiers.chargePreference;
-		intrinsics = c->intrinsics;
+		baseInfo = c.baseInfo;
+		location = c.location;
+        modifiers = c.modifiers;
+		intrinsics = c.intrinsics;
 	}
-
-	//The minimal set of information needed to define a component.  This probably overlaps with some of the code for saving and loading the circuit.
 	const ComponentInfo* baseInfo;
 
-	//location
 	GameLocation location;
 
-	//settable properties (what is circuit boundary type?)
-	ChargeType color;
-	WireSpeedType speed;
-	int preference;
+    ComponentModifiers modifiers;
+    ComponentIntrinsics intrinsics;
 
-	//puzzle properties
-	ComponentPuzzleType puzzleType;
-
-	ComponentIntrinsics intrinsics;
-
-	Component* toComponent()
+	Component* makeNewComponent()
 	{
-		Component* result = new Component(baseInfo->name, color, location);
+		Component* result = new Component(baseInfo->name, modifiers.color, location);
 
-		result->modifiers.speed = speed;
-
-		result->modifiers.chargePreference = preference;
-		result->modifiers.speed = speed;
-		//result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
-		result->modifiers.puzzleType = puzzleType;
-
+        result->modifiers = modifiers;
 		result->intrinsics = intrinsics;
 
 		return result;
 	}
-	//Component* toComponent() { return toComponent(vec2i(0, 0)); }
-
 };
 
 struct ComponentSet
 {
-	ComponentSet() { components = {}; }
+	ComponentSet() { }
 	ComponentSet(const ComponentInfo* info, const ChargeType color)
 	{
-		Component* temp = new Component(info->name, color, GameLocation(vec2i(0,0)));
-		components = { new 	ComponentDefiningProperties(temp)};
-		delete(temp);
-	}
-	~ComponentSet()
-	{
-		for (ComponentDefiningProperties* c : components)
-			delete(c);
+		Component temp(info->name, color, GameLocation(vec2i(0,0)));
+		components.push_back(ComponentDefiningProperties(temp));
 	}
 	
 	// properties
-	vector<ComponentDefiningProperties*> components;
-
+	vector<ComponentDefiningProperties> components;
 
 	void flipAboutHorizonal();
 	void flipAboutVerical();
@@ -74,10 +51,11 @@ struct ComponentSet
 	void addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset);
 
 	// create new component sets
-	static ComponentSet* allToBuffer(const GameState &state);
-	static ComponentSet* toBuffer(const vector<Component*> components);
+	static ComponentSet allToBuffer(const GameState &state);
+	static ComponentSet toBuffer(const vector<Component*> &components);
 
 	bool isEmpty() { return components.size() == 0; }
+    void clear() { components.clear(); }
 };
 
 struct UndoBuffer
@@ -105,7 +83,7 @@ struct UndoBuffer
 
 		if (buffer[current]!=nullptr) delete(buffer[current]);
 
-		buffer[current] = ComponentSet::allToBuffer(state);
+		buffer[current] = new ComponentSet(ComponentSet::allToBuffer(state));
 	}
 	void back(GameState &state)
 	{
@@ -130,7 +108,7 @@ struct UndoBuffer
 		maxForward = 0;
 
 		if (buffer[0] != nullptr) delete(buffer[0]);
-		buffer[current] = ComponentSet::allToBuffer(state);
+		buffer[current] = new ComponentSet(ComponentSet::allToBuffer(state));
 	}
 
 

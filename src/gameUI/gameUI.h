@@ -156,8 +156,8 @@ private:
 
 	// Various sets of stored lists of components used for placement and 
 	ComponentSelection selectedComponents;
-	ComponentSet* copyBuffer=nullptr;
-	ComponentSet* activePlacementBuffer=nullptr;
+	ComponentSet copyBuffer;
+	ComponentSet activePlacementBuffer;
 	bool currentlyMoving;
 
 	// the location that the person clicked.  Used for clicking and dragging.

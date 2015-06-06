@@ -398,7 +398,7 @@ void GameState::step(AppData &app)
 	{
 		Charge &charge = charges[chargeIndex];
 
-		if (explodingChargesLocations.find(charge.destination)!=explodingChargesLocations.end())
+		if (explodingChargesLocations.find(charge.destination) != explodingChargesLocations.end())
 		{
 			// this charge is targeting a place where a charge exploded.  Remove it.
 			app.playEffect("ChargeDeath", charge.destination);

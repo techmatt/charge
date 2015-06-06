@@ -25,8 +25,7 @@ void GameUI::init()
     backgroundDirty = true;
     selectedMenuComponent = nullptr;
 
-	delete(activePlacementBuffer);
-	activePlacementBuffer = nullptr;
+    activePlacementBuffer.clear();
 }
 
 Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
@@ -82,17 +81,21 @@ void GameUI::keyDown(SDL_Keycode key)
 {
 	const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
+    const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
+    if (hotkeyComponent != nullptr)
+    {
+
+    }
+
     if (key == SDLK_ESCAPE)
     {
         backgroundDirty = true;
         selectedMenuComponent = nullptr;
 		
-		delete(activePlacementBuffer);
-		activePlacementBuffer = nullptr;
-
+        activePlacementBuffer.clear();
+		
         //selectedGameLocation.boardPos = constants::invalidCoord;
 		selection.empty();
-
     }
 
     if (key == SDLK_RETURN)
@@ -187,7 +190,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
 		return;
 
 	// no dragging if we are placing things
-	if (activePlacementBuffer != nullptr && !activePlacementBuffer->isEmpty())
+	if (!activePlacementBuffer.isEmpty())
 		return;
 
 
@@ -244,11 +247,10 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     if (mouseButton == SDL_BUTTON_RIGHT)
     {
-		if (activePlacementBuffer != nullptr && !activePlacementBuffer->isEmpty())
+		if (!activePlacementBuffer.isEmpty())
         {
             selectedMenuComponent = nullptr;
-			delete(activePlacementBuffer);
-			activePlacementBuffer = nullptr;
+            activePlacementBuffer.clear();
         }
         else
         {
@@ -258,7 +260,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     if (mouseButton == SDL_BUTTON_LEFT)
     {
-		if (activePlacementBuffer == nullptr || activePlacementBuffer->isEmpty())
+		if (activePlacementBuffer.isEmpty())
         {
             GameLocation hover = hoverLocation(false);
 			clickLocation = hover;
@@ -345,8 +347,8 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             selectedMenuComponent = button.component;
             selectedMenuComponentColor = button.modifiers.color;
 
-			delete(activePlacementBuffer);
-			activePlacementBuffer = new ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
+            activePlacementBuffer.clear();
+			activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
         }
         if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
         {
@@ -457,7 +459,7 @@ void GameUI::addHoverComponent()
 {
     //if (selectedMenuComponent == nullptr)
     //    return;
-	if (activePlacementBuffer == nullptr || activePlacementBuffer->isEmpty())
+	if (activePlacementBuffer.isEmpty())
 		return;
 
     const GameLocation location = hoverLocation(true);
