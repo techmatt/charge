@@ -84,7 +84,11 @@ void GameUI::keyDown(SDL_Keycode key)
     const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
     if (hotkeyComponent != nullptr)
     {
+        selectedMenuComponent = hotkeyComponent;
+        selectedMenuComponentColor = selectedMenuComponent->defaultPrimaryCharge();
 
+        activePlacementBuffer.clear();
+        activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
     }
 
     if (key == SDLK_ESCAPE)

@@ -144,7 +144,7 @@ private:
 
 	vector<GameButton> buttons;
 
-    ComponentInfo *selectedMenuComponent;
+    const ComponentInfo *selectedMenuComponent;
     ChargeType selectedMenuComponentColor;
 
     vector<UIRenderObject> backgroundObjects;

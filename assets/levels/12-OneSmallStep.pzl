@@ -1,4 +1,4 @@
-Puzzle~10~159
+Puzzle~14~211
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -157,4 +157,56 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=8
+component0008~12
+Component~11~11
+boardPos=20 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=1
+name=ChargeGoal
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0009~12
+Component~11~11
+boardPos=22 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0010~12
+Component~11~11
+boardPos=22 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0011~12
+Component~11~11
+boardPos=22 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=12

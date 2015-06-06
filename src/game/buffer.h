@@ -69,6 +69,7 @@ struct UndoBuffer
 
 	}
 
+    // this would probably be easier to just use ComponentSet
 	ComponentSet* buffer[constants::bufferSize];
 
 	int current;
