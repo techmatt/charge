@@ -3,9 +3,15 @@
 
 void Database::init()
 {
+    alphabetKeyToComponent.resize('Z' - 'A');
+
     for (auto &line : GameUtil::readCSVFile(params().assetDir + "components.csv"))
     {
         ComponentInfo *component = new ComponentInfo(line);
+        if (component->hotkey[0] >= 'A' && component->hotkey[0] <= 'Z')
+        {
+            alphabetKeyToComponent[component->hotkey[0] - 'A'] = component;
+        }
         components[component->name] = component;
     }
 
@@ -144,4 +150,13 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         textures[fullTextureName] = t;
     }
     return *textures.at(fullTextureName);
+}
+
+const ComponentInfo* Database::componentFromKey(SDL_Keycode key) const
+{
+    if (key >= SDLK_a && key <= SDLK_z)
+    {
+        return alphabetKeyToComponent[key - SDLK_a];
+    }
+    return nullptr;
 }

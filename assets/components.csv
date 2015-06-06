@@ -2,19 +2,19 @@ Component name,Menu X,Menu Y,Hotkey,Colored,Description
 Wire,0,0,W,no,"Wire @|Wires are used to direct charge in any direction. Charge will move from a Wire to any available adjacent component, preferring components that have least recently received a charge."
 Splitter,1,0,S,no,Splitter @|Splitters are used to split a large charge into multiple smaller charges.|Red -> Red|Orange -> 2 Red|Yellow -> 3 Red|Green ->  2 Orage|Blue -> 2 Yellow
 Amplifier,2,0,A,no,Amplifier @|Amplifiers accept two charges and emit a charge that is one level higher than the larger of the receieved charges.
-FilteredAmplifier,3,0,!,yes,"Amplifier - Orange @|Orange Amplifiers accept two charges and emit an orange charge.  It behaves like a normal Amplifier, except that it will not accept a charge that would cause it to produce a lower level charge than orange."
+FilteredAmplifier,3,0,L,yes,"Amplifier - Orange @|Orange Amplifiers accept two charges and emit an orange charge.  It behaves like a normal Amplifier, except that it will not accept a charge that would cause it to produce a lower level charge than orange."
 TeleportSource,4,0,T,yes,"Transmitter - Red @|Transmitters will teleport a charge to the closest Receiver of the same channel.  The possible channels are Red, Orange, Yellow, Green, and Blue. All channels treat all charge levels the same."
 TeleportDestination,5,0,R,yes,"Receiver - Red @|Receivers will accept charges from Transmitters of the same channel, and otherwise behave like a normal Wire."
 ChargeFilter,6,0,F,yes,"Filter - Red @|Red Filters behave like Wires, except that only red charge is allowed passage."
 Hold,5,1,H,no,Hold @|Holds will accept a charge and keep it until the charge has a valid destination to move.
-GateOpen,-1,-1,!,yes,"Gate (Open) - Red @|Gates don't allow charge to pass when closed, but behave like Wires when open. Red Gates are controlled by any Red Switch."
+GateOpen,-1,-1,G,yes,"Gate (Open) - Red @|Gates don't allow charge to pass when closed, but behave like Wires when open. Red Gates are controlled by any Red Switch."
 GateClosed,0,1,!,yes,"Gate (Closed) - Red @|Gates don't allow charge to pass when closed, but behave like Wires when open. Red Gates are controlled by any Red Switch."
-GateSwitch,1,1,!,yes,Switch - Red @|A Red Switch will toggle all Red Doors. It behaves like a normal Wire for the charge.
+GateSwitch,1,1,B,yes,Switch - Red @|A Red Switch will toggle all Red Doors. It behaves like a normal Wire for the charge.
 Circuit,4,1,X,no,"Chip @|Chips allow you to stuff a 5x5 grid worth of components into a single space. They can be flipped and rotated, as well as copied (c) and pasted (v)."
-TrapOpen,2,1,!,yes,"Trap (Open) @|A Trap behaves like a normal Wire for the first charge that passes through it, then it will close."
+TrapOpen,2,1,T,yes,"Trap (Open) @|A Trap behaves like a normal Wire for the first charge that passes through it, then it will close."
 TrapSprung,-1,-1,!,yes,"Trap (Closed) @|A Trap behaves like a normal Wire for the first charge that passes through it, then it will close."
-TrapReset,3,1,!,yes,Crank - Gray @|A Gray Crank will open the nearest Gray Trap. It behaves like a normal Wire for the charge.
-PowerSource,6,1,!,yes,Power Source - Red @|Red Power Sources produce red charge and send it to adjacent components.
+TrapReset,3,1,E,yes,Crank - Gray @|A Gray Crank will open the nearest Gray Trap. It behaves like a normal Wire for the charge.
+PowerSource,6,1,P,yes,Power Source - Red @|Red Power Sources produce red charge and send it to adjacent components.
 MegaHold,4,2,!,yes,"Goal Battery - Red @|Red Goal Batteries need to be filled with charge, and will only accept red charge. Once all goal towers are filled correctly, you win!"
 ChargeGoal,5,2,!,yes,"Goal - Red|Red Goals need to be filled with red charge.  Once all goal towers are filled correctly, you win!"
 Blocker,6,2,!,no,Blocker|Blockers never allow charge to pass through them.

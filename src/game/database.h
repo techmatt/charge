@@ -73,12 +73,14 @@ struct Database
         return *(components.at(componentName));
     }
 
+    const ComponentInfo* componentFromKey(SDL_Keycode key) const;
+
     Texture& getTexture(Renderer &renderer, const string &textureName);
     Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);
     //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
 
     map<string, ComponentInfo*> components;
-    map<string, Texture*> textures;
+
     vector<PuzzleInfo> puzzles;
 
     //
@@ -91,5 +93,10 @@ struct Database
     Texture* squareBlocked;
     Texture* squareOpen;
 
+private:
     
+    map<string, Texture*> textures;
+
+    // map from key to component, goes from 0 to 25
+    vector<ComponentInfo*> alphabetKeyToComponent;
 };
