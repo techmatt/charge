@@ -145,14 +145,18 @@ void GameUI::keyDown(SDL_Keycode key)
 	if (key == SDLK_c)
 	{
 		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
-		//TODO COPY
+			// COPY if there is anything in the selection buffer
+			if (selection.components.size()>0)
+				selection.copyToComponentSet(&copyBuffer, &app.state);
 		}
 	}
 
 	if (key == SDLK_v)
 	{
 		if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
-			//TODO PASTE
+			// PASTE
+			selectedMenuComponent = nullptr;
+			activePlacementBuffer = copyBuffer;
 		}
 	}
 

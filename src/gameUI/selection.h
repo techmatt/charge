@@ -2,7 +2,7 @@
 struct ComponentSelection
 {
     // just consists of a vector of the selected components.  This should work without any intermediate steps because we're very limited in the number of things we can select.
-    // It can be very dangerous to maintain this as Component*, since components get deleted.
+    // It can be very dangerous to maintain this as Component*, since components get deleted.  Yes... I know.  It's still the best way to implement this.
 	vector<Component*> components;
 	vec2i circuitLocation;
 	bool selectionIsInCircuit;
@@ -84,5 +84,9 @@ struct ComponentSelection
 		if (components.size() == 1) return components[0];
 		return nullptr;
 	}
+
+
+	void copyToComponentSet(ComponentSet* cset, GameState* state); // copies a selection buffer to an already allocated componentset
+
 
 };

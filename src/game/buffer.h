@@ -56,6 +56,10 @@ struct ComponentSet
 
 	bool isEmpty() { return components.size() == 0; }
     void clear() { components.clear(); }
+
+	void takeCircuitToBoard();
+	void takeBoardToCircuit(vec2i boardPosition);
+
 };
 
 struct UndoBuffer
