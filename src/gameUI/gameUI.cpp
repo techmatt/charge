@@ -400,11 +400,19 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         if (button.name == "ModePuzzle")
         {
+            app.controller.puzzleVerificationMode = false;
             app.controller.editorMode = ModePlayLevel;
         }
         if (button.name == "ModeLevelEditor")
         {
+            app.controller.puzzleVerificationMode = false;
             app.controller.editorMode = ModeEditLevel;
+
+            if (GetAsyncKeyState(VK_SHIFT))
+            {
+                app.controller.puzzleVerificationMode = true;
+                app.controller.loadCurrentProvidedSolution();
+            }
         }
         if (button.name == "Music")
         {

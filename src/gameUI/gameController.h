@@ -71,6 +71,10 @@ public:
 
     int fractionalSpeedTicksLeft;
 
+    // mode that rapidly goes through all levels and tries to solve them.
+    // not intended as a release feature.
+    bool puzzleVerificationMode;
+
 private:
     AppData &app;
 };

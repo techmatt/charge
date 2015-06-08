@@ -6,6 +6,7 @@ void GameController::init()
     puzzleMode = ModeDesign;
     speed = Speed1x;
     designActionTaken = false;
+    puzzleVerificationMode = false;
     editorMode = ModeEditLevel;
     currentPuzzleIndex = 0;
     fractionalSpeedTicksLeft = 0;
@@ -19,9 +20,10 @@ void GameController::step()
     {
         puzzleMode = ModeDesign;
         app.state.resetPuzzle();
+        puzzleVerificationMode = false;
     }
 
-    if (puzzleMode == ModeExecuting)
+    if (puzzleMode == ModeExecuting || puzzleVerificationMode)
     {
         bool startVictory = app.state.victory;
 
@@ -31,9 +33,13 @@ void GameController::step()
         }
         else
         {
-            const int tickCount = ticksFromSpeed(speed);
+            int tickCount = ticksFromSpeed(speed);
             if (speed == SpeedQuarter)
                 fractionalSpeedTicksLeft = 3;
+
+            if (puzzleVerificationMode)
+                tickCount = 10;
+
             for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
             {
                 app.state.step(app);
@@ -44,9 +50,12 @@ void GameController::step()
         {
             speed = Speed1x;
             const string defaultSolution = params().assetDir + "providedSolutions/" + database().puzzles[app.controller.currentPuzzleIndex].filename + "_A.pzl";
-            //if (!util::fileExists(defaultSolution))
+            app.state.savePuzzle(defaultSolution);
+
+            if (puzzleVerificationMode)
             {
-                app.state.savePuzzle(defaultSolution);
+                app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
+                loadCurrentProvidedSolution();
             }
         }
     }
@@ -90,4 +99,5 @@ void GameController::recordDesignAction()
 {
     app.state.updateAll();
     designActionTaken = true;
+    puzzleVerificationMode = false;
 }
