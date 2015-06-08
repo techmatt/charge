@@ -1,4 +1,4 @@
-Puzzle~121~1602
+Puzzle~131~1732
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -68,12 +68,12 @@ speed=2
 totalCharges=15
 component0001~12
 Component~11~11
-boardPos=12 0
+boardPos=12 11
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -81,12 +81,12 @@ speed=2
 totalCharges=16777215
 component0002~12
 Component~11~11
-boardPos=10 0
+boardPos=10 11
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -94,12 +94,12 @@ speed=2
 totalCharges=16777215
 component0003~12
 Component~11~11
-boardPos=8 0
+boardPos=8 11
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -107,12 +107,12 @@ speed=2
 totalCharges=16777215
 component0004~12
 Component~11~11
-boardPos=0 0
+boardPos=6 11
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -120,12 +120,12 @@ speed=2
 totalCharges=16777215
 component0005~12
 Component~11~11
-boardPos=2 0
+boardPos=6 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=0
-name=Blocker
+color=2
+name=FilteredAmplifier
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -133,12 +133,12 @@ speed=2
 totalCharges=16777215
 component0006~12
 Component~11~11
-boardPos=6 0
+boardPos=8 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=0
-name=Blocker
+color=3
+name=FilteredAmplifier
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -146,12 +146,12 @@ speed=2
 totalCharges=16777215
 component0007~12
 Component~11~11
-boardPos=4 0
+boardPos=10 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=0
-name=Blocker
+color=4
+name=FilteredAmplifier
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -159,12 +159,12 @@ speed=2
 totalCharges=16777215
 component0008~12
 Component~11~11
-boardPos=14 0
+boardPos=12 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=0
-name=Blocker
+color=5
+name=FilteredAmplifier
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -172,12 +172,12 @@ speed=2
 totalCharges=16777215
 component0009~12
 Component~11~11
-boardPos=18 0
+boardPos=14 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -185,12 +185,12 @@ speed=2
 totalCharges=16777215
 component0010~12
 Component~11~11
-boardPos=16 0
+boardPos=16 9
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
+name=Wire
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
@@ -1600,4 +1600,134 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=119
+component0119~12
+Component~11~11
+boardPos=0 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0120~12
+Component~11~11
+boardPos=2 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0121~12
+Component~11~11
+boardPos=4 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0122~12
+Component~11~11
+boardPos=6 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0123~12
+Component~11~11
+boardPos=8 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0124~12
+Component~11~11
+boardPos=10 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0125~12
+Component~11~11
+boardPos=12 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0126~12
+Component~11~11
+boardPos=14 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0127~12
+Component~11~11
+boardPos=18 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0128~12
+Component~11~11
+boardPos=16 0
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=129

@@ -1,4 +1,4 @@
-Puzzle~54~731
+Puzzle~68~913
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -627,6 +627,188 @@ speed=2
 totalCharges=16777215
 component0044~12
 Component~11~11
+boardPos=11 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0045~12
+Component~11~11
+boardPos=17 11
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0046~12
+Component~11~11
+boardPos=15 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0047~12
+Component~11~11
+boardPos=9 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0048~12
+Component~11~11
+boardPos=7 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0049~12
+Component~11~11
+boardPos=5 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0050~12
+Component~11~11
+boardPos=3 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0051~12
+Component~11~11
+boardPos=15 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0052~12
+Component~11~11
+boardPos=15 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=0
+totalCharges=16777215
+component0053~12
+Component~11~11
+boardPos=11 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0054~12
+Component~11~11
+boardPos=13 14
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=0
+totalCharges=16777215
+component0055~12
+Component~11~11
+boardPos=11 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=0
+totalCharges=16777215
+component0056~12
+Component~11~11
+boardPos=13 8
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=0
+totalCharges=16777215
+component0057~12
+Component~11~11
+boardPos=13 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0058~12
+Component~11~11
 boardPos=20 15
 boundary=0
 chargePreference=2
@@ -638,7 +820,7 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0045~12
+component0059~12
 Component~11~11
 boardPos=20 7
 boundary=0
@@ -651,7 +833,7 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0046~12
+component0060~12
 Component~11~11
 boardPos=20 5
 boundary=0
@@ -664,7 +846,7 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0047~12
+component0061~12
 Component~11~11
 boardPos=20 3
 boundary=0
@@ -677,7 +859,7 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0048~12
+component0062~12
 Component~11~11
 boardPos=20 1
 boundary=0
@@ -690,9 +872,9 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0049~12
+component0063~12
 Component~11~11
-boardPos=22 4
+boardPos=22 5
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
@@ -703,9 +885,9 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0050~12
+component0064~12
 Component~11~11
-boardPos=22 2
+boardPos=22 3
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
@@ -716,9 +898,9 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-component0051~12
+component0065~12
 Component~11~11
-boardPos=22 0
+boardPos=22 1
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
@@ -729,4 +911,4 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=52
+componentCount=66

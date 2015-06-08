@@ -52,6 +52,9 @@ void GameState::init()
 
 void GameState::savePuzzle(const string &filename)
 {
+    for (Component *c : components)
+        c->info = c->baseInfo;
+
     ParameterTable puzzleTable("Puzzle");
     
     puzzleTable.setInt("componentCount", (int)components.size());
