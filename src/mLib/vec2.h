@@ -150,12 +150,18 @@ public:
 		return array[i];
 	}
 
-	inline bool operator<(const vec2& other) const {
+	/*inline bool operator<(const vec2& other) const {
 		if ((x < other.x) && (y < other.y))
 			return true;
 
 		return false;
+	}*/
+	inline bool operator<(const vec2& other) const {
+		if (x < other.x) return true;
+		else if (x > other.x) return false;
+		else return y<other.y;
 	}
+
 
 	inline T lengthSq() const {
 		return (array[0]*array[0] + array[1]*array[1]);

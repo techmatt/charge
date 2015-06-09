@@ -7,7 +7,7 @@ void ComponentSelection::copyToComponentSet(ComponentSet* cset, GameState* state
 	cset->clear();
 
 
-	//copy all the components to the set.
+	//remember where all the circuits are
 	set<vec2i> circuitLocations = {};
 
 	// add the components in the selection
@@ -22,7 +22,8 @@ void ComponentSelection::copyToComponentSet(ComponentSet* cset, GameState* state
 	// add the components in circuit boards in the selection
 	for (Component *c : state->components)
 	{
-		if (c->location.inCircuit() && circuitLocations.find(c->location.boardPos) == circuitLocations.end())
+		bool inList = circuitLocations.find(c->location.boardPos) != circuitLocations.end();
+		if (c->location.inCircuit() && inList)
 		{
 			// the circuit here is in the selection set.
 			ComponentDefiningProperties cProp(*c);

@@ -829,7 +829,7 @@ void GameUI::renderHoverComponent()
 			componentLocation = GameLocation(location.boardPos + c.location.boardPos- buffermin, c.location.circuitPos);
 
 		// if the component is in a circuit, render at a lower depth
-		float depth = c.location.inCircuit() ? depthLayers::hoverComponent : depthLayers::hoverCircuitComponent;
+		float depth = c.location.inCircuit() ? depthLayers::hoverCircuitComponent : depthLayers::hoverComponent;
 
 
 		const rect2f screenRect = GameUtil::locationInLocationToWindowRect(canonicalDims, componentLocation, location, 2);
