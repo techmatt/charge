@@ -109,10 +109,37 @@ void GameUI::keyDown(SDL_Keycode key)
         app.state.resetPuzzle();
     }
 
-    if (key == SDLK_0)
+    /*if (key == SDLK_0)
     {
         ParameterFile parameterFile("../assets/parameters.txt");
         g_gameParams.load(parameterFile);
+    }*/
+
+    Component* gameComponent = selection.singleElement();
+    if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
+    {
+        if (key >= SDLK_1 && key <= SDLK_5)
+        {
+            gameComponent->modifiers.chargePreference = key - SDLK_1;
+            app.controller.recordDesignAction();
+        }
+
+        ChargeType color = ChargeNone;
+        if (key >= SDLK_6 && key <= SDLK_9)
+            color = (ChargeType)((int)ChargeRed + (key - SDLK_6));
+        if (key == SDLK_0)
+            color = ChargeBlue;
+        if (key == SDLK_MINUS)
+            color = ChargeGray;
+
+        if (color != ChargeNone)
+        {
+            if (gameComponent->info->colorUpgrades && color != ChargeGray)
+                gameComponent->modifiers.color = color;
+            if (gameComponent->info->grayUpgrade && color == ChargeGray)
+                gameComponent->modifiers.color = color;
+            app.controller.recordDesignAction();
+        }
     }
 
     if (key == SDLK_LEFT)
@@ -159,6 +186,12 @@ void GameUI::keyDown(SDL_Keycode key)
 			activePlacementBuffer = copyBuffer;
 		}
 	}
+
+    if (key == SDLK_F8)
+    {
+        // debug key to disable all components
+
+    }
 
 	if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
 	{
@@ -783,10 +816,11 @@ void GameUI::updateButtonList()
         else
         {
             vector<ChargeType> chargeLevels;
-            if (info.colorUpgrades && selectedGameComponent->modifiers.color != ChargeGray)
+            if (info.colorUpgrades)
             {
                 ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
-                for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
+                ChargeType end = info.grayUpgrade ? ChargeGray : ChargeBlue;
+                for (int charge = (int)start; charge <= (int)end; charge++)
                     chargeLevels.push_back((ChargeType)charge);
             }
 

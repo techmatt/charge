@@ -11,6 +11,7 @@ struct ComponentInfo
         hotkey = m.at("Hotkey");
 
         colorUpgrades = (m.at("Colored") == "yes");
+        grayUpgrade = (m.at("Grayed") == "yes");
 
         background = true;
 
@@ -34,6 +35,7 @@ struct ComponentInfo
     string hotkey;
     vec2i menuCoordinate;
 
+    bool grayUpgrade;
     bool colorUpgrades;
     bool background;
 

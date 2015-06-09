@@ -98,6 +98,7 @@ void GameController::loadCurrentProvidedSolution()
 void GameController::recordDesignAction()
 {
     app.state.updateAll();
+    app.ui.backgroundDirty = true;
     designActionTaken = true;
     puzzleVerificationMode = false;
 }
