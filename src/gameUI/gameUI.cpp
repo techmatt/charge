@@ -79,6 +79,11 @@ void GameUI::renderText(Texture &tex, const vec2f &start, const float height, co
 
 void GameUI::keyDown(SDL_Keycode key)
 {
+    //
+    // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
+    //
+    backgroundDirty = true;
+
 	const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
@@ -118,26 +123,35 @@ void GameUI::keyDown(SDL_Keycode key)
     Component* gameComponent = selection.singleElement();
     if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
     {
-        if (key >= SDLK_1 && key <= SDLK_5)
+        if (key >= SDLK_1 && key <= SDLK_6)
         {
-            gameComponent->modifiers.chargePreference = key - SDLK_1;
-            app.controller.recordDesignAction();
-        }
+            ChargeType color = (ChargeType)((int)ChargeRed + key - SDLK_1);
 
-        ChargeType color = ChargeNone;
-        if (key >= SDLK_6 && key <= SDLK_9)
-            color = (ChargeType)((int)ChargeRed + (key - SDLK_6));
-        if (key == SDLK_0)
-            color = ChargeBlue;
-        if (key == SDLK_MINUS)
-            color = ChargeGray;
-
-        if (color != ChargeNone)
-        {
             if (gameComponent->info->colorUpgrades && color != ChargeGray)
                 gameComponent->modifiers.color = color;
             if (gameComponent->info->grayUpgrade && color == ChargeGray)
                 gameComponent->modifiers.color = color;
+            app.controller.recordDesignAction();
+        }
+
+        
+
+        auto keyToPreference = [](SDL_Keycode key)
+        {
+            switch (key)
+            {
+            case SDLK_7: return 0;
+            case SDLK_8: return 1;
+            case SDLK_9: return 2;
+            case SDLK_0: return 3;
+            case SDLK_MINUS: return 4;
+            default: return -1;
+            }
+        };
+        int preference = keyToPreference(key);
+        if (preference != -1)
+        {
+            gameComponent->modifiers.chargePreference = preference;
             app.controller.recordDesignAction();
         }
     }
@@ -190,7 +204,7 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_F8)
     {
         // debug key to disable all components
-
+        app.state.buildableComponents.components.clear();
     }
 
 	if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
@@ -358,6 +372,11 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
                 ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
                 for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
                     app.state.buildableComponents.setBuild(button.name, ComponentModifiers((ChargeType)charge), !buildable);
+            }
+            else if (button.name == "Wire")
+            {
+                for (int speed = (int)WireMajorDelay; speed <= (int)WireMajorAccelerator; speed++)
+                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers(ChargeNone, 2, (WireSpeedType)speed), !buildable);
             }
             else
             {
@@ -685,12 +704,12 @@ void GameUI::renderTrails()
     //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
-    if (GetAsyncKeyState(VK_F8))
-    {
-        cout << "Saving trail textures..." << endl;
-        LodePNG::save(trailTexture0.getImage(), "trailTexture0.png");
-        LodePNG::save(trailTexture1.getImage(), "trailTexture1.png");
-    }
+    //if (GetAsyncKeyState(VK_F8))
+    //{
+    //    cout << "Saving trail textures..." << endl;
+    //    LodePNG::save(trailTexture0.getImage(), "trailTexture0.png");
+    //    LodePNG::save(trailTexture1.getImage(), "trailTexture1.png");
+    //}
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset) const
