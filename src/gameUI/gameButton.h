@@ -5,6 +5,8 @@ enum ButtonType
     ButtonChargeColor,
     ButtonWireSpeed,
     ButtonCircuitBoundary,
+    ButtonGateState,
+    ButtonTrapState,
     ButtonChargePreference,
     ButtonPuzzleControl,
     ButtonComponentAttribute,

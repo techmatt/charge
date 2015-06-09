@@ -179,9 +179,6 @@ void GameUI::removeHoverComponent()
     if (c == nullptr || (app.controller.editorMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
         return;
 
-	//remove from selection
-	selection.remove(c);
-
     backgroundDirty = true;
     app.controller.designActionTaken = true;
     app.state.removeComponent(c);
@@ -378,6 +375,11 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             if (button.type == ButtonCircuitBoundary)
             {
                 gameComponent->modifiers.boundary = button.modifiers.boundary;
+                app.controller.recordDesignAction();
+            }
+            if (button.type == ButtonGateState || button.type == ButtonTrapState)
+            {
+                gameComponent->baseInfo = gameComponent->info = &database().getComponent(button.name);
                 app.controller.recordDesignAction();
             }
         }
@@ -799,6 +801,20 @@ void GameUI::updateButtonList()
                     buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
                 chargeIndex++;
             }
+
+            //
+            // some components have a toggleable state
+            //
+            if (info.name == "TrapSprung" || info.name == "TrapOpen")
+            {
+                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::ButtonTrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::ButtonTrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+            }
+            if (info.name == "GateOpen" || info.name == "GateClosed")
+            {
+                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::ButtonGateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::ButtonGateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+            }
         }
     }
 
@@ -869,6 +885,8 @@ void GameUI::updateBackgroundObjects()
             selected |= (button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
             selected |= (button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
             selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonTrapState && gameComponent->info->name == button.name);
+            selected |= (button.type == ButtonGateState && gameComponent->info->name == button.name);
         }
         if (button.type == ButtonPuzzleControl)
         {
