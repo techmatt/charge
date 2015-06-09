@@ -30,7 +30,7 @@ struct ComponentInfo
     {
         name = m.at("Component name");
         semanticName = m.at("Semantic name");
-        description = m.at("Description");
+        description = util::replace(m.at("Description"), '|', '\n');
         menuCoordinate.x = convert::toInt(m.at("Menu X"));
         menuCoordinate.y = convert::toInt(m.at("Menu Y"));
         hotkey = m.at("Hotkey");

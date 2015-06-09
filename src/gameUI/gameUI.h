@@ -71,7 +71,7 @@ private:
 
     void addHoverComponent();
 
-    Texture& getFontTexture(const string &text, FontType font);
+    Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 
     Component* activeCircuit() const;
 

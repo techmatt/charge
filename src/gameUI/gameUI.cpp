@@ -15,12 +15,12 @@ void GameUI::init()
     activePlacementBuffer.clear();
 }
 
-Texture& GameUI::getFontTexture(const string &text, FontType font)
+Texture& GameUI::getFontTexture(const string &text, FontType font, int wrapWidth)
 {
     if (textCache.count(text) == 0)
     {
         auto &info = database().fonts[(int)font];
-        Texture *t = new Texture(app.renderer.getFont(info.name), text, info.color);
+        Texture *t = new Texture(app.renderer.getFont(info.name), text, info.color, wrapWidth);
         textCache[text] = t;
     }
     return *textCache[text];
@@ -57,10 +57,16 @@ void GameUI::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, o.rotation, color);
 }
 
-void GameUI::renderText(Texture &tex, const vec2f &start, const float height, const vec4f &color)
+void GameUI::renderText(Texture &tex, const vec2f &start, const float lineHeight, const vec4f &color)
 {
     const float aspect = (float)tex.bmp().dimX() / (float)tex.bmp().dimY();
+
+    // TODO: the 58 here is a guess
+    const float lineCount = tex.bmp().dimY() / 58.0f;
+    const float height = lineCount * lineHeight;
+
     const float width = aspect * height;
+
     const rect2f rect(start, vec2f(start.x + width, start.y + height));
     app.renderer.render(tex, coordinateFrame.toContainer(rect), depthLayers::font, color);
 }
@@ -1063,7 +1069,7 @@ void GameUI::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &inf
     render(tex, rect, depthLayers::tooltip);
 
     renderText(getFontTexture(info.semanticName, FontTooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(info.description, FontTooltipDescription), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
+    renderText(getFontTexture(info.description, FontTooltipDescription, 900), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
 }
 
 void GameUI::renderButtonBackground(const GameButton &button, bool selected)

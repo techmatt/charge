@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-void Texture::drawText(TTF_Font *font, const string &text, RGBColor color)
+void Texture::drawText(TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
 {
     if (text.size() == 0)
     {
@@ -9,7 +9,13 @@ void Texture::drawText(TTF_Font *font, const string &text, RGBColor color)
     }
 
     const SDL_Color SDLColor = { color.r, color.g, color.b, color.a };
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text.c_str(), SDLColor);
+    
+    SDL_Surface *surface;
+    if (wrapWidth == 0)
+        surface = TTF_RenderUTF8_Blended(font, text.c_str(), SDLColor);
+    else
+        surface = TTF_RenderText_Blended_Wrapped(font, text.c_str(), SDLColor, wrapWidth);
+        
 
     _bmp.allocate(surface->w, surface->h);
     for (int y = 0; y < surface->h; y++)

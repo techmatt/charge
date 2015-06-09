@@ -11,10 +11,10 @@ public:
     {
         initInternal();
     }
-    Texture(TTF_Font *font, const string &text, RGBColor color)
+    Texture(TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
     {
         initInternal();
-        drawText(font, text, color);
+        drawText(font, text, color, wrapWidth);
     }
     Texture(Renderer &renderer, const string &filename)
     {
@@ -54,7 +54,7 @@ public:
     void load(Renderer &renderer, const string &filename);
     void load(Renderer &renderer, const Bitmap &bmp);
 
-    void drawText(TTF_Font *font, const string &text, RGBColor color);
+    void drawText(TTF_Font *font, const string &text, RGBColor color, int wrapWidth);
 
     void bindOpenGL();
 

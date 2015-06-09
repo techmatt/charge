@@ -22,7 +22,7 @@ void Database::init()
 
     fonts[FontLevelName] = FontInfo("arial", 36.0f, RGBColor(0, 0, 0));
     fonts[FontTooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83));
-    fonts[FontTooltipDescription] = FontInfo("trebuc", 36.0f, RGBColor(200, 150, 200));
+    fonts[FontTooltipDescription] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250));
     fonts[FontTooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50));
     fonts[FontComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
 }
