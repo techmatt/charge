@@ -1062,7 +1062,8 @@ void GameUI::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &inf
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
 
-    renderText(getFontTexture(info.semanticName, FontTooltipName), canonicalStart + vec2f(15.0f, 9.0f), 20.0f);
+    renderText(getFontTexture(info.semanticName, FontTooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
+    renderText(getFontTexture(info.description, FontTooltipDescription), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
 }
 
 void GameUI::renderButtonBackground(const GameButton &button, bool selected)

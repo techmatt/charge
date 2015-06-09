@@ -1,0 +1,35 @@
+Component name	Menu X	Menu Y	Hotkey	Colored	Grayed	Semantic name	Description
+Wire	0	0	W	no	no	Wire	Allows charge to flow.
+Splitter	1	0	S	no	no	Splitter	Splits a large charge into multiple smaller charges.|Red -> Red|Orange -> 2 Red|Yellow -> 3 Red|Green ->  2 Orange|Blue -> 2 Yellow
+Amplifier	2	0	A	no	no	Amplifier	Amplifiers accept two charges and emit a charge that is one level higher than the larger of the receieved charges.
+FilteredAmplifier	3	0	L	yes	no	Colored Amplifier	Colored Amlifiers accept two charges and emit a charge of its color.  It will not accept a second charge that is not strong enough to produce the emitted color.
+TeleportSource	4	0	T	yes	no	Transmitter	"Transmitters will teleport a charge to the closest receiver of the same channel.  The possible channels are Red, Orange, Yellow, Green, and Blue."
+TeleportDestination	5	0	R	yes	no	Receiver	"Receivers will accept charges from transmitters of the same channel, and otherwise behave like a normal wire."
+ChargeFilter	6	0	F	yes	no	Filter	Filters only allow charges of their color to pass through.
+Hold	5	1	H	no	no	Hold	Holds will accept a charge and keep it until the charge has a valid destination to move towards.
+GateOpen	-1	-1	G	yes	yes	Gate (Open)	"Gates don't allow charge to pass when closed, but behave like wires when open.  Colored gates are controlled by the switch of the same color."
+GateClosed	0	1	!	yes	yes	Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.  Colored gates are controlled by the switch of the same color."
+GateSwitch	1	1	B	yes	yes	Gate Switch	A colored switch will toggle all gates of the same color.
+Circuit	4	1	X	no	no	Chip	"Chips allow you to build a 5x5 grid worth of components into a single space. They can be flipped and rotated, as well as copied (c) and pasted (v)."
+TrapOpen	2	1	T	yes	yes	Trap (Open)	"A trap behaves like a normal wire for the first charge that passes through it, then it will close. |Traps can be reset by cranks."
+TrapSprung	-1	-1	!	yes	yes	Trap (Closed)	"A trap behaves like a normal wire for the first charge that passes through it, then it will close. |Traps can be reset by cranks."
+TrapReset	3	1	E	yes	yes	Crank	A colored crank will open all traps of the same color.  A gray crank will only open the nearest trap.
+PowerSource	6	1	P	yes	no	Generator	Produce charge and send it to adjacent components.
+MegaHold	4	2	!	yes	yes	Goal Battery	"Goals need to be filled with a charge of the same color.  Once all goals are filled correctly, you win!"
+ChargeGoal	5	2	!	yes	no	Goal	"Goals need to be filled with a charge of the same color.  Once all goals are filled correctly, you win!"
+Blocker	6	2	!	no	no	Blocker	Blockers never allow charge to pass through them.
+WireMajorAccelerator	-1	-1	!	no	no	Invalid	Wire - Major Accelerator @|Upgrading to a Major Accelerator causes all charges to pass through this Wire very quickly.
+WireMinorAccelerator	-1	-1	!	no	no	Invalid	Wire - Minor Accelerator @|Upgrading to a Minor Accelerator causes all charges to pass through this Wire quickly.
+WireMinorDelay	-1	-1	!	no	no	Invalid	Wire - Minor Delay @|Upgrading to a Minor Delay causes all charges to pass through this Wire slowly.
+WireMajorDelay	-1	-1	!	no	no	Invalid	Wire - Major Delay @|Upgrading to a Major Delay causes all charges to pass through this Wire very slowly.
+CircuitBoundary	-1	-1	!	no	no	Invalid	"Wire @|Wires are used to direct charge in any direction. Charge will move from a Wire to any available adjacent component, preferring components that have least recently received a charge."
+CircuitPaste	-1	-1	!	no	no	Invalid	Pastes the copied chip.
+CircuitRotate90	-1	-1	!	no	no	Invalid	Rotates the selected chip 90 degrees clockwise.
+CircuitRotateN90	-1	-1	!	no	no	Invalid	Rotates the selected chip 90 degrees counter-clockwise.
+CircuitFlipHorizontal	-1	-1	!	no	no	Invalid	Flips the selected chip horizontally.
+CircuitFlipVertical	-1	-1	!	no	no	Invalid	Flips the selected chip vertically.
+CircuitCopy	-1	-1	!	no	no	Invalid	Copy the selected chip by presscing (C). Paste by pressing (V).
+GateClosedGrayProxy	0	2	!	no	no	Gray Gate	"Gate (Open) - Red @|Gates don't allow charge to pass when closed, but behave like Wires when open. Red Gates are controlled by any Red Switch."
+GateSwitchGrayProxy	1	2	!	no	no	Gray Button	Switch - Red @|A Red Switch will toggle all Red Doors. It behaves like a normal Wire for the charge.
+TrapOpenGrayProxy	2	2	!	no	no	Gray Trap (Open)	"Trap (Open) @|A Trap behaves like a normal Wire for the first charge that passes through it, then it will close."
+TrapResetGrayProxy	3	2	!	no	no	Gray Crank	Crank - Gray @|A Gray Crank will open the nearest Gray Trap. It behaves like a normal Wire for the charge.

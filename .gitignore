@@ -105,3 +105,4 @@
 vs2013/x64/Debug/charge.tlog/unsuccessfulbuild
 /src/main.h.gch
 /src/a.out
+*.lnk
