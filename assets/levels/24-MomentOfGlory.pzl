@@ -302,13 +302,13 @@ speed=2
 totalCharges=16777215
 component0019~12
 Component~11~11
-boardPos=20 8
+boardPos=10 10
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=5
-name=GateClosed
-puzzleType=1
+color=0
+name=Blocker
+puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
@@ -887,12 +887,12 @@ speed=2
 totalCharges=16777215
 component0064~12
 Component~11~11
-boardPos=10 10
+boardPos=20 8
 boundary=0
-chargePreference=2
+chargePreference=3
 circuitPos=-100 -100
-color=0
-name=Blocker
+color=5
+name=GateClosed
 puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1

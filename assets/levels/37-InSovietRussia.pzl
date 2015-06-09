@@ -614,17 +614,17 @@ speed=4
 totalCharges=16777215
 component0043~12
 Component~11~11
-boardPos=1 21
+boardPos=16 6
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=1
-name=PowerSource
+color=0
+name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
 speed=2
-totalCharges=1
+totalCharges=16777215
 component0044~12
 Component~11~11
 boardPos=16 4
@@ -1121,15 +1121,15 @@ speed=2
 totalCharges=16777215
 component0082~12
 Component~11~11
-boardPos=16 6
+boardPos=0 22
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
-color=0
-name=Blocker
-puzzleType=1
-secondsBeforeFirstEmission=1
+color=1
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=2
 secondsPerEmission=1
 speed=2
-totalCharges=16777215
+totalCharges=1
 componentCount=83

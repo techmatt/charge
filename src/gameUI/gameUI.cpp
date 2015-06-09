@@ -292,10 +292,6 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         return;
     const GameButton &button = *hitButton;
 
-    //buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
-    //buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
-    //buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
-
     int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
     //Component *gameComponent = app.state.getComponent(selectedGameLocation);
 	Component* gameComponent = selection.singleElement();

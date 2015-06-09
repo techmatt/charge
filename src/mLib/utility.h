@@ -608,11 +608,8 @@ namespace util
 		return res;
 	}
 
-    inline std::string getMLibDir()
-    {
-        return util::directoryFromPath(__FILE__) + "../../";
-    }
-
+    string getWorkingDirectory();
+    
 }  // namespace utility
 
 

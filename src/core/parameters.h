@@ -8,7 +8,9 @@ struct GameParameters
 
     void load(const ParameterFile &params)
     {
-        params.readParameter("assetDir", assetDir);
+        params.readParameter("assetDir", assetDirBase);
+
+        assetDir = util::getWorkingDirectory() + assetDirBase;
 
         params.readParameter("canonicalDims", canonicalDims);
 
@@ -44,6 +46,7 @@ struct GameParameters
     }
 
     string assetDir;
+    string assetDirBase;
 
     vec2f canonicalDims;
 

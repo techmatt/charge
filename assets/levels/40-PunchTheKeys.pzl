@@ -1,6 +1,6 @@
-Puzzle~93~1234
-buildableComponents~49
-ComponentBuildState~48~48
+Puzzle~93~1238
+buildableComponents~53
+ComponentBuildState~52~52
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
@@ -49,6 +49,10 @@ TrapResetOrange=1
 TrapResetRed=1
 TrapResetYellow=1
 Wire=1
+WireMajorAccelerator=1
+WireMajorDelay=1
+WireMinorAccelerator=1
+WireMinorDelay=1
 component0000~12
 Component~11~11
 boardPos=22 22

@@ -188,6 +188,13 @@ namespace util
 	}
 
 #ifdef WIN32
+    string getWorkingDirectory()
+    {
+        char result[1024];
+        GetCurrentDirectory(1024, result);
+        return string(result) + "/";
+    }
+
 	UINT64 getFileSize(const std::string &filename)
 	{
 		BOOL success;
