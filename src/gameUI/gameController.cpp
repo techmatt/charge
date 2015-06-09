@@ -8,7 +8,7 @@ void GameController::init()
     designActionTaken = false;
     puzzleVerificationMode = false;
     editorMode = ModeEditLevel;
-    currentPuzzleIndex = 0;
+    currentPuzzleIndex = 20;
     fractionalSpeedTicksLeft = 0;
 
     loadCurrentPuzzle();
@@ -88,10 +88,20 @@ void GameController::loadCurrentPuzzle()
 void GameController::loadCurrentProvidedSolution()
 {
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
-    const string puzzleFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
-    if (util::fileExists(puzzleFilename))
+    const string puzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
+    const string solutionFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
+    if (util::fileExists(puzzleFilename) && util::fileExists(solutionFilename))
     {
-        app.controller.loadPuzzle(puzzleFilename, "Example solution " + to_string(puzzle.index) + ": " + puzzle.name);
+        app.controller.loadPuzzle(solutionFilename, "Example solution " + to_string(puzzle.index) + ": " + puzzle.name);
+
+        //
+        // Load the base puzzle file.
+        // TODO: We should verify the solution is compatiable with the underlying puzzle file.
+        //
+        GameState baseState;
+        baseState.init();
+        baseState.loadPuzzle(puzzleFilename, "comparison");
+        app.state.buildableComponents = baseState.buildableComponents;
     }
 }
 
