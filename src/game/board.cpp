@@ -145,3 +145,4 @@ int Board::findNeighboringComponents(const vec2i &source, Component *neighbors[6
     }
     return table;
 }*/
+

@@ -2,7 +2,7 @@
 class GameUtil
 {
 public:
-    static vec2f coordinateRemap(const vec2f &dimStart, const vec2f &dimEnd, const vec2f &v)
+	static vec2f coordinateRemap(const vec2f &dimStart, const vec2f &dimEnd, const vec2f &v)
     {
         vec2f result;
         result.x = math::linearMap(0.0f, dimStart.x, 0.0f, dimEnd.x, v.x);
@@ -59,6 +59,7 @@ public:
         return canonicalToBoard(canonical);
     }
 
+
     static vec2f windowToCircuit(const vec2f &canonicalDims, const vec2f &v)
     {
         const vec2f canonical = windowToCanonical(canonicalDims, v);
@@ -82,6 +83,7 @@ public:
     }
 
     static rect2f locationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, int size);
+	static rect2f locationInLocationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, const GameLocation &containingLocation, int size);
     
     static vec2f boardToWindow(const vec2f &canonicalDims, const vec2i &boardCoord)
     {

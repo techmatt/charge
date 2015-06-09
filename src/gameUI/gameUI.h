@@ -135,7 +135,7 @@ private:
 
     Component* activeCircuit() const;
 
-    GameLocation hoverLocation(bool constructionOffset) const;
+	GameLocation hoverLocation(bool constructionOffset, vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
 
     vec2f canonicalDims;
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
@@ -163,4 +163,15 @@ private:
 	// the location that the person clicked.  Used for clicking and dragging.
 	GameLocation clickLocation;
 	vec2f clickScreenLocation;
+
+
+	
+	bool canNotBuildAtPosition(const Board b, const ComponentDefiningProperties cdp, vec2i coord) const
+	{
+		//TODO: check whether the component is actually buildable in this puzzle with the corresponding properties
+		const BoardCell &cell = b.cells(coord);
+		return (cell.c != nullptr || cell.blocked) ||
+			(b.isCircuitBoard() && min(coord.x, constants::circuitBoardSize - 1 - coord.x) <= 1 && min(coord.y, constants::circuitBoardSize - 1 - coord.y) <= 1) ||
+			(b.isCircuitBoard() && (cdp.baseInfo->name == "Circuit" || cdp.baseInfo->name == "FixedCircuit"));
+	}
 };

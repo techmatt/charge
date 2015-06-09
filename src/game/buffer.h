@@ -44,7 +44,7 @@ struct ComponentSet
 	void flipAboutHorizonal();
 	void flipAboutVerical();
 	void rotate(int i); //rotates the buffer about the centerish by i*90 degrees clockwise
-	rect2i boundingBox();
+	rect2i boundingBox() const;
 
 	//functions
 	void addToComponents(GameState &state, vec2i offset);

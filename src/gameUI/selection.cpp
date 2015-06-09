@@ -22,7 +22,7 @@ void ComponentSelection::copyToComponentSet(ComponentSet* cset, GameState* state
 	// add the components in circuit boards in the selection
 	for (Component *c : state->components)
 	{
-		if (c->location.inCircuit() && circuitLocations.count(c->location.boardPos) > 0)
+		if (c->location.inCircuit() && circuitLocations.find(c->location.boardPos) == circuitLocations.end())
 		{
 			// the circuit here is in the selection set.
 			ComponentDefiningProperties cProp(*c);

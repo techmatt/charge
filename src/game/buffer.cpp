@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-rect2i ComponentSet::boundingBox()
+rect2i ComponentSet::boundingBox() const
 {
 	if (components.size() == 0)
 		return rect2i(constants::invalidCoord, constants::invalidCoord);
@@ -9,7 +9,10 @@ rect2i ComponentSet::boundingBox()
 	rect2i out = rect2i(params().boardDims[0], params().boardDims[1], 0, 0);
 
 	for (auto &c : components)
-        out.include(c.location.boardPos);
+	{
+		out.include(c.location.boardPos);
+		out.include(c.location.boardPos+vec2i(2,2));
+	}
 
 	return out;
 }
@@ -133,7 +136,7 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
 		if (c.location.inCircuit()) continue;
 		Component* newComponent = c.makeNewComponent();
 		newComponent->location.boardPos += offset;
-		state.addNewComponent(newComponent, false, false);
+		state.addNewComponent(newComponent);
 	}
 
 	// do the elements in circuits next.
@@ -142,7 +145,7 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
 		if (!c.location.inCircuit()) continue;
         Component* newComponent = c.makeNewComponent();
 		newComponent->location.boardPos += offset;
-		state.addNewComponent(newComponent, false, false);
+		state.addNewComponent(newComponent);
 	}
 	state.updateAll();
 }

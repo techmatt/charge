@@ -10,6 +10,7 @@ namespace depthLayers
     const float charge = 0.01f;
     const float font = 0.02f;
     const float hoverComponent = 0.1f;
+	const float hoverCircuitComponent = 0.09f;
     const float hoverComponentGrid = 0.05f;
     const float background = 1.0f;
     const float spokes = 0.95f;
@@ -523,43 +524,74 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
 
 void GameUI::addHoverComponent()
 {
-    //if (selectedMenuComponent == nullptr)
-    //    return;
-	if (activePlacementBuffer.isEmpty())
+	if (selectedMenuComponent == nullptr && activePlacementBuffer.isEmpty())
 		return;
 
-    const GameLocation location = hoverLocation(true);
-    if (location.boardPos == constants::invalidCoord)
-        return;
+	GameLocation location = hoverLocation(true);
 
-    if (location.inCircuit())
-    {
-        const bool cornerX = location.circuitPos.x == 0 || location.circuitPos.x == constants::circuitBoardSize - 2;
-        const bool cornerY = location.circuitPos.y == 0 || location.circuitPos.y == constants::circuitBoardSize - 2;
+	if (location.boardPos == constants::invalidCoord)
+		return;
 
-        if (activeCircuit() != nullptr &&
-            activeCircuit()->circuitBoard->coordValidForNewComponent(location.circuitPos) &&
-            !(cornerX && cornerY) &&
-            selectedMenuComponent->name != "Circuit" &&
-            selectedMenuComponent->name != "Blocker")
-        {
-            Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponentColor, location);
-            app.state.addNewComponent(newComponent);
-            app.controller.designActionTaken = true;
-            backgroundDirty = true;
+	if (!location.valid())
+		return;
 
-			app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
-        }
-    }
-    else if (app.state.board.coordValidForNewComponent(location.boardPos))
-    {
-        Component *newComponent = new Component(selectedMenuComponent->name, selectedMenuComponentColor, location);
-        app.state.addNewComponent(newComponent);
-        app.controller.designActionTaken = true;
-        backgroundDirty = true;
+	if (location.inCircuit() && activeCircuit() == nullptr)
+		return;
 
-		app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
-    }
+	vec2i buffermin = activePlacementBuffer.boundingBox().min();
+
+	//figure out component placement
+	for (ComponentDefiningProperties c : activePlacementBuffer.components)
+	{
+		GameLocation componentLocation;
+
+		// move to the placement location
+		if (location.inCircuit())
+			componentLocation = GameLocation(location.circuitPos + c.location.boardPos - buffermin, c.location.circuitPos);
+		else
+			componentLocation = GameLocation(location.boardPos + c.location.boardPos - buffermin, c.location.circuitPos);
+
+
+		
+		if (!componentLocation.inCircuit())
+		{
+
+
+			const vec2i coordBase = componentLocation.boardPos;
+			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
+
+			for (int xOffset = 0; xOffset <= 1; xOffset++)
+				for (int yOffset = 0; yOffset <= 1; yOffset++)
+				{
+					const vec2i coord = coordBase + vec2i(xOffset, yOffset);
+					if (board.cells.coordValid(coord))
+					{
+						if (canNotBuildAtPosition(board, c, coord))
+							return;
+					}
+				}
+		}
+	}
+
+	// verfied that we can build the thing at the specified place
+	// build it
+
+	
+		if (location.inCircuit())
+		{
+			vec2i offset = location.circuitPos - buffermin;
+			activePlacementBuffer.addToCircuit(app.state,location.boardPos, offset);
+		}
+		else
+		{
+			vec2i offset = location.boardPos - buffermin;
+			activePlacementBuffer.addToComponents(app.state, offset);
+		}
+
+	app.controller.designActionTaken = true;
+	app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
+	backgroundDirty = true;
+ 
 }
 
 void GameUI::render()
@@ -712,73 +744,129 @@ void GameUI::renderTrails()
     //}
 }
 
-GameLocation GameUI::hoverLocation(bool constructionOffset) const
+GameLocation GameUI::hoverLocation(bool constructionOffset, vec2f mouseOffsetFromHover) const
 {
-    const vec2f boardCoordf = GameUtil::windowToBoard(canonicalDims, mouseHoverCoord);
-    const vec2f circuitCoordf = GameUtil::windowToCircuit(canonicalDims, mouseHoverCoord);
+	vec2f newMouseOffsetFromHover = mouseOffsetFromHover;
+	rect2i bufferShape;
 
-    const vec2i boardCoordi = constructionOffset ?
-        math::round(boardCoordf) - vec2i(1, 1) :
-        math::floor(boardCoordf);
+	// start by finding the actual mouseOffsetFromHover, which is the vector from the upper left corner of the active buffer to the mouse
+	if (constructionOffset && mouseOffsetFromHover.x < 0.0f) //it works...
+	{
+		bufferShape = activePlacementBuffer.boundingBox();
+		newMouseOffsetFromHover = vec2f(bufferShape.extent()) / 2.0f;
+	}
 
-    const vec2i circuitCoordi = constructionOffset ?
-        math::round(circuitCoordf) - vec2i(1, 1) :
-        math::floor(circuitCoordf);
+    vec2f boardCoordf = GameUtil::windowToBoard(canonicalDims, mouseHoverCoord);
+    vec2f circuitCoordf = GameUtil::windowToCircuit(canonicalDims, mouseHoverCoord);
 
-    const auto &cells = app.state.board.cells;
-    if (cells.coordValid(boardCoordi))
-        return GameLocation(boardCoordi);
+	bool onBoard = ((0 <= boardCoordf.x && boardCoordf.x <= params().boardDims.x) && (0 <= boardCoordf.y && boardCoordf.y <= params().boardDims.y));
+	bool onCircuit = activeCircuit()!=nullptr && ((0 <= circuitCoordf.x && circuitCoordf.x <= constants::circuitBoardSize) && (0 <= circuitCoordf.y && circuitCoordf.y <= constants::circuitBoardSize));
 
-    if (activeCircuit() != nullptr && activeCircuit()->circuitBoard->cells.coordValid(circuitCoordi))
-        return GameLocation(activeCircuit()->location.boardPos, circuitCoordi);
+	if (!onBoard && !onCircuit)
+		return GameLocation(constants::invalidCoord);
 
 
-    return GameLocation(constants::invalidCoord);
+	vec2i boardCoordi = vec2i(0, 0);
+	vec2i circuitCoordi = vec2i(0, 0); 
+	
+	vec2f highestPosition;
+	if (onCircuit && constructionOffset)
+	{
+		highestPosition = vec2f((float)constants::circuitBoardSize, (float)constants::circuitBoardSize) - vec2f(bufferShape.extent()) + vec2f(newMouseOffsetFromHover);
+		circuitCoordf.x = max(circuitCoordf.x, newMouseOffsetFromHover.x);
+		circuitCoordf.y = max(circuitCoordf.y, newMouseOffsetFromHover.y);
+		circuitCoordf.x = min(circuitCoordf.x, highestPosition.x);
+		circuitCoordf.y = min(circuitCoordf.y, highestPosition.y);
+		circuitCoordf -= newMouseOffsetFromHover;
+	}
+	else if (onBoard && constructionOffset)
+	{
+		highestPosition = vec2f((float)params().boardDims.x, (float)params().boardDims.x) - vec2f(bufferShape.extent()) + vec2f(newMouseOffsetFromHover);
+		boardCoordf.x = max(boardCoordf.x, newMouseOffsetFromHover.x);
+		boardCoordf.y = max(boardCoordf.y, newMouseOffsetFromHover.y);
+		boardCoordf.x = min(boardCoordf.x, highestPosition.x);
+		boardCoordf.y = min(boardCoordf.y, highestPosition.y);
+		boardCoordf -= newMouseOffsetFromHover;
+	}
+
+	// this will return the square we are actually on, rather than the closest vertex.
+	if (onBoard && !constructionOffset) boardCoordf -= vec2f(0.5f, 0.5f);
+	if (onCircuit && !constructionOffset) circuitCoordf -= vec2f(0.5f, 0.5f);
+
+
+	if (onCircuit) return GameLocation(activeCircuit()->location.boardPos, vec2i((int) round(circuitCoordf.x),(int) round(circuitCoordf.y)));
+	else return GameLocation(vec2i((int) round(boardCoordf.x), (int) round(boardCoordf.y)));
 }
+
+
 void GameUI::renderHoverComponent()
 {
-    if (selectedMenuComponent == nullptr)
-        return;
+	if (selectedMenuComponent == nullptr && activePlacementBuffer.isEmpty())
+		return;
 
-    GameLocation location = hoverLocation(true);
-    location.boardPos.x = std::min(location.boardPos.x, (int)app.state.board.cells.dimX() - 2);
-    location.boardPos.y = std::min(location.boardPos.y, (int)app.state.board.cells.dimY() - 2);
+	GameLocation location = hoverLocation(true);
 
-    if (!location.valid())
-        return;
+	if (location.boardPos == constants::invalidCoord)
+		return;
 
-    if (location.inCircuit() && activeCircuit() == nullptr)
-        return;
+	if (!location.valid())
+		return;
 
-    if (location.inCircuit())
-    {
-        location.circuitPos.x = std::min(location.circuitPos.x, constants::circuitBoardSize - 2);
-        location.circuitPos.y = std::min(location.circuitPos.y, constants::circuitBoardSize - 2);
-    }
+	if (location.inCircuit() && activeCircuit() == nullptr)
+		return;
 
-    const rect2f screenRect = GameUtil::locationToWindowRect(canonicalDims, location, 2);
+	vec2i buffermin = activePlacementBuffer.boundingBox().min();
 
-    renderLocalizedComponent(selectedMenuComponent->name, nullptr, screenRect, depthLayers::hoverComponent, IconState(ComponentModifiers(selectedMenuComponentColor), false, false));
+	// render the components
+	for (ComponentDefiningProperties c : activePlacementBuffer.components)
+	{
+		GameLocation componentLocation;
 
-    const vec2i coordBase = location.inCircuit() ? location.circuitPos : location.boardPos;
-    const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
+		// move to the placement location
+		if (location.inCircuit())
+			componentLocation = GameLocation(location.circuitPos + c.location.boardPos - buffermin, c.location.circuitPos);
+		else
+			componentLocation = GameLocation(location.boardPos + c.location.boardPos- buffermin, c.location.circuitPos);
 
-    for (int xOffset = 0; xOffset <= 1; xOffset++)
-        for (int yOffset = 0; yOffset <= 1; yOffset++)
-        {
-            const vec2i coord = coordBase + vec2i(xOffset, yOffset);
-            if (board.cells.coordValid(coord))
-            {
-                const BoardCell &cell = board.cells(coord);
-                Texture *tex = (cell.c != nullptr || cell.blocked) ? database().squareBlocked : database().squareOpen;
-                const rect2f rect = location.inCircuit() ?
-                    GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
-                    GameUtil::boardToWindowRect(canonicalDims, coord, 1);
-                render(*tex, rect, depthLayers::hoverComponentGrid);
-            }
-        }
+		// if the component is in a circuit, render at a lower depth
+		float depth = c.location.inCircuit() ? depthLayers::hoverComponent : depthLayers::hoverCircuitComponent;
+
+
+		const rect2f screenRect = GameUtil::locationInLocationToWindowRect(canonicalDims, componentLocation, location, 2);
+		renderLocalizedComponent(c.baseInfo->name, nullptr, screenRect, depth, IconState(c.modifiers, false, false));
+
+
+
+		// render the green field
+		if (!componentLocation.inCircuit())
+		{
+
+
+			const vec2i coordBase = componentLocation.boardPos;
+			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
+
+			for (int xOffset = 0; xOffset <= 1; xOffset++)
+				for (int yOffset = 0; yOffset <= 1; yOffset++)
+				{
+					const vec2i coord = coordBase + vec2i(xOffset, yOffset);
+					if (board.cells.coordValid(coord))
+					{
+						bool isBlocked = canNotBuildAtPosition(board, c, coord);
+
+						Texture *tex = isBlocked ? database().squareBlocked : database().squareOpen;
+						const rect2f rect = location.inCircuit() ?
+							GameUtil::circuitToWindowRect(canonicalDims, coord, 1) :
+							GameUtil::boardToWindowRect(canonicalDims, coord, 1);
+						render(*tex, rect, depthLayers::hoverComponentGrid);
+					}
+				}
+
+		}
+
+
+	}
 }
-
+    
 void GameUI::updateButtonList()
 {
     buttons.clear();
