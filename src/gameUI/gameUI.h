@@ -129,6 +129,8 @@ private:
     void renderHoverComponent();
     void removeHoverComponent();
 
+    void renderTooltip(const vec2f &canonicalStart, const string &name, const string &text, const string &hotkey);
+
     void addHoverComponent();
 
     Texture& getFontTexture(const string &text, float height, RGBColor color);
@@ -164,9 +166,8 @@ private:
 	GameLocation clickLocation;
 	vec2f clickScreenLocation;
 
-
-	
-	bool canNotBuildAtPosition(const Board b, const ComponentDefiningProperties cdp, vec2i coord) const
+    // TODO: consider moving this to Board
+	bool canNotBuildAtPosition(const Board &b, const ComponentDefiningProperties &cdp, const vec2i &coord) const
 	{
 		//TODO: check whether the component is actually buildable in this puzzle with the corresponding properties
 		const BoardCell &cell = b.cells(coord);

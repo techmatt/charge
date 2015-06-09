@@ -56,3 +56,5 @@ Super-amplifiers -> allow production beyond 5 charge? perhaps a more interesting
 Puzzles with implicit timers, where the goal is to produce a "mega charge" before the implicit timer kills some victory condition.
 
 Puzzle where goal is to build the longest delay cycle possible in 1 or 2 circuits for 1 or 2 charges (of different colors)
+
+Multi-user "start new game" in splash screen

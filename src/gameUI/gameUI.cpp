@@ -9,6 +9,7 @@ namespace depthLayers
     const float selection = 0.9f;
     const float charge = 0.01f;
     const float font = 0.02f;
+    const float tooltip = 0.03f;
     const float hoverComponent = 0.1f;
 	const float hoverCircuitComponent = 0.09f;
     const float hoverComponentGrid = 0.05f;
@@ -281,7 +282,6 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
 	}
 	backgroundDirty = true;
 }
-
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 {
@@ -1175,6 +1175,14 @@ void GameUI::renderButtonForeground(const GameButton &button, bool selected)
     {
         renderText(getFontTexture(button.text, 24.0f, Colors::Black()), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
     }
+}
+
+
+void GameUI::renderTooltip(const vec2f &canonicalStart, const string &name, const string &text, const string &hotkey)
+{
+    Texture &tex = database().getTexture(app.renderer, "Tooltip");
+    //rect2f rect()
+    //render(tex, rect, depthLayers::tooltip);
 }
 
 void GameUI::renderButtonBackground(const GameButton &button, bool selected)

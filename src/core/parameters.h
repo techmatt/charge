@@ -30,6 +30,9 @@ struct GameParameters
         params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
         params.readParameter("attributeMenuCanonicalEntrySize", attributeMenuCanonicalEntrySize);
 
+        params.readParameter("tooltipDefaultStart", tooltipDefaultStart);
+        params.readParameter("tooltipSize", tooltipSize);
+
         circuitDims = vec2i(constants::circuitBoardSize, constants::circuitBoardSize);
 
         //
@@ -66,6 +69,9 @@ struct GameParameters
 
     vec2f attributeMenuCanonicalStart;
     vec2f attributeMenuCanonicalEntrySize;
+
+    vec2f tooltipDefaultStart;
+    vec2f tooltipSize;
 
 	CoordinateFrame boardInWindow;
 	CoordinateFrame componentMenuInWindow;
