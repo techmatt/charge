@@ -43,8 +43,6 @@ private:
         backgroundObjects.push_back(UIRenderObject(tex, rect, depth, type, color, dynamicComponent));
     }
 
-	void updateButtonList();
-
 	void updateBackgroundObjects();
 	void renderBuildingGrid();
 	
@@ -83,8 +81,6 @@ private:
 	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vec2i mouseHoverCoord;
-
-	vector<GameButton> buttons;
 
     const ComponentInfo *selectedMenuComponent;
     ChargeType selectedMenuComponentColor;

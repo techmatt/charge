@@ -61,6 +61,10 @@ public:
 
     void recordDesignAction();
     
+    void updateButtonList();
+
+    vector<GameButton> buttons;
+
     GamePuzzleMode puzzleMode;
     GameEditorMode editorMode;
 
