@@ -1,4 +1,4 @@
-Puzzle~130~1719
+Puzzle~158~2083
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -1717,4 +1717,368 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=128
+component0128~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Circuit
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0129~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=2 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0130~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=2 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0131~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=0 2
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0132~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=12 2
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0133~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=4 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0134~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=4 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0135~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=0 4
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0136~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=12 4
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0137~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=6 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0138~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=6 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0139~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=0 6
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0140~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=12 6
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0141~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=8 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0142~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=8 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0143~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=0 8
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0144~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=12 8
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0145~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=10 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0146~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=10 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0147~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=0 10
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0148~12
+Component~11~11
+boardPos=12 2
+boundary=1
+chargePreference=2
+circuitPos=12 10
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0149~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=2 6
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0150~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=4 6
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0151~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=6 6
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0152~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=8 6
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0153~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=10 6
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0154~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=6 4
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0155~12
+Component~11~11
+boardPos=12 2
+boundary=0
+chargePreference=2
+circuitPos=6 8
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=156

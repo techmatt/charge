@@ -8,7 +8,7 @@ void GameController::init()
     designActionTaken = false;
     puzzleVerificationMode = false;
     editorMode = ModeEditLevel;
-    currentPuzzleIndex = 0;
+    currentPuzzleIndex = 40;
     fractionalSpeedTicksLeft = 0;
 
     loadCurrentPuzzle();

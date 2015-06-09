@@ -1,4 +1,4 @@
-Puzzle~466~6087
+Puzzle~497~6490
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -185,13 +185,13 @@ speed=2
 totalCharges=16777215
 component0010~12
 Component~11~11
-boardPos=6 17
+boardPos=2 5
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
-puzzleType=1
+name=Circuit
+puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
@@ -6085,4 +6085,407 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=464
+component0464~12
+Component~11~11
+boardPos=6 17
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=1
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0465~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=2 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0466~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=2 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0467~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=0 2
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0468~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=12 2
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0469~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=4 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0470~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=4 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0471~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=0 4
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0472~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=12 4
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0473~12
+Component~11~11
+boardPos=2 5
+boundary=2
+chargePreference=2
+circuitPos=6 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0474~12
+Component~11~11
+boardPos=2 5
+boundary=2
+chargePreference=2
+circuitPos=6 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0475~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=0
+circuitPos=0 6
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0476~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=4
+circuitPos=12 6
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0477~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=8 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0478~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=8 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0479~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=0 8
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0480~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=12 8
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0481~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=10 0
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0482~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=10 12
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0483~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=0 10
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0484~12
+Component~11~11
+boardPos=2 5
+boundary=1
+chargePreference=2
+circuitPos=12 10
+color=0
+name=CircuitBoundary
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0485~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=2 6
+color=0
+name=Splitter
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0486~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=3 4
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0487~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=3 8
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0488~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=4 6
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0489~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=5 4
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0490~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=2
+circuitPos=5 8
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0491~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=3
+circuitPos=6 6
+color=0
+name=Splitter
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0492~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=3
+circuitPos=8 5
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0493~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=3
+circuitPos=8 7
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0494~12
+Component~11~11
+boardPos=2 5
+boundary=0
+chargePreference=4
+circuitPos=10 6
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=495
