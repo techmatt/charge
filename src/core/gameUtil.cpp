@@ -57,11 +57,11 @@ vec2f GameUtil::miniBoardToWindow(const vec2f &canonicalDims, const GameLocation
     return GameUtil::canonicalToWindow(canonicalDims, canonical);
 }
 
-vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
+vector< map< string, string > > GameUtil::readTSVFile(const string &filename)
 {
     const auto lines = util::getFileLines(filename);
 
-    const auto header = util::split(lines[0], ',');
+    const auto header = util::split(lines[0], '\t');
 
     vector< map< string, string > > result;
 
@@ -71,16 +71,12 @@ vector< map< string, string > > GameUtil::readCSVFile(const string &filename)
         auto &line = result.back();
 
         int wordIndex = 0;
-        for (const string &word : util::split(lines[lineIndex], ','))
+        for (const string &word : util::split( util::remove(lines[lineIndex], "\""), '\t'))
         {
             if (wordIndex < header.size())
                 line[header[wordIndex++]] = word;
         }
     }
-
-    //
-    // TODO: deal with reading csv's with commas in description
-    //
 
     return result;
 }

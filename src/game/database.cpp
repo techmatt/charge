@@ -5,7 +5,7 @@ void Database::init()
 {
     alphabetKeyToComponent.resize('Z' - 'A');
 
-    for (auto &line : GameUtil::readCSVFile(params().assetDir + "components.csv"))
+    for (auto &line : GameUtil::readTSVFile(params().assetDir + "components.txt"))
     {
         ComponentInfo *component = new ComponentInfo(line);
         if (component->hotkey[0] >= 'A' && component->hotkey[0] <= 'Z')
@@ -15,7 +15,7 @@ void Database::init()
         components[component->name] = component;
     }
 
-    for (auto &line : GameUtil::readCSVFile(params().assetDir + "levels.csv"))
+    for (auto &line : GameUtil::readTSVFile(params().assetDir + "levels.txt"))
     {
         puzzles.push_back(PuzzleInfo(line));
     }

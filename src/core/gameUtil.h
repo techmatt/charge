@@ -198,7 +198,7 @@ public:
     static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
     static pair<vec2f, float> computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
 
-    static vector< map< string, string > > readCSVFile(const string &filename);
+    static vector< map< string, string > > readTSVFile(const string &filename);
 };
 
 namespace math
