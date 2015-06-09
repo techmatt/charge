@@ -53,6 +53,8 @@ struct GameState
     vector<Charge> charges;
     vector<ExplodingCharge> explodingCharges;
 
+    vector< pair<Charge*, int> > chargePriorityStorage;
+
     int stepCount;
     float globalRotationOffset;
     bool victory;

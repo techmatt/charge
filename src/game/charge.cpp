@@ -237,7 +237,6 @@ void Charge::setNewDestination(GameState &state, Component &newDestination, bool
 		return;
 	}
 
-
     if (newDestination.modifiers.speed == WireMinorDelay)
     {
         totalTransitTime *= 2;
@@ -271,7 +270,6 @@ bool Charge::findBestDestination(GameState &state)
 			
 		Component *candidate = current->connections[adjacentIndex].component;
 		if (candidate == nullptr) continue;
-
 
         bool isPreviousBuilding = previous->location == candidate->location;
         bool buildingWillAccept = candidate->willAcceptCharge(state, *this);

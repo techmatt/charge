@@ -282,72 +282,156 @@ void GameState::step(AppData &app)
 		c.held = false;
 	}
 	
-	// We are going to try multiple times to move all the charges.  This should allow us to deal sanely with charges that try to move to the same location
-	bool keepAttempting = true;
-	while (keepAttempting)
-	{
-		keepAttempting = false;
+    if (constants::useScanlinePriority)
+    {
+        //
+        // make a list of all charges, in priority order
+        //
 
-		//figure out what the best destination is for all the remaining charges
-		for (Charge &c : charges)
-		{
-			if (c.resolvedThisTick) continue;
-			bool hasDestination = c.findBestDestination(*this);
-			if (!hasDestination)  // charge has nowhere to go.  Kill it or hold it.
-			{
-				if (getComponent(c.destination)->info->holdsCharge) {
-					c.held = true;
-				}
-				else
-				{
-					c.markedForDeletion = true;
-				}
-				c.resolvedThisTick = true;
-			}
-			else // there's a destination. mark it.
-			{
-				c.intendedDestination->numChargesTargetingThisTick++;
-			}
-		}
+        if (chargePriorityStorage.size() != charges.size())
+            chargePriorityStorage.resize(charges.size());
+        for (int chargeIndex = 0; chargeIndex < charges.size(); chargeIndex++)
+        {
+            Charge &c = charges[chargeIndex];
+            chargePriorityStorage[chargeIndex] = make_pair(&c, c.scanlinePriority());
+        }
+        sort(chargePriorityStorage.begin(), chargePriorityStorage.end(), [](const pair<Charge*, int> &a, const pair<Charge*, int> &b) { return a.second < b.second; });
 
-		// check to see whether there are intermediate-wire collisions
-		for (Charge &c : charges)
-		{
-			if (c.resolvedThisTick) continue;
-			Component* destination = getComponent(c.destination);
+        // We are going to try multiple times to move all the charges.  This should allow us to deal sanely with charges that try to move to the same location
+        bool keepAttempting = true;
+        while (keepAttempting)
+        {
+            keepAttempting = false;
 
-			// if the movement attempt dies because the charge connection, it doesn't count as hitting the target
-            auto &connection = destination->connections[c.intendedConnectionIndex];
-			if (connection.desired)
-			{
-				c.intendedDestination->numChargesTargetingThisTick--;
-				c.notMovingBecauseOfDesiredConnection = true;
-				connection.blocked = true;
-				keepAttempting = true;
-			}
-			else
-				c.notMovingBecauseOfDesiredConnection = false;
-		}
-		
-		// attempt to move the charges there.  If theres somewhere for them to go
-		for (Charge &c : charges)
-		{
-			if (c.resolvedThisTick) continue;
-			if (c.notMovingBecauseOfDesiredConnection) continue;
+            //figure out what the best destination is for all the remaining charges
+            for (Charge &c : charges)
+            {
+                if (c.resolvedThisTick) continue;
+                bool hasDestination = c.findBestDestination(*this);
+                if (!hasDestination)  // charge has nowhere to go.  Kill it or hold it.
+                {
+                    if (getComponent(c.destination)->info->holdsCharge) {
+                        c.held = true;
+                    }
+                    else
+                    {
+                        c.markedForDeletion = true;
+                    }
+                    c.resolvedThisTick = true;
+                }
+                else // there's a destination. mark it.
+                {
+                    c.intendedDestination->numChargesTargetingThisTick++;
+                }
+            }
 
-			if (c.intendedDestination->numChargesTargetingThisTick == 1)
-			{
-				c.setNewDestination(*this, *c.intendedDestination);
-				c.resolvedThisTick = true;
-			}
-			else
-			{
-				keepAttempting = true;
-				c.intendedDestination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
-			}
-		}
+            // check to see whether there are intermediate-wire collisions
+            for (Charge &c : charges)
+            {
+                if (c.resolvedThisTick) continue;
+                Component* destination = getComponent(c.destination);
 
-	}
+                // if the movement attempt dies because the charge connection, it doesn't count as hitting the target
+                auto &connection = destination->connections[c.intendedConnectionIndex];
+                if (connection.desired)
+                {
+                    c.intendedDestination->numChargesTargetingThisTick--;
+                    c.notMovingBecauseOfDesiredConnection = true;
+                    connection.blocked = true;
+                    keepAttempting = true;
+                }
+                else
+                    c.notMovingBecauseOfDesiredConnection = false;
+            }
+
+            // attempt to move the charges there.  If theres somewhere for them to go
+            for (const auto &cPriority : chargePriorityStorage)
+            {
+                Charge &c = *cPriority.first;
+                if (c.resolvedThisTick) continue;
+                if (c.notMovingBecauseOfDesiredConnection) continue;
+
+                if (c.intendedDestination->numChargesTargetingThisTick >= 1 && c.intendedDestination->lastChargeVisit != stepCount)
+                {
+                    c.setNewDestination(*this, *c.intendedDestination);
+                    c.resolvedThisTick = true;
+                }
+                else
+                {
+                    keepAttempting = true;
+                    //c.intendedDestination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+                }
+            }
+        }
+    }
+    else
+    {
+        // We are going to try multiple times to move all the charges.  This should allow us to deal sanely with charges that try to move to the same location
+        bool keepAttempting = true;
+        while (keepAttempting)
+        {
+            keepAttempting = false;
+
+            //figure out what the best destination is for all the remaining charges
+            for (Charge &c : charges)
+            {
+                if (c.resolvedThisTick) continue;
+                bool hasDestination = c.findBestDestination(*this);
+                if (!hasDestination)  // charge has nowhere to go.  Kill it or hold it.
+                {
+                    if (getComponent(c.destination)->info->holdsCharge) {
+                        c.held = true;
+                    }
+                    else
+                    {
+                        c.markedForDeletion = true;
+                    }
+                    c.resolvedThisTick = true;
+                }
+                else // there's a destination. mark it.
+                {
+                    c.intendedDestination->numChargesTargetingThisTick++;
+                }
+            }
+
+            // check to see whether there are intermediate-wire collisions
+            for (Charge &c : charges)
+            {
+                if (c.resolvedThisTick) continue;
+                Component* destination = getComponent(c.destination);
+
+                // if the movement attempt dies because the charge connection, it doesn't count as hitting the target
+                auto &connection = destination->connections[c.intendedConnectionIndex];
+                if (connection.desired)
+                {
+                    c.intendedDestination->numChargesTargetingThisTick--;
+                    c.notMovingBecauseOfDesiredConnection = true;
+                    connection.blocked = true;
+                    keepAttempting = true;
+                }
+                else
+                    c.notMovingBecauseOfDesiredConnection = false;
+            }
+
+            // attempt to move the charges there.  If theres somewhere for them to go
+            for (Charge &c : charges)
+            {
+                if (c.resolvedThisTick) continue;
+                if (c.notMovingBecauseOfDesiredConnection) continue;
+
+                if (c.intendedDestination->numChargesTargetingThisTick == 1)
+                {
+                    c.setNewDestination(*this, *c.intendedDestination);
+                    c.resolvedThisTick = true;
+                }
+                else
+                {
+                    keepAttempting = true;
+                    c.intendedDestination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
+                }
+            }
+        }
+    }
 
 	// check all the held charges to see whether they should forget their sources
 	for (Charge &c : charges)

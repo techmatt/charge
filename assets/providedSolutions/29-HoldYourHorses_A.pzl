@@ -1,4 +1,4 @@
-Puzzle~105~1394
+Puzzle~112~1485
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -94,13 +94,13 @@ speed=2
 totalCharges=1
 component0003~12
 Component~11~11
-boardPos=10 7
+boardPos=12 11
 boundary=0
 chargePreference=2
 circuitPos=-100 -100
 color=0
-name=Blocker
-puzzleType=1
+name=Wire
+puzzleType=0
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
@@ -1392,4 +1392,95 @@ secondsBeforeFirstEmission=1
 secondsPerEmission=1
 speed=2
 totalCharges=16777215
-componentCount=103
+component0103~12
+Component~11~11
+boardPos=8 7
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0104~12
+Component~11~11
+boardPos=8 9
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0105~12
+Component~11~11
+boardPos=8 11
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0106~12
+Component~11~11
+boardPos=8 13
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0107~12
+Component~11~11
+boardPos=8 15
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Hold
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0108~12
+Component~11~11
+boardPos=10 11
+boundary=0
+chargePreference=3
+circuitPos=-100 -100
+color=0
+name=Wire
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+component0109~12
+Component~11~11
+boardPos=10 7
+boundary=0
+chargePreference=2
+circuitPos=-100 -100
+color=0
+name=Blocker
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+speed=2
+totalCharges=16777215
+componentCount=110

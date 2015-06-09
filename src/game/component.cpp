@@ -48,6 +48,9 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
         return (storedCharge == ChargeNone || (combinedCharge >= modifiers.color));
     }
 
+    if (heldCharge)
+        return false;
+
     if (modifiers.boundary == CircuitBoundaryClosed)
         return false;
 

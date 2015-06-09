@@ -30,6 +30,14 @@ struct Charge
         return (float)timeInTransit / (float)totalTransitTime;
     }
 
+    int scanlinePriority() const
+    {
+        const int boardLine = source.boardPos.x + source.boardPos.y;
+        const int circuitLine = source.inCircuit() ? source.circuitPos.x + source.circuitPos.y : 0;
+        const int circuitY = source.inCircuit() ? source.circuitPos.y : 0;
+        return boardLine * 1000000 + source.boardPos.y * 10000 + circuitLine * 100 + circuitY;
+    }
+
     ChargeType level;
     GameLocation source, destination;
 
