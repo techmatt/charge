@@ -1,10 +1,35 @@
 
+enum FontType
+{
+    FontLevelName = 0,
+    FontTooltipName,
+    FontTooltipDescription,
+    FontTooltipHotkey,
+    FontComponentAttribute,
+    FontCount,
+};
+
+struct FontInfo
+{
+    FontInfo() {}
+    FontInfo(const string &_name, float _height, RGBColor _color)
+    {
+        name = _name;
+        height = _height;
+        color = _color;
+    }
+    string name;
+    float height;
+    RGBColor color;
+};
+
 struct ComponentInfo
 {
     ComponentInfo() {}
     ComponentInfo(const map<string, string> &m)
     {
         name = m.at("Component name");
+        semanticName = m.at("Semantic name");
         description = m.at("Description");
         menuCoordinate.x = convert::toInt(m.at("Menu X"));
         menuCoordinate.y = convert::toInt(m.at("Menu Y"));
@@ -31,6 +56,7 @@ struct ComponentInfo
     }
 
     string name;
+    string semanticName;
     string description;
     string hotkey;
     vec2i menuCoordinate;
@@ -94,6 +120,8 @@ struct Database
     Texture* preferenceTextures[constants::maxPreferenceLevel];
     Texture* squareBlocked;
     Texture* squareOpen;
+
+    FontInfo fonts[FontCount];
 
 private:
     

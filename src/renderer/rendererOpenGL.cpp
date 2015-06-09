@@ -43,8 +43,6 @@ void RendererOpenGL::init(SDL_Window *window)
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
 
-    _font = TTF_OpenFont((params().assetDir + "fonts/arial.ttf").c_str(), 50);
-    
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
     //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -53,6 +51,16 @@ void RendererOpenGL::init(SDL_Window *window)
     //SDL_GL_MakeCurrent(window, _context);
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
+
+TTF_Font* RendererOpenGL::getFont(const string &fontName)
+{
+    if (_fonts.count(fontName) == 0)
+    {
+        _fonts[fontName] = TTF_OpenFont((params().assetDir + "fonts/" + fontName + ".ttf").c_str(), 50);
+    }
+    return _fonts[fontName];
+}
+
 
 void RendererOpenGL::updateWindowSize()
 {

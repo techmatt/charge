@@ -242,6 +242,9 @@
     <ClInclude Include="..\src\renderer\renderTarget.h">
       <Filter>renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\gameUI\UIHelper.h">
+      <Filter>gameUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

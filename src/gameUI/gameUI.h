@@ -1,65 +1,4 @@
 
-enum UIRenderType
-{
-    UIRenderStandard,
-    UIRenderStoredCharge,
-};
-
-struct UIRenderObject
-{
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, float _rotation)
-    {
-        tex = &_tex;
-        rect = _rect;
-        depth = _depth;
-        rotation = _rotation;
-        color = vec4f(1.0f, 1.0f, 1.0f, 1.0f);
-        dynamicComponent = nullptr;
-    }
-
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, UIRenderType _type = UIRenderStandard, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr)
-    {
-        tex = &_tex;
-        rect = _rect;
-        depth = _depth;
-        rotation = 0.0f;
-        color = _color;
-        type = _type;
-        dynamicComponent = _dynamicComponent;
-    }
-
-    Texture *tex;
-    UIRenderType type;
-    float depth;
-    rect2f rect;
-    float rotation;
-    vec4f color;
-    
-    //
-    // when component is not null, its texture is used instead of tex.
-    //
-    const Component *dynamicComponent;
-
-};
-
-struct IconState
-{
-    IconState(const ComponentModifiers &_modifiers, bool _selected, bool _background = true)
-        : modifiers(_modifiers)
-    {
-        selected = _selected;
-        background = _background;
-    }
-    const ComponentModifiers &modifiers;
-    bool selected;
-    bool background;
-};
-
-inline bool operator < (const UIRenderObject &a, const UIRenderObject &b)
-{
-    return a.depth > b.depth;
-}
-
 class GameUI
 {
 public:
@@ -129,11 +68,12 @@ private:
     void renderHoverComponent();
     void removeHoverComponent();
 
-    void renderTooltip(const vec2f &canonicalStart, const string &name, const string &text, const string &hotkey);
+    void renderTooltip();
+    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentIntrinsics &intrinsics);
 
     void addHoverComponent();
 
-    Texture& getFontTexture(const string &text, float height, RGBColor color);
+    Texture& getFontTexture(const string &text, FontType font);
 
     Component* activeCircuit() const;
 

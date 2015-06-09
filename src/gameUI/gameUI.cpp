@@ -4,21 +4,6 @@
 // GetAsyncKeyState
 #include <Windows.h>
 
-namespace depthLayers
-{
-    const float selection = 0.9f;
-    const float charge = 0.01f;
-    const float font = 0.02f;
-    const float tooltip = 0.03f;
-    const float hoverComponent = 0.1f;
-	const float hoverCircuitComponent = 0.09f;
-    const float hoverComponentGrid = 0.05f;
-    const float background = 1.0f;
-    const float spokes = 0.95f;
-    const float component = 0.9f;
-    const float miniCircuitOffset = 0.2f;
-}
-
 void GameUI::init()
 {
     //selectedGameLocation.boardPos = constants::invalidCoord;
@@ -30,11 +15,12 @@ void GameUI::init()
     activePlacementBuffer.clear();
 }
 
-Texture& GameUI::getFontTexture(const string &text, float height, RGBColor color)
+Texture& GameUI::getFontTexture(const string &text, FontType font)
 {
     if (textCache.count(text) == 0)
     {
-        Texture *t = new Texture(app.renderer.font(), text, color);
+        auto &info = database().fonts[(int)font];
+        Texture *t = new Texture(app.renderer.getFont(info.name), text, info.color);
         textCache[text] = t;
     }
     return *textCache[text];
@@ -116,11 +102,11 @@ void GameUI::keyDown(SDL_Keycode key)
         app.state.resetPuzzle();
     }
 
-    /*if (key == SDLK_0)
+    if (key == SDLK_F5)
     {
         ParameterFile parameterFile("../assets/parameters.txt");
         g_gameParams.load(parameterFile);
-    }*/
+    }
 
     Component* gameComponent = selection.singleElement();
     if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
@@ -629,7 +615,6 @@ void GameUI::render()
         renderButtonForeground(button, false);
     }
 
-    //if (GetAsyncKeyState(VK_F10))
     if (app.controller.speed <= Speed3x)
         renderTrails();
 
@@ -645,7 +630,9 @@ void GameUI::render()
 
     renderHoverComponent();
 
-    renderText(getFontTexture(app.state.name, 20.0f, Colors::Black()), vec2f(1.0f, 1.0f), 20.0f);
+    renderText(getFontTexture(app.state.name, FontLevelName), vec2f(1.0f, 1.0f), 20.0f);
+
+    renderTooltip();
 }
 
 void GameUI::renderTrails()
@@ -1173,16 +1160,26 @@ void GameUI::renderButtonForeground(const GameButton &button, bool selected)
 {
     if (button.type == ButtonComponentAttribute)
     {
-        renderText(getFontTexture(button.text, 24.0f, Colors::Black()), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+        renderText(getFontTexture(button.text, FontLevelName), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
     }
 }
 
+void GameUI::renderTooltip()
+{
+    Component *c = app.state.getComponent(clickLocation);
+    if (c != nullptr && c->modifiers.puzzleType == ComponentPuzzlePiece)
+    {
+        renderTooltip(params().tooltipDefaultStart, *c->baseInfo, ComponentIntrinsics());
+    }
+}
 
-void GameUI::renderTooltip(const vec2f &canonicalStart, const string &name, const string &text, const string &hotkey)
+void GameUI::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentIntrinsics &intrinsics)
 {
     Texture &tex = database().getTexture(app.renderer, "Tooltip");
-    //rect2f rect()
-    //render(tex, rect, depthLayers::tooltip);
+    const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
+    render(tex, rect, depthLayers::tooltip);
+
+    renderText(getFontTexture(info.semanticName, FontTooltipName), canonicalStart + vec2f(15.0f, 9.0f), 20.0f);
 }
 
 void GameUI::renderButtonBackground(const GameButton &button, bool selected)

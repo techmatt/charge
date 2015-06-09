@@ -132,6 +132,7 @@
     <ClInclude Include="..\src\gameUI\gameUI.h" />
     <ClInclude Include="..\src\gameUI\puzzleManager.h" />
     <ClInclude Include="..\src\gameUI\selection.h" />
+    <ClInclude Include="..\src\gameUI\UIHelper.h" />
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\buffer.h" />
     <ClInclude Include="..\src\game\charge.h" />

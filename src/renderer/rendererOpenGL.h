@@ -28,10 +28,7 @@ public:
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
-    TTF_Font* font()
-    {
-        return _font;
-    }
+    TTF_Font* getFont(const string &fontName);
 
 private:
     void updateWindowSize();
@@ -45,7 +42,7 @@ private:
     //
     // we could abstract fonts into its own class, if needed
     //
-    TTF_Font *_font;
+    map<string, TTF_Font*> _fonts;
 
     GLQuad _quad;
     GLProgram _quadProgram;
