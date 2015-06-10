@@ -1,7 +1,7 @@
 
 struct AppData
 {
-    AppData() : ui(*this), controller(*this)
+    AppData() : ui(*this), canvas(*this), controller(*this)
     {
         
     }
@@ -18,6 +18,7 @@ struct AppData
 
     GameController controller;
     GameUI ui;
+    GameCanvas canvas;
     GameState state;
     PuzzleManager puzzles;
     RendererOpenGL renderer;

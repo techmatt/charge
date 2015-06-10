@@ -65,6 +65,7 @@ class Texture;
 #include "gameUI/dialog.h"
 #include "gameUI/puzzleManager.h"
 #include "gameUI/UIHelper.h"
+#include "gameUI/gameCanvas.h"
 #include "gameUI/gameUI.h"
 #include "gameUI/gameController.h"
 
