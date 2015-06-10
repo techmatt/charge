@@ -122,7 +122,14 @@ struct Component
 
     bool inactiveBoundary() const
     {
-        return (info->name == "CircuitBoundary" && circuitBoundaryNeighbor == nullptr);
+        return info->name == "CircuitBoundary" && (circuitBoundaryNeighbor == nullptr || circuitBoundaryNeighbor->info->name == "Blocker");
+    }
+
+    bool circuitCorner() const
+    {
+        const int xBoundary = (location.circuitPos.x == 0 || location.circuitPos.x == constants::circuitBoardSize - 2);
+        const int yBoundary = (location.circuitPos.y == 0 || location.circuitPos.y == constants::circuitBoardSize - 2);
+        return (xBoundary && yBoundary);
     }
 
     bool hasSpokes() const

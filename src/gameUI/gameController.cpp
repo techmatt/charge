@@ -230,4 +230,15 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
         buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
     }
+
+    //
+    // Add megahold indicators
+    //
+    if (selectedGameComponent != nullptr && selectedGameComponent->info->name == "MegaHold")
+    {
+        const double dischargeFreq = selectedGameComponent->intrinsics.ticksPerDischarge * constants::secondsPerStep;
+        buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + to_string(dischargeFreq) + "s"));
+        buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(selectedGameComponent->intrinsics.chargesLostPerDischarge)));
+        buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(selectedGameComponent->intrinsics.totalChargeRequired)));
+    }
 }

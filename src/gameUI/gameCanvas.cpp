@@ -140,7 +140,7 @@ void GameCanvas::renderTrails()
     for (const auto &charge : app.state.charges)
         renderCharge(charge, true);
     //for (const auto &charge : app.state.explodingCharges)
-    //    renderExplodingCharge(charge, true);
+    //    renderExplodingCharge(charge);
 
     for (const UIRenderObject &o : backgroundObjects)
     {
@@ -451,7 +451,7 @@ void GameCanvas::renderBuildingGrid()
             const bool xBoundary = (cell.x == 0 || cell.x == 1 || cell.x == constants::circuitBoardSize - 1 || cell.x == constants::circuitBoardSize - 2);
             const bool yBoundary = (cell.y == 0 || cell.y == 1 || cell.y == constants::circuitBoardSize - 1 || cell.y == constants::circuitBoardSize - 2);
             const bool corner = xBoundary && yBoundary;
-            const bool inactiveBoundary = (cell.value.c != nullptr && cell.value.c->inactiveBoundary());
+            const bool inactiveBoundary = (cell.value.c != nullptr && cell.value.c->circuitCorner());
             if (!corner && !inactiveBoundary) //if (!xBoundary && !yBoundary)
             {
                 const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, vec2i(cell.x, cell.y), 1);
@@ -475,7 +475,7 @@ void GameCanvas::renderTooltip()
     if (hitButton != nullptr && hitButton->type == ButtonType::Component)
     {
         float startY = hitButton->canonicalRect.max().y + 5.0f;
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *hitButton->component, ComponentIntrinsics());
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *hitButton->component, nullptr);
         return;
     }
 
@@ -486,18 +486,28 @@ void GameCanvas::renderTooltip()
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
-        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, ComponentIntrinsics());
+        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent);
     }
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentIntrinsics &intrinsics)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const Component *component)
 {
     Texture &tex = database().getTexture(app.renderer, "Tooltip");
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
 
     renderText(getFontTexture(info.semanticName, FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(info.description, FontType::TooltipDescription, 900), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
+    renderText(getFontTexture(info.description, FontType::TooltipDescription, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+
+    if (component != nullptr)
+    {
+        if (component->info->name == "MegaHold")
+        {
+            double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
+            renderText(getFontTexture("Loses " + to_string(math::ceil(chargeLossPerSecond)) + " charge per second", FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 77.0f), 12.0f);
+            renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 97.0f), 12.0f);
+        }
+    }
 }
 
 void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
@@ -561,14 +571,16 @@ void GameCanvas::renderLocalizedComponent(const string &name, const Component *d
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
         record(selectionTex, screenRect, depthLayers::selection, UIRenderType::Standard, Colors::White(), nullptr);
     }
+
+    if (icon.faded)
+    {
+        Texture &fadedTex = database().getTexture(app.renderer, "Faded");
+        record(fadedTex, screenRect, depthLayers::selection, UIRenderType::Standard, Colors::White(), nullptr);
+    }
 }
 
 void GameCanvas::renderComponent(const Component &component)
 {
-    //Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    //Component *selectedGameComponent = selection.singleElement();
-
-    //const bool selected = (selectedGameComponent != nullptr && component.location == selectedGameComponent->location);
     const bool selected = app.ui.selection.isIn(&component) || (app.ui.selection.selectionIsInCircuit && app.ui.selection.circuitLocation == component.location.boardPos && !component.location.inCircuit());
 
     if (component.info->name == "Blocker" &&
@@ -578,16 +590,13 @@ void GameCanvas::renderComponent(const Component &component)
     if (component.location.inCircuit())
     {
         // if the component is in the active circuit, render it in the selected circuit area
-        if (app.activeCircuit() != nullptr && component.location.boardPos == app.activeCircuit()->location.boardPos)
+        if (app.activeCircuit() != nullptr && component.location.boardPos == app.activeCircuit()->location.boardPos && !component.circuitCorner())
         {
-            if (!component.inactiveBoundary())
-            {
-                const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
-                renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected));
-            }
+            const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
+            const bool faded = component.inactiveBoundary();
+            renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected, true, faded));
         }
         // regardless, we'll need to render it in the main grid, but we'll wait until later
-
     }
     else
     {

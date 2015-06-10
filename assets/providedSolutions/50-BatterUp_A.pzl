@@ -1,4 +1,4 @@
-Puzzle~23~180
+Puzzle~27~208
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -178,4 +178,32 @@ name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
-componentCount=21
+component0021~4
+Component~3~3
+boardPos=18 9
+name=Wire
+puzzleType=0
+component0022~4
+Component~3~3
+boardPos=9 4
+name=Wire
+puzzleType=0
+component0023~8
+Component~7~7
+boardPos=2 0
+color=1
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+totalCharges=16777215
+component0024~8
+Component~7~7
+boardPos=6 0
+color=1
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+totalCharges=16777215
+componentCount=25

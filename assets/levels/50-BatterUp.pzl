@@ -1,6 +1,6 @@
-Puzzle~23~180
-buildableComponents~53
-ComponentBuildState~52~52
+Puzzle~35~245
+buildableComponents~58
+ComponentBuildState~57~57
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
@@ -25,6 +25,11 @@ GateSwitchOrange=1
 GateSwitchRed=1
 GateSwitchYellow=1
 Hold=1
+PowerSourceBlue=1
+PowerSourceGreen=1
+PowerSourceOrange=1
+PowerSourceRed=1
+PowerSourceYellow=1
 Splitter=1
 TeleportDestinationBlue=1
 TeleportDestinationGreen=1
@@ -53,129 +58,189 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~4
-Component~3~3
-boardPos=11 18
-name=Wire
-puzzleType=1
-component0001~8
+component0000~8
 Component~7~7
-boardPos=2 11
-color=1
-name=PowerSource
-puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=2
-totalCharges=1000
-component0002~8
-Component~7~7
-boardPos=11 2
-color=1
-name=PowerSource
-puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=2
-totalCharges=1000
-component0003~8
-Component~7~7
-boardPos=20 11
-color=1
-name=PowerSource
-puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=2
-totalCharges=1000
-component0004~8
-Component~7~7
-boardPos=11 20
-color=1
-name=PowerSource
-puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=2
-totalCharges=1000
-component0005~4
-Component~3~3
-boardPos=13 11
-name=Wire
-puzzleType=1
-component0006~4
-Component~3~3
-boardPos=15 10
-name=Wire
-puzzleType=1
-component0007~4
-Component~3~3
-boardPos=16 12
-name=Wire
-puzzleType=1
-component0008~4
-Component~3~3
-boardPos=18 11
-name=Wire
-puzzleType=1
-component0009~4
-Component~3~3
-boardPos=11 9
-name=Wire
-puzzleType=1
-component0010~4
-Component~3~3
-boardPos=10 7
-name=Wire
-puzzleType=1
-component0011~4
-Component~3~3
-boardPos=12 6
-name=Wire
-puzzleType=1
-component0012~4
-Component~3~3
-boardPos=11 4
-name=Wire
-puzzleType=1
-component0013~4
-Component~3~3
-boardPos=9 11
-name=Wire
-puzzleType=1
-component0014~4
-Component~3~3
-boardPos=7 12
-name=Wire
-puzzleType=1
-component0015~4
-Component~3~3
-boardPos=6 10
-name=Wire
-puzzleType=1
-component0016~4
-Component~3~3
-boardPos=4 11
-name=Wire
-puzzleType=1
-component0017~4
-Component~3~3
-boardPos=11 13
-name=Wire
-puzzleType=1
-component0018~4
-Component~3~3
-boardPos=12 15
-name=Wire
-puzzleType=1
-component0019~4
-Component~3~3
-boardPos=10 16
-name=Wire
-puzzleType=1
-component0020~8
-Component~7~7
-boardPos=11 11
+boardPos=4 4
 chargesLostPerDischarge=1
 color=1
 name=MegaHold
-puzzleType=1
+puzzleType=0
 ticksPerDischarge=60
 totalChargeRequired=10
-componentCount=21
+component0001~8
+Component~7~7
+boardPos=18 4
+chargesLostPerDischarge=1
+color=2
+name=MegaHold
+puzzleType=0
+ticksPerDischarge=60
+totalChargeRequired=10
+component0002~4
+Component~3~3
+boardPos=0 0
+name=Blocker
+puzzleType=0
+component0003~4
+Component~3~3
+boardPos=2 2
+name=Blocker
+puzzleType=0
+component0004~4
+Component~3~3
+boardPos=20 2
+name=Blocker
+puzzleType=0
+component0005~4
+Component~3~3
+boardPos=22 0
+name=Blocker
+puzzleType=0
+component0006~4
+Component~3~3
+boardPos=20 20
+name=Blocker
+puzzleType=0
+component0007~4
+Component~3~3
+boardPos=11 17
+name=Blocker
+puzzleType=0
+component0008~4
+Component~3~3
+boardPos=22 2
+name=Blocker
+puzzleType=0
+component0009~4
+Component~3~3
+boardPos=20 0
+name=Blocker
+puzzleType=0
+component0010~4
+Component~3~3
+boardPos=22 22
+name=Blocker
+puzzleType=0
+component0011~4
+Component~3~3
+boardPos=22 20
+name=Blocker
+puzzleType=0
+component0012~8
+Component~7~7
+boardPos=18 18
+chargesLostPerDischarge=1
+color=3
+name=MegaHold
+puzzleType=0
+ticksPerDischarge=60
+totalChargeRequired=10
+component0013~4
+Component~3~3
+boardPos=20 22
+name=Blocker
+puzzleType=0
+component0014~4
+Component~3~3
+boardPos=11 7
+name=Blocker
+puzzleType=0
+component0015~8
+Component~7~7
+boardPos=4 18
+chargesLostPerDischarge=1
+color=4
+name=MegaHold
+puzzleType=0
+ticksPerDischarge=60
+totalChargeRequired=10
+component0016~4
+Component~3~3
+boardPos=15 11
+name=Blocker
+puzzleType=0
+component0017~4
+Component~3~3
+boardPos=2 0
+name=Blocker
+puzzleType=0
+component0018~4
+Component~3~3
+boardPos=17 11
+name=Blocker
+puzzleType=0
+component0019~4
+Component~3~3
+boardPos=11 5
+name=Blocker
+puzzleType=0
+component0020~4
+Component~3~3
+boardPos=11 15
+name=Blocker
+puzzleType=0
+component0021~4
+Component~3~3
+boardPos=0 2
+name=Blocker
+puzzleType=0
+component0022~4
+Component~3~3
+boardPos=0 22
+name=Blocker
+puzzleType=0
+component0023~4
+Component~3~3
+boardPos=2 22
+name=Blocker
+puzzleType=0
+component0024~4
+Component~3~3
+boardPos=0 20
+name=Blocker
+puzzleType=0
+component0025~4
+Component~3~3
+boardPos=2 20
+name=Blocker
+puzzleType=0
+component0026~4
+Component~3~3
+boardPos=7 11
+name=Blocker
+puzzleType=0
+component0027~8
+Component~7~7
+boardPos=11 11
+chargesLostPerDischarge=50
+color=5
+name=MegaHold
+puzzleType=0
+ticksPerDischarge=60
+totalChargeRequired=10
+component0028~4
+Component~3~3
+boardPos=5 11
+name=Blocker
+puzzleType=0
+component0029~4
+Component~3~3
+boardPos=11 20
+name=Blocker
+puzzleType=0
+component0030~4
+Component~3~3
+boardPos=2 11
+name=Blocker
+puzzleType=0
+component0031~4
+Component~3~3
+boardPos=11 2
+name=Blocker
+puzzleType=0
+component0032~4
+Component~3~3
+boardPos=20 11
+name=Blocker
+puzzleType=0
+componentCount=33

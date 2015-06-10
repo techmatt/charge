@@ -60,7 +60,7 @@ private:
     void renderHoverComponent();
 
     void renderTooltip();
-    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentIntrinsics &intrinsics);
+    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const Component *component);
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 

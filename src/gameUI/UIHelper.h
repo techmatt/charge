@@ -59,15 +59,17 @@ struct UIRenderObject
 
 struct IconState
 {
-    IconState(const ComponentModifiers &_modifiers, bool _selected, bool _background = true)
+    IconState(const ComponentModifiers &_modifiers, bool _selected, bool _background = true, bool _faded = false)
         : modifiers(_modifiers)
     {
         selected = _selected;
+        faded = _faded;
         background = _background;
     }
     const ComponentModifiers &modifiers;
     bool selected;
     bool background;
+    bool faded;
 };
 
 inline bool operator < (const UIRenderObject &a, const UIRenderObject &b)
