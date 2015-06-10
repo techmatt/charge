@@ -145,7 +145,7 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
         if (!c.location.inCircuit()) continue;
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
-        state.addNewComponent(newComponent);
+        state.addNewComponent(newComponent, false, false);
     }
     state.updateAll();
 }

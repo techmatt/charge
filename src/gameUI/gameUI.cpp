@@ -221,10 +221,24 @@ void GameUI::removeHoverComponent()
     if (c == nullptr || !app.controller.canEdit(*c) || c->info->name == "CircuitBoundary")
         return;
 
-    backgroundDirty = true;
-    app.controller.designActionTaken = true;
-    app.state.removeComponent(c);
-    selection.remove(c);
+
+
+	//remove contained elements from the selection
+	//if (c->circuitBoard != nullptr)
+	//	for (auto &cell : c->circuitBoard->cells)
+	//		if (cell.value.c != nullptr)
+	//			selection.remove(cell.value.c);
+
+	if (c->circuitBoard != nullptr&&selection.selectionIsInCircuit && selection.circuitLocation == c->location.boardPos)
+		selection.empty();
+
+	// and remove the board from the selection
+	selection.remove(c);
+
+	// and delete the actual component
+	app.state.removeComponent(c);
+	backgroundDirty = true;
+	app.controller.designActionTaken = true;
 	app.undoBuffer.save(app.state);
 }
 
