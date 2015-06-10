@@ -52,13 +52,26 @@ struct ComponentIntrinsics
         totalCharges = 0xFFFFFF;
         secondsPerEmission = 1;
         secondsBeforeFirstEmission = 1;
+        
+        //
+        // default mega hold properties
+        //
+        ticksPerDischarge = 10;
+        chargesLostPerDischarge = 1;
     }
+
     //
     // power source properties
     //
     int totalCharges;
     int secondsPerEmission;
     int secondsBeforeFirstEmission;
+
+    //
+    // mega hold properties
+    //
+    int ticksPerDischarge;
+    int chargesLostPerDischarge;
 };
 
 struct Connection

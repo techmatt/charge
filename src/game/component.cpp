@@ -109,9 +109,18 @@ ParameterTable Component::toTable(const string &tableName) const
     result.set("boundary", (int)modifiers.boundary);
     result.set("puzzleType", (int)modifiers.puzzleType);
 
-    result.set("secondsBeforeFirstEmission", intrinsics.secondsBeforeFirstEmission);
-    result.set("secondsPerEmission", intrinsics.secondsPerEmission);
-    result.set("totalCharges", intrinsics.totalCharges);
+    if (info->name == "PowerSource")
+    {
+        result.set("secondsBeforeFirstEmission", intrinsics.secondsBeforeFirstEmission);
+        result.set("secondsPerEmission", intrinsics.secondsPerEmission);
+        result.set("totalCharges", intrinsics.totalCharges);
+    }
+
+    if (info->name == "MegaHold")
+    {
+        result.set("ticksPerDischarge", intrinsics.ticksPerDischarge);
+        result.set("chargesLostPerDischarge", intrinsics.chargesLostPerDischarge);
+    }
 
     return result;
 }
@@ -125,9 +134,25 @@ Component* Component::fromTable(const ParameterTable &table)
     result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
     result->modifiers.puzzleType = (ComponentPuzzleType)table.getInt("puzzleType");
 
-    result->intrinsics.secondsBeforeFirstEmission = table.getInt("secondsBeforeFirstEmission");
-    result->intrinsics.secondsPerEmission = table.getInt("secondsPerEmission");
-    result->intrinsics.totalCharges = table.getInt("totalCharges");
+    if (result->info->name == "PowerSource")
+    {
+        result->intrinsics.secondsBeforeFirstEmission = table.getInt("secondsBeforeFirstEmission");
+        result->intrinsics.secondsPerEmission = table.getInt("secondsPerEmission");
+        result->intrinsics.totalCharges = table.getInt("totalCharges");
+    }
+
+    if (result->info->name == "MegaHold")
+    {
+        if (table.hasParameter("ticksPerDischarge"))
+        {
+            result->intrinsics.ticksPerDischarge = table.getInt("ticksPerDischarge");
+            result->intrinsics.chargesLostPerDischarge = table.getInt("chargesLostPerDischarge");
+        }
+        else
+        {
+            cout << "MegaHold with no metadata found" << endl;
+        }
+    }
 
     return result;
 }

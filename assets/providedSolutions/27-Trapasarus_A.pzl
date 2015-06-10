@@ -1,4 +1,4 @@
-Puzzle~42~529
+Puzzle~42~412
 buildableComponents~7
 ComponentBuildState~6~6
 TrapOpenGray=1
@@ -7,8 +7,8 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~12
-Component~11~11
+component0000~9
+Component~8~8
 boardPos=8 2
 boundary=0
 chargePreference=2
@@ -16,12 +16,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0001~12
-Component~11~11
+component0001~9
+Component~8~8
 boardPos=18 12
 boundary=0
 chargePreference=2
@@ -29,12 +26,9 @@ circuitPos=-100 -100
 color=4
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0002~12
-Component~11~11
+component0002~9
+Component~8~8
 boardPos=8 4
 boundary=0
 chargePreference=2
@@ -42,12 +36,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0003~12
-Component~11~11
+component0003~9
+Component~8~8
 boardPos=8 14
 boundary=0
 chargePreference=2
@@ -55,12 +46,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0004~12
-Component~11~11
+component0004~9
+Component~8~8
 boardPos=8 12
 boundary=0
 chargePreference=2
@@ -68,12 +56,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0005~12
-Component~11~11
+component0005~9
+Component~8~8
 boardPos=8 0
 boundary=0
 chargePreference=2
@@ -81,12 +66,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+component0006~9
+Component~8~8
 boardPos=18 16
 boundary=0
 chargePreference=2
@@ -94,10 +76,7 @@ circuitPos=-100 -100
 color=5
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
 component0007~12
 Component~11~11
 boardPos=8 18
@@ -111,8 +90,8 @@ secondsBeforeFirstEmission=0
 secondsPerEmission=2
 speed=2
 totalCharges=5
-component0008~12
-Component~11~11
+component0008~9
+Component~8~8
 boardPos=8 10
 boundary=0
 chargePreference=2
@@ -120,12 +99,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+component0009~9
+Component~8~8
 boardPos=8 8
 boundary=0
 chargePreference=2
@@ -133,12 +109,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0010~12
-Component~11~11
+component0010~9
+Component~8~8
 boardPos=8 6
 boundary=0
 chargePreference=2
@@ -146,12 +119,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0011~12
-Component~11~11
+component0011~9
+Component~8~8
 boardPos=18 18
 boundary=0
 chargePreference=2
@@ -159,12 +129,9 @@ circuitPos=-100 -100
 color=5
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0012~12
-Component~11~11
+component0012~9
+Component~8~8
 boardPos=18 8
 boundary=0
 chargePreference=2
@@ -172,12 +139,9 @@ circuitPos=-100 -100
 color=3
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0013~12
-Component~11~11
+component0013~9
+Component~8~8
 boardPos=18 4
 boundary=0
 chargePreference=2
@@ -185,12 +149,9 @@ circuitPos=-100 -100
 color=2
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0014~12
-Component~11~11
+component0014~9
+Component~8~8
 boardPos=8 16
 boundary=0
 chargePreference=2
@@ -198,12 +159,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0015~12
-Component~11~11
+component0015~9
+Component~8~8
 boardPos=10 4
 boundary=0
 chargePreference=2
@@ -211,12 +169,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0016~12
-Component~11~11
+component0016~9
+Component~8~8
 boardPos=12 4
 boundary=0
 chargePreference=2
@@ -224,12 +179,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0017~12
-Component~11~11
+component0017~9
+Component~8~8
 boardPos=14 4
 boundary=0
 chargePreference=2
@@ -237,12 +189,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0018~12
-Component~11~11
+component0018~9
+Component~8~8
 boardPos=16 4
 boundary=0
 chargePreference=2
@@ -250,12 +199,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0019~12
-Component~11~11
+component0019~9
+Component~8~8
 boardPos=18 2
 boundary=0
 chargePreference=2
@@ -263,12 +209,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0020~12
-Component~11~11
+component0020~9
+Component~8~8
 boardPos=18 0
 boundary=0
 chargePreference=2
@@ -276,12 +219,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0021~12
-Component~11~11
+component0021~9
+Component~8~8
 boardPos=16 0
 boundary=0
 chargePreference=2
@@ -289,12 +229,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0022~12
-Component~11~11
+component0022~9
+Component~8~8
 boardPos=14 0
 boundary=0
 chargePreference=2
@@ -302,12 +239,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0023~12
-Component~11~11
+component0023~9
+Component~8~8
 boardPos=12 0
 boundary=0
 chargePreference=2
@@ -315,12 +249,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0024~12
-Component~11~11
+component0024~9
+Component~8~8
 boardPos=10 0
 boundary=0
 chargePreference=2
@@ -328,12 +259,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0025~12
-Component~11~11
+component0025~9
+Component~8~8
 boardPos=10 8
 boundary=0
 chargePreference=2
@@ -341,12 +269,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0026~12
-Component~11~11
+component0026~9
+Component~8~8
 boardPos=12 8
 boundary=0
 chargePreference=2
@@ -354,12 +279,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0027~12
-Component~11~11
+component0027~9
+Component~8~8
 boardPos=14 8
 boundary=0
 chargePreference=2
@@ -367,12 +289,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0028~12
-Component~11~11
+component0028~9
+Component~8~8
 boardPos=16 8
 boundary=0
 chargePreference=2
@@ -380,12 +299,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0029~12
-Component~11~11
+component0029~9
+Component~8~8
 boardPos=18 6
 boundary=0
 chargePreference=2
@@ -393,12 +309,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0030~12
-Component~11~11
+component0030~9
+Component~8~8
 boardPos=18 10
 boundary=0
 chargePreference=2
@@ -406,12 +319,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0031~12
-Component~11~11
+component0031~9
+Component~8~8
 boardPos=16 12
 boundary=0
 chargePreference=2
@@ -419,12 +329,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0032~12
-Component~11~11
+component0032~9
+Component~8~8
 boardPos=14 12
 boundary=0
 chargePreference=2
@@ -432,12 +339,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0033~12
-Component~11~11
+component0033~9
+Component~8~8
 boardPos=12 12
 boundary=0
 chargePreference=2
@@ -445,12 +349,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0034~12
-Component~11~11
+component0034~9
+Component~8~8
 boardPos=10 12
 boundary=0
 chargePreference=2
@@ -458,12 +359,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0035~12
-Component~11~11
+component0035~9
+Component~8~8
 boardPos=18 14
 boundary=0
 chargePreference=2
@@ -471,12 +369,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0036~12
-Component~11~11
+component0036~9
+Component~8~8
 boardPos=16 16
 boundary=0
 chargePreference=2
@@ -484,12 +379,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0037~12
-Component~11~11
+component0037~9
+Component~8~8
 boardPos=14 16
 boundary=0
 chargePreference=2
@@ -497,12 +389,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0038~12
-Component~11~11
+component0038~9
+Component~8~8
 boardPos=12 16
 boundary=0
 chargePreference=2
@@ -510,12 +399,9 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0039~12
-Component~11~11
+component0039~9
+Component~8~8
 boardPos=10 16
 boundary=0
 chargePreference=2
@@ -523,8 +409,5 @@ circuitPos=-100 -100
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
 componentCount=40

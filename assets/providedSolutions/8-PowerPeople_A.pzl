@@ -1,4 +1,4 @@
-Puzzle~18~217
+Puzzle~18~172
 buildableComponents~7
 ComponentBuildState~6~6
 Amplifier=1
@@ -7,8 +7,8 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~12
-Component~11~11
+component0000~9
+Component~8~8
 boardPos=16 8
 boundary=0
 chargePreference=2
@@ -16,10 +16,7 @@ circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
 component0001~12
 Component~11~11
 boardPos=6 11
@@ -33,8 +30,8 @@ secondsBeforeFirstEmission=0
 secondsPerEmission=2
 speed=2
 totalCharges=1000
-component0002~12
-Component~11~11
+component0002~9
+Component~8~8
 boardPos=16 14
 boundary=0
 chargePreference=2
@@ -42,12 +39,9 @@ circuitPos=-100 -100
 color=3
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0003~12
-Component~11~11
+component0003~9
+Component~8~8
 boardPos=16 11
 boundary=0
 chargePreference=2
@@ -55,12 +49,9 @@ circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0004~12
-Component~11~11
+component0004~9
+Component~8~8
 boardPos=14 8
 boundary=0
 chargePreference=2
@@ -68,12 +59,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0005~12
-Component~11~11
+component0005~9
+Component~8~8
 boardPos=12 8
 boundary=0
 chargePreference=2
@@ -81,12 +69,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+component0006~9
+Component~8~8
 boardPos=10 8
 boundary=0
 chargePreference=2
@@ -94,12 +79,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0007~12
-Component~11~11
+component0007~9
+Component~8~8
 boardPos=8 9
 boundary=0
 chargePreference=2
@@ -107,12 +89,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0008~12
-Component~11~11
+component0008~9
+Component~8~8
 boardPos=8 11
 boundary=0
 chargePreference=2
@@ -120,12 +99,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+component0009~9
+Component~8~8
 boardPos=10 11
 boundary=0
 chargePreference=2
@@ -133,12 +109,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0010~12
-Component~11~11
+component0010~9
+Component~8~8
 boardPos=12 11
 boundary=0
 chargePreference=2
@@ -146,12 +119,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0011~12
-Component~11~11
+component0011~9
+Component~8~8
 boardPos=8 13
 boundary=0
 chargePreference=2
@@ -159,12 +129,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0012~12
-Component~11~11
+component0012~9
+Component~8~8
 boardPos=10 14
 boundary=0
 chargePreference=2
@@ -172,12 +139,9 @@ circuitPos=-100 -100
 color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0013~12
-Component~11~11
+component0013~9
+Component~8~8
 boardPos=14 11
 boundary=0
 chargePreference=2
@@ -185,12 +149,9 @@ circuitPos=-100 -100
 color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0014~12
-Component~11~11
+component0014~9
+Component~8~8
 boardPos=12 14
 boundary=0
 chargePreference=2
@@ -198,12 +159,9 @@ circuitPos=-100 -100
 color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
-component0015~12
-Component~11~11
+component0015~9
+Component~8~8
 boardPos=14 14
 boundary=0
 chargePreference=2
@@ -211,8 +169,5 @@ circuitPos=-100 -100
 color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=2
-totalCharges=16777215
 componentCount=16

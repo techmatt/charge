@@ -50,6 +50,11 @@ public:
         table.appendLines(lines);
     }
 
+    bool hasParameter(const string &parameterName) const
+    {
+        return (params.count(parameterName) > 0);
+    }
+
     string getString(const string &parameterName) const
     {
         MLIB_ASSERT_STR(params.count(parameterName) > 0, "Parameter not found");
