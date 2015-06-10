@@ -171,13 +171,13 @@ public:
         switch (speed)
         {
         case WireType::MajorDelay:
-            return "WireType::MajorDelay";
+            return "WireMajorDelay";
         case WireType::MinorDelay:
-            return "WireType::MinorDelay";
+            return "WireMinorDelay";
         case WireType::MinorAccelerator:
-            return "WireType::MinorAccelerator";
+            return "WireMinorAccelerator";
         case WireType::MajorAccelerator:
-            return "WireType::MajorAccelerator";
+            return "WireMajorAccelerator";
         default:
             return "invalid";
         }
