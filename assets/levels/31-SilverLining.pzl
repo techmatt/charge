@@ -1,4 +1,4 @@
-Puzzle~68~385
+Puzzle~67~379
 buildableComponents~30
 ComponentBuildState~29~29
 GateClosedBlue=1
@@ -377,10 +377,4 @@ Component~3~3
 boardPos=19 22
 name=Hold
 puzzleType=1
-component0065~5
-Component~4~4
-boardPos=19 20
-color=3
-name=TrapOpen
-puzzleType=1
-componentCount=66
+componentCount=65

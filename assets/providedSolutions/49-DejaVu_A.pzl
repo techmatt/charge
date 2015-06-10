@@ -1,0 +1,261 @@
+Puzzle~49~260
+buildableComponents~8
+ComponentBuildState~7~7
+Amplifier=1
+Splitter=1
+Wire=1
+WireMajorAccelerator=1
+WireMajorDelay=1
+WireMinorAccelerator=1
+WireMinorDelay=1
+component0000~4
+Component~3~3
+boardPos=11 0
+name=Blocker
+puzzleType=1
+component0001~4
+Component~3~3
+boardPos=11 2
+name=Blocker
+puzzleType=1
+component0002~4
+Component~3~3
+boardPos=11 4
+name=Blocker
+puzzleType=1
+component0003~4
+Component~3~3
+boardPos=11 6
+name=Blocker
+puzzleType=1
+component0004~4
+Component~3~3
+boardPos=11 8
+name=Blocker
+puzzleType=1
+component0005~4
+Component~3~3
+boardPos=11 10
+name=Blocker
+puzzleType=1
+component0006~4
+Component~3~3
+boardPos=11 14
+name=Blocker
+puzzleType=1
+component0007~4
+Component~3~3
+boardPos=11 16
+name=Blocker
+puzzleType=1
+component0008~4
+Component~3~3
+boardPos=11 18
+name=Blocker
+puzzleType=1
+component0009~4
+Component~3~3
+boardPos=11 20
+name=Blocker
+puzzleType=1
+component0010~4
+Component~3~3
+boardPos=11 22
+name=Blocker
+puzzleType=1
+component0011~4
+Component~3~3
+boardPos=13 22
+name=Blocker
+puzzleType=1
+component0012~4
+Component~3~3
+boardPos=20 10
+name=Blocker
+puzzleType=1
+component0013~4
+Component~3~3
+boardPos=22 10
+name=Blocker
+puzzleType=1
+component0014~4
+Component~3~3
+boardPos=22 12
+name=Blocker
+puzzleType=1
+component0015~4
+Component~3~3
+boardPos=22 14
+name=Blocker
+puzzleType=1
+component0016~4
+Component~3~3
+boardPos=20 14
+name=Blocker
+puzzleType=1
+component0017~5
+Component~4~4
+boardPos=20 12
+color=5
+name=ChargeGoal
+puzzleType=1
+component0018~4
+Component~3~3
+boardPos=12 12
+name=Splitter
+puzzleType=1
+component0019~4
+Component~3~3
+boardPos=13 10
+name=Blocker
+puzzleType=1
+component0020~4
+Component~3~3
+boardPos=13 8
+name=Blocker
+puzzleType=1
+component0021~4
+Component~3~3
+boardPos=13 6
+name=Blocker
+puzzleType=1
+component0022~4
+Component~3~3
+boardPos=13 4
+name=Blocker
+puzzleType=1
+component0023~4
+Component~3~3
+boardPos=13 2
+name=Blocker
+puzzleType=1
+component0024~4
+Component~3~3
+boardPos=13 0
+name=Blocker
+puzzleType=1
+component0025~4
+Component~3~3
+boardPos=13 14
+name=Blocker
+puzzleType=1
+component0026~4
+Component~3~3
+boardPos=13 16
+name=Blocker
+puzzleType=1
+component0027~4
+Component~3~3
+boardPos=13 18
+name=Blocker
+puzzleType=1
+component0028~4
+Component~3~3
+boardPos=13 20
+name=Blocker
+puzzleType=1
+component0029~8
+Component~7~7
+boardPos=2 12
+color=5
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1
+component0030~5
+Component~4~4
+boardPos=4 12
+chargePreference=3
+name=Splitter
+puzzleType=0
+component0031~4
+Component~3~3
+boardPos=6 12
+name=Splitter
+puzzleType=0
+component0032~5
+Component~4~4
+boardPos=4 10
+chargePreference=3
+name=Amplifier
+puzzleType=0
+component0033~4
+Component~3~3
+boardPos=4 14
+name=Amplifier
+puzzleType=0
+component0034~6
+Component~5~5
+boardPos=2 9
+chargePreference=4
+name=Wire
+puzzleType=0
+speed=4
+component0035~5
+Component~4~4
+boardPos=0 10
+name=Wire
+puzzleType=0
+speed=4
+component0036~5
+Component~4~4
+boardPos=0 12
+name=Wire
+puzzleType=0
+speed=4
+component0037~5
+Component~4~4
+boardPos=0 14
+name=Wire
+puzzleType=0
+speed=4
+component0038~5
+Component~4~4
+boardPos=2 15
+name=Wire
+puzzleType=0
+speed=4
+component0039~5
+Component~4~4
+boardPos=6 10
+name=Wire
+puzzleType=0
+speed=4
+component0040~5
+Component~4~4
+boardPos=6 14
+name=Wire
+puzzleType=0
+speed=4
+component0041~4
+Component~3~3
+boardPos=8 12
+name=Wire
+puzzleType=0
+component0042~4
+Component~3~3
+boardPos=10 12
+name=Wire
+puzzleType=0
+component0043~4
+Component~3~3
+boardPos=14 12
+name=Amplifier
+puzzleType=0
+component0044~4
+Component~3~3
+boardPos=15 10
+name=Amplifier
+puzzleType=0
+component0045~4
+Component~3~3
+boardPos=17 10
+name=Amplifier
+puzzleType=0
+component0046~4
+Component~3~3
+boardPos=18 12
+name=Amplifier
+puzzleType=0
+componentCount=47

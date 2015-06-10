@@ -1,4 +1,4 @@
-Puzzle~88~515
+Puzzle~109~622
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -513,4 +513,111 @@ Component~3~3
 boardPos=10 12
 name=Blocker
 puzzleType=1
-componentCount=86
+component0086~4
+Component~3~3
+boardPos=2 22
+name=Wire
+puzzleType=0
+component0087~4
+Component~3~3
+boardPos=4 22
+name=Wire
+puzzleType=0
+component0088~4
+Component~3~3
+boardPos=8 20
+name=Wire
+puzzleType=0
+component0089~4
+Component~3~3
+boardPos=10 22
+name=Wire
+puzzleType=0
+component0090~4
+Component~3~3
+boardPos=14 20
+name=Wire
+puzzleType=0
+component0091~4
+Component~3~3
+boardPos=16 22
+name=Wire
+puzzleType=0
+component0092~4
+Component~3~3
+boardPos=18 18
+name=Wire
+puzzleType=0
+component0093~4
+Component~3~3
+boardPos=16 16
+name=Wire
+puzzleType=0
+component0094~4
+Component~3~3
+boardPos=14 14
+name=Wire
+puzzleType=0
+component0095~5
+Component~4~4
+boardPos=10 16
+chargePreference=4
+name=Wire
+puzzleType=0
+component0096~4
+Component~3~3
+boardPos=6 12
+name=Wire
+puzzleType=0
+component0097~5
+Component~4~4
+boardPos=4 10
+chargePreference=4
+name=Wire
+puzzleType=0
+component0098~4
+Component~3~3
+boardPos=0 6
+name=Wire
+puzzleType=0
+component0099~4
+Component~3~3
+boardPos=4 4
+name=Wire
+puzzleType=0
+component0100~4
+Component~3~3
+boardPos=6 0
+name=Wire
+puzzleType=0
+component0101~4
+Component~3~3
+boardPos=8 0
+name=Wire
+puzzleType=0
+component0102~4
+Component~3~3
+boardPos=8 2
+name=Wire
+puzzleType=0
+component0103~4
+Component~3~3
+boardPos=10 4
+name=Wire
+puzzleType=0
+component0104~4
+Component~3~3
+boardPos=16 4
+name=Wire
+puzzleType=0
+component0105~4
+Component~3~3
+boardPos=22 4
+name=Wire
+puzzleType=0
+component0106~4
+Component~3~3
+boardPos=22 2
+name=Wire
+puzzleType=0
+componentCount=107
