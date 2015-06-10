@@ -523,76 +523,6 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     hoverButtonIndex;
 }
 
-void GameUI::addHoverComponent()
-{
-	if (selectedMenuComponent == nullptr && activePlacementBuffer.isEmpty())
-		return;
-
-	GameLocation location = hoverLocation(true);
-
-	if (location.boardPos == constants::invalidCoord)
-		return;
-
-	if (!location.valid())
-		return;
-
-	if (location.inCircuit() && activeCircuit() == nullptr)
-		return;
-
-	vec2i buffermin = activePlacementBuffer.boundingBox().min();
-
-	//figure out component placement
-	for (ComponentDefiningProperties c : activePlacementBuffer.components)
-	{
-		GameLocation componentLocation;
-
-		// move to the placement location
-		if (location.inCircuit())
-			componentLocation = GameLocation(location.circuitPos + c.location.boardPos - buffermin, c.location.circuitPos);
-		else
-			componentLocation = GameLocation(location.boardPos + c.location.boardPos - buffermin, c.location.circuitPos);
-
-
-		
-		if (!componentLocation.inCircuit())
-		{
-			const vec2i coordBase = componentLocation.boardPos;
-			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
-
-			for (int xOffset = 0; xOffset <= 1; xOffset++)
-				for (int yOffset = 0; yOffset <= 1; yOffset++)
-				{
-					const vec2i coord = coordBase + vec2i(xOffset, yOffset);
-					if (board.cells.coordValid(coord))
-					{
-						if (canNotBuildAtPosition(board, c, coord))
-							return;
-					}
-				}
-		}
-	}
-
-	// verfied that we can build the thing at the specified place
-	// build it
-
-	
-		if (location.inCircuit())
-		{
-			vec2i offset = location.circuitPos - buffermin;
-			activePlacementBuffer.addToCircuit(app.state,location.boardPos, offset);
-		}
-		else
-		{
-			vec2i offset = location.boardPos - buffermin;
-			activePlacementBuffer.addToComponents(app.state, offset);
-		}
-
-	app.controller.designActionTaken = true;
-	app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
-	backgroundDirty = true;
- 
-}
-
 void GameUI::render()
 {
     canonicalDims = GameUtil::getCanonicalSize();
@@ -827,7 +757,7 @@ void GameUI::renderHoverComponent()
 
 		// if the component is in a circuit, render at a lower depth
 		float depth = c.location.inCircuit() ? depthLayers::hoverCircuitComponent : depthLayers::hoverComponent;
-
+		//float depth = depthLayers::hoverComponent;
 
 		const rect2f screenRect = GameUtil::locationInLocationToWindowRect(canonicalDims, componentLocation, location, 2);
 		renderLocalizedComponent(c.baseInfo->name, nullptr, screenRect, depth, IconState(c.modifiers, false, false));
@@ -860,6 +790,73 @@ void GameUI::renderHoverComponent()
 
 
 	}
+}
+
+void GameUI::addHoverComponent()
+{
+	if (selectedMenuComponent == nullptr && activePlacementBuffer.isEmpty())
+		return;
+
+	GameLocation location = hoverLocation(true);
+
+	if (!location.valid())
+		return;
+
+	if (location.inCircuit() && activeCircuit() == nullptr)
+		return;
+
+	vec2i buffermin = activePlacementBuffer.boundingBox().min();
+
+	//figure out component placement
+	for (ComponentDefiningProperties c : activePlacementBuffer.components)
+	{
+		GameLocation componentLocation;
+
+		// move to the placement location
+		if (location.inCircuit())
+			componentLocation = GameLocation(location.circuitPos + c.location.boardPos - buffermin,c.location.circuitPos);
+		else
+			componentLocation = GameLocation(location.boardPos + c.location.boardPos - buffermin, c.location.circuitPos);
+
+
+
+		if (!componentLocation.inCircuit())
+		{
+			const vec2i coordBase = componentLocation.boardPos;
+			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
+
+			for (int xOffset = 0; xOffset <= 1; xOffset++)
+				for (int yOffset = 0; yOffset <= 1; yOffset++)
+				{
+					const vec2i coord = coordBase + vec2i(xOffset, yOffset);
+					if (board.cells.coordValid(coord))
+					{
+						if (canNotBuildAtPosition(board, c, coord))
+							return;
+					}
+				}
+		}
+	}
+
+	// verfied that we can build the thing at the specified place
+	// build it
+
+
+	if (location.inCircuit())
+	{
+		vec2i offset = location.circuitPos - buffermin;
+		activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset);
+	}
+	else
+	{
+		vec2i offset = location.boardPos - buffermin;
+		activePlacementBuffer.addToComponents(app.state, offset);
+	}
+
+	app.controller.designActionTaken = true;
+	app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
+	backgroundDirty = true;
+
 }
 
 void GameUI::updateBackgroundObjects()

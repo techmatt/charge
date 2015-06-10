@@ -136,16 +136,17 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
         if (c.location.inCircuit()) continue;
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
-        state.addNewComponent(newComponent);
+        state.addNewComponent(newComponent,true, false);
     }
 
     // do the elements in circuits next.
     for (ComponentDefiningProperties &c : components)
     {
         if (!c.location.inCircuit()) continue;
+		if (c.baseInfo->name == "CircuitBoundary") continue; //the circuit boundaries are created automatically
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
-        state.addNewComponent(newComponent, false, false);
+        state.addNewComponent(newComponent, true, false);
     }
     state.updateAll();
 }
