@@ -82,15 +82,18 @@ void GameUI::keyDown(SDL_Keycode key)
 
 	const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
-    const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
-    if (hotkeyComponent != nullptr)
-    {
-        selectedMenuComponent = hotkeyComponent;
-        selectedMenuComponentColor = selectedMenuComponent->defaultPrimaryCharge();
+	if (!keys[SDL_SCANCODE_LCTRL] && !keys[SDL_SCANCODE_RCTRL])
+	{
+		const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
+		if (hotkeyComponent != nullptr)
+		{
+			selectedMenuComponent = hotkeyComponent;
+			selectedMenuComponentColor = selectedMenuComponent->defaultPrimaryCharge();
 
-        activePlacementBuffer.clear();
-        activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
-    }
+			activePlacementBuffer.clear();
+			activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
+		}
+	}
 
     if (key == SDLK_ESCAPE)
     {
@@ -810,6 +813,7 @@ void GameUI::addHoverComponent()
 	//figure out component placement
 	for (ComponentDefiningProperties c : activePlacementBuffer.components)
 	{
+		if (c.location.inCircuit()) continue;
 		GameLocation componentLocation;
 
 		// move to the placement location
@@ -820,22 +824,20 @@ void GameUI::addHoverComponent()
 
 
 
-		if (!componentLocation.inCircuit())
-		{
-			const vec2i coordBase = componentLocation.boardPos;
-			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
+		const vec2i coordBase = componentLocation.boardPos;
+		const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
 
-			for (int xOffset = 0; xOffset <= 1; xOffset++)
-				for (int yOffset = 0; yOffset <= 1; yOffset++)
+		for (int xOffset = 0; xOffset <= 1; xOffset++)
+			for (int yOffset = 0; yOffset <= 1; yOffset++)
+			{
+				const vec2i coord = coordBase + vec2i(xOffset, yOffset);
+				if (board.cells.coordValid(coord))
 				{
-					const vec2i coord = coordBase + vec2i(xOffset, yOffset);
-					if (board.cells.coordValid(coord))
-					{
-						if (canNotBuildAtPosition(board, c, coord))
-							return;
-					}
+					if (canNotBuildAtPosition(board, c, coord))
+						return;
 				}
-		}
+			}
+	
 	}
 
 	// verfied that we can build the thing at the specified place
