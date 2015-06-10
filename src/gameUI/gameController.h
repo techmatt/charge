@@ -63,6 +63,20 @@ public:
     
     void updateButtonList();
 
+    const GameButton* getHitButton(const vec2i &mouse) const
+    {
+        const GameButton *hitButton = nullptr;
+        for (const auto &button : buttons)
+        {
+            const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
+            if (screenRect.intersects(vec2f((float)mouse.x, (float)mouse.y)))
+            {
+                hitButton = &button;
+            }
+        }
+        return hitButton;
+    }
+
     vector<GameButton> buttons;
 
     GamePuzzleMode puzzleMode;

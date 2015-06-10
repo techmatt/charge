@@ -102,6 +102,8 @@ private:
 	GameLocation clickLocation;
 	vec2f clickScreenLocation;
 
+    int hoverButtonIndex;
+
     // TODO: consider moving this to Board
 	bool canNotBuildAtPosition(const Board &b, const ComponentDefiningProperties &cdp, const vec2i &coord) const
 	{

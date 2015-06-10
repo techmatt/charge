@@ -13,6 +13,8 @@ void GameUI::init()
     selectedMenuComponent = nullptr;
 
     activePlacementBuffer.clear();
+
+    hoverButtonIndex = -1;
 }
 
 Texture& GameUI::getFontTexture(const string &text, FontType font, int wrapWidth)
@@ -128,8 +130,6 @@ void GameUI::keyDown(SDL_Keycode key)
             app.controller.recordDesignAction();
         }
 
-        
-
         auto keyToPreference = [](SDL_Keycode key)
         {
             switch (key)
@@ -142,6 +142,7 @@ void GameUI::keyDown(SDL_Keycode key)
             default: return -1;
             }
         };
+
         int preference = keyToPreference(key);
         if (preference != -1)
         {
@@ -282,6 +283,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
+    
     x = mouseHoverCoord.x;
     y = mouseHoverCoord.y;
 
@@ -319,15 +321,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
     }
 
-    const GameButton *hitButton = nullptr;
-    for (const auto &button : app.controller.buttons)
-    {
-        const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
-        if (screenRect.intersects(vec2f((float)x, (float)y)))
-        {
-            hitButton = &button;
-        }
-    }
+    const GameButton *hitButton = app.controller.getHitButton(mouseHoverCoord);
     if (hitButton == nullptr)
         return;
     const GameButton &button = *hitButton;
@@ -512,6 +506,7 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
         removeHoverComponent();
     }
 
+    hoverButtonIndex;
 }
 
 void GameUI::addHoverComponent()
@@ -547,8 +542,6 @@ void GameUI::addHoverComponent()
 		
 		if (!componentLocation.inCircuit())
 		{
-
-
 			const vec2i coordBase = componentLocation.boardPos;
 			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
 
@@ -798,9 +791,6 @@ void GameUI::renderHoverComponent()
 		return;
 
 	GameLocation location = hoverLocation(true);
-
-	if (location.boardPos == constants::invalidCoord)
-		return;
 
 	if (!location.valid())
 		return;
@@ -1055,10 +1045,19 @@ void GameUI::renderButtonForeground(const GameButton &button, bool selected)
 
 void GameUI::renderTooltip()
 {
-    Component *c = app.state.getComponent(clickLocation);
-    if (c != nullptr && c->modifiers.puzzleType == ComponentPuzzlePiece)
+    const GameButton *hitButton = app.controller.getHitButton(mouseHoverCoord);
+    if (hitButton != nullptr && hitButton->type == ButtonComponent)
     {
-        renderTooltip(params().tooltipDefaultStart, *c->baseInfo, ComponentIntrinsics());
+        float startY = hitButton->canonicalRect.max().y + 5.0f;
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *hitButton->component, ComponentIntrinsics());
+        return;
+    }
+    
+    Component *hoverComponent = app.state.getComponent(hoverLocation(false));
+    Component *clickComponent = app.state.getComponent(clickLocation);
+    if (clickComponent != nullptr && hoverComponent == clickComponent && clickComponent->modifiers.puzzleType == ComponentPuzzlePiece)
+    {
+        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, ComponentIntrinsics());
     }
 }
 
