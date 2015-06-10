@@ -3,7 +3,7 @@ Conceptually, rendering is done on a render target of canonical, device-independ
 
 The base aspect ratio of the game is 1.5 : 1
 
-The canonical coordinates are chosen so that each tower is 32x32 (each board cell being 16x16)
+The canonical coordinates are chosen so that each component is 32x32 (each board cell being 16x16)
 
 621 x 414
 
@@ -18,7 +18,7 @@ So the top-left-most component lives at boardSpace(1, 1) (all components are 2x2
 
 All coordinates are floating-point (board space is floating point because of circuits)
 
-We may have other coordinate spaces, like the tower list on the right-hand-side. There's no need to make them conform to existing Charge layout.
+We may have other coordinate spaces, like the component list on the right-hand-side. There's no need to make them conform to existing Charge layout.
 We should definitely have for example a speed slider.
 
 There are functions to transform between the various coordinate systems. 

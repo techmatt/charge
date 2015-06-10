@@ -519,18 +519,24 @@ void GameState::step(AppData &app)
     // check victory conditions
     //
     victory = true;
-    bool chargeGoalFound = false; // useful so people can still experiment with levels even with no goals
+    bool goalFound = false; // useful so people can still experiment with levels even with no goals
     for (const auto &component : components)
     {
         if (component->info->name == "ChargeGoal")
         {
-            chargeGoalFound = true;
+            goalFound = true;
             if(component->heldCharge != component->modifiers.color)
+                victory = false;
+        }
+        if (component->info->name == "MegaHold")
+        {
+            goalFound = true;
+            if (component->megaHoldTotalCharge < component->intrinsics.totalChargeRequired)
                 victory = false;
         }
     }
 
-    if (!chargeGoalFound)
+    if (!goalFound)
         victory = false;
 
     if (victory)

@@ -17,6 +17,7 @@ void Component::resetPuzzle()
     heldCharge = ChargeType::None;
     modifiers.storedChargeColor = GameUtil::chargeColor(ChargeType::Gray);
     resetPowerSource();
+    resetMegaHold();
 }
 
 void Component::resetPowerSource()
@@ -25,10 +26,16 @@ void Component::resetPowerSource()
     totalChargesRemaining = intrinsics.totalCharges;
 }
 
+void Component::resetMegaHold()
+{
+    megaHoldTotalCharge = 0;
+    ticksBeforeDischarge = 0;
+}
+
 bool Component::willAcceptCharge(GameState &state, const Charge &charge)
 {
     if (info->name == "MegaHold")
-        return true;
+        return (modifiers.color == ChargeType::Gray || modifiers.color == charge.level);
 
 	if (charge.source == sourceOfLastChargeToAttemptToMoveHere)
 		return false;
@@ -78,6 +85,17 @@ void Component::tick(AppData &app)
 {
 	if (deathTrapTimeLeft > 0)
         deathTrapTimeLeft--;
+
+    if (info->name == "MegaHold")
+    {
+        if (ticksBeforeDischarge > 0)
+            ticksBeforeDischarge--;
+        else
+        {
+            ticksBeforeDischarge = intrinsics.ticksPerDischarge;
+            megaHoldTotalCharge = std::max(0, megaHoldTotalCharge - intrinsics.chargesLostPerDischarge);
+        }
+    }
 
     if (info->name == "PowerSource"
         && totalChargesRemaining > 0)

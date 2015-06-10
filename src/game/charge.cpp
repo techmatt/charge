@@ -53,6 +53,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
         markedForDeletion = true;
         showDeathAnimation = false;
         current->megaHoldTotalCharge += (int)level;
+        app.playEffect("MegaHold", current->location);
     }
 
     if (current->info->name == "Amplifier")
@@ -210,21 +211,9 @@ void Charge::updateDestination(GameState &state)
     {
         Component *previous = state.getComponent(source);
         Component *current = state.getComponent(destination);
-        //previous->deathTrapTimeLeft = constants::deathTrapDuration;
         current->deathTrapTimeLeft = constants::deathTrapDuration;
         markedForDeletion = true;
     }
-
-    /*if (result.destination->info->holdsCharge)
-    {
-        result.destination->lastChargeVisit = state.stepCount - constants::chargeRequiredTimeDifference + 2;
-    }*/
-
-    //
-    // Handle towers that consume charge.  Do not allow amplifiers or splitters to consume the charge
-    // they just produced.
-    //
-    
 }
 
 void Charge::setNewDestination(GameState &state, Component &newDestination, bool teleport)

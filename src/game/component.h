@@ -117,6 +117,7 @@ struct Component
     void tickGraphics();
     void resetPuzzle();
     void resetPowerSource();
+    void resetMegaHold();
     bool willAcceptCharge(GameState &state, const Charge &charge);
 
     bool inactiveBoundary() const
@@ -151,7 +152,7 @@ struct Component
     int lastChargeVisit;
 
     //
-    // when a charge blows up, other charges currently travelling to the tower also die.
+    // when a charge blows up, other charges currently travelling to the component also die.
     //
     int deathTrapTimeLeft;
 
@@ -165,6 +166,7 @@ struct Component
     //
     ChargeType storedCharge;
     int megaHoldTotalCharge;
+    int ticksBeforeDischarge;
 
     //
     // some components can emit charges. These are pairs of the charge to emit, and the

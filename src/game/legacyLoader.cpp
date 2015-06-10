@@ -46,7 +46,7 @@ enum LegacyComponentType
     ComponentHold,
 
     //
-    // Upgrades from wire tower
+    // Upgrades from wire component
     //
     ComponentWireMajorDelay,
     ComponentWireMinorDelay,

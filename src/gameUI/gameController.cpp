@@ -8,7 +8,7 @@ void GameController::init()
     designActionTaken = false;
     puzzleVerificationMode = false;
     editorMode = EditorMode::LevelEditor;
-    currentPuzzleIndex = 0;
+    currentPuzzleIndex = 49;
     fractionalSpeedTicksLeft = 0;
 
     loadCurrentPuzzle();
@@ -84,7 +84,7 @@ void GameController::loadCurrentPuzzle()
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
     app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
 
-    app.state.savePuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl");
+    //app.state.savePuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl");
 }
 
 void GameController::loadCurrentProvidedSolution()
