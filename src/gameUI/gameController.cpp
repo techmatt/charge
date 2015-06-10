@@ -16,6 +16,8 @@ void GameController::init()
 
 void GameController::step()
 {
+    app.soundsPlayedThisTick.clear();
+
     if (designActionTaken && puzzleMode != PuzzleMode::Design)
     {
         puzzleMode = PuzzleMode::Design;

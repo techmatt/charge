@@ -19,7 +19,6 @@ public:
     ChargeType selectedMenuComponentColor;
 
     // Various sets of stored lists of components used for placement and 
-    ComponentSelection selectedComponents;
     ComponentSet copyBuffer;
     ComponentSet activePlacementBuffer;
     bool currentlyMoving;

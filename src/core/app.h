@@ -8,10 +8,18 @@ struct AppData
 
     void playEffect(const string &name, const GameLocation &location)
     {
+        //
+        // play each sound at most once per tick.
+        // TODO: consider playing at most N times per tick
+        //
+        if (soundsPlayedThisTick.count(name) > 0)
+            return;
+
         //Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
 		Component* selectedComponent=ui.selection.singleElement();
 		if (!location.inCircuit() || (selectedComponent != nullptr && selectedComponent->location.boardPos == location.boardPos) || name == "ChargeDeath")
         {
+            soundsPlayedThisTick.insert(name);
             audio.playEffect(name, location.inCircuit());
         }
     }
@@ -36,6 +44,8 @@ struct AppData
     AudioDevice audio;
 	
 	UndoBuffer undoBuffer;
+
+    set<string> soundsPlayedThisTick;
 };
 
 class App

@@ -479,10 +479,11 @@ void GameCanvas::renderTooltip()
         return;
     }
 
-    Component *circuit = app.activeCircuit();
     Component *hoverComponent = app.state.getComponent(app.ui.hoverLocation(false));
     Component *clickComponent = app.state.getComponent(app.ui.clickLocation);
-    if (circuit == nullptr && clickComponent != nullptr && hoverComponent == clickComponent &&
+    Component *selectedComponent = app.ui.selection.singleElement();
+    if (app.activeCircuit() == nullptr &&
+        clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
