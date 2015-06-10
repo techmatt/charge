@@ -85,8 +85,10 @@ namespace util
 	}
 
 	inline std::vector<std::string> split(const std::string& str, const std::string& separator, bool pushEmptyStrings = false) {
+        
+        std::vector<std::string> result;
+
 		MLIB_ASSERT_STR(separator.length() >= 1, "empty seperator");
-		std::vector<std::string> result;
 
         if (str.size() == 0)
         {

@@ -1,4 +1,4 @@
-Puzzle~23~179
+Puzzle~23~180
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -169,12 +169,13 @@ Component~3~3
 boardPos=10 16
 name=Wire
 puzzleType=1
-component0020~7
-Component~6~6
+component0020~8
+Component~7~7
 boardPos=11 11
 chargesLostPerDischarge=1
 color=1
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
+ticksPerDischarge=60
+totalChargeRequired=10
 componentCount=21

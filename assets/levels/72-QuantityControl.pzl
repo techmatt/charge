@@ -1,4 +1,4 @@
-Puzzle~57~498
+Puzzle~57~523
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -226,231 +226,256 @@ boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0025~8
-Component~7~7
+component0025~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=2 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0026~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0026~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=4 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0027~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0027~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=6 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0028~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0028~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=8 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0029~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0029~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=10 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0030~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0030~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=10 4
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0031~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0031~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=8 4
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0032~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0032~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=6 4
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0033~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0033~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=4 4
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0034~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0034~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=2 4
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0035~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0035~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=2 6
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0036~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0036~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=2 8
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0037~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0037~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=2 10
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0038~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0038~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=4 10
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0039~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0039~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=4 8
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0040~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0040~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=4 6
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0041~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0041~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=6 6
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0042~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0042~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=8 6
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0043~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0043~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=10 6
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0044~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0044~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=10 8
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0045~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0045~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=10 10
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0046~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0046~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=8 10
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0047~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0047~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=8 8
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0048~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0048~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=6 8
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0049~8
-Component~7~7
+ticksPerDischarge=60
+totalChargeRequired=10
+component0049~9
+Component~8~8
 boardPos=11 11
 chargesLostPerDischarge=1
 circuitPos=6 10
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
+ticksPerDischarge=60
+totalChargeRequired=10
 component0050~8
 Component~7~7
 boardPos=21 1

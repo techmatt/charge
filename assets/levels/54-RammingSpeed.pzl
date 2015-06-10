@@ -1,4 +1,4 @@
-Puzzle~34~238
+Puzzle~34~239
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -76,14 +76,15 @@ Component~3~3
 boardPos=8 9
 name=Blocker
 puzzleType=1
-component0003~7
-Component~6~6
+component0003~8
+Component~7~7
 boardPos=22 11
 chargesLostPerDischarge=1
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
+ticksPerDischarge=60
+totalChargeRequired=10
 component0004~8
 Component~7~7
 boardPos=0 11

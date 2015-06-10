@@ -48,6 +48,13 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 
     Component *current = state.getComponent(destination);
 
+    if (current->info->name == "MegaHold")
+    {
+        markedForDeletion = true;
+        showDeathAnimation = false;
+        current->megaHoldTotalCharge += (int)level;
+    }
+
     if (current->info->name == "Amplifier")
     {
         markedForDeletion = true;

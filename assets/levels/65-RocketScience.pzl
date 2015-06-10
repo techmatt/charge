@@ -1,4 +1,4 @@
-Puzzle~632~4137
+Puzzle~632~4142
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -1867,46 +1867,51 @@ Component~3~3
 boardPos=11 5
 name=Blocker
 puzzleType=1
-component0273~7
-Component~6~6
+component0273~8
+Component~7~7
 boardPos=17 7
 chargesLostPerDischarge=1
 color=1
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0274~7
-Component~6~6
+ticksPerDischarge=60
+totalChargeRequired=10
+component0274~8
+Component~7~7
 boardPos=17 9
 chargesLostPerDischarge=1
 color=2
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0275~7
-Component~6~6
+ticksPerDischarge=60
+totalChargeRequired=10
+component0275~8
+Component~7~7
 boardPos=17 11
 chargesLostPerDischarge=1
 color=3
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0276~7
-Component~6~6
+ticksPerDischarge=60
+totalChargeRequired=10
+component0276~8
+Component~7~7
 boardPos=17 13
 chargesLostPerDischarge=1
 color=4
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
-component0277~7
-Component~6~6
+ticksPerDischarge=60
+totalChargeRequired=10
+component0277~8
+Component~7~7
 boardPos=17 15
 chargesLostPerDischarge=1
 color=5
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
+ticksPerDischarge=60
+totalChargeRequired=10
 component0278~6
 Component~5~5
 boardPos=15 7

@@ -27,13 +27,16 @@ void Component::resetPowerSource()
 
 bool Component::willAcceptCharge(GameState &state, const Charge &charge)
 {
+    if (info->name == "MegaHold")
+        return true;
+
 	if (charge.source == sourceOfLastChargeToAttemptToMoveHere)
 		return false;
 
     int currentTimeDifference = state.stepCount - lastChargeVisit;
     int requiredTimeDifference = constants::chargeRequiredTimeDifference;
 
-    if (currentTimeDifference < requiredTimeDifference && info->name != "MegaHold") //Mega holds can accept multiple charges simultaniously.
+    if (currentTimeDifference < requiredTimeDifference)
         return false;
 	
     if (info->name == "PowerSource" || info->name == "TrapSprung" || info->name == "Blocker" || info->name == "GateClosed")
@@ -131,6 +134,7 @@ ParameterTable Component::toTable(const string &tableName) const
     {
         result.set("ticksPerDischarge", intrinsics.ticksPerDischarge);
         result.set("chargesLostPerDischarge", intrinsics.chargesLostPerDischarge);
+        result.set("totalChargeRequired", intrinsics.totalChargeRequired);
     }
 
     return result;
@@ -169,10 +173,11 @@ Component* Component::fromTable(const ParameterTable &table)
 
     if (result->info->name == "MegaHold")
     {
-        if (table.hasParameter("ticksPerDischarge"))
+        if (table.hasParameter("totalChargeRequired"))
         {
             result->intrinsics.ticksPerDischarge = table.getInt("ticksPerDischarge");
             result->intrinsics.chargesLostPerDischarge = table.getInt("chargesLostPerDischarge");
+            result->intrinsics.totalChargeRequired = table.getInt("totalChargeRequired");
         }
         else
         {

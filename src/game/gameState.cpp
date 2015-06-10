@@ -354,7 +354,7 @@ void GameState::step(AppData &app)
                 if (c.resolvedThisTick) continue;
                 if (c.notMovingBecauseOfDesiredConnection) continue;
 
-                if (c.intendedDestination->numChargesTargetingThisTick >= 1 && c.intendedDestination->lastChargeVisit != stepCount)
+                if (c.intendedDestination->numChargesTargetingThisTick >= 1 && (c.intendedDestination->lastChargeVisit != stepCount || c.intendedDestination->info->name == "MegaHold"))
                 {
                     c.setNewDestination(*this, *c.intendedDestination);
                     c.resolvedThisTick = true;

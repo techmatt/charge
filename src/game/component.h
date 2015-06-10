@@ -56,8 +56,9 @@ struct ComponentIntrinsics
         //
         // default mega hold properties
         //
-        ticksPerDischarge = 10;
+        ticksPerDischarge = 60;
         chargesLostPerDischarge = 1;
+        totalChargeRequired = 10;
     }
 
     //
@@ -72,6 +73,7 @@ struct ComponentIntrinsics
     //
     int ticksPerDischarge;
     int chargesLostPerDischarge;
+    int totalChargeRequired;
 };
 
 struct Connection
@@ -162,6 +164,7 @@ struct Component
     // some components store charge
     //
     ChargeType storedCharge;
+    int megaHoldTotalCharge;
 
     //
     // some components can emit charges. These are pairs of the charge to emit, and the

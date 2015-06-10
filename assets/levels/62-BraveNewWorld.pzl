@@ -1,4 +1,4 @@
-Puzzle~46~356
+Puzzle~46~357
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -310,14 +310,15 @@ boardPos=2 12
 circuitPos=5 4
 name=Splitter
 puzzleType=1
-component0038~7
-Component~6~6
+component0038~8
+Component~7~7
 boardPos=16 11
 chargesLostPerDischarge=1
 color=1
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=10
+ticksPerDischarge=60
+totalChargeRequired=10
 component0039~6
 Component~5~5
 boardPos=2 12
