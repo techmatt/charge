@@ -1,15 +1,15 @@
 
-enum ButtonType
+enum class ButtonType
 {
-    ButtonComponent,
-    ButtonChargeColor,
-    ButtonWireSpeed,
-    ButtonCircuitBoundary,
-    ButtonGateState,
-    ButtonTrapState,
-    ButtonChargePreference,
-    ButtonPuzzleControl,
-    ButtonComponentAttribute,
+    Component,
+    ChargeColor,
+    WireSpeed,
+    CircuitBoundary,
+    GateState,
+    TrapState,
+    ChargePreference,
+    PuzzleControl,
+    ComponentAttribute,
 };
 
 struct GameButton
@@ -45,12 +45,12 @@ struct GameButton
 private:
     static rect2i getCanonicalRect(const vec2i &menuCoord, ButtonType type)
     {
-        if (type == ButtonPuzzleControl)
+        if (type == ButtonType::PuzzleControl)
         {
             const vec2i base = params().puzzleMenuCanonicalStart + menuCoord * params().puzzleMenuCanonicalEntrySize;
             return rect2i(base, base + params().puzzleMenuCanonicalEntrySize - 4);
         }
-        else if (type == ButtonComponentAttribute)
+        else if (type == ButtonType::ComponentAttribute)
         {
             const vec2i base = params().attributeMenuCanonicalStart + vec2f::directProduct(menuCoord, params().attributeMenuCanonicalEntrySize);
             return rect2i(base, base + params().attributeMenuCanonicalEntrySize - 4);
