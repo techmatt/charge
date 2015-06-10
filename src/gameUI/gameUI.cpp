@@ -16,6 +16,19 @@ void GameUI::init()
     hoverButtonIndex = -1;
 }
 
+bool ctrlPressed()
+{
+    const Uint8 *keys = SDL_GetKeyboardState(NULL);
+    return keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL];
+}
+
+bool shiftPressed()
+{
+    // NOTE: the spec for SDL_GetKeyboardState suggests shift is not recorded!
+    const Uint8 *keys = SDL_GetKeyboardState(NULL);
+    return keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_RSHIFT];
+}
+
 void GameUI::keyDown(SDL_Keycode key)
 {
     //
@@ -23,9 +36,9 @@ void GameUI::keyDown(SDL_Keycode key)
     //
     app.canvas.backgroundDirty = true;
 
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
-    if (!keys[SDL_SCANCODE_LCTRL] && !keys[SDL_SCANCODE_RCTRL])
+
+    if (!ctrlPressed())
     {
         const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
         if (hotkeyComponent != nullptr)
@@ -114,8 +127,8 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_z)
     {
         // undo and redo
-        if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
-            if (keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_LSHIFT])
+        if (ctrlPressed()){
+            if (shiftPressed())
                 app.undoBuffer.forward(app.state);
             else
                 app.undoBuffer.back(app.state);
@@ -124,7 +137,7 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_c)
     {
-        if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+        if (ctrlPressed()){
             // COPY if there is anything in the selection buffer
             if (selection.components.size() > 0)
                 selection.copyToComponentSet(&copyBuffer, &app.state);
@@ -133,7 +146,7 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_v)
     {
-        if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+        if (ctrlPressed()){
             // PASTE
             selectedMenuComponent = nullptr;
             activePlacementBuffer = copyBuffer;
@@ -283,6 +296,10 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
     const GameButton &button = *hitButton;
 
     int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
+
+    if (ctrlPressed() || shiftPressed())
+        delta *= 10;
+
     //Component *gameComponent = app.state.getComponent(selectedGameLocation);
     Component* gameComponent = selection.singleElement();
     if (gameComponent != nullptr && button.type == ButtonType::ComponentAttribute && app.controller.editorMode == EditorMode::LevelEditor)

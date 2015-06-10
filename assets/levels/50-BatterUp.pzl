@@ -1,4 +1,4 @@
-Puzzle~35~245
+Puzzle~35~250
 buildableComponents~58
 ComponentBuildState~57~57
 Amplifier=1
@@ -58,189 +58,194 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~8
-Component~7~7
+component0000~9
+Component~8~8
 boardPos=4 4
-chargesLostPerDischarge=1
+chargePreference=4
+chargesLostPerDischarge=6
 color=1
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
-component0001~8
-Component~7~7
+totalChargeRequired=30
+component0001~9
+Component~8~8
 boardPos=18 4
-chargesLostPerDischarge=1
+chargePreference=4
+chargesLostPerDischarge=12
 color=2
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=60
 component0002~4
 Component~3~3
 boardPos=0 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0003~4
 Component~3~3
 boardPos=2 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0004~4
 Component~3~3
 boardPos=20 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0005~4
 Component~3~3
 boardPos=22 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0006~4
 Component~3~3
 boardPos=20 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0007~4
 Component~3~3
 boardPos=11 17
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0008~4
 Component~3~3
 boardPos=22 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0009~4
 Component~3~3
 boardPos=20 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0010~4
 Component~3~3
 boardPos=22 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0011~4
 Component~3~3
 boardPos=22 20
 name=Blocker
-puzzleType=0
-component0012~8
-Component~7~7
+puzzleType=1
+component0012~9
+Component~8~8
 boardPos=18 18
-chargesLostPerDischarge=1
+chargePreference=4
+chargesLostPerDischarge=16
 color=3
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=90
 component0013~4
 Component~3~3
 boardPos=20 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0014~4
 Component~3~3
 boardPos=11 7
 name=Blocker
-puzzleType=0
-component0015~8
-Component~7~7
+puzzleType=1
+component0015~9
+Component~8~8
 boardPos=4 18
-chargesLostPerDischarge=1
+chargePreference=4
+chargesLostPerDischarge=24
 color=4
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=120
 component0016~4
 Component~3~3
 boardPos=15 11
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0017~4
 Component~3~3
 boardPos=2 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0018~4
 Component~3~3
 boardPos=17 11
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0019~4
 Component~3~3
 boardPos=11 5
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0020~4
 Component~3~3
 boardPos=11 15
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0021~4
 Component~3~3
 boardPos=0 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0022~4
 Component~3~3
 boardPos=0 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0023~4
 Component~3~3
 boardPos=2 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0024~4
 Component~3~3
 boardPos=0 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0025~4
 Component~3~3
 boardPos=2 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0026~4
 Component~3~3
 boardPos=7 11
 name=Blocker
-puzzleType=0
-component0027~8
-Component~7~7
+puzzleType=1
+component0027~9
+Component~8~8
 boardPos=11 11
-chargesLostPerDischarge=50
+chargePreference=4
+chargesLostPerDischarge=30
 color=5
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=150
 component0028~4
 Component~3~3
 boardPos=5 11
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0029~4
 Component~3~3
 boardPos=11 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0030~4
 Component~3~3
 boardPos=2 11
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0031~4
 Component~3~3
 boardPos=11 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0032~4
 Component~3~3
 boardPos=20 11
 name=Blocker
-puzzleType=0
+puzzleType=1
 componentCount=33

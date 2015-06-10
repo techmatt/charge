@@ -100,6 +100,7 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
     _quadProgram.setColor(color);
     _quad.render();
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
@@ -117,6 +118,7 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
     _quadProgram.setColor(color);
     _quad.render();
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void RendererOpenGL::renderFullScreen(const vec4f &color)
