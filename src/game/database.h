@@ -105,7 +105,7 @@ struct Database
 
     Texture& getTexture(Renderer &renderer, const string &textureName);
     Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);
-    //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireSpeedType speed);
+    //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireType speed);
 
     map<string, ComponentInfo*> components;
 

@@ -6,7 +6,7 @@ enum class ComponentPuzzleType
     CopiedCircuit,
 };
 
-enum class WireSpeedType
+enum class WireType
 {
     MajorDelay,
     MinorDelay,

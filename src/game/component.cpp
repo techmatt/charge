@@ -45,13 +45,13 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
     if (info->name == "FilteredAmplifier")
     {
         const int combinedCharge = (int)storedCharge + (int)charge.level;
-        return (storedCharge == ChargeType::None || (combinedCharge >= modifiers.color));
+        return (storedCharge == ChargeType::None || (combinedCharge >= (int)modifiers.color));
     }
 
-    if (heldCharge)
+    if (heldCharge != ChargeType::None)
         return false;
 
-    if (modifiers.boundary == CircuitBoundaryClosed)
+    if (modifiers.boundary == CircuitBoundaryType::Closed)
         return false;
 
     return true;
@@ -107,7 +107,7 @@ ParameterTable Component::toTable(const string &tableName) const
     result.set("chargePreference", (int)modifiers.chargePreference);
     result.set("speed", (int)modifiers.speed);
     result.set("boundary", (int)modifiers.boundary);
-    result.set("puzzleType", modifiers.puzzleType);
+    result.set("puzzleType", (int)modifiers.puzzleType);
 
     result.set("secondsBeforeFirstEmission", intrinsics.secondsBeforeFirstEmission);
     result.set("secondsPerEmission", intrinsics.secondsPerEmission);
@@ -121,7 +121,7 @@ Component* Component::fromTable(const ParameterTable &table)
     Component *result = new Component(table.getString("name"), (ChargeType)table.getInt("color"), GameLocation(table.getVec2i("boardPos"), table.getVec2i("circuitPos")));
 
     result->modifiers.chargePreference = table.getInt("chargePreference");
-    result->modifiers.speed = (WireSpeedType)table.getInt("speed");
+    result->modifiers.speed = (WireType)table.getInt("speed");
     result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
     result->modifiers.puzzleType = (ComponentPuzzleType)table.getInt("puzzleType");
 

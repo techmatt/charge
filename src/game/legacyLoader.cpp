@@ -139,23 +139,23 @@ struct LegacyComponent
 
 struct LegacyComponentInfo
 {
-    LegacyComponentInfo(const string _name, ChargeType _color = ChargeType::None, WireSpeedType _speed = WireStandard)
+    LegacyComponentInfo(const string _name, ChargeType _color = ChargeType::None, WireType _speed = WireType::Standard)
     {
         name = _name;
         color = _color;
         speed = _speed;
-        boundary = CircuitBoundaryInvalid;
+        boundary = CircuitBoundaryType::Invalid;
     }
     LegacyComponentInfo(CircuitBoundaryType _boundary)
     {
         name = "CircuitBoundary";
         color = ChargeType::None;
-        speed = WireStandard;
+        speed = WireType::Standard;
         boundary = _boundary;
     }
     string name;
     ChargeType color;
-    WireSpeedType speed;
+    WireType speed;
     CircuitBoundaryType boundary;
 };
 
@@ -203,18 +203,18 @@ LegacyComponentInfo getLegacyInfo(LegacyComponentType type)
     case ComponentGreenChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Green);
     case ComponentBlueChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Blue);
 
-    case ComponentWireMajorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireMajorDelay);
-    case ComponentWireMinorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireMinorDelay);
-    case ComponentWire: return LegacyComponentInfo("Wire", ChargeType::None, WireStandard);
-    case ComponentWireMinorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireMinorAccelerator);
-    case ComponentWireMajorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireMajorAccelerator);
+    case ComponentWireMajorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireType::MajorDelay);
+    case ComponentWireMinorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireType::MinorDelay);
+    case ComponentWire: return LegacyComponentInfo("Wire", ChargeType::None, WireType::Standard);
+    case ComponentWireMinorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireType::MinorAccelerator);
+    case ComponentWireMajorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireType::MajorAccelerator);
 
     case ComponentBlocker: return LegacyComponentInfo("Blocker");
 
     //NOTE: I am not sure where exactly ComponentCircuitBoundaryOpen occurs; Open components seem to actually be represented as Base.
-    case ComponentCircuitBoundaryOpen: return LegacyComponentInfo(CircuitBoundaryOpen);
-    case ComponentCircuitBoundaryBase: return LegacyComponentInfo(CircuitBoundaryOpen);
-    case ComponentCircuitBoundaryBlocked: return LegacyComponentInfo(CircuitBoundaryClosed);
+    case ComponentCircuitBoundaryOpen: return LegacyComponentInfo(CircuitBoundaryType::Open);
+    case ComponentCircuitBoundaryBase: return LegacyComponentInfo(CircuitBoundaryType::Open);
+    case ComponentCircuitBoundaryBlocked: return LegacyComponentInfo(CircuitBoundaryType::Closed);
 
     case ComponentHold: return LegacyComponentInfo("Hold");
 
@@ -302,7 +302,7 @@ void LegacyLoader::load(const string &filename, GameState &result)
 
         c.chargePreference = convert::toInt(words[6]);
 
-        c.puzzleType = ComponentPuzzlePiece;
+        c.puzzleType = ComponentPuzzleType::PuzzlePiece;
 
         if (words.size() >= 16)
             c.puzzleType = (ComponentPuzzleType)convert::toInt(words[15]);

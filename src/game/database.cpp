@@ -20,16 +20,16 @@ void Database::init()
         puzzles.push_back(PuzzleInfo(line));
     }
 
-    fonts[FontLevelName] = FontInfo("arial", 36.0f, RGBColor(0, 0, 0));
-    fonts[FontTooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83));
-    fonts[FontTooltipDescription] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250));
-    fonts[FontTooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50));
-    fonts[FontComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::LevelName] = FontInfo("arial", 36.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83));
+    fonts[(int)FontType::TooltipDescription] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250));
+    fonts[(int)FontType::TooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50));
+    fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
 }
 
 void Database::initTextures(Renderer &renderer)
 {
-    for (int chargeLevel = ChargeType::Red; chargeLevel <= ChargeType::Blue; chargeLevel++)
+    for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue; chargeLevel++)
     {
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
     }
@@ -55,18 +55,18 @@ Texture& Database::getTexture(Renderer &renderer, const string &textureName)
 
 Texture& Database::getTexture(Renderer &renderer, const string &componentName, const ComponentModifiers &modifiers, bool getStoredChargeLayer)
 {
-    if (modifiers.speed != WireStandard)
+    if (modifiers.speed != WireType::Standard)
     {
         return getTexture(renderer, GameUtil::speedToTextureName(modifiers.speed), ComponentModifiers());
     }
 
     string baseTextureName = componentName + GameUtil::suffixFromCharge(modifiers.color);
 
-    if (modifiers.boundary == CircuitBoundaryInvalid && componentName == "CircuitBoundary") // this is when the boundary is rendered as part of a UI button
+    if (modifiers.boundary == CircuitBoundaryType::Invalid && componentName == "CircuitBoundary") // this is when the boundary is rendered as part of a UI button
         baseTextureName += "Open";
-    if (modifiers.boundary == CircuitBoundaryOpen)
+    if (modifiers.boundary == CircuitBoundaryType::Open)
         baseTextureName += "Open";
-    if (modifiers.boundary == CircuitBoundaryClosed)
+    if (modifiers.boundary == CircuitBoundaryType::Closed)
         baseTextureName += "Closed";
 
     const string fullTextureName = baseTextureName + (getStoredChargeLayer ? "StoredCharge" : "");

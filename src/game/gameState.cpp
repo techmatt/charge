@@ -116,7 +116,7 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
             addNewComponent(c, false, false);
 
     for (auto &c : components)
-        c->modifiers.puzzleType = ComponentPuzzlePiece;
+        c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
 
     //
     // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.

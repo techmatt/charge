@@ -148,36 +148,36 @@ public:
         return "Invalid";
     }
 
-    static string suffixFromSpeed(WireSpeedType speed)
+    static string suffixFromSpeed(WireType speed)
     {
         switch (speed)
         {
-        case WireMajorDelay:
+        case WireType::MajorDelay:
             return "MajorDelay";
-        case WireMinorDelay:
+        case WireType::MinorDelay:
             return "MinorDelay";
-        case WireStandard:
+        case WireType::Standard:
             return "";
-        case WireMinorAccelerator:
+        case WireType::MinorAccelerator:
             return "MinorAccelerator";
-        case WireMajorAccelerator:
+        case WireType::MajorAccelerator:
             return "MajorAccelerator";
         }
         return "Invalid";
     }
 
-    static string speedToTextureName(WireSpeedType speed)
+    static string speedToTextureName(WireType speed)
     {
         switch (speed)
         {
-        case WireMajorDelay:
-            return "WireMajorDelay";
-        case WireMinorDelay:
-            return "WireMinorDelay";
-        case WireMinorAccelerator:
-            return "WireMinorAccelerator";
-        case WireMajorAccelerator:
-            return "WireMajorAccelerator";
+        case WireType::MajorDelay:
+            return "WireType::MajorDelay";
+        case WireType::MinorDelay:
+            return "WireType::MinorDelay";
+        case WireType::MinorAccelerator:
+            return "WireType::MinorAccelerator";
+        case WireType::MajorAccelerator:
+            return "WireType::MajorAccelerator";
         default:
             return "invalid";
         }

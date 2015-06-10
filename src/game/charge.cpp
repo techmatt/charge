@@ -237,19 +237,19 @@ void Charge::setNewDestination(GameState &state, Component &newDestination, bool
 		return;
 	}
 
-    if (newDestination.modifiers.speed == WireMinorDelay)
+    if (newDestination.modifiers.speed == WireType::MinorDelay)
     {
         totalTransitTime *= 2;
     }
-    if (newDestination.modifiers.speed == WireMajorDelay)
+    if (newDestination.modifiers.speed == WireType::MajorDelay)
     {
         totalTransitTime *= 4;
     }
-    if (newDestination.modifiers.speed == WireMinorAccelerator)
+    if (newDestination.modifiers.speed == WireType::MinorAccelerator)
     {
         totalTransitTime = totalTransitTime * 2 / 3;
     }
-    if (newDestination.modifiers.speed == WireMajorAccelerator)
+    if (newDestination.modifiers.speed == WireType::MajorAccelerator)
     {
         totalTransitTime /= 2;
     }

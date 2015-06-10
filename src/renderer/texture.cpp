@@ -37,10 +37,10 @@ void Texture::load(Renderer &renderer, const string &filename)
 {
     _bmp = LodePNG::load(filename);
 
-    if (renderer.type() == RendererTypeSDL)
+    if (renderer.type() == RendererType::SDL)
         initSDL(renderer);
 
-    if (renderer.type() == RendererTypeOpenGL)
+    if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
 }
 
@@ -48,10 +48,10 @@ void Texture::load(Renderer &renderer, const Bitmap &bmp)
 {
 	_bmp = bmp;
 
-    if (renderer.type() == RendererTypeSDL)
+    if (renderer.type() == RendererType::SDL)
         initSDL(renderer);
 
-    if (renderer.type() == RendererTypeOpenGL)
+    if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
 }
 

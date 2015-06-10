@@ -3,11 +3,11 @@
 
 void GameController::init()
 {
-    puzzleMode = ModeDesign;
-    speed = Speed1x;
+    puzzleMode = PuzzleMode::Design;
+    speed = GameSpeed::x1;
     designActionTaken = false;
     puzzleVerificationMode = false;
-    editorMode = ModeEditLevel;
+    editorMode = EditorMode::LevelEditor;
     currentPuzzleIndex = 20;
     fractionalSpeedTicksLeft = 0;
 
@@ -16,14 +16,14 @@ void GameController::init()
 
 void GameController::step()
 {
-    if (designActionTaken && puzzleMode != ModeDesign)
+    if (designActionTaken && puzzleMode != PuzzleMode::Design)
     {
-        puzzleMode = ModeDesign;
+        puzzleMode = PuzzleMode::Design;
         app.state.resetPuzzle();
         puzzleVerificationMode = false;
     }
 
-    if (puzzleMode == ModeExecuting || puzzleVerificationMode)
+    if (puzzleMode == PuzzleMode::Executing || puzzleVerificationMode)
     {
         bool startVictory = app.state.victory;
 
@@ -34,7 +34,7 @@ void GameController::step()
         else
         {
             int tickCount = ticksFromSpeed(speed);
-            if (speed == SpeedQuarter)
+            if (speed == GameSpeed::Quarter)
                 fractionalSpeedTicksLeft = 3;
 
             if (puzzleVerificationMode)
@@ -48,7 +48,7 @@ void GameController::step()
 
         if (!startVictory && app.state.victory)
         {
-            speed = Speed1x;
+            speed = GameSpeed::x1;
             const string defaultSolution = params().assetDir + "providedSolutions/" + database().puzzles[app.controller.currentPuzzleIndex].filename + "_A.pzl";
             app.state.savePuzzle(defaultSolution);
 
@@ -130,8 +130,8 @@ void GameController::updateButtonList()
             {
                 realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
             }
-            if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
-                buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::ButtonComponent, ComponentModifiers(info)));
+            if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
+                buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::Component, ComponentModifiers(info)));
         }
     }
 
@@ -148,7 +148,7 @@ void GameController::updateButtonList()
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ButtonChargePreference, ComponentModifiers(selectedGameComponent->modifiers.color, chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ChargePreference, ComponentModifiers(selectedGameComponent->modifiers.color, chargePreference)));
             }
         }
 
@@ -156,15 +156,15 @@ void GameController::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                ComponentModifiers modifier(ChargeType::None, 2, (WireSpeedType)speed);
-                if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(info.name, modifier))
-                    buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, modifier));
+                ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
+                if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
+                    buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::WireSpeed, modifier));
             }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireStandard, CircuitBoundaryOpen)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireStandard, CircuitBoundaryClosed)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
         }
         else
         {
@@ -180,8 +180,8 @@ void GameController::updateButtonList()
             int chargeIndex = 0;
             for (ChargeType charge : chargeLevels)
             {
-                if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
-                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ButtonChargeColor, ComponentModifiers(charge)));
+                if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
+                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ChargeColor, ComponentModifiers(charge)));
                 chargeIndex++;
             }
 
@@ -190,13 +190,13 @@ void GameController::updateButtonList()
             //
             if (info.name == "TrapSprung" || info.name == "TrapOpen")
             {
-                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::ButtonTrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
-                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::ButtonTrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::TrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::TrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
             }
             if (info.name == "GateOpen" || info.name == "GateClosed")
             {
-                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::ButtonGateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
-                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::ButtonGateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::GateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::GateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
             }
         }
     }
@@ -204,28 +204,28 @@ void GameController::updateButtonList()
     //
     // Add puzzle control buttons
     //
-    if (app.controller.puzzleMode == ModeDesign)
-        buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    if (app.controller.puzzleMode == ModeExecuting)
-        buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    if (app.controller.puzzleMode == PuzzleMode::Design)
+        buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    if (app.controller.puzzleMode == PuzzleMode::Executing)
+        buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
 
-    for (int speed = (int)Speed0x; speed <= (int)Speed5x; speed++)
-        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::PuzzleControl, ComponentModifiers()));
 
-    buttons.push_back(GameButton("Music", vec2i(6, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("SoundEffect", vec2i(7, 1), ButtonType::ButtonPuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Music", vec2i(6, 1), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("SoundEffect", vec2i(7, 1), ButtonType::PuzzleControl, ComponentModifiers()));
 
     //
     // Add power source indicators
     //
     if (selectedGameComponent != nullptr && selectedGameComponent->info->name == "PowerSource")
     {
-        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
-        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
-        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
+        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
+        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
+        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
     }
 }

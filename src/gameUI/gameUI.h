@@ -38,7 +38,7 @@ private:
         backgroundObjects.push_back(UIRenderObject(tex, rect, depth, rotation));
     }
 
-    void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, UIRenderType type = UIRenderStandard, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *dynamicComponent = nullptr)
+    void addBackgroundObject(Texture &tex, const rect2f &rect, float depth, UIRenderType type = UIRenderType::Standard, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *dynamicComponent = nullptr)
     {
         backgroundObjects.push_back(UIRenderObject(tex, rect, depth, type, color, dynamicComponent));
     }

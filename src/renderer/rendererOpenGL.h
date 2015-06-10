@@ -9,7 +9,7 @@ public:
 
     RendererType type() override
     {
-        return RendererTypeOpenGL;
+        return RendererType::OpenGL;
     }
 
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;

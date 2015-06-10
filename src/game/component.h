@@ -1,7 +1,7 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeType::None, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
+    ComponentModifiers(ChargeType _color = ChargeType::None, int _chargePreference = 2, WireType _speed = WireType::Standard, CircuitBoundaryType _boundary = CircuitBoundaryType::Invalid)
     {
         init();
         color = _color;
@@ -19,10 +19,10 @@ struct ComponentModifiers
     {
         color = ChargeType::None;
         storedChargeColor = GameUtil::chargeColor(ChargeType::Gray);
-        boundary = CircuitBoundaryInvalid;
+        boundary = CircuitBoundaryType::Invalid;
         chargePreference = 2;
-        speed = WireStandard;
-        puzzleType = ComponentUser;
+        speed = WireType::Standard;
+        puzzleType = ComponentPuzzleType::User;
     }
 
     ChargeType color;
@@ -33,7 +33,7 @@ struct ComponentModifiers
     //
     // At present, this is only planned for plain wires, but could in theory be supported for any type.
     //
-    WireSpeedType speed;
+    WireType speed;
 
     ComponentPuzzleType puzzleType;
 };
@@ -91,7 +91,7 @@ struct Component
 		
         if (name == "CircuitBoundary")
         {
-            modifiers.boundary = CircuitBoundaryOpen;
+            modifiers.boundary = CircuitBoundaryType::Open;
         }
 
         resetPuzzle();

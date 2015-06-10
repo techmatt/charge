@@ -50,8 +50,8 @@ void GameUI::render(Texture &tex, const rect2f &destinationRect, float depth, fl
 
 void GameUI::render(const UIRenderObject &o)
 {
-    const vec4f color = (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge) ? o.dynamicComponent->modifiers.storedChargeColor : o.color;
-    Texture &t = (o.dynamicComponent != nullptr && o.type == UIRenderStandard) ? database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers) : *o.tex;
+    const vec4f color = (o.dynamicComponent != nullptr && o.type == UIRenderType::StoredCharge) ? o.dynamicComponent->modifiers.storedChargeColor : o.color;
+    Texture &t = (o.dynamicComponent != nullptr && o.type == UIRenderType::Standard) ? database().getTexture(app.renderer, o.dynamicComponent->info->name, o.dynamicComponent->modifiers) : *o.tex;
 
     if (o.rotation == 0.0f)
         render(t, o.rect, o.depth, color);
@@ -106,7 +106,7 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_RETURN)
     {
         app.controller.designActionTaken = false;
-        app.controller.puzzleMode = ModeExecuting;
+        app.controller.puzzleMode = PuzzleMode::Executing;
         app.state.resetPuzzle();
     }
 
@@ -329,7 +329,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
     int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
     //Component *gameComponent = app.state.getComponent(selectedGameLocation);
 	Component* gameComponent = selection.singleElement();
-    if (gameComponent != nullptr && button.type == ButtonComponentAttribute && app.controller.editorMode == ModeEditLevel)
+    if (gameComponent != nullptr && button.type == ButtonType::ComponentAttribute && app.controller.editorMode == EditorMode::LevelEditor)
     {
         if (button.name == "TotalCharge")
         {
@@ -348,9 +348,9 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
     }
     
-    if (mouseButton == SDL_BUTTON_RIGHT && app.controller.editorMode == ModeEditLevel)
+    if (mouseButton == SDL_BUTTON_RIGHT && app.controller.editorMode == EditorMode::LevelEditor)
     {
-        if (button.type == ButtonComponent)
+        if (button.type == ButtonType::Component)
         {
             const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
             const auto &info = database().getComponent(button.name);
@@ -362,19 +362,19 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             }
             else if (button.name == "Wire")
             {
-                for (int speed = (int)WireMajorDelay; speed <= (int)WireMajorAccelerator; speed++)
-                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers(ChargeType::None, 2, (WireSpeedType)speed), !buildable);
+                for (int speed = (int)WireType::MajorDelay; speed <= (int)WireType::MajorAccelerator; speed++)
+                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers(ChargeType::None, 2, (WireType)speed), !buildable);
             }
             else
             {
                 app.state.buildableComponents.setBuild(button.name, button.modifiers, !buildable);
             }
         }
-        if (button.type == ButtonChargeColor)
+        if (button.type == ButtonType::ChargeColor)
         {
             app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
         }
-        if (button.type == ButtonWireSpeed)
+        if (button.type == ButtonType::WireSpeed)
         {
             app.state.buildableComponents.setBuild(button.name, button.modifiers, !app.state.buildableComponents.canBuild(button.name, button.modifiers));
         }
@@ -382,7 +382,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     if (mouseButton == SDL_BUTTON_LEFT)
     {
-        if (button.type == ButtonComponent)
+        if (button.type == ButtonType::Component)
         {
             selectedMenuComponent = button.component;
             selectedMenuComponentColor = button.modifiers.color;
@@ -392,27 +392,27 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         if (gameComponent != nullptr && app.controller.canEdit(*gameComponent))
         {
-            if (button.type == ButtonChargeColor)
+            if (button.type == ButtonType::ChargeColor)
             {
                 gameComponent->modifiers.color = button.modifiers.color;
                 app.controller.recordDesignAction();
             }
-            if (button.type == ButtonChargePreference)
+            if (button.type == ButtonType::ChargePreference)
             {
                 gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
                 app.controller.recordDesignAction();
             }
-            if (button.type == ButtonWireSpeed)
+            if (button.type == ButtonType::WireSpeed)
             {
                 gameComponent->modifiers.speed = button.modifiers.speed;
                 app.controller.recordDesignAction();
             }
-            if (button.type == ButtonCircuitBoundary)
+            if (button.type == ButtonType::CircuitBoundary)
             {
                 gameComponent->modifiers.boundary = button.modifiers.boundary;
                 app.controller.recordDesignAction();
             }
-            if (button.type == ButtonGateState || button.type == ButtonTrapState)
+            if (button.type == ButtonType::GateState || button.type == ButtonType::TrapState)
             {
                 gameComponent->baseInfo = gameComponent->info = &database().getComponent(button.name);
                 app.controller.recordDesignAction();
@@ -421,29 +421,29 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         if (button.name == "Start")
         {
             app.controller.designActionTaken = false;
-            app.controller.puzzleMode = ModeExecuting;
+            app.controller.puzzleMode = PuzzleMode::Executing;
             app.state.resetPuzzle();
-            if (app.controller.speed == Speed0x)
-                app.controller.speed = Speed1x;
+            if (app.controller.speed == GameSpeed::x0)
+                app.controller.speed = GameSpeed::x1;
         }
         if (button.name == "Stop")
         {
-            app.controller.puzzleMode = ModeDesign;
+            app.controller.puzzleMode = PuzzleMode::Design;
             app.state.resetPuzzle();
         }
         if (button.name == "Pause")
         {
-            app.controller.speed = Speed0x;
+            app.controller.speed = GameSpeed::x0;
         }
         if (button.name == "ModePuzzle")
         {
             app.controller.puzzleVerificationMode = false;
-            app.controller.editorMode = ModePlayLevel;
+            app.controller.editorMode = EditorMode::Campaign;
         }
         if (button.name == "ModeLevelEditor")
         {
             app.controller.puzzleVerificationMode = false;
-            app.controller.editorMode = ModeEditLevel;
+            app.controller.editorMode = EditorMode::LevelEditor;
 
             if (GetAsyncKeyState(VK_SHIFT))
             {
@@ -482,7 +482,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 			}
         }
 
-        for (int speed = (int)Speed0x; speed <= (int)Speed5x; speed++)
+        for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
             if (button.name == buttonNameFromSpeed((GameSpeed)speed))
             {
                 app.controller.speed = (GameSpeed)speed;
@@ -614,7 +614,7 @@ void GameUI::render()
         renderButtonForeground(button, false);
     }
 
-    if (app.controller.speed <= Speed3x)
+    if (app.controller.speed <= GameSpeed::x3)
         renderTrails();
 
     for (const auto &charge : app.state.charges)
@@ -629,7 +629,7 @@ void GameUI::render()
 
     renderHoverComponent();
 
-    renderText(getFontTexture(app.state.name, FontLevelName), vec2f(1.0f, 1.0f), 20.0f);
+    renderText(getFontTexture(app.state.name, FontType::LevelName), vec2f(1.0f, 1.0f), 20.0f);
 
     renderTooltip();
 }
@@ -661,7 +661,7 @@ void GameUI::renderTrails()
 
     for (const UIRenderObject &o : backgroundObjects)
     {
-        if (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge &&
+        if (o.dynamicComponent != nullptr && o.type == UIRenderType::StoredCharge &&
             //(o.dynamicComponent->storedCharge != ChargeType::None || o.dynamicComponent->heldCharge != ChargeType::None) &&
             (o.dynamicComponent->info->name == "ChargeGoal" && o.dynamicComponent->heldCharge == o.dynamicComponent->modifiers.color))
         {
@@ -823,8 +823,6 @@ void GameUI::renderHoverComponent()
 		// render the green field
 		if (!componentLocation.inCircuit())
 		{
-
-
 			const vec2i coordBase = componentLocation.boardPos;
 			const Board &board = location.inCircuit() ? *activeCircuit()->circuitBoard : app.state.board;
 
@@ -881,21 +879,21 @@ void GameUI::updateBackgroundObjects()
     for (auto &button : app.controller.buttons)
     {
         bool selected = false;
-        selected |= (button.type == ButtonComponent && selectedMenuComponent == button.component && selectedMenuComponentColor == button.modifiers.color);
+        selected |= (button.type == ButtonType::Component && selectedMenuComponent == button.component && selectedMenuComponentColor == button.modifiers.color);
         if (gameComponent != nullptr)
         {
-            selected |= (button.type == ButtonChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-            selected |= (button.type == ButtonChargeColor && gameComponent->modifiers.color == button.modifiers.color);
-            selected |= (button.type == ButtonWireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
-            selected |= (button.type == ButtonCircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
-            selected |= (button.type == ButtonTrapState && gameComponent->info->name == button.name);
-            selected |= (button.type == ButtonGateState && gameComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::ChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonType::ChargeColor && gameComponent->modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonType::WireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonType::CircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonType::TrapState && gameComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::GateState && gameComponent->info->name == button.name);
         }
-        if (button.type == ButtonPuzzleControl)
+        if (button.type == ButtonType::PuzzleControl)
         {
             selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
-            selected |= (button.name == "ModePuzzle" && app.controller.editorMode == ModePlayLevel);
-            selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == ModeEditLevel);
+            selected |= (button.name == "ModePuzzle" && app.controller.editorMode == EditorMode::Campaign);
+            selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == EditorMode::LevelEditor);
             selected |= (button.name == "Music" && app.audio.playMusic);
             selected |= (button.name == "SoundEffect" && app.audio.playSoundEffects);
         }
@@ -1037,16 +1035,16 @@ void GameUI::renderBuildingGrid()
 
 void GameUI::renderButtonForeground(const GameButton &button, bool selected)
 {
-    if (button.type == ButtonComponentAttribute)
+    if (button.type == ButtonType::ComponentAttribute)
     {
-        renderText(getFontTexture(button.text, FontLevelName), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+        renderText(getFontTexture(button.text, FontType::LevelName), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
     }
 }
 
 void GameUI::renderTooltip()
 {
     const GameButton *hitButton = app.controller.getHitButton(mouseHoverCoord);
-    if (hitButton != nullptr && hitButton->type == ButtonComponent)
+    if (hitButton != nullptr && hitButton->type == ButtonType::Component)
     {
         float startY = hitButton->canonicalRect.max().y + 5.0f;
         renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *hitButton->component, ComponentIntrinsics());
@@ -1057,7 +1055,7 @@ void GameUI::renderTooltip()
     Component *hoverComponent = app.state.getComponent(hoverLocation(false));
     Component *clickComponent = app.state.getComponent(clickLocation);
     if (circuit == nullptr && clickComponent != nullptr && hoverComponent == clickComponent &&
-        clickComponent->modifiers.puzzleType == ComponentPuzzlePiece &&
+        clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
         renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, ComponentIntrinsics());
@@ -1070,13 +1068,13 @@ void GameUI::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &inf
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
 
-    renderText(getFontTexture(info.semanticName, FontTooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(info.description, FontTooltipDescription, 900), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
+    renderText(getFontTexture(info.semanticName, FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
+    renderText(getFontTexture(info.description, FontType::TooltipDescription, 900), canonicalStart + vec2f(15.0f, 30.0f), 14.0f);
 }
 
 void GameUI::renderButtonBackground(const GameButton &button, bool selected)
 {
-    if (button.type != ButtonComponentAttribute)
+    if (button.type != ButtonType::ComponentAttribute)
     {
         Texture &borderTex = database().getTexture(app.renderer, "Border");
 
@@ -1085,9 +1083,9 @@ void GameUI::renderButtonBackground(const GameButton &button, bool selected)
 
         renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
 
-        if (app.controller.editorMode == ModeEditLevel &&
+        if (app.controller.editorMode == EditorMode::LevelEditor &&
             app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
-            (button.type == ButtonComponent || button.type == ButtonChargeColor || button.type == ButtonWireSpeed))
+            (button.type == ButtonType::Component || button.type == ButtonType::ChargeColor || button.type == ButtonType::WireSpeed))
         {
             Texture &constructionTex = database().getTexture(app.renderer, "Construction");
             const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
@@ -1115,17 +1113,17 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
             render(tex, rect, depth, color);
     };
 
-    record(preferenceTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
+    record(preferenceTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
-    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryClosed)
-        record(baseTex, screenRect, 1.0f, UIRenderStandard, Colors::White(), nullptr);
+    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryType::Closed)
+        record(baseTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
-    record(componentTex, screenRect, depthLayers::component, UIRenderStandard, Colors::White(), dynamicComponent);
+    record(componentTex, screenRect, depthLayers::component, UIRenderType::Standard, Colors::White(), dynamicComponent);
 
     if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
     {
         Texture &chargeLayerTex = database().getTexture(app.renderer, name, icon.modifiers, true);
-        record(chargeLayerTex, screenRect, depthLayers::component, UIRenderStoredCharge, GameUtil::chargeColor(ChargeType::Gray), dynamicComponent);
+        record(chargeLayerTex, screenRect, depthLayers::component, UIRenderType::StoredCharge, GameUtil::chargeColor(ChargeType::Gray), dynamicComponent);
     }
 
     if (icon.selected)
@@ -1133,7 +1131,7 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
         bool usePuzzleSelector = (dynamicComponent != nullptr && !app.controller.canEdit(*dynamicComponent));
 
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
-        record(selectionTex, screenRect, depthLayers::selection, UIRenderStandard, Colors::White(), nullptr);
+        record(selectionTex, screenRect, depthLayers::selection, UIRenderType::Standard, Colors::White(), nullptr);
     }
 }
 
@@ -1172,7 +1170,7 @@ void GameUI::renderComponent(const Component &component)
 
 void GameUI::renderCircuitComponent(const Component &component)
 {
-    if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryClosed)
+    if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryType::Closed)
         return;
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
@@ -1201,7 +1199,7 @@ void GameUI::renderSpokes(const Component &component)
         {
             for (const Connection &connection : board.connections)
             {
-                if (connection.component != nullptr && connection.component->location.boardPos == circuit.location.boardPos && connection.component->modifiers.boundary == CircuitBoundaryOpen)
+                if (connection.component != nullptr && connection.component->location.boardPos == circuit.location.boardPos && connection.component->modifiers.boundary == CircuitBoundaryType::Open)
                     return true;
             }
             return false;
@@ -1257,7 +1255,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
 {
     if (activeCircuit() == nullptr ||
         activeCircuit()->location.boardPos != component.location.boardPos ||
-        component.modifiers.boundary == CircuitBoundaryClosed)
+        component.modifiers.boundary == CircuitBoundaryType::Closed)
         return;
 
     const vec2f myScreenPos = GameUtil::circuitToWindow(canonicalDims, component.location.circuitPos + vec2i(1, 1));
@@ -1279,7 +1277,7 @@ void GameUI::renderSpokesCircuit(const Component &component)
                 const Component &otherComponent = *cells(otherLocation).c;
                 bool renderSpokes = true;
                 renderSpokes &= otherComponent.location.circuitPos == otherLocation;
-                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryClosed;
+                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
                 renderSpokes &= otherComponent.hasSpokes();
                 renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
                 if (renderSpokes)
@@ -1328,7 +1326,7 @@ void GameUI::renderCharge(const Charge &charge, bool trailRender)
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+    render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
@@ -1342,7 +1340,7 @@ void GameUI::renderExplodingCharge(const ExplodingCharge &charge)
 
     const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
 
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
+    render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
 void GameUI::renderChargeCircuit(const Charge &charge, bool trailRender)
@@ -1362,7 +1360,7 @@ void GameUI::renderChargeCircuit(const Charge &charge, bool trailRender)
         screen.second *= app.state.victoryChargeScaleFactor;
 
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle);
+    render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle);
 }
 
 void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
@@ -1377,7 +1375,7 @@ void GameUI::renderExplodingChargeCircuit(const ExplodingCharge &charge)
 
     const vec4f color(1.0f, 1.0f, 1.0f, 1.0f - charge.percentDone() * charge.percentDone());
 
-    render(*database().chargeTextures[charge.level], destinationRect, depthLayers::charge, angle, color);
+    render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle, color);
 }
 
 Component* GameUI::activeCircuit() const

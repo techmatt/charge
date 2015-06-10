@@ -27,10 +27,10 @@ struct ComponentBuildState
         components.insert("FilteredAmplifierGreen");
         components.insert("FilteredAmplifierBlue");
 
-        components.insert("WireMajorDelay");
-        components.insert("WireMinorDelay");
-        components.insert("WireMinorAccelerator");
-        components.insert("WireMajorAccelerator");
+        components.insert("WireType::MajorDelay");
+        components.insert("WireType::MinorDelay");
+        components.insert("WireType::MinorAccelerator");
+        components.insert("WireType::MajorAccelerator");
 
         recordColoredComponent("TeleportSource", false);
         recordColoredComponent("TeleportDestination", false);

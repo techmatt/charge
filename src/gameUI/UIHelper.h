@@ -16,8 +16,8 @@ namespace depthLayers
 
 enum class UIRenderType
 {
-    UIRenderStandard,
-    UIRenderStoredCharge,
+    Standard,
+    StoredCharge,
 };
 
 struct UIRenderObject
@@ -32,7 +32,7 @@ struct UIRenderObject
         dynamicComponent = nullptr;
     }
 
-    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, UIRenderType _type = UIRenderStandard, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr)
+    UIRenderObject(Texture &_tex, const rect2f &_rect, float _depth, UIRenderType _type = UIRenderType::Standard, const vec4f &_color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), const Component *_dynamicComponent = nullptr)
     {
         tex = &_tex;
         rect = _rect;
