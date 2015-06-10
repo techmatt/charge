@@ -66,7 +66,7 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
     app.state.loadPuzzle(filename, puzzleName);
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
-    app.ui.backgroundDirty = true;
+    app.canvas.backgroundDirty = true;
     app.ui.selection.empty();
 }
 
@@ -75,7 +75,7 @@ void GameController::loadLegacyPuzzle(const string &filename)
     LegacyLoader::load(filename, app.state);
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
-    app.ui.backgroundDirty = true;
+    app.canvas.backgroundDirty = true;
     app.ui.selection.empty();
 }
 
@@ -108,7 +108,7 @@ void GameController::loadCurrentProvidedSolution()
 void GameController::recordDesignAction()
 {
     app.state.updateAll();
-    app.ui.backgroundDirty = true;
+    app.canvas.backgroundDirty = true;
     designActionTaken = true;
     puzzleVerificationMode = false;
 }

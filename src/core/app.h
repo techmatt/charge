@@ -16,13 +16,23 @@ struct AppData
         }
     }
 
+    Component* activeCircuit()
+    {
+        Component *c = ui.selection.singleElementOrCircuit(state);
+
+        if (c != nullptr && c->info->name == "Circuit")
+        {
+            return c;
+        }
+        return nullptr;
+    }
+
     GameController controller;
     GameUI ui;
     GameCanvas canvas;
     GameState state;
     PuzzleManager puzzles;
     RendererOpenGL renderer;
-    //RendererSDL renderer;
     AudioDevice audio;
 	
 	UndoBuffer undoBuffer;

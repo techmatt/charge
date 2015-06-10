@@ -76,10 +76,10 @@ struct ComponentSelection
 	}
 
 	// also returns the circuit that's selected
-	Component* singleElementOrCircuit(GameState *state)
+	Component* singleElementOrCircuit(GameState &state) const
 	{
 		if (selectionIsInCircuit)
-			return state->getComponent(GameLocation(circuitLocation));
+			return state.getComponent(GameLocation(circuitLocation));
 		
 		if (components.size() == 1) return components[0];
 		return nullptr;

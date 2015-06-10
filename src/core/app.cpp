@@ -34,6 +34,7 @@ int App::run()
 	data.undoBuffer.reset(data.state);
 
     data.ui.init();
+    data.canvas.init();
 
     data.controller.init();
 
@@ -78,7 +79,7 @@ int App::run()
         //
         data.renderer.clear();
 
-        data.ui.render();
+        data.canvas.render();
 
         data.renderer.present();
     }

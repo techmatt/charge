@@ -4,9 +4,12 @@ class GameCanvas
 public:
     GameCanvas(AppData &_app) : app(_app) {}
     void init();
-	void render();
-    
+    void render();
+
     bool backgroundDirty;
+
+    vec2f canonicalDims;
+    CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
 private:
 
@@ -34,12 +37,12 @@ private:
         backgroundObjects.push_back(UIRenderObject(tex, rect, depth, type, color, dynamicComponent));
     }
 
-	void updateBackgroundObjects();
-	void renderBuildingGrid();
-	
+    void updateBackgroundObjects();
+    void renderBuildingGrid();
+
     void renderComponents();
     void renderComponent(const Component &component);
-	void renderCircuitComponent(const Component &component);
+    void renderCircuitComponent(const Component &component);
 
     void renderSpokes(const Component &component);
     void renderSpokesCircuit(const Component &component);
@@ -55,14 +58,11 @@ private:
     void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon);
 
     void renderHoverComponent();
-    
+
     void renderTooltip();
     void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentIntrinsics &intrinsics);
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
-
-    vec2f canonicalDims;
-	CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
 
     vector<UIRenderObject> backgroundObjects;
 
