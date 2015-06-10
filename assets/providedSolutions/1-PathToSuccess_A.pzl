@@ -1,88 +1,50 @@
-Puzzle~10~87
+Puzzle~10~49
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
-component0000~12
-Component~11~11
+component0000~8
+Component~7~7
 boardPos=4 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0001~9
-Component~8~8
+component0001~5
+Component~4~4
 boardPos=18 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0002~9
-Component~8~8
+component0002~4
+Component~3~3
 boardPos=6 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0003~9
-Component~8~8
+component0003~4
+Component~3~3
 boardPos=8 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0004~9
-Component~8~8
+component0004~4
+Component~3~3
 boardPos=10 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0005~9
-Component~8~8
+component0005~4
+Component~3~3
 boardPos=12 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0006~9
-Component~8~8
+component0006~4
+Component~3~3
 boardPos=14 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0007~9
-Component~8~8
+component0007~4
+Component~3~3
 boardPos=16 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
 componentCount=8

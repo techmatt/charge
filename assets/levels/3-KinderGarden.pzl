@@ -1,135 +1,80 @@
-Puzzle~12~134
+Puzzle~12~79
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
-component0000~12
-Component~11~11
+component0000~8
+Component~7~7
 boardPos=7 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0001~12
-Component~11~11
+component0001~8
+Component~7~7
 boardPos=7 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0002~12
-Component~11~11
+component0002~8
+Component~7~7
 boardPos=7 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0003~12
-Component~11~11
+component0003~8
+Component~7~7
 boardPos=7 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0004~12
-Component~11~11
+component0004~8
+Component~7~7
 boardPos=7 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1000
-component0005~12
-Component~11~11
+component0005~5
+Component~4~4
 boardPos=15 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+component0006~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0007~12
-Component~11~11
+component0007~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0008~12
-Component~11~11
+component0008~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+component0009~5
+Component~4~4
 boardPos=15 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
 componentCount=10

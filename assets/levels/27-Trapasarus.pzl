@@ -1,4 +1,4 @@
-Puzzle~17~204
+Puzzle~17~93
 buildableComponents~7
 ComponentBuildState~6~6
 TrapOpenGray=1
@@ -7,199 +7,88 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~12
-Component~11~11
+component0000~4
+Component~3~3
 boardPos=8 2
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0001~12
-Component~11~11
+component0001~5
+Component~4~4
 boardPos=18 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0002~12
-Component~11~11
+component0002~4
+Component~3~3
 boardPos=8 4
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0003~12
-Component~11~11
+component0003~4
+Component~3~3
 boardPos=8 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0004~12
-Component~11~11
+component0004~4
+Component~3~3
 boardPos=8 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0005~12
-Component~11~11
+component0005~4
+Component~3~3
 boardPos=8 0
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+component0006~5
+Component~4~4
 boardPos=18 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0007~12
-Component~11~11
+component0007~8
+Component~7~7
 boardPos=8 18
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=5
-component0008~12
-Component~11~11
+component0008~4
+Component~3~3
 boardPos=8 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+component0009~4
+Component~3~3
 boardPos=8 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0010~12
-Component~11~11
+component0010~4
+Component~3~3
 boardPos=8 6
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0011~12
-Component~11~11
+component0011~5
+Component~4~4
 boardPos=18 18
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0012~12
-Component~11~11
+component0012~5
+Component~4~4
 boardPos=18 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0013~12
-Component~11~11
+component0013~5
+Component~4~4
 boardPos=18 4
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=FilteredAmplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0014~12
-Component~11~11
+component0014~4
+Component~3~3
 boardPos=8 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
 componentCount=15

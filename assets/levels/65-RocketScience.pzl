@@ -1,4 +1,4 @@
-Puzzle~632~8245
+Puzzle~632~4137
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -53,8194 +53,4086 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~12
-Component~11~11
+component0000~4
+Component~3~3
 boardPos=11 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0001~12
-Component~11~11
+component0001~4
+Component~3~3
 boardPos=9 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0002~12
-Component~11~11
+component0002~4
+Component~3~3
 boardPos=9 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0003~12
-Component~11~11
+component0003~4
+Component~3~3
 boardPos=13 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0004~12
-Component~11~11
+component0004~4
+Component~3~3
 boardPos=13 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0005~12
-Component~11~11
+component0005~4
+Component~3~3
 boardPos=13 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+component0006~4
+Component~3~3
 boardPos=7 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0007~12
-Component~11~11
+component0007~4
+Component~3~3
 boardPos=15 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0008~12
-Component~11~11
+component0008~4
+Component~3~3
 boardPos=9 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+component0009~4
+Component~3~3
 boardPos=11 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0010~12
-Component~11~11
+component0010~4
+Component~3~3
 boardPos=15 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0011~12
-Component~11~11
+component0011~4
+Component~3~3
 boardPos=15 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0012~12
-Component~11~11
+component0012~4
+Component~3~3
 boardPos=15 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0013~12
-Component~11~11
+component0013~4
+Component~3~3
 boardPos=15 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0014~12
-Component~11~11
+component0014~4
+Component~3~3
 boardPos=3 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0015~12
-Component~11~11
+component0015~4
+Component~3~3
 boardPos=19 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0016~12
-Component~11~11
+component0016~4
+Component~3~3
 boardPos=11 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0017~12
-Component~11~11
+component0017~4
+Component~3~3
 boardPos=5 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0018~12
-Component~11~11
+component0018~4
+Component~3~3
 boardPos=7 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0019~12
-Component~11~11
+component0019~4
+Component~3~3
 boardPos=17 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0020~12
-Component~11~11
+component0020~4
+Component~3~3
 boardPos=5 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0021~12
-Component~11~11
+component0021~4
+Component~3~3
 boardPos=5 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0022~12
-Component~11~11
+component0022~4
+Component~3~3
 boardPos=5 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0023~12
-Component~11~11
+component0023~4
+Component~3~3
 boardPos=15 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0024~12
-Component~11~11
+component0024~4
+Component~3~3
 boardPos=3 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0025~12
-Component~11~11
+component0025~4
+Component~3~3
 boardPos=5 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0026~12
-Component~11~11
+component0026~4
+Component~3~3
 boardPos=19 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0027~12
-Component~11~11
+component0027~4
+Component~3~3
 boardPos=13 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0028~12
-Component~11~11
+component0028~4
+Component~3~3
 boardPos=17 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0029~12
-Component~11~11
+component0029~4
+Component~3~3
 boardPos=3 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0030~12
-Component~11~11
+component0030~4
+Component~3~3
 boardPos=13 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0031~12
-Component~11~11
+component0031~4
+Component~3~3
 boardPos=13 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0032~12
-Component~11~11
+component0032~4
+Component~3~3
 boardPos=11 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0033~12
-Component~11~11
+component0033~4
+Component~3~3
 boardPos=3 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0034~12
-Component~11~11
+component0034~4
+Component~3~3
 boardPos=7 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0035~12
-Component~11~11
+component0035~4
+Component~3~3
 boardPos=19 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0036~12
-Component~11~11
+component0036~4
+Component~3~3
 boardPos=7 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0037~12
-Component~11~11
+component0037~4
+Component~3~3
 boardPos=11 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0038~12
-Component~11~11
+component0038~4
+Component~3~3
 boardPos=3 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0039~12
-Component~11~11
+component0039~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0040~12
-Component~11~11
+component0040~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0041~12
-Component~11~11
+component0041~6
+Component~5~5
 boardPos=11 9
 boundary=1
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0042~12
-Component~11~11
+component0042~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0043~12
-Component~11~11
+component0043~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0044~12
-Component~11~11
+component0044~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0045~12
-Component~11~11
+component0045~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0046~12
-Component~11~11
+component0046~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0047~12
-Component~11~11
+component0047~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0048~12
-Component~11~11
+component0048~6
+Component~5~5
 boardPos=11 9
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0049~12
-Component~11~11
+component0049~6
+Component~5~5
 boardPos=11 9
 boundary=1
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0050~12
-Component~11~11
+component0050~6
+Component~5~5
 boardPos=11 9
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0051~12
-Component~11~11
+component0051~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0052~12
-Component~11~11
+component0052~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0053~12
-Component~11~11
+component0053~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0054~12
-Component~11~11
+component0054~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0055~12
-Component~11~11
+component0055~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0056~12
-Component~11~11
+component0056~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0057~12
-Component~11~11
+component0057~6
+Component~5~5
 boardPos=11 9
 boundary=1
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0058~12
-Component~11~11
+component0058~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0059~12
-Component~11~11
+component0059~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0060~12
-Component~11~11
+component0060~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0061~12
-Component~11~11
+component0061~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0062~12
-Component~11~11
+component0062~6
+Component~5~5
 boardPos=11 9
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0063~12
-Component~11~11
+component0063~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0064~12
-Component~11~11
+component0064~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0065~12
-Component~11~11
+component0065~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0066~12
-Component~11~11
+component0066~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0067~12
-Component~11~11
+component0067~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0068~12
-Component~11~11
+component0068~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0069~12
-Component~11~11
+component0069~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0070~12
-Component~11~11
+component0070~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0071~12
-Component~11~11
+component0071~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0072~12
-Component~11~11
+component0072~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0073~12
-Component~11~11
+component0073~7
+Component~6~6
 boardPos=9 9
 boundary=1
 chargePreference=1
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0074~12
-Component~11~11
+component0074~6
+Component~5~5
 boardPos=9 9
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0075~12
-Component~11~11
+component0075~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0076~12
-Component~11~11
+component0076~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0077~12
-Component~11~11
+component0077~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0078~12
-Component~11~11
+component0078~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0079~12
-Component~11~11
+component0079~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0080~12
-Component~11~11
+component0080~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0081~12
-Component~11~11
+component0081~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0082~12
-Component~11~11
+component0082~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0083~12
-Component~11~11
+component0083~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0084~12
-Component~11~11
+component0084~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0085~12
-Component~11~11
+component0085~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0086~12
-Component~11~11
+component0086~6
+Component~5~5
 boardPos=9 9
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0087~12
-Component~11~11
+component0087~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0088~12
-Component~11~11
+component0088~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0089~12
-Component~11~11
+component0089~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0090~12
-Component~11~11
+component0090~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0091~12
-Component~11~11
+component0091~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0092~12
-Component~11~11
+component0092~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0093~12
-Component~11~11
+component0093~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0094~12
-Component~11~11
+component0094~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0095~12
-Component~11~11
+component0095~6
+Component~5~5
 boardPos=9 11
 boundary=1
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0096~12
-Component~11~11
+component0096~6
+Component~5~5
 boardPos=9 11
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0097~12
-Component~11~11
+component0097~6
+Component~5~5
 boardPos=9 11
 boundary=1
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0098~12
-Component~11~11
+component0098~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0099~12
-Component~11~11
+component0099~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0100~12
-Component~11~11
+component0100~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0101~12
-Component~11~11
+component0101~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0102~12
-Component~11~11
+component0102~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0103~12
-Component~11~11
+component0103~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0104~12
-Component~11~11
+component0104~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0105~12
-Component~11~11
+component0105~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0106~12
-Component~11~11
+component0106~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0107~12
-Component~11~11
+component0107~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0108~12
-Component~11~11
+component0108~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0109~12
-Component~11~11
+component0109~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0110~12
-Component~11~11
+component0110~6
+Component~5~5
 boardPos=9 11
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0111~12
-Component~11~11
+component0111~6
+Component~5~5
 boardPos=9 13
-boundary=0
-chargePreference=2
 circuitPos=8 2
 color=5
 name=TeleportSource
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0112~12
-Component~11~11
+component0112~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0113~12
-Component~11~11
+component0113~6
+Component~5~5
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=2 4
 color=4
 name=TeleportDestination
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0114~12
-Component~11~11
+component0114~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0115~12
-Component~11~11
+component0115~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=2 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0116~12
-Component~11~11
+component0116~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=10 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0117~12
-Component~11~11
+component0117~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=4 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0118~12
-Component~11~11
+component0118~5
+Component~4~4
 boardPos=9 13
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0119~12
-Component~11~11
+component0119~6
+Component~5~5
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=0
-totalCharges=16777215
-component0120~12
-Component~11~11
+component0120~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0121~12
-Component~11~11
+component0121~6
+Component~5~5
 boardPos=13 9
-boundary=0
 chargePreference=4
 circuitPos=4 8
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0122~12
-Component~11~11
+component0122~5
+Component~4~4
 boardPos=9 13
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0123~12
-Component~11~11
+component0123~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0124~12
-Component~11~11
+component0124~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0125~12
-Component~11~11
+component0125~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0126~12
-Component~11~11
+component0126~5
+Component~4~4
 boardPos=9 13
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0127~12
-Component~11~11
+component0127~5
+Component~4~4
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0128~12
-Component~11~11
+component0128~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0129~12
-Component~11~11
+component0129~6
+Component~5~5
 boardPos=9 9
-boundary=0
 chargePreference=3
 circuitPos=4 10
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0130~12
-Component~11~11
+component0130~5
+Component~4~4
 boardPos=9 13
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0131~12
-Component~11~11
+component0131~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0132~12
-Component~11~11
+component0132~7
+Component~6~6
 boardPos=13 9
-boundary=0
 chargePreference=3
 circuitPos=3 10
 color=4
 name=TeleportSource
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0133~12
-Component~11~11
+component0133~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0134~12
-Component~11~11
+component0134~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0135~12
-Component~11~11
+component0135~7
+Component~6~6
 boardPos=9 13
-boundary=0
 chargePreference=3
 circuitPos=6 4
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0136~12
-Component~11~11
+component0136~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0137~12
-Component~11~11
+component0137~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0138~12
-Component~11~11
+component0138~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0139~12
-Component~11~11
+component0139~6
+Component~5~5
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=2 10
 color=2
 name=TeleportSource
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0140~12
-Component~11~11
+component0140~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0141~12
-Component~11~11
+component0141~6
+Component~5~5
 boardPos=11 13
-boundary=0
 chargePreference=1
 circuitPos=2 4
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0142~12
-Component~11~11
+component0142~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0143~12
-Component~11~11
+component0143~6
+Component~5~5
 boardPos=11 13
-boundary=0
 chargePreference=1
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0144~12
-Component~11~11
+component0144~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0145~12
-Component~11~11
+component0145~6
+Component~5~5
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=2 2
 color=2
 name=TeleportDestination
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0146~12
-Component~11~11
+component0146~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0147~12
-Component~11~11
+component0147~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0148~12
-Component~11~11
+component0148~7
+Component~6~6
 boardPos=11 13
 boundary=1
 chargePreference=1
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0149~12
-Component~11~11
+component0149~6
+Component~5~5
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=4 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0150~12
-Component~11~11
+component0150~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0151~12
-Component~11~11
+component0151~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0152~12
-Component~11~11
+component0152~6
+Component~5~5
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=4 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0153~12
-Component~11~11
+component0153~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0154~12
-Component~11~11
+component0154~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0155~12
-Component~11~11
+component0155~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0156~12
-Component~11~11
+component0156~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=10 5
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0157~12
-Component~11~11
+component0157~6
+Component~5~5
 boardPos=11 13
-boundary=0
 chargePreference=3
 circuitPos=2 8
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0158~12
-Component~11~11
+component0158~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0159~12
-Component~11~11
+component0159~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0160~12
-Component~11~11
+component0160~6
+Component~5~5
 boardPos=11 13
-boundary=0
 chargePreference=3
 circuitPos=7 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0161~12
-Component~11~11
+component0161~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0162~12
-Component~11~11
+component0162~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0163~12
-Component~11~11
+component0163~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0164~12
-Component~11~11
+component0164~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0165~12
-Component~11~11
+component0165~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0166~12
-Component~11~11
+component0166~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0167~12
-Component~11~11
+component0167~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0168~12
-Component~11~11
+component0168~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0169~12
-Component~11~11
+component0169~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0170~12
-Component~11~11
+component0170~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0171~12
-Component~11~11
+component0171~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0172~12
-Component~11~11
+component0172~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0173~12
-Component~11~11
+component0173~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0174~12
-Component~11~11
+component0174~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0175~12
-Component~11~11
+component0175~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0176~12
-Component~11~11
+component0176~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0177~12
-Component~11~11
+component0177~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0178~12
-Component~11~11
+component0178~6
+Component~5~5
 boardPos=13 13
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0179~12
-Component~11~11
+component0179~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0180~12
-Component~11~11
+component0180~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0181~12
-Component~11~11
+component0181~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0182~12
-Component~11~11
+component0182~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0183~12
-Component~11~11
+component0183~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0184~12
-Component~11~11
+component0184~6
+Component~5~5
 boardPos=13 13
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0185~12
-Component~11~11
+component0185~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0186~12
-Component~11~11
+component0186~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0187~12
-Component~11~11
+component0187~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0188~12
-Component~11~11
+component0188~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0189~12
-Component~11~11
+component0189~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0190~12
-Component~11~11
+component0190~6
+Component~5~5
 boardPos=13 11
 boundary=1
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0191~12
-Component~11~11
+component0191~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0192~12
-Component~11~11
+component0192~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0193~12
-Component~11~11
+component0193~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0194~12
-Component~11~11
+component0194~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0195~12
-Component~11~11
+component0195~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0196~12
-Component~11~11
+component0196~6
+Component~5~5
 boardPos=13 11
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0197~12
-Component~11~11
+component0197~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0198~12
-Component~11~11
+component0198~6
+Component~5~5
 boardPos=13 11
 boundary=1
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0199~12
-Component~11~11
+component0199~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0200~12
-Component~11~11
+component0200~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0201~12
-Component~11~11
+component0201~6
+Component~5~5
 boardPos=13 11
 boundary=1
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0202~12
-Component~11~11
+component0202~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0203~12
-Component~11~11
+component0203~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0204~12
-Component~11~11
+component0204~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0205~12
-Component~11~11
+component0205~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0206~12
-Component~11~11
+component0206~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0207~12
-Component~11~11
+component0207~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0208~12
-Component~11~11
+component0208~6
+Component~5~5
 boardPos=13 11
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0209~12
-Component~11~11
+component0209~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0210~12
-Component~11~11
+component0210~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0211~12
-Component~11~11
+component0211~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0212~12
-Component~11~11
+component0212~6
+Component~5~5
 boardPos=13 9
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0213~12
-Component~11~11
+component0213~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0214~12
-Component~11~11
+component0214~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0215~12
-Component~11~11
+component0215~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0216~12
-Component~11~11
+component0216~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0217~12
-Component~11~11
+component0217~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0218~12
-Component~11~11
+component0218~6
+Component~5~5
 boardPos=13 9
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0219~12
-Component~11~11
+component0219~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0220~12
-Component~11~11
+component0220~6
+Component~5~5
 boardPos=13 9
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0221~12
-Component~11~11
+component0221~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0222~12
-Component~11~11
+component0222~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0223~12
-Component~11~11
+component0223~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0224~12
-Component~11~11
+component0224~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0225~12
-Component~11~11
+component0225~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0226~12
-Component~11~11
+component0226~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0227~12
-Component~11~11
+component0227~6
+Component~5~5
 boardPos=13 9
 boundary=1
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0228~12
-Component~11~11
+component0228~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0229~12
-Component~11~11
+component0229~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0230~12
-Component~11~11
+component0230~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0231~12
-Component~11~11
+component0231~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0232~12
-Component~11~11
+component0232~6
+Component~5~5
 boardPos=13 9
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0233~12
-Component~11~11
+component0233~8
+Component~7~7
 boardPos=5 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=1
-speed=2
 totalCharges=1000
-component0234~12
-Component~11~11
+component0234~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0235~12
-Component~11~11
+component0235~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0236~12
-Component~11~11
+component0236~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0237~12
-Component~11~11
+component0237~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0238~12
-Component~11~11
+component0238~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0239~12
-Component~11~11
+component0239~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0240~12
-Component~11~11
+component0240~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0241~12
-Component~11~11
+component0241~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0242~12
-Component~11~11
+component0242~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0243~12
-Component~11~11
+component0243~6
+Component~5~5
 boardPos=7 11
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0244~12
-Component~11~11
+component0244~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0245~12
-Component~11~11
+component0245~6
+Component~5~5
 boardPos=7 11
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0246~12
-Component~11~11
+component0246~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0247~12
-Component~11~11
+component0247~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0248~12
-Component~11~11
+component0248~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0249~12
-Component~11~11
+component0249~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0250~12
-Component~11~11
+component0250~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0251~12
-Component~11~11
+component0251~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0252~12
-Component~11~11
+component0252~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0253~12
-Component~11~11
+component0253~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0254~12
-Component~11~11
+component0254~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0255~12
-Component~11~11
+component0255~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0256~12
-Component~11~11
+component0256~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0257~12
-Component~11~11
+component0257~6
+Component~5~5
 boardPos=7 11
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0258~12
-Component~11~11
+component0258~5
+Component~4~4
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0259~12
-Component~11~11
+component0259~5
+Component~4~4
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0260~12
-Component~11~11
+component0260~6
+Component~5~5
 boardPos=7 11
-boundary=0
 chargePreference=3
 circuitPos=8 4
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0261~12
-Component~11~11
+component0261~6
+Component~5~5
 boardPos=7 11
-boundary=0
 chargePreference=1
 circuitPos=8 8
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0262~12
-Component~11~11
+component0262~6
+Component~5~5
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0263~12
-Component~11~11
+component0263~6
+Component~5~5
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=10 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0264~12
-Component~11~11
+component0264~6
+Component~5~5
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=8 2
 color=1
 name=TeleportSource
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0265~12
-Component~11~11
+component0265~4
+Component~3~3
 boardPos=9 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0266~12
-Component~11~11
+component0266~7
+Component~6~6
 boardPos=7 11
-boundary=0
 chargePreference=4
 circuitPos=6 6
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0267~12
-Component~11~11
+component0267~5
+Component~4~4
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=2 5
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0268~12
-Component~11~11
+component0268~5
+Component~4~4
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=4 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0269~12
-Component~11~11
+component0269~5
+Component~4~4
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=2 3
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0270~12
-Component~11~11
+component0270~7
+Component~6~6
 boardPos=7 11
-boundary=0
 chargePreference=4
 circuitPos=4 6
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0271~12
-Component~11~11
+component0271~6
+Component~5~5
 boardPos=7 11
-boundary=0
-chargePreference=2
 circuitPos=8 10
 color=3
 name=TeleportDestination
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0272~12
-Component~11~11
+component0272~4
+Component~3~3
 boardPos=11 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0273~12
-Component~11~11
+component0273~7
+Component~6~6
 boardPos=17 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
+chargesLostPerDischarge=1
 color=1
 name=MegaHold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0274~12
-Component~11~11
+ticksPerDischarge=10
+component0274~7
+Component~6~6
 boardPos=17 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
+chargesLostPerDischarge=1
 color=2
 name=MegaHold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0275~12
-Component~11~11
+ticksPerDischarge=10
+component0275~7
+Component~6~6
 boardPos=17 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
+chargesLostPerDischarge=1
 color=3
 name=MegaHold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0276~12
-Component~11~11
+ticksPerDischarge=10
+component0276~7
+Component~6~6
 boardPos=17 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
+chargesLostPerDischarge=1
 color=4
 name=MegaHold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0277~12
-Component~11~11
+ticksPerDischarge=10
+component0277~7
+Component~6~6
 boardPos=17 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
+chargesLostPerDischarge=1
 color=5
 name=MegaHold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0278~12
-Component~11~11
+ticksPerDischarge=10
+component0278~6
+Component~5~5
 boardPos=15 7
 boundary=1
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0279~12
-Component~11~11
+component0279~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0280~12
-Component~11~11
+component0280~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0281~12
-Component~11~11
+component0281~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0282~12
-Component~11~11
+component0282~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0283~12
-Component~11~11
+component0283~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0284~12
-Component~11~11
+component0284~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0285~12
-Component~11~11
+component0285~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0286~12
-Component~11~11
+component0286~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0287~12
-Component~11~11
+component0287~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0288~12
-Component~11~11
+component0288~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0289~12
-Component~11~11
+component0289~6
+Component~5~5
 boardPos=15 7
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0290~12
-Component~11~11
+component0290~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0291~12
-Component~11~11
+component0291~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0292~12
-Component~11~11
+component0292~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0293~12
-Component~11~11
+component0293~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0294~12
-Component~11~11
+component0294~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0295~12
-Component~11~11
+component0295~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0296~12
-Component~11~11
+component0296~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0297~12
-Component~11~11
+component0297~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0298~12
-Component~11~11
+component0298~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0299~12
-Component~11~11
+component0299~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0300~12
-Component~11~11
+component0300~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0301~12
-Component~11~11
+component0301~6
+Component~5~5
 boardPos=15 7
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0302~12
-Component~11~11
+component0302~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0303~12
-Component~11~11
+component0303~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0304~12
-Component~11~11
+component0304~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0305~12
-Component~11~11
+component0305~6
+Component~5~5
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=4 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0306~12
-Component~11~11
+component0306~6
+Component~5~5
 boardPos=9 9
-boundary=0
 chargePreference=1
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0307~12
-Component~11~11
+component0307~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0308~12
-Component~11~11
+component0308~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=10 7
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0309~12
-Component~11~11
+component0309~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0310~12
-Component~11~11
+component0310~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0311~12
-Component~11~11
+component0311~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0312~12
-Component~11~11
+component0312~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0313~12
-Component~11~11
+component0313~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0314~12
-Component~11~11
+component0314~6
+Component~5~5
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=10 10
 color=2
 name=TeleportDestination
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0315~12
-Component~11~11
+component0315~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0316~12
-Component~11~11
+component0316~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0317~12
-Component~11~11
+component0317~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0318~12
-Component~11~11
+component0318~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0319~12
-Component~11~11
+component0319~7
+Component~6~6
 boardPos=9 9
-boundary=0
 chargePreference=4
 circuitPos=8 4
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0320~12
-Component~11~11
+component0320~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0321~12
-Component~11~11
+component0321~7
+Component~6~6
 boardPos=11 13
-boundary=0
 chargePreference=4
 circuitPos=8 4
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0322~12
-Component~11~11
+component0322~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0323~12
-Component~11~11
+component0323~6
+Component~5~5
 boardPos=11 13
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0324~12
-Component~11~11
+component0324~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0325~12
-Component~11~11
+component0325~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0326~12
-Component~11~11
+component0326~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0327~12
-Component~11~11
+component0327~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0328~12
-Component~11~11
+component0328~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0329~12
-Component~11~11
+component0329~6
+Component~5~5
 boardPos=9 9
-boundary=0
 chargePreference=1
 circuitPos=8 10
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0330~12
-Component~11~11
+component0330~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0331~12
-Component~11~11
+component0331~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0332~12
-Component~11~11
+component0332~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0333~12
-Component~11~11
+component0333~5
+Component~4~4
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0334~12
-Component~11~11
+component0334~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0335~12
-Component~11~11
+component0335~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0336~12
-Component~11~11
+component0336~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0337~12
-Component~11~11
+component0337~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0338~12
-Component~11~11
+component0338~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0339~12
-Component~11~11
+component0339~6
+Component~5~5
 boardPos=9 13
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0340~12
-Component~11~11
+component0340~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0341~12
-Component~11~11
+component0341~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=2 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0342~12
-Component~11~11
+component0342~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0343~12
-Component~11~11
+component0343~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0344~12
-Component~11~11
+component0344~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0345~12
-Component~11~11
+component0345~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=2 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0346~12
-Component~11~11
+component0346~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0347~12
-Component~11~11
+component0347~6
+Component~5~5
 boardPos=9 13
 boundary=1
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0348~12
-Component~11~11
+component0348~5
+Component~4~4
 boardPos=13 9
-boundary=0
-chargePreference=2
 circuitPos=6 3
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0349~12
-Component~11~11
+component0349~6
+Component~5~5
 boardPos=9 13
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0350~12
-Component~11~11
+component0350~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=4 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0351~12
-Component~11~11
+component0351~6
+Component~5~5
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=2 10
 color=2
 name=TeleportSource
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0352~12
-Component~11~11
+component0352~6
+Component~5~5
 boardPos=11 13
 boundary=1
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0353~12
-Component~11~11
+component0353~6
+Component~5~5
 boardPos=11 13
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0354~12
-Component~11~11
+component0354~6
+Component~5~5
 boardPos=9 9
-boundary=0
 chargePreference=3
 circuitPos=10 5
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0355~12
-Component~11~11
+component0355~5
+Component~4~4
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=5 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0356~12
-Component~11~11
+component0356~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0357~12
-Component~11~11
+component0357~6
+Component~5~5
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=8 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
 speed=1
-totalCharges=16777215
-component0358~12
-Component~11~11
+component0358~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0359~12
-Component~11~11
+component0359~6
+Component~5~5
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=2 4
 color=5
 name=TeleportDestination
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0360~12
-Component~11~11
+component0360~5
+Component~4~4
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=10 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0361~12
-Component~11~11
+component0361~5
+Component~4~4
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=7 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0362~12
-Component~11~11
+component0362~6
+Component~5~5
 boardPos=15 7
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=1
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0363~12
-Component~11~11
+component0363~6
+Component~5~5
 boardPos=15 9
 boundary=1
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0364~12
-Component~11~11
+component0364~6
+Component~5~5
 boardPos=15 9
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0365~12
-Component~11~11
+component0365~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0366~12
-Component~11~11
+component0366~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0367~12
-Component~11~11
+component0367~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0368~12
-Component~11~11
+component0368~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0369~12
-Component~11~11
+component0369~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0370~12
-Component~11~11
+component0370~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0371~12
-Component~11~11
+component0371~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0372~12
-Component~11~11
+component0372~6
+Component~5~5
 boardPos=15 9
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0373~12
-Component~11~11
+component0373~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0374~12
-Component~11~11
+component0374~6
+Component~5~5
 boardPos=15 9
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0375~12
-Component~11~11
+component0375~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0376~12
-Component~11~11
+component0376~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0377~12
-Component~11~11
+component0377~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0378~12
-Component~11~11
+component0378~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0379~12
-Component~11~11
+component0379~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0380~12
-Component~11~11
+component0380~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0381~12
-Component~11~11
+component0381~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0382~12
-Component~11~11
+component0382~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0383~12
-Component~11~11
+component0383~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0384~12
-Component~11~11
+component0384~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0385~12
-Component~11~11
+component0385~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0386~12
-Component~11~11
+component0386~6
+Component~5~5
 boardPos=15 9
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0387~12
-Component~11~11
+component0387~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0388~12
-Component~11~11
+component0388~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0389~12
-Component~11~11
+component0389~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0390~12
-Component~11~11
+component0390~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0391~12
-Component~11~11
+component0391~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0392~12
-Component~11~11
+component0392~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0393~12
-Component~11~11
+component0393~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0394~12
-Component~11~11
+component0394~6
+Component~5~5
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=2
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0395~12
-Component~11~11
+component0395~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0396~12
-Component~11~11
+component0396~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0397~12
-Component~11~11
+component0397~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0398~12
-Component~11~11
+component0398~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0399~12
-Component~11~11
+component0399~5
+Component~4~4
 boardPos=15 9
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0400~12
-Component~11~11
+component0400~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0401~12
-Component~11~11
+component0401~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0402~12
-Component~11~11
+component0402~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0403~12
-Component~11~11
+component0403~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0404~12
-Component~11~11
+component0404~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0405~12
-Component~11~11
+component0405~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0406~12
-Component~11~11
+component0406~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0407~12
-Component~11~11
+component0407~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0408~12
-Component~11~11
+component0408~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0409~12
-Component~11~11
+component0409~6
+Component~5~5
 boardPos=15 11
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0410~12
-Component~11~11
+component0410~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0411~12
-Component~11~11
+component0411~6
+Component~5~5
 boardPos=15 11
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0412~12
-Component~11~11
+component0412~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0413~12
-Component~11~11
+component0413~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0414~12
-Component~11~11
+component0414~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0415~12
-Component~11~11
+component0415~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0416~12
-Component~11~11
+component0416~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0417~12
-Component~11~11
+component0417~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0418~12
-Component~11~11
+component0418~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0419~12
-Component~11~11
+component0419~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0420~12
-Component~11~11
+component0420~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0421~12
-Component~11~11
+component0421~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0422~12
-Component~11~11
+component0422~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0423~12
-Component~11~11
+component0423~6
+Component~5~5
 boardPos=15 11
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0424~12
-Component~11~11
+component0424~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0425~12
-Component~11~11
+component0425~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0426~12
-Component~11~11
+component0426~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0427~12
-Component~11~11
+component0427~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0428~12
-Component~11~11
+component0428~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0429~12
-Component~11~11
+component0429~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0430~12
-Component~11~11
+component0430~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0431~12
-Component~11~11
+component0431~6
+Component~5~5
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=3
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0432~12
-Component~11~11
+component0432~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0433~12
-Component~11~11
+component0433~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0434~12
-Component~11~11
+component0434~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0435~12
-Component~11~11
+component0435~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0436~12
-Component~11~11
+component0436~5
+Component~4~4
 boardPos=15 11
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0437~12
-Component~11~11
+component0437~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0438~12
-Component~11~11
+component0438~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0439~12
-Component~11~11
+component0439~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0440~12
-Component~11~11
+component0440~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0441~12
-Component~11~11
+component0441~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0442~12
-Component~11~11
+component0442~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0443~12
-Component~11~11
+component0443~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0444~12
-Component~11~11
+component0444~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0445~12
-Component~11~11
+component0445~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0446~12
-Component~11~11
+component0446~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0447~12
-Component~11~11
+component0447~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0448~12
-Component~11~11
+component0448~6
+Component~5~5
 boardPos=15 13
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0449~12
-Component~11~11
+component0449~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0450~12
-Component~11~11
+component0450~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0451~12
-Component~11~11
+component0451~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0452~12
-Component~11~11
+component0452~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0453~12
-Component~11~11
+component0453~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0454~12
-Component~11~11
+component0454~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0455~12
-Component~11~11
+component0455~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0456~12
-Component~11~11
+component0456~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0457~12
-Component~11~11
+component0457~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0458~12
-Component~11~11
+component0458~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0459~12
-Component~11~11
+component0459~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0460~12
-Component~11~11
+component0460~6
+Component~5~5
 boardPos=15 13
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0461~12
-Component~11~11
+component0461~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0462~12
-Component~11~11
+component0462~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0463~12
-Component~11~11
+component0463~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0464~12
-Component~11~11
+component0464~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0465~12
-Component~11~11
+component0465~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0466~12
-Component~11~11
+component0466~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0467~12
-Component~11~11
+component0467~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0468~12
-Component~11~11
+component0468~6
+Component~5~5
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=4
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0469~12
-Component~11~11
+component0469~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0470~12
-Component~11~11
+component0470~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0471~12
-Component~11~11
+component0471~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0472~12
-Component~11~11
+component0472~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0473~12
-Component~11~11
+component0473~5
+Component~4~4
 boardPos=15 13
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0474~12
-Component~11~11
+component0474~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0475~12
-Component~11~11
+component0475~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0476~12
-Component~11~11
+component0476~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0477~12
-Component~11~11
+component0477~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0478~12
-Component~11~11
+component0478~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0479~12
-Component~11~11
+component0479~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0480~12
-Component~11~11
+component0480~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0481~12
-Component~11~11
+component0481~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0482~12
-Component~11~11
+component0482~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0483~12
-Component~11~11
+component0483~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0484~12
-Component~11~11
+component0484~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0485~12
-Component~11~11
+component0485~6
+Component~5~5
 boardPos=15 15
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0486~12
-Component~11~11
+component0486~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0487~12
-Component~11~11
+component0487~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0488~12
-Component~11~11
+component0488~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0489~12
-Component~11~11
+component0489~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0490~12
-Component~11~11
+component0490~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0491~12
-Component~11~11
+component0491~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0492~12
-Component~11~11
+component0492~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0493~12
-Component~11~11
+component0493~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0494~12
-Component~11~11
+component0494~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0495~12
-Component~11~11
+component0495~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0496~12
-Component~11~11
+component0496~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0497~12
-Component~11~11
+component0497~6
+Component~5~5
 boardPos=15 15
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0498~12
-Component~11~11
+component0498~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0499~12
-Component~11~11
+component0499~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0500~12
-Component~11~11
+component0500~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0501~12
-Component~11~11
+component0501~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0502~12
-Component~11~11
+component0502~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0503~12
-Component~11~11
+component0503~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0504~12
-Component~11~11
+component0504~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0505~12
-Component~11~11
+component0505~6
+Component~5~5
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=5
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0506~12
-Component~11~11
+component0506~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0507~12
-Component~11~11
+component0507~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0508~12
-Component~11~11
+component0508~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0509~12
-Component~11~11
+component0509~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0510~12
-Component~11~11
+component0510~5
+Component~4~4
 boardPos=15 15
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0511~12
-Component~11~11
+component0511~6
+Component~5~5
 boardPos=9 11
-boundary=0
 chargePreference=1
 circuitPos=6 6
-color=0
 name=Amplifier
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0512~12
-Component~11~11
+component0512~5
+Component~4~4
 boardPos=9 11
-boundary=0
-chargePreference=2
 circuitPos=8 5
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0513~12
-Component~11~11
+component0513~5
+Component~4~4
 boardPos=9 11
-boundary=0
-chargePreference=2
 circuitPos=8 7
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0514~12
-Component~11~11
+component0514~7
+Component~6~6
 boardPos=9 11
-boundary=0
 chargePreference=4
 circuitPos=6 4
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0515~12
-Component~11~11
+component0515~7
+Component~6~6
 boardPos=9 11
-boundary=0
 chargePreference=3
 circuitPos=6 2
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0516~12
-Component~11~11
+component0516~7
+Component~6~6
 boardPos=9 11
-boundary=0
 chargePreference=4
 circuitPos=6 8
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0517~12
-Component~11~11
+component0517~5
+Component~4~4
 boardPos=9 11
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0518~12
-Component~11~11
+component0518~6
+Component~5~5
 boardPos=9 11
-boundary=0
 chargePreference=1
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0519~12
-Component~11~11
+component0519~6
+Component~5~5
 boardPos=9 11
-boundary=0
 chargePreference=3
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0520~12
-Component~11~11
+component0520~5
+Component~4~4
 boardPos=9 9
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0521~12
-Component~11~11
+component0521~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0522~12
-Component~11~11
+component0522~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0523~12
-Component~11~11
+component0523~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0524~12
-Component~11~11
+component0524~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0525~12
-Component~11~11
+component0525~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=10 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0526~12
-Component~11~11
+component0526~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0527~12
-Component~11~11
+component0527~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=8 2
 color=2
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0528~12
-Component~11~11
+component0528~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=8 10
 color=5
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0529~12
-Component~11~11
+component0529~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=6 10
 color=4
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0530~12
-Component~11~11
+component0530~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=9 4
 color=3
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0531~12
-Component~11~11
+component0531~6
+Component~5~5
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=6 2
 color=6
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0532~12
-Component~11~11
+component0532~4
+Component~3~3
 boardPos=9 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0533~12
-Component~11~11
+component0533~4
+Component~3~3
 boardPos=7 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0534~12
-Component~11~11
+component0534~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0535~12
-Component~11~11
+component0535~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0536~12
-Component~11~11
+component0536~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=8 7
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0537~12
-Component~11~11
+component0537~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0538~12
-Component~11~11
+component0538~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=4 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0539~12
-Component~11~11
+component0539~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0540~12
-Component~11~11
+component0540~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=8 3
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0541~12
-Component~11~11
+component0541~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0542~12
-Component~11~11
+component0542~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=4 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0543~12
-Component~11~11
+component0543~5
+Component~4~4
 boardPos=13 11
-boundary=0
-chargePreference=2
 circuitPos=2 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0544~12
-Component~11~11
+component0544~4
+Component~3~3
 boardPos=9 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0545~12
-Component~11~11
+component0545~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0546~12
-Component~11~11
+component0546~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0547~12
-Component~11~11
+component0547~4
+Component~3~3
 boardPos=13 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0548~12
-Component~11~11
+component0548~4
+Component~3~3
 boardPos=3 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0549~12
-Component~11~11
+component0549~4
+Component~3~3
 boardPos=5 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0550~12
-Component~11~11
+component0550~4
+Component~3~3
 boardPos=19 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0551~12
-Component~11~11
+component0551~4
+Component~3~3
 boardPos=15 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0552~12
-Component~11~11
+component0552~4
+Component~3~3
 boardPos=7 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0553~12
-Component~11~11
+component0553~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=6 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0554~12
-Component~11~11
+component0554~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=4 6
 color=6
 name=GateClosed
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0555~12
-Component~11~11
+component0555~5
+Component~4~4
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0556~12
-Component~11~11
+component0556~6
+Component~5~5
 boardPos=13 13
-boundary=0
 chargePreference=4
 circuitPos=7 4
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0557~12
-Component~11~11
+component0557~6
+Component~5~5
 boardPos=13 13
-boundary=0
 chargePreference=4
 circuitPos=7 8
-color=0
 name=Splitter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0558~12
-Component~11~11
+component0558~6
+Component~5~5
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=8 10
 color=6
 name=TrapOpen
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0559~12
-Component~11~11
+component0559~5
+Component~4~4
 boardPos=11 13
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0560~12
-Component~11~11
+component0560~5
+Component~4~4
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0561~12
-Component~11~11
+component0561~5
+Component~4~4
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0562~12
-Component~11~11
+component0562~5
+Component~4~4
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Hold
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0563~12
-Component~11~11
+component0563~7
+Component~6~6
 boardPos=11 13
-boundary=0
 chargePreference=4
 circuitPos=8 8
 color=5
 name=ChargeFilter
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0564~12
-Component~11~11
+component0564~6
+Component~5~5
 boardPos=13 13
-boundary=0
-chargePreference=2
 circuitPos=6 2
 color=1
 name=GateSwitch
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0565~12
-Component~11~11
+component0565~5
+Component~4~4
 boardPos=11 9
-boundary=0
-chargePreference=2
 circuitPos=6 4
-color=0
 name=Wire
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0566~12
-Component~11~11
+component0566~4
+Component~3~3
 boardPos=3 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0567~12
-Component~11~11
+component0567~4
+Component~3~3
 boardPos=3 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0568~12
-Component~11~11
+component0568~4
+Component~3~3
 boardPos=7 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0569~12
-Component~11~11
+component0569~4
+Component~3~3
 boardPos=9 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0570~12
-Component~11~11
+component0570~4
+Component~3~3
 boardPos=3 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0571~12
-Component~11~11
+component0571~4
+Component~3~3
 boardPos=5 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0572~12
-Component~11~11
+component0572~4
+Component~3~3
 boardPos=7 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0573~12
-Component~11~11
+component0573~4
+Component~3~3
 boardPos=9 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0574~12
-Component~11~11
+component0574~4
+Component~3~3
 boardPos=11 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0575~12
-Component~11~11
+component0575~4
+Component~3~3
 boardPos=13 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0576~12
-Component~11~11
+component0576~4
+Component~3~3
 boardPos=15 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0577~12
-Component~11~11
+component0577~4
+Component~3~3
 boardPos=17 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0578~12
-Component~11~11
+component0578~4
+Component~3~3
 boardPos=19 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0579~12
-Component~11~11
+component0579~4
+Component~3~3
 boardPos=19 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0580~12
-Component~11~11
+component0580~4
+Component~3~3
 boardPos=19 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0581~12
-Component~11~11
+component0581~4
+Component~3~3
 boardPos=19 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0582~12
-Component~11~11
+component0582~4
+Component~3~3
 boardPos=19 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0583~12
-Component~11~11
+component0583~4
+Component~3~3
 boardPos=17 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0584~12
-Component~11~11
+component0584~4
+Component~3~3
 boardPos=15 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0585~12
-Component~11~11
+component0585~4
+Component~3~3
 boardPos=13 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0586~12
-Component~11~11
+component0586~4
+Component~3~3
 boardPos=11 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0587~12
-Component~11~11
+component0587~4
+Component~3~3
 boardPos=9 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0588~12
-Component~11~11
+component0588~4
+Component~3~3
 boardPos=7 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0589~12
-Component~11~11
+component0589~4
+Component~3~3
 boardPos=5 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0590~12
-Component~11~11
+component0590~4
+Component~3~3
 boardPos=1 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0591~12
-Component~11~11
+component0591~4
+Component~3~3
 boardPos=21 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0592~12
-Component~11~11
+component0592~4
+Component~3~3
 boardPos=21 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0593~12
-Component~11~11
+component0593~4
+Component~3~3
 boardPos=21 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0594~12
-Component~11~11
+component0594~4
+Component~3~3
 boardPos=21 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0595~12
-Component~11~11
+component0595~4
+Component~3~3
 boardPos=21 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0596~12
-Component~11~11
+component0596~4
+Component~3~3
 boardPos=21 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0597~12
-Component~11~11
+component0597~4
+Component~3~3
 boardPos=19 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0598~12
-Component~11~11
+component0598~4
+Component~3~3
 boardPos=17 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0599~12
-Component~11~11
+component0599~4
+Component~3~3
 boardPos=15 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0600~12
-Component~11~11
+component0600~4
+Component~3~3
 boardPos=13 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0601~12
-Component~11~11
+component0601~4
+Component~3~3
 boardPos=11 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0602~12
-Component~11~11
+component0602~4
+Component~3~3
 boardPos=9 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0603~12
-Component~11~11
+component0603~4
+Component~3~3
 boardPos=7 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0604~12
-Component~11~11
+component0604~4
+Component~3~3
 boardPos=5 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0605~12
-Component~11~11
+component0605~4
+Component~3~3
 boardPos=3 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0606~12
-Component~11~11
+component0606~4
+Component~3~3
 boardPos=1 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0607~12
-Component~11~11
+component0607~4
+Component~3~3
 boardPos=1 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0608~12
-Component~11~11
+component0608~4
+Component~3~3
 boardPos=1 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0609~12
-Component~11~11
+component0609~4
+Component~3~3
 boardPos=1 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0610~12
-Component~11~11
+component0610~4
+Component~3~3
 boardPos=1 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0611~12
-Component~11~11
+component0611~4
+Component~3~3
 boardPos=1 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0612~12
-Component~11~11
+component0612~4
+Component~3~3
 boardPos=1 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0613~12
-Component~11~11
+component0613~4
+Component~3~3
 boardPos=1 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0614~12
-Component~11~11
+component0614~4
+Component~3~3
 boardPos=1 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0615~12
-Component~11~11
+component0615~4
+Component~3~3
 boardPos=1 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0616~12
-Component~11~11
+component0616~4
+Component~3~3
 boardPos=3 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0617~12
-Component~11~11
+component0617~4
+Component~3~3
 boardPos=5 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0618~12
-Component~11~11
+component0618~4
+Component~3~3
 boardPos=7 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0619~12
-Component~11~11
+component0619~4
+Component~3~3
 boardPos=9 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0620~12
-Component~11~11
+component0620~4
+Component~3~3
 boardPos=11 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0621~12
-Component~11~11
+component0621~4
+Component~3~3
 boardPos=13 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0622~12
-Component~11~11
+component0622~4
+Component~3~3
 boardPos=15 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0623~12
-Component~11~11
+component0623~4
+Component~3~3
 boardPos=17 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0624~12
-Component~11~11
+component0624~4
+Component~3~3
 boardPos=19 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0625~12
-Component~11~11
+component0625~4
+Component~3~3
 boardPos=21 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0626~12
-Component~11~11
+component0626~4
+Component~3~3
 boardPos=21 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0627~12
-Component~11~11
+component0627~4
+Component~3~3
 boardPos=21 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0628~12
-Component~11~11
+component0628~4
+Component~3~3
 boardPos=21 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0629~12
-Component~11~11
+component0629~4
+Component~3~3
 boardPos=21 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
 componentCount=630

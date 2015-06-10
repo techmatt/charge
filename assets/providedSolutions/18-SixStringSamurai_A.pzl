@@ -1,4 +1,4 @@
-Puzzle~39~383
+Puzzle~39~217
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -8,376 +8,210 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~9
-Component~8~8
+component0000~5
+Component~4~4
 boardPos=22 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0001~9
-Component~8~8
+component0001~5
+Component~4~4
 boardPos=22 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0002~9
-Component~8~8
+component0002~5
+Component~4~4
 boardPos=20 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0003~9
-Component~8~8
+component0003~5
+Component~4~4
 boardPos=20 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0004~9
-Component~8~8
+component0004~5
+Component~4~4
 boardPos=20 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0005~9
-Component~8~8
+component0005~5
+Component~4~4
 boardPos=18 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0006~9
-Component~8~8
+component0006~4
+Component~3~3
 boardPos=22 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0007~9
-Component~8~8
+component0007~4
+Component~3~3
 boardPos=18 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0008~9
-Component~8~8
+component0008~4
+Component~3~3
 boardPos=18 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0009~9
-Component~8~8
+component0009~4
+Component~3~3
 boardPos=20 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0010~9
-Component~8~8
+component0010~4
+Component~3~3
 boardPos=22 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0011~9
-Component~8~8
+component0011~4
+Component~3~3
 boardPos=18 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0012~9
-Component~8~8
+component0012~4
+Component~3~3
 boardPos=18 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0013~9
-Component~8~8
+component0013~4
+Component~3~3
 boardPos=20 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0014~9
-Component~8~8
+component0014~4
+Component~3~3
 boardPos=22 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0015~12
-Component~11~11
+component0015~8
+Component~7~7
 boardPos=0 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1
-component0016~9
-Component~8~8
+component0016~4
+Component~3~3
 boardPos=2 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0017~9
-Component~8~8
+component0017~4
+Component~3~3
 boardPos=4 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0018~9
-Component~8~8
+component0018~4
+Component~3~3
 boardPos=6 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0019~9
-Component~8~8
+component0019~4
+Component~3~3
 boardPos=8 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Splitter
 puzzleType=1
-speed=2
-component0020~9
-Component~8~8
+component0020~4
+Component~3~3
 boardPos=8 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0021~9
-Component~8~8
+component0021~4
+Component~3~3
 boardPos=8 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0022~9
-Component~8~8
+component0022~4
+Component~3~3
 boardPos=8 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Splitter
 puzzleType=1
-speed=2
-component0023~9
-Component~8~8
+component0023~4
+Component~3~3
 boardPos=8 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Splitter
 puzzleType=1
-speed=2
-component0024~9
-Component~8~8
+component0024~5
+Component~4~4
 boardPos=6 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=1
-component0025~9
-Component~8~8
+component0025~5
+Component~4~4
 boardPos=8 18
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=1
-component0026~9
-Component~8~8
+component0026~5
+Component~4~4
 boardPos=10 17
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0027~9
-Component~8~8
+component0027~5
+Component~4~4
 boardPos=12 16
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0028~9
-Component~8~8
+component0028~4
+Component~3~3
 boardPos=14 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0029~9
-Component~8~8
+component0029~5
+Component~4~4
 boardPos=16 14
-boundary=0
 chargePreference=1
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0030~9
-Component~8~8
+component0030~4
+Component~3~3
 boardPos=16 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0031~9
-Component~8~8
+component0031~5
+Component~4~4
 boardPos=6 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=1
-component0032~9
-Component~8~8
+component0032~5
+Component~4~4
 boardPos=8 6
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=1
-component0033~9
-Component~8~8
+component0033~5
+Component~4~4
 boardPos=10 7
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0034~9
-Component~8~8
+component0034~5
+Component~4~4
 boardPos=16 10
-boundary=0
 chargePreference=1
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0035~9
-Component~8~8
+component0035~6
+Component~5~5
 boardPos=12 8
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0036~9
-Component~8~8
+component0036~5
+Component~4~4
 boardPos=14 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
 speed=0

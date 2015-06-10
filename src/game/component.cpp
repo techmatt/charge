@@ -100,13 +100,24 @@ ParameterTable Component::toTable(const string &tableName) const
     ParameterTable result("Component");
 
     result.set("name", info->name);
-    result.set("color", (int)modifiers.color);
-    result.set("boardPos", location.boardPos);
-    result.set("circuitPos", location.circuitPos);
 
-    result.set("chargePreference", (int)modifiers.chargePreference);
-    result.set("speed", (int)modifiers.speed);
-    result.set("boundary", (int)modifiers.boundary);
+    if (modifiers.color != ChargeType::None)
+        result.set("color", (int)modifiers.color);
+
+    result.set("boardPos", location.boardPos);
+
+    if (location.circuitPos != constants::invalidCoord)
+        result.set("circuitPos", location.circuitPos);
+
+    if (modifiers.chargePreference != 2)
+        result.set("chargePreference", (int)modifiers.chargePreference);
+
+    if (modifiers.speed != WireType::Standard)
+        result.set("speed", (int)modifiers.speed);
+
+    if (modifiers.boundary != CircuitBoundaryType::Invalid)
+        result.set("boundary", (int)modifiers.boundary);
+
     result.set("puzzleType", (int)modifiers.puzzleType);
 
     if (info->name == "PowerSource")
@@ -127,11 +138,26 @@ ParameterTable Component::toTable(const string &tableName) const
 
 Component* Component::fromTable(const ParameterTable &table)
 {
-    Component *result = new Component(table.getString("name"), (ChargeType)table.getInt("color"), GameLocation(table.getVec2i("boardPos"), table.getVec2i("circuitPos")));
+    ChargeType color = ChargeType::None;
+    vec2i circuitPos = constants::invalidCoord;
 
-    result->modifiers.chargePreference = table.getInt("chargePreference");
-    result->modifiers.speed = (WireType)table.getInt("speed");
-    result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
+    if (table.hasParameter("color"))
+        color = (ChargeType)table.getInt("color");
+
+    if (table.hasParameter("circuitPos"))
+        circuitPos = table.getVec2i("circuitPos");
+
+    Component *result = new Component(table.getString("name"), color, GameLocation(table.getVec2i("boardPos"), circuitPos));
+
+    if (table.hasParameter("chargePreference"))
+        result->modifiers.chargePreference = table.getInt("chargePreference");
+
+    if (table.hasParameter("speed"))
+        result->modifiers.speed = (WireType)table.getInt("speed");
+
+    if (table.hasParameter("boundary"))
+        result->modifiers.boundary = (CircuitBoundaryType)table.getInt("boundary");
+
     result->modifiers.puzzleType = (ComponentPuzzleType)table.getInt("puzzleType");
 
     if (result->info->name == "PowerSource")

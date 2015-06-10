@@ -1,4 +1,4 @@
-Puzzle~497~5023
+Puzzle~497~3326
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -53,4972 +53,3275 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~9
-Component~8~8
+component0000~4
+Component~3~3
 boardPos=12 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0001~9
-Component~8~8
+component0001~4
+Component~3~3
 boardPos=12 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0002~9
-Component~8~8
+component0002~4
+Component~3~3
 boardPos=12 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0003~9
-Component~8~8
+component0003~4
+Component~3~3
 boardPos=12 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0004~9
-Component~8~8
+component0004~4
+Component~3~3
 boardPos=12 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0005~9
-Component~8~8
+component0005~4
+Component~3~3
 boardPos=14 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0006~9
-Component~8~8
+component0006~4
+Component~3~3
 boardPos=18 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0007~9
-Component~8~8
+component0007~4
+Component~3~3
 boardPos=16 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0008~9
-Component~8~8
+component0008~4
+Component~3~3
 boardPos=20 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0009~9
-Component~8~8
+component0009~4
+Component~3~3
 boardPos=22 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0010~9
-Component~8~8
+component0010~4
+Component~3~3
 boardPos=2 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Circuit
 puzzleType=1
-speed=2
-component0011~9
-Component~8~8
+component0011~4
+Component~3~3
 boardPos=4 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0012~9
-Component~8~8
+component0012~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0013~9
-Component~8~8
+component0013~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0014~9
-Component~8~8
+component0014~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0015~9
-Component~8~8
+component0015~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0016~9
-Component~8~8
+component0016~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0017~9
-Component~8~8
+component0017~4
+Component~3~3
 boardPos=2 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0018~9
-Component~8~8
+component0018~4
+Component~3~3
 boardPos=4 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0019~9
-Component~8~8
+component0019~5
+Component~4~4
 boardPos=0 7
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0020~9
-Component~8~8
+component0020~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0021~9
-Component~8~8
+component0021~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0022~9
-Component~8~8
+component0022~4
+Component~3~3
 boardPos=20 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0023~9
-Component~8~8
+component0023~4
+Component~3~3
 boardPos=2 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0024~9
-Component~8~8
+component0024~4
+Component~3~3
 boardPos=4 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0025~9
-Component~8~8
+component0025~4
+Component~3~3
 boardPos=20 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0026~9
-Component~8~8
+component0026~4
+Component~3~3
 boardPos=22 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0027~9
-Component~8~8
+component0027~6
+Component~5~5
 boardPos=0 19
-boundary=0
 chargePreference=0
-circuitPos=-100 -100
 color=1
 name=TeleportDestination
 puzzleType=1
-speed=2
-component0028~9
-Component~8~8
+component0028~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0029~9
-Component~8~8
+component0029~4
+Component~3~3
 boardPos=0 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0030~9
-Component~8~8
+component0030~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0031~9
-Component~8~8
+component0031~4
+Component~3~3
 boardPos=13 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0032~9
-Component~8~8
+component0032~4
+Component~3~3
 boardPos=0 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0033~9
-Component~8~8
+component0033~4
+Component~3~3
 boardPos=0 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0034~9
-Component~8~8
+component0034~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0035~9
-Component~8~8
+component0035~4
+Component~3~3
 boardPos=2 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0036~9
-Component~8~8
+component0036~4
+Component~3~3
 boardPos=15 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0037~9
-Component~8~8
+component0037~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0038~9
-Component~8~8
+component0038~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0039~9
-Component~8~8
+component0039~4
+Component~3~3
 boardPos=2 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0040~9
-Component~8~8
+component0040~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0041~9
-Component~8~8
+component0041~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0042~9
-Component~8~8
+component0042~6
+Component~5~5
 boardPos=14 22
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0043~9
-Component~8~8
+component0043~4
+Component~3~3
 boardPos=9 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0044~9
-Component~8~8
+component0044~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0045~9
-Component~8~8
+component0045~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0046~9
-Component~8~8
+component0046~4
+Component~3~3
 boardPos=6 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0047~9
-Component~8~8
+component0047~6
+Component~5~5
 boardPos=8 19
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0048~9
-Component~8~8
+component0048~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0049~9
-Component~8~8
+component0049~6
+Component~5~5
 boardPos=4 3
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0050~9
-Component~8~8
+component0050~4
+Component~3~3
 boardPos=6 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0051~9
-Component~8~8
+component0051~4
+Component~3~3
 boardPos=15 20
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0052~9
-Component~8~8
+component0052~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0053~9
-Component~8~8
+component0053~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0054~9
-Component~8~8
+component0054~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0055~9
-Component~8~8
+component0055~5
+Component~4~4
 boardPos=14 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0056~9
-Component~8~8
+component0056~5
+Component~4~4
 boardPos=22 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0057~9
-Component~8~8
+component0057~5
+Component~4~4
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=4 3
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0058~9
-Component~8~8
+component0058~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0059~9
-Component~8~8
+component0059~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0060~9
-Component~8~8
+component0060~5
+Component~4~4
 boardPos=14 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0061~9
-Component~8~8
+component0061~5
+Component~4~4
 boardPos=16 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0062~9
-Component~8~8
+component0062~5
+Component~4~4
 boardPos=14 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0063~9
-Component~8~8
+component0063~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0064~9
-Component~8~8
+component0064~5
+Component~4~4
 boardPos=14 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0065~9
-Component~8~8
+component0065~5
+Component~4~4
 boardPos=18 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0066~9
-Component~8~8
+component0066~5
+Component~4~4
 boardPos=16 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0067~9
-Component~8~8
+component0067~5
+Component~4~4
 boardPos=16 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0068~9
-Component~8~8
+component0068~5
+Component~4~4
 boardPos=18 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0069~9
-Component~8~8
+component0069~5
+Component~4~4
 boardPos=20 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0070~9
-Component~8~8
+component0070~5
+Component~4~4
 boardPos=20 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0071~9
-Component~8~8
+component0071~5
+Component~4~4
 boardPos=18 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0072~9
-Component~8~8
+component0072~5
+Component~4~4
 boardPos=16 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0073~9
-Component~8~8
+component0073~5
+Component~4~4
 boardPos=12 5
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0074~9
-Component~8~8
+component0074~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0075~9
-Component~8~8
+component0075~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0076~9
-Component~8~8
+component0076~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0077~9
-Component~8~8
+component0077~5
+Component~4~4
 boardPos=12 5
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0078~9
-Component~8~8
+component0078~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0079~9
-Component~8~8
+component0079~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0080~9
-Component~8~8
+component0080~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0081~9
-Component~8~8
+component0081~5
+Component~4~4
 boardPos=12 5
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0082~9
-Component~8~8
+component0082~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0083~9
-Component~8~8
+component0083~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0084~9
-Component~8~8
+component0084~6
+Component~5~5
 boardPos=12 5
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0085~9
-Component~8~8
+component0085~5
+Component~4~4
 boardPos=12 5
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0086~9
-Component~8~8
+component0086~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0087~9
-Component~8~8
+component0087~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0088~9
-Component~8~8
+component0088~7
+Component~6~6
 boardPos=12 5
 boundary=1
 chargePreference=4
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0089~9
-Component~8~8
+component0089~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0090~9
-Component~8~8
+component0090~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0091~9
-Component~8~8
+component0091~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0092~9
-Component~8~8
+component0092~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0093~9
-Component~8~8
+component0093~5
+Component~4~4
 boardPos=12 5
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0094~9
-Component~8~8
+component0094~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0095~9
-Component~8~8
+component0095~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0096~9
-Component~8~8
+component0096~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0097~9
-Component~8~8
+component0097~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0098~9
-Component~8~8
+component0098~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0099~9
-Component~8~8
+component0099~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0100~9
-Component~8~8
+component0100~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0101~9
-Component~8~8
+component0101~6
+Component~5~5
 boardPos=12 5
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0102~9
-Component~8~8
+component0102~5
+Component~4~4
 boardPos=12 8
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0103~9
-Component~8~8
+component0103~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0104~9
-Component~8~8
+component0104~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0105~9
-Component~8~8
+component0105~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0106~9
-Component~8~8
+component0106~6
+Component~5~5
 boardPos=12 8
-boundary=0
-chargePreference=2
 circuitPos=6 6
 color=2
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0107~9
-Component~8~8
+component0107~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0108~9
-Component~8~8
+component0108~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0109~9
-Component~8~8
+component0109~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0110~9
-Component~8~8
+component0110~5
+Component~4~4
 boardPos=12 8
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0111~9
-Component~8~8
+component0111~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0112~9
-Component~8~8
+component0112~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0113~9
-Component~8~8
+component0113~6
+Component~5~5
 boardPos=12 8
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0114~9
-Component~8~8
+component0114~5
+Component~4~4
 boardPos=12 8
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0115~9
-Component~8~8
+component0115~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0116~9
-Component~8~8
+component0116~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0117~9
-Component~8~8
+component0117~7
+Component~6~6
 boardPos=12 8
 boundary=1
 chargePreference=4
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0118~9
-Component~8~8
+component0118~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0119~9
-Component~8~8
+component0119~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0120~9
-Component~8~8
+component0120~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0121~9
-Component~8~8
+component0121~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0122~9
-Component~8~8
+component0122~5
+Component~4~4
 boardPos=12 8
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0123~9
-Component~8~8
+component0123~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0124~9
-Component~8~8
+component0124~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0125~9
-Component~8~8
+component0125~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0126~9
-Component~8~8
+component0126~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0127~9
-Component~8~8
+component0127~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0128~9
-Component~8~8
+component0128~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0129~9
-Component~8~8
+component0129~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0130~9
-Component~8~8
+component0130~6
+Component~5~5
 boardPos=12 8
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0131~9
-Component~8~8
+component0131~7
+Component~6~6
 boardPos=12 11
-boundary=0
 chargePreference=3
 circuitPos=6 7
 color=3
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0132~9
-Component~8~8
+component0132~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0133~9
-Component~8~8
+component0133~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0134~9
-Component~8~8
+component0134~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0135~9
-Component~8~8
+component0135~5
+Component~4~4
 boardPos=12 11
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0136~9
-Component~8~8
+component0136~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0137~9
-Component~8~8
+component0137~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0138~9
-Component~8~8
+component0138~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0139~9
-Component~8~8
+component0139~5
+Component~4~4
 boardPos=12 11
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0140~9
-Component~8~8
+component0140~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0141~9
-Component~8~8
+component0141~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0142~9
-Component~8~8
+component0142~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0143~9
-Component~8~8
+component0143~5
+Component~4~4
 boardPos=12 11
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0144~9
-Component~8~8
+component0144~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0145~9
-Component~8~8
+component0145~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0146~9
-Component~8~8
+component0146~7
+Component~6~6
 boardPos=12 11
 boundary=1
 chargePreference=4
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0147~9
-Component~8~8
+component0147~6
+Component~5~5
 boardPos=12 11
-boundary=0
-chargePreference=2
 circuitPos=6 5
 color=2
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0148~9
-Component~8~8
+component0148~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0149~9
-Component~8~8
+component0149~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0150~9
-Component~8~8
+component0150~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0151~9
-Component~8~8
+component0151~6
+Component~5~5
 boardPos=12 11
-boundary=0
 chargePreference=3
 circuitPos=8 7
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0152~9
-Component~8~8
+component0152~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0153~9
-Component~8~8
+component0153~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0154~9
-Component~8~8
+component0154~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0155~9
-Component~8~8
+component0155~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0156~9
-Component~8~8
+component0156~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0157~9
-Component~8~8
+component0157~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0158~9
-Component~8~8
+component0158~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0159~9
-Component~8~8
+component0159~6
+Component~5~5
 boardPos=12 11
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0160~9
-Component~8~8
+component0160~6
+Component~5~5
 boardPos=12 11
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0161~9
-Component~8~8
+component0161~7
+Component~6~6
 boardPos=12 14
-boundary=0
 chargePreference=3
 circuitPos=6 8
 color=4
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0162~9
-Component~8~8
+component0162~6
+Component~5~5
 boardPos=12 14
-boundary=0
-chargePreference=2
 circuitPos=6 4
 color=2
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0163~9
-Component~8~8
+component0163~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0164~9
-Component~8~8
+component0164~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0165~9
-Component~8~8
+component0165~6
+Component~5~5
 boardPos=12 14
-boundary=0
 chargePreference=4
 circuitPos=10 7
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0166~9
-Component~8~8
+component0166~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0167~9
-Component~8~8
+component0167~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0168~9
-Component~8~8
+component0168~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0169~9
-Component~8~8
+component0169~5
+Component~4~4
 boardPos=12 14
-boundary=0
-chargePreference=2
 circuitPos=4 7
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0170~9
-Component~8~8
+component0170~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0171~9
-Component~8~8
+component0171~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0172~9
-Component~8~8
+component0172~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0173~9
-Component~8~8
+component0173~6
+Component~5~5
 boardPos=12 14
-boundary=0
-chargePreference=2
 circuitPos=6 6
 color=3
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0174~9
-Component~8~8
+component0174~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0175~9
-Component~8~8
+component0175~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0176~9
-Component~8~8
+component0176~7
+Component~6~6
 boardPos=12 14
 boundary=1
 chargePreference=4
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0177~9
-Component~8~8
+component0177~6
+Component~5~5
 boardPos=12 14
-boundary=0
 chargePreference=1
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0178~9
-Component~8~8
+component0178~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0179~9
-Component~8~8
+component0179~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0180~9
-Component~8~8
+component0180~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0181~9
-Component~8~8
+component0181~6
+Component~5~5
 boardPos=12 14
-boundary=0
 chargePreference=3
 circuitPos=8 8
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0182~9
-Component~8~8
+component0182~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0183~9
-Component~8~8
+component0183~5
+Component~4~4
 boardPos=12 14
-boundary=0
-chargePreference=2
 circuitPos=4 5
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0184~9
-Component~8~8
+component0184~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0185~9
-Component~8~8
+component0185~6
+Component~5~5
 boardPos=12 17
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0186~9
-Component~8~8
+component0186~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0187~9
-Component~8~8
+component0187~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0188~9
-Component~8~8
+component0188~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0189~9
-Component~8~8
+component0189~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0190~9
-Component~8~8
+component0190~6
+Component~5~5
 boardPos=12 14
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0191~9
-Component~8~8
+component0191~6
+Component~5~5
 boardPos=12 14
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0192~9
-Component~8~8
+component0192~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0193~9
-Component~8~8
+component0193~7
+Component~6~6
 boardPos=12 17
-boundary=0
 chargePreference=3
 circuitPos=6 8
 color=5
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0194~9
-Component~8~8
+component0194~6
+Component~5~5
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=6 4
 color=3
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0195~9
-Component~8~8
+component0195~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0196~9
-Component~8~8
+component0196~6
+Component~5~5
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=6 2
 color=2
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0197~9
-Component~8~8
+component0197~5
+Component~4~4
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=10 7
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0198~9
-Component~8~8
+component0198~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0199~9
-Component~8~8
+component0199~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0200~9
-Component~8~8
+component0200~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0201~9
-Component~8~8
+component0201~5
+Component~4~4
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=4 7
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0202~9
-Component~8~8
+component0202~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0203~9
-Component~8~8
+component0203~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0204~9
-Component~8~8
+component0204~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0205~9
-Component~8~8
+component0205~6
+Component~5~5
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=6 6
 color=4
 name=FilteredAmplifier
 puzzleType=1
-speed=2
-component0206~9
-Component~8~8
+component0206~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0207~9
-Component~8~8
+component0207~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0208~9
-Component~8~8
+component0208~7
+Component~6~6
 boardPos=12 17
 boundary=1
 chargePreference=4
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0209~9
-Component~8~8
+component0209~6
+Component~5~5
 boardPos=12 17
-boundary=0
 chargePreference=1
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0210~9
-Component~8~8
+component0210~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0211~9
-Component~8~8
+component0211~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0212~9
-Component~8~8
+component0212~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0213~9
-Component~8~8
+component0213~6
+Component~5~5
 boardPos=12 17
-boundary=0
 chargePreference=3
 circuitPos=8 8
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0214~9
-Component~8~8
+component0214~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0215~9
-Component~8~8
+component0215~5
+Component~4~4
 boardPos=12 17
-boundary=0
-chargePreference=2
 circuitPos=4 5
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0216~9
-Component~8~8
+component0216~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0217~9
-Component~8~8
+component0217~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0218~9
-Component~8~8
+component0218~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0219~9
-Component~8~8
+component0219~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0220~9
-Component~8~8
+component0220~6
+Component~5~5
 boardPos=12 17
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0221~9
-Component~8~8
+component0221~5
+Component~4~4
 boardPos=14 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-speed=2
-component0222~9
-Component~8~8
+component0222~6
+Component~5~5
 boardPos=10 5
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=1
 name=GateClosed
 puzzleType=1
-speed=2
-component0223~9
-Component~8~8
+component0223~6
+Component~5~5
 boardPos=10 8
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=2
 name=GateClosed
 puzzleType=1
-speed=2
-component0224~9
-Component~8~8
+component0224~6
+Component~5~5
 boardPos=10 11
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=3
 name=GateClosed
 puzzleType=1
-speed=2
-component0225~9
-Component~8~8
+component0225~6
+Component~5~5
 boardPos=10 14
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=4
 name=GateClosed
 puzzleType=1
-speed=2
-component0226~9
-Component~8~8
+component0226~6
+Component~5~5
 boardPos=10 17
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
 color=5
 name=GateClosed
 puzzleType=1
-speed=2
-component0227~9
-Component~8~8
+component0227~4
+Component~3~3
 boardPos=2 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0228~9
-Component~8~8
+component0228~4
+Component~3~3
 boardPos=18 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0229~9
-Component~8~8
+component0229~4
+Component~3~3
 boardPos=18 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0230~9
-Component~8~8
+component0230~5
+Component~4~4
 boardPos=4 5
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0231~9
-Component~8~8
+component0231~4
+Component~3~3
 boardPos=6 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0232~9
-Component~8~8
+component0232~4
+Component~3~3
 boardPos=8 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0233~9
-Component~8~8
+component0233~4
+Component~3~3
 boardPos=8 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0234~9
-Component~8~8
+component0234~4
+Component~3~3
 boardPos=8 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0235~9
-Component~8~8
+component0235~4
+Component~3~3
 boardPos=8 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0236~9
-Component~8~8
+component0236~4
+Component~3~3
 boardPos=8 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0237~9
-Component~8~8
+component0237~4
+Component~3~3
 boardPos=8 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0238~9
-Component~8~8
+component0238~4
+Component~3~3
 boardPos=8 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0239~9
-Component~8~8
+component0239~4
+Component~3~3
 boardPos=22 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0240~9
-Component~8~8
+component0240~4
+Component~3~3
 boardPos=22 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0241~9
-Component~8~8
+component0241~4
+Component~3~3
 boardPos=20 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0242~9
-Component~8~8
+component0242~4
+Component~3~3
 boardPos=22 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0243~9
-Component~8~8
+component0243~4
+Component~3~3
 boardPos=20 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0244~9
-Component~8~8
+component0244~4
+Component~3~3
 boardPos=22 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0245~9
-Component~8~8
+component0245~4
+Component~3~3
 boardPos=18 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0246~9
-Component~8~8
+component0246~4
+Component~3~3
 boardPos=20 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0247~9
-Component~8~8
+component0247~4
+Component~3~3
 boardPos=22 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0248~9
-Component~8~8
+component0248~4
+Component~3~3
 boardPos=18 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0249~9
-Component~8~8
+component0249~4
+Component~3~3
 boardPos=20 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0250~9
-Component~8~8
+component0250~4
+Component~3~3
 boardPos=22 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0251~9
-Component~8~8
+component0251~4
+Component~3~3
 boardPos=18 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0252~9
-Component~8~8
+component0252~4
+Component~3~3
 boardPos=16 16
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0253~9
-Component~8~8
+component0253~4
+Component~3~3
 boardPos=20 18
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0254~9
-Component~8~8
+component0254~4
+Component~3~3
 boardPos=12 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0255~9
-Component~8~8
+component0255~4
+Component~3~3
 boardPos=6 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0256~9
-Component~8~8
+component0256~4
+Component~3~3
 boardPos=12 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0257~9
-Component~8~8
+component0257~4
+Component~3~3
 boardPos=15 1
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0258~9
-Component~8~8
+component0258~4
+Component~3~3
 boardPos=4 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0259~9
-Component~8~8
+component0259~4
+Component~3~3
 boardPos=16 18
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0260~9
-Component~8~8
+component0260~4
+Component~3~3
 boardPos=22 20
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0261~9
-Component~8~8
+component0261~4
+Component~3~3
 boardPos=4 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0262~9
-Component~8~8
+component0262~4
+Component~3~3
 boardPos=6 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0263~9
-Component~8~8
+component0263~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0264~9
-Component~8~8
+component0264~4
+Component~3~3
 boardPos=9 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0265~9
-Component~8~8
+component0265~4
+Component~3~3
 boardPos=19 20
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0266~9
-Component~8~8
+component0266~4
+Component~3~3
 boardPos=12 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0267~9
-Component~8~8
+component0267~4
+Component~3~3
 boardPos=10 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0268~9
-Component~8~8
+component0268~4
+Component~3~3
 boardPos=10 19
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0269~9
-Component~8~8
+component0269~6
+Component~5~5
 boardPos=20 22
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0270~9
-Component~8~8
+component0270~4
+Component~3~3
 boardPos=8 21
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0271~9
-Component~8~8
+component0271~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0272~9
-Component~8~8
+component0272~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0273~9
-Component~8~8
+component0273~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0274~9
-Component~8~8
+component0274~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0275~9
-Component~8~8
+component0275~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0276~9
-Component~8~8
+component0276~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=4 2
 color=1
 name=GateSwitch
 puzzleType=1
-speed=2
-component0277~9
-Component~8~8
+component0277~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0278~12
-Component~11~11
+component0278~9
+Component~8~8
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=2 2
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
-speed=2
 totalCharges=1
-component0279~9
-Component~8~8
+component0279~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0280~9
-Component~8~8
+component0280~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0281~9
-Component~8~8
+component0281~6
+Component~5~5
 boardPos=14 22
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0282~9
-Component~8~8
+component0282~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0283~9
-Component~8~8
+component0283~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0284~9
-Component~8~8
+component0284~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0285~9
-Component~8~8
+component0285~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0286~9
-Component~8~8
+component0286~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0287~9
-Component~8~8
+component0287~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=2 8
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0288~9
-Component~8~8
+component0288~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0289~9
-Component~8~8
+component0289~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0290~9
-Component~8~8
+component0290~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0291~9
-Component~8~8
+component0291~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0292~9
-Component~8~8
+component0292~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0293~9
-Component~8~8
+component0293~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0294~9
-Component~8~8
+component0294~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0295~9
-Component~8~8
+component0295~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0296~9
-Component~8~8
+component0296~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0297~9
-Component~8~8
+component0297~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0298~9
-Component~8~8
+component0298~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=4 2
 color=2
 name=GateSwitch
 puzzleType=1
-speed=2
-component0299~9
-Component~8~8
+component0299~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0300~9
-Component~8~8
+component0300~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=2 2
 color=1
 name=GateSwitch
 puzzleType=1
-speed=2
-component0301~9
-Component~8~8
+component0301~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0302~9
-Component~8~8
+component0302~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0303~9
-Component~8~8
+component0303~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0304~9
-Component~8~8
+component0304~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0305~9
-Component~8~8
+component0305~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0306~9
-Component~8~8
+component0306~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0307~9
-Component~8~8
+component0307~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=2 10
 color=3
 name=GateSwitch
 puzzleType=1
-speed=2
-component0308~9
-Component~8~8
+component0308~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0309~9
-Component~8~8
+component0309~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0310~9
-Component~8~8
+component0310~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0311~9
-Component~8~8
+component0311~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=10 6
 color=5
 name=GateSwitch
 puzzleType=1
-speed=2
-component0312~9
-Component~8~8
+component0312~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0313~9
-Component~8~8
+component0313~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0314~9
-Component~8~8
+component0314~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0315~9
-Component~8~8
+component0315~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0316~9
-Component~8~8
+component0316~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0317~9
-Component~8~8
+component0317~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=8 6
 color=4
 name=GateSwitch
 puzzleType=1
-speed=2
-component0318~9
-Component~8~8
+component0318~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0319~9
-Component~8~8
+component0319~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0320~9
-Component~8~8
+component0320~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0321~9
-Component~8~8
+component0321~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0322~9
-Component~8~8
+component0322~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0323~9
-Component~8~8
+component0323~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0324~9
-Component~8~8
+component0324~6
+Component~5~5
 boardPos=18 22
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0325~9
-Component~8~8
+component0325~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0326~9
-Component~8~8
+component0326~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0327~9
-Component~8~8
+component0327~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0328~9
-Component~8~8
+component0328~6
+Component~5~5
 boardPos=18 22
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0329~9
-Component~8~8
+component0329~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0330~9
-Component~8~8
+component0330~6
+Component~5~5
 boardPos=18 22
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0331~9
-Component~8~8
+component0331~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0332~9
-Component~8~8
+component0332~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0333~9
-Component~8~8
+component0333~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0334~9
-Component~8~8
+component0334~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0335~9
-Component~8~8
+component0335~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=6 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0336~9
-Component~8~8
+component0336~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0337~9
-Component~8~8
+component0337~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=4 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0338~9
-Component~8~8
+component0338~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0339~9
-Component~8~8
+component0339~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=2 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0340~9
-Component~8~8
+component0340~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0341~9
-Component~8~8
+component0341~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0342~9
-Component~8~8
+component0342~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0343~9
-Component~8~8
+component0343~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0344~9
-Component~8~8
+component0344~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0345~9
-Component~8~8
+component0345~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0346~9
-Component~8~8
+component0346~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0347~9
-Component~8~8
+component0347~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0348~9
-Component~8~8
+component0348~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0349~9
-Component~8~8
+component0349~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0350~9
-Component~8~8
+component0350~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0351~9
-Component~8~8
+component0351~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0352~9
-Component~8~8
+component0352~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0353~9
-Component~8~8
+component0353~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0354~9
-Component~8~8
+component0354~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=10 10
 color=4
 name=GateSwitch
 puzzleType=1
-speed=2
-component0355~9
-Component~8~8
+component0355~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0356~9
-Component~8~8
+component0356~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=8 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0357~9
-Component~8~8
+component0357~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0358~9
-Component~8~8
+component0358~4
+Component~3~3
 boardPos=22 3
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0359~9
-Component~8~8
+component0359~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0360~9
-Component~8~8
+component0360~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0361~9
-Component~8~8
+component0361~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0362~9
-Component~8~8
+component0362~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0363~9
-Component~8~8
+component0363~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=2 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0364~9
-Component~8~8
+component0364~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0365~9
-Component~8~8
+component0365~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0366~9
-Component~8~8
+component0366~6
+Component~5~5
 boardPos=16 22
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0367~9
-Component~8~8
+component0367~6
+Component~5~5
 boardPos=16 22
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0368~9
-Component~8~8
+component0368~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=10 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0369~9
-Component~8~8
+component0369~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0370~9
-Component~8~8
+component0370~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0371~9
-Component~8~8
+component0371~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0372~9
-Component~8~8
+component0372~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0373~9
-Component~8~8
+component0373~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0374~9
-Component~8~8
+component0374~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0375~9
-Component~8~8
+component0375~6
+Component~5~5
 boardPos=20 22
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0376~9
-Component~8~8
+component0376~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0377~9
-Component~8~8
+component0377~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0378~9
-Component~8~8
+component0378~6
+Component~5~5
 boardPos=20 22
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0379~9
-Component~8~8
+component0379~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0380~9
-Component~8~8
+component0380~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0381~9
-Component~8~8
+component0381~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=6 6
 color=1
 name=TeleportSource
 puzzleType=1
-speed=2
-component0382~9
-Component~8~8
+component0382~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0383~9
-Component~8~8
+component0383~6
+Component~5~5
 boardPos=20 22
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0384~9
-Component~8~8
+component0384~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0385~9
-Component~8~8
+component0385~5
+Component~4~4
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0386~9
-Component~8~8
+component0386~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0387~9
-Component~8~8
+component0387~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0388~9
-Component~8~8
+component0388~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0389~9
-Component~8~8
+component0389~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0390~9
-Component~8~8
+component0390~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0391~9
-Component~8~8
+component0391~5
+Component~4~4
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0392~9
-Component~8~8
+component0392~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=8 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0393~9
-Component~8~8
+component0393~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=6 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0394~9
-Component~8~8
+component0394~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=4 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0395~9
-Component~8~8
+component0395~6
+Component~5~5
 boardPos=20 22
-boundary=0
-chargePreference=2
 circuitPos=2 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0396~9
-Component~8~8
+component0396~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0397~9
-Component~8~8
+component0397~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0398~9
-Component~8~8
+component0398~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0399~9
-Component~8~8
+component0399~6
+Component~5~5
 boardPos=20 22
 boundary=1
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0400~9
-Component~8~8
+component0400~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0401~9
-Component~8~8
+component0401~6
+Component~5~5
 boardPos=20 22
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0402~9
-Component~8~8
+component0402~4
+Component~3~3
 boardPos=17 20
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0403~9
-Component~8~8
+component0403~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=6 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0404~9
-Component~8~8
+component0404~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=10 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0405~9
-Component~8~8
+component0405~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0406~9
-Component~8~8
+component0406~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0407~9
-Component~8~8
+component0407~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=4 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0408~9
-Component~8~8
+component0408~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=0 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0409~9
-Component~8~8
+component0409~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0410~9
-Component~8~8
+component0410~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0411~9
-Component~8~8
+component0411~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=2 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0412~9
-Component~8~8
+component0412~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0413~9
-Component~8~8
+component0413~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0414~9
-Component~8~8
+component0414~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0415~9
-Component~8~8
+component0415~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=10 8
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0416~9
-Component~8~8
+component0416~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0417~9
-Component~8~8
+component0417~6
+Component~5~5
 boardPos=22 22
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0418~9
-Component~8~8
+component0418~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0419~9
-Component~8~8
+component0419~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=10 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0420~9
-Component~8~8
+component0420~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0421~9
-Component~8~8
+component0421~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0422~9
-Component~8~8
+component0422~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0423~9
-Component~8~8
+component0423~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=8 10
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0424~9
-Component~8~8
+component0424~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0425~9
-Component~8~8
+component0425~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=10 4
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0426~9
-Component~8~8
+component0426~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=8 2
 color=3
 name=GateSwitch
 puzzleType=1
-speed=2
-component0427~9
-Component~8~8
+component0427~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=6 2
 color=2
 name=GateSwitch
 puzzleType=1
-speed=2
-component0428~9
-Component~8~8
+component0428~4
+Component~3~3
 boardPos=4 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0429~9
-Component~8~8
+component0429~6
+Component~5~5
 boardPos=22 22
-boundary=0
-chargePreference=2
 circuitPos=4 2
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0430~9
-Component~8~8
+component0430~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0431~9
-Component~8~8
+component0431~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0432~9
-Component~8~8
+component0432~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0433~9
-Component~8~8
+component0433~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0434~9
-Component~8~8
+component0434~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0435~9
-Component~8~8
+component0435~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0436~9
-Component~8~8
+component0436~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=0 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0437~9
-Component~8~8
+component0437~6
+Component~5~5
 boardPos=22 22
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0438~9
-Component~8~8
+component0438~6
+Component~5~5
 boardPos=22 22
 boundary=2
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0439~9
-Component~8~8
+component0439~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0440~9
-Component~8~8
+component0440~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0441~9
-Component~8~8
+component0441~6
+Component~5~5
 boardPos=14 22
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0442~9
-Component~8~8
+component0442~6
+Component~5~5
 boardPos=14 22
 boundary=1
-chargePreference=2
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0443~9
-Component~8~8
+component0443~6
+Component~5~5
 boardPos=14 22
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0444~9
-Component~8~8
+component0444~5
+Component~4~4
 boardPos=0 11
-boundary=0
 chargePreference=3
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0445~9
-Component~8~8
+component0445~4
+Component~3~3
 boardPos=0 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0446~9
-Component~8~8
+component0446~5
+Component~4~4
 boardPos=0 15
-boundary=0
 chargePreference=1
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0447~9
-Component~8~8
+component0447~5
+Component~4~4
 boardPos=0 17
-boundary=0
 chargePreference=0
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0448~9
-Component~8~8
+component0448~4
+Component~3~3
 boardPos=0 5
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0449~9
-Component~8~8
+component0449~5
+Component~4~4
 boardPos=0 9
-boundary=0
 chargePreference=4
-circuitPos=-100 -100
-color=0
 name=Wire
 puzzleType=1
-speed=2
-component0450~12
-Component~11~11
+component0450~8
+Component~7~7
 boardPos=2 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=5
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=0
-speed=2
 totalCharges=1
-component0451~12
-Component~11~11
+component0451~8
+Component~7~7
 boardPos=2 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=4
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=4
 secondsPerEmission=4
-speed=2
 totalCharges=2
-component0452~12
-Component~11~11
+component0452~8
+Component~7~7
 boardPos=2 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=40
 secondsPerEmission=1
-speed=2
 totalCharges=5
-component0453~12
-Component~11~11
+component0453~8
+Component~7~7
 boardPos=2 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=2
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=24
 secondsPerEmission=2
-speed=2
 totalCharges=4
-component0454~12
-Component~11~11
+component0454~8
+Component~7~7
 boardPos=2 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=3
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=12
 secondsPerEmission=4
-speed=2
 totalCharges=3
-component0455~9
-Component~8~8
+component0455~4
+Component~3~3
 boardPos=6 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0456~9
-Component~8~8
+component0456~4
+Component~3~3
 boardPos=6 9
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0457~9
-Component~8~8
+component0457~4
+Component~3~3
 boardPos=4 7
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0458~9
-Component~8~8
+component0458~6
+Component~5~5
 boardPos=16 22
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Wire
 puzzleType=1
 speed=0
-component0459~9
-Component~8~8
+component0459~4
+Component~3~3
 boardPos=6 11
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0460~9
-Component~8~8
+component0460~4
+Component~3~3
 boardPos=6 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0461~9
-Component~8~8
+component0461~4
+Component~3~3
 boardPos=4 13
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0462~9
-Component~8~8
+component0462~4
+Component~3~3
 boardPos=4 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0463~9
-Component~8~8
+component0463~4
+Component~3~3
 boardPos=6 15
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0464~9
-Component~8~8
+component0464~4
+Component~3~3
 boardPos=6 17
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Blocker
 puzzleType=1
-speed=2
-component0465~9
-Component~8~8
+component0465~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=2 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0466~9
-Component~8~8
+component0466~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=2 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0467~9
-Component~8~8
+component0467~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=0 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0468~9
-Component~8~8
+component0468~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=12 2
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0469~9
-Component~8~8
+component0469~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=4 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0470~9
-Component~8~8
+component0470~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=4 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0471~9
-Component~8~8
+component0471~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=0 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0472~9
-Component~8~8
+component0472~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=12 4
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0473~9
-Component~8~8
+component0473~6
+Component~5~5
 boardPos=2 5
 boundary=2
-chargePreference=2
 circuitPos=6 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0474~9
-Component~8~8
+component0474~6
+Component~5~5
 boardPos=2 5
 boundary=2
-chargePreference=2
 circuitPos=6 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0475~9
-Component~8~8
+component0475~7
+Component~6~6
 boardPos=2 5
 boundary=1
 chargePreference=0
 circuitPos=0 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0476~9
-Component~8~8
+component0476~7
+Component~6~6
 boardPos=2 5
 boundary=1
 chargePreference=4
 circuitPos=12 6
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0477~9
-Component~8~8
+component0477~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=8 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0478~9
-Component~8~8
+component0478~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=8 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0479~9
-Component~8~8
+component0479~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=0 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0480~9
-Component~8~8
+component0480~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=12 8
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0481~9
-Component~8~8
+component0481~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=10 0
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0482~9
-Component~8~8
+component0482~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=10 12
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0483~9
-Component~8~8
+component0483~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=0 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0484~9
-Component~8~8
+component0484~6
+Component~5~5
 boardPos=2 5
 boundary=1
-chargePreference=2
 circuitPos=12 10
-color=0
 name=CircuitBoundary
 puzzleType=1
-speed=2
-component0485~9
-Component~8~8
+component0485~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=2 6
-color=0
 name=Splitter
 puzzleType=1
-speed=2
-component0486~9
-Component~8~8
+component0486~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=3 4
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0487~9
-Component~8~8
+component0487~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=3 8
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0488~9
-Component~8~8
+component0488~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=4 6
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0489~9
-Component~8~8
+component0489~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=5 4
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0490~9
-Component~8~8
+component0490~5
+Component~4~4
 boardPos=2 5
-boundary=0
-chargePreference=2
 circuitPos=5 8
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0491~9
-Component~8~8
+component0491~6
+Component~5~5
 boardPos=2 5
-boundary=0
 chargePreference=3
 circuitPos=6 6
-color=0
 name=Splitter
 puzzleType=1
-speed=2
-component0492~9
-Component~8~8
+component0492~6
+Component~5~5
 boardPos=2 5
-boundary=0
 chargePreference=3
 circuitPos=8 5
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0493~9
-Component~8~8
+component0493~6
+Component~5~5
 boardPos=2 5
-boundary=0
 chargePreference=3
 circuitPos=8 7
-color=0
 name=Hold
 puzzleType=1
-speed=2
-component0494~9
-Component~8~8
+component0494~6
+Component~5~5
 boardPos=2 5
-boundary=0
 chargePreference=4
 circuitPos=10 6
-color=0
 name=Hold
 puzzleType=1
-speed=2
 componentCount=495

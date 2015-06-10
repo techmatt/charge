@@ -88,7 +88,7 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
 
     const int componentCount = puzzleTable.getInt("componentCount");
 
-    vector<Component*> newComponents;
+    vector<Component*> newComponents(componentCount);
 
     //
     // load all components
@@ -98,7 +98,7 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
         const string componentName = "component" + util::zeroPad(componentIndex, 4);
         ParameterTable componentTable = puzzleTable.getTable(componentName);
         Component *newComponent = Component::fromTable(componentTable);
-        newComponents.push_back(newComponent);
+        newComponents[componentIndex] = newComponent;
     }
 
     //

@@ -1,4 +1,4 @@
-Puzzle~12~138
+Puzzle~12~67
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -6,134 +6,63 @@ WireMajorAccelerator=1
 WireMajorDelay=1
 WireMinorAccelerator=1
 WireMinorDelay=1
-component0000~12
-Component~11~11
+component0000~8
+Component~7~7
 boardPos=22 22
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=1
-speed=2
 totalCharges=5
-component0001~12
-Component~11~11
+component0001~5
+Component~4~4
 boardPos=10 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
 puzzleType=1
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0002~12
-Component~11~11
+component0002~5
+Component~4~4
 boardPos=12 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0003~12
-Component~11~11
+puzzleType=1
+component0003~5
+Component~4~4
 boardPos=10 12
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0004~12
-Component~11~11
+puzzleType=1
+component0004~5
+Component~4~4
 boardPos=8 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0005~12
-Component~11~11
+puzzleType=1
+component0005~5
+Component~4~4
 boardPos=10 8
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
 color=1
 name=ChargeGoal
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0006~12
-Component~11~11
+puzzleType=1
+component0006~4
+Component~3~3
 boardPos=14 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0007~12
-Component~11~11
+puzzleType=1
+component0007~4
+Component~3~3
 boardPos=10 6
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0008~12
-Component~11~11
+puzzleType=1
+component0008~4
+Component~3~3
 boardPos=10 14
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
-component0009~12
-Component~11~11
+puzzleType=1
+component0009~4
+Component~3~3
 boardPos=6 10
-boundary=0
-chargePreference=2
-circuitPos=-100 -100
-color=0
 name=Wire
-puzzleType=0
-secondsBeforeFirstEmission=1
-secondsPerEmission=1
-speed=2
-totalCharges=16777215
+puzzleType=1
 componentCount=10
