@@ -1,10 +1,10 @@
 
 class Texture;
 
-enum RendererType
+enum class RendererType
 {
-    RendererTypeSDL,
-    RendererTypeOpenGL,
+    SDL,
+    OpenGL,
 };
 
 class Renderer

@@ -115,6 +115,9 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
         if (c->info->name != "Circuit")
             addNewComponent(c, false, false);
 
+    for (auto &c : components)
+        c->modifiers.puzzleType = ComponentPuzzlePiece;
+
     //
     // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.
     //
@@ -151,16 +154,16 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents,
             const int circuitEdge = constants::circuitBoardSize - 2;
             for (int i = 2; i <= constants::circuitBoardSize - 3; i += 2)
             {
-                Component *boundaryA = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, 0)));
+                Component *boundaryA = new Component("CircuitBoundary", ChargeType::None, GameLocation(component->location.boardPos, vec2i(i, 0)));
                 addNewComponent(boundaryA);
 
-                Component *boundaryB = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
+                Component *boundaryB = new Component("CircuitBoundary", ChargeType::None, GameLocation(component->location.boardPos, vec2i(i, circuitEdge)));
                 addNewComponent(boundaryB);
 
-                Component *boundaryC = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(0, i)));
+                Component *boundaryC = new Component("CircuitBoundary", ChargeType::None, GameLocation(component->location.boardPos, vec2i(0, i)));
                 addNewComponent(boundaryC);
 
-                Component *boundaryD = new Component("CircuitBoundary", ChargeNone, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
+                Component *boundaryD = new Component("CircuitBoundary", ChargeType::None, GameLocation(component->location.boardPos, vec2i(circuitEdge, i)));
                 addNewComponent(boundaryD);
             }
         }
@@ -258,7 +261,7 @@ void GameState::step(AppData &app)
 		component->willTrigger = false;
 		component->tick(app);
 		component->numChargesTargetingThisTick = 0;
-        component->heldCharge = ChargeNone;
+        component->heldCharge = ChargeType::None;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
 
         for (Connection &connection : component->connections)
@@ -446,7 +449,7 @@ void GameState::step(AppData &app)
 		Component* source = getComponent(c.source);
 		if (source->info->name == "TrapSprung" || source->info->name == "GateClosed")
 			c.source = c.destination;
-		if (source->heldCharge != ChargeNone)
+		if (source->heldCharge != ChargeType::None)
 			c.source = c.destination;
 	}
 
@@ -801,12 +804,12 @@ Component* GameState::findClosestMatch(Component *start) {
 		}
 		else if (start->info->name == "TrapReset")
 		{
-			if (start->modifiers.color != ChargeGray || c->modifiers.color != ChargeGray || (c->info->name != "TrapOpen" && c->info->name != "TrapSprung"))
+			if (start->modifiers.color != ChargeType::Gray || c->modifiers.color != ChargeType::Gray || (c->info->name != "TrapOpen" && c->info->name != "TrapSprung"))
 				continue;
 		}
 		else if (start->info->name == "GateSwitch")
 		{
-			if (start->modifiers.color != ChargeGray || c->modifiers.color != ChargeGray || (c->info->name != "GateOpen" && c->info->name != "GateClosed"))
+			if (start->modifiers.color != ChargeType::Gray || c->modifiers.color != ChargeType::Gray || (c->info->name != "GateOpen" && c->info->name != "GateClosed"))
 				continue;
 		}
 		else continue;

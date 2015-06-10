@@ -52,7 +52,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
     {
         markedForDeletion = true;
         showDeathAnimation = false;
-        if (current->storedCharge == ChargeNone)
+        if (current->storedCharge == ChargeType::None)
         {
             app.playEffect("AmpCharge", current->location);
             current->storedCharge = level;
@@ -60,10 +60,10 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
         else
         {
             app.playEffect("AmpDischarge", current->location);
-            const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeBlue));
+            const ChargeType emittedLevel = (ChargeType)(std::min( std::max((int)current->storedCharge, (int)level) + 1, (int)ChargeType::Blue));
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
-            current->storedCharge = ChargeNone;
+            current->storedCharge = ChargeType::None;
         }
     }
 
@@ -71,7 +71,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
     {
         markedForDeletion = true;
         showDeathAnimation = false;
-        if (current->storedCharge == ChargeNone)
+        if (current->storedCharge == ChargeType::None)
         {
             app.playEffect("AmpCharge", current->location);
             current->storedCharge = (ChargeType)std::min((int)level, (int)current->modifiers.color);
@@ -82,7 +82,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
             const ChargeType emittedLevel = current->modifiers.color;
             current->chargesToEmit.push_back( make_pair(emittedLevel, source) );
             current->modifiers.storedChargeColor = GameUtil::chargeColor(emittedLevel);
-            current->storedCharge = ChargeNone;
+            current->storedCharge = ChargeType::None;
         }
     }
 
@@ -93,7 +93,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 
     if (current->info->name == "TrapReset")
     {
-        if (current->modifiers.color == ChargeGray)
+        if (current->modifiers.color == ChargeType::Gray)
         {
             // find closest gray trap and reset it
 			if (current->target!=nullptr && current->target->info->name == "TrapSprung")
@@ -113,7 +113,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 
     if (current->info->name == "GateSwitch")
     {
-        if (current->modifiers.color == ChargeGray)
+        if (current->modifiers.color == ChargeType::Gray)
         {
 			// find closest gray door and reset it
 			if (current->target != nullptr && current->target->info->name == "GateOpen")
@@ -140,31 +140,31 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
     if (current->info->name == "Splitter")
     {
         app.playEffect("Splitter", current->location);
-        if (level != ChargeRed)
+        if (level != ChargeType::Red)
         {
             markedForDeletion = true;
             showDeathAnimation = false;
 
-            auto red = make_pair(ChargeRed, source);
-            auto orange = make_pair(ChargeOrange, source);
-            auto yellow = make_pair(ChargeYellow, source);
+            auto red = make_pair(ChargeType::Red, source);
+            auto orange = make_pair(ChargeType::Orange, source);
+            auto yellow = make_pair(ChargeType::Yellow, source);
 
             switch (level)
             {
-            case ChargeOrange:
+            case ChargeType::Orange:
                 current->chargesToEmit.push_back(red);
                 current->chargesToEmit.push_back(red);
                 break;
-            case ChargeYellow:
+            case ChargeType::Yellow:
                 current->chargesToEmit.push_back(red);
                 current->chargesToEmit.push_back(red);
                 current->chargesToEmit.push_back(red);
                 break;
-            case ChargeGreen:
+            case ChargeType::Green:
                 current->chargesToEmit.push_back(orange);
                 current->chargesToEmit.push_back(orange);
                 break;
-            case ChargeBlue:
+            case ChargeType::Blue:
                 current->chargesToEmit.push_back(yellow);
                 current->chargesToEmit.push_back(yellow);
                 break;

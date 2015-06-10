@@ -1,40 +1,40 @@
 
-enum ComponentPuzzleType
+enum class ComponentPuzzleType
 {
-    ComponentUser,
-    ComponentPuzzlePiece,
-    ComponentCopiedCircuit,
+    User,
+    PuzzlePiece,
+    CopiedCircuit,
 };
 
-enum WireSpeedType
+enum class WireSpeedType
 {
-    WireMajorDelay,
-    WireMinorDelay,
-    WireStandard,
-    WireMinorAccelerator,
-    WireMajorAccelerator,
+    MajorDelay,
+    MinorDelay,
+    Standard,
+    MinorAccelerator,
+    MajorAccelerator,
 };
 
-enum CircuitBoundaryType
+enum class CircuitBoundaryType
 {
-    CircuitBoundaryInvalid,
-    CircuitBoundaryOpen,
-    CircuitBoundaryClosed,
+    Invalid,
+    Open,
+    Closed,
 };
 
-enum ChargeType
+enum class ChargeType
 {
-    ChargeNone = 0,
-    ChargeRed = 1,
-    ChargeOrange = 2,
-    ChargeYellow = 3,
-    ChargeGreen = 4,
-    ChargeBlue = 5,
+    None = 0,
+    Red = 1,
+    Orange = 2,
+    Yellow = 3,
+    Green = 4,
+    Blue = 5,
     
     //
     // Gray is a special color that may be used by certain types of components:
     // * MegaHold -> a goal-mega-hold that accepts any type of charge
     //
     
-    ChargeGray = 6,
+    Gray = 6,
 };

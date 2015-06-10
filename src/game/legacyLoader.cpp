@@ -139,7 +139,7 @@ struct LegacyComponent
 
 struct LegacyComponentInfo
 {
-    LegacyComponentInfo(const string _name, ChargeType _color = ChargeNone, WireSpeedType _speed = WireStandard)
+    LegacyComponentInfo(const string _name, ChargeType _color = ChargeType::None, WireSpeedType _speed = WireStandard)
     {
         name = _name;
         color = _color;
@@ -149,7 +149,7 @@ struct LegacyComponentInfo
     LegacyComponentInfo(CircuitBoundaryType _boundary)
     {
         name = "CircuitBoundary";
-        color = ChargeNone;
+        color = ChargeType::None;
         speed = WireStandard;
         boundary = _boundary;
     }
@@ -165,49 +165,49 @@ LegacyComponentInfo getLegacyInfo(LegacyComponentType type)
     {
     case ComponentCircuit: return LegacyComponentInfo("Circuit");
 
-    case ComponentPowerSourceRed: return LegacyComponentInfo("PowerSource", ChargeRed);
-    case ComponentPowerSourceOrange: return LegacyComponentInfo("PowerSource", ChargeOrange);
-    case ComponentPowerSourceYellow: return LegacyComponentInfo("PowerSource", ChargeYellow);
-    case ComponentPowerSourceGreen: return LegacyComponentInfo("PowerSource", ChargeGreen);
-    case ComponentPowerSourceBlue: return LegacyComponentInfo("PowerSource", ChargeBlue);
+    case ComponentPowerSourceRed: return LegacyComponentInfo("PowerSource", ChargeType::Red);
+    case ComponentPowerSourceOrange: return LegacyComponentInfo("PowerSource", ChargeType::Orange);
+    case ComponentPowerSourceYellow: return LegacyComponentInfo("PowerSource", ChargeType::Yellow);
+    case ComponentPowerSourceGreen: return LegacyComponentInfo("PowerSource", ChargeType::Green);
+    case ComponentPowerSourceBlue: return LegacyComponentInfo("PowerSource", ChargeType::Blue);
 
     case ComponentSplitter: return LegacyComponentInfo("Splitter");
 
     case ComponentAmplifier: return LegacyComponentInfo("Amplifier");
-    case ComponentAmplifierL1: return LegacyComponentInfo("FilteredAmplifier", ChargeOrange);
-    case ComponentAmplifierL2: return LegacyComponentInfo("FilteredAmplifier", ChargeYellow);
-    case ComponentAmplifierL3: return LegacyComponentInfo("FilteredAmplifier", ChargeGreen);
-    case ComponentAmplifierL4: return LegacyComponentInfo("FilteredAmplifier", ChargeBlue);
+    case ComponentAmplifierL1: return LegacyComponentInfo("FilteredAmplifier", ChargeType::Orange);
+    case ComponentAmplifierL2: return LegacyComponentInfo("FilteredAmplifier", ChargeType::Yellow);
+    case ComponentAmplifierL3: return LegacyComponentInfo("FilteredAmplifier", ChargeType::Green);
+    case ComponentAmplifierL4: return LegacyComponentInfo("FilteredAmplifier", ChargeType::Blue);
 
-    case ComponentRedChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeRed);
-    case ComponentOrangeChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeOrange);
-    case ComponentYellowChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeYellow);
-    case ComponentGreenChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeGreen);
-    case ComponentBlueChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeBlue);
+    case ComponentRedChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeType::Red);
+    case ComponentOrangeChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeType::Orange);
+    case ComponentYellowChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeType::Yellow);
+    case ComponentGreenChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeType::Green);
+    case ComponentBlueChargeGoal: return LegacyComponentInfo("ChargeGoal", ChargeType::Blue);
 
-    case ComponentTeleportRedSource: return LegacyComponentInfo("TeleportSource", ChargeRed);
-    case ComponentTeleportOrangeSource: return LegacyComponentInfo("TeleportSource", ChargeOrange);
-    case ComponentTeleportYellowSource: return LegacyComponentInfo("TeleportSource", ChargeYellow);
-    case ComponentTeleportGreenSource: return LegacyComponentInfo("TeleportSource", ChargeGreen);
-    case ComponentTeleportBlueSource: return LegacyComponentInfo("TeleportSource", ChargeBlue);
+    case ComponentTeleportRedSource: return LegacyComponentInfo("TeleportSource", ChargeType::Red);
+    case ComponentTeleportOrangeSource: return LegacyComponentInfo("TeleportSource", ChargeType::Orange);
+    case ComponentTeleportYellowSource: return LegacyComponentInfo("TeleportSource", ChargeType::Yellow);
+    case ComponentTeleportGreenSource: return LegacyComponentInfo("TeleportSource", ChargeType::Green);
+    case ComponentTeleportBlueSource: return LegacyComponentInfo("TeleportSource", ChargeType::Blue);
 
-    case ComponentTeleportRedDestination: return LegacyComponentInfo("TeleportDestination", ChargeRed);
-    case ComponentTeleportOrangeDestination: return LegacyComponentInfo("TeleportDestination", ChargeOrange);
-    case ComponentTeleportYellowDestination: return LegacyComponentInfo("TeleportDestination", ChargeYellow);
-    case ComponentTeleportGreenDestination: return LegacyComponentInfo("TeleportDestination", ChargeGreen);
-    case ComponentTeleportBlueDestination: return LegacyComponentInfo("TeleportDestination", ChargeBlue);
+    case ComponentTeleportRedDestination: return LegacyComponentInfo("TeleportDestination", ChargeType::Red);
+    case ComponentTeleportOrangeDestination: return LegacyComponentInfo("TeleportDestination", ChargeType::Orange);
+    case ComponentTeleportYellowDestination: return LegacyComponentInfo("TeleportDestination", ChargeType::Yellow);
+    case ComponentTeleportGreenDestination: return LegacyComponentInfo("TeleportDestination", ChargeType::Green);
+    case ComponentTeleportBlueDestination: return LegacyComponentInfo("TeleportDestination", ChargeType::Blue);
 
-    case ComponentRedChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeRed);
-    case ComponentOrangeChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeOrange);
-    case ComponentYellowChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeYellow);
-    case ComponentGreenChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeGreen);
-    case ComponentBlueChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeBlue);
+    case ComponentRedChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Red);
+    case ComponentOrangeChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Orange);
+    case ComponentYellowChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Yellow);
+    case ComponentGreenChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Green);
+    case ComponentBlueChargeFilter: return LegacyComponentInfo("ChargeFilter", ChargeType::Blue);
 
-    case ComponentWireMajorDelay: return LegacyComponentInfo("Wire", ChargeNone, WireMajorDelay);
-    case ComponentWireMinorDelay: return LegacyComponentInfo("Wire", ChargeNone, WireMinorDelay);
-    case ComponentWire: return LegacyComponentInfo("Wire", ChargeNone, WireStandard);
-    case ComponentWireMinorAccelerator: return LegacyComponentInfo("Wire", ChargeNone, WireMinorAccelerator);
-    case ComponentWireMajorAccelerator: return LegacyComponentInfo("Wire", ChargeNone, WireMajorAccelerator);
+    case ComponentWireMajorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireMajorDelay);
+    case ComponentWireMinorDelay: return LegacyComponentInfo("Wire", ChargeType::None, WireMinorDelay);
+    case ComponentWire: return LegacyComponentInfo("Wire", ChargeType::None, WireStandard);
+    case ComponentWireMinorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireMinorAccelerator);
+    case ComponentWireMajorAccelerator: return LegacyComponentInfo("Wire", ChargeType::None, WireMajorAccelerator);
 
     case ComponentBlocker: return LegacyComponentInfo("Blocker");
 
@@ -218,54 +218,54 @@ LegacyComponentInfo getLegacyInfo(LegacyComponentType type)
 
     case ComponentHold: return LegacyComponentInfo("Hold");
 
-    case ComponentGateOpenRed: return LegacyComponentInfo("GateOpen", ChargeRed);
-    case ComponentGateOpenOrange: return LegacyComponentInfo("GateOpen", ChargeOrange);
-    case ComponentGateOpenYellow: return LegacyComponentInfo("GateOpen", ChargeYellow);
-    case ComponentGateOpenGreen: return LegacyComponentInfo("GateOpen", ChargeGreen);
-    case ComponentGateOpenBlue: return LegacyComponentInfo("GateOpen", ChargeBlue);
-    case ComponentGateOpenGray: return LegacyComponentInfo("GateOpen", ChargeGray);
+    case ComponentGateOpenRed: return LegacyComponentInfo("GateOpen", ChargeType::Red);
+    case ComponentGateOpenOrange: return LegacyComponentInfo("GateOpen", ChargeType::Orange);
+    case ComponentGateOpenYellow: return LegacyComponentInfo("GateOpen", ChargeType::Yellow);
+    case ComponentGateOpenGreen: return LegacyComponentInfo("GateOpen", ChargeType::Green);
+    case ComponentGateOpenBlue: return LegacyComponentInfo("GateOpen", ChargeType::Blue);
+    case ComponentGateOpenGray: return LegacyComponentInfo("GateOpen", ChargeType::Gray);
 
-    case ComponentGateClosedRed: return LegacyComponentInfo("GateClosed", ChargeRed);
-    case ComponentGateClosedOrange: return LegacyComponentInfo("GateClosed", ChargeOrange);
-    case ComponentGateClosedYellow: return LegacyComponentInfo("GateClosed", ChargeYellow);
-    case ComponentGateClosedGreen: return LegacyComponentInfo("GateClosed", ChargeGreen);
-    case ComponentGateClosedBlue: return LegacyComponentInfo("GateClosed", ChargeBlue);
-    case ComponentGateClosedGray: return LegacyComponentInfo("GateClosed", ChargeGray);
+    case ComponentGateClosedRed: return LegacyComponentInfo("GateClosed", ChargeType::Red);
+    case ComponentGateClosedOrange: return LegacyComponentInfo("GateClosed", ChargeType::Orange);
+    case ComponentGateClosedYellow: return LegacyComponentInfo("GateClosed", ChargeType::Yellow);
+    case ComponentGateClosedGreen: return LegacyComponentInfo("GateClosed", ChargeType::Green);
+    case ComponentGateClosedBlue: return LegacyComponentInfo("GateClosed", ChargeType::Blue);
+    case ComponentGateClosedGray: return LegacyComponentInfo("GateClosed", ChargeType::Gray);
 
-    case ComponentGateSwitchRed: return LegacyComponentInfo("GateSwitch", ChargeRed);
-    case ComponentGateSwitchOrange: return LegacyComponentInfo("GateSwitch", ChargeOrange);
-    case ComponentGateSwitchYellow: return LegacyComponentInfo("GateSwitch", ChargeYellow);
-    case ComponentGateSwitchGreen: return LegacyComponentInfo("GateSwitch", ChargeGreen);
-    case ComponentGateSwitchBlue: return LegacyComponentInfo("GateSwitch", ChargeBlue);
-    case ComponentGateSwitchGray: return LegacyComponentInfo("GateSwitch", ChargeGray);
+    case ComponentGateSwitchRed: return LegacyComponentInfo("GateSwitch", ChargeType::Red);
+    case ComponentGateSwitchOrange: return LegacyComponentInfo("GateSwitch", ChargeType::Orange);
+    case ComponentGateSwitchYellow: return LegacyComponentInfo("GateSwitch", ChargeType::Yellow);
+    case ComponentGateSwitchGreen: return LegacyComponentInfo("GateSwitch", ChargeType::Green);
+    case ComponentGateSwitchBlue: return LegacyComponentInfo("GateSwitch", ChargeType::Blue);
+    case ComponentGateSwitchGray: return LegacyComponentInfo("GateSwitch", ChargeType::Gray);
 
-    case ComponentMegaHoldRed: return LegacyComponentInfo("MegaHold", ChargeRed);
-    case ComponentMegaHoldOrange: return LegacyComponentInfo("MegaHold", ChargeOrange);
-    case ComponentMegaHoldYellow: return LegacyComponentInfo("MegaHold", ChargeYellow);
-    case ComponentMegaHoldGreen: return LegacyComponentInfo("MegaHold", ChargeGreen);
-    case ComponentMegaHoldBlue: return LegacyComponentInfo("MegaHold", ChargeBlue);
-    case ComponentMegaHoldAll: return LegacyComponentInfo("MegaHold", ChargeGray);
+    case ComponentMegaHoldRed: return LegacyComponentInfo("MegaHold", ChargeType::Red);
+    case ComponentMegaHoldOrange: return LegacyComponentInfo("MegaHold", ChargeType::Orange);
+    case ComponentMegaHoldYellow: return LegacyComponentInfo("MegaHold", ChargeType::Yellow);
+    case ComponentMegaHoldGreen: return LegacyComponentInfo("MegaHold", ChargeType::Green);
+    case ComponentMegaHoldBlue: return LegacyComponentInfo("MegaHold", ChargeType::Blue);
+    case ComponentMegaHoldAll: return LegacyComponentInfo("MegaHold", ChargeType::Gray);
 
-    case ComponentTrapOpenRed: return LegacyComponentInfo("TrapOpen", ChargeRed);
-    case ComponentTrapOpenOrange: return LegacyComponentInfo("TrapOpen", ChargeOrange);
-    case ComponentTrapOpenYellow: return LegacyComponentInfo("TrapOpen", ChargeYellow);
-    case ComponentTrapOpenGreen: return LegacyComponentInfo("TrapOpen", ChargeGreen);
-    case ComponentTrapOpenBlue: return LegacyComponentInfo("TrapOpen", ChargeBlue);
-    case ComponentTrapOpenGray: return LegacyComponentInfo("TrapOpen", ChargeGray);
+    case ComponentTrapOpenRed: return LegacyComponentInfo("TrapOpen", ChargeType::Red);
+    case ComponentTrapOpenOrange: return LegacyComponentInfo("TrapOpen", ChargeType::Orange);
+    case ComponentTrapOpenYellow: return LegacyComponentInfo("TrapOpen", ChargeType::Yellow);
+    case ComponentTrapOpenGreen: return LegacyComponentInfo("TrapOpen", ChargeType::Green);
+    case ComponentTrapOpenBlue: return LegacyComponentInfo("TrapOpen", ChargeType::Blue);
+    case ComponentTrapOpenGray: return LegacyComponentInfo("TrapOpen", ChargeType::Gray);
 
-    case ComponentTrapSprungRed: return LegacyComponentInfo("TrapSprung", ChargeRed);
-    case ComponentTrapSprungOrange: return LegacyComponentInfo("TrapSprung", ChargeOrange);
-    case ComponentTrapSprungYellow: return LegacyComponentInfo("TrapSprung", ChargeYellow);
-    case ComponentTrapSprungGreen: return LegacyComponentInfo("TrapSprung", ChargeGreen);
-    case ComponentTrapSprungBlue: return LegacyComponentInfo("TrapSprung", ChargeBlue);
-    case ComponentTrapSprungGray: return LegacyComponentInfo("TrapSprung", ChargeGray);
+    case ComponentTrapSprungRed: return LegacyComponentInfo("TrapSprung", ChargeType::Red);
+    case ComponentTrapSprungOrange: return LegacyComponentInfo("TrapSprung", ChargeType::Orange);
+    case ComponentTrapSprungYellow: return LegacyComponentInfo("TrapSprung", ChargeType::Yellow);
+    case ComponentTrapSprungGreen: return LegacyComponentInfo("TrapSprung", ChargeType::Green);
+    case ComponentTrapSprungBlue: return LegacyComponentInfo("TrapSprung", ChargeType::Blue);
+    case ComponentTrapSprungGray: return LegacyComponentInfo("TrapSprung", ChargeType::Gray);
 
-    case ComponentTrapResetRed: return LegacyComponentInfo("TrapReset", ChargeRed);
-    case ComponentTrapResetOrange: return LegacyComponentInfo("TrapReset", ChargeOrange);
-    case ComponentTrapResetYellow: return LegacyComponentInfo("TrapReset", ChargeYellow);
-    case ComponentTrapResetGreen: return LegacyComponentInfo("TrapReset", ChargeGreen);
-    case ComponentTrapResetBlue: return LegacyComponentInfo("TrapReset", ChargeBlue);
-    case ComponentTrapResetGray: return LegacyComponentInfo("TrapReset", ChargeGray);
+    case ComponentTrapResetRed: return LegacyComponentInfo("TrapReset", ChargeType::Red);
+    case ComponentTrapResetOrange: return LegacyComponentInfo("TrapReset", ChargeType::Orange);
+    case ComponentTrapResetYellow: return LegacyComponentInfo("TrapReset", ChargeType::Yellow);
+    case ComponentTrapResetGreen: return LegacyComponentInfo("TrapReset", ChargeType::Green);
+    case ComponentTrapResetBlue: return LegacyComponentInfo("TrapReset", ChargeType::Blue);
+    case ComponentTrapResetGray: return LegacyComponentInfo("TrapReset", ChargeType::Gray);
     }
 
     MLIB_ERROR("unepxected component found");
@@ -335,7 +335,7 @@ void LegacyLoader::load(const string &filename, GameState &result)
         if (c.legacyType == ComponentCircuit)
         {
             auto info = getLegacyInfo(c.legacyType);
-            Component *newC = new Component("Circuit", ChargeNone, c.location);
+            Component *newC = new Component("Circuit", ChargeType::None, c.location);
 
             newC->modifiers.puzzleType = c.puzzleType;
 

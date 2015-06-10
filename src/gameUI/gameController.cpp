@@ -140,7 +140,7 @@ void GameController::updateButtonList()
     //
     //Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
     Component *selectedGameComponent = app.ui.selection.singleElement();
-    if (selectedGameComponent != nullptr && !(app.controller.puzzleMode == ModePlayLevel && selectedGameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
+    if (selectedGameComponent != nullptr && canEdit(*selectedGameComponent))
     {
         const ComponentInfo &info = *selectedGameComponent->info;
 
@@ -156,23 +156,23 @@ void GameController::updateButtonList()
         {
             for (int speed = 0; speed <= 4; speed++)
             {
-                ComponentModifiers modifier(ChargeNone, 2, (WireSpeedType)speed);
+                ComponentModifiers modifier(ChargeType::None, 2, (WireSpeedType)speed);
                 if (app.controller.editorMode == ModeEditLevel || app.state.buildableComponents.canBuild(info.name, modifier))
                     buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::ButtonWireSpeed, modifier));
             }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryOpen)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeNone, 2, WireStandard, CircuitBoundaryClosed)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireStandard, CircuitBoundaryOpen)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::ButtonCircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireStandard, CircuitBoundaryClosed)));
         }
         else
         {
             vector<ChargeType> chargeLevels;
             if (info.colorUpgrades)
             {
-                ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
-                ChargeType end = info.grayUpgrade ? ChargeGray : ChargeBlue;
+                ChargeType start = info.name == "FilteredAmplifier" ? ChargeType::Orange : ChargeType::Red;
+                ChargeType end = info.grayUpgrade ? ChargeType::Gray : ChargeType::Blue;
                 for (int charge = (int)start; charge <= (int)end; charge++)
                     chargeLevels.push_back((ChargeType)charge);
             }

@@ -37,7 +37,7 @@ rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, cons
 			);
 	}
 
-
+    return rect2f();
 }
 
 rect2f GameUtil::locationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, int size)

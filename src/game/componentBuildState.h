@@ -73,10 +73,10 @@ struct ComponentBuildState
 private:
     void recordColoredComponent(const string &componentName, bool gray)
     {
-        for (int chargeLevel = (int)ChargeRed; chargeLevel <= (int)ChargeBlue; chargeLevel++)
+        for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue; chargeLevel++)
             components.insert(componentName + GameUtil::suffixFromCharge((ChargeType)chargeLevel));
         if (gray)
-            components.insert(componentName + GameUtil::suffixFromCharge(ChargeGray));
+            components.insert(componentName + GameUtil::suffixFromCharge(ChargeType::Gray));
     }
 
     string annotateComponent(const string &componentName, const ComponentModifiers &modifiers)

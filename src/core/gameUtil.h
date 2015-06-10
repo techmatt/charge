@@ -108,19 +108,19 @@ public:
 	{
 		switch (type)
 		{
-		case ChargeGray:
+		case ChargeType::Gray:
             return RGBColor(150, 150, 150);
-		case ChargeRed:
+		case ChargeType::Red:
 			return RGBColor(255, 0, 0);
-		case ChargeOrange:
+		case ChargeType::Orange:
 			return RGBColor(255, 128, 0);
-		case ChargeYellow:
+		case ChargeType::Yellow:
 			return RGBColor(255, 255, 0);
-		case ChargeGreen:
+		case ChargeType::Green:
 			return RGBColor(0, 200, 0);
-		case ChargeBlue:
+		case ChargeType::Blue:
 			return RGBColor(0, 0, 255);
-		case ChargeNone:
+		case ChargeType::None:
 			return RGBColor(255, 255, 255);
 		}
 		return RGBColor(0, 0, 0);
@@ -130,19 +130,19 @@ public:
     {
         switch (type)
         {
-        case ChargeGray:
+        case ChargeType::Gray:
             return "Gray";
-        case ChargeRed:
+        case ChargeType::Red:
             return "Red";
-        case ChargeOrange:
+        case ChargeType::Orange:
             return "Orange";
-        case ChargeYellow:
+        case ChargeType::Yellow:
             return "Yellow";
-        case ChargeGreen:
+        case ChargeType::Green:
             return "Green";
-        case ChargeBlue:
+        case ChargeType::Blue:
             return "Blue";
-        case ChargeNone:
+        case ChargeType::None:
             return "";
         }
         return "Invalid";

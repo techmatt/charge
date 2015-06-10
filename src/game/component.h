@@ -1,7 +1,7 @@
 
 struct ComponentModifiers
 {
-    ComponentModifiers(ChargeType _color = ChargeNone, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
+    ComponentModifiers(ChargeType _color = ChargeType::None, int _chargePreference = 2, WireSpeedType _speed = WireStandard, CircuitBoundaryType _boundary = CircuitBoundaryInvalid)
     {
         init();
         color = _color;
@@ -17,8 +17,8 @@ struct ComponentModifiers
 
     void init()
     {
-        color = ChargeNone;
-        storedChargeColor = GameUtil::chargeColor(ChargeGray);
+        color = ChargeType::None;
+        storedChargeColor = GameUtil::chargeColor(ChargeType::Gray);
         boundary = CircuitBoundaryInvalid;
         chargePreference = 2;
         speed = WireStandard;
@@ -189,7 +189,7 @@ struct Component
 	rect2f circuitFrameLocation() const;
 
 	//
-	// type of held charge (or ChargeNone)
+	// type of held charge (or ChargeType::None)
 	//
 	ChargeType heldCharge;
 

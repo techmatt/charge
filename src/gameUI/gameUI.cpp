@@ -117,15 +117,15 @@ void GameUI::keyDown(SDL_Keycode key)
     }
 
     Component* gameComponent = selection.singleElement();
-    if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
+    if (gameComponent != nullptr && app.controller.canEdit(*gameComponent))
     {
         if (key >= SDLK_1 && key <= SDLK_6)
         {
-            ChargeType color = (ChargeType)((int)ChargeRed + key - SDLK_1);
+            ChargeType color = (ChargeType)((int)ChargeType::Red + key - SDLK_1);
 
-            if (gameComponent->info->colorUpgrades && color != ChargeGray)
+            if (gameComponent->info->colorUpgrades && color != ChargeType::Gray)
                 gameComponent->modifiers.color = color;
-            if (gameComponent->info->grayUpgrade && color == ChargeGray)
+            if (gameComponent->info->grayUpgrade && color == ChargeType::Gray)
                 gameComponent->modifiers.color = color;
             app.controller.recordDesignAction();
         }
@@ -218,7 +218,7 @@ void GameUI::removeHoverComponent()
     const GameLocation location = hoverLocation(false);
     
     Component *c = app.state.getComponent(location);
-    if (c == nullptr || (app.controller.editorMode == ModePlayLevel && c->modifiers.puzzleType == ComponentPuzzlePiece) || c->info->name == "CircuitBoundary")
+    if (c == nullptr || !app.controller.canEdit(*c) || c->info->name == "CircuitBoundary")
         return;
 
     backgroundDirty = true;
@@ -354,16 +354,16 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         {
             const bool buildable = app.state.buildableComponents.canBuild(button.name, button.modifiers);
             const auto &info = database().getComponent(button.name);
-            if (database().getComponent(button.name).colorUpgrades && button.modifiers.color != ChargeGray)
+            if (database().getComponent(button.name).colorUpgrades && button.modifiers.color != ChargeType::Gray)
             {
-                ChargeType start = info.name == "FilteredAmplifier" ? ChargeOrange : ChargeRed;
-                for (int charge = (int)start; charge <= (int)ChargeBlue; charge++)
+                ChargeType start = info.name == "FilteredAmplifier" ? ChargeType::Orange : ChargeType::Red;
+                for (int charge = (int)start; charge <= (int)ChargeType::Blue; charge++)
                     app.state.buildableComponents.setBuild(button.name, ComponentModifiers((ChargeType)charge), !buildable);
             }
             else if (button.name == "Wire")
             {
                 for (int speed = (int)WireMajorDelay; speed <= (int)WireMajorAccelerator; speed++)
-                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers(ChargeNone, 2, (WireSpeedType)speed), !buildable);
+                    app.state.buildableComponents.setBuild(button.name, ComponentModifiers(ChargeType::None, 2, (WireSpeedType)speed), !buildable);
             }
             else
             {
@@ -390,7 +390,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             activePlacementBuffer.clear();
 			activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
         }
-        if (gameComponent != nullptr && !(app.controller.editorMode == ModePlayLevel && gameComponent->modifiers.puzzleType == ComponentPuzzlePiece))
+        if (gameComponent != nullptr && app.controller.canEdit(*gameComponent))
         {
             if (button.type == ButtonChargeColor)
             {
@@ -662,7 +662,7 @@ void GameUI::renderTrails()
     for (const UIRenderObject &o : backgroundObjects)
     {
         if (o.dynamicComponent != nullptr && o.type == UIRenderStoredCharge &&
-            //(o.dynamicComponent->storedCharge != ChargeNone || o.dynamicComponent->heldCharge != ChargeNone) &&
+            //(o.dynamicComponent->storedCharge != ChargeType::None || o.dynamicComponent->heldCharge != ChargeType::None) &&
             (o.dynamicComponent->info->name == "ChargeGoal" && o.dynamicComponent->heldCharge == o.dynamicComponent->modifiers.color))
         {
             const vec4f color = o.dynamicComponent->modifiers.storedChargeColor;
@@ -1053,9 +1053,12 @@ void GameUI::renderTooltip()
         return;
     }
     
+    Component *circuit = activeCircuit();
     Component *hoverComponent = app.state.getComponent(hoverLocation(false));
     Component *clickComponent = app.state.getComponent(clickLocation);
-    if (clickComponent != nullptr && hoverComponent == clickComponent && clickComponent->modifiers.puzzleType == ComponentPuzzlePiece)
+    if (circuit == nullptr && clickComponent != nullptr && hoverComponent == clickComponent &&
+        clickComponent->modifiers.puzzleType == ComponentPuzzlePiece &&
+        clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
         renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, ComponentIntrinsics());
     }
@@ -1122,12 +1125,12 @@ void GameUI::renderLocalizedComponent(const string &name, const Component *dynam
     if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
     {
         Texture &chargeLayerTex = database().getTexture(app.renderer, name, icon.modifiers, true);
-        record(chargeLayerTex, screenRect, depthLayers::component, UIRenderStoredCharge, GameUtil::chargeColor(ChargeGray), dynamicComponent);
+        record(chargeLayerTex, screenRect, depthLayers::component, UIRenderStoredCharge, GameUtil::chargeColor(ChargeType::Gray), dynamicComponent);
     }
 
     if (icon.selected)
     {
-        bool usePuzzleSelector = (dynamicComponent != nullptr && dynamicComponent->modifiers.puzzleType == ComponentPuzzlePiece && app.controller.editorMode == ModePlayLevel);
+        bool usePuzzleSelector = (dynamicComponent != nullptr && !app.controller.canEdit(*dynamicComponent));
 
         Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
         record(selectionTex, screenRect, depthLayers::selection, UIRenderStandard, Colors::White(), nullptr);

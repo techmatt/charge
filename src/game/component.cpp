@@ -13,9 +13,9 @@ void Component::resetPuzzle()
 {
     info = baseInfo;
     lastChargeVisit = -10000;
-    storedCharge = ChargeNone;
-    heldCharge = ChargeNone;
-    modifiers.storedChargeColor = GameUtil::chargeColor(ChargeGray);
+    storedCharge = ChargeType::None;
+    heldCharge = ChargeType::None;
+    modifiers.storedChargeColor = GameUtil::chargeColor(ChargeType::Gray);
     resetPowerSource();
 }
 
@@ -45,7 +45,7 @@ bool Component::willAcceptCharge(GameState &state, const Charge &charge)
     if (info->name == "FilteredAmplifier")
     {
         const int combinedCharge = (int)storedCharge + (int)charge.level;
-        return (storedCharge == ChargeNone || (combinedCharge >= modifiers.color));
+        return (storedCharge == ChargeType::None || (combinedCharge >= modifiers.color));
     }
 
     if (heldCharge)
@@ -62,10 +62,10 @@ void Component::tickGraphics()
     if (info->hasStoredChargeLayer)
     {
         const float s = 0.95f;
-        vec4f targetColor = GameUtil::chargeColor(ChargeGray);
+        vec4f targetColor = GameUtil::chargeColor(ChargeType::Gray);
 
-        if (storedCharge != ChargeNone) targetColor = GameUtil::chargeColor(storedCharge);
-        if (heldCharge != ChargeNone) targetColor = GameUtil::chargeColor(heldCharge);
+        if (storedCharge != ChargeType::None) targetColor = GameUtil::chargeColor(storedCharge);
+        if (heldCharge != ChargeType::None) targetColor = GameUtil::chargeColor(heldCharge);
 
         modifiers.storedChargeColor = modifiers.storedChargeColor * s + targetColor * (1.0f - s);
     }

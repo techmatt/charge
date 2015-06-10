@@ -1,12 +1,12 @@
 
-enum FontType
+enum class FontType
 {
-    FontLevelName = 0,
-    FontTooltipName,
-    FontTooltipDescription,
-    FontTooltipHotkey,
-    FontComponentAttribute,
-    FontCount,
+    LevelName,
+    TooltipName,
+    TooltipDescription,
+    TooltipHotkey,
+    ComponentAttribute,
+    Count,
 };
 
 struct FontInfo
@@ -47,12 +47,12 @@ struct ComponentInfo
     ChargeType defaultPrimaryCharge() const
     {
         if (name == "FilteredAmplifier")
-            return ChargeOrange;
+            return ChargeType::Orange;
         if (colorUpgrades)
-            return ChargeRed;
+            return ChargeType::Red;
         if (util::endsWith(name, "GrayProxy"))
-            return ChargeGray;
-        return ChargeNone;
+            return ChargeType::Gray;
+        return ChargeType::None;
     }
 
     string name;
@@ -121,7 +121,7 @@ struct Database
     Texture* squareBlocked;
     Texture* squareOpen;
 
-    FontInfo fonts[FontCount];
+    FontInfo fonts[(int)FontType::Count];
 
 private:
     

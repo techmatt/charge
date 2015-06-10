@@ -1,17 +1,17 @@
 
-enum GamePuzzleMode
+enum class GamePuzzleMode
 {
     ModeDesign,
     ModeExecuting,
 };
 
-enum GameEditorMode
+enum class GameEditorMode
 {
     ModePlayLevel,
     ModeEditLevel,
 };
 
-enum GameSpeed
+enum class GameSpeed
 {
     Speed0x,
     SpeedQuarter,
@@ -24,11 +24,11 @@ inline int ticksFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
-    case Speed0x: return 0;
-    case SpeedQuarter: return 1;
-    case Speed1x: return 1;
-    case Speed3x: return 3;
-    case Speed5x: return 5;
+    case GameSpeed::Speed0x: return 0;
+    case GameSpeed::SpeedQuarter: return 1;
+    case GameSpeed::Speed1x: return 1;
+    case GameSpeed::Speed3x: return 3;
+    case GameSpeed::Speed5x: return 5;
     default: return 0;
     }
 }
@@ -37,11 +37,11 @@ inline string buttonNameFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
-    case Speed0x: return "speedPause";
-    case SpeedQuarter: return "speedQuarter";
-    case Speed1x: return "speedX1";
-    case Speed3x: return "speedX3";
-    case Speed5x: return "speedX5";
+    case GameSpeed::Speed0x: return "speedPause";
+    case GameSpeed::SpeedQuarter: return "speedQuarter";
+    case GameSpeed::Speed1x: return "speedX1";
+    case GameSpeed::Speed3x: return "speedX3";
+    case GameSpeed::Speed5x: return "speedX5";
     default: return 0;
     }
 }
@@ -75,6 +75,11 @@ public:
             }
         }
         return hitButton;
+    }
+
+    bool canEdit(const Component &c) const
+    {
+        return (editorMode == ModeEditLevel || c.modifiers.puzzleType != ComponentPuzzlePiece);
     }
 
     vector<GameButton> buttons;

@@ -14,7 +14,7 @@ namespace depthLayers
     const float miniCircuitOffset = 0.2f;
 }
 
-enum UIRenderType
+enum class UIRenderType
 {
     UIRenderStandard,
     UIRenderStoredCharge,
