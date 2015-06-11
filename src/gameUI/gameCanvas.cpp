@@ -614,10 +614,18 @@ void GameCanvas::renderLocalizedComponent(const string &name, const Component *d
 
     if (icon.selected)
     {
-        bool usePuzzleSelector = (dynamicComponent != nullptr && !app.controller.canEdit(*dynamicComponent));
+        Texture *selectionTex = &database().getTexture(app.renderer, "Selector");
 
-        Texture &selectionTex = usePuzzleSelector ? database().getTexture(app.renderer, "PuzzleSelector") : database().getTexture(app.renderer, "Selector");
-        record(selectionTex, screenRect, depthLayers::selection, UIRenderType::Standard, Colors::White(), nullptr);
+        if (dynamicComponent != nullptr && app.controller.editorMode != EditorMode::LevelEditor)
+        {
+            if (dynamicComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece)
+                selectionTex = &database().getTexture(app.renderer, "PuzzleSelector");
+
+            if (dynamicComponent->modifiers.puzzleType == ComponentPuzzleType::CopiedCircuit)
+                selectionTex = &database().getTexture(app.renderer, "CircuitSelector");
+        }
+
+        record(*selectionTex, screenRect, depthLayers::selection, UIRenderType::Standard, Colors::White(), nullptr);
     }
 
     if (icon.faded)

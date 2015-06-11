@@ -9,6 +9,11 @@ struct ComponentDefiningProperties
 		baseInfo = c.baseInfo;
 		location = c.location;
         modifiers = c.modifiers;
+        modifiers.storedChargeColor = GameUtil::chargeColor(ChargeType::Gray);
+        
+        if (modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece && c.info->name == "Circuit")
+            modifiers.puzzleType = ComponentPuzzleType::CopiedCircuit;
+
 		intrinsics = c.intrinsics;
 	}
 	const ComponentInfo* baseInfo;
@@ -73,7 +78,7 @@ struct UndoBuffer
 
 	}
 
-    // this would probably be easier to just use ComponentSet
+    // TODO: this would probably be easier to just use ComponentSet instead of ComponentSet*
 	ComponentSet* buffer[constants::bufferSize];
 
 	int current;
