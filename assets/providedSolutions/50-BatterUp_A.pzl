@@ -1,13 +1,12 @@
-Puzzle~127~916
-buildableComponents~58
-ComponentBuildState~57~57
+Puzzle~127~915
+buildableComponents~57
+ComponentBuildState~56~56
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
 ChargeFilterOrange=1
 ChargeFilterRed=1
 ChargeFilterYellow=1
-Circuit=1
 FilteredAmplifierBlue=1
 FilteredAmplifierGreen=1
 FilteredAmplifierOrange=1

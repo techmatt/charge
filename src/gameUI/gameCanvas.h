@@ -45,6 +45,7 @@ private:
     void renderCircuitComponent(const Component &component);
 
     void renderSpokes(const Component &component);
+    void renderSpokesMiniCircuit(const Component &component);
     void renderSpokesCircuit(const Component &component);
 
     void renderCharge(const Charge &charge, bool trailRender);

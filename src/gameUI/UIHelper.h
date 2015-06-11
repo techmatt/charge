@@ -8,11 +8,12 @@ namespace depthLayers
     const float hoverComponent = 0.1f;
     const float hoverCircuitComponent = 0.06f;
     const float hoverComponentGrid = 0.05f;
+    const float hoverMiniCircuitOffset = 0.005f;
     const float background = 1.0f;
     
 	const float spokes = 0.95f;
     const float component = 0.9f;
-    const float miniCircuitOffset = 0.005f;
+    const float miniCircuitOffsetStandard = 0.2f;
 }
 
 enum class UIRenderType

@@ -646,7 +646,51 @@ void GameCanvas::renderCircuitComponent(const Component &component)
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
-    renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffset, IconState(component.modifiers, false));
+    renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffsetStandard, IconState(component.modifiers, false));
+}
+
+void GameCanvas::renderSpokesMiniCircuit(const Component &component)
+{
+    const vec2f myScreenPos = component.location.toScreenCoordMainBoard(canonicalDims);
+
+    const auto &cells = app.state.getCircuit(component.location).circuitBoard->cells;
+
+    for (int type = -1; type <= 1; type++)
+    {
+        for (int axis = 0; axis < 2; axis++)
+        {
+            vec2i offset;
+            if (axis == 0) offset = vec2i(-2, type);
+            if (axis == 1) offset = vec2i(type, -2);
+            UINT connectorIndex = (type + 1) * 2 + axis;
+            vec2i otherLocation = component.location.circuitPos + offset;
+
+            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
+            {
+                const Component &otherComponent = *cells(otherLocation).c;
+                bool renderSpokes = true;
+                renderSpokes &= otherComponent.location.circuitPos == otherLocation;
+                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
+                renderSpokes &= otherComponent.hasSpokes();
+                renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
+                if (renderSpokes)
+                {
+                    const vec2f otherScreenPos = otherComponent.location.toScreenCoordMainBoard(canonicalDims);
+
+                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                    const vec2f diff = myScreenPos - otherScreenPos;
+                    const float dist = diff.length();
+
+                    vec2f variance = constants::connectorDims[type + 1] * dist;
+                    variance.y *= 2.0f;
+
+                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
+                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes - depthLayers::miniCircuitOffsetStandard, angle);
+                }
+            }
+        }
+    }
 }
 
 void GameCanvas::renderSpokes(const Component &component)
@@ -657,6 +701,7 @@ void GameCanvas::renderSpokes(const Component &component)
     if (component.location.inCircuit())
     {
         renderSpokesCircuit(component);
+        renderSpokesMiniCircuit(component);
         return;
     }
 
