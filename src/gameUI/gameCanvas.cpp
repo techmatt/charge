@@ -241,7 +241,7 @@ void GameCanvas::renderHoverComponent()
     vec2i buffermin = app.ui.activePlacementBuffer.boundingBox().min();
 
     // render the components
-    for (ComponentDefiningProperties c : app.ui.activePlacementBuffer.components)
+    for (ComponentDefiningProperties &c : app.ui.activePlacementBuffer.components)
     {
         GameLocation componentLocation;
 

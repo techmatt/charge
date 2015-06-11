@@ -217,6 +217,12 @@ void GameController::updateButtonList()
     buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::PuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
 
+	buttons.push_back(GameButton("CircuitRotate90", vec2i(8, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+	buttons.push_back(GameButton("CircuitRotateN90", vec2i(9, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+	buttons.push_back(GameButton("CircuitFlipVertical", vec2i(10, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+	buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(11, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+
+
     for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::PuzzleControl, ComponentModifiers()));
 

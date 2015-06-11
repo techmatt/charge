@@ -6,7 +6,7 @@ rect2i ComponentSet::boundingBox() const
     if (components.size() == 0)
         return rect2i(constants::invalidCoord, constants::invalidCoord);
 
-    rect2i out = rect2i(params().boardDims[0], params().boardDims[1], 0, 0);
+    rect2i out = rect2i(params().boardDims[0]+1000, params().boardDims[1]+1000, -1000, -1000);
 
     for (auto &c : components)
     {
@@ -39,10 +39,10 @@ void ComponentSet::rotate(int i)
 
             if (c.location.inCircuit())
             {
-                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2 - 1, constants::circuitBoardSize / 2 - 1);
+                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
                 x = temp.x; y = temp.y;
                 temp.y = -x; temp.x = y;
-                c.location.circuitPos = temp - vec2i(1, 1) + vec2i(center);
+				c.location.circuitPos = temp - vec2i(1, 1) + vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
             }
         }
     else if (mod4 == 2)
@@ -55,10 +55,10 @@ void ComponentSet::rotate(int i)
 
             if (c.location.inCircuit())
             {
-                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2 - 1, constants::circuitBoardSize / 2 - 1);
+                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
                 x = temp.x; y = temp.y;
                 temp.y = -y; temp.x = -x;
-                c.location.circuitPos = temp - vec2i(1, 1) + vec2i(center);
+				c.location.circuitPos = temp - vec2i(1, 1) + vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
             }
         }
     else if (mod4 == 3)
@@ -71,10 +71,10 @@ void ComponentSet::rotate(int i)
 
             if (c.location.inCircuit())
             {
-                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2 - 1, constants::circuitBoardSize / 2 - 1);
+                temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
                 x = temp.x; y = temp.y;
                 temp.y = x; temp.x = -y;
-                c.location.circuitPos = temp - vec2i(1, 1) + vec2i(center);
+				c.location.circuitPos = temp - vec2i(1, 1) + vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
             }
         }
 }

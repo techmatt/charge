@@ -10,7 +10,7 @@ public:
 	void mouseMove(Uint32 buttonState, int x, int y);
     void keyDown(SDL_Keycode key);
 
-    GameLocation hoverLocation(bool constructionOffset, vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
+    GameLocation hoverLocation(bool constructionOffset, const vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
 
 	// the list of selected components
 	ComponentSelection selection;

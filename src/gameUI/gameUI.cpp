@@ -484,6 +484,14 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
                 app.undoBuffer.reset(app.state);
             }
         }
+		if (button.name == "CircuitRotateN90")
+			app.ui.activePlacementBuffer.rotate(1);
+		if (button.name == "CircuitRotate90")
+			app.ui.activePlacementBuffer.rotate(3);
+		if (button.name == "CircuitFlipHorizontal")
+			app.ui.activePlacementBuffer.flipAboutVerical();
+		if (button.name == "CircuitFlipVertical")
+			app.ui.activePlacementBuffer.flipAboutHorizonal();
 
         for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
             if (button.name == buttonNameFromSpeed((GameSpeed)speed))
@@ -512,7 +520,7 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     hoverButtonIndex;
 }
 
-GameLocation GameUI::hoverLocation(bool constructionOffset, vec2f mouseOffsetFromHover) const
+GameLocation GameUI::hoverLocation(bool constructionOffset,const vec2f mouseOffsetFromHover) const
 {
     vec2f newMouseOffsetFromHover = mouseOffsetFromHover;
     rect2i bufferShape;
