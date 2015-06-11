@@ -1,8 +1,9 @@
 
 Bugs
- * don't allow multi-select of puzzle pieces; more importantly, don't allow them to be copied unless they are a single circuit.
  * copying a single element within a circuit doesn't work (crashes)
-
+ * horizontal / vertical flipping crashes
+ * don't allow multi-select of puzzle pieces; more importantly, don't allow them to be copied unless they are a single circuit (or possibly a set of circuits)
+ 
 Features to implement
 
 SPLASH SCREEN
