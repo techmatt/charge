@@ -608,6 +608,22 @@ namespace util
 		return res;
 	}
 
+    inline string formatDouble(double value, int decimalPlaces)
+    {
+        double x = 7.40200133400;
+        ostringstream stream;
+        stream << fixed << setprecision(2) << value;
+        string s = stream.str();
+        while (s.size() > 0 && s.back() == '0')
+            s.pop_back();
+        if (s.size() > 0 && s.back() == '.')
+            s.pop_back();
+
+        if (s.length() == 0)
+            return "0";
+        return s;
+    }
+
     string getWorkingDirectory();
     
 }  // namespace utility

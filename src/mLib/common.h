@@ -44,7 +44,8 @@
 #include <limits>
 #include <tuple>
 #include <complex>
-#include <queue> 
+#include <queue>
+#include <iomanip>
 
 #ifndef NOMINMAX
 #define NOMINMAX

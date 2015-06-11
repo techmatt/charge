@@ -505,7 +505,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
         if (component->info->name == "MegaHold")
         {
             double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
-            renderText(getFontTexture("Loses " + to_string(math::ceil(chargeLossPerSecond)) + " charge per second", FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 77.0f), 12.0f);
+            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2) + " charge per second", FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 77.0f), 12.0f);
             renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 97.0f), 12.0f);
         }
     }
