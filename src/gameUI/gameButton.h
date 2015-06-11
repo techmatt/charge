@@ -39,6 +39,8 @@ struct GameButton
         initTooltip();
     }
 
+    void leftClick(AppData &app, Component *selectedComponent) const;
+
     const ComponentInfo *component;
     string name;
     ButtonType type;
@@ -48,6 +50,7 @@ struct GameButton
 
     const ComponentInfo *tooltip;
     string hotkey;
+    SDL_Keycode hotkeyCode;
 
 private:
     void initTooltip();

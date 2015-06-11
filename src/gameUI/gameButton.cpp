@@ -1,6 +1,9 @@
 
 #include "main.h"
 
+// only used for GetAsyncKeyState
+#include <Windows.h>
+
 void GameButton::initTooltip()
 {
     tooltip = component;
@@ -45,8 +48,142 @@ void GameButton::initTooltip()
     if (modifiers.color == ChargeType::Gray && (component->name == "GateSwitch" || component->name == "TrapReset" || component->name == "MegaHold"))
         tooltip = &database().getComponent(component->name + "GrayProxy");
 
-    if (type == ButtonType::TrapState || type == ButtonType::GateState || type == ButtonType::CircuitBoundary)
+    if (type == ButtonType::TrapState || type == ButtonType::GateState)
     {
-
+        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "I";
+        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "O";
     }
+
+    if (type == ButtonType::CircuitBoundary)
+    {
+        if (modifiers.boundary == CircuitBoundaryType::Open) hotkey = "1";
+        if (modifiers.boundary == CircuitBoundaryType::Closed) hotkey = "2";
+    }
+
+    if (hotkey[0] >= 'A' && hotkey[0] <= 'Z')
+        hotkeyCode = SDLK_a + hotkey[0] - 'A';
+
+    if (hotkey[0] >= '0' && hotkey[0] <= '9')
+        hotkeyCode = SDLK_0 + hotkey[0] - '0';
+
+    if (hotkey[0] == '-')
+        hotkeyCode = SDLK_MINUS;
+}
+
+void GameButton::leftClick(AppData &app, Component *selectedComponent) const
+{
+    if (type == ButtonType::Component)
+    {
+        app.ui.selectedMenuComponent = component;
+        app.ui.selectedMenuComponentColor = modifiers.color;
+
+        app.ui.activePlacementBuffer.clear();
+        app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, app.ui.selectedMenuComponentColor);
+    }
+
+    if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
+    {
+        if (type == ButtonType::ChargeColor)
+        {
+            selectedComponent->modifiers.color = modifiers.color;
+            app.controller.recordDesignAction();
+        }
+        if (type == ButtonType::ChargePreference)
+        {
+            selectedComponent->modifiers.chargePreference = modifiers.chargePreference;
+            app.controller.recordDesignAction();
+        }
+        if (type == ButtonType::WireSpeed)
+        {
+            selectedComponent->modifiers.speed = modifiers.speed;
+            app.controller.recordDesignAction();
+        }
+        if (type == ButtonType::CircuitBoundary)
+        {
+            selectedComponent->modifiers.boundary = modifiers.boundary;
+            app.controller.recordDesignAction();
+        }
+        if (type == ButtonType::GateState || type == ButtonType::TrapState)
+        {
+            selectedComponent->baseInfo = selectedComponent->info = &database().getComponent(name);
+            app.controller.recordDesignAction();
+        }
+    }
+    if (name == "Start")
+    {
+        app.controller.designActionTaken = false;
+        app.controller.puzzleMode = PuzzleMode::Executing;
+        app.state.resetPuzzle();
+        if (app.controller.speed == GameSpeed::x0)
+            app.controller.speed = GameSpeed::x1;
+    }
+    if (name == "Stop")
+    {
+        app.controller.puzzleMode = PuzzleMode::Design;
+        app.state.resetPuzzle();
+    }
+    if (name == "Pause")
+    {
+        app.controller.speed = GameSpeed::x0;
+    }
+    if (name == "ModePuzzle")
+    {
+        app.controller.puzzleVerificationMode = false;
+        app.controller.changeEditorMode(EditorMode::Campaign);
+    }
+    if (name == "ModeLevelEditor")
+    {
+        app.controller.puzzleVerificationMode = false;
+        app.controller.changeEditorMode(EditorMode::LevelEditor);
+
+        if (GetAsyncKeyState(VK_SHIFT))
+        {
+            app.controller.puzzleVerificationMode = true;
+            app.controller.loadCurrentProvidedSolution();
+        }
+    }
+    if (name == "Music")
+    {
+        app.audio.setMusic(!app.audio.playMusic);
+    }
+    if (name == "SoundEffect")
+    {
+        app.audio.playSoundEffects = !app.audio.playSoundEffects;
+    }
+    if (name == "Save")
+    {
+        string filename = FileDialog::showSave();
+        if (filename.size() > 0)
+        {
+            if (util::endsWith(filename, ".pzl"))
+                filename = util::remove(filename, ".pzl");
+            filename = util::replace(filename, '.', ' ');
+            filename = util::replace(filename, ',', ' ');
+            filename += ".pzl";
+            app.state.savePuzzle(filename);
+        }
+    }
+    if (name == "Load")
+    {
+        const string filename = FileDialog::showOpen();
+        if (filename.size() > 0)
+        {
+            app.state.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
+            app.undoBuffer.reset(app.state);
+        }
+    }
+    if (name == "CircuitRotateN90")
+        app.ui.activePlacementBuffer.rotate(1);
+    if (name == "CircuitRotate90")
+        app.ui.activePlacementBuffer.rotate(3);
+    if (name == "CircuitFlipHorizontal")
+        app.ui.activePlacementBuffer.flipAboutVerical();
+    if (name == "CircuitFlipVertical")
+        app.ui.activePlacementBuffer.flipAboutHorizonal();
+
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+        if (name == buttonNameFromSpeed((GameSpeed)speed))
+        {
+            app.controller.speed = (GameSpeed)speed;
+        }
 }

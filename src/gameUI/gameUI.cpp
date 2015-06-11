@@ -36,19 +36,6 @@ void GameUI::keyDown(SDL_Keycode key)
     //
     app.canvas.backgroundDirty = true;
 
-    if (!ctrlPressed())
-    {
-        const auto &hotkeyComponent = database().componentFromKey(key);
-        if (hotkeyComponent.first != nullptr)
-        {
-            selectedMenuComponent = hotkeyComponent.first;
-            selectedMenuComponentColor = hotkeyComponent.second;
-
-            activePlacementBuffer.clear();
-            activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
-        }
-    }
-
     if (key == SDLK_ESCAPE)
     {
         selectedMenuComponent = nullptr;
@@ -73,9 +60,18 @@ void GameUI::keyDown(SDL_Keycode key)
     }
 
     Component* gameComponent = selection.singleElement();
+
+    for (const GameButton &b : app.controller.buttons)
+    {
+        if (b.hotkeyCode == key)
+        {
+            b.leftClick(app, gameComponent);
+        }
+    }
+
     if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
     {
-        if (key >= SDLK_1 && key <= SDLK_6)
+        /*if (key >= SDLK_1 && key <= SDLK_6)
         {
             ChargeType color = (ChargeType)((int)ChargeType::Red + key - SDLK_1);
 
@@ -114,7 +110,7 @@ void GameUI::keyDown(SDL_Keycode key)
         {
             gameComponent->modifiers.chargePreference = preference;
             app.controller.recordDesignAction();
-        }
+        }*/
     }
 
     if (key == SDLK_LEFT)
@@ -126,7 +122,6 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
         app.controller.loadCurrentPuzzle();
-
     }
     if (key == SDLK_UP)
     {
@@ -380,119 +375,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     if (mouseButton == SDL_BUTTON_LEFT)
     {
-        if (button.type == ButtonType::Component)
-        {
-            selectedMenuComponent = button.component;
-            selectedMenuComponentColor = button.modifiers.color;
-
-            activePlacementBuffer.clear();
-            activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
-        }
-        if (gameComponent != nullptr &&  gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
-        {
-            if (button.type == ButtonType::ChargeColor)
-            {
-                gameComponent->modifiers.color = button.modifiers.color;
-                app.controller.recordDesignAction();
-            }
-            if (button.type == ButtonType::ChargePreference)
-            {
-                gameComponent->modifiers.chargePreference = button.modifiers.chargePreference;
-                app.controller.recordDesignAction();
-            }
-            if (button.type == ButtonType::WireSpeed)
-            {
-                gameComponent->modifiers.speed = button.modifiers.speed;
-                app.controller.recordDesignAction();
-            }
-            if (button.type == ButtonType::CircuitBoundary)
-            {
-                gameComponent->modifiers.boundary = button.modifiers.boundary;
-                app.controller.recordDesignAction();
-            }
-            if (button.type == ButtonType::GateState || button.type == ButtonType::TrapState)
-            {
-                gameComponent->baseInfo = gameComponent->info = &database().getComponent(button.name);
-                app.controller.recordDesignAction();
-            }
-        }
-        if (button.name == "Start")
-        {
-            app.controller.designActionTaken = false;
-            app.controller.puzzleMode = PuzzleMode::Executing;
-            app.state.resetPuzzle();
-            if (app.controller.speed == GameSpeed::x0)
-                app.controller.speed = GameSpeed::x1;
-        }
-        if (button.name == "Stop")
-        {
-            app.controller.puzzleMode = PuzzleMode::Design;
-            app.state.resetPuzzle();
-        }
-        if (button.name == "Pause")
-        {
-            app.controller.speed = GameSpeed::x0;
-        }
-        if (button.name == "ModePuzzle")
-        {
-            app.controller.puzzleVerificationMode = false;
-            app.controller.changeEditorMode(EditorMode::Campaign);
-        }
-        if (button.name == "ModeLevelEditor")
-        {
-            app.controller.puzzleVerificationMode = false;
-            app.controller.changeEditorMode(EditorMode::LevelEditor);
-
-            if (GetAsyncKeyState(VK_SHIFT))
-            {
-                app.controller.puzzleVerificationMode = true;
-                app.controller.loadCurrentProvidedSolution();
-            }
-        }
-        if (button.name == "Music")
-        {
-            app.audio.setMusic(!app.audio.playMusic);
-        }
-        if (button.name == "SoundEffect")
-        {
-            app.audio.playSoundEffects = !app.audio.playSoundEffects;
-        }
-        if (button.name == "Save")
-        {
-            string filename = FileDialog::showSave();
-            if (filename.size() > 0)
-            {
-                if (util::endsWith(filename, ".pzl"))
-                    filename = util::remove(filename, ".pzl");
-                filename = util::replace(filename, '.', ' ');
-                filename = util::replace(filename, ',', ' ');
-                filename += ".pzl";
-                app.state.savePuzzle(filename);
-            }
-        }
-        if (button.name == "Load")
-        {
-            const string filename = FileDialog::showOpen();
-            if (filename.size() > 0)
-            {
-                app.state.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
-                app.undoBuffer.reset(app.state);
-            }
-        }
-		if (button.name == "CircuitRotateN90")
-			app.ui.activePlacementBuffer.rotate(1);
-		if (button.name == "CircuitRotate90")
-			app.ui.activePlacementBuffer.rotate(3);
-		if (button.name == "CircuitFlipHorizontal")
-			app.ui.activePlacementBuffer.flipAboutVerical();
-		if (button.name == "CircuitFlipVertical")
-			app.ui.activePlacementBuffer.flipAboutHorizonal();
-
-        for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
-            if (button.name == buttonNameFromSpeed((GameSpeed)speed))
-            {
-                app.controller.speed = (GameSpeed)speed;
-            }
+        button.leftClick(app, gameComponent);
     }
 }
 

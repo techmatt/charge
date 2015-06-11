@@ -273,8 +273,6 @@ void GameCanvas::renderHoverComponent()
         const rect2f screenRect = GameUtil::locationInLocationToWindowRect(canonicalDims, componentLocation, location, 2);
         renderLocalizedComponent(c.baseInfo->name, nullptr, screenRect, depth, IconState(c.modifiers, false, false));
 
-
-
         // render the green field
         if (!componentLocation.inCircuit())
         {
@@ -296,10 +294,7 @@ void GameCanvas::renderHoverComponent()
                         render(*tex, rect, depthLayers::hoverComponentGrid);
                     }
                 }
-
         }
-
-
     }
 }
 
@@ -309,8 +304,7 @@ void GameCanvas::updateBackgroundObjects()
 
     app.controller.updateButtonList();
 
-    //Component *gameComponent = app.state.getComponent(selectedGameLocation);
-    Component *gameComponent = app.ui.selection.singleElement();
+    Component *selectedComponent = app.ui.selection.singleElement();
 
     //app.renderer.setRenderTarget(background);
 
@@ -335,14 +329,14 @@ void GameCanvas::updateBackgroundObjects()
     {
         bool selected = false;
         selected |= (button.type == ButtonType::Component && app.ui.selectedMenuComponent == button.component && app.ui.selectedMenuComponentColor == button.modifiers.color);
-        if (gameComponent != nullptr)
+        if (selectedComponent != nullptr)
         {
-            selected |= (button.type == ButtonType::ChargePreference && gameComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-            selected |= (button.type == ButtonType::ChargeColor && gameComponent->modifiers.color == button.modifiers.color);
-            selected |= (button.type == ButtonType::WireSpeed && gameComponent->modifiers.speed == button.modifiers.speed);
-            selected |= (button.type == ButtonType::CircuitBoundary && gameComponent->modifiers.boundary == button.modifiers.boundary);
-            selected |= (button.type == ButtonType::TrapState && gameComponent->info->name == button.name);
-            selected |= (button.type == ButtonType::GateState && gameComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::ChargePreference && selectedComponent->modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonType::ChargeColor && selectedComponent->modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonType::WireSpeed && selectedComponent->modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonType::CircuitBoundary && selectedComponent->modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonType::TrapState && selectedComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::GateState && selectedComponent->info->name == button.name);
         }
         if (button.type == ButtonType::PuzzleControl)
         {
@@ -499,7 +493,7 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 void GameCanvas::renderTooltip()
 {
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (button != nullptr && 
+    if (button != nullptr &&
         (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
         button->type == ButtonType::CircuitBoundary || button->type == ButtonType::GateState || button->type == ButtonType::TrapState ||
         button->type == ButtonType::WireSpeed))
@@ -689,7 +683,7 @@ void GameCanvas::renderSpokesMiniCircuit(const Component &component)
     const vec2f myScreenPos = component.location.toScreenCoordMainBoard(canonicalDims);
 
     const auto &cells = app.state.getCircuit(component.location).circuitBoard->cells;
-    
+
     for (const CanvasConnection &connection : connectionClasses)
     {
         vec2i otherLocation = component.location.circuitPos + connection.offset;

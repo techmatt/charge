@@ -47,6 +47,10 @@ struct ComponentBuildState
 
     bool canBuild(const string &componentName, const ComponentModifiers &modifiers)
     {
+        if (componentName == "TrapSprung")
+            return canBuild("TrapOpen", modifiers);
+        if (componentName == "GateOpen")
+            return canBuild("GateClosed", modifiers);
         return components.count(annotateComponent(componentName, modifiers)) > 0;
     }
 

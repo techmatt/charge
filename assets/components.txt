@@ -23,7 +23,7 @@ WireMinorAccelerator	-1	-1	!	no	no	Minor Accelerator	Wires can be modified to ch
 WireStandard	-1	-1	!	no	no	Standard Speed	Wires can be modified to change the speed charge travels through them.
 WireMinorDelay	-1	-1	!	no	no	Minor Delay	Wires can be modified to change the speed charge travels through them.
 WireMajorDelay	-1	-1	!	no	no	Major Delay	Wires can be modified to change the speed charge travels through them.
-CircuitBoundary	-1	-1	!	no	no	Invalid	ZZ
+CircuitBoundary	-1	-1	!	no	no	Circuit Boundary	The boundary of a circuit can be configured to block the flow of charge.
 CircuitPaste	-1	-1	!	no	no	Invalid	ZZ
 CircuitRotate90	-1	-1	!	no	no	Invalid	ZZ
 CircuitRotateN90	-1	-1	!	no	no	Invalid	ZZ
