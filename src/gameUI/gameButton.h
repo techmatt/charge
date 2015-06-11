@@ -25,6 +25,8 @@ struct GameButton
 
         if (database().components.count(name) > 0)
             component = database().components.at(name);
+
+        initTooltip();
     }
     GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const string &_text)
     {
@@ -33,16 +35,23 @@ struct GameButton
         type = _type;
         canonicalRect = getCanonicalRect(menuCoord, type);
         text = _text;
+
+        initTooltip();
     }
 
-    ComponentInfo *component;
+    const ComponentInfo *component;
     string name;
     ButtonType type;
     rect2i canonicalRect;
     ComponentModifiers modifiers;
     string text;
 
+    const ComponentInfo *tooltip;
+    string hotkey;
+
 private:
+    void initTooltip();
+
     static rect2i getCanonicalRect(const vec2i &menuCoord, ButtonType type)
     {
         if (type == ButtonType::PuzzleControl)

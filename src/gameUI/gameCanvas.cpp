@@ -506,47 +506,10 @@ void GameCanvas::renderTooltip()
     {
         float startY = button->canonicalRect.max().y + 5.0f;
 
-        const ComponentInfo *info = button->component;
-
-        string hotkey = info->hotkey;
-
-        if (button->type == ButtonType::ChargePreference)
-        {
-            info = &database().getComponent("Preference" + to_string((int)button->modifiers.chargePreference));
-            switch ((int)button->modifiers.chargePreference)
-            {
-            case 0: hotkey = "7"; break;
-            case 1: hotkey = "8"; break;
-            case 2: hotkey = "9"; break;
-            case 3: hotkey = "0"; break;
-            case 4: hotkey = "-"; break;
-            }
-        }
-
-        if (button->type == ButtonType::WireSpeed)
-        {
-            info = &database().getComponent(GameUtil::speedToTextureName(button->modifiers.speed));
-            switch ((int)button->modifiers.speed)
-            {
-            case 0: hotkey = "1"; break;
-            case 1: hotkey = "2"; break;
-            case 2: hotkey = "3"; break;
-            case 3: hotkey = "4"; break;
-            case 4: hotkey = "5"; break;
-            }
-        }
-
-        if (button->type == ButtonType::ChargeColor)
-            hotkey[0] = '0' + (int)button->modifiers.color;
-
-        if (button->type == ButtonType::Component && button->modifiers.color == ChargeType::Gray)
-            hotkey = database().getComponent(button->name + "GrayProxy").hotkey;
-
-        if (button->modifiers.color == ChargeType::Gray && (button->component->name == "GateSwitch" || button->component->name == "TrapReset" || button->component->name == "MegaHold"))
-            info = &database().getComponent(button->component->name + "GrayProxy");
+        // I and O to indicate stuff...
 
         //renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, button->modifiers, hotkey, nullptr);
-        renderTooltip(params().tooltipDefaultStart, *info, button->modifiers, hotkey, nullptr);
+        renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }
 
