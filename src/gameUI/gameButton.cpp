@@ -7,6 +7,8 @@
 void GameButton::initTooltip()
 {
     tooltip = component;
+    hotkeyCode = 0;
+    hotkey = "!";
     if (tooltip == nullptr)
         return;
     hotkey = component->hotkey;
@@ -50,8 +52,8 @@ void GameButton::initTooltip()
 
     if (type == ButtonType::TrapState || type == ButtonType::GateState)
     {
-        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "I";
-        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "O";
+        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "Y";
+        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "U";
     }
 
     if (type == ButtonType::CircuitBoundary)

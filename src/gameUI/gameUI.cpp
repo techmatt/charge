@@ -142,7 +142,7 @@ void GameUI::keyDown(SDL_Keycode key)
     {
         // COPY if there is anything in the selection buffer
         if (selection.components.size() > 0)
-            selection.copyToComponentSet(&copyBuffer, &app.state);
+            selection.copyToComponentSet(copyBuffer, app.state);
     }
 
     if (key == SDLK_v)
@@ -159,11 +159,15 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
     {
-        //delete all the selected components
-        for (Component *c : app.ui.selection.components)
-            app.state.removeComponent(c, false);
+        Component *selectedComponent = selection.singleElement();
+        if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
+        {
+            //delete all the selected components
+            for (Component *c : app.ui.selection.components)
+                app.state.removeComponent(c, false);
+            app.state.updateAll();
+        }
         selection.empty();
-        app.state.updateAll();
     }
 }
 

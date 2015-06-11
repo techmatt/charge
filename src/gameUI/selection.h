@@ -86,7 +86,7 @@ struct ComponentSelection
 	}
 
 
-	void copyToComponentSet(ComponentSet* cset, GameState* state); // copies a selection buffer to an already allocated componentset
+	void copyToComponentSet(ComponentSet &cset, GameState &state); // copies a selection buffer to an already allocated componentset
 
 
 };

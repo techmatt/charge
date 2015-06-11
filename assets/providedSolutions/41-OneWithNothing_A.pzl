@@ -5,167 +5,267 @@ Component~3~3
 boardPos=11 11
 name=Circuit
 puzzleType=1
-component0001~6
+component0001~4
+Component~3~3
+boardPos=2 11
+name=Circuit
+puzzleType=1
+component0002~4
+Component~3~3
+boardPos=4 9
+name=Circuit
+puzzleType=1
+component0003~4
+Component~3~3
+boardPos=6 7
+name=Circuit
+puzzleType=1
+component0004~4
+Component~3~3
+boardPos=8 5
+name=Circuit
+puzzleType=1
+component0005~4
+Component~3~3
+boardPos=10 3
+name=Circuit
+puzzleType=1
+component0006~4
+Component~3~3
+boardPos=14 3
+name=Circuit
+puzzleType=1
+component0007~4
+Component~3~3
+boardPos=12 3
+name=Circuit
+puzzleType=1
+component0008~4
+Component~3~3
+boardPos=14 5
+name=Circuit
+puzzleType=1
+component0009~4
+Component~3~3
+boardPos=16 7
+name=Circuit
+puzzleType=1
+component0010~4
+Component~3~3
+boardPos=18 9
+name=Circuit
+puzzleType=1
+component0011~4
+Component~3~3
+boardPos=20 11
+name=Circuit
+puzzleType=1
+component0012~4
+Component~3~3
+boardPos=20 9
+name=Circuit
+puzzleType=1
+component0013~4
+Component~3~3
+boardPos=18 7
+name=Circuit
+puzzleType=1
+component0014~4
+Component~3~3
+boardPos=2 9
+name=Circuit
+puzzleType=1
+component0015~4
+Component~3~3
+boardPos=4 7
+name=Circuit
+puzzleType=1
+component0016~4
+Component~3~3
+boardPos=6 5
+name=Circuit
+puzzleType=1
+component0017~4
+Component~3~3
+boardPos=8 3
+name=Circuit
+puzzleType=1
+component0018~4
+Component~3~3
+boardPos=10 1
+name=Circuit
+puzzleType=1
+component0019~4
+Component~3~3
+boardPos=16 5
+name=Circuit
+puzzleType=1
+component0020~4
+Component~3~3
+boardPos=12 1
+name=Circuit
+puzzleType=1
+component0021~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0002~6
+component0022~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0003~6
+component0023~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0004~6
+component0024~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0005~6
+component0025~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0006~6
+component0026~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0007~6
+component0027~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0008~6
+component0028~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0009~6
+component0029~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0010~6
+component0030~6
 Component~5~5
 boardPos=11 11
 circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
-component0011~6
+component0031~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0012~6
+component0032~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0013~6
+component0033~6
 Component~5~5
 boardPos=11 11
 circuitPos=4 6
 name=Wire
 puzzleType=1
 speed=4
-component0014~6
+component0034~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0015~6
+component0035~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 10
 name=Wire
 puzzleType=1
 speed=4
-component0016~6
+component0036~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0017~6
+component0037~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0018~6
+component0038~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0019~6
+component0039~6
 Component~5~5
 boardPos=11 11
 circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
-component0020~6
+component0040~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0021~6
+component0041~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0022~6
+component0042~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0023~5
+component0043~5
 Component~4~4
 boardPos=22 11
 color=1
 name=ChargeGoal
 puzzleType=1
-component0024~8
+component0044~8
 Component~7~7
 boardPos=0 11
 color=1
@@ -174,552 +274,416 @@ puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1
-component0025~6
+component0045~6
 Component~5~5
 boardPos=11 11
 circuitPos=8 10
 name=Wire
 puzzleType=1
 speed=4
-component0026~6
+component0046~6
 Component~5~5
 boardPos=11 11
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0027~6
+component0047~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0028~6
+component0048~6
 Component~5~5
 boardPos=11 11
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0029~6
+component0049~6
 Component~5~5
 boardPos=11 11
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0030~6
+component0050~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0031~6
+component0051~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0032~6
+component0052~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0033~6
+component0053~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 8
 name=Wire
 puzzleType=1
 speed=4
-component0034~6
+component0054~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0035~6
+component0055~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0036~6
+component0056~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0037~4
-Component~3~3
-boardPos=2 11
-name=Circuit
-puzzleType=2
-component0038~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0039~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0040~6
-Component~5~5
-boardPos=2 11
-boundary=1
-circuitPos=6 0
-name=CircuitBoundary
-puzzleType=1
-component0041~6
-Component~5~5
-boardPos=2 11
-boundary=1
-circuitPos=0 6
-name=CircuitBoundary
-puzzleType=1
-component0042~6
-Component~5~5
-boardPos=2 11
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0043~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=12 10
-name=CircuitBoundary
-puzzleType=1
-component0044~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=10 12
-name=CircuitBoundary
-puzzleType=1
-component0045~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=0 10
-name=CircuitBoundary
-puzzleType=1
-component0046~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
-puzzleType=1
-component0047~6
-Component~5~5
-boardPos=2 11
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0048~6
-Component~5~5
-boardPos=2 11
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0049~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=2 0
-name=CircuitBoundary
-puzzleType=1
-component0050~6
-Component~5~5
-boardPos=2 11
-circuitPos=4 6
-name=Wire
-puzzleType=1
-speed=4
-component0051~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0052~6
-Component~5~5
-boardPos=2 11
-circuitPos=10 10
-name=Wire
-puzzleType=1
-speed=4
-component0053~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=12 4
-name=CircuitBoundary
-puzzleType=1
-component0054~6
-Component~5~5
-boardPos=2 11
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0055~6
-Component~5~5
-boardPos=2 11
-boundary=1
-circuitPos=12 6
-name=CircuitBoundary
-puzzleType=1
-component0056~6
-Component~5~5
-boardPos=2 11
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
 component0057~6
 Component~5~5
 boardPos=2 11
 boundary=2
-circuitPos=8 0
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0058~6
 Component~5~5
 boardPos=2 11
 boundary=2
-circuitPos=2 12
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0059~6
+Component~5~5
+boardPos=2 11
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=1
+component0060~6
+Component~5~5
+boardPos=2 11
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=1
+component0061~6
+Component~5~5
+boardPos=2 11
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=1
+component0062~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=1
+component0063~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0064~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=1
+component0065~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=12 0
+name=CircuitBoundary
+puzzleType=1
+component0066~6
+Component~5~5
+boardPos=2 11
+circuitPos=6 4
+name=Wire
+puzzleType=1
+speed=4
+component0067~6
+Component~5~5
+boardPos=2 11
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0068~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=1
+component0069~6
+Component~5~5
+boardPos=2 11
+circuitPos=4 6
+name=Wire
+puzzleType=1
+speed=4
+component0070~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=1
+component0071~6
+Component~5~5
+boardPos=2 11
+circuitPos=10 10
+name=Wire
+puzzleType=1
+speed=4
+component0072~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0073~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0074~6
+Component~5~5
+boardPos=2 11
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0075~6
+Component~5~5
+boardPos=2 11
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0076~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0077~6
+Component~5~5
+boardPos=2 11
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=1
+component0078~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0060~6
+component0079~6
 Component~5~5
 boardPos=2 11
 circuitPos=8 10
 name=Wire
 puzzleType=1
 speed=4
-component0061~6
+component0080~6
 Component~5~5
 boardPos=2 11
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0062~6
+component0081~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0063~6
+component0082~6
 Component~5~5
 boardPos=2 11
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0064~6
+component0083~6
 Component~5~5
 boardPos=2 11
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0065~6
+component0084~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0066~6
+component0085~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0067~6
+component0086~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0068~6
+component0087~6
 Component~5~5
 boardPos=2 11
 circuitPos=10 8
 name=Wire
 puzzleType=1
 speed=4
-component0069~6
+component0088~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0070~6
+component0089~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0071~6
+component0090~6
 Component~5~5
 boardPos=2 11
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0072~4
-Component~3~3
-boardPos=4 9
-name=Circuit
-puzzleType=2
-component0073~6
+component0091~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0074~6
+component0092~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0075~6
+component0093~6
 Component~5~5
 boardPos=4 9
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0076~6
+component0094~6
 Component~5~5
 boardPos=4 9
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0077~6
+component0095~6
 Component~5~5
 boardPos=4 9
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0078~6
+component0096~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0079~6
+component0097~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0080~6
+component0098~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0081~6
+component0099~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0082~6
+component0100~6
 Component~5~5
 boardPos=4 9
 circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
-component0083~6
+component0101~6
 Component~5~5
 boardPos=4 9
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0084~6
+component0102~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0085~6
-Component~5~5
-boardPos=4 9
-circuitPos=4 6
-name=Wire
-puzzleType=1
-speed=4
-component0086~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0087~6
-Component~5~5
-boardPos=4 9
-circuitPos=10 10
-name=Wire
-puzzleType=1
-speed=4
-component0088~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=12 4
-name=CircuitBoundary
-puzzleType=1
-component0089~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0090~6
-Component~5~5
-boardPos=4 9
-boundary=1
-circuitPos=12 6
-name=CircuitBoundary
-puzzleType=1
-component0091~6
-Component~5~5
-boardPos=4 9
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0092~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
-component0093~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=2 12
-name=CircuitBoundary
-puzzleType=1
-component0094~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0095~6
-Component~5~5
-boardPos=4 9
-circuitPos=8 10
-name=Wire
-puzzleType=1
-speed=4
-component0096~6
-Component~5~5
-boardPos=4 9
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0097~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0098~6
-Component~5~5
-boardPos=4 9
-circuitPos=6 2
-name=Wire
-puzzleType=1
-speed=4
-component0099~6
-Component~5~5
-boardPos=4 9
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
-component0100~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=12 12
-name=CircuitBoundary
-puzzleType=1
-component0101~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=4 0
-name=CircuitBoundary
-puzzleType=1
-component0102~6
-Component~5~5
-boardPos=4 9
-boundary=2
-circuitPos=0 12
-name=CircuitBoundary
-puzzleType=1
 component0103~6
 Component~5~5
 boardPos=4 9
-circuitPos=10 8
+circuitPos=4 6
 name=Wire
 puzzleType=1
 speed=4
@@ -727,457 +691,461 @@ component0104~6
 Component~5~5
 boardPos=4 9
 boundary=2
-circuitPos=0 0
+circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
 component0105~6
+Component~5~5
+boardPos=4 9
+circuitPos=10 10
+name=Wire
+puzzleType=1
+speed=4
+component0106~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0107~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0108~6
+Component~5~5
+boardPos=4 9
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0109~6
+Component~5~5
+boardPos=4 9
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0110~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0111~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=1
+component0112~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=1
+component0113~6
+Component~5~5
+boardPos=4 9
+circuitPos=8 10
+name=Wire
+puzzleType=1
+speed=4
+component0114~6
+Component~5~5
+boardPos=4 9
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0115~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=1
+component0116~6
+Component~5~5
+boardPos=4 9
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0117~6
+Component~5~5
+boardPos=4 9
+circuitPos=6 10
+name=Wire
+puzzleType=1
+speed=4
+component0118~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=12 12
+name=CircuitBoundary
+puzzleType=1
+component0119~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=1
+component0120~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0121~6
+Component~5~5
+boardPos=4 9
+circuitPos=10 8
+name=Wire
+puzzleType=1
+speed=4
+component0122~6
+Component~5~5
+boardPos=4 9
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0123~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0106~6
+component0124~6
 Component~5~5
 boardPos=4 9
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0107~4
-Component~3~3
-boardPos=6 7
-name=Circuit
-puzzleType=2
-component0108~6
+component0125~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0109~6
+component0126~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0110~6
+component0127~6
 Component~5~5
 boardPos=6 7
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0111~6
+component0128~6
 Component~5~5
 boardPos=6 7
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0112~6
+component0129~6
 Component~5~5
 boardPos=6 7
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0113~6
+component0130~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0114~6
+component0131~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0115~6
+component0132~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0116~6
+component0133~6
 Component~5~5
 boardPos=6 7
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0117~6
-Component~5~5
-boardPos=6 7
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0118~6
-Component~5~5
-boardPos=6 7
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0119~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=2 0
-name=CircuitBoundary
-puzzleType=1
-component0120~6
-Component~5~5
-boardPos=6 7
-circuitPos=4 6
-name=Wire
-puzzleType=1
-speed=4
-component0121~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0122~6
-Component~5~5
-boardPos=6 7
-circuitPos=10 10
-name=Wire
-puzzleType=1
-speed=4
-component0123~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=12 4
-name=CircuitBoundary
-puzzleType=1
-component0124~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0125~6
-Component~5~5
-boardPos=6 7
-boundary=1
-circuitPos=12 6
-name=CircuitBoundary
-puzzleType=1
-component0126~6
-Component~5~5
-boardPos=6 7
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0127~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
-component0128~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=2 12
-name=CircuitBoundary
-puzzleType=1
-component0129~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0130~6
-Component~5~5
-boardPos=6 7
-circuitPos=8 10
-name=Wire
-puzzleType=1
-speed=4
-component0131~6
-Component~5~5
-boardPos=6 7
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0132~6
-Component~5~5
-boardPos=6 7
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0133~6
-Component~5~5
-boardPos=6 7
-circuitPos=6 2
-name=Wire
-puzzleType=1
-speed=4
 component0134~6
 Component~5~5
 boardPos=6 7
-circuitPos=6 10
+circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
 component0135~6
 Component~5~5
 boardPos=6 7
-boundary=2
-circuitPos=12 12
-name=CircuitBoundary
+circuitPos=10 6
+name=Wire
 puzzleType=1
+speed=4
 component0136~6
 Component~5~5
 boardPos=6 7
 boundary=2
-circuitPos=4 0
+circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
 component0137~6
 Component~5~5
 boardPos=6 7
-boundary=2
-circuitPos=0 12
-name=CircuitBoundary
-puzzleType=1
-component0138~6
-Component~5~5
-boardPos=6 7
-circuitPos=10 8
+circuitPos=4 6
 name=Wire
 puzzleType=1
 speed=4
-component0139~6
+component0138~6
 Component~5~5
 boardPos=6 7
 boundary=2
-circuitPos=0 0
+circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
+component0139~6
+Component~5~5
+boardPos=6 7
+circuitPos=10 10
+name=Wire
+puzzleType=1
+speed=4
 component0140~6
 Component~5~5
 boardPos=6 7
 boundary=2
-circuitPos=12 2
+circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
 component0141~6
 Component~5~5
 boardPos=6 7
 boundary=2
-circuitPos=12 8
+circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0142~4
-Component~3~3
-boardPos=8 5
-name=Circuit
-puzzleType=2
+component0142~6
+Component~5~5
+boardPos=6 7
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
 component0143~6
 Component~5~5
-boardPos=8 5
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
+boardPos=6 7
+circuitPos=6 6
+name=Wire
 puzzleType=1
+speed=4
 component0144~6
 Component~5~5
-boardPos=8 5
+boardPos=6 7
 boundary=2
-circuitPos=0 8
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0145~6
 Component~5~5
-boardPos=8 5
-boundary=1
-circuitPos=6 0
+boardPos=6 7
+boundary=2
+circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
 component0146~6
 Component~5~5
-boardPos=8 5
-boundary=1
-circuitPos=0 6
+boardPos=6 7
+boundary=2
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0147~6
 Component~5~5
-boardPos=8 5
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
+boardPos=6 7
+circuitPos=8 10
+name=Wire
 puzzleType=1
+speed=4
 component0148~6
 Component~5~5
-boardPos=8 5
-boundary=2
-circuitPos=12 10
-name=CircuitBoundary
+boardPos=6 7
+circuitPos=2 6
+name=Wire
 puzzleType=1
+speed=4
 component0149~6
 Component~5~5
-boardPos=8 5
+boardPos=6 7
 boundary=2
-circuitPos=10 12
+circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
 component0150~6
 Component~5~5
-boardPos=8 5
-boundary=2
-circuitPos=0 10
-name=CircuitBoundary
+boardPos=6 7
+circuitPos=6 2
+name=Wire
 puzzleType=1
+speed=4
 component0151~6
 Component~5~5
-boardPos=8 5
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
+boardPos=6 7
+circuitPos=6 10
+name=Wire
 puzzleType=1
+speed=4
 component0152~6
 Component~5~5
-boardPos=8 5
-circuitPos=6 4
-name=Wire
+boardPos=6 7
+boundary=2
+circuitPos=12 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0153~6
 Component~5~5
-boardPos=8 5
-circuitPos=10 6
-name=Wire
+boardPos=6 7
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0154~6
 Component~5~5
-boardPos=8 5
+boardPos=6 7
 boundary=2
-circuitPos=2 0
+circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
 component0155~6
 Component~5~5
-boardPos=8 5
-circuitPos=4 6
+boardPos=6 7
+circuitPos=10 8
 name=Wire
 puzzleType=1
 speed=4
 component0156~6
 Component~5~5
-boardPos=8 5
+boardPos=6 7
 boundary=2
-circuitPos=4 12
+circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
 component0157~6
 Component~5~5
-boardPos=8 5
-circuitPos=10 10
-name=Wire
+boardPos=6 7
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0158~6
 Component~5~5
-boardPos=8 5
+boardPos=6 7
 boundary=2
-circuitPos=12 4
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0159~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=0 2
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0160~6
 Component~5~5
 boardPos=8 5
-boundary=1
-circuitPos=12 6
+boundary=2
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0161~6
 Component~5~5
 boardPos=8 5
-circuitPos=6 6
-name=Wire
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0162~6
 Component~5~5
 boardPos=8 5
-boundary=2
-circuitPos=8 0
+boundary=1
+circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
 component0163~6
 Component~5~5
 boardPos=8 5
-boundary=2
-circuitPos=2 12
+boundary=1
+circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
 component0164~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=8 12
+circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
 component0165~6
 Component~5~5
 boardPos=8 5
-circuitPos=8 10
-name=Wire
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0166~6
 Component~5~5
 boardPos=8 5
-circuitPos=2 6
-name=Wire
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0167~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=0 4
+circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
 component0168~6
 Component~5~5
 boardPos=8 5
-circuitPos=6 2
+circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
 component0169~6
 Component~5~5
 boardPos=8 5
-circuitPos=6 10
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
@@ -1185,27 +1153,27 @@ component0170~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=12 12
+circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
 component0171~6
 Component~5~5
 boardPos=8 5
-boundary=2
-circuitPos=4 0
-name=CircuitBoundary
+circuitPos=4 6
+name=Wire
 puzzleType=1
+speed=4
 component0172~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=0 12
+circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
 component0173~6
 Component~5~5
 boardPos=8 5
-circuitPos=10 8
+circuitPos=10 10
 name=Wire
 puzzleType=1
 speed=4
@@ -1213,679 +1181,685 @@ component0174~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=0 0
+circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
 component0175~6
 Component~5~5
 boardPos=8 5
 boundary=2
-circuitPos=12 2
+circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
 component0176~6
+Component~5~5
+boardPos=8 5
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0177~6
+Component~5~5
+boardPos=8 5
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0178~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0179~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=1
+component0180~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=1
+component0181~6
+Component~5~5
+boardPos=8 5
+circuitPos=8 10
+name=Wire
+puzzleType=1
+speed=4
+component0182~6
+Component~5~5
+boardPos=8 5
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0183~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=1
+component0184~6
+Component~5~5
+boardPos=8 5
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0185~6
+Component~5~5
+boardPos=8 5
+circuitPos=6 10
+name=Wire
+puzzleType=1
+speed=4
+component0186~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=12 12
+name=CircuitBoundary
+puzzleType=1
+component0187~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=1
+component0188~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0189~6
+Component~5~5
+boardPos=8 5
+circuitPos=10 8
+name=Wire
+puzzleType=1
+speed=4
+component0190~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0191~6
+Component~5~5
+boardPos=8 5
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=1
+component0192~6
 Component~5~5
 boardPos=8 5
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0177~4
-Component~3~3
-boardPos=10 3
-name=Circuit
-puzzleType=2
-component0178~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0179~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0180~6
-Component~5~5
-boardPos=10 3
-boundary=1
-circuitPos=6 0
-name=CircuitBoundary
-puzzleType=1
-component0181~6
-Component~5~5
-boardPos=10 3
-boundary=1
-circuitPos=0 6
-name=CircuitBoundary
-puzzleType=1
-component0182~6
-Component~5~5
-boardPos=10 3
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0183~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=12 10
-name=CircuitBoundary
-puzzleType=1
-component0184~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=10 12
-name=CircuitBoundary
-puzzleType=1
-component0185~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=0 10
-name=CircuitBoundary
-puzzleType=1
-component0186~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
-puzzleType=1
-component0187~6
-Component~5~5
-boardPos=10 3
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0188~6
-Component~5~5
-boardPos=10 3
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0189~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=2 0
-name=CircuitBoundary
-puzzleType=1
-component0190~6
-Component~5~5
-boardPos=10 3
-circuitPos=4 6
-name=Wire
-puzzleType=1
-speed=4
-component0191~6
-Component~5~5
-boardPos=10 3
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0192~6
-Component~5~5
-boardPos=10 3
-circuitPos=10 10
-name=Wire
-puzzleType=1
-speed=4
 component0193~6
 Component~5~5
 boardPos=10 3
 boundary=2
-circuitPos=12 4
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0194~6
 Component~5~5
 boardPos=10 3
 boundary=2
-circuitPos=0 2
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0195~6
 Component~5~5
 boardPos=10 3
 boundary=1
-circuitPos=12 6
+circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
 component0196~6
 Component~5~5
 boardPos=10 3
-circuitPos=6 6
-name=Wire
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0197~6
 Component~5~5
 boardPos=10 3
-boundary=2
-circuitPos=8 0
+boundary=1
+circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
 component0198~6
 Component~5~5
 boardPos=10 3
 boundary=2
-circuitPos=2 12
+circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
 component0199~6
 Component~5~5
 boardPos=10 3
 boundary=2
-circuitPos=8 12
+circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
 component0200~6
 Component~5~5
 boardPos=10 3
-circuitPos=8 10
-name=Wire
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0201~6
 Component~5~5
 boardPos=10 3
-circuitPos=2 6
-name=Wire
+boundary=2
+circuitPos=12 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0202~6
 Component~5~5
 boardPos=10 3
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
+circuitPos=6 4
+name=Wire
 puzzleType=1
+speed=4
 component0203~6
 Component~5~5
 boardPos=10 3
-circuitPos=6 2
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
 component0204~6
 Component~5~5
 boardPos=10 3
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=1
+component0205~6
+Component~5~5
+boardPos=10 3
+circuitPos=4 6
+name=Wire
+puzzleType=1
+speed=4
+component0206~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=1
+component0207~6
+Component~5~5
+boardPos=10 3
+circuitPos=10 10
+name=Wire
+puzzleType=1
+speed=4
+component0208~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0209~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0210~6
+Component~5~5
+boardPos=10 3
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0211~6
+Component~5~5
+boardPos=10 3
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0212~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0213~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=1
+component0214~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=1
+component0215~6
+Component~5~5
+boardPos=10 3
+circuitPos=8 10
+name=Wire
+puzzleType=1
+speed=4
+component0216~6
+Component~5~5
+boardPos=10 3
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0217~6
+Component~5~5
+boardPos=10 3
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=1
+component0218~6
+Component~5~5
+boardPos=10 3
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0219~6
+Component~5~5
+boardPos=10 3
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0205~6
+component0220~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0206~6
+component0221~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0207~6
+component0222~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0208~6
+component0223~6
 Component~5~5
 boardPos=10 3
 circuitPos=10 8
 name=Wire
 puzzleType=1
 speed=4
-component0209~6
+component0224~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0210~6
+component0225~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0211~6
+component0226~6
 Component~5~5
 boardPos=10 3
 boundary=2
 circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0212~4
-Component~3~3
-boardPos=14 3
-name=Circuit
-puzzleType=2
-component0213~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
-component0214~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=2 0
-name=CircuitBoundary
-puzzleType=1
-component0215~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=0 12
-name=CircuitBoundary
-puzzleType=1
-component0216~6
-Component~5~5
-boardPos=14 3
-circuitPos=8 2
-name=Wire
-puzzleType=1
-speed=4
-component0217~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=12 12
-name=CircuitBoundary
-puzzleType=1
-component0218~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0219~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
-puzzleType=1
-component0220~6
-Component~5~5
-boardPos=14 3
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0221~6
-Component~5~5
-boardPos=14 3
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0222~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0223~6
-Component~5~5
-boardPos=14 3
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
-component0224~6
-Component~5~5
-boardPos=14 3
-circuitPos=10 4
-name=Wire
-puzzleType=1
-speed=4
-component0225~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=12 4
-name=CircuitBoundary
-puzzleType=1
-component0226~6
-Component~5~5
-boardPos=14 3
-boundary=2
-circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
 component0227~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=0 4
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0228~6
 Component~5~5
 boardPos=14 3
-circuitPos=6 6
-name=Wire
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0229~6
 Component~5~5
 boardPos=14 3
-boundary=1
-circuitPos=6 0
+boundary=2
+circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
 component0230~6
 Component~5~5
 boardPos=14 3
-boundary=2
-circuitPos=2 12
-name=CircuitBoundary
+circuitPos=8 2
+name=Wire
 puzzleType=1
+speed=4
 component0231~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=4 0
+circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
 component0232~6
 Component~5~5
 boardPos=14 3
-circuitPos=10 2
-name=Wire
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0233~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=12 8
+circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
 component0234~6
 Component~5~5
 boardPos=14 3
-circuitPos=6 8
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
 component0235~6
 Component~5~5
 boardPos=14 3
-boundary=2
-circuitPos=0 10
-name=CircuitBoundary
-puzzleType=1
-component0236~6
-Component~5~5
-boardPos=14 3
-circuitPos=6 2
+circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
+component0236~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=1
 component0237~6
 Component~5~5
 boardPos=14 3
-circuitPos=4 6
+circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
 component0238~6
 Component~5~5
 boardPos=14 3
-boundary=2
-circuitPos=0 0
-name=CircuitBoundary
+circuitPos=10 4
+name=Wire
 puzzleType=1
+speed=4
 component0239~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=10 12
+circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
 component0240~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=12 2
+circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
 component0241~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=10 0
+circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
 component0242~6
 Component~5~5
 boardPos=14 3
-boundary=1
-circuitPos=12 6
-name=CircuitBoundary
+circuitPos=6 6
+name=Wire
 puzzleType=1
+speed=4
 component0243~6
 Component~5~5
 boardPos=14 3
 boundary=1
-circuitPos=6 12
+circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
 component0244~6
 Component~5~5
 boardPos=14 3
-boundary=1
-circuitPos=0 6
+boundary=2
+circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
 component0245~6
 Component~5~5
 boardPos=14 3
 boundary=2
-circuitPos=8 12
+circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
 component0246~6
+Component~5~5
+boardPos=14 3
+circuitPos=10 2
+name=Wire
+puzzleType=1
+speed=4
+component0247~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
+component0248~6
+Component~5~5
+boardPos=14 3
+circuitPos=6 8
+name=Wire
+puzzleType=1
+speed=4
+component0249~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=1
+component0250~6
+Component~5~5
+boardPos=14 3
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0251~6
+Component~5~5
+boardPos=14 3
+circuitPos=4 6
+name=Wire
+puzzleType=1
+speed=4
+component0252~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0253~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0254~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=1
+component0255~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=1
+component0256~6
+Component~5~5
+boardPos=14 3
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0257~6
+Component~5~5
+boardPos=14 3
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=1
+component0258~6
+Component~5~5
+boardPos=14 3
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=1
+component0259~6
+Component~5~5
+boardPos=14 3
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=1
+component0260~6
 Component~5~5
 boardPos=14 3
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0247~4
-Component~3~3
-boardPos=12 3
-name=Circuit
-puzzleType=2
-component0248~6
+component0261~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0249~6
+component0262~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0250~6
+component0263~6
 Component~5~5
 boardPos=12 3
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0251~6
+component0264~6
 Component~5~5
 boardPos=12 3
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0252~6
+component0265~6
 Component~5~5
 boardPos=12 3
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0253~6
+component0266~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0254~6
+component0267~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0255~6
+component0268~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0256~6
+component0269~6
 Component~5~5
 boardPos=12 3
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0257~6
+component0270~6
 Component~5~5
 boardPos=12 3
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0258~6
-Component~5~5
-boardPos=12 3
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
-component0259~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=12 2
-name=CircuitBoundary
-puzzleType=1
-component0260~6
-Component~5~5
-boardPos=12 3
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0261~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0262~6
-Component~5~5
-boardPos=12 3
-circuitPos=2 10
-name=Wire
-puzzleType=1
-speed=4
-component0263~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0264~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0265~6
-Component~5~5
-boardPos=12 3
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0266~6
-Component~5~5
-boardPos=12 3
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0267~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0268~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0269~6
-Component~5~5
-boardPos=12 3
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0270~6
-Component~5~5
-boardPos=12 3
-circuitPos=2 8
-name=Wire
-puzzleType=1
-speed=4
 component0271~6
 Component~5~5
 boardPos=12 3
-circuitPos=6 2
+circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
@@ -1893,263 +1867,265 @@ component0272~6
 Component~5~5
 boardPos=12 3
 boundary=2
-circuitPos=8 0
+circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
 component0273~6
 Component~5~5
 boardPos=12 3
-circuitPos=10 6
+circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
 component0274~6
 Component~5~5
 boardPos=12 3
-circuitPos=2 6
-name=Wire
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0275~6
 Component~5~5
 boardPos=12 3
-boundary=2
-circuitPos=0 12
-name=CircuitBoundary
+circuitPos=2 10
+name=Wire
 puzzleType=1
+speed=4
 component0276~6
 Component~5~5
 boardPos=12 3
 boundary=2
-circuitPos=12 4
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0277~6
 Component~5~5
 boardPos=12 3
 boundary=2
-circuitPos=0 0
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0278~6
 Component~5~5
 boardPos=12 3
-circuitPos=4 10
-name=Wire
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0279~6
 Component~5~5
 boardPos=12 3
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
+circuitPos=6 6
+name=Wire
 puzzleType=1
+speed=4
 component0280~6
 Component~5~5
 boardPos=12 3
 boundary=2
-circuitPos=10 12
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0281~6
 Component~5~5
 boardPos=12 3
 boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0282~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0283~6
+Component~5~5
+boardPos=12 3
+circuitPos=2 8
+name=Wire
+puzzleType=1
+speed=4
+component0284~6
+Component~5~5
+boardPos=12 3
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0285~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0286~6
+Component~5~5
+boardPos=12 3
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0287~6
+Component~5~5
+boardPos=12 3
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0288~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0289~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0290~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0291~6
+Component~5~5
+boardPos=12 3
+circuitPos=4 10
+name=Wire
+puzzleType=1
+speed=4
+component0292~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=12 0
+name=CircuitBoundary
+puzzleType=1
+component0293~6
+Component~5~5
+boardPos=12 3
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0294~6
+Component~5~5
+boardPos=12 3
+boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0282~4
-Component~3~3
-boardPos=14 5
-name=Circuit
-puzzleType=2
-component0283~6
+component0295~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0284~6
+component0296~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0285~6
+component0297~6
 Component~5~5
 boardPos=14 5
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0286~6
+component0298~6
 Component~5~5
 boardPos=14 5
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0287~6
+component0299~6
 Component~5~5
 boardPos=14 5
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0288~6
+component0300~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0289~6
+component0301~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0290~6
+component0302~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0291~6
+component0303~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0292~6
+component0304~6
 Component~5~5
 boardPos=14 5
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0293~6
+component0305~6
 Component~5~5
 boardPos=14 5
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0294~6
+component0306~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0295~6
+component0307~6
 Component~5~5
 boardPos=14 5
 circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
-component0296~6
+component0308~6
 Component~5~5
 boardPos=14 5
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0297~6
-Component~5~5
-boardPos=14 5
-circuitPos=2 10
-name=Wire
-puzzleType=1
-speed=4
-component0298~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0299~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0300~6
-Component~5~5
-boardPos=14 5
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0301~6
-Component~5~5
-boardPos=14 5
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0302~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0303~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0304~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0305~6
-Component~5~5
-boardPos=14 5
-circuitPos=2 8
-name=Wire
-puzzleType=1
-speed=4
-component0306~6
-Component~5~5
-boardPos=14 5
-circuitPos=6 2
-name=Wire
-puzzleType=1
-speed=4
-component0307~6
-Component~5~5
-boardPos=14 5
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
-component0308~6
-Component~5~5
-boardPos=14 5
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
 component0309~6
 Component~5~5
 boardPos=14 5
-circuitPos=2 6
+circuitPos=2 10
 name=Wire
 puzzleType=1
 speed=4
@@ -2157,27 +2133,27 @@ component0310~6
 Component~5~5
 boardPos=14 5
 boundary=2
-circuitPos=0 12
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0311~6
 Component~5~5
 boardPos=14 5
 boundary=2
-circuitPos=12 4
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0312~6
 Component~5~5
 boardPos=14 5
-boundary=2
-circuitPos=0 0
+boundary=1
+circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
 component0313~6
 Component~5~5
 boardPos=14 5
-circuitPos=4 10
+circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
@@ -2185,193 +2161,195 @@ component0314~6
 Component~5~5
 boardPos=14 5
 boundary=2
-circuitPos=12 0
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0315~6
 Component~5~5
 boardPos=14 5
 boundary=2
-circuitPos=10 12
+circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
 component0316~6
 Component~5~5
 boardPos=14 5
 boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0317~6
+Component~5~5
+boardPos=14 5
+circuitPos=2 8
+name=Wire
+puzzleType=1
+speed=4
+component0318~6
+Component~5~5
+boardPos=14 5
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0319~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0320~6
+Component~5~5
+boardPos=14 5
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0321~6
+Component~5~5
+boardPos=14 5
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0322~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0323~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0324~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0325~6
+Component~5~5
+boardPos=14 5
+circuitPos=4 10
+name=Wire
+puzzleType=1
+speed=4
+component0326~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=12 0
+name=CircuitBoundary
+puzzleType=1
+component0327~6
+Component~5~5
+boardPos=14 5
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0328~6
+Component~5~5
+boardPos=14 5
+boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0317~4
-Component~3~3
-boardPos=16 7
-name=Circuit
-puzzleType=2
-component0318~6
+component0329~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0319~6
+component0330~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0320~6
+component0331~6
 Component~5~5
 boardPos=16 7
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0321~6
+component0332~6
 Component~5~5
 boardPos=16 7
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0322~6
+component0333~6
 Component~5~5
 boardPos=16 7
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0323~6
+component0334~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0324~6
+component0335~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0325~6
+component0336~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0326~6
+component0337~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0327~6
+component0338~6
 Component~5~5
 boardPos=16 7
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0328~6
+component0339~6
 Component~5~5
 boardPos=16 7
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0329~6
+component0340~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0330~6
-Component~5~5
-boardPos=16 7
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0331~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0332~6
-Component~5~5
-boardPos=16 7
-circuitPos=2 10
-name=Wire
-puzzleType=1
-speed=4
-component0333~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0334~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0335~6
-Component~5~5
-boardPos=16 7
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0336~6
-Component~5~5
-boardPos=16 7
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0337~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0338~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0339~6
-Component~5~5
-boardPos=16 7
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0340~6
-Component~5~5
-boardPos=16 7
-circuitPos=2 8
-name=Wire
-puzzleType=1
-speed=4
 component0341~6
 Component~5~5
 boardPos=16 7
-circuitPos=6 2
+circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
@@ -2379,485 +2357,489 @@ component0342~6
 Component~5~5
 boardPos=16 7
 boundary=2
-circuitPos=8 0
+circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
 component0343~6
 Component~5~5
 boardPos=16 7
-circuitPos=10 6
+circuitPos=2 10
 name=Wire
 puzzleType=1
 speed=4
 component0344~6
 Component~5~5
 boardPos=16 7
-circuitPos=2 6
-name=Wire
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0345~6
 Component~5~5
 boardPos=16 7
 boundary=2
-circuitPos=0 12
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0346~6
 Component~5~5
 boardPos=16 7
-boundary=2
-circuitPos=12 4
+boundary=1
+circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
 component0347~6
 Component~5~5
 boardPos=16 7
-boundary=2
-circuitPos=0 0
-name=CircuitBoundary
-puzzleType=1
-component0348~6
-Component~5~5
-boardPos=16 7
-circuitPos=4 10
+circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
+component0348~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
 component0349~6
 Component~5~5
 boardPos=16 7
 boundary=2
-circuitPos=12 0
+circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
 component0350~6
 Component~5~5
 boardPos=16 7
 boundary=2
-circuitPos=10 12
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0351~6
+Component~5~5
+boardPos=16 7
+circuitPos=2 8
+name=Wire
+puzzleType=1
+speed=4
+component0352~6
+Component~5~5
+boardPos=16 7
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0353~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0354~6
+Component~5~5
+boardPos=16 7
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0355~6
+Component~5~5
+boardPos=16 7
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0356~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0357~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0358~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0359~6
+Component~5~5
+boardPos=16 7
+circuitPos=4 10
+name=Wire
+puzzleType=1
+speed=4
+component0360~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=12 0
+name=CircuitBoundary
+puzzleType=1
+component0361~6
+Component~5~5
+boardPos=16 7
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0362~6
 Component~5~5
 boardPos=16 7
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0352~4
-Component~3~3
-boardPos=18 9
-name=Circuit
-puzzleType=2
-component0353~6
+component0363~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0354~6
+component0364~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0355~6
+component0365~6
 Component~5~5
 boardPos=18 9
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0356~6
+component0366~6
 Component~5~5
 boardPos=18 9
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0357~6
+component0367~6
 Component~5~5
 boardPos=18 9
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0358~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=2 12
-name=CircuitBoundary
-puzzleType=1
-component0359~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=0 10
-name=CircuitBoundary
-puzzleType=1
-component0360~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=2 0
-name=CircuitBoundary
-puzzleType=1
-component0361~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=12 12
-name=CircuitBoundary
-puzzleType=1
-component0362~6
-Component~5~5
-boardPos=18 9
-circuitPos=8 6
-name=Wire
-puzzleType=1
-speed=4
-component0363~6
-Component~5~5
-boardPos=18 9
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
-component0364~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=12 2
-name=CircuitBoundary
-puzzleType=1
-component0365~6
-Component~5~5
-boardPos=18 9
-circuitPos=6 4
-name=Wire
-puzzleType=1
-speed=4
-component0366~6
-Component~5~5
-boardPos=18 9
-boundary=2
-circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0367~6
-Component~5~5
-boardPos=18 9
-circuitPos=2 10
-name=Wire
-puzzleType=1
-speed=4
 component0368~6
 Component~5~5
 boardPos=18 9
 boundary=2
-circuitPos=8 12
+circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
 component0369~6
 Component~5~5
 boardPos=18 9
 boundary=2
-circuitPos=10 0
+circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
 component0370~6
 Component~5~5
 boardPos=18 9
-boundary=1
-circuitPos=6 12
+boundary=2
+circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
 component0371~6
 Component~5~5
 boardPos=18 9
-circuitPos=6 6
-name=Wire
+boundary=2
+circuitPos=12 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0372~6
 Component~5~5
 boardPos=18 9
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
+circuitPos=8 6
+name=Wire
 puzzleType=1
+speed=4
 component0373~6
 Component~5~5
 boardPos=18 9
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
+circuitPos=6 10
+name=Wire
 puzzleType=1
+speed=4
 component0374~6
 Component~5~5
 boardPos=18 9
 boundary=2
-circuitPos=0 8
+circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
 component0375~6
 Component~5~5
 boardPos=18 9
-circuitPos=2 8
+circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
 component0376~6
 Component~5~5
 boardPos=18 9
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=1
+component0377~6
+Component~5~5
+boardPos=18 9
+circuitPos=2 10
+name=Wire
+puzzleType=1
+speed=4
+component0378~6
+Component~5~5
+boardPos=18 9
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=1
+component0379~6
+Component~5~5
+boardPos=18 9
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=1
+component0380~6
+Component~5~5
+boardPos=18 9
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=1
+component0381~6
+Component~5~5
+boardPos=18 9
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0382~6
+Component~5~5
+boardPos=18 9
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
+component0383~6
+Component~5~5
+boardPos=18 9
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0384~6
+Component~5~5
+boardPos=18 9
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0385~6
+Component~5~5
+boardPos=18 9
+circuitPos=2 8
+name=Wire
+puzzleType=1
+speed=4
+component0386~6
+Component~5~5
+boardPos=18 9
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0377~6
+component0387~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0378~6
+component0388~6
 Component~5~5
 boardPos=18 9
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0379~6
+component0389~6
 Component~5~5
 boardPos=18 9
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0380~6
+component0390~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0381~6
+component0391~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0382~6
+component0392~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0383~6
+component0393~6
 Component~5~5
 boardPos=18 9
 circuitPos=4 10
 name=Wire
 puzzleType=1
 speed=4
-component0384~6
+component0394~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0385~6
+component0395~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0386~6
+component0396~6
 Component~5~5
 boardPos=18 9
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0387~4
-Component~3~3
-boardPos=20 11
-name=Circuit
-puzzleType=2
-component0388~6
+component0397~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0389~6
+component0398~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0390~6
+component0399~6
 Component~5~5
 boardPos=20 11
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0391~6
+component0400~6
 Component~5~5
 boardPos=20 11
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0392~6
+component0401~6
 Component~5~5
 boardPos=20 11
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0393~6
+component0402~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0394~6
+component0403~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0395~6
+component0404~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0396~6
+component0405~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0397~6
+component0406~6
 Component~5~5
 boardPos=20 11
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0398~6
+component0407~6
 Component~5~5
 boardPos=20 11
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0399~6
+component0408~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0400~6
+component0409~6
 Component~5~5
 boardPos=20 11
 circuitPos=6 4
 name=Wire
 puzzleType=1
 speed=4
-component0401~6
+component0410~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0402~6
-Component~5~5
-boardPos=20 11
-circuitPos=2 10
-name=Wire
-puzzleType=1
-speed=4
-component0403~6
-Component~5~5
-boardPos=20 11
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0404~6
-Component~5~5
-boardPos=20 11
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0405~6
-Component~5~5
-boardPos=20 11
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0406~6
-Component~5~5
-boardPos=20 11
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0407~6
-Component~5~5
-boardPos=20 11
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0408~6
-Component~5~5
-boardPos=20 11
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0409~6
-Component~5~5
-boardPos=20 11
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0410~6
-Component~5~5
-boardPos=20 11
-circuitPos=2 8
-name=Wire
-puzzleType=1
-speed=4
 component0411~6
 Component~5~5
 boardPos=20 11
-circuitPos=6 2
+circuitPos=2 10
 name=Wire
 puzzleType=1
 speed=4
@@ -2865,158 +2847,160 @@ component0412~6
 Component~5~5
 boardPos=20 11
 boundary=2
-circuitPos=8 0
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0413~6
 Component~5~5
 boardPos=20 11
-circuitPos=10 6
-name=Wire
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0414~6
 Component~5~5
 boardPos=20 11
-circuitPos=2 6
-name=Wire
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0415~6
 Component~5~5
 boardPos=20 11
-boundary=2
-circuitPos=0 12
-name=CircuitBoundary
+circuitPos=6 6
+name=Wire
 puzzleType=1
+speed=4
 component0416~6
 Component~5~5
 boardPos=20 11
 boundary=2
-circuitPos=12 4
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0417~6
 Component~5~5
 boardPos=20 11
 boundary=2
-circuitPos=0 0
+circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
 component0418~6
+Component~5~5
+boardPos=20 11
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0419~6
+Component~5~5
+boardPos=20 11
+circuitPos=2 8
+name=Wire
+puzzleType=1
+speed=4
+component0420~6
+Component~5~5
+boardPos=20 11
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0421~6
+Component~5~5
+boardPos=20 11
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=1
+component0422~6
+Component~5~5
+boardPos=20 11
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0423~6
+Component~5~5
+boardPos=20 11
+circuitPos=2 6
+name=Wire
+puzzleType=1
+speed=4
+component0424~6
+Component~5~5
+boardPos=20 11
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0425~6
+Component~5~5
+boardPos=20 11
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=1
+component0426~6
+Component~5~5
+boardPos=20 11
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0427~6
 Component~5~5
 boardPos=20 11
 circuitPos=4 10
 name=Wire
 puzzleType=1
 speed=4
-component0419~6
+component0428~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0420~6
+component0429~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0421~6
+component0430~6
 Component~5~5
 boardPos=20 11
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0422~4
-Component~3~3
-boardPos=20 9
-name=Circuit
-puzzleType=2
-component0423~6
+component0431~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0424~6
+component0432~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0425~6
+component0433~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0426~6
-Component~5~5
-boardPos=20 9
-circuitPos=8 2
-name=Wire
-puzzleType=1
-speed=4
-component0427~6
-Component~5~5
-boardPos=20 9
-boundary=2
-circuitPos=12 12
-name=CircuitBoundary
-puzzleType=1
-component0428~6
-Component~5~5
-boardPos=20 9
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0429~6
-Component~5~5
-boardPos=20 9
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
-puzzleType=1
-component0430~6
-Component~5~5
-boardPos=20 9
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0431~6
-Component~5~5
-boardPos=20 9
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0432~6
-Component~5~5
-boardPos=20 9
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0433~6
-Component~5~5
-boardPos=20 9
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
 component0434~6
 Component~5~5
 boardPos=20 9
-circuitPos=10 4
+circuitPos=8 2
 name=Wire
 puzzleType=1
 speed=4
@@ -3024,55 +3008,55 @@ component0435~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=12 4
+circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
 component0436~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=12 10
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0437~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=0 4
+circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
 component0438~6
 Component~5~5
 boardPos=20 9
-circuitPos=6 6
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
 component0439~6
 Component~5~5
 boardPos=20 9
-boundary=1
-circuitPos=6 0
-name=CircuitBoundary
+circuitPos=2 6
+name=Wire
 puzzleType=1
+speed=4
 component0440~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=2 12
+circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
 component0441~6
 Component~5~5
 boardPos=20 9
-boundary=2
-circuitPos=4 0
-name=CircuitBoundary
+circuitPos=6 10
+name=Wire
 puzzleType=1
+speed=4
 component0442~6
 Component~5~5
 boardPos=20 9
-circuitPos=10 2
+circuitPos=10 4
 name=Wire
 puzzleType=1
 speed=4
@@ -3080,386 +3064,390 @@ component0443~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=12 8
+circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
 component0444~6
 Component~5~5
 boardPos=20 9
-circuitPos=6 8
-name=Wire
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0445~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=0 10
+circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
 component0446~6
 Component~5~5
 boardPos=20 9
-circuitPos=6 2
+circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
 component0447~6
 Component~5~5
 boardPos=20 9
-circuitPos=4 6
-name=Wire
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0448~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=0 0
+circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
 component0449~6
 Component~5~5
 boardPos=20 9
 boundary=2
-circuitPos=10 12
+circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
 component0450~6
+Component~5~5
+boardPos=20 9
+circuitPos=10 2
+name=Wire
+puzzleType=1
+speed=4
+component0451~6
+Component~5~5
+boardPos=20 9
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
+component0452~6
+Component~5~5
+boardPos=20 9
+circuitPos=6 8
+name=Wire
+puzzleType=1
+speed=4
+component0453~6
+Component~5~5
+boardPos=20 9
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=1
+component0454~6
+Component~5~5
+boardPos=20 9
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0455~6
+Component~5~5
+boardPos=20 9
+circuitPos=4 6
+name=Wire
+puzzleType=1
+speed=4
+component0456~6
+Component~5~5
+boardPos=20 9
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0457~6
+Component~5~5
+boardPos=20 9
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=1
+component0458~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0451~6
+component0459~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0452~6
+component0460~6
 Component~5~5
 boardPos=20 9
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0453~6
+component0461~6
 Component~5~5
 boardPos=20 9
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0454~6
+component0462~6
 Component~5~5
 boardPos=20 9
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0455~6
+component0463~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0456~6
+component0464~6
 Component~5~5
 boardPos=20 9
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0457~4
-Component~3~3
-boardPos=18 7
-name=Circuit
-puzzleType=2
-component0458~6
+component0465~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0459~6
+component0466~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0460~6
+component0467~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0461~6
+component0468~6
 Component~5~5
 boardPos=18 7
 circuitPos=8 2
 name=Wire
 puzzleType=1
 speed=4
-component0462~6
+component0469~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0463~6
+component0470~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0464~6
+component0471~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0465~6
+component0472~6
 Component~5~5
 boardPos=18 7
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0466~6
+component0473~6
 Component~5~5
 boardPos=18 7
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0467~6
+component0474~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0468~6
+component0475~6
 Component~5~5
 boardPos=18 7
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0469~6
+component0476~6
 Component~5~5
 boardPos=18 7
 circuitPos=10 4
 name=Wire
 puzzleType=1
 speed=4
-component0470~6
+component0477~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0471~6
+component0478~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0472~6
+component0479~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0473~6
+component0480~6
 Component~5~5
 boardPos=18 7
 circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
-component0474~6
+component0481~6
 Component~5~5
 boardPos=18 7
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0475~6
+component0482~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0476~6
+component0483~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0477~6
+component0484~6
 Component~5~5
 boardPos=18 7
 circuitPos=10 2
 name=Wire
 puzzleType=1
 speed=4
-component0478~6
+component0485~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0479~6
+component0486~6
 Component~5~5
 boardPos=18 7
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0480~6
+component0487~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0481~6
+component0488~6
 Component~5~5
 boardPos=18 7
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0482~6
+component0489~6
 Component~5~5
 boardPos=18 7
 circuitPos=4 6
 name=Wire
 puzzleType=1
 speed=4
-component0483~6
+component0490~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0484~6
+component0491~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0485~6
+component0492~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0486~6
+component0493~6
 Component~5~5
 boardPos=18 7
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0487~6
+component0494~6
 Component~5~5
 boardPos=18 7
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0488~6
-Component~5~5
-boardPos=18 7
-boundary=1
-circuitPos=6 12
-name=CircuitBoundary
-puzzleType=1
-component0489~6
-Component~5~5
-boardPos=18 7
-boundary=1
-circuitPos=0 6
-name=CircuitBoundary
-puzzleType=1
-component0490~6
-Component~5~5
-boardPos=18 7
-boundary=2
-circuitPos=8 12
-name=CircuitBoundary
-puzzleType=1
-component0491~6
-Component~5~5
-boardPos=18 7
-boundary=2
-circuitPos=0 2
-name=CircuitBoundary
-puzzleType=1
-component0492~4
-Component~3~3
-boardPos=2 9
-name=Circuit
-puzzleType=2
-component0493~6
-Component~5~5
-boardPos=2 9
-boundary=2
-circuitPos=2 12
-name=CircuitBoundary
-puzzleType=1
-component0494~6
-Component~5~5
-boardPos=2 9
-boundary=2
-circuitPos=12 4
-name=CircuitBoundary
-puzzleType=1
 component0495~6
 Component~5~5
-boardPos=2 9
+boardPos=18 7
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
 component0496~6
 Component~5~5
-boardPos=2 9
+boardPos=18 7
 boundary=1
-circuitPos=12 6
+circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
 component0497~6
 Component~5~5
-boardPos=2 9
-boundary=1
-circuitPos=6 0
+boardPos=18 7
+boundary=2
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0498~6
 Component~5~5
-boardPos=2 9
+boardPos=18 7
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
@@ -3468,90 +3456,90 @@ component0499~6
 Component~5~5
 boardPos=2 9
 boundary=2
-circuitPos=2 0
+circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
 component0500~6
 Component~5~5
 boardPos=2 9
 boundary=2
-circuitPos=12 2
+circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
 component0501~6
+Component~5~5
+boardPos=2 9
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=1
+component0502~6
+Component~5~5
+boardPos=2 9
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=1
+component0503~6
+Component~5~5
+boardPos=2 9
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=1
+component0504~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=1
+component0505~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=1
+component0506~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=1
+component0507~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0502~6
+component0508~6
 Component~5~5
 boardPos=2 9
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0503~6
+component0509~6
 Component~5~5
 boardPos=2 9
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0504~6
+component0510~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0505~6
-Component~5~5
-boardPos=2 9
-circuitPos=8 6
-name=Wire
-puzzleType=1
-speed=4
-component0506~6
-Component~5~5
-boardPos=2 9
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
-component0507~6
-Component~5~5
-boardPos=2 9
-circuitPos=2 2
-name=Wire
-puzzleType=1
-speed=4
-component0508~6
-Component~5~5
-boardPos=2 9
-boundary=2
-circuitPos=0 8
-name=CircuitBoundary
-puzzleType=1
-component0509~6
-Component~5~5
-boardPos=2 9
-boundary=2
-circuitPos=12 10
-name=CircuitBoundary
-puzzleType=1
-component0510~6
-Component~5~5
-boardPos=2 9
-boundary=1
-circuitPos=0 6
-name=CircuitBoundary
-puzzleType=1
 component0511~6
 Component~5~5
 boardPos=2 9
-circuitPos=6 6
+circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
@@ -3559,277 +3547,279 @@ component0512~6
 Component~5~5
 boardPos=2 9
 boundary=2
-circuitPos=4 12
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0513~6
+Component~5~5
+boardPos=2 9
+circuitPos=2 2
+name=Wire
+puzzleType=1
+speed=4
+component0514~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0515~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=1
+component0516~6
+Component~5~5
+boardPos=2 9
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=1
+component0517~6
+Component~5~5
+boardPos=2 9
+circuitPos=6 6
+name=Wire
+puzzleType=1
+speed=4
+component0518~6
+Component~5~5
+boardPos=2 9
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=1
+component0519~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0514~6
+component0520~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0515~6
+component0521~6
 Component~5~5
 boardPos=2 9
 circuitPos=4 2
 name=Wire
 puzzleType=1
 speed=4
-component0516~6
+component0522~6
 Component~5~5
 boardPos=2 9
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0517~6
+component0523~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0518~6
+component0524~6
 Component~5~5
 boardPos=2 9
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0519~6
+component0525~6
 Component~5~5
 boardPos=2 9
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0520~6
+component0526~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0521~6
+component0527~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0522~6
+component0528~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0523~6
+component0529~6
 Component~5~5
 boardPos=2 9
 circuitPos=2 4
 name=Wire
 puzzleType=1
 speed=4
-component0524~6
+component0530~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0525~6
+component0531~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0526~6
+component0532~6
 Component~5~5
 boardPos=2 9
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0527~4
-Component~3~3
-boardPos=4 7
-name=Circuit
-puzzleType=2
-component0528~6
+component0533~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0529~6
+component0534~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0530~6
+component0535~6
 Component~5~5
 boardPos=4 7
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0531~6
+component0536~6
 Component~5~5
 boardPos=4 7
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0532~6
+component0537~6
 Component~5~5
 boardPos=4 7
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0533~6
+component0538~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0534~6
+component0539~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0535~6
+component0540~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0536~6
+component0541~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0537~6
+component0542~6
 Component~5~5
 boardPos=4 7
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0538~6
+component0543~6
 Component~5~5
 boardPos=4 7
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0539~6
+component0544~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0540~6
+component0545~6
 Component~5~5
 boardPos=4 7
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0541~6
+component0546~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0542~6
+component0547~6
 Component~5~5
 boardPos=4 7
 circuitPos=2 2
 name=Wire
 puzzleType=1
 speed=4
-component0543~6
+component0548~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0544~6
+component0549~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0545~6
+component0550~6
 Component~5~5
 boardPos=4 7
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0546~6
-Component~5~5
-boardPos=4 7
-circuitPos=6 6
-name=Wire
-puzzleType=1
-speed=4
-component0547~6
-Component~5~5
-boardPos=4 7
-boundary=2
-circuitPos=4 12
-name=CircuitBoundary
-puzzleType=1
-component0548~6
-Component~5~5
-boardPos=4 7
-boundary=2
-circuitPos=10 0
-name=CircuitBoundary
-puzzleType=1
-component0549~6
-Component~5~5
-boardPos=4 7
-boundary=2
-circuitPos=4 0
-name=CircuitBoundary
-puzzleType=1
-component0550~6
-Component~5~5
-boardPos=4 7
-circuitPos=4 2
-name=Wire
-puzzleType=1
-speed=4
 component0551~6
 Component~5~5
 boardPos=4 7
-circuitPos=10 6
+circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
@@ -3837,179 +3827,181 @@ component0552~6
 Component~5~5
 boardPos=4 7
 boundary=2
-circuitPos=12 8
+circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
 component0553~6
+Component~5~5
+boardPos=4 7
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=1
+component0554~6
+Component~5~5
+boardPos=4 7
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=1
+component0555~6
+Component~5~5
+boardPos=4 7
+circuitPos=4 2
+name=Wire
+puzzleType=1
+speed=4
+component0556~6
+Component~5~5
+boardPos=4 7
+circuitPos=10 6
+name=Wire
+puzzleType=1
+speed=4
+component0557~6
+Component~5~5
+boardPos=4 7
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
+component0558~6
 Component~5~5
 boardPos=4 7
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0554~6
+component0559~6
 Component~5~5
 boardPos=4 7
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0555~6
+component0560~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0556~6
+component0561~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0557~6
+component0562~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0558~6
+component0563~6
 Component~5~5
 boardPos=4 7
 circuitPos=2 4
 name=Wire
 puzzleType=1
 speed=4
-component0559~6
+component0564~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0560~6
+component0565~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0561~6
+component0566~6
 Component~5~5
 boardPos=4 7
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0562~4
-Component~3~3
-boardPos=6 5
-name=Circuit
-puzzleType=2
-component0563~6
+component0567~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0564~6
+component0568~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0565~6
+component0569~6
 Component~5~5
 boardPos=6 5
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0566~6
+component0570~6
 Component~5~5
 boardPos=6 5
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0567~6
+component0571~6
 Component~5~5
 boardPos=6 5
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0568~6
+component0572~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0569~6
+component0573~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0570~6
+component0574~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0571~6
+component0575~6
 Component~5~5
 boardPos=6 5
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0572~6
+component0576~6
 Component~5~5
 boardPos=6 5
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0573~6
-Component~5~5
-boardPos=6 5
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0574~6
-Component~5~5
-boardPos=6 5
-boundary=2
-circuitPos=10 12
-name=CircuitBoundary
-puzzleType=1
-component0575~6
-Component~5~5
-boardPos=6 5
-circuitPos=8 6
-name=Wire
-puzzleType=1
-speed=4
-component0576~6
-Component~5~5
-boardPos=6 5
-boundary=2
-circuitPos=8 0
-name=CircuitBoundary
-puzzleType=1
 component0577~6
 Component~5~5
 boardPos=6 5
-circuitPos=2 2
+circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
@@ -4017,27 +4009,27 @@ component0578~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=0 8
+circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
 component0579~6
 Component~5~5
 boardPos=6 5
-boundary=2
-circuitPos=12 10
-name=CircuitBoundary
+circuitPos=8 6
+name=Wire
 puzzleType=1
+speed=4
 component0580~6
 Component~5~5
 boardPos=6 5
-boundary=1
-circuitPos=0 6
+boundary=2
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0581~6
 Component~5~5
 boardPos=6 5
-circuitPos=6 6
+circuitPos=2 2
 name=Wire
 puzzleType=1
 speed=4
@@ -4045,83 +4037,83 @@ component0582~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=4 12
+circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
 component0583~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=10 0
+circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
 component0584~6
 Component~5~5
 boardPos=6 5
-boundary=2
-circuitPos=4 0
+boundary=1
+circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
 component0585~6
 Component~5~5
 boardPos=6 5
-circuitPos=4 2
+circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
 component0586~6
 Component~5~5
 boardPos=6 5
-circuitPos=10 6
-name=Wire
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0587~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=12 8
+circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
 component0588~6
 Component~5~5
 boardPos=6 5
-circuitPos=6 10
-name=Wire
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
 puzzleType=1
-speed=4
 component0589~6
 Component~5~5
 boardPos=6 5
-circuitPos=6 2
+circuitPos=4 2
 name=Wire
 puzzleType=1
 speed=4
 component0590~6
 Component~5~5
 boardPos=6 5
-boundary=2
-circuitPos=0 0
-name=CircuitBoundary
+circuitPos=10 6
+name=Wire
 puzzleType=1
+speed=4
 component0591~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=8 12
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0592~6
 Component~5~5
 boardPos=6 5
-boundary=2
-circuitPos=12 0
-name=CircuitBoundary
+circuitPos=6 10
+name=Wire
 puzzleType=1
+speed=4
 component0593~6
 Component~5~5
 boardPos=6 5
-circuitPos=2 4
+circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
@@ -4129,214 +4121,216 @@ component0594~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=12 12
+circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
 component0595~6
 Component~5~5
 boardPos=6 5
 boundary=2
-circuitPos=0 10
+circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
 component0596~6
 Component~5~5
 boardPos=6 5
 boundary=2
+circuitPos=12 0
+name=CircuitBoundary
+puzzleType=1
+component0597~6
+Component~5~5
+boardPos=6 5
+circuitPos=2 4
+name=Wire
+puzzleType=1
+speed=4
+component0598~6
+Component~5~5
+boardPos=6 5
+boundary=2
+circuitPos=12 12
+name=CircuitBoundary
+puzzleType=1
+component0599~6
+Component~5~5
+boardPos=6 5
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=1
+component0600~6
+Component~5~5
+boardPos=6 5
+boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0597~4
-Component~3~3
-boardPos=8 3
-name=Circuit
-puzzleType=2
-component0598~6
+component0601~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0599~6
+component0602~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0600~6
+component0603~6
 Component~5~5
 boardPos=8 3
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0601~6
+component0604~6
 Component~5~5
 boardPos=8 3
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0602~6
+component0605~6
 Component~5~5
 boardPos=8 3
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0603~6
+component0606~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0604~6
+component0607~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0605~6
+component0608~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0606~6
+component0609~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0607~6
+component0610~6
 Component~5~5
 boardPos=8 3
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0608~6
+component0611~6
 Component~5~5
 boardPos=8 3
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0609~6
+component0612~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0610~6
+component0613~6
 Component~5~5
 boardPos=8 3
 circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
-component0611~6
+component0614~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
-component0612~6
+component0615~6
 Component~5~5
 boardPos=8 3
 circuitPos=2 2
 name=Wire
 puzzleType=1
 speed=4
-component0613~6
+component0616~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0614~6
+component0617~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0615~6
+component0618~6
 Component~5~5
 boardPos=8 3
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0616~6
+component0619~6
 Component~5~5
 boardPos=8 3
 circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
-component0617~6
+component0620~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0618~6
+component0621~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0619~6
+component0622~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0620~6
+component0623~6
 Component~5~5
 boardPos=8 3
 circuitPos=4 2
 name=Wire
 puzzleType=1
 speed=4
-component0621~6
-Component~5~5
-boardPos=8 3
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0622~6
-Component~5~5
-boardPos=8 3
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
-component0623~6
-Component~5~5
-boardPos=8 3
-circuitPos=6 10
-name=Wire
-puzzleType=1
-speed=4
 component0624~6
 Component~5~5
 boardPos=8 3
-circuitPos=6 2
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
@@ -4344,144 +4338,146 @@ component0625~6
 Component~5~5
 boardPos=8 3
 boundary=2
-circuitPos=0 0
+circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
 component0626~6
+Component~5~5
+boardPos=8 3
+circuitPos=6 10
+name=Wire
+puzzleType=1
+speed=4
+component0627~6
+Component~5~5
+boardPos=8 3
+circuitPos=6 2
+name=Wire
+puzzleType=1
+speed=4
+component0628~6
+Component~5~5
+boardPos=8 3
+boundary=2
+circuitPos=0 0
+name=CircuitBoundary
+puzzleType=1
+component0629~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0627~6
+component0630~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0628~6
+component0631~6
 Component~5~5
 boardPos=8 3
 circuitPos=2 4
 name=Wire
 puzzleType=1
 speed=4
-component0629~6
+component0632~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0630~6
+component0633~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0631~6
+component0634~6
 Component~5~5
 boardPos=8 3
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0632~4
-Component~3~3
-boardPos=10 1
-name=Circuit
-puzzleType=2
-component0633~6
+component0635~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0634~6
+component0636~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0635~6
+component0637~6
 Component~5~5
 boardPos=10 1
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0636~6
+component0638~6
 Component~5~5
 boardPos=10 1
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0637~6
+component0639~6
 Component~5~5
 boardPos=10 1
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0638~6
+component0640~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0639~6
+component0641~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
-component0640~6
+component0642~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0641~6
+component0643~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
 puzzleType=1
-component0642~6
+component0644~6
 Component~5~5
 boardPos=10 1
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0643~6
-Component~5~5
-boardPos=10 1
-circuitPos=2 6
-name=Wire
-puzzleType=1
-speed=4
-component0644~6
-Component~5~5
-boardPos=10 1
-boundary=2
-circuitPos=10 12
-name=CircuitBoundary
-puzzleType=1
 component0645~6
 Component~5~5
 boardPos=10 1
-circuitPos=8 6
+circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
@@ -4489,13 +4485,13 @@ component0646~6
 Component~5~5
 boardPos=10 1
 boundary=2
-circuitPos=8 0
+circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
 component0647~6
 Component~5~5
 boardPos=10 1
-circuitPos=2 2
+circuitPos=8 6
 name=Wire
 puzzleType=1
 speed=4
@@ -4503,383 +4499,387 @@ component0648~6
 Component~5~5
 boardPos=10 1
 boundary=2
-circuitPos=0 8
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0649~6
+Component~5~5
+boardPos=10 1
+circuitPos=2 2
+name=Wire
+puzzleType=1
+speed=4
+component0650~6
+Component~5~5
+boardPos=10 1
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=1
+component0651~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0650~6
+component0652~6
 Component~5~5
 boardPos=10 1
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0651~6
+component0653~6
 Component~5~5
 boardPos=10 1
 circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
-component0652~6
+component0654~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0653~6
+component0655~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0654~6
+component0656~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0655~6
+component0657~6
 Component~5~5
 boardPos=10 1
 circuitPos=4 2
 name=Wire
 puzzleType=1
 speed=4
-component0656~6
-Component~5~5
-boardPos=10 1
-circuitPos=10 6
-name=Wire
-puzzleType=1
-speed=4
-component0657~6
-Component~5~5
-boardPos=10 1
-boundary=2
-circuitPos=12 8
-name=CircuitBoundary
-puzzleType=1
 component0658~6
 Component~5~5
 boardPos=10 1
-circuitPos=6 10
+circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
 component0659~6
 Component~5~5
 boardPos=10 1
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=1
+component0660~6
+Component~5~5
+boardPos=10 1
+circuitPos=6 10
+name=Wire
+puzzleType=1
+speed=4
+component0661~6
+Component~5~5
+boardPos=10 1
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0660~6
+component0662~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0661~6
+component0663~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0662~6
+component0664~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0663~6
+component0665~6
 Component~5~5
 boardPos=10 1
 circuitPos=2 4
 name=Wire
 puzzleType=1
 speed=4
-component0664~6
+component0666~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0665~6
+component0667~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0666~6
+component0668~6
 Component~5~5
 boardPos=10 1
 boundary=2
 circuitPos=0 4
-name=CircuitBoundary
-puzzleType=1
-component0667~4
-Component~3~3
-boardPos=16 5
-name=Circuit
-puzzleType=2
-component0668~6
-Component~5~5
-boardPos=16 5
-boundary=2
-circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0669~6
 Component~5~5
 boardPos=16 5
 boundary=2
-circuitPos=2 0
+circuitPos=8 0
 name=CircuitBoundary
 puzzleType=1
 component0670~6
 Component~5~5
 boardPos=16 5
 boundary=2
-circuitPos=0 12
+circuitPos=2 0
 name=CircuitBoundary
 puzzleType=1
 component0671~6
+Component~5~5
+boardPos=16 5
+boundary=2
+circuitPos=0 12
+name=CircuitBoundary
+puzzleType=1
+component0672~6
 Component~5~5
 boardPos=16 5
 circuitPos=8 2
 name=Wire
 puzzleType=1
 speed=4
-component0672~6
+component0673~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
-component0673~6
+component0674~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=1
-component0674~6
+component0675~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
 puzzleType=1
-component0675~6
+component0676~6
 Component~5~5
 boardPos=16 5
 circuitPos=10 6
 name=Wire
 puzzleType=1
 speed=4
-component0676~6
+component0677~6
 Component~5~5
 boardPos=16 5
 circuitPos=2 6
 name=Wire
 puzzleType=1
 speed=4
-component0677~6
+component0678~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
 puzzleType=1
-component0678~6
+component0679~6
 Component~5~5
 boardPos=16 5
 circuitPos=6 10
 name=Wire
 puzzleType=1
 speed=4
-component0679~6
+component0680~6
 Component~5~5
 boardPos=16 5
 circuitPos=10 4
 name=Wire
 puzzleType=1
 speed=4
-component0680~6
+component0681~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
 puzzleType=1
-component0681~6
+component0682~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
 puzzleType=1
-component0682~6
+component0683~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
 puzzleType=1
-component0683~6
+component0684~6
 Component~5~5
 boardPos=16 5
 circuitPos=6 6
 name=Wire
 puzzleType=1
 speed=4
-component0684~6
+component0685~6
 Component~5~5
 boardPos=16 5
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
 puzzleType=1
-component0685~6
+component0686~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
 puzzleType=1
-component0686~6
+component0687~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
 puzzleType=1
-component0687~6
+component0688~6
 Component~5~5
 boardPos=16 5
 circuitPos=10 2
 name=Wire
 puzzleType=1
 speed=4
-component0688~6
+component0689~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=1
-component0689~6
+component0690~6
 Component~5~5
 boardPos=16 5
 circuitPos=6 8
 name=Wire
 puzzleType=1
 speed=4
-component0690~6
+component0691~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
 puzzleType=1
-component0691~6
+component0692~6
 Component~5~5
 boardPos=16 5
 circuitPos=6 2
 name=Wire
 puzzleType=1
 speed=4
-component0692~6
+component0693~6
 Component~5~5
 boardPos=16 5
 circuitPos=4 6
 name=Wire
 puzzleType=1
 speed=4
-component0693~6
+component0694~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
 puzzleType=1
-component0694~6
+component0695~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
 puzzleType=1
-component0695~6
+component0696~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
-component0696~6
+component0697~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
 puzzleType=1
-component0697~6
+component0698~6
 Component~5~5
 boardPos=16 5
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=1
-component0698~6
+component0699~6
 Component~5~5
 boardPos=16 5
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
 puzzleType=1
-component0699~6
+component0700~6
 Component~5~5
 boardPos=16 5
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
 puzzleType=1
-component0700~6
+component0701~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
 puzzleType=1
-component0701~6
+component0702~6
 Component~5~5
 boardPos=16 5
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
-component0702~4
-Component~3~3
-boardPos=12 1
-name=Circuit
-puzzleType=2
 component0703~6
 Component~5~5
 boardPos=12 1
