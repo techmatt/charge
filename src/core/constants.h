@@ -12,6 +12,7 @@ namespace constants
     static const int chargeTransitTime = 9;
     static const int maxChargeLevel = 5;
     static const int maxPreferenceLevel = 5;
+    static const int wireConnectorClasses = 6;
 
     static const float chargeScaleWithLevelFactor = 0.07f;
     static const int stepsPerSecond = 60;

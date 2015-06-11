@@ -14,7 +14,8 @@ void GameCanvas::init()
             if (axis == 0) offset = vec2i(-2, type);
             if (axis == 1) offset = vec2i(type, -2);
             UINT connectorIndex = (type + 1) * 2 + axis;
-            connectionClasses[classIndex++] = CanvasConnection(type, offset, connectorIndex);
+            Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
+            connectionClasses[classIndex++] = CanvasConnection(type, offset, connectorIndex, &connectorTex);
         }
     }
 }
@@ -691,9 +692,8 @@ void GameCanvas::renderSpokesMiniCircuit(const Component &component)
                 vec2f variance = constants::connectorDims[connection.type + 1] * dist;
                 variance.y *= 2.0f;
 
-                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
                 const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes - depthLayers::miniCircuitOffsetStandard, angle);
+                addBackgroundObject(*connection.tex, rect2f(middle - variance, middle + variance), depthLayers::spokes - depthLayers::miniCircuitOffsetStandard, angle);
             }
         }
     }
@@ -757,10 +757,8 @@ void GameCanvas::renderSpokes(const Component &component)
 
                 const vec2f variance = constants::connectorDims[connection.type + 1] * dist;
 
-                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
-                //const float angle = 180.0f;
                 const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
+                addBackgroundObject(*connection.tex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
             }
         }
     }
@@ -799,9 +797,8 @@ void GameCanvas::renderSpokesCircuit(const Component &component)
 
                 const vec2f variance = constants::connectorDims[connection.type + 1] * dist;
 
-                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
                 const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
+                addBackgroundObject(*connection.tex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
             }
         }
     }

@@ -77,7 +77,7 @@ public:
     ParameterTable getTable(const string &parameterName) const
     {
         MLIB_ASSERT_STR(params.count(parameterName) > 0, "Parameter not found");
-        MLIB_ASSERT_STR(params.at(parameterName).size() > 1, "Invalid table parameter found");
+        MLIB_ASSERT_STR(params.at(parameterName).size() >= 1, "Invalid table parameter found");
 
         ParameterTable result;
         int lineStart = 0;
