@@ -106,3 +106,8 @@ vs2013/x64/Debug/charge.tlog/unsuccessfulbuild
 /src/main.h.gch
 /src/a.out
 *.lnk
+/vs2013/trailTexture0.png
+/vs2013/trailTexture1.png
+/vs2013/tutorial2.frag
+/vs2013/tutorial2.vert
+/vs2013/test.lvl

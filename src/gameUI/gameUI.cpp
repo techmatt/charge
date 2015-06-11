@@ -83,7 +83,17 @@ void GameUI::keyDown(SDL_Keycode key)
                 gameComponent->modifiers.color = color;
             if (gameComponent->info->grayUpgrade && color == ChargeType::Gray)
                 gameComponent->modifiers.color = color;
+
+            if (gameComponent->info->name == "Wire")
+                gameComponent->modifiers.speed = (WireType)(key - SDLK_1);
+
             app.controller.recordDesignAction();
+        }
+
+        if (key >= SDLK_1 && key <= SDLK_2 && gameComponent->info->name == "CircuitBoundary")
+        {
+            if (key == SDLK_1) gameComponent->modifiers.boundary = CircuitBoundaryType::Open;
+            if (key == SDLK_2) gameComponent->modifiers.boundary = CircuitBoundaryType::Closed;
         }
 
         auto keyToPreference = [](SDL_Keycode key)

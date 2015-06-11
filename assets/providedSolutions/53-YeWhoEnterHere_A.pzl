@@ -1,4 +1,4 @@
-Puzzle~87~530
+Puzzle~86~529
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -308,224 +308,223 @@ component0045~4
 Component~3~3
 boardPos=2 11
 name=Wire
-puzzleType=0
+puzzleType=1
 component0046~4
 Component~3~3
 boardPos=2 13
 name=Wire
-puzzleType=0
+puzzleType=1
 component0047~4
 Component~3~3
 boardPos=2 15
 name=Wire
-puzzleType=0
+puzzleType=1
 component0048~4
 Component~3~3
 boardPos=2 17
 name=Wire
-puzzleType=0
+puzzleType=1
 component0049~4
 Component~3~3
 boardPos=4 18
 name=Wire
-puzzleType=0
+puzzleType=1
 component0050~5
 Component~4~4
 boardPos=6 18
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0051~5
 Component~4~4
 boardPos=8 18
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0052~5
 Component~4~4
 boardPos=8 20
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0053~5
 Component~4~4
 boardPos=8 22
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0054~5
 Component~4~4
 boardPos=10 22
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0055~5
 Component~4~4
 boardPos=12 22
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0056~4
 Component~3~3
 boardPos=14 21
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0057~4
 Component~3~3
 boardPos=16 20
 name=Amplifier
-puzzleType=0
-component0058~5
-Component~4~4
+puzzleType=1
+component0058~6
+Component~5~5
 boardPos=14 16
 chargePreference=1
 name=Wire
-puzzleType=0
-component0059~5
-Component~4~4
+puzzleType=1
+speed=4
+component0059~6
+Component~5~5
 boardPos=14 11
 chargePreference=1
 name=Wire
-puzzleType=0
-component0060~5
-Component~4~4
+puzzleType=1
+speed=4
+component0060~6
+Component~5~5
 boardPos=14 6
 chargePreference=1
 name=Wire
-puzzleType=0
-component0061~5
-Component~4~4
+puzzleType=1
+speed=4
+component0061~6
+Component~5~5
 boardPos=16 7
 chargePreference=3
 name=Wire
-puzzleType=0
-component0062~5
-Component~4~4
+puzzleType=1
+speed=4
+component0062~6
+Component~5~5
 boardPos=16 12
 chargePreference=3
 name=Wire
-puzzleType=0
+puzzleType=1
+speed=4
 component0063~5
 Component~4~4
 boardPos=14 8
 color=3
 name=TeleportDestination
-puzzleType=0
+puzzleType=1
 component0064~5
 Component~4~4
 boardPos=14 13
 color=2
 name=TeleportDestination
-puzzleType=0
+puzzleType=1
 component0065~5
 Component~4~4
 boardPos=14 18
 color=1
 name=TeleportDestination
-puzzleType=0
+puzzleType=1
 component0066~6
 Component~5~5
 boardPos=16 17
 chargePreference=3
 color=2
 name=GateOpen
-puzzleType=0
+puzzleType=1
 component0067~4
 Component~3~3
 boardPos=2 9
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0068~4
 Component~3~3
 boardPos=3 7
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0069~4
 Component~3~3
 boardPos=5 7
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0070~5
 Component~4~4
 boardPos=7 8
 color=2
 name=TeleportSource
-puzzleType=0
+puzzleType=1
 component0071~6
 Component~5~5
 boardPos=4 11
 chargePreference=3
 color=2
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0072~4
 Component~3~3
 boardPos=6 10
 name=Wire
-puzzleType=0
+puzzleType=1
 component0073~4
 Component~3~3
 boardPos=8 16
 name=Wire
-puzzleType=0
+puzzleType=1
 component0074~5
 Component~4~4
 boardPos=7 14
 color=1
 name=TeleportSource
-puzzleType=0
+puzzleType=1
 component0075~4
 Component~3~3
 boardPos=16 3
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0076~6
 Component~5~5
 boardPos=12 13
 chargePreference=4
 color=4
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0077~4
 Component~3~3
 boardPos=11 11
 name=Wire
-puzzleType=0
+puzzleType=1
 component0078~4
 Component~3~3
 boardPos=11 9
 name=Wire
-puzzleType=0
+puzzleType=1
 component0079~4
 Component~3~3
 boardPos=11 7
 name=Wire
-puzzleType=0
+puzzleType=1
 component0080~4
 Component~3~3
 boardPos=11 5
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0081~4
 Component~3~3
 boardPos=12 3
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0082~4
 Component~3~3
 boardPos=14 3
 name=Amplifier
-puzzleType=0
+puzzleType=1
 component0083~5
 Component~4~4
 boardPos=10 16
-color=6
-name=TrapOpen
-puzzleType=0
-component0084~5
-Component~4~4
-boardPos=11 18
 color=3
 name=TeleportSource
 puzzleType=0
-componentCount=85
+componentCount=84

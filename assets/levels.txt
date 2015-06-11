@@ -46,8 +46,8 @@ Number	Puzzle name	Puzzle file		Verified
 45	Wishing Well	45-WishingWell		no
 46	Infinite Regress	46-InfiniteRegress		no
 47	Trick or Treat	47-TrickOrTreat		no
-48	Smörgåsbord	48-Smorgasbord		no
-49	Déjà Vu	49-DejaVu		no
+48	Smorgasbord	48-Smorgasbord		no
+49	Deja Vu	49-DejaVu		no
 50	Batter Up	50-BatterUp		no
 51	Jacob's Ladder	51-JacobsLadder		no
 52	Thinking Inside the Box	52-ThinkingBox		no

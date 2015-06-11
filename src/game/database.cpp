@@ -3,7 +3,7 @@
 
 void Database::init()
 {
-    alphabetKeyToComponent.resize('Z' - 'A');
+    alphabetKeyToComponent.resize(26);
 
     for (auto &line : GameUtil::readTSVFile(params().assetDir + "components.txt"))
     {
