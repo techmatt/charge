@@ -22,13 +22,14 @@ void GameCanvas::init()
 
 Texture& GameCanvas::getFontTexture(const string &text, FontType font, int wrapWidth)
 {
-    if (textCache.count(text) == 0)
+    auto &cache = textCache[(int)font];
+    if (cache.count(text) == 0)
     {
         auto &info = database().fonts[(int)font];
         Texture *t = new Texture(app.renderer.getFont(info.name), text, info.color, wrapWidth);
-        textCache[text] = t;
+        cache[text] = t;
     }
-    return *textCache[text];
+    return *cache[text];
 }
 
 void GameCanvas::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color, const CoordinateFrame &frame)
@@ -507,16 +508,39 @@ void GameCanvas::renderTooltip()
 
         const ComponentInfo *info = hitButton->component;
 
+        string hotkey = info->hotkey;
+
         if (hitButton->type == ButtonType::ChargePreference)
+        {
             info = &database().getComponent("Preference" + to_string((int)hitButton->modifiers.chargePreference));
+            switch ((int)hitButton->modifiers.chargePreference)
+            {
+            case 0: hotkey = "7"; break;
+            case 1: hotkey = "8"; break;
+            case 2: hotkey = "9"; break;
+            case 3: hotkey = "0"; break;
+            case 4: hotkey = "-"; break;
+            }
+        }
 
         if (hitButton->type == ButtonType::WireSpeed)
+        {
             info = &database().getComponent(GameUtil::speedToTextureName(hitButton->modifiers.speed));
+            switch ((int)hitButton->modifiers.speed)
+            {
+            case 0: hotkey = "1"; break;
+            case 1: hotkey = "2"; break;
+            case 2: hotkey = "3"; break;
+            case 3: hotkey = "4"; break;
+            case 4: hotkey = "5"; break;
+            }
+        }
 
         if (hitButton->modifiers.color == ChargeType::Gray && (hitButton->component->name == "GateSwitch" || hitButton->component->name == "TrapReset" || hitButton->component->name == "MegaHold"))
             info = &database().getComponent(hitButton->component->name + "GrayProxy");
 
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, hitButton->modifiers, nullptr);
+        //renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, hitButton->modifiers, hotkey, nullptr);
+        renderTooltip(params().tooltipDefaultStart, *info, hitButton->modifiers, hotkey, nullptr);
         return;
     }
 
@@ -528,11 +552,11 @@ void GameCanvas::renderTooltip()
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
-        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent->modifiers, clickComponent);
+        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent->modifiers, "", clickComponent);
     }
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const Component *component)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component)
 {
     auto splice = [&](const string &s) {
         string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
@@ -545,15 +569,31 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
     render(tex, rect, depthLayers::tooltip);
 
     renderText(getFontTexture(splice(info.semanticName), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(splice(info.description), FontType::TooltipDescription, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+    renderText(getFontTexture(splice(info.description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+
+    const float attributeSpacing = 17.0f;
+    const float attributeBottom = 97.0f;
+
+    if (hotkey.size() > 0)
+    {
+        renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f, attributeBottom), 12.0f);
+        renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f, attributeBottom), 12.0f);
+    }
 
     if (component != nullptr)
     {
+        if (component->info->name == "PowerSource")
+        {
+            if (component->intrinsics.totalCharges > 1)
+                renderText(getFontTexture("Emits a charge every " + to_string(component->intrinsics.secondsPerEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing * 2.0f), 12.0f);
+            renderText(getFontTexture("First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
+            renderText(getFontTexture("Charges remaining: " + to_string(component->chargesRemaining) + " / " + to_string(component->intrinsics.totalCharges), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+        }
         if (component->info->name == "MegaHold")
         {
             double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
-            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2) + " charge per second", FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 77.0f), 12.0f);
-            renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescription), canonicalStart + vec2f(15.0f, 97.0f), 12.0f);
+            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2) + " charge per second", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
+            renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
         }
     }
 }

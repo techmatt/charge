@@ -23,7 +23,7 @@ void Component::resetPuzzle()
 void Component::resetPowerSource()
 {
     stepsUntilEmission = intrinsics.secondsBeforeFirstEmission * constants::stepsPerSecond;
-    totalChargesRemaining = intrinsics.totalCharges;
+    chargesRemaining = intrinsics.totalCharges;
 }
 
 void Component::resetMegaHold()
@@ -98,7 +98,7 @@ void Component::tick(AppData &app)
     }
 
     if (info->name == "PowerSource"
-        && totalChargesRemaining > 0)
+        && chargesRemaining > 0)
     {
         if (stepsUntilEmission > 0)
         {
@@ -111,7 +111,7 @@ void Component::tick(AppData &app)
             chargesToEmit.push_back( make_pair(modifiers.color, location) );
             
             stepsUntilEmission = intrinsics.secondsPerEmission * constants::stepsPerSecond;
-            totalChargesRemaining--;
+            chargesRemaining--;
         }
     }
 }

@@ -1,4 +1,4 @@
-Puzzle~58~366
+Puzzle~117~661
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -364,4 +364,299 @@ Component~3~3
 boardPos=17 13
 name=Blocker
 puzzleType=1
-componentCount=56
+component0056~4
+Component~3~3
+boardPos=15 1
+name=Blocker
+puzzleType=0
+component0057~4
+Component~3~3
+boardPos=15 3
+name=Blocker
+puzzleType=0
+component0058~4
+Component~3~3
+boardPos=17 3
+name=Blocker
+puzzleType=0
+component0059~4
+Component~3~3
+boardPos=17 1
+name=Blocker
+puzzleType=0
+component0060~4
+Component~3~3
+boardPos=19 1
+name=Blocker
+puzzleType=0
+component0061~4
+Component~3~3
+boardPos=21 1
+name=Blocker
+puzzleType=0
+component0062~4
+Component~3~3
+boardPos=21 3
+name=Blocker
+puzzleType=0
+component0063~4
+Component~3~3
+boardPos=19 4
+name=Blocker
+puzzleType=0
+component0064~4
+Component~3~3
+boardPos=19 6
+name=Blocker
+puzzleType=0
+component0065~4
+Component~3~3
+boardPos=21 7
+name=Blocker
+puzzleType=0
+component0066~4
+Component~3~3
+boardPos=21 9
+name=Blocker
+puzzleType=0
+component0067~4
+Component~3~3
+boardPos=22 11
+name=Blocker
+puzzleType=0
+component0068~4
+Component~3~3
+boardPos=21 13
+name=Blocker
+puzzleType=0
+component0069~4
+Component~3~3
+boardPos=20 15
+name=Blocker
+puzzleType=0
+component0070~4
+Component~3~3
+boardPos=19 21
+name=Blocker
+puzzleType=0
+component0071~4
+Component~3~3
+boardPos=21 22
+name=Blocker
+puzzleType=0
+component0072~4
+Component~3~3
+boardPos=22 20
+name=Blocker
+puzzleType=0
+component0073~4
+Component~3~3
+boardPos=20 19
+name=Blocker
+puzzleType=0
+component0074~4
+Component~3~3
+boardPos=19 17
+name=Blocker
+puzzleType=0
+component0075~4
+Component~3~3
+boardPos=22 15
+name=Blocker
+puzzleType=0
+component0076~4
+Component~3~3
+boardPos=21 17
+name=Blocker
+puzzleType=0
+component0077~4
+Component~3~3
+boardPos=19 13
+name=Blocker
+puzzleType=0
+component0078~4
+Component~3~3
+boardPos=19 11
+name=Blocker
+puzzleType=0
+component0079~4
+Component~3~3
+boardPos=19 9
+name=Blocker
+puzzleType=0
+component0080~4
+Component~3~3
+boardPos=21 5
+name=Blocker
+puzzleType=0
+component0081~4
+Component~3~3
+boardPos=4 1
+name=Blocker
+puzzleType=0
+component0082~4
+Component~3~3
+boardPos=2 1
+name=Blocker
+puzzleType=0
+component0083~4
+Component~3~3
+boardPos=0 2
+name=Blocker
+puzzleType=0
+component0084~4
+Component~3~3
+boardPos=1 4
+name=Blocker
+puzzleType=0
+component0085~4
+Component~3~3
+boardPos=2 6
+name=Blocker
+puzzleType=0
+component0086~4
+Component~3~3
+boardPos=4 7
+name=Blocker
+puzzleType=0
+component0087~4
+Component~3~3
+boardPos=5 9
+name=Blocker
+puzzleType=0
+component0088~4
+Component~3~3
+boardPos=3 10
+name=Blocker
+puzzleType=0
+component0089~4
+Component~3~3
+boardPos=1 9
+name=Blocker
+puzzleType=0
+component0090~4
+Component~3~3
+boardPos=0 7
+name=Blocker
+puzzleType=0
+component0091~4
+Component~3~3
+boardPos=4 5
+name=Blocker
+puzzleType=0
+component0092~4
+Component~3~3
+boardPos=5 3
+name=Blocker
+puzzleType=0
+component0093~4
+Component~3~3
+boardPos=3 3
+name=Blocker
+puzzleType=0
+component0094~4
+Component~3~3
+boardPos=0 0
+name=Blocker
+puzzleType=0
+component0095~4
+Component~3~3
+boardPos=4 12
+name=Blocker
+puzzleType=0
+component0096~4
+Component~3~3
+boardPos=4 14
+name=Blocker
+puzzleType=0
+component0097~4
+Component~3~3
+boardPos=4 16
+name=Blocker
+puzzleType=0
+component0098~4
+Component~3~3
+boardPos=5 18
+name=Blocker
+puzzleType=0
+component0099~4
+Component~3~3
+boardPos=7 19
+name=Blocker
+puzzleType=0
+component0100~4
+Component~3~3
+boardPos=7 17
+name=Blocker
+puzzleType=0
+component0101~4
+Component~3~3
+boardPos=6 15
+name=Blocker
+puzzleType=0
+component0102~4
+Component~3~3
+boardPos=6 13
+name=Blocker
+puzzleType=0
+component0103~4
+Component~3~3
+boardPos=6 21
+name=Blocker
+puzzleType=0
+component0104~4
+Component~3~3
+boardPos=4 21
+name=Blocker
+puzzleType=0
+component0105~4
+Component~3~3
+boardPos=3 19
+name=Blocker
+puzzleType=0
+component0106~4
+Component~3~3
+boardPos=2 15
+name=Blocker
+puzzleType=0
+component0107~4
+Component~3~3
+boardPos=2 13
+name=Blocker
+puzzleType=0
+component0108~4
+Component~3~3
+boardPos=1 11
+name=Blocker
+puzzleType=0
+component0109~4
+Component~3~3
+boardPos=0 13
+name=Blocker
+puzzleType=0
+component0110~4
+Component~3~3
+boardPos=1 17
+name=Blocker
+puzzleType=0
+component0111~4
+Component~3~3
+boardPos=2 21
+name=Blocker
+puzzleType=0
+component0112~4
+Component~3~3
+boardPos=0 20
+name=Blocker
+puzzleType=0
+component0113~4
+Component~3~3
+boardPos=0 22
+name=Blocker
+puzzleType=0
+component0114~4
+Component~3~3
+boardPos=0 15
+name=Blocker
+puzzleType=0
+componentCount=115

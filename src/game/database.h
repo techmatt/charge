@@ -3,7 +3,10 @@ enum class FontType
 {
     LevelName,
     TooltipName,
-    TooltipDescription,
+    TooltipDescriptionA,
+    TooltipDescriptionB,
+    TooltipKeyA,
+    TooltipKeyB,
     TooltipHotkey,
     ComponentAttribute,
     Count,

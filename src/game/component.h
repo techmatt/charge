@@ -193,7 +193,7 @@ struct Component
     // power sources emit at a certain rate
     //
     int stepsUntilEmission;
-    int totalChargesRemaining;
+    int chargesRemaining;
 
     //
     // The component on the other end of a circuit boundary connection. This can be derived

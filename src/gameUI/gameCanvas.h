@@ -76,13 +76,13 @@ private:
     void renderHoverComponent();
 
     void renderTooltip();
-    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const Component *component);
+    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component);
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 
     vector<UIRenderObject> backgroundObjects;
 
-    map<string, Texture*> textCache;
+    map<string, Texture*> textCache[(int)FontType::Count];
 
     RenderTarget trailTexture0;
     RenderTarget trailTexture1;
