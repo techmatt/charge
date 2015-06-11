@@ -616,7 +616,7 @@ void GameCanvas::renderLocalizedComponent(const string &name, const Component *d
     {
         Texture *selectionTex = &database().getTexture(app.renderer, "Selector");
 
-        if (dynamicComponent != nullptr && app.controller.editorMode != EditorMode::LevelEditor)
+        if (dynamicComponent != nullptr)
         {
             if (dynamicComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece)
                 selectionTex = &database().getTexture(app.renderer, "PuzzleSelector");

@@ -152,16 +152,16 @@ void GameController::updateButtonList()
     //
     // Add color, delay, preference, and boundary buttons
     //
-    Component *gameComponent = app.ui.selection.singleElement();
-    if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
+    Component *component = app.ui.selection.singleElement();
+    if (component != nullptr && component->modifiers.puzzleType == ComponentPuzzleType::User)
     {
-        const ComponentInfo &info = *gameComponent->info;
+        const ComponentInfo &info = *component->info;
 
-        if (gameComponent->info->name != "Circuit" && gameComponent->info->name != "Blocker" && gameComponent->info->name != "PowerSource")
+        if (component->info->name != "Circuit" && component->info->name != "Blocker" && component->info->name != "PowerSource")
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ChargePreference, ComponentModifiers(selectedGameComponent->modifiers.color, chargePreference)));
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ChargePreference, ComponentModifiers(component->modifiers.color, chargePreference)));
             }
         }
 
@@ -203,13 +203,13 @@ void GameController::updateButtonList()
             //
             if (info.name == "TrapSprung" || info.name == "TrapOpen")
             {
-                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::TrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
-                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::TrapState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
+                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
             }
             if (info.name == "GateOpen" || info.name == "GateClosed")
             {
-                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::GateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
-                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::GateState, ComponentModifiers(selectedGameComponent->modifiers.color)));
+                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
+                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
             }
         }
     }
@@ -241,21 +241,21 @@ void GameController::updateButtonList()
     //
     // Add power source indicators
     //
-    if (selectedGameComponent != nullptr && selectedGameComponent->info->name == "PowerSource")
+    if (component != nullptr && component->info->name == "PowerSource")
     {
-        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(selectedGameComponent->intrinsics.totalCharges)));
-        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(selectedGameComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
-        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(selectedGameComponent->intrinsics.secondsPerEmission) + "s"));
+        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(component->intrinsics.totalCharges)));
+        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s"));
+        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(component->intrinsics.secondsPerEmission) + "s"));
     }
 
     //
     // Add megahold indicators
     //
-    if (selectedGameComponent != nullptr && selectedGameComponent->info->name == "MegaHold")
+    if (component != nullptr && component->info->name == "MegaHold")
     {
-        const double dischargeFreq = selectedGameComponent->intrinsics.ticksPerDischarge * constants::secondsPerStep;
+        const double dischargeFreq = component->intrinsics.ticksPerDischarge * constants::secondsPerStep;
         buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + util::formatDouble(dischargeFreq, 2) + "s"));
-        buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(selectedGameComponent->intrinsics.chargesLostPerDischarge)));
-        buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(selectedGameComponent->intrinsics.totalChargeRequired)));
+        buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(component->intrinsics.chargesLostPerDischarge)));
+        buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(component->intrinsics.totalChargeRequired)));
     }
 }
