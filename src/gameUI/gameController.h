@@ -63,6 +63,8 @@ public:
     
     void updateButtonList();
 
+    void changeEditorMode(EditorMode newMode);
+
     const GameButton* getHitButton(const vec2i &mouse) const
     {
         const GameButton *hitButton = nullptr;
@@ -75,11 +77,6 @@ public:
             }
         }
         return hitButton;
-    }
-
-    bool canEdit(const Component &c) const
-    {
-        return (editorMode == EditorMode::LevelEditor || c.modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece);
     }
 
     vector<GameButton> buttons;

@@ -73,7 +73,7 @@ void GameUI::keyDown(SDL_Keycode key)
     }
 
     Component* gameComponent = selection.singleElement();
-    if (gameComponent != nullptr && app.controller.canEdit(*gameComponent))
+    if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
     {
         if (key >= SDLK_1 && key <= SDLK_6)
         {
@@ -177,7 +177,7 @@ void GameUI::removeHoverComponent()
     const GameLocation location = hoverLocation(false);
 
     Component *c = app.state.getComponent(location);
-    if (c == nullptr || !app.controller.canEdit(*c) || c->info->name == "CircuitBoundary")
+    if (c == nullptr || c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece || c->info->name == "CircuitBoundary")
         return;
 
     //remove contained elements from the selection
@@ -388,7 +388,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
             activePlacementBuffer.clear();
             activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);
         }
-        if (gameComponent != nullptr && app.controller.canEdit(*gameComponent))
+        if (gameComponent != nullptr &&  gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
         {
             if (button.type == ButtonType::ChargeColor)
             {
@@ -436,12 +436,12 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         if (button.name == "ModePuzzle")
         {
             app.controller.puzzleVerificationMode = false;
-            app.controller.editorMode = EditorMode::Campaign;
+            app.controller.changeEditorMode(EditorMode::Campaign);
         }
         if (button.name == "ModeLevelEditor")
         {
             app.controller.puzzleVerificationMode = false;
-            app.controller.editorMode = EditorMode::LevelEditor;
+            app.controller.changeEditorMode(EditorMode::LevelEditor);
 
             if (GetAsyncKeyState(VK_SHIFT))
             {

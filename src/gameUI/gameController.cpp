@@ -7,7 +7,7 @@ void GameController::init()
     speed = GameSpeed::x1;
     designActionTaken = false;
     puzzleVerificationMode = false;
-    editorMode = EditorMode::LevelEditor;
+    editorMode = EditorMode::Campaign;
     currentPuzzleIndex = 49;
     fractionalSpeedTicksLeft = 0;
 
@@ -117,6 +117,16 @@ void GameController::recordDesignAction()
     puzzleVerificationMode = false;
 }
 
+void GameController::changeEditorMode(EditorMode newMode)
+{
+    editorMode = newMode;
+
+    const ComponentPuzzleType newType = (editorMode == EditorMode::Campaign) ? ComponentPuzzleType::PuzzlePiece : ComponentPuzzleType::User;
+
+    for (auto &c : app.state.components)
+        c->modifiers.puzzleType = newType;
+}
+
 void GameController::updateButtonList()
 {
     buttons.clear();
@@ -142,13 +152,12 @@ void GameController::updateButtonList()
     //
     // Add color, delay, preference, and boundary buttons
     //
-    //Component *selectedGameComponent = app.state.getComponent(selectedGameLocation);
-    Component *selectedGameComponent = app.ui.selection.singleElement();
-    if (selectedGameComponent != nullptr && canEdit(*selectedGameComponent))
+    Component *gameComponent = app.ui.selection.singleElement();
+    if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
     {
-        const ComponentInfo &info = *selectedGameComponent->info;
+        const ComponentInfo &info = *gameComponent->info;
 
-        if (selectedGameComponent->info->name != "Circuit" && selectedGameComponent->info->name != "Blocker" && selectedGameComponent->info->name != "PowerSource")
+        if (gameComponent->info->name != "Circuit" && gameComponent->info->name != "Blocker" && gameComponent->info->name != "PowerSource")
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
