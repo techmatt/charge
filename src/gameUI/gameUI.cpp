@@ -36,8 +36,6 @@ void GameUI::keyDown(SDL_Keycode key)
     //
     app.canvas.backgroundDirty = true;
 
-
-
     if (!ctrlPressed())
     {
         const ComponentInfo *hotkeyComponent = database().componentFromKey(key);

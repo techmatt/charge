@@ -52,7 +52,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
     {
         markedForDeletion = true;
         showDeathAnimation = false;
-        current->megaHoldTotalCharge += (int)level;
+        current->megaHoldTotalCharge = min(current->intrinsics.totalChargeRequired, current->megaHoldTotalCharge + (int)level);
         app.playEffect("MegaHold", current->location);
     }
 

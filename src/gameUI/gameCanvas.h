@@ -50,6 +50,8 @@ private:
     void renderCharge(const Charge &charge, bool trailRender);
     void renderExplodingCharge(const ExplodingCharge &charge);
 
+    void renderMegaHold(const Component &component, bool trailRender);
+
     void renderChargeCircuit(const Charge &charge, bool trailRender);
     void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 

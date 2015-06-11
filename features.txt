@@ -52,6 +52,7 @@ CHANGES: GAME PUZZLES
  * Creation of flavor-text for all puzzles
  * a puzzle where you can only build goal-holds instead of wires
  * a puzzle where there are several built-in loops, like a wire running over a button. these interfere massively with the player's stuff, and the player has to exactly cancel out these button/crank presses.
+ * final destination, but with one mega-hold circuit for each color. doing different colors makes it a bit harder.
 
 Super-amplifiers -> allow production beyond 5 charge? perhaps a more interesting concept than a mega-hold (which is really just a "rate check".)
 Puzzles with implicit timers, where the goal is to produce a "mega charge" before the implicit timer kills some victory condition.

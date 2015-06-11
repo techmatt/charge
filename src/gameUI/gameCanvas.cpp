@@ -110,6 +110,12 @@ void GameCanvas::render()
         renderExplodingCharge(charge);
     }
 
+    for (const auto &component : app.state.components)
+    {
+        if (component->info->name == "MegaHold")
+            renderMegaHold(*component, false);
+    }
+
     renderHoverComponent();
 
     renderText(getFontTexture(app.state.name, FontType::LevelName), vec2f(1.0f, 1.0f), 20.0f);
@@ -141,6 +147,12 @@ void GameCanvas::renderTrails()
         renderCharge(charge, true);
     //for (const auto &charge : app.state.explodingCharges)
     //    renderExplodingCharge(charge);
+
+    for (const auto &component : app.state.components)
+    {
+        if (component->info->name == "MegaHold")
+            renderMegaHold(*component, true);
+    }
 
     for (const UIRenderObject &o : backgroundObjects)
     {
@@ -765,6 +777,22 @@ void GameCanvas::renderCharge(const Charge &charge, bool trailRender)
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
 
     render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle);
+}
+
+void GameCanvas::renderMegaHold(const Component &component, bool trailRender)
+{
+    const float megaHoldSize = 7.5f;
+
+    const vec2f screenCenter = component.location.toScreenCoordMainBoard(canonicalDims);
+    float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * megaHoldSize;
+
+    if (trailRender)
+        screenSize *= 1.2f;
+
+    const float angle = component.randomRotationOffset + app.state.globalRotationOffset;
+    const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
+
+    render(*database().chargeTextures[(int)component.modifiers.color], destinationRect, depthLayers::charge, angle);
 }
 
 void GameCanvas::renderExplodingCharge(const ExplodingCharge &charge)

@@ -101,6 +101,7 @@ struct Component
         deathTrapTimeLeft = 0;
         circuitBoard = nullptr;
         circuitBoundaryNeighbor = nullptr;
+        randomRotationOffset = 360.0f * (float)rand() / (float)RAND_MAX;
 
         connections.resize(12);
 		
@@ -227,4 +228,9 @@ struct Component
 	// the location that a teleporter/switch/gear will target
 	//
 	Component* target;
+
+    //
+    // an aesthetic rotation offset used for mega holds
+    //
+    float randomRotationOffset;
 };
