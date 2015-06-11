@@ -1,58 +1,5 @@
-Puzzle~413~2697
-buildableComponents~53
-ComponentBuildState~52~52
-Amplifier=1
-ChargeFilterBlue=1
-ChargeFilterGreen=1
-ChargeFilterOrange=1
-ChargeFilterRed=1
-ChargeFilterYellow=1
-Circuit=1
-FilteredAmplifierBlue=1
-FilteredAmplifierGreen=1
-FilteredAmplifierOrange=1
-FilteredAmplifierYellow=1
-GateClosedBlue=1
-GateClosedGray=1
-GateClosedGreen=1
-GateClosedOrange=1
-GateClosedRed=1
-GateClosedYellow=1
-GateSwitchBlue=1
-GateSwitchGray=1
-GateSwitchGreen=1
-GateSwitchOrange=1
-GateSwitchRed=1
-GateSwitchYellow=1
-Hold=1
-Splitter=1
-TeleportDestinationBlue=1
-TeleportDestinationGreen=1
-TeleportDestinationOrange=1
-TeleportDestinationRed=1
-TeleportDestinationYellow=1
-TeleportSourceBlue=1
-TeleportSourceGreen=1
-TeleportSourceOrange=1
-TeleportSourceRed=1
-TeleportSourceYellow=1
-TrapOpenBlue=1
-TrapOpenGray=1
-TrapOpenGreen=1
-TrapOpenOrange=1
-TrapOpenRed=1
-TrapOpenYellow=1
-TrapResetBlue=1
-TrapResetGray=1
-TrapResetGreen=1
-TrapResetOrange=1
-TrapResetRed=1
-TrapResetYellow=1
-Wire=1
-WireMajorAccelerator=1
-WireMajorDelay=1
-WireMinorAccelerator=1
-WireMinorDelay=1
+Puzzle~413~2646
+buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
 boardPos=12 11
@@ -1370,9 +1317,9 @@ name=CircuitBoundary
 puzzleType=0
 component0213~6
 Component~5~5
-boardPos=12 13
-circuitPos=6 6
-color=3
+boardPos=12 20
+circuitPos=8 2
+color=4
 name=ChargeFilter
 puzzleType=0
 component0214~5
@@ -1395,9 +1342,10 @@ boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=0
-component0217~6
-Component~5~5
+component0217~7
+Component~6~6
 boardPos=12 13
+chargePreference=4
 circuitPos=4 6
 color=3
 name=ChargeGoal
@@ -2688,11 +2636,12 @@ circuitPos=4 2
 color=3
 name=ChargeFilter
 puzzleType=0
-component0410~6
-Component~5~5
-boardPos=12 20
-circuitPos=8 2
-color=4
+component0410~7
+Component~6~6
+boardPos=12 13
+chargePreference=3
+circuitPos=6 5
+color=3
 name=ChargeFilter
 puzzleType=0
 componentCount=411

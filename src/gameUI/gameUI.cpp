@@ -69,50 +69,6 @@ void GameUI::keyDown(SDL_Keycode key)
         }
     }
 
-    if (gameComponent != nullptr && gameComponent->modifiers.puzzleType == ComponentPuzzleType::User)
-    {
-        /*if (key >= SDLK_1 && key <= SDLK_6)
-        {
-            ChargeType color = (ChargeType)((int)ChargeType::Red + key - SDLK_1);
-
-            if (gameComponent->info->colorUpgrades && color != ChargeType::Gray)
-                gameComponent->modifiers.color = color;
-            if (gameComponent->info->grayUpgrade && color == ChargeType::Gray)
-                gameComponent->modifiers.color = color;
-
-            if (gameComponent->info->name == "Wire")
-                gameComponent->modifiers.speed = (WireType)(key - SDLK_1);
-
-            app.controller.recordDesignAction();
-        }
-
-        if (key >= SDLK_1 && key <= SDLK_2 && gameComponent->info->name == "CircuitBoundary")
-        {
-            if (key == SDLK_1) gameComponent->modifiers.boundary = CircuitBoundaryType::Open;
-            if (key == SDLK_2) gameComponent->modifiers.boundary = CircuitBoundaryType::Closed;
-        }
-
-        auto keyToPreference = [](SDL_Keycode key)
-        {
-            switch (key)
-            {
-            case SDLK_7: return 0;
-            case SDLK_8: return 1;
-            case SDLK_9: return 2;
-            case SDLK_0: return 3;
-            case SDLK_MINUS: return 4;
-            default: return -1;
-            }
-        };
-
-        int preference = keyToPreference(key);
-        if (preference != -1)
-        {
-            gameComponent->modifiers.chargePreference = preference;
-            app.controller.recordDesignAction();
-        }*/
-    }
-
     if (key == SDLK_LEFT)
     {
         app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
@@ -288,7 +244,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         }
         else
         {
-            addHoverComponent();
+            addHoverComponent(hoverLocation(true));
         }
     }
 
@@ -392,7 +348,7 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
 
     if (buttonState & SDL_BUTTON_LMASK)
     {
-        addHoverComponent();
+        addHoverComponent(hoverLocation(true));
     }
     if (buttonState & SDL_BUTTON_RMASK)
     {
@@ -456,12 +412,10 @@ GameLocation GameUI::hoverLocation(bool constructionOffset,const vec2f mouseOffs
     else return GameLocation(vec2i((int)round(boardCoordf.x), (int)round(boardCoordf.y)));
 }
 
-void GameUI::addHoverComponent()
+void GameUI::addHoverComponent(const GameLocation &location)
 {
-    if (selectedMenuComponent == nullptr && activePlacementBuffer.isEmpty())
+    if (activePlacementBuffer.isEmpty())
         return;
-
-    GameLocation location = hoverLocation(true);
 
     if (!location.valid())
         return;
@@ -472,7 +426,7 @@ void GameUI::addHoverComponent()
     vec2i buffermin = activePlacementBuffer.boundingBox().min();
 
     //figure out component placement
-    for (ComponentDefiningProperties c : activePlacementBuffer.components)
+    for (const ComponentDefiningProperties &c : activePlacementBuffer.components)
     {
         if (c.location.inCircuit()) continue;
         GameLocation componentLocation;

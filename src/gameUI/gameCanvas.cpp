@@ -493,7 +493,7 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 void GameCanvas::renderTooltip()
 {
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (button != nullptr &&
+    if (!app.activeCircuit() && button != nullptr &&
         (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
         button->type == ButtonType::CircuitBoundary || button->type == ButtonType::GateState || button->type == ButtonType::TrapState ||
         button->type == ButtonType::WireSpeed))
@@ -510,10 +510,10 @@ void GameCanvas::renderTooltip()
     Component *hoverComponent = app.state.getComponent(app.ui.hoverLocation(false));
     Component *clickComponent = app.state.getComponent(app.ui.clickLocation);
     Component *selectedComponent = app.ui.selection.singleElement();
-    if (app.activeCircuit() == nullptr &&
-        clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
+    if (clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
-        clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
+        clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&
+        (!app.activeCircuit() || hoverComponent->info->name == "PowerSource"))
     {
         renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent->modifiers, "", clickComponent);
     }

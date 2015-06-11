@@ -41,10 +41,12 @@ public:
             (b.isCircuitBoard() && (cdp.baseInfo->name == "Circuit" || cdp.baseInfo->name == "FixedCircuit"));
     }
 
+    void addHoverComponent(const GameLocation &location);
+
 private:
 
     AppData &app;
 
     void removeHoverComponent();
-    void addHoverComponent();
+    
 };

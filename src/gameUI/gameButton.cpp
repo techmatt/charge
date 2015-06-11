@@ -174,14 +174,48 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             app.undoBuffer.reset(app.state);
         }
     }
-    if (name == "CircuitRotateN90")
-        app.ui.activePlacementBuffer.rotate(1);
-    if (name == "CircuitRotate90")
-        app.ui.activePlacementBuffer.rotate(3);
-    if (name == "CircuitFlipHorizontal")
-        app.ui.activePlacementBuffer.flipAboutVerical();
-    if (name == "CircuitFlipVertical")
-        app.ui.activePlacementBuffer.flipAboutHorizonal();
+
+    auto transformComponentSet = [&](ComponentSet &cSet)
+    {
+        if (name == "CircuitRotateN90")
+            cSet.rotate(1);
+        if (name == "CircuitRotate90")
+            cSet.rotate(3);
+        if (name == "CircuitFlipHorizontal")
+            cSet.flipAboutVerical();
+        if (name == "CircuitFlipVertical")
+            cSet.flipAboutHorizonal();
+    };
+
+    if (app.ui.selection.components.size() == 1)
+    {
+        Component *c = app.ui.selection.singleElement();
+        if (c->info->name == "Circuit" && c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece &&
+            (name == "CircuitRotateN90" || name == "CircuitRotate90" || name == "CircuitFlipHorizontal" || name == "CircuitFlipVertical"))
+        {
+            ComponentSet cSet;
+            app.ui.selection.copyToComponentSet(cSet, app.state);
+
+            transformComponentSet(cSet);
+
+            const GameLocation circuitLocation = c->location;
+            app.state.removeComponent(c);
+            app.ui.selection.empty();
+
+            //
+            // TODO: have Ghost look at factoring addHoverComponent into a function that (attempts to) inserts an arbitrary component set at
+            // a given location.
+            //
+            app.ui.activePlacementBuffer = cSet;
+            app.ui.addHoverComponent(circuitLocation);
+            app.ui.activePlacementBuffer.clear();
+            app.ui.selection.newSelectionFromComponent( &app.state.getCircuit(circuitLocation) );
+        }
+    }
+    else
+    {
+        transformComponentSet(app.ui.activePlacementBuffer);
+    }
 
     for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
