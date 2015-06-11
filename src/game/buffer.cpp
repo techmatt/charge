@@ -129,6 +129,7 @@ void ComponentSet::flipAboutVerical()
 
 void ComponentSet::addToComponents(GameState &state, vec2i offset)
 {
+
     // add the components in the list 1-by-1 to the game state
     // do the elements not in circuits first.
     for (ComponentDefiningProperties &c : components)
@@ -136,17 +137,17 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
         if (c.location.inCircuit()) continue;
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
-        state.addNewComponent(newComponent,true, false);
+		state.addNewComponent(newComponent, components.size() == 1, false);	//If we are only copying a single thing, add component boundaries, otherwise don't.
     }
 
     // do the elements in circuits next.
     for (ComponentDefiningProperties &c : components)
     {
         if (!c.location.inCircuit()) continue;
-		if (c.baseInfo->name == "CircuitBoundary") continue; //the circuit boundaries are created automatically
+		//if (c.baseInfo->name == "CircuitBoundary") continue; //the circuit boundaries are created automatically
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
-        state.addNewComponent(newComponent, true, false);
+        state.addNewComponent(newComponent, false, false);
     }
     state.updateAll();
 }
