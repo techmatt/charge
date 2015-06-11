@@ -484,10 +484,25 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 void GameCanvas::renderTooltip()
 {
     const GameButton *hitButton = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (hitButton != nullptr && hitButton->type == ButtonType::Component)
+    if (hitButton != nullptr && 
+        (hitButton->type == ButtonType::Component || hitButton->type == ButtonType::ChargeColor || hitButton->type == ButtonType::ChargePreference ||
+        hitButton->type == ButtonType::CircuitBoundary || hitButton->type == ButtonType::GateState || hitButton->type == ButtonType::TrapState ||
+        hitButton->type == ButtonType::WireSpeed))
     {
         float startY = hitButton->canonicalRect.max().y + 5.0f;
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *hitButton->component, nullptr);
+
+        const ComponentInfo *info = hitButton->component;
+
+        if (hitButton->type == ButtonType::ChargePreference)
+            info = &database().getComponent("Preference" + to_string((int)hitButton->modifiers.chargePreference));
+
+        if (hitButton->type == ButtonType::WireSpeed)
+            info = &database().getComponent(GameUtil::speedToTextureName(hitButton->modifiers.speed));
+
+        if (hitButton->modifiers.color == ChargeType::Gray && (hitButton->component->name == "GateSwitch" || hitButton->component->name == "TrapReset" || hitButton->component->name == "MegaHold"))
+            info = &database().getComponent(hitButton->component->name + "GrayProxy");
+
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, hitButton->modifiers, nullptr);
         return;
     }
 
@@ -499,18 +514,24 @@ void GameCanvas::renderTooltip()
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit")
     {
-        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent);
+        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent->modifiers, clickComponent);
     }
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const Component *component)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const Component *component)
 {
+    auto splice = [&](const string &s) {
+        string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
+        r = util::replace(r, "a Orange", "an Orange");
+        return r;
+    };
+
     Texture &tex = database().getTexture(app.renderer, "Tooltip");
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
 
-    renderText(getFontTexture(info.semanticName, FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(info.description, FontType::TooltipDescription, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+    renderText(getFontTexture(splice(info.semanticName), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
+    renderText(getFontTexture(splice(info.description), FontType::TooltipDescription, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
 
     if (component != nullptr)
     {

@@ -174,6 +174,8 @@ public:
             return "WireMajorDelay";
         case WireType::MinorDelay:
             return "WireMinorDelay";
+        case WireType::Standard:
+            return "WireStandard";
         case WireType::MinorAccelerator:
             return "WireMinorAccelerator";
         case WireType::MajorAccelerator:
