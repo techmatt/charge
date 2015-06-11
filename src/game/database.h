@@ -104,7 +104,7 @@ struct Database
         return *(components.at(componentName));
     }
 
-    const ComponentInfo* componentFromKey(SDL_Keycode key) const;
+    pair<const ComponentInfo*, ChargeType> componentFromKey(SDL_Keycode key) const;
 
     Texture& getTexture(Renderer &renderer, const string &textureName);
     Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);

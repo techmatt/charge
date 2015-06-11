@@ -7,8 +7,8 @@ TeleportSource	4	0	T	yes	no	# Transmitter	Teleports a charge to the closest # re
 TeleportDestination	5	0	R	yes	no	# Receiver	Accepts charges from # transmitters.  Otherwise behave like a normal wire.
 ChargeFilter	6	0	F	yes	no	# Filter	Only allows # charge to pass through.
 Hold	5	1	H	no	no	Hold	Holds will accept a charge and keep it until the charge has a valid destination to move towards.
-GateOpen	-1	-1	G	yes	yes	# Gate (Open)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
-GateClosed	0	1	!	yes	yes	# Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
+GateOpen	-1	-1	!	yes	yes	# Gate (Open)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
+GateClosed	0	1	G	yes	yes	# Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateSwitch	1	1	B	yes	yes	# Switch	Toggles all # gates.
 Circuit	4	1	X	no	no	Chip	"Allows you to build a 5x5 grid of components on a single tile. Can be flipped and rotated, as well as copied (c) and pasted (v)."
 TrapOpen	2	1	T	yes	yes	# Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
@@ -30,10 +30,10 @@ CircuitRotateN90	-1	-1	!	no	no	Invalid	ZZ
 CircuitFlipHorizontal	-1	-1	!	no	no	Invalid	ZZ
 CircuitFlipVertical	-1	-1	!	no	no	Invalid	ZZ
 CircuitCopy	-1	-1	!	no	no	Invalid	ZZ
-GateClosedGrayProxy	0	2	!	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
-GateSwitchGrayProxy	1	2	!	no	no	Gray Button	Toggles the closest Gray gate.
-TrapOpenGrayProxy	2	2	!	no	no	Gray Trap (Open)	QQ
-TrapResetGrayProxy	3	2	!	no	no	Gray Crank	Resets the closest Gray trap.
+GateClosedGrayProxy	0	2	N	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
+GateSwitchGrayProxy	1	2	M	no	no	Gray Button	Toggles the closest Gray gate.
+TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	QQ
+TrapResetGrayProxy	3	2	K	no	no	Gray Crank	Resets the closest Gray trap.
 MegaHoldGrayProxy	-1	-1	!	no	no	Rainbow Goal Battery	"Accumulates incoming charge of any color, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
 Preference0	-1	-1	7	no	no	Major Rejector	Charge favors moving towards a component that is more accepting of charge.
 Preference1	-1	-1	8	no	no	Minor Rejector	Charge favors moving towards a component that is more accepting of charge.

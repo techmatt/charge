@@ -498,22 +498,22 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 
 void GameCanvas::renderTooltip()
 {
-    const GameButton *hitButton = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (hitButton != nullptr && 
-        (hitButton->type == ButtonType::Component || hitButton->type == ButtonType::ChargeColor || hitButton->type == ButtonType::ChargePreference ||
-        hitButton->type == ButtonType::CircuitBoundary || hitButton->type == ButtonType::GateState || hitButton->type == ButtonType::TrapState ||
-        hitButton->type == ButtonType::WireSpeed))
+    const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
+    if (button != nullptr && 
+        (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
+        button->type == ButtonType::CircuitBoundary || button->type == ButtonType::GateState || button->type == ButtonType::TrapState ||
+        button->type == ButtonType::WireSpeed))
     {
-        float startY = hitButton->canonicalRect.max().y + 5.0f;
+        float startY = button->canonicalRect.max().y + 5.0f;
 
-        const ComponentInfo *info = hitButton->component;
+        const ComponentInfo *info = button->component;
 
         string hotkey = info->hotkey;
 
-        if (hitButton->type == ButtonType::ChargePreference)
+        if (button->type == ButtonType::ChargePreference)
         {
-            info = &database().getComponent("Preference" + to_string((int)hitButton->modifiers.chargePreference));
-            switch ((int)hitButton->modifiers.chargePreference)
+            info = &database().getComponent("Preference" + to_string((int)button->modifiers.chargePreference));
+            switch ((int)button->modifiers.chargePreference)
             {
             case 0: hotkey = "7"; break;
             case 1: hotkey = "8"; break;
@@ -523,10 +523,10 @@ void GameCanvas::renderTooltip()
             }
         }
 
-        if (hitButton->type == ButtonType::WireSpeed)
+        if (button->type == ButtonType::WireSpeed)
         {
-            info = &database().getComponent(GameUtil::speedToTextureName(hitButton->modifiers.speed));
-            switch ((int)hitButton->modifiers.speed)
+            info = &database().getComponent(GameUtil::speedToTextureName(button->modifiers.speed));
+            switch ((int)button->modifiers.speed)
             {
             case 0: hotkey = "1"; break;
             case 1: hotkey = "2"; break;
@@ -536,11 +536,17 @@ void GameCanvas::renderTooltip()
             }
         }
 
-        if (hitButton->modifiers.color == ChargeType::Gray && (hitButton->component->name == "GateSwitch" || hitButton->component->name == "TrapReset" || hitButton->component->name == "MegaHold"))
-            info = &database().getComponent(hitButton->component->name + "GrayProxy");
+        if (button->type == ButtonType::ChargeColor)
+            hotkey[0] = '0' + (int)button->modifiers.color;
 
-        //renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, hitButton->modifiers, hotkey, nullptr);
-        renderTooltip(params().tooltipDefaultStart, *info, hitButton->modifiers, hotkey, nullptr);
+        if (button->type == ButtonType::Component && button->modifiers.color == ChargeType::Gray)
+            hotkey = database().getComponent(button->name + "GrayProxy").hotkey;
+
+        if (button->modifiers.color == ChargeType::Gray && (button->component->name == "GateSwitch" || button->component->name == "TrapReset" || button->component->name == "MegaHold"))
+            info = &database().getComponent(button->component->name + "GrayProxy");
+
+        //renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, button->modifiers, hotkey, nullptr);
+        renderTooltip(params().tooltipDefaultStart, *info, button->modifiers, hotkey, nullptr);
         return;
     }
 
@@ -574,7 +580,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
     const float attributeSpacing = 17.0f;
     const float attributeBottom = 97.0f;
 
-    if (hotkey.size() > 0)
+    if (hotkey.size() > 0 && hotkey[0] != '!')
     {
         renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f, attributeBottom), 12.0f);
         renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f, attributeBottom), 12.0f);
@@ -587,7 +593,11 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
             if (component->intrinsics.totalCharges > 1)
                 renderText(getFontTexture("Emits a charge every " + to_string(component->intrinsics.secondsPerEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing * 2.0f), 12.0f);
             renderText(getFontTexture("First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
-            renderText(getFontTexture("Charges remaining: " + to_string(component->chargesRemaining) + " / " + to_string(component->intrinsics.totalCharges), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+
+            if (component->chargesRemaining >= 500)
+                renderText(getFontTexture("Infinite charges", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+            else
+                renderText(getFontTexture("Charges remaining: " + to_string(component->chargesRemaining) + " / " + to_string(component->intrinsics.totalCharges), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
         }
         if (component->info->name == "MegaHold")
         {

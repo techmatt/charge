@@ -38,11 +38,11 @@ void GameUI::keyDown(SDL_Keycode key)
 
     if (!ctrlPressed())
     {
-        const ComponentInfo *hotkeyComponent = database().componentFromKey(key);
-        if (hotkeyComponent != nullptr)
+        const auto &hotkeyComponent = database().componentFromKey(key);
+        if (hotkeyComponent.first != nullptr)
         {
-            selectedMenuComponent = hotkeyComponent;
-            selectedMenuComponentColor = selectedMenuComponent->defaultPrimaryCharge();
+            selectedMenuComponent = hotkeyComponent.first;
+            selectedMenuComponentColor = hotkeyComponent.second;
 
             activePlacementBuffer.clear();
             activePlacementBuffer = ComponentSet(selectedMenuComponent, selectedMenuComponentColor);

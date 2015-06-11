@@ -526,5 +526,5 @@ Component~4~4
 boardPos=10 16
 color=3
 name=TeleportSource
-puzzleType=0
+puzzleType=1
 componentCount=84
