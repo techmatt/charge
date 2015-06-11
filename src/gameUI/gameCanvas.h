@@ -1,4 +1,13 @@
 
+struct CanvasConnection
+{
+    CanvasConnection() {}
+    CanvasConnection(int _type, vec2i _offset, int _connectorIndex) { type = _type; offset = _offset; connectorIndex = _connectorIndex; }
+    int type;
+    vec2i offset;
+    int connectorIndex;
+};
+
 class GameCanvas
 {
 public:
@@ -73,4 +82,6 @@ private:
 
     RenderTarget trailTexture0;
     RenderTarget trailTexture1;
+
+    CanvasConnection connectionClasses[6];
 };

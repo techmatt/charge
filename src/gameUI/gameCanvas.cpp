@@ -4,6 +4,19 @@
 void GameCanvas::init()
 {
     backgroundDirty = true;
+
+    int classIndex = 0;
+    for (int type = -1; type <= 1; type++)
+    {
+        for (int axis = 0; axis < 2; axis++)
+        {
+            vec2i offset;
+            if (axis == 0) offset = vec2i(-2, type);
+            if (axis == 1) offset = vec2i(type, -2);
+            UINT connectorIndex = (type + 1) * 2 + axis;
+            connectionClasses[classIndex++] = CanvasConnection(type, offset, connectorIndex);
+        }
+    }
 }
 
 Texture& GameCanvas::getFontTexture(const string &text, FontType font, int wrapWidth)
@@ -654,40 +667,33 @@ void GameCanvas::renderSpokesMiniCircuit(const Component &component)
     const vec2f myScreenPos = component.location.toScreenCoordMainBoard(canonicalDims);
 
     const auto &cells = app.state.getCircuit(component.location).circuitBoard->cells;
-
-    for (int type = -1; type <= 1; type++)
+    
+    for (const CanvasConnection &connection : connectionClasses)
     {
-        for (int axis = 0; axis < 2; axis++)
+        vec2i otherLocation = component.location.circuitPos + connection.offset;
+
+        if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
         {
-            vec2i offset;
-            if (axis == 0) offset = vec2i(-2, type);
-            if (axis == 1) offset = vec2i(type, -2);
-            UINT connectorIndex = (type + 1) * 2 + axis;
-            vec2i otherLocation = component.location.circuitPos + offset;
-
-            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
+            const Component &otherComponent = *cells(otherLocation).c;
+            bool renderSpokes = true;
+            renderSpokes &= otherComponent.location.circuitPos == otherLocation;
+            renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
+            renderSpokes &= otherComponent.hasSpokes();
+            renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
+            if (renderSpokes)
             {
-                const Component &otherComponent = *cells(otherLocation).c;
-                bool renderSpokes = true;
-                renderSpokes &= otherComponent.location.circuitPos == otherLocation;
-                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
-                renderSpokes &= otherComponent.hasSpokes();
-                renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
-                if (renderSpokes)
-                {
-                    const vec2f otherScreenPos = otherComponent.location.toScreenCoordMainBoard(canonicalDims);
+                const vec2f otherScreenPos = otherComponent.location.toScreenCoordMainBoard(canonicalDims);
 
-                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
-                    const vec2f diff = myScreenPos - otherScreenPos;
-                    const float dist = diff.length();
+                const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                const vec2f diff = myScreenPos - otherScreenPos;
+                const float dist = diff.length();
 
-                    vec2f variance = constants::connectorDims[type + 1] * dist;
-                    variance.y *= 2.0f;
+                vec2f variance = constants::connectorDims[connection.type + 1] * dist;
+                variance.y *= 2.0f;
 
-                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
-                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes - depthLayers::miniCircuitOffsetStandard, angle);
-                }
+                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
+                const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes - depthLayers::miniCircuitOffsetStandard, angle);
             }
         }
     }
@@ -731,37 +737,30 @@ void GameCanvas::renderSpokes(const Component &component)
         return false;
     };
 
-    for (int type = -1; type <= 1; type++)
+    for (const CanvasConnection &connection : connectionClasses)
     {
-        for (int axis = 0; axis < 2; axis++)
+        vec2i otherLocation = component.location.boardPos + connection.offset;
+
+        if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
         {
-            vec2i offset;
-            if (axis == 0) offset = vec2i(-2, type);
-            if (axis == 1) offset = vec2i(type, -2);
-            UINT connectorIndex = (type + 1) * 2 + axis;
-            vec2i otherLocation = component.location.boardPos + offset;
+            const Component &otherComponent = *cells(otherLocation).c;
 
-            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
+            bool circuitTest = drawCircuitConnection(component, otherComponent);
+
+            if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes() && circuitTest)
             {
-                const Component &otherComponent = *cells(otherLocation).c;
+                const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
 
-                bool circuitTest = drawCircuitConnection(component, otherComponent);
+                const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                const vec2f diff = myScreenPos - otherScreenPos;
+                const float dist = diff.length();
 
-                if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes() && circuitTest)
-                {
-                    const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
+                const vec2f variance = constants::connectorDims[connection.type + 1] * dist;
 
-                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
-                    const vec2f diff = myScreenPos - otherScreenPos;
-                    const float dist = diff.length();
-
-                    const vec2f variance = constants::connectorDims[type + 1] * dist;
-
-                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
-                    //const float angle = 180.0f;
-                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
-                }
+                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
+                //const float angle = 180.0f;
+                const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
             }
         }
     }
@@ -778,38 +777,31 @@ void GameCanvas::renderSpokesCircuit(const Component &component)
 
     const auto &cells = app.activeCircuit()->circuitBoard->cells;
 
-    for (int type = -1; type <= 1; type++)
+    for (const CanvasConnection &connection : connectionClasses)
     {
-        for (int axis = 0; axis < 2; axis++)
+        vec2i otherLocation = component.location.circuitPos + connection.offset;
+
+        if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
         {
-            vec2i offset;
-            if (axis == 0) offset = vec2i(-2, type);
-            if (axis == 1) offset = vec2i(type, -2);
-            UINT connectorIndex = (type + 1) * 2 + axis;
-            vec2i otherLocation = component.location.circuitPos + offset;
-
-            if (cells.coordValid(otherLocation) && cells(otherLocation).c != nullptr)
+            const Component &otherComponent = *cells(otherLocation).c;
+            bool renderSpokes = true;
+            renderSpokes &= otherComponent.location.circuitPos == otherLocation;
+            renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
+            renderSpokes &= otherComponent.hasSpokes();
+            renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
+            if (renderSpokes)
             {
-                const Component &otherComponent = *cells(otherLocation).c;
-                bool renderSpokes = true;
-                renderSpokes &= otherComponent.location.circuitPos == otherLocation;
-                renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
-                renderSpokes &= otherComponent.hasSpokes();
-                renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
-                if (renderSpokes)
-                {
-                    const vec2f otherScreenPos = GameUtil::circuitToWindow(canonicalDims, otherComponent.location.circuitPos + vec2i(1, 1));
+                const vec2f otherScreenPos = GameUtil::circuitToWindow(canonicalDims, otherComponent.location.circuitPos + vec2i(1, 1));
 
-                    const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
-                    const vec2f diff = myScreenPos - otherScreenPos;
-                    const float dist = diff.length();
+                const vec2f middle = (myScreenPos + otherScreenPos) * 0.5f;
+                const vec2f diff = myScreenPos - otherScreenPos;
+                const float dist = diff.length();
 
-                    const vec2f variance = constants::connectorDims[type + 1] * dist;
+                const vec2f variance = constants::connectorDims[connection.type + 1] * dist;
 
-                    Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connectorIndex));
-                    const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
-                    addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
-                }
+                Texture &connectorTex = database().getTexture(app.renderer, "WireConnector" + std::to_string(connection.connectorIndex));
+                const float angle = math::radiansToDegrees(atan2f(diff.y, diff.x)) + 180.0f;
+                addBackgroundObject(connectorTex, rect2f(middle - variance, middle + variance), depthLayers::spokes, angle);
             }
         }
     }
