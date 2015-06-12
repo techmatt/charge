@@ -102,6 +102,9 @@
     <ClCompile Include="..\src\gameUI\gameCanvas.cpp">
       <Filter>gameUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameUI\userSession.cpp">
+      <Filter>gameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -249,6 +252,9 @@
       <Filter>gameUI</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gameUI\gameCanvas.h">
+      <Filter>gameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameUI\userSession.h">
       <Filter>gameUI</Filter>
     </ClInclude>
   </ItemGroup>

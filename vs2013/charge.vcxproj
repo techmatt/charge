@@ -96,6 +96,7 @@
     <ClCompile Include="..\src\gameUI\gameUI.cpp" />
     <ClCompile Include="..\src\gameUI\puzzleManager.cpp" />
     <ClCompile Include="..\src\gameUI\selection.cpp" />
+    <ClCompile Include="..\src\gameUI\userSession.cpp" />
     <ClCompile Include="..\src\game\board.cpp" />
     <ClCompile Include="..\src\game\buffer.cpp" />
     <ClCompile Include="..\src\game\charge.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="..\src\gameUI\puzzleManager.h" />
     <ClInclude Include="..\src\gameUI\selection.h" />
     <ClInclude Include="..\src\gameUI\UIHelper.h" />
+    <ClInclude Include="..\src\gameUI\userSession.h" />
     <ClInclude Include="..\src\game\board.h" />
     <ClInclude Include="..\src\game\buffer.h" />
     <ClInclude Include="..\src\game\charge.h" />

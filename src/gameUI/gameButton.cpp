@@ -170,7 +170,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         const string filename = FileDialog::showOpen();
         if (filename.size() > 0)
         {
-            app.state.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
+            app.controller.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
             app.undoBuffer.reset(app.state);
         }
     }

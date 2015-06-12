@@ -60,6 +60,7 @@ class Texture;
 
 #include "game/buffer.h"
 
+#include "gameUI/userSession.h"
 #include "gameUI/selection.h"
 #include "gameUI/gameButton.h"
 #include "gameUI/dialog.h"
