@@ -682,6 +682,9 @@ void GameCanvas::renderCircuitComponent(const Component &component)
 
 void GameCanvas::renderSpokesMiniCircuit(const Component &component)
 {
+    if (component.modifiers.boundary == CircuitBoundaryType::Closed)
+        return;
+
     const vec2f myScreenPos = component.location.toScreenCoordMainBoard(canonicalDims);
 
     const auto &cells = app.state.getCircuit(component.location).circuitBoard->cells;
@@ -855,10 +858,12 @@ void GameCanvas::renderCharge(const Charge &charge, bool trailRender)
 
 void GameCanvas::renderMegaHold(const Component &component, bool trailRender)
 {
-    const float megaHoldSize = 7.5f;
-
+    renderMegaHoldCircuit(component, trailRender);
     const vec2f screenCenter = component.location.toScreenCoordMainBoard(canonicalDims);
-    float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * megaHoldSize;
+    float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
+
+    if (component.location.inCircuit())
+        screenSize *= 0.35f;
 
     if (trailRender)
         screenSize *= 1.2f;
@@ -866,6 +871,23 @@ void GameCanvas::renderMegaHold(const Component &component, bool trailRender)
     const float angle = component.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
 
+    render(*database().chargeTextures[(int)component.modifiers.color], destinationRect, depthLayers::charge, angle);
+}
+
+void GameCanvas::renderMegaHoldCircuit(const Component &component, bool trailRender)
+{
+    if (!component.location.inCircuit()) return;
+    if (app.activeCircuit() == nullptr || component.location.boardPos != app.activeCircuit()->location.boardPos) return;
+
+    const vec2f screenCenter = component.location.toScreenCoordCircuitBoard(canonicalDims);
+    float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
+
+    const float angle = component.randomRotationOffset + app.state.globalRotationOffset;
+
+    if (trailRender)
+        screenSize *= 1.2f;
+
+    const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
     render(*database().chargeTextures[(int)component.modifiers.color], destinationRect, depthLayers::charge, angle);
 }
 

@@ -13,14 +13,8 @@ struct Charge
     //
     void interactWithDestination(GameState &state, AppData &app);
 
-    //
-    // if the charge has reached its destination, find a new component or destroy the charge if none can be found
-    //
-    void updateDestination(GameState &state);
-
     bool findBestDestination(GameState &state);
-    //void setNewDestination(GameState &state, Component &newDestination);
-	void setNewDestination(GameState &state, Component &newDestination, bool teleport = false);
+    void setNewDestination(GameState &state, Component &newDestination, bool teleport = false);
 
     double computePreference(GameState &state, Component &targetComponent);
 

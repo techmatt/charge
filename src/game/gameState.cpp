@@ -320,6 +320,7 @@ void GameState::step(AppData &app)
                     }
                     else
                     {
+                        getComponent(c.destination)->deathTrapTimeLeft = constants::deathTrapDuration;
                         c.markedForDeletion = true;
                     }
                     c.resolvedThisTick = true;
@@ -467,6 +468,10 @@ void GameState::step(AppData &app)
     {
         Charge &charge = charges[chargeIndex];
         
+        Component *destination = getComponent(charge.destination);
+        if (destination->deathTrapTimeLeft > 0)
+            charge.markedForDeletion = true;
+
         if (charge.markedForDeletion && charge.showDeathAnimation)
         {
            //add this charge to the list of where charges explode, then delete the charge

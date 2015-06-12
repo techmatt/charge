@@ -202,20 +202,6 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 
 }
 
-void Charge::updateDestination(GameState &state)
-{
-    if (markedForDeletion) return;
-    if (timeInTransit < totalTransitTime) return;
-
-    if (!findBestDestination(state))
-    {
-        Component *previous = state.getComponent(source);
-        Component *current = state.getComponent(destination);
-        current->deathTrapTimeLeft = constants::deathTrapDuration;
-        markedForDeletion = true;
-    }
-}
-
 void Charge::setNewDestination(GameState &state, Component &newDestination, bool teleport)
 {
 	newDestination.connections[(intendedConnectionIndex + 6) % 12].blocked = true; //block off the things coming in the opposite direction

@@ -62,12 +62,13 @@ private:
     void renderSpokesCircuit(const Component &component);
 
     void renderCharge(const Charge &charge, bool trailRender);
+    void renderChargeCircuit(const Charge &charge, bool trailRender);
+
     void renderExplodingCharge(const ExplodingCharge &charge);
+    void renderExplodingChargeCircuit(const ExplodingCharge &charge);
 
     void renderMegaHold(const Component &component, bool trailRender);
-
-    void renderChargeCircuit(const Charge &charge, bool trailRender);
-    void renderExplodingChargeCircuit(const ExplodingCharge &charge);
+    void renderMegaHoldCircuit(const Component &component, bool trailRender);
 
     void renderButtonBackground(const GameButton &button, bool selected);
     void renderButtonForeground(const GameButton &button, bool selected);
