@@ -130,7 +130,8 @@ void GameState::resetPuzzle()
     victory = false;
     stepCount = 0;
     globalRotationOffset = 0.0f;
-    victoryChargeScaleFactor = 1.0f;
+    victoryChargeScaleFactorPositive = 1.0f;
+    victoryChargeScaleFactorNegative = 1.0f;
     charges.clear();
     explodingCharges.clear();
     for (Component *c : components)
@@ -232,7 +233,8 @@ void GameState::step(AppData &app)
 
     if (victory)
     {
-        victoryChargeScaleFactor = min(victoryChargeScaleFactor * 1.01f, 1.5f);
+        victoryChargeScaleFactorPositive = min(victoryChargeScaleFactorPositive * 1.01f, 1.5f);
+        victoryChargeScaleFactorNegative *= 0.995f;
         return;
     }
 

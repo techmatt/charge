@@ -1,6 +1,6 @@
-Puzzle~34~239
-buildableComponents~53
-ComponentBuildState~52~52
+Puzzle~36~247
+buildableComponents~43
+ComponentBuildState~42~42
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
@@ -26,16 +26,6 @@ GateSwitchRed=1
 GateSwitchYellow=1
 Hold=1
 Splitter=1
-TeleportDestinationBlue=1
-TeleportDestinationGreen=1
-TeleportDestinationOrange=1
-TeleportDestinationRed=1
-TeleportDestinationYellow=1
-TeleportSourceBlue=1
-TeleportSourceGreen=1
-TeleportSourceOrange=1
-TeleportSourceRed=1
-TeleportSourceYellow=1
 TrapOpenBlue=1
 TrapOpenGray=1
 TrapOpenGreen=1
@@ -79,12 +69,12 @@ puzzleType=1
 component0003~8
 Component~7~7
 boardPos=22 11
-chargesLostPerDischarge=1
+chargesLostPerDischarge=12
 color=6
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=200
 component0004~8
 Component~7~7
 boardPos=0 11
@@ -237,4 +227,22 @@ Component~3~3
 boardPos=16 9
 name=Blocker
 puzzleType=1
-componentCount=32
+component0032~8
+Component~7~7
+boardPos=9 3
+chargesLostPerDischarge=0
+color=1
+name=MegaHold
+puzzleType=1
+ticksPerDischarge=60
+totalChargeRequired=1
+component0033~8
+Component~7~7
+boardPos=9 19
+chargesLostPerDischarge=0
+color=1
+name=MegaHold
+puzzleType=1
+ticksPerDischarge=60
+totalChargeRequired=1
+componentCount=34

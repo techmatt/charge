@@ -493,17 +493,15 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 void GameCanvas::renderTooltip()
 {
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (!app.activeCircuit() && button != nullptr &&
+    if (button != nullptr && // !app.activeCircuit() &&
         (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
         button->type == ButtonType::CircuitBoundary || button->type == ButtonType::GateState || button->type == ButtonType::TrapState ||
         button->type == ButtonType::WireSpeed))
     {
         float startY = button->canonicalRect.max().y + 5.0f;
 
-        // I and O to indicate stuff...
-
-        //renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *info, button->modifiers, hotkey, nullptr);
-        renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *button->tooltip, button->modifiers, button->hotkey, nullptr);
+        //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }
 
@@ -515,7 +513,11 @@ void GameCanvas::renderTooltip()
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&
         (!app.activeCircuit() || hoverComponent->info->name == "PowerSource"))
     {
-        renderTooltip(params().tooltipDefaultStart, *clickComponent->baseInfo, clickComponent->modifiers, "", clickComponent);
+        const ComponentInfo *info = clickComponent->info;
+        if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
+            info = &database().getComponent(clickComponent->info->name + "GrayProxy");
+
+        renderTooltip(params().tooltipDefaultStart, *info, clickComponent->modifiers, "", clickComponent);
     }
 }
 
@@ -841,7 +843,9 @@ void GameCanvas::renderCharge(const Charge &charge, bool trailRender)
 
     Component *component = app.state.getComponent(charge.destination);
     if (component != nullptr && component->heldCharge == charge.level && component->info->name == "ChargeGoal")
-        screen.second *= app.state.victoryChargeScaleFactor;
+        screen.second *= app.state.victoryChargeScaleFactorPositive;
+    else
+        screen.second *= app.state.victoryChargeScaleFactorNegative;
 
     const float angle = charge.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
@@ -893,7 +897,9 @@ void GameCanvas::renderChargeCircuit(const Charge &charge, bool trailRender)
 
     Component *component = app.state.getComponent(charge.destination);
     if (component != nullptr && component->heldCharge == charge.level && component->info->name == "ChargeGoal")
-        screen.second *= app.state.victoryChargeScaleFactor;
+        screen.second *= app.state.victoryChargeScaleFactorPositive;
+    else
+        screen.second *= app.state.victoryChargeScaleFactorNegative;
 
     const rect2f destinationRect(screen.first - vec2f(screen.second), screen.first + vec2f(screen.second));
     render(*database().chargeTextures[(int)charge.level], destinationRect, depthLayers::charge, angle);

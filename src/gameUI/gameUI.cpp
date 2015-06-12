@@ -185,7 +185,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
         // Just a click
         if (hover.valid())
         {
-            Component* hoverComponent = app.state.getComponent(hover);
+            Component* hoverComponent = app.state.getComponent(hover, false);
             if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
                 if (hoverComponent != nullptr)
                     selection.toggle(hoverComponent);

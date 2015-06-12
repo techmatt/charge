@@ -32,7 +32,7 @@ void Database::init()
 
 void Database::initTextures(Renderer &renderer)
 {
-    for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue; chargeLevel++)
+    for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue + 1; chargeLevel++)
     {
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
     }
