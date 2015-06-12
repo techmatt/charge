@@ -1,4 +1,4 @@
-Puzzle~145~896
+Puzzle~181~1142
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -55,8 +55,8 @@ WireMinorAccelerator=1
 WireMinorDelay=1
 component0000~4
 Component~3~3
-boardPos=0 18
-name=Blocker
+boardPos=8 18
+name=Circuit
 puzzleType=0
 component0001~4
 Component~3~3
@@ -894,4 +894,250 @@ Component~3~3
 boardPos=0 14
 name=Blocker
 puzzleType=0
-componentCount=143
+component0143~4
+Component~3~3
+boardPos=0 18
+name=Blocker
+puzzleType=0
+component0144~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0145~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0146~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0147~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0148~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0149~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0150~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0151~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0152~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0153~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0154~7
+Component~6~6
+boardPos=8 18
+boundary=1
+chargePreference=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0155~7
+Component~6~6
+boardPos=8 18
+boundary=1
+chargePreference=3
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0156~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0157~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0158~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0159~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0160~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0161~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0162~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0163~6
+Component~5~5
+boardPos=8 18
+boundary=1
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0164~7
+Component~6~6
+boardPos=8 18
+chargePreference=3
+circuitPos=2 5
+color=6
+name=GateOpen
+puzzleType=0
+component0165~5
+Component~4~4
+boardPos=8 18
+circuitPos=2 7
+name=Wire
+puzzleType=0
+component0166~6
+Component~5~5
+boardPos=8 18
+chargePreference=3
+circuitPos=2 3
+name=Hold
+puzzleType=0
+component0167~5
+Component~4~4
+boardPos=8 18
+circuitPos=4 2
+name=Hold
+puzzleType=0
+component0168~5
+Component~4~4
+boardPos=8 18
+circuitPos=6 2
+name=Hold
+puzzleType=0
+component0169~5
+Component~4~4
+boardPos=8 18
+circuitPos=8 2
+name=Hold
+puzzleType=0
+component0170~5
+Component~4~4
+boardPos=8 18
+circuitPos=10 2
+name=Hold
+puzzleType=0
+component0171~6
+Component~5~5
+boardPos=8 18
+circuitPos=4 5
+color=6
+name=TrapOpen
+puzzleType=0
+component0172~6
+Component~5~5
+boardPos=8 18
+circuitPos=6 5
+color=6
+name=GateSwitch
+puzzleType=0
+component0173~6
+Component~5~5
+boardPos=8 18
+circuitPos=8 5
+color=6
+name=GateSwitch
+puzzleType=0
+component0174~5
+Component~4~4
+boardPos=8 18
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0175~6
+Component~5~5
+boardPos=8 18
+circuitPos=4 8
+name=Wire
+puzzleType=0
+speed=4
+component0176~5
+Component~4~4
+boardPos=8 18
+circuitPos=8 8
+name=Wire
+puzzleType=0
+component0177~6
+Component~5~5
+boardPos=8 18
+circuitPos=10 5
+name=Wire
+puzzleType=0
+speed=0
+component0178~6
+Component~5~5
+boardPos=8 18
+circuitPos=10 7
+color=6
+name=TrapReset
+puzzleType=0
+componentCount=179
