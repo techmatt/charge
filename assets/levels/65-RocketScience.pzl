@@ -1875,43 +1875,43 @@ color=1
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=8
 component0274~8
 Component~7~7
 boardPos=17 9
-chargesLostPerDischarge=1
+chargesLostPerDischarge=2
 color=2
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=16
 component0275~8
 Component~7~7
 boardPos=17 11
-chargesLostPerDischarge=1
+chargesLostPerDischarge=3
 color=3
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=24
 component0276~8
 Component~7~7
 boardPos=17 13
-chargesLostPerDischarge=1
+chargesLostPerDischarge=4
 color=4
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=32
 component0277~8
 Component~7~7
 boardPos=17 15
-chargesLostPerDischarge=1
+chargesLostPerDischarge=5
 color=5
 name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
-totalChargeRequired=10
+totalChargeRequired=40
 component0278~6
 Component~5~5
 boardPos=15 7
