@@ -57,209 +57,209 @@ component0000~4
 Component~3~3
 boardPos=8 18
 name=Circuit
-puzzleType=0
+puzzleType=1
 component0001~4
 Component~3~3
 boardPos=20 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0002~4
 Component~3~3
 boardPos=12 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0003~4
 Component~3~3
 boardPos=8 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0004~4
 Component~3~3
 boardPos=0 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0005~4
 Component~3~3
 boardPos=14 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0006~5
 Component~4~4
 boardPos=20 6
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0007~4
 Component~3~3
 boardPos=10 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0008~4
 Component~3~3
 boardPos=16 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0009~4
 Component~3~3
 boardPos=12 4
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0010~5
 Component~4~4
 boardPos=12 10
 color=1
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0011~4
 Component~3~3
 boardPos=22 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0012~4
 Component~3~3
 boardPos=12 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0013~4
 Component~3~3
 boardPos=22 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0014~4
 Component~3~3
 boardPos=2 18
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0015~4
 Component~3~3
 boardPos=18 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0016~4
 Component~3~3
 boardPos=14 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0017~5
 Component~4~4
 boardPos=16 10
 color=3
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0018~4
 Component~3~3
 boardPos=14 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0019~4
 Component~3~3
 boardPos=2 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0020~5
 Component~4~4
 boardPos=18 6
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0021~4
 Component~3~3
 boardPos=14 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0022~5
 Component~4~4
 boardPos=16 4
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0023~5
 Component~4~4
 boardPos=16 6
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0024~4
 Component~3~3
 boardPos=16 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0025~4
 Component~3~3
 boardPos=20 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0026~4
 Component~3~3
 boardPos=20 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0027~4
 Component~3~3
 boardPos=22 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0028~4
 Component~3~3
 boardPos=6 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0029~4
 Component~3~3
 boardPos=6 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0030~4
 Component~3~3
 boardPos=8 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0031~4
 Component~3~3
 boardPos=0 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0032~4
 Component~3~3
 boardPos=18 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0033~4
 Component~3~3
 boardPos=14 6
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0034~4
 Component~3~3
 boardPos=16 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0035~4
 Component~3~3
 boardPos=4 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0036~4
 Component~3~3
 boardPos=4 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0037~4
 Component~3~3
 boardPos=12 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0038~4
 Component~3~3
 boardPos=2 22
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0039~8
 Component~7~7
 boardPos=8 8
 color=2
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=18
 secondsPerEmission=2
 totalCharges=1
@@ -268,7 +268,7 @@ Component~7~7
 boardPos=8 6
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=17
 secondsPerEmission=2
 totalCharges=1
@@ -277,7 +277,7 @@ Component~7~7
 boardPos=4 4
 color=4
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=9
 secondsPerEmission=2
 totalCharges=1
@@ -285,13 +285,13 @@ component0042~4
 Component~3~3
 boardPos=12 6
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0043~8
 Component~7~7
 boardPos=4 6
 color=5
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=10
 secondsPerEmission=2
 totalCharges=1
@@ -300,7 +300,7 @@ Component~7~7
 boardPos=8 4
 color=5
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=16
 secondsPerEmission=2
 totalCharges=1
@@ -309,7 +309,7 @@ Component~7~7
 boardPos=4 8
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=11
 secondsPerEmission=2
 totalCharges=1
@@ -317,13 +317,13 @@ component0046~4
 Component~3~3
 boardPos=18 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0047~8
 Component~7~7
 boardPos=0 6
 color=4
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=3
 secondsPerEmission=2
 totalCharges=1
@@ -332,7 +332,7 @@ Component~7~7
 boardPos=8 2
 color=4
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=15
 secondsPerEmission=2
 totalCharges=1
@@ -341,7 +341,7 @@ Component~7~7
 boardPos=0 4
 color=3
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=2
 secondsPerEmission=2
 totalCharges=1
@@ -350,7 +350,7 @@ Component~7~7
 boardPos=8 10
 color=3
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=19
 secondsPerEmission=2
 totalCharges=1
@@ -359,7 +359,7 @@ Component~7~7
 boardPos=0 10
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=5
 secondsPerEmission=2
 totalCharges=1
@@ -368,7 +368,7 @@ Component~7~7
 boardPos=8 0
 color=3
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=14
 secondsPerEmission=2
 totalCharges=1
@@ -377,7 +377,7 @@ Component~7~7
 boardPos=0 8
 color=5
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=4
 secondsPerEmission=2
 totalCharges=1
@@ -386,7 +386,7 @@ Component~7~7
 boardPos=4 10
 color=2
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=12
 secondsPerEmission=2
 totalCharges=1
@@ -395,7 +395,7 @@ Component~7~7
 boardPos=0 2
 color=2
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=2
 totalCharges=1
@@ -404,7 +404,7 @@ Component~7~7
 boardPos=4 0
 color=2
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=7
 secondsPerEmission=2
 totalCharges=1
@@ -413,7 +413,7 @@ Component~7~7
 boardPos=0 0
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1
@@ -422,7 +422,7 @@ Component~7~7
 boardPos=4 2
 color=3
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=8
 secondsPerEmission=2
 totalCharges=1
@@ -431,186 +431,186 @@ Component~4~4
 boardPos=6 18
 chargePreference=1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0060~5
 Component~4~4
 boardPos=2 0
 chargePreference=0
 name=Wire
-puzzleType=0
+puzzleType=1
 component0061~5
 Component~4~4
 boardPos=2 2
 chargePreference=0
 name=Wire
-puzzleType=0
+puzzleType=1
 component0062~5
 Component~4~4
 boardPos=2 4
 chargePreference=1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0063~4
 Component~3~3
 boardPos=2 6
 name=Wire
-puzzleType=0
+puzzleType=1
 component0064~5
 Component~4~4
 boardPos=2 8
 chargePreference=3
 name=Wire
-puzzleType=0
+puzzleType=1
 component0065~5
 Component~4~4
 boardPos=2 10
 chargePreference=4
 name=Wire
-puzzleType=0
+puzzleType=1
 component0066~5
 Component~4~4
 boardPos=6 0
 chargePreference=0
 name=Wire
-puzzleType=0
+puzzleType=1
 component0067~5
 Component~4~4
 boardPos=6 2
 chargePreference=0
 name=Wire
-puzzleType=0
+puzzleType=1
 component0068~5
 Component~4~4
 boardPos=6 4
 chargePreference=1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0069~4
 Component~3~3
 boardPos=6 6
 name=Wire
-puzzleType=0
+puzzleType=1
 component0070~5
 Component~4~4
 boardPos=6 8
 chargePreference=3
 name=Wire
-puzzleType=0
+puzzleType=1
 component0071~5
 Component~4~4
 boardPos=6 10
 chargePreference=4
 name=Wire
-puzzleType=0
+puzzleType=1
 component0072~5
 Component~4~4
 boardPos=2 12
 chargePreference=4
 name=Wire
-puzzleType=0
+puzzleType=1
 component0073~5
 Component~4~4
 boardPos=6 12
 chargePreference=4
 name=Wire
-puzzleType=0
+puzzleType=1
 component0074~4
 Component~3~3
 boardPos=2 14
 name=Wire
-puzzleType=0
+puzzleType=1
 component0075~4
 Component~3~3
 boardPos=4 14
 name=Wire
-puzzleType=0
+puzzleType=1
 component0076~4
 Component~3~3
 boardPos=6 14
 name=Wire
-puzzleType=0
+puzzleType=1
 component0077~5
 Component~4~4
 boardPos=4 16
 chargePreference=4
 name=Wire
-puzzleType=0
+puzzleType=1
 component0078~4
 Component~3~3
 boardPos=4 18
 name=Wire
-puzzleType=0
+puzzleType=1
 component0079~4
 Component~3~3
 boardPos=14 4
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0080~4
 Component~3~3
 boardPos=12 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0081~4
 Component~3~3
 boardPos=14 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0082~4
 Component~3~3
 boardPos=16 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0083~4
 Component~3~3
 boardPos=18 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0084~4
 Component~3~3
 boardPos=20 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0085~4
 Component~3~3
 boardPos=18 4
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0086~5
 Component~4~4
 boardPos=12 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0087~5
 Component~4~4
 boardPos=14 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0088~5
 Component~4~4
 boardPos=16 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0089~5
 Component~4~4
 boardPos=18 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0090~5
 Component~4~4
 boardPos=20 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0091~8
 Component~7~7
 boardPos=22 0
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=0
 totalCharges=1
@@ -618,357 +618,357 @@ component0092~5
 Component~4~4
 boardPos=16 2
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0093~5
 Component~4~4
 boardPos=14 10
 color=2
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0094~5
 Component~4~4
 boardPos=18 0
 chargePreference=3
 name=Hold
-puzzleType=0
+puzzleType=1
 component0095~4
 Component~3~3
 boardPos=10 20
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0096~6
 Component~5~5
 boardPos=10 18
 chargePreference=4
 color=5
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0097~5
 Component~4~4
 boardPos=20 0
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0098~5
 Component~4~4
 boardPos=16 0
 color=5
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0099~4
 Component~3~3
 boardPos=22 18
 name=Hold
-puzzleType=0
+puzzleType=1
 component0100~5
 Component~4~4
 boardPos=22 16
 color=1
 name=GateClosed
-puzzleType=0
+puzzleType=1
 component0101~5
 Component~4~4
 boardPos=22 14
 color=3
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0102~5
 Component~4~4
 boardPos=20 14
 color=2
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0103~5
 Component~4~4
 boardPos=18 14
 color=1
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0104~5
 Component~4~4
 boardPos=16 14
 color=5
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0105~5
 Component~4~4
 boardPos=14 14
 color=4
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0106~5
 Component~4~4
 boardPos=12 14
 color=3
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0107~5
 Component~4~4
 boardPos=12 12
 color=2
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0108~5
 Component~4~4
 boardPos=14 12
 color=3
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0109~5
 Component~4~4
 boardPos=16 12
 color=4
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0110~5
 Component~4~4
 boardPos=18 12
 color=5
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0111~5
 Component~4~4
 boardPos=20 12
 color=1
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0112~5
 Component~4~4
 boardPos=22 12
 color=2
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0113~5
 Component~4~4
 boardPos=22 10
 color=1
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0114~5
 Component~4~4
 boardPos=20 10
 color=5
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0115~5
 Component~4~4
 boardPos=18 10
 color=4
 name=ChargeGoal
-puzzleType=0
+puzzleType=1
 component0116~5
 Component~4~4
 boardPos=20 2
 color=1
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0117~5
 Component~4~4
 boardPos=20 4
 color=1
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0118~4
 Component~3~3
 boardPos=14 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0119~4
 Component~3~3
 boardPos=4 12
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0120~4
 Component~3~3
 boardPos=0 12
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0121~4
 Component~3~3
 boardPos=8 12
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0122~4
 Component~3~3
 boardPos=10 12
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0123~4
 Component~3~3
 boardPos=10 10
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0124~4
 Component~3~3
 boardPos=10 8
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0125~4
 Component~3~3
 boardPos=10 6
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0126~4
 Component~3~3
 boardPos=10 4
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0127~4
 Component~3~3
 boardPos=10 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0128~4
 Component~3~3
 boardPos=10 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0129~4
 Component~3~3
 boardPos=18 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0130~4
 Component~3~3
 boardPos=22 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0131~4
 Component~3~3
 boardPos=22 4
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0132~4
 Component~3~3
 boardPos=22 6
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0133~4
 Component~3~3
 boardPos=12 2
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0134~4
 Component~3~3
 boardPos=12 0
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0135~4
 Component~3~3
 boardPos=10 16
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0136~4
 Component~3~3
 boardPos=10 14
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0137~4
 Component~3~3
 boardPos=8 14
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0138~4
 Component~3~3
 boardPos=8 16
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0139~4
 Component~3~3
 boardPos=6 16
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0140~4
 Component~3~3
 boardPos=2 16
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0141~4
 Component~3~3
 boardPos=0 16
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0142~4
 Component~3~3
 boardPos=0 14
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0143~4
 Component~3~3
 boardPos=0 18
 name=Blocker
-puzzleType=0
+puzzleType=1
 component0144~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=2 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0145~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=2 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0146~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=0 2
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0147~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=12 2
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0148~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=4 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0149~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=4 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0150~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=0 4
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0151~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=12 4
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0152~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0153~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0154~7
 Component~6~6
 boardPos=8 18
@@ -976,7 +976,7 @@ boundary=1
 chargePreference=1
 circuitPos=0 6
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0155~7
 Component~6~6
 boardPos=8 18
@@ -984,63 +984,63 @@ boundary=1
 chargePreference=3
 circuitPos=12 6
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0156~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=8 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0157~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=8 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0158~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=0 8
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0159~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=12 8
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0160~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=10 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0161~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=10 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0162~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=0 10
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0163~6
 Component~5~5
 boardPos=8 18
 boundary=1
 circuitPos=12 10
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0164~7
 Component~6~6
 boardPos=8 18
@@ -1048,90 +1048,90 @@ chargePreference=3
 circuitPos=2 5
 color=6
 name=GateOpen
-puzzleType=0
+puzzleType=1
 component0165~5
 Component~4~4
 boardPos=8 18
 circuitPos=2 7
 name=Wire
-puzzleType=0
+puzzleType=1
 component0166~6
 Component~5~5
 boardPos=8 18
 chargePreference=3
 circuitPos=2 3
 name=Hold
-puzzleType=0
+puzzleType=1
 component0167~5
 Component~4~4
 boardPos=8 18
 circuitPos=4 2
 name=Hold
-puzzleType=0
+puzzleType=1
 component0168~5
 Component~4~4
 boardPos=8 18
 circuitPos=6 2
 name=Hold
-puzzleType=0
+puzzleType=1
 component0169~5
 Component~4~4
 boardPos=8 18
 circuitPos=8 2
 name=Hold
-puzzleType=0
+puzzleType=1
 component0170~5
 Component~4~4
 boardPos=8 18
 circuitPos=10 2
 name=Hold
-puzzleType=0
+puzzleType=1
 component0171~6
 Component~5~5
 boardPos=8 18
 circuitPos=4 5
 color=6
 name=TrapOpen
-puzzleType=0
+puzzleType=1
 component0172~6
 Component~5~5
 boardPos=8 18
 circuitPos=6 5
 color=6
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0173~6
 Component~5~5
 boardPos=8 18
 circuitPos=8 5
 color=6
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0174~5
 Component~4~4
 boardPos=8 18
 circuitPos=6 8
 name=Wire
-puzzleType=0
+puzzleType=1
 component0175~6
 Component~5~5
 boardPos=8 18
 circuitPos=4 8
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=4
 component0176~5
 Component~4~4
 boardPos=8 18
 circuitPos=8 8
 name=Wire
-puzzleType=0
+puzzleType=1
 component0177~6
 Component~5~5
 boardPos=8 18
 circuitPos=10 5
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0178~6
 Component~5~5
@@ -1139,5 +1139,5 @@ boardPos=8 18
 circuitPos=10 7
 color=6
 name=TrapReset
-puzzleType=0
+puzzleType=1
 componentCount=179
