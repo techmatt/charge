@@ -1,6 +1,61 @@
 
 #include "main.h"
 
+/*
+this is code I added to SDL, SDL_windowsevents.c to control the aspect ratio ->
+case WM_SIZING:
+{
+float ratio = (float)g_SDL_matt_window_aspect_ratio;
+if (ratio > 0.0)
+{
+RECT screenRect;
+GetWindowRect(GetDesktopWindow(), &screenRect);
+
+RECT *rect = (RECT *)lParam;
+
+RECT clientRect, windowRect;
+GetClientRect(hwnd, &clientRect);
+GetWindowRect(hwnd, &windowRect);
+int borderWidth = windowRect.right - windowRect.left - clientRect.right;
+int borderHeight = windowRect.bottom - windowRect.top - clientRect.bottom;
+
+int proposedX = rect->right - rect->left - borderWidth;
+int proposedY = rect->bottom - rect->top - borderHeight;
+
+float newWidth = (float)proposedY / ratio + borderWidth;
+float newHeight = (float)proposedX * ratio + borderHeight;
+
+if (newHeight > screenRect.bottom)
+{
+newHeight = (float)screenRect.bottom;
+newWidth = (float)proposedY / ratio + borderWidth;
+rect->right = rect->left + (int)(newWidth + 0.5f);
+}
+
+switch (wParam)
+{
+case WMSZ_BOTTOM:
+rect->right = rect->left + (int)(newWidth + 0.5f);
+break;
+case WMSZ_LEFT:
+case WMSZ_TOPLEFT:
+case WMSZ_TOPRIGHT:
+rect->top = rect->bottom - (int)(newHeight + 0.5f);
+break;
+case WMSZ_RIGHT:
+case WMSZ_BOTTOMRIGHT:
+case WMSZ_BOTTOMLEFT:
+rect->bottom = rect->top + (int)(newHeight + 0.5f);
+break;
+case WMSZ_TOP:
+rect->left = rect->right - (int)(newWidth + 0.5f);
+break;
+}
+
+return TRUE;
+}
+}
+*/
 int App::run()
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
@@ -12,6 +67,7 @@ int App::run()
     TTF_Init();
 
     //Setup our window and renderer
+    //g_SDL_matt_window_aspect_ratio = (double)params().canonicalDims.y / (double)params().canonicalDims.x;
     int windowHeight = math::round(params().canonicalDims.y) * 2;
     int windowWidth = math::round(params().canonicalDims.x) * 2;
 	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
