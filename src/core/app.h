@@ -19,9 +19,10 @@ struct AppData
 
         //Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
 		Component* selectedComponent=ui.selection.singleElement();
-        if (!locationA.inCircuit() || !locationB.inCircuit() || 
+        if (!locationA.inCircuit() || !locationB.inCircuit() || (!soundPlayedThisSecond && activeCircuit() == nullptr) ||
             (selectedComponent != nullptr && (selectedComponent->location.boardPos == locationA.boardPos || selectedComponent->location.boardPos == locationB.boardPos)) || name == "ChargeDeath")
         {
+            soundPlayedThisSecond = true;
             soundsPlayedThisTick.insert(name);
             audio.playEffect(name, locationA.inCircuit());
         }
@@ -49,6 +50,8 @@ struct AppData
 	UndoBuffer undoBuffer;
 
     set<string> soundsPlayedThisTick;
+    int soundCountTicks;
+    bool soundPlayedThisSecond;
 };
 
 class App

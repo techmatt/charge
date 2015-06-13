@@ -18,6 +18,13 @@ void GameController::step()
 {
     app.soundsPlayedThisTick.clear();
 
+    app.soundCountTicks++;
+    if (app.soundCountTicks >= constants::stepsPerSecond)
+    {
+        app.soundCountTicks = 0;
+        app.soundPlayedThisSecond = false;
+    }
+
     if (designActionTaken && puzzleMode != PuzzleMode::Design)
     {
         puzzleMode = PuzzleMode::Design;
