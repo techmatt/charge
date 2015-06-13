@@ -32,6 +32,7 @@ namespace constants
     static const int circuitBoardSize = 14;
 
     static const float megaHoldCanonicalSize = 7.5f;
+    static const float superMegaHoldCanonicalSize = 55.0f;
 
     static const bool useScanlinePriority = true;
 

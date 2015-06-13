@@ -52,8 +52,13 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
     {
         markedForDeletion = true;
         showDeathAnimation = false;
-        current->megaHoldTotalCharge = min(current->intrinsics.totalChargeRequired, current->megaHoldTotalCharge + (int)level);
-        app.playEffect("MegaHold", current->location);
+
+        Component *target = current;
+        if (current->inactiveCircuitMegaHold(state))
+            target = &current->getSuperMegaHoldTarget(state);
+
+        target->megaHoldTotalCharge = min(target->intrinsics.totalChargeRequired, target->megaHoldTotalCharge + (int)level);
+        app.playEffect("MegaHold", target->location);
     }
 
     if (current->info->name == "Amplifier")

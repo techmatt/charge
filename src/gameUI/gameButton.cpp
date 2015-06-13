@@ -220,16 +220,9 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 					for (ComponentDefiningProperties &cdf : cSet.components)
 						cdf.location.boardPos = circuitLocation.boardPos;
 
-
 					app.ui.selection.remove(c);
 					app.state.removeComponent(c);
 
-					//
-					// TODO: have Ghost look at factoring addHoverComponent into a function that (attempts to) inserts an arbitrary component set at
-					// a given location.
-					//
-					//app.ui.activePlacementBuffer = cSet;
-					//app.ui.addHoverComponent(circuitLocation);
 					cSet.addToComponents(app.state,vec2i(0,0));
 					app.ui.selection.add(app.state.getComponent(circuitLocation));
 				}

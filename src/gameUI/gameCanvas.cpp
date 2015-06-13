@@ -107,6 +107,12 @@ void GameCanvas::render()
         render(o);
     }
 
+    for (const auto &component : app.state.components)
+    {
+        if (component->isSuperMegaHold(app.state))
+            renderSuperMegaHold(*component);
+    }
+
     for (const auto &button : app.controller.buttons)
     {
         renderButtonForeground(button, false);
@@ -129,9 +135,6 @@ void GameCanvas::render()
     {
         if (component->info->name == "MegaHold")
         {
-            if (component->isSuperMegaHold(app.state))
-                renderSuperMegaHold(*component);
-
             renderMegaHold(*component, false);
         }
     }
@@ -514,10 +517,13 @@ void GameCanvas::renderTooltip()
     Component *clickComponent = app.state.getComponent(app.ui.clickLocation);
     Component *selectedComponent = app.ui.selection.singleElement();
     if (clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
-        clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
+        (clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece || hoverComponent->info->name == "PowerSource" || hoverComponent->info->name == "MegaHold") &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&
         (!app.activeCircuit() || hoverComponent->info->name == "PowerSource" || hoverComponent->info->name == "MegaHold"))
     {
+        if (clickComponent->inactiveCircuitMegaHold(app.state))
+            clickComponent = &clickComponent->getSuperMegaHoldTarget(app.state);
+
         const ComponentInfo *info = clickComponent->info;
         if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
             info = &database().getComponent(clickComponent->info->name + "GrayProxy");
@@ -869,18 +875,25 @@ void GameCanvas::renderCharge(const Charge &charge, bool trailRender)
 
 void GameCanvas::renderMegaHold(const Component &component, bool trailRender)
 {
-    if (component.location.inCircuit() && app.state.getCircuit(component.location).isCircuitContainingSuperMegaHold())
-        return;
-
     renderMegaHoldCircuit(component, trailRender);
-    const vec2f screenCenter = component.location.toScreenCoordMainBoard(canonicalDims);
+
+    if (component.inactiveCircuitMegaHold(app.state) && !component.isSuperMegaHold(app.state)) return;
+
+    GameLocation location = component.location;
     float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
 
-    if (component.location.inCircuit())
+    if (component.isSuperMegaHold(app.state))
+    {
+        location = GameLocation(component.location.boardPos, vec2i(constants::circuitBoardSize / 2 - 1));
+        screenSize *= 1.2f;
+    }
+    else if (component.location.inCircuit())
         screenSize *= 0.35f;
 
     if (trailRender)
         screenSize *= 1.2f;
+
+    const vec2f screenCenter = location.toScreenCoordMainBoard(canonicalDims);
 
     const float angle = component.randomRotationOffset + app.state.globalRotationOffset;
     const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
@@ -892,15 +905,25 @@ void GameCanvas::renderMegaHoldCircuit(const Component &component, bool trailRen
 {
     if (!component.location.inCircuit()) return;
     if (app.activeCircuit() == nullptr || component.location.boardPos != app.activeCircuit()->location.boardPos) return;
-
-    const vec2f screenCenter = component.location.toScreenCoordCircuitBoard(canonicalDims);
-    float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
+    if (component.inactiveCircuitMegaHold(app.state) && !component.isSuperMegaHold(app.state)) return;
 
     const float angle = component.randomRotationOffset + app.state.globalRotationOffset;
 
+    vec2f screenCenter;
+    float screenSize;
+    if (component.isSuperMegaHold(app.state))
+    {
+        const GameLocation circuitMiddle(component.location.boardPos, vec2i(constants::circuitBoardSize / 2 - 1));
+        screenCenter = circuitMiddle.toScreenCoordCircuitBoard(canonicalDims);
+        screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::superMegaHoldCanonicalSize;
+    }
+    else
+    {
+        screenCenter = component.location.toScreenCoordCircuitBoard(canonicalDims);
+        screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
+    }
     if (trailRender)
         screenSize *= 1.2f;
-
     const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
     render(*database().chargeTextures[(int)component.modifiers.color], destinationRect, depthLayers::charge, angle);
 }

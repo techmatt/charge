@@ -262,22 +262,26 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
     Component* gameComponent = selection.singleElement();
     if (gameComponent != nullptr && button.type == ButtonType::ComponentAttribute && app.controller.editorMode == EditorMode::LevelEditor)
     {
+        Component *modifiedComponent = gameComponent;
+        if (gameComponent->inactiveCircuitMegaHold(app.state))
+            modifiedComponent = &gameComponent->getSuperMegaHoldTarget(app.state);
+
         //
         // power source modifiers
         //
         if (button.name == "TotalCharge")
         {
-            gameComponent->intrinsics.totalCharges = math::mod(gameComponent->intrinsics.totalCharges + delta, 0xFFFFFF);
+            modifiedComponent->intrinsics.totalCharges = math::mod(modifiedComponent->intrinsics.totalCharges + delta, 0xFFFFFF);
             app.controller.recordDesignAction();
         }
         if (button.name == "FirstEmission")
         {
-            gameComponent->intrinsics.secondsBeforeFirstEmission = math::clamp(gameComponent->intrinsics.secondsBeforeFirstEmission + delta, 0, 1000);
+            modifiedComponent->intrinsics.secondsBeforeFirstEmission = math::clamp(modifiedComponent->intrinsics.secondsBeforeFirstEmission + delta, 0, 1000);
             app.controller.recordDesignAction();
         }
         if (button.name == "EmissionFrequency")
         {
-            gameComponent->intrinsics.secondsPerEmission = math::clamp(gameComponent->intrinsics.secondsPerEmission + delta, 1, 1000);
+            modifiedComponent->intrinsics.secondsPerEmission = math::clamp(modifiedComponent->intrinsics.secondsPerEmission + delta, 1, 1000);
             app.controller.recordDesignAction();
         }
 
@@ -286,17 +290,17 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
         //
         if (button.name == "TicksPerDischarge")
         {
-            gameComponent->intrinsics.ticksPerDischarge = math::clamp(gameComponent->intrinsics.ticksPerDischarge + delta, 1, 1000);
+            modifiedComponent->intrinsics.ticksPerDischarge = math::clamp(modifiedComponent->intrinsics.ticksPerDischarge + delta, 1, 1000);
             app.controller.recordDesignAction();
         }
         if (button.name == "ChargesLostPerDischarge")
         {
-            gameComponent->intrinsics.chargesLostPerDischarge = math::clamp(gameComponent->intrinsics.chargesLostPerDischarge + delta, 0, 1000);
+            modifiedComponent->intrinsics.chargesLostPerDischarge = math::clamp(modifiedComponent->intrinsics.chargesLostPerDischarge + delta, 0, 1000);
             app.controller.recordDesignAction();
         }
         if (button.name == "TotalChargeRequired")
         {
-            gameComponent->intrinsics.totalChargeRequired = math::clamp(gameComponent->intrinsics.totalChargeRequired + delta, 1, 1000);
+            modifiedComponent->intrinsics.totalChargeRequired = math::clamp(modifiedComponent->intrinsics.totalChargeRequired + delta, 1, 1000);
             app.controller.recordDesignAction();
         }
     }

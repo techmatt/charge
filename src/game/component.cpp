@@ -246,3 +246,8 @@ bool Component::inactiveCircuitMegaHold(GameState &state) const
         info->name == "MegaHold" &&
         state.getCircuit(location).isCircuitContainingSuperMegaHold());
 }
+
+Component& Component::getSuperMegaHoldTarget(GameState &state) const
+{
+    return *state.getCircuit(location).circuitBoard->cells(2, 2).c;
+}

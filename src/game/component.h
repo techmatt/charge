@@ -148,6 +148,7 @@ struct Component
 
     // a megahold in a circuit is inactive if it is part of a SuperMegaHold
     bool inactiveCircuitMegaHold(GameState &state) const;
+    Component& getSuperMegaHoldTarget(GameState &state) const;
 
     //
     // saving and loading
