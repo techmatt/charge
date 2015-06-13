@@ -78,3 +78,4 @@ Number	Puzzle name	Puzzle file		Verified
 77	Line Dancing	77-LineDancing		no
 78	Chips Ahoy	78-ChipsAhoy		no
 79	Final Destination	79-FinalDestination		no
+80	Through the Filter Glass	80-ThroughTheFilterGlass		no
