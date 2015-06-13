@@ -6,21 +6,24 @@ struct AppData
         
     }
 
-    void playEffect(const string &name, const GameLocation &location)
+    void playEffect(const string &name, const GameLocation &locationA, GameLocation locationB = GameLocation())
     {
+        if (!locationB.valid())
+            locationB = locationA;
+
         //
         // play each sound at most once per tick.
-        // TODO: consider playing at most N times per tick
         //
         if (soundsPlayedThisTick.count(name) > 0)
             return;
 
         //Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
 		Component* selectedComponent=ui.selection.singleElement();
-		if (!location.inCircuit() || (selectedComponent != nullptr && selectedComponent->location.boardPos == location.boardPos) || name == "ChargeDeath")
+        if (!locationA.inCircuit() || !locationB.inCircuit() || 
+            (selectedComponent != nullptr && (selectedComponent->location.boardPos == locationA.boardPos || selectedComponent->location.boardPos == locationB.boardPos)) || name == "ChargeDeath")
         {
             soundsPlayedThisTick.insert(name);
-            audio.playEffect(name, location.inCircuit());
+            audio.playEffect(name, locationA.inCircuit());
         }
     }
 

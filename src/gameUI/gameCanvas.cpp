@@ -118,8 +118,7 @@ void GameCanvas::render()
         renderButtonForeground(button, false);
     }
 
-    if (app.controller.speed <= GameSpeed::x3)
-        renderTrails();
+    renderTrails();
 
     for (const auto &charge : app.state.charges)
     {
