@@ -187,30 +187,56 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             cSet.flipAboutHorizonal();
     };
 
-    if (app.ui.selection.components.size() == 1)
+    if (app.ui.activePlacementBuffer.isEmpty())
     {
-        Component *c = app.ui.selection.singleElement();
-        if (c->info->name == "Circuit" && c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece &&
-            (name == "CircuitRotateN90" || name == "CircuitRotate90" || name == "CircuitFlipHorizontal" || name == "CircuitFlipVertical"))
-        {
-            ComponentSet cSet;
-            app.ui.selection.copyToComponentSet(cSet, app.state);
+		bool selectionHasCircuit=false;
+		for (Component *c : app.ui.selection.components) {
+			if (c->info->name == "Circuit")
+			{
+				selectionHasCircuit = true;
+				break;
+			}
+		}
 
-            transformComponentSet(cSet);
 
-            const GameLocation circuitLocation = c->location;
-            app.state.removeComponent(c);
-            app.ui.selection.empty();
+		if (selectionHasCircuit)
+		{
+			vector<Component*> oldComponents = app.ui.selection.components;
+			ComponentSelection tempSelection;
+			for (Component *c : oldComponents) {
 
-            //
-            // TODO: have Ghost look at factoring addHoverComponent into a function that (attempts to) inserts an arbitrary component set at
-            // a given location.
-            //
-            app.ui.activePlacementBuffer = cSet;
-            app.ui.addHoverComponent(circuitLocation);
-            app.ui.activePlacementBuffer.clear();
-            app.ui.selection.newSelectionFromComponent( &app.state.getCircuit(circuitLocation) );
-        }
+
+				if (c->info->name == "Circuit" && c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece &&
+					(name == "CircuitRotateN90" || name == "CircuitRotate90" || name == "CircuitFlipHorizontal" || name == "CircuitFlipVertical"))
+				{
+					tempSelection.newSelectionFromComponent(c);
+
+					ComponentSet cSet;
+					tempSelection.copyToComponentSet(cSet, app.state);
+
+					GameLocation circuitLocation = c->location;
+					transformComponentSet(cSet);
+
+					for (ComponentDefiningProperties &cdf : cSet.components)
+						cdf.location.boardPos = circuitLocation.boardPos;
+
+
+					app.ui.selection.remove(c);
+					app.state.removeComponent(c);
+
+					//
+					// TODO: have Ghost look at factoring addHoverComponent into a function that (attempts to) inserts an arbitrary component set at
+					// a given location.
+					//
+					//app.ui.activePlacementBuffer = cSet;
+					//app.ui.addHoverComponent(circuitLocation);
+					cSet.addToComponents(app.state,vec2i(0,0));
+					app.ui.selection.add(app.state.getComponent(circuitLocation));
+				}
+			}
+
+			app.undoBuffer.save(app.state);
+		}
     }
     else
     {
