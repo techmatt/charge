@@ -153,6 +153,9 @@ void GameController::updateButtonList()
     // Add color, delay, preference, and boundary buttons
     //
     Component *component = app.ui.selection.singleElement();
+    if (component != nullptr && component->inactiveCircuitMegaHold(app.state))
+        component = &component->getSuperMegaHoldTarget(app.state);
+
     if (component != nullptr && component->modifiers.puzzleType == ComponentPuzzleType::User)
     {
         const ComponentInfo &info = *component->info;

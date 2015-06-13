@@ -1,31 +1,6 @@
-Puzzle~222~1702
-buildableComponents~53
-ComponentBuildState~52~52
-Amplifier=1
-ChargeFilterBlue=1
-ChargeFilterGreen=1
-ChargeFilterOrange=1
-ChargeFilterRed=1
-ChargeFilterYellow=1
-Circuit=1
-FilteredAmplifierBlue=1
-FilteredAmplifierGreen=1
-FilteredAmplifierOrange=1
-FilteredAmplifierYellow=1
-GateClosedBlue=1
-GateClosedGray=1
-GateClosedGreen=1
-GateClosedOrange=1
-GateClosedRed=1
-GateClosedYellow=1
-GateSwitchBlue=1
-GateSwitchGray=1
-GateSwitchGreen=1
-GateSwitchOrange=1
-GateSwitchRed=1
-GateSwitchYellow=1
-Hold=1
-Splitter=1
+Puzzle~222~1665
+buildableComponents~16
+ComponentBuildState~15~15
 TeleportDestinationBlue=1
 TeleportDestinationGreen=1
 TeleportDestinationOrange=1
@@ -36,18 +11,6 @@ TeleportSourceGreen=1
 TeleportSourceOrange=1
 TeleportSourceRed=1
 TeleportSourceYellow=1
-TrapOpenBlue=1
-TrapOpenGray=1
-TrapOpenGreen=1
-TrapOpenOrange=1
-TrapOpenRed=1
-TrapOpenYellow=1
-TrapResetBlue=1
-TrapResetGray=1
-TrapResetGreen=1
-TrapResetOrange=1
-TrapResetRed=1
-TrapResetYellow=1
 Wire=1
 WireMajorAccelerator=1
 WireMajorDelay=1
@@ -80,7 +43,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0005~8
 Component~7~7
@@ -89,7 +52,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0006~8
 Component~7~7
@@ -98,7 +61,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0007~8
 Component~7~7
@@ -107,7 +70,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0008~6
 Component~5~5
@@ -285,8 +248,8 @@ circuitPos=2 2
 color=6
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=60
-totalChargeRequired=10
+ticksPerDischarge=4
+totalChargeRequired=40
 component0033~9
 Component~8~8
 boardPos=11 11
@@ -534,7 +497,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0058~8
 Component~7~7
@@ -543,7 +506,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0059~8
 Component~7~7
@@ -552,7 +515,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0060~8
 Component~7~7
@@ -561,7 +524,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0061~8
 Component~7~7
@@ -570,7 +533,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0062~8
 Component~7~7
@@ -579,7 +542,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0063~8
 Component~7~7
@@ -588,7 +551,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0064~8
 Component~7~7
@@ -597,7 +560,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0065~8
 Component~7~7
@@ -606,7 +569,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0066~8
 Component~7~7
@@ -615,7 +578,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0067~8
 Component~7~7
@@ -624,7 +587,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0068~8
 Component~7~7
@@ -633,7 +596,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0069~8
 Component~7~7
@@ -642,7 +605,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0070~8
 Component~7~7
@@ -651,7 +614,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0071~8
 Component~7~7
@@ -660,7 +623,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0072~8
 Component~7~7
@@ -669,7 +632,7 @@ color=1
 name=PowerSource
 puzzleType=1
 secondsBeforeFirstEmission=0
-secondsPerEmission=2
+secondsPerEmission=1
 totalCharges=1000
 component0073~6
 Component~5~5

@@ -40,7 +40,6 @@ void GameState::init()
     tableA(3, 6) = vec2i(0, 2);
     tableA(5, 6) = vec2i(1, 2);
 
-    
     for (int i = 1; i <= 5; i++)
     {
         tableB(0, i) = vec2i(-2, 0);
@@ -538,7 +537,8 @@ void GameState::step(AppData &app)
         if (component->info->name == "MegaHold")
         {
             goalFound = true;
-            if (component->megaHoldTotalCharge < component->intrinsics.totalChargeRequired)
+            if ((!component->inactiveCircuitMegaHold(*this) || component->isSuperMegaHold(*this)) &&
+                component->megaHoldTotalCharge < component->intrinsics.totalChargeRequired)
                 victory = false;
         }
     }
