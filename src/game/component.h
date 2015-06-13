@@ -138,6 +138,13 @@ struct Component
         return (info->name != "Blocker" && !inactiveBoundary());
     }
 
+    bool isCircuit() const
+    {
+        return info->name == "Circuit";
+    }
+
+    bool isCircuitContainingMegaHold() const;
+
     //
     // saving and loading
     //

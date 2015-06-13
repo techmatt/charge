@@ -133,7 +133,7 @@ void GameCanvas::render()
 
     renderHoverComponent();
 
-    renderText(getFontTexture(app.state.name, FontType::LevelName), vec2f(1.0f, 1.0f), 20.0f);
+    renderText(getFontTexture(app.state.name, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
 
     renderTooltip();
 }
@@ -571,7 +571,7 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
 {
     if (button.type != ButtonType::ComponentAttribute)
     {
-        Texture &borderTex = database().getTexture(app.renderer, "Border");
+        Texture &borderTex = database().getTexture(app.renderer, "ButtonBackground");
 
         const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
         addBackgroundObject(borderTex, screenRect, depthLayers::background);

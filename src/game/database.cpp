@@ -20,7 +20,7 @@ void Database::init()
         puzzles.push_back(PuzzleInfo(line));
     }
 
-    fonts[(int)FontType::LevelName] = FontInfo("arial", 36.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::LevelName] = FontInfo("21st", 36.0f, RGBColor(0, 0, 0));
     fonts[(int)FontType::TooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83));
     fonts[(int)FontType::TooltipDescriptionA] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250));
     fonts[(int)FontType::TooltipDescriptionB] = FontInfo("trebuc", 36.0f, RGBColor(255, 201, 147));

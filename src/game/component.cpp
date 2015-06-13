@@ -206,13 +206,29 @@ Component* Component::fromTable(const ParameterTable &table)
     return result;
 }
 
-rect2f Component::boardFrameLocation() const {
+rect2f Component::boardFrameLocation() const
+{
 	if (!(location.inCircuit())) return rect2f(vec2f(location.boardPos), location.boardPos + vec2f(2.0f, 2.0f));
 	CoordinateFrame frame = CoordinateFrame(location.boardPos, location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
 	return frame.toContainer(rect2f(location.circuitPos, location.circuitPos + vec2f(1.0f, 1.0f)));
 }
 
-rect2f Component::circuitFrameLocation() const {
+rect2f Component::circuitFrameLocation() const
+{
 	//if (!location.inCircuit()) return nullptr;  // this shouldn't happen anyway
 	return rect2f(location.boardPos, location.boardPos + vec2f(1.0f, 1.0f));
+}
+
+bool Component::isCircuitContainingMegaHold() const
+{
+    if (!isCircuit())
+        return false;
+    for (int x = 2; x < constants::circuitBoardSize - 2; x++)
+        for (int y = 2; y < constants::circuitBoardSize - 2; y++)
+        {
+            const BoardCell &c = circuitBoard->cells(x, y);
+            if (c.c == nullptr || c.c->info->name != "MegaHold")
+                return false;
+        }
+    return true;
 }
