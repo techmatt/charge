@@ -65,8 +65,8 @@ chargesLostPerDischarge=1
 color=1
 name=MegaHold
 puzzleType=1
-ticksPerDischarge=60
-totalChargeRequired=10
+ticksPerDischarge=9
+totalChargeRequired=50
 component0002~6
 Component~5~5
 boardPos=11 11

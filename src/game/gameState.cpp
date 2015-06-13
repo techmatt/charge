@@ -297,7 +297,7 @@ void GameState::step(AppData &app)
         for (int chargeIndex = 0; chargeIndex < charges.size(); chargeIndex++)
         {
             Charge &c = charges[chargeIndex];
-            chargePriorityStorage[chargeIndex] = make_pair(&c, c.scanlinePriority( getComponent(c.source) ));
+            chargePriorityStorage[chargeIndex] = make_pair(&c, c.scanlinePriority( getComponent(c.destination) ));
         }
         sort(chargePriorityStorage.begin(), chargePriorityStorage.end(), [](const pair<Charge*, int> &a, const pair<Charge*, int> &b) { return a.second < b.second; });
 

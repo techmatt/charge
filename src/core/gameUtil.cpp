@@ -1,41 +1,41 @@
 
 #include "main.h"
 
-rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, const GameLocation &location,const GameLocation &containingLocation, int size)
+rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, const GameLocation &containingLocation, int size)
 {
-	// this is really weird.  If containing location is not in a circuit, it's the same as locationToWindowRect
-	// otherwise, it returns the screen rectangle corresponding to location assuming that location is in the displayed circuit at its boardlocation
+    // this is really weird.  If containing location is not in a circuit, it's the same as locationToWindowRect
+    // otherwise, it returns the screen rectangle corresponding to location assuming that location is in the displayed circuit at its boardlocation
 
-	if (!containingLocation.inCircuit() && !location.inCircuit() )
-		return boardToWindowRect(canonicalDims, location.boardPos, size);
+    if (!containingLocation.inCircuit() && !location.inCircuit())
+        return boardToWindowRect(canonicalDims, location.boardPos, size);
 
-	if (!containingLocation.inCircuit() && location.inCircuit() )
-	{
-		rect2f containingRect = boardToWindowRect(canonicalDims, location.boardPos, 2);
-		// I know I've already inlemented something to do this, but I don't remember how it works
-		vec2f subboxSize = containingRect.extent() / constants::circuitBoardSize;
-		return rect2f(
-			containingRect.min().x + subboxSize.x*location.circuitPos.x,
-			containingRect.min().y + subboxSize.y*location.circuitPos.y,
-			containingRect.min().x + subboxSize.x*(size + location.circuitPos.x),
-			containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
-			);
-	}
-	if (containingLocation.inCircuit() && !location.inCircuit() )
-		return circuitToWindowRect(canonicalDims, location.boardPos, size);
+    if (!containingLocation.inCircuit() && location.inCircuit())
+    {
+        rect2f containingRect = boardToWindowRect(canonicalDims, location.boardPos, 2);
+        // I know I've already inlemented something to do this, but I don't remember how it works
+        vec2f subboxSize = containingRect.extent() / constants::circuitBoardSize;
+        return rect2f(
+            containingRect.min().x + subboxSize.x*location.circuitPos.x,
+            containingRect.min().y + subboxSize.y*location.circuitPos.y,
+            containingRect.min().x + subboxSize.x*(size + location.circuitPos.x),
+            containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
+            );
+    }
+    if (containingLocation.inCircuit() && !location.inCircuit())
+        return circuitToWindowRect(canonicalDims, location.boardPos, size);
 
-	if (containingLocation.inCircuit() && location.inCircuit())
-	{
-		rect2f containingRect = circuitToWindowRect(canonicalDims, location.boardPos, 2);
-		// I know I've already inlemented something to do this, but I don't remember how it works
-		vec2f subboxSize = containingRect.extent() / constants::circuitBoardSize;
-		return rect2f(
-			containingRect.min().x + subboxSize.x*location.circuitPos.x,
-			containingRect.min().y + subboxSize.y*location.circuitPos.y,
-			containingRect.min().x + subboxSize.x*(size + location.circuitPos.x),
-			containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
-			);
-	}
+    if (containingLocation.inCircuit() && location.inCircuit())
+    {
+        rect2f containingRect = circuitToWindowRect(canonicalDims, location.boardPos, 2);
+        // I know I've already inlemented something to do this, but I don't remember how it works
+        vec2f subboxSize = containingRect.extent() / constants::circuitBoardSize;
+        return rect2f(
+            containingRect.min().x + subboxSize.x*location.circuitPos.x,
+            containingRect.min().y + subboxSize.y*location.circuitPos.y,
+            containingRect.min().x + subboxSize.x*(size + location.circuitPos.x),
+            containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
+            );
+    }
 
     return rect2f();
 }
@@ -71,7 +71,7 @@ vector< map< string, string > > GameUtil::readTSVFile(const string &filename)
         auto &line = result.back();
 
         int wordIndex = 0;
-        for (const string &word : util::split( util::remove(lines[lineIndex], "\""), '\t'))
+        for (const string &word : util::split(util::remove(lines[lineIndex], "\""), '\t'))
         {
             if (wordIndex < header.size())
                 line[header[wordIndex++]] = word;

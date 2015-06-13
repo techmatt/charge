@@ -65,6 +65,11 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName)
 {
+    if (util::endsWith(filename, ".txt"))
+    {
+        loadLegacyPuzzle(filename);
+        return;
+    }
     app.state.loadPuzzle(filename, puzzleName);
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
