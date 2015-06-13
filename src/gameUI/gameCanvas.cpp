@@ -621,7 +621,7 @@ void GameCanvas::renderLocalizedComponent(const string &name, const Component *d
 
     record(preferenceTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
-    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryType::Closed)
+    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryType::Closed && name != "CloseAll")
         record(baseTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
     record(componentTex, screenRect, depthLayers::component, UIRenderType::Standard, Colors::White(), dynamicComponent);

@@ -181,6 +181,7 @@ void GameController::updateButtonList()
         {
             buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
             buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
+            buttons.push_back(GameButton("CloseAll", vec2i(2, 4), ButtonType::CircuitBoundary, ComponentModifiers()));
         }
         else
         {

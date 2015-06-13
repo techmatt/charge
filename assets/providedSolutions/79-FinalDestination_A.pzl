@@ -57,175 +57,175 @@ component0000~4
 Component~3~3
 boardPos=11 11
 name=Circuit
-puzzleType=0
+puzzleType=1
 component0001~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=2 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0002~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 2
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0003~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=2 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0004~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 2
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0005~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=4 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0006~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 4
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0007~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=4 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0008~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 4
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0009~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=6 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0010~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 6
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0011~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=6 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0012~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0013~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=8 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0014~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 8
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0015~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=8 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0016~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 8
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0017~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=10 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0018~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=0 10
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0019~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=10 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0020~6
 Component~5~5
 boardPos=11 11
 boundary=1
 circuitPos=12 10
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0021~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0022~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0023~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0024~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
-puzzleType=0
+puzzleType=1
 component0025~9
 Component~8~8
 boardPos=11 11
@@ -233,7 +233,7 @@ chargesLostPerDischarge=1
 circuitPos=2 2
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0026~9
@@ -243,7 +243,7 @@ chargesLostPerDischarge=1
 circuitPos=4 2
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0027~9
@@ -253,7 +253,7 @@ chargesLostPerDischarge=1
 circuitPos=4 4
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0028~9
@@ -263,7 +263,7 @@ chargesLostPerDischarge=1
 circuitPos=2 4
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0029~9
@@ -273,7 +273,7 @@ chargesLostPerDischarge=1
 circuitPos=2 6
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0030~9
@@ -283,7 +283,7 @@ chargesLostPerDischarge=1
 circuitPos=2 8
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0031~9
@@ -293,7 +293,7 @@ chargesLostPerDischarge=1
 circuitPos=2 10
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0032~9
@@ -303,7 +303,7 @@ chargesLostPerDischarge=1
 circuitPos=4 10
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0033~9
@@ -313,7 +313,7 @@ chargesLostPerDischarge=1
 circuitPos=4 8
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0034~9
@@ -323,7 +323,7 @@ chargesLostPerDischarge=1
 circuitPos=4 6
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0035~9
@@ -333,7 +333,7 @@ chargesLostPerDischarge=1
 circuitPos=6 2
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0036~9
@@ -343,7 +343,7 @@ chargesLostPerDischarge=1
 circuitPos=6 4
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0037~9
@@ -353,7 +353,7 @@ chargesLostPerDischarge=1
 circuitPos=6 6
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0038~9
@@ -363,7 +363,7 @@ chargesLostPerDischarge=1
 circuitPos=6 8
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0039~9
@@ -373,7 +373,7 @@ chargesLostPerDischarge=1
 circuitPos=6 10
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0040~9
@@ -383,7 +383,7 @@ chargesLostPerDischarge=1
 circuitPos=8 10
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0041~9
@@ -393,7 +393,7 @@ chargesLostPerDischarge=1
 circuitPos=8 8
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0042~9
@@ -403,7 +403,7 @@ chargesLostPerDischarge=1
 circuitPos=8 6
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0043~9
@@ -413,7 +413,7 @@ chargesLostPerDischarge=1
 circuitPos=8 4
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0044~9
@@ -423,7 +423,7 @@ chargesLostPerDischarge=1
 circuitPos=8 2
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0045~9
@@ -433,7 +433,7 @@ chargesLostPerDischarge=1
 circuitPos=10 2
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0046~9
@@ -443,7 +443,7 @@ chargesLostPerDischarge=1
 circuitPos=10 4
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0047~9
@@ -453,7 +453,7 @@ chargesLostPerDischarge=1
 circuitPos=10 6
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0048~9
@@ -463,7 +463,7 @@ chargesLostPerDischarge=1
 circuitPos=10 8
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0049~9
@@ -473,7 +473,7 @@ chargesLostPerDischarge=1
 circuitPos=10 10
 color=6
 name=MegaHold
-puzzleType=0
+puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=10
 component0050~8
@@ -481,7 +481,7 @@ Component~7~7
 boardPos=0 11
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=5
@@ -490,7 +490,7 @@ Component~7~7
 boardPos=10 9
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 totalCharges=16777215
@@ -499,7 +499,7 @@ Component~7~7
 boardPos=12 9
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 totalCharges=16777215
@@ -508,7 +508,7 @@ Component~7~7
 boardPos=13 11
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 totalCharges=16777215
@@ -517,7 +517,7 @@ Component~7~7
 boardPos=12 13
 color=1
 name=PowerSource
-puzzleType=0
+puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 totalCharges=16777215

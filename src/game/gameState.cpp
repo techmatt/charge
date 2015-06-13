@@ -706,7 +706,7 @@ Component* GameState::connectableComponentAtRelativePosition(Component* componen
 	if (target->location != pos) return nullptr;
 
 	// circuit edges cannot connect to each other
-	if (component->info->name =="CircuitBoundary"&& target->info->name == "CircuitBoundary")
+	if (component->info->name =="CircuitBoundary" && target->info->name == "CircuitBoundary")
 		return nullptr;
 
 

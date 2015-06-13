@@ -60,6 +60,7 @@ void GameButton::initTooltip()
     {
         if (modifiers.boundary == CircuitBoundaryType::Open) hotkey = "1";
         if (modifiers.boundary == CircuitBoundaryType::Closed) hotkey = "2";
+        if (name == "CloseAll") hotkey = "3";
     }
 
     if (hotkey[0] >= 'A' && hotkey[0] <= 'Z')
@@ -102,7 +103,24 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         }
         if (type == ButtonType::CircuitBoundary)
         {
-            selectedComponent->modifiers.boundary = modifiers.boundary;
+            if (name == "CloseAll")
+            {
+                if (app.activeCircuit())
+                {
+                    for (auto &component : app.state.components)
+                    {
+                        if (component->location.boardPos == app.activeCircuit()->location.boardPos &&
+                            component->inactiveBoundary())
+                        {
+                            component->modifiers.boundary = CircuitBoundaryType::Closed;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                selectedComponent->modifiers.boundary = modifiers.boundary;
+            }
             app.controller.recordDesignAction();
         }
         if (type == ButtonType::GateState || type == ButtonType::TrapState)
