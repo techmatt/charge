@@ -1,17 +1,12 @@
-Puzzle~45~354
-buildableComponents~53
-ComponentBuildState~52~52
-Amplifier=1
+Puzzle~45~348
+buildableComponents~47
+ComponentBuildState~46~46
 ChargeFilterBlue=1
 ChargeFilterGreen=1
 ChargeFilterOrange=1
 ChargeFilterRed=1
 ChargeFilterYellow=1
 Circuit=1
-FilteredAmplifierBlue=1
-FilteredAmplifierGreen=1
-FilteredAmplifierOrange=1
-FilteredAmplifierYellow=1
 GateClosedBlue=1
 GateClosedGray=1
 GateClosedGreen=1
@@ -25,7 +20,6 @@ GateSwitchOrange=1
 GateSwitchRed=1
 GateSwitchYellow=1
 Hold=1
-Splitter=1
 TeleportDestinationBlue=1
 TeleportDestinationGreen=1
 TeleportDestinationOrange=1
@@ -57,14 +51,14 @@ component0000~4
 Component~3~3
 boardPos=11 11
 name=Circuit
-puzzleType=1
+puzzleType=0
 component0001~8
 Component~7~7
 boardPos=18 11
 chargesLostPerDischarge=1
 color=1
 name=MegaHold
-puzzleType=1
+puzzleType=0
 ticksPerDischarge=9
 totalChargeRequired=50
 component0002~6
@@ -73,7 +67,7 @@ boardPos=11 11
 boundary=1
 circuitPos=12 6
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0003~7
 Component~6~6
 boardPos=11 11
@@ -81,81 +75,81 @@ boundary=1
 chargePreference=0
 circuitPos=6 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0004~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 2
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0005~5
 Component~4~4
 boardPos=11 11
 circuitPos=8 10
 name=Amplifier
-puzzleType=1
+puzzleType=0
 component0006~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=8 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0007~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0008~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0009~6
 Component~5~5
 boardPos=11 11
 circuitPos=2 2
 color=1
 name=TeleportDestination
-puzzleType=1
+puzzleType=0
 component0010~6
 Component~5~5
 boardPos=11 11
 circuitPos=2 10
 color=1
 name=TeleportDestination
-puzzleType=1
+puzzleType=0
 component0011~5
 Component~4~4
 boardPos=11 11
 circuitPos=6 2
 name=Splitter
-puzzleType=1
+puzzleType=0
 component0012~5
 Component~4~4
 boardPos=11 11
 circuitPos=6 10
 name=Splitter
-puzzleType=1
+puzzleType=0
 component0013~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 2
 color=1
 name=TeleportSource
-puzzleType=1
+puzzleType=0
 component0014~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=4 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0015~7
 Component~6~6
 boardPos=11 11
@@ -163,33 +157,33 @@ boundary=1
 chargePreference=0
 circuitPos=6 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0016~6
 Component~5~5
 boardPos=11 11
 chargePreference=1
 circuitPos=4 3
 name=Amplifier
-puzzleType=1
+puzzleType=0
 component0017~5
 Component~4~4
 boardPos=11 11
 circuitPos=8 2
 name=Amplifier
-puzzleType=1
+puzzleType=0
 component0018~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0019~8
 Component~7~7
 boardPos=0 11
 color=5
 name=PowerSource
-puzzleType=1
+puzzleType=0
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1000
@@ -198,47 +192,47 @@ Component~4~4
 boardPos=11 11
 circuitPos=6 8
 name=Splitter
-puzzleType=1
+puzzleType=0
 component0021~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 10
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0022~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=12 8
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0023~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0024~5
 Component~4~4
 boardPos=11 11
 circuitPos=6 4
 name=Splitter
-puzzleType=1
+puzzleType=0
 component0025~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 10
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0026~6
 Component~5~5
 boardPos=11 11
 circuitPos=8 4
 name=Wire
-puzzleType=1
+puzzleType=0
 speed=4
 component0027~6
 Component~5~5
@@ -246,69 +240,69 @@ boardPos=11 11
 boundary=2
 circuitPos=12 4
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0028~6
 Component~5~5
 boardPos=11 11
 circuitPos=6 6
 color=2
 name=TeleportSource
-puzzleType=1
+puzzleType=0
 component0029~6
 Component~5~5
 boardPos=11 11
 chargePreference=1
 circuitPos=4 9
 name=Amplifier
-puzzleType=1
+puzzleType=0
 component0030~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 6
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0031~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0032~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 8
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0033~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0034~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=4 0
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0035~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 10
 color=1
 name=TeleportSource
-puzzleType=1
+puzzleType=0
 component0036~6
 Component~5~5
 boardPos=11 11
 circuitPos=8 8
 name=Wire
-puzzleType=1
+puzzleType=0
 speed=4
 component0037~6
 Component~5~5
@@ -316,40 +310,40 @@ boardPos=11 11
 boundary=2
 circuitPos=8 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0038~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 2
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0039~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=0 4
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0040~6
 Component~5~5
 boardPos=11 11
 circuitPos=10 6
 color=2
 name=TeleportDestination
-puzzleType=1
+puzzleType=0
 component0041~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=10 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 component0042~6
 Component~5~5
 boardPos=11 11
 boundary=2
 circuitPos=2 12
 name=CircuitBoundary
-puzzleType=1
+puzzleType=0
 componentCount=43
