@@ -363,271 +363,271 @@ component0060~4
 Component~3~3
 boardPos=2 11
 name=Wire
-puzzleType=0
+puzzleType=1
 component0061~4
 Component~3~3
 boardPos=2 13
 name=Wire
-puzzleType=0
+puzzleType=1
 component0062~5
 Component~4~4
 boardPos=2 15
 chargePreference=0
 name=Wire
-puzzleType=0
+puzzleType=1
 component0063~5
 Component~4~4
 boardPos=2 19
 chargePreference=1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0064~5
 Component~4~4
 boardPos=2 17
 color=1
 name=GateOpen
-puzzleType=0
+puzzleType=1
 component0065~4
 Component~3~3
 boardPos=4 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0066~4
 Component~3~3
 boardPos=6 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0067~4
 Component~3~3
 boardPos=8 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0068~4
 Component~3~3
 boardPos=10 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0069~4
 Component~3~3
 boardPos=12 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0070~4
 Component~3~3
 boardPos=14 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0071~4
 Component~3~3
 boardPos=16 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0072~4
 Component~3~3
 boardPos=18 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0073~4
 Component~3~3
 boardPos=20 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0074~4
 Component~3~3
 boardPos=22 17
 name=Hold
-puzzleType=0
+puzzleType=1
 component0075~5
 Component~4~4
 boardPos=18 11
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0076~6
 Component~5~5
 boardPos=18 9
 chargePreference=3
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0077~5
 Component~4~4
 boardPos=20 13
 color=1
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0078~5
 Component~4~4
 boardPos=18 13
 color=1
 name=GateSwitch
-puzzleType=0
+puzzleType=1
 component0079~5
 Component~4~4
 boardPos=18 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0080~5
 Component~4~4
 boardPos=16 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0081~5
 Component~4~4
 boardPos=14 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0082~5
 Component~4~4
 boardPos=12 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0083~5
 Component~4~4
 boardPos=10 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0084~5
 Component~4~4
 boardPos=8 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0085~5
 Component~4~4
 boardPos=6 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0086~5
 Component~4~4
 boardPos=4 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0087~5
 Component~4~4
 boardPos=2 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0088~5
 Component~4~4
 boardPos=0 7
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0089~5
 Component~4~4
 boardPos=0 5
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0090~5
 Component~4~4
 boardPos=0 3
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0091~5
 Component~4~4
 boardPos=0 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0092~4
 Component~3~3
 boardPos=22 13
 name=Wire
-puzzleType=0
+puzzleType=1
 component0093~4
 Component~3~3
 boardPos=22 11
 name=Wire
-puzzleType=0
+puzzleType=1
 component0094~4
 Component~3~3
 boardPos=22 9
 name=Wire
-puzzleType=0
+puzzleType=1
 component0095~4
 Component~3~3
 boardPos=22 7
 name=Wire
-puzzleType=0
+puzzleType=1
 component0096~4
 Component~3~3
 boardPos=22 5
 name=Wire
-puzzleType=0
+puzzleType=1
 component0097~4
 Component~3~3
 boardPos=22 3
 name=Wire
-puzzleType=0
+puzzleType=1
 component0098~4
 Component~3~3
 boardPos=22 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0099~4
 Component~3~3
 boardPos=20 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0100~4
 Component~3~3
 boardPos=18 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0101~4
 Component~3~3
 boardPos=16 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0102~4
 Component~3~3
 boardPos=14 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0103~4
 Component~3~3
 boardPos=12 1
 name=Wire
-puzzleType=0
+puzzleType=1
 component0104~5
 Component~4~4
 boardPos=10 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0105~5
 Component~4~4
 boardPos=8 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0106~5
 Component~4~4
 boardPos=6 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0107~5
 Component~4~4
 boardPos=4 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 component0108~5
 Component~4~4
 boardPos=2 1
 name=Wire
-puzzleType=0
+puzzleType=1
 speed=0
 componentCount=109

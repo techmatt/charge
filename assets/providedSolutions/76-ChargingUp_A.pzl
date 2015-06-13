@@ -49,10 +49,10 @@ TrapResetOrange=1
 TrapResetRed=1
 TrapResetYellow=1
 Wire=1
-WireType::MajorAccelerator=1
-WireType::MajorDelay=1
-WireType::MinorAccelerator=1
-WireType::MinorDelay=1
+WireMajorAccelerator=1
+WireMajorDelay=1
+WireMinorAccelerator=1
+WireMinorDelay=1
 component0000~4
 Component~3~3
 boardPos=22 11

@@ -1,6 +1,6 @@
-Puzzle~233~1672
-buildableComponents~53
-ComponentBuildState~52~52
+Puzzle~233~1662
+buildableComponents~43
+ComponentBuildState~42~42
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
@@ -26,16 +26,6 @@ GateSwitchRed=1
 GateSwitchYellow=1
 Hold=1
 Splitter=1
-TeleportDestinationBlue=1
-TeleportDestinationGreen=1
-TeleportDestinationOrange=1
-TeleportDestinationRed=1
-TeleportDestinationYellow=1
-TeleportSourceBlue=1
-TeleportSourceGreen=1
-TeleportSourceOrange=1
-TeleportSourceRed=1
-TeleportSourceYellow=1
 TrapOpenBlue=1
 TrapOpenGray=1
 TrapOpenGreen=1
@@ -49,10 +39,10 @@ TrapResetOrange=1
 TrapResetRed=1
 TrapResetYellow=1
 Wire=1
-WireType::MajorAccelerator=1
-WireType::MajorDelay=1
-WireType::MinorAccelerator=1
-WireType::MinorDelay=1
+WireMajorAccelerator=1
+WireMajorDelay=1
+WireMinorAccelerator=1
+WireMinorDelay=1
 component0000~4
 Component~3~3
 boardPos=11 11
