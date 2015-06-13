@@ -133,9 +133,9 @@ struct Component
         return (xBoundary && yBoundary);
     }
 
-    bool hasSpokes() const
+    bool hasSpokes(GameState &state) const
     {
-        return (info->name != "Blocker" && !inactiveBoundary());
+        return (info->name != "Blocker" && !inactiveBoundary() && !inactiveCircuitMegaHold(state));
     }
 
     bool isCircuit() const
@@ -143,7 +143,11 @@ struct Component
         return info->name == "Circuit";
     }
 
-    bool isCircuitContainingMegaHold() const;
+    bool isCircuitContainingSuperMegaHold() const;
+    bool isSuperMegaHold(GameState &state) const;
+
+    // a megahold in a circuit is inactive if it is part of a SuperMegaHold
+    bool inactiveCircuitMegaHold(GameState &state) const;
 
     //
     // saving and loading

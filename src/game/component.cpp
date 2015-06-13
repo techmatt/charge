@@ -219,7 +219,7 @@ rect2f Component::circuitFrameLocation() const
 	return rect2f(location.boardPos, location.boardPos + vec2f(1.0f, 1.0f));
 }
 
-bool Component::isCircuitContainingMegaHold() const
+bool Component::isCircuitContainingSuperMegaHold() const
 {
     if (!isCircuit())
         return false;
@@ -231,4 +231,18 @@ bool Component::isCircuitContainingMegaHold() const
                 return false;
         }
     return true;
+}
+
+bool Component::isSuperMegaHold(GameState &state) const
+{
+    return (location.inCircuit() && location.circuitPos == vec2i(2, 2) &&
+        info->name == "MegaHold" &&
+        state.getCircuit(location).isCircuitContainingSuperMegaHold());
+}
+
+bool Component::inactiveCircuitMegaHold(GameState &state) const
+{
+    return (location.inCircuit() &&
+        info->name == "MegaHold" &&
+        state.getCircuit(location).isCircuitContainingSuperMegaHold());
 }

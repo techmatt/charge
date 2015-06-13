@@ -10,6 +10,8 @@ namespace depthLayers
     const float hoverComponentGrid = 0.05f;
     const float hoverMiniCircuitOffset = 0.005f;
     const float background = 1.0f;
+
+    const float superMegaHold = 0.5f;
     
 	const float spokes = 0.95f;
     const float component = 0.9f;

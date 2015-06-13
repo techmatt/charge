@@ -128,7 +128,12 @@ void GameCanvas::render()
     for (const auto &component : app.state.components)
     {
         if (component->info->name == "MegaHold")
+        {
+            if (component->isSuperMegaHold(app.state))
+                renderSuperMegaHold(*component);
+
             renderMegaHold(*component, false);
+        }
     }
 
     renderHoverComponent();
@@ -511,7 +516,7 @@ void GameCanvas::renderTooltip()
     if (clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
         clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece &&
         clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&
-        (!app.activeCircuit() || hoverComponent->info->name == "PowerSource"))
+        (!app.activeCircuit() || hoverComponent->info->name == "PowerSource" || hoverComponent->info->name == "MegaHold"))
     {
         const ComponentInfo *info = clickComponent->info;
         if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
@@ -652,6 +657,9 @@ void GameCanvas::renderComponent(const Component &component)
         (app.ui.selectedMenuComponent == nullptr || app.ui.selectedMenuComponent->name != "Blocker"))
         return;
 
+    if (component.inactiveCircuitMegaHold(app.state))
+        return;
+
     if (component.location.inCircuit())
     {
         // if the component is in the active circuit, render it in the selected circuit area
@@ -672,8 +680,11 @@ void GameCanvas::renderComponent(const Component &component)
 
 void GameCanvas::renderCircuitComponent(const Component &component)
 {
-    if (!component.location.inCircuit() || component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryType::Closed)
+    if (!component.location.inCircuit() ||
+        component.inactiveBoundary() || component.modifiers.boundary == CircuitBoundaryType::Closed ||
+        component.inactiveCircuitMegaHold(app.state))
         return;
+
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
@@ -699,7 +710,7 @@ void GameCanvas::renderSpokesMiniCircuit(const Component &component)
             bool renderSpokes = true;
             renderSpokes &= otherComponent.location.circuitPos == otherLocation;
             renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
-            renderSpokes &= otherComponent.hasSpokes();
+            renderSpokes &= otherComponent.hasSpokes(app.state);
             renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
             if (renderSpokes)
             {
@@ -721,7 +732,7 @@ void GameCanvas::renderSpokesMiniCircuit(const Component &component)
 
 void GameCanvas::renderSpokes(const Component &component)
 {
-    if (!component.hasSpokes())
+    if (!component.hasSpokes(app.state))
         return;
 
     if (component.location.inCircuit())
@@ -767,7 +778,7 @@ void GameCanvas::renderSpokes(const Component &component)
 
             bool circuitTest = drawCircuitConnection(component, otherComponent);
 
-            if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes() && circuitTest)
+            if (otherComponent.location.boardPos == otherLocation && otherComponent.hasSpokes(app.state) && circuitTest)
             {
                 const vec2f otherScreenPos = GameUtil::boardToWindow(canonicalDims, otherComponent.location.boardPos + vec2i(1, 1));
 
@@ -805,7 +816,7 @@ void GameCanvas::renderSpokesCircuit(const Component &component)
             bool renderSpokes = true;
             renderSpokes &= otherComponent.location.circuitPos == otherLocation;
             renderSpokes &= otherComponent.modifiers.boundary != CircuitBoundaryType::Closed;
-            renderSpokes &= otherComponent.hasSpokes();
+            renderSpokes &= otherComponent.hasSpokes(app.state);
             renderSpokes &= !(component.info->name == "CircuitBoundary" && otherComponent.info->name == "CircuitBoundary");
             if (renderSpokes)
             {
@@ -858,6 +869,9 @@ void GameCanvas::renderCharge(const Charge &charge, bool trailRender)
 
 void GameCanvas::renderMegaHold(const Component &component, bool trailRender)
 {
+    if (component.location.inCircuit() && app.state.getCircuit(component.location).isCircuitContainingSuperMegaHold())
+        return;
+
     renderMegaHoldCircuit(component, trailRender);
     const vec2f screenCenter = component.location.toScreenCoordMainBoard(canonicalDims);
     float screenSize = ((float)component.megaHoldTotalCharge / (float)component.intrinsics.totalChargeRequired) * GameUtil::windowScaleFactor(canonicalDims) * constants::megaHoldCanonicalSize;
@@ -889,6 +903,25 @@ void GameCanvas::renderMegaHoldCircuit(const Component &component, bool trailRen
 
     const rect2f destinationRect(screenCenter - vec2f(screenSize), screenCenter + vec2f(screenSize));
     render(*database().chargeTextures[(int)component.modifiers.color], destinationRect, depthLayers::charge, angle);
+}
+
+void GameCanvas::renderSuperMegaHold(const Component &component)
+{
+    Texture &tex = database().getTexture(app.renderer, "SuperMegaHold");
+
+    const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize));
+
+    const rect2f miniCircuitRect = rect2f(vec2i(2, 2), vec2i(constants::circuitBoardSize - 2));
+    const rect2f miniCircuitScreenRect = params().boardInWindow.toContainer(frame.toContainer(miniCircuitRect));
+
+    render(tex, miniCircuitScreenRect, depthLayers::superMegaHold);
+
+    if (app.activeCircuit() == nullptr || component.location.boardPos != app.activeCircuit()->location.boardPos) return;
+
+    const rect2f rect(params().circuitCanonicalStart + float(params().canonicalCellSize) * vec2f(2.0f),
+                      params().circuitCanonicalStart + float(params().canonicalCellSize) * vec2f(constants::circuitBoardSize - 2.0f));
+
+    render(tex, rect, depthLayers::superMegaHold);
 }
 
 void GameCanvas::renderExplodingCharge(const ExplodingCharge &charge)

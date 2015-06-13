@@ -70,6 +70,8 @@ private:
     void renderMegaHold(const Component &component, bool trailRender);
     void renderMegaHoldCircuit(const Component &component, bool trailRender);
 
+    void renderSuperMegaHold(const Component &component);
+
     void renderButtonBackground(const GameButton &button, bool selected);
     void renderButtonForeground(const GameButton &button, bool selected);
     void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon);
