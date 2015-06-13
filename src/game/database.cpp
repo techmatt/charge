@@ -83,11 +83,14 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         const string alphaFilename = util::replace(filename, ".png", "Alpha.png");
 
         bool isHalfAlphaTexture = (componentName == "Faded" || componentName == "Selector" || componentName == "PuzzleSelector" ||
-                                   componentName == "SquareBlocked" || componentName == "SquareOpen" || componentName == "CircuitSelector");
+                                   componentName == "SquareBlocked" || componentName == "SquareOpen" || componentName == "CircuitSelector" ||
+                                   componentName == "Tooltip");
 
         if (isHalfAlphaTexture)
         {
-            const int alpha = (componentName == "Faded") ? 150 : 105;
+            int alpha = 105;
+            if (componentName == "Faded") alpha = 150;
+            if (componentName == "Tooltip") alpha = 180;
             for (const auto &p : bmp)
                 p.value.a = alpha;
         }

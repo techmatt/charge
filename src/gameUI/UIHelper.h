@@ -3,8 +3,8 @@ namespace depthLayers
 {
     const float selection = 0.9f;
     const float charge = 0.01f;
-    const float font = 0.02f;
-    const float tooltip = 0.03f;
+    const float font = 0.003f;
+    const float tooltip = 0.005f;
     const float hoverComponent = 0.1f;
     const float hoverCircuitComponent = 0.06f;
     const float hoverComponentGrid = 0.05f;
