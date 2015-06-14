@@ -4,6 +4,7 @@
 void GameCanvas::init()
 {
     backgroundDirty = true;
+    errorResetBuffer = false;
 
     int classIndex = 0;
     for (int type = -1; type <= 1; type++)
@@ -85,6 +86,16 @@ void GameCanvas::render()
     if (backgroundDirty)
     {
         backgroundDirty = false;
+
+        if (errorResetBuffer)
+        {
+            errorResetBuffer = false;
+        }
+        else
+        {
+            app.controller.tooltipErrorTitle = "";
+            app.controller.tooltipErrorDescription = "";
+        }
 
         updateBackgroundObjects();
 
@@ -499,6 +510,12 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 
 void GameCanvas::renderTooltip()
 {
+    if (app.controller.tooltipErrorTitle.size() > 0)
+    {
+        renderTooltip(params().tooltipDefaultStart, app.controller.tooltipErrorTitle, app.controller.tooltipErrorDescription, ComponentModifiers(), "!", nullptr, true);
+        return;
+    }
+
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
     if (button != nullptr && // !app.activeCircuit() &&
         (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
@@ -507,7 +524,7 @@ void GameCanvas::renderTooltip()
     {
         float startY = button->canonicalRect.max().y + 5.0f;
 
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), button->tooltip, button->modifiers, button->hotkey, nullptr);
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }
@@ -527,7 +544,7 @@ void GameCanvas::renderTooltip()
         if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
             info = &database().getComponent(clickComponent->info->name + "GrayProxy");
 
-        renderTooltip(params().tooltipDefaultStart, info, clickComponent->modifiers, "", clickComponent);
+        renderTooltip(params().tooltipDefaultStart, info->semanticName, info->description, clickComponent->modifiers, "", clickComponent);
         return;
     }
 
@@ -535,10 +552,10 @@ void GameCanvas::renderTooltip()
     // render level tip
     //
     if (app.activeCircuit() == nullptr)
-        renderTooltip(params().tooltipDefaultStart, nullptr, ComponentModifiers(), "!", nullptr);
+        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr);
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo *info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error)
 {
     auto splice = [&](const string &s) {
         string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
@@ -546,12 +563,9 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
         return r;
     };
 
-    Texture &tex = database().getTexture(app.renderer, "Tooltip");
+    Texture &tex = error ? database().getTexture(app.renderer, "TooltipError") : database().getTexture(app.renderer, "Tooltip");
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
-
-    const string &title = info == nullptr ? app.controller.getCurrentPuzzle().name : info->semanticName;
-    const string &description = info == nullptr ? app.controller.getCurrentPuzzle().tip : info->description;
 
     renderText(getFontTexture(splice(title), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
     renderText(getFontTexture(splice(description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);

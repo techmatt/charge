@@ -20,6 +20,7 @@ public:
     void render() override;
 
     bool backgroundDirty;
+    bool errorResetBuffer;
 
     vec2f canonicalDims;
     CoordinateFrame coordinateFrame; // the coordinate frame of rendered area inside of the window
@@ -79,7 +80,7 @@ private:
     void renderHoverComponent();
 
     void renderTooltip();
-    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo *info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component);
+    void renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error = false);
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 

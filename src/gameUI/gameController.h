@@ -81,6 +81,8 @@ public:
 
     void changeEditorMode(EditorMode newMode);
 
+    void recordError(const string &title, const string &description);
+
     const GameButton* getHitButton(const vec2i &mouse) const
     {
         const GameButton *hitButton = nullptr;
@@ -111,6 +113,9 @@ public:
     // mode that rapidly goes through all levels and tries to solve them.
     // not intended as a release feature.
     bool puzzleVerificationMode;
+
+    string tooltipErrorTitle;
+    string tooltipErrorDescription;
 
 private:
     AppData &app;

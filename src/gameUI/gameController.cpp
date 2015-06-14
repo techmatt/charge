@@ -9,7 +9,7 @@ void GameController::init()
     puzzleVerificationMode = false;
     viewMode = ControllerViewMode::Design;
     editorMode = EditorMode::Campaign;
-    currentPuzzleIndex = 79;
+    currentPuzzleIndex = 0;
     fractionalSpeedTicksLeft = 0;
 
     loadCurrentPuzzle();
@@ -97,19 +97,29 @@ void GameController::loadCurrentProvidedSolution()
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
     const string puzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
     const string solutionFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
-    if (util::fileExists(puzzleFilename) && util::fileExists(solutionFilename))
-    {
-        app.controller.loadPuzzle(solutionFilename, "Example solution " + to_string(puzzle.index) + ": " + puzzle.name);
 
-        //
-        // Load the base puzzle file.
-        // TODO: We should verify the solution is compatiable with the underlying puzzle file.
-        //
-        GameState baseState;
-        baseState.init();
-        baseState.loadPuzzle(puzzleFilename, "comparison");
-        app.state.buildableComponents = baseState.buildableComponents;
+    if (!util::fileExists(puzzleFilename) || !util::fileExists(solutionFilename))
+    {
+        recordError("File not found!", "Couldn't find " + puzzleFilename);
+        return;
     }
+
+    if (app.session.campaignLevels[app.controller.currentPuzzleIndex].state != LevelState::Solved)
+    {
+        recordError("Cannot view solution", "You can't view the provided solution to this level until you have solved it yourself!");
+        return;
+    }
+
+    app.controller.loadPuzzle(solutionFilename, "Example solution " + to_string(puzzle.index) + ": " + puzzle.name);
+
+    //
+    // Load the base puzzle file.
+    // TODO: We should verify the solution is compatiable with the underlying puzzle file.
+    //
+    GameState baseState;
+    baseState.init();
+    baseState.loadPuzzle(puzzleFilename, "comparison");
+    app.state.buildableComponents = baseState.buildableComponents;
 }
 
 void GameController::recordDesignAction()
@@ -118,6 +128,13 @@ void GameController::recordDesignAction()
     app.canvas.backgroundDirty = true;
     designActionTaken = true;
     puzzleVerificationMode = false;
+}
+
+void GameController::recordError(const string &title, const string &description)
+{
+    tooltipErrorTitle = title;
+    tooltipErrorDescription = description;
+    app.canvas.errorResetBuffer = true;
 }
 
 void GameController::changeEditorMode(EditorMode newMode)

@@ -112,6 +112,8 @@ void UserSession::recordVictoryCampaign(AppData &app)
 
     auto &info = campaignLevels[app.controller.currentPuzzleIndex];
 
+    info.state = LevelState::Solved;
+
     app.state.savePuzzle(filenameRecent);
 
     if (app.state.victoryInfo.piecesUsed <= info.bestPiecesUsed)

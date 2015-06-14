@@ -55,6 +55,15 @@ struct UserSession
 {
     void init(int slotIndex);
 
+    int activePuzzle() const
+    {
+        int result = 0;
+        for (int i = 0; i < campaignLevels.size(); i++)
+            if (campaignLevels[i].state == LevelState::Solved)
+                result = i;
+        return min(result + 1, (int)campaignLevels.size());
+    }
+
     string dataFile() const;
     void save();
     void load();
