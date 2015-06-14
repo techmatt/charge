@@ -534,7 +534,8 @@ void GameCanvas::renderTooltip()
     //
     // render level tip
     //
-    renderTooltip(params().tooltipDefaultStart, nullptr, ComponentModifiers(), "!", nullptr);
+    if (app.activeCircuit() == nullptr)
+        renderTooltip(params().tooltipDefaultStart, nullptr, ComponentModifiers(), "!", nullptr);
 }
 
 void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo *info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component)
