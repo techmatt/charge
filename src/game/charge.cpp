@@ -200,7 +200,7 @@ void Charge::interactWithDestination(GameState &state, AppData &app)
 		}
 		else
 		{
-            app.playEffect("Teleporter", current->location);
+            app.playEffect("Teleporter", current->location, current->target->location);
 			setNewDestination(state,*(current->target), true);
 		}
 	}

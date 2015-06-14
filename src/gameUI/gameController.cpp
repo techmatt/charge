@@ -18,6 +18,13 @@ void GameController::step()
 {
     app.soundsPlayedThisTick.clear();
 
+    app.soundCountTicks++;
+    if (app.soundCountTicks >= constants::stepsPerSecond)
+    {
+        app.soundCountTicks = 0;
+        app.soundPlayedThisSecond = false;
+    }
+
     if (designActionTaken && puzzleMode != PuzzleMode::Design)
     {
         puzzleMode = PuzzleMode::Design;
@@ -65,6 +72,11 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName)
 {
+    if (util::endsWith(filename, ".txt"))
+    {
+        loadLegacyPuzzle(filename);
+        return;
+    }
     app.state.loadPuzzle(filename, puzzleName);
     app.undoBuffer.reset(app.state);
     designActionTaken = true;

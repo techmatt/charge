@@ -27,10 +27,11 @@ struct Charge
     int scanlinePriority(Component *sourceComponent) const
     {
         const int powerSource = (sourceComponent != nullptr && sourceComponent->info->name == "PowerSource") ? 0 : 1;
+        const int heldState = (sourceComponent->baseInfo->holdsCharge) ? 1 : 0;
         const int boardLine = source.boardPos.x + source.boardPos.y;
         const int circuitLine = source.inCircuit() ? source.circuitPos.x + source.circuitPos.y : 0;
         const int circuitY = source.inCircuit() ? source.circuitPos.y : 0;
-        return powerSource * 100000000 + boardLine * 1000000 + source.boardPos.y * 10000 + circuitLine * 100 + circuitY;
+        return powerSource * 100000000 + heldState * 10000000 + boardLine * 1000000 + source.boardPos.y * 10000 + circuitLine * 100 + circuitY;
     }
 
     ChargeType level;
