@@ -1,6 +1,32 @@
 
 #include "main.h"
 
+int GameState::piecesUsed() const
+{
+    int pieceCount = 0;
+
+    for (Component *c : components)
+    {
+        if (c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece)
+            continue;
+
+        if (c->modifiers.puzzleType == ComponentPuzzleType::CopiedCircuit)
+            pieceCount++;
+        else if (c->isCircuit())
+            pieceCount += 10;
+        else if (c->info->name == "Wire" && c->modifiers.speed == WireType::Standard)
+        {
+            pieceCount++;
+        }
+        else
+        {
+            pieceCount += 2;
+        }
+    }
+
+    return pieceCount;
+}
+
 void GameState::clearBoard()
 {
     for (Component *c : components)
@@ -543,7 +569,12 @@ void GameState::step(AppData &app)
         victory = false;
 
     if (victory)
+    {
+        victoryInfo.piecesUsed = piecesUsed();
+        victoryInfo.stepCount = stepCount;
         app.audio.playEffect("Victory");
+        app.controller.recordVictory();
+    }
     
     stepCount++;
 }

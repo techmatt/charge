@@ -5,13 +5,46 @@ enum LevelState
     Solved = 1,
 };
 
+enum SolutionType
+{
+    MostRecent,
+    BestStepCount,
+    BestPiecesUsed,
+};
+
 struct UserSessionLevelInfo
 {
     UserSessionLevelInfo()
     {
         state = LevelState::Unsolved;
+
+        bestStepCount = std::numeric_limits<int>::max();
+        bestPiecesUsed = std::numeric_limits<int>::max();
     }
+
+    ParameterTable toTable(const string &tableName) const
+    {
+        ParameterTable table(tableName);
+        table.setString("filename", filename);
+        table.setInt("state", (int)state);
+        table.setInt("bestStepCount", bestStepCount);
+        table.setInt("bestPiecesUsed", bestPiecesUsed);
+        return table;
+    }
+    static UserSessionLevelInfo fromTable(const ParameterTable &table)
+    {
+        UserSessionLevelInfo result;
+        result.filename = table.getString("filename");
+        result.state = (LevelState)table.getInt("state");
+        result.bestStepCount = table.getInt("bestStepCount");
+        result.bestPiecesUsed = table.getInt("bestPiecesUsed");
+        return result;
+    }
+
+    string filename;
     LevelState state;
+    int bestStepCount;
+    int bestPiecesUsed;
 };
 
 //
@@ -21,14 +54,21 @@ struct UserSession
 {
     void init(int slotIndex);
 
+    string dataFile() const;
     void save();
     void load();
+
+    void recordVictoryCampaign(AppData &app);
 
     // this folder contains your custom data and your solutions.
     // typically, this is just "SessionA", "SessionB", or "SessionC"
     string folder;
 
-    vector<UserSessionLevelInfo> levels;
+    string getSolutionFilename(const string &puzzleName, bool campaign, SolutionType type) const;
+
+    vector<UserSessionLevelInfo> campaignLevels;
+
+    map<string, UserSessionLevelInfo> customLevels;
 
     bool playMusic;
     bool playSounds;

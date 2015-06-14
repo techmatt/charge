@@ -7,6 +7,7 @@ void GameController::init()
     speed = GameSpeed::x1;
     designActionTaken = false;
     puzzleVerificationMode = false;
+    viewMode = ControllerViewMode::Design;
     editorMode = EditorMode::Campaign;
     currentPuzzleIndex = 79;
     fractionalSpeedTicksLeft = 0;
@@ -34,8 +35,6 @@ void GameController::step()
 
     if (puzzleMode == PuzzleMode::Executing || puzzleVerificationMode)
     {
-        bool startVictory = app.state.victory;
-
         if (fractionalSpeedTicksLeft)
         {
             fractionalSpeedTicksLeft--;
@@ -52,19 +51,6 @@ void GameController::step()
             for (int tickIndex = 0; tickIndex < tickCount; tickIndex++)
             {
                 app.state.step(app);
-            }
-        }
-
-        if (!startVictory && app.state.victory)
-        {
-            speed = GameSpeed::x1;
-            const string defaultSolution = params().assetDir + "providedSolutions/" + database().puzzles[app.controller.currentPuzzleIndex].filename + "_A.pzl";
-            app.state.savePuzzle(defaultSolution);
-
-            if (puzzleVerificationMode)
-            {
-                app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-                loadCurrentProvidedSolution();
             }
         }
     }
@@ -278,5 +264,21 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + util::formatDouble(dischargeFreq, 2) + "s"));
         buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(component->intrinsics.chargesLostPerDischarge)));
         buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(component->intrinsics.totalChargeRequired)));
+    }
+}
+
+void GameController::recordVictory()
+{
+    speed = GameSpeed::x1;
+
+    if (viewMode == ControllerViewMode::Design)
+    {
+        app.session.recordVictoryCampaign(app);
+    }
+
+    if (puzzleVerificationMode)
+    {
+        currentPuzzleIndex = math::mod(currentPuzzleIndex + 1, database().puzzles.size());
+        loadCurrentProvidedSolution();
     }
 }

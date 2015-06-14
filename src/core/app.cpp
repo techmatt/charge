@@ -122,7 +122,7 @@ int App::run()
     {
 		while (SDL_PollEvent(&event))
         {
-			if (event.type == SDL_QUIT)
+            if (event.type == SDL_QUIT || event.type == SDL_APP_TERMINATING)
             {
 				quit = true;
 			}
@@ -170,6 +170,8 @@ int App::run()
 
         data.renderer.present();
     }
+
+    data.session.save();
 
     SDL_Quit();
 

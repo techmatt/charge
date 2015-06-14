@@ -17,14 +17,19 @@ void SplashScreen::render()
     // splash screen should have visual depiction of each level solved state in a grid?
 }
 
-void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
+void SplashScreen::transferToPuzzleMode(int slotIndex)
 {
     app.activeEventHandler = &app.ui;
     app.activeRenderHandler = &app.canvas;
+    app.session.init(slotIndex);
+}
+
+void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
+{
+    transferToPuzzleMode(0);
 }
 
 void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 {
-    app.activeEventHandler = &app.ui;
-    app.activeRenderHandler = &app.canvas;
+    transferToPuzzleMode(0);
 }
