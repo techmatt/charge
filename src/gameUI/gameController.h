@@ -18,6 +18,7 @@ enum class GameSpeed
     x1,
     x3,
     x5,
+    x10,
 };
 
 inline int ticksFromSpeed(GameSpeed speed)
@@ -29,6 +30,7 @@ inline int ticksFromSpeed(GameSpeed speed)
     case GameSpeed::x1: return 1;
     case GameSpeed::x3: return 3;
     case GameSpeed::x5: return 5;
+    case GameSpeed::x10: return 10;
     default: return 0;
     }
 }
@@ -42,6 +44,7 @@ inline string buttonNameFromSpeed(GameSpeed speed)
     case GameSpeed::x1: return "speedX1";
     case GameSpeed::x3: return "speedX3";
     case GameSpeed::x5: return "speedX5";
+    case GameSpeed::x10: return "speedX10";
     default: return 0;
     }
 }

@@ -99,6 +99,11 @@ int App::run()
     SDL_Event event;
 
 	bool quit = false;
+
+    // we maintain these ourselves so they are available to the mouse events
+    bool shiftState = false;
+    bool ctrlState = false;
+
 	while (!quit)
     {
 		while (SDL_PollEvent(&event))
@@ -109,15 +114,33 @@ int App::run()
 			}
 			if (event.type == SDL_KEYDOWN)
             {
-                data.ui.keyDown(event.key.keysym.sym);
+                const bool shift = (event.key.keysym.mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
+                const bool ctrl = (event.key.keysym.mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                data.ui.keyDown(event.key.keysym.sym, shift, ctrl);
+
+                if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+                    shiftState = true;
+
+                if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+                    ctrlState = true;
 			}
+            if (event.type == SDL_KEYUP)
+            {
+                if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+                    shiftState = false;
+
+                if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+                    ctrlState = false;
+
+                data.ui.keyUp(event.key.keysym.sym);
+            }
             if (event.type == SDL_MOUSEBUTTONDOWN)
             {
-                data.ui.mouseDown(event.button.button, event.button.x, event.button.y);
+                data.ui.mouseDown(event.button.button, event.button.x, event.button.y, shiftState, ctrlState);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				data.ui.mouseUp(event.button.button, event.button.x, event.button.y);
+                data.ui.mouseUp(event.button.button, event.button.x, event.button.y, shiftState, ctrlState);
 			}
             if (event.type == SDL_MOUSEMOTION)
             {

@@ -14,22 +14,11 @@ void GameUI::init()
     activePlacementBuffer.clear();
 
     hoverButtonIndex = -1;
+
+    spaceUp = true;
 }
 
-bool ctrlPressed()
-{
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    return keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL];
-}
-
-bool shiftPressed()
-{
-    // NOTE: the spec for SDL_GetKeyboardState suggests shift is not recorded!
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    return keys[SDL_SCANCODE_LSHIFT] || keys[SDL_SCANCODE_RSHIFT];
-}
-
-void GameUI::keyDown(SDL_Keycode key)
+void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 {
     //
     // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
@@ -86,8 +75,8 @@ void GameUI::keyDown(SDL_Keycode key)
     if (key == SDLK_z)
     {
         // undo and redo
-        if (ctrlPressed()){
-            if (shiftPressed())
+        if (ctrl){
+            if (shift)
                 app.undoBuffer.forward(app.state);
             else
                 app.undoBuffer.back(app.state);
@@ -125,6 +114,24 @@ void GameUI::keyDown(SDL_Keycode key)
         }
         selection.empty();
     }
+
+    if (key == SDLK_SPACE && spaceUp)
+    {
+        spaceUp = false;
+        if (app.controller.speed != GameSpeed::x10)
+            app.controller.speed = GameSpeed((int)app.controller.speed + 1);
+    }
+}
+
+void GameUI::keyUp(SDL_Keycode key)
+{
+    if (key == SDLK_SPACE)
+    {
+        spaceUp = true;
+        if (app.controller.speed != GameSpeed::x0)
+            app.controller.speed = GameSpeed((int)app.controller.speed - 1);
+        app.canvas.backgroundDirty = true;
+    }
 }
 
 void GameUI::removeHoverComponent()
@@ -154,10 +161,8 @@ void GameUI::removeHoverComponent()
     app.undoBuffer.save(app.state);
 }
 
-void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
+void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
 {
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-
     // we only do this for left clicks
     if (mouseButton != SDL_BUTTON_LEFT)
         return;
@@ -186,7 +191,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
         if (hover.valid())
         {
             Component* hoverComponent = app.state.getComponent(hover, false);
-            if (keys[SDL_SCANCODE_LCTRL] || keys[SDL_SCANCODE_RCTRL]){
+            if (ctrl || shift){
                 if (hoverComponent != nullptr)
                     selection.toggle(hoverComponent);
             }
@@ -203,7 +208,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y)
     app.canvas.backgroundDirty = true;
 }
 
-void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
+void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
 {
 
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
@@ -255,7 +260,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y)
 
     int delta = mouseButton == SDL_BUTTON_LEFT ? -1 : 1;
 
-    if (ctrlPressed() || shiftPressed())
+    if (ctrl || shift)
         delta *= 10;
 
     //Component *gameComponent = app.state.getComponent(selectedGameLocation);

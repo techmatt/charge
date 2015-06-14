@@ -39,28 +39,28 @@ Number	Puzzle name	Puzzle file	Tip	Verified
 38	Infinite Possibilities	38-InfinitePossibilites	Finite input can beget infinite output.	no	
 39	New Horizons	39-NewHorizons	Chips are a powerful tool to eliminate certain space constraints.	no	
 40	Punch the Keys	40-PunchTheKeys	Pay attention to the already existing chips.	no	
-41	One With Nothing	41-OneWithNothing	"Chips built into the level can be copied, pasted, rotated and flipped."	no	
+41	One With Nothing	41-OneWithNothing	"Chips built into the level can be copied, pasted, rotated, and flipped."	no	
 42	To Each His Own	42-ToEachHisOwn	Chips you build now might come in handy later.	no	
 43	Creative License	43-CreativeLicense	Sitting back and thinking can sometimes produce better results.	no	
 44	One for All	44-OneForAll	Sometimes lots of small charges are more useful than larger ones.	no	
 45	Wishing Well	45-WishingWell	Charge is a precious resource.	no	
 46	Infinite Regress	46-InfiniteRegress	Many puzzles have multiple solutions.	no	
-47	Trick or Treat	47-TrickOrTreat	Pay close attention to the boundary pieces of built-in circuits.	no	
+47	Trick or Treat	47-TrickOrTreat	"111,111,111 x 111,111,111 = 12,345,678,987,654,321"	no	
 48	Smorgasbord	48-Smorgasbord	"Sometimes, working with short bursts of charge is important."	no	
 49	Deja Vu	49-DejaVu	You should be able to handle this one.	no	
 50	Batter Up	50-BatterUp	"Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels."	no	
 51	Jacob's Ladder	51-JacobsLadder	Batteries do not accept charge of the wrong color.	no	
 52	Thinking Inside the Box	52-ThinkingBox	You can skip up to three levels and come back to them later.	no	
 53	Ye Who Enter Here	53-YeWhoEnterHere	Abandon all hope.	no	
-54	Ramming Speed	54-RammingSpeed	Sometimes you will need to accumulate charge and release it in a short burst.	no	
+54	Ramming Speed	54-RammingSpeed	The charge must flow. . .	no	
 55	Compressor	55-Compressor	Figuring out what's going on is the key to some puzzles.	no	
-56	Web We Weave	56-WebWeWeave	Precise timing is the key to working with some charge situations.	no	
+56	Web We Weave	56-WebWeWeave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	no	
 57	Mob Rule	57-MobRule	A held charge will exit back to the component it came from if that path becomes unblocked.	no	
 58	The Butterfly Effect	58-TheButterflyEffect	"The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words."	no	
 59	Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	no	
 60	Fun For the Whole Family	60-FunFamily	"""Almost"" is the longest word in the English language with all the letters in alphabetical order."	no	
 61	Size Isn't Everything	61-SizeEverything	"Shave and a haircut, one chip."	no	
-62	Brave New World	62-BraveNewWorld	Charge was originally a Warcraft 3 Tower Defense map.	no	
+62	Brave New World	62-BraveNewWorld	"Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games."	no	
 63	Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	no	
 64	Double Cross	64-DoubleCross	Charge is not always good.	no	
 65	Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	no	
