@@ -17,6 +17,7 @@ struct UserSessionLevelInfo
     UserSessionLevelInfo()
     {
         state = LevelState::Unsolved;
+        filename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
         bestPiecesUsed = std::numeric_limits<int>::max();

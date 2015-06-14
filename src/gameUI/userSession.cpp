@@ -8,6 +8,11 @@ void UserSession::init(int slotIndex)
 
     campaignLevels.resize(database().puzzles.size());
 
+    for (int i = 0; i < campaignLevels.size(); i++)
+    {
+        campaignLevels[i].filename = database().puzzles[i].filename;
+    }
+
     playMusic = false;
     playSounds = true;
 
