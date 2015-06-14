@@ -56,6 +56,8 @@ public:
     void loadLegacyPuzzle(const string &filename);
     void loadPuzzle(const string &filename, const string &puzzleName);
     
+    PuzzleInfo& getCurrentPuzzle();
+
     void loadCurrentPuzzle();
     void loadCurrentProvidedSolution();
 

@@ -93,6 +93,11 @@ void GameController::loadLegacyPuzzle(const string &filename)
     app.ui.selection.empty();
 }
 
+PuzzleInfo& GameController::getCurrentPuzzle()
+{
+    return database().puzzles[currentPuzzleIndex];
+}
+
 void GameController::loadCurrentPuzzle()
 {
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];

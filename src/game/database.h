@@ -81,11 +81,13 @@ struct PuzzleInfo
         name = m.at("Puzzle name");
         filename = m.at("Puzzle file");
         index = convert::toInt(m.at("Number"));
+        tip = m.at("Tip");
     }
 
     int index;
     string name;
     string filename;
+    string tip;
 };
 
 struct Database

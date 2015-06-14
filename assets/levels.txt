@@ -1,81 +1,81 @@
-Number	Puzzle name	Puzzle file		Verified
-1	The Path to Success	1-PathToSuccess		no
-2	The Bent Road	2-BentRoad		no
-3	Kinder Garden	3-KinderGarden		no
-4	Speed Racer	4-SpeedRacer		no
-5	Sensitivity Training	5-SensitivityTraining		no
-6	Dealing with Rejection	6-DealingRejection		no
-7	A Stitch in Time	7-StitchTime		no
-8	Power to the People	8-PowerPeople		no
-9	Lemon-aid	9-LemonAid		no
-10	There and Back Again	10-ThereAndBackAgain		no
-11	Tower of Babel	11-TowerBabel		no
-12	One Small Step	12-OneSmallStep		no
-13	One Giant Leap	13-OneGiantLeap		no
-14	Ding Dong Ditch	14-DingDong		no
-15	Minimum Security	15-MinSecurity		no
-16	Double Trouble	16-DoubleTrouble		no
-17	Beam Me Up	17-BeamUp		no
-18	Six String Samurai	18-SixStringSamurai		no
-19	Reindeer Games	19-ReindeerGames		no
-20	The Green-Eyed Monster	20-GreenMonster		no
-21	Stations of Life	21-StationsOfLife		no
-22	A Penny Saved	22-PennySaved		no
-23	Red Tide	23-RedTide		no
-24	Moment of Glory	24-MomentOfGlory		no
-25	It's a Trap!	26-Trap		no
-26	Trapasaurus	27-Trapasarus		no
-27	Bonanza	28-Bonanza		no
-28	Hold Your Horses	29-HoldYourHorses		no
-29	Cram Time	25-CramTime		no
-30	Open Sesame	30-OpenSesame		no
-31	A Silver Lining	31-SilverLining		no
-32	We Require More	32-WeRequireMore		no
-33	Cornered	33-Cornered		no
-34	Doom House	34-DoomHouse		no
-35	Different Strokes	35-DifferentStrokes		no
-36	Labyrinth	36-Labyrinth		no
-37	In Soviet Russia	37-InSovietRussia		no
-38	Infinite Possibilities	38-InfinitePossibilites		no
-39	New Horizons	39-NewHorizons		no
-40	Punch the Keys	40-PunchTheKeys		no
-41	One With Nothing	41-OneWithNothing		no
-42	To Each His Own	42-ToEachHisOwn		no
-43	Creative License	43-CreativeLicense		no
-44	One for All	44-OneForAll		no
-45	Wishing Well	45-WishingWell		no
-46	Infinite Regress	46-InfiniteRegress		no
-47	Trick or Treat	47-TrickOrTreat		no
-48	Smorgasbord	48-Smorgasbord		no
-49	Deja Vu	49-DejaVu		no
-50	Batter Up	50-BatterUp		no
-51	Jacob's Ladder	51-JacobsLadder		no
-52	Thinking Inside the Box	52-ThinkingBox		no
-53	Ye Who Enter Here	53-YeWhoEnterHere		no
-54	Ramming Speed	54-RammingSpeed		no
-55	Compressor	55-Compressor		no
-56	Web We Weave	56-WebWeWeave		no
-57	Mob Rule	57-MobRule		no
-58	The Butterfly Effect	58-TheButterflyEffect		no
-59	Misfit Mayhem	59-MisfitMayhem		no
-60	Fun For the Whole Family	60-FunFamily		no
-61	Size Isn't Everything	61-SizeEverything		no
-62	Brave New World	62-BraveNewWorld		no
-63	Turn the Other Cheek	63-TurnTheOtherCheek		no
-64	Double Cross	64-DoubleCross		no
-65	Rocket Science	65-RocketScience		no
-66	Overengineering	66-Overengineering		no
-67	Do-Se-Do	67-DoSeDo		no
-68	Deus Ex Machina	68-DeusExMachina		no
-69	The Three Stooges	69-ThreeStooges		no
-70	Pride Parade	70-PrideParade		no
-71	Power Overwhelming	71-PowerOverwhelming		no
-72	Quantity Control	72-QuantityControl		no
-73	Jigsaw	73-Jigsaw		no
-74	Turing Complete	74-TuringComplete		no
-75	Doppleganger	75-Doppleganger		no
-76	Chargin' Up	76-ChargingUp		no
-77	Line Dancing	77-LineDancing		no
-78	Chips Ahoy	78-ChipsAhoy		no
-79	Final Destination	79-FinalDestination		no
-80	Through the Filter Glass	80-ThroughTheFilterGlass		no
+Number	Puzzle name	Puzzle file	Tip	Verified
+1	The Path to Success	1-PathToSuccess	Welcome to Charge!  Click on or hover over components for additional information.	no
+2	The Bent Road	2-BentRoad	Obstacles may prevent you from taking the most direct path.	no
+3	Kinder Garden	3-KinderGarden	"There are five colors of charge, ordered red (weakest), orange, yellow, green, to blue (strongest)."	no
+4	Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.	no
+5	Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	no
+6	Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.	no
+7	A Stitch in Time	7-StitchTime	Some Goals will not hold charge indefinitely.	no
+8	Power to the People	8-PowerPeople	Some components let you affect charge level.	no
+9	Lemon-aid	9-LemonAid	Charges can interfere with each other in undesired ways.	no
+10	There and Back Again	10-ThereAndBackAgain	Charges won't go backwards unless redirected.	no
+11	Tower of Babel	11-TowerBabel	Higher level charges split into more/stronger parts.	no
+12	One Small Step	12-OneSmallStep	Splitting and Ampiflying can act in complimentary ways.	no
+13	One Giant Leap	13-OneGiantLeap	You might learn something new from the official solutions.	no
+14	Ding Dong Ditch	14-DingDong	Test	no
+15	Minimum Security	15-MinSecurity	Test	no
+16	Double Trouble	16-DoubleTrouble	Test	no
+17	Beam Me Up	17-BeamUp	Test	no
+18	Six String Samurai	18-SixStringSamurai	Test	no
+19	Reindeer Games	19-ReindeerGames	Test	no
+20	The Green-Eyed Monster	20-GreenMonster	Test	no
+21	Stations of Life	21-StationsOfLife	Test	no
+22	A Penny Saved	22-PennySaved	Test	no
+23	Red Tide	23-RedTide	Test	no
+24	Moment of Glory	24-MomentOfGlory	Test	no
+25	It's a Trap!	26-Trap	Test	no
+26	Trapasaurus	27-Trapasarus	Test	no
+27	Bonanza	28-Bonanza	Test	no
+28	Hold Your Horses	29-HoldYourHorses	Test	no
+29	Cram Time	25-CramTime	Test	no
+30	Open Sesame	30-OpenSesame	Test	no
+31	A Silver Lining	31-SilverLining	Test	no
+32	We Require More	32-WeRequireMore	Test	no
+33	Cornered	33-Cornered	Test	no
+34	Doom House	34-DoomHouse	Test	no
+35	Different Strokes	35-DifferentStrokes	Test	no
+36	Labyrinth	36-Labyrinth	Test	no
+37	In Soviet Russia	37-InSovietRussia	Test	no
+38	Infinite Possibilities	38-InfinitePossibilites	Test	no
+39	New Horizons	39-NewHorizons	Test	no
+40	Punch the Keys	40-PunchTheKeys	Test	no
+41	One With Nothing	41-OneWithNothing	Test	no
+42	To Each His Own	42-ToEachHisOwn	Test	no
+43	Creative License	43-CreativeLicense	Test	no
+44	One for All	44-OneForAll	Test	no
+45	Wishing Well	45-WishingWell	Test	no
+46	Infinite Regress	46-InfiniteRegress	Test	no
+47	Trick or Treat	47-TrickOrTreat	Test	no
+48	Smorgasbord	48-Smorgasbord	Test	no
+49	Deja Vu	49-DejaVu	Test	no
+50	Batter Up	50-BatterUp	Test	no
+51	Jacob's Ladder	51-JacobsLadder	Test	no
+52	Thinking Inside the Box	52-ThinkingBox	Test	no
+53	Ye Who Enter Here	53-YeWhoEnterHere	Test	no
+54	Ramming Speed	54-RammingSpeed	Test	no
+55	Compressor	55-Compressor	Test	no
+56	Web We Weave	56-WebWeWeave	Test	no
+57	Mob Rule	57-MobRule	Test	no
+58	The Butterfly Effect	58-TheButterflyEffect	Test	no
+59	Misfit Mayhem	59-MisfitMayhem	Test	no
+60	Fun For the Whole Family	60-FunFamily	Test	no
+61	Size Isn't Everything	61-SizeEverything	Test	no
+62	Brave New World	62-BraveNewWorld	Test	no
+63	Turn the Other Cheek	63-TurnTheOtherCheek	Test	no
+64	Double Cross	64-DoubleCross	Test	no
+65	Rocket Science	65-RocketScience	Test	no
+66	Overengineering	66-Overengineering	Test	no
+67	Do-Se-Do	67-DoSeDo	Test	no
+68	Deus Ex Machina	68-DeusExMachina	Test	no
+69	The Three Stooges	69-ThreeStooges	Test	no
+70	Pride Parade	70-PrideParade	Test	no
+71	Power Overwhelming	71-PowerOverwhelming	Test	no
+72	Quantity Control	72-QuantityControl	Test	no
+73	Jigsaw	73-Jigsaw	Test	no
+74	Turing Complete	74-TuringComplete	Test	no
+75	Doppleganger	75-Doppleganger	Test	no
+76	Chargin' Up	76-ChargingUp	Test	no
+77	Line Dancing	77-LineDancing	Test	no
+78	Chips Ahoy	78-ChipsAhoy	Test	no
+79	Final Destination	79-FinalDestination	Test	no
+80	Through the Filter Glass	80-ThroughTheFilterGlass	Test	no

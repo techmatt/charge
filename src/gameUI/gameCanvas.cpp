@@ -507,7 +507,7 @@ void GameCanvas::renderTooltip()
     {
         float startY = button->canonicalRect.max().y + 5.0f;
 
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), *button->tooltip, button->modifiers, button->hotkey, nullptr);
+        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), button->tooltip, button->modifiers, button->hotkey, nullptr);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }
@@ -527,11 +527,17 @@ void GameCanvas::renderTooltip()
         if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
             info = &database().getComponent(clickComponent->info->name + "GrayProxy");
 
-        renderTooltip(params().tooltipDefaultStart, *info, clickComponent->modifiers, "", clickComponent);
+        renderTooltip(params().tooltipDefaultStart, info, clickComponent->modifiers, "", clickComponent);
+        return;
     }
+
+    //
+    // render level tip
+    //
+    renderTooltip(params().tooltipDefaultStart, nullptr, ComponentModifiers(), "!", nullptr);
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo *info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component)
 {
     auto splice = [&](const string &s) {
         string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
@@ -543,8 +549,11 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const ComponentInfo 
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
 
-    renderText(getFontTexture(splice(info.semanticName), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
-    renderText(getFontTexture(splice(info.description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+    const string &title = info == nullptr ? app.controller.getCurrentPuzzle().name : info->semanticName;
+    const string &description = info == nullptr ? app.controller.getCurrentPuzzle().tip : info->description;
+
+    renderText(getFontTexture(splice(title), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
+    renderText(getFontTexture(splice(description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
 
     const float attributeSpacing = 17.0f;
     const float attributeBottom = 97.0f;

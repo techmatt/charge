@@ -79,7 +79,7 @@ private:
     void renderHoverComponent();
 
     void renderTooltip();
-    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo &info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component);
+    void renderTooltip(const vec2f &canonicalStart, const ComponentInfo *info, const ComponentModifiers &modifiers, const string &hotkey, const Component *component);
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 
