@@ -86,7 +86,6 @@ int App::run()
         }
     }
 
-
 	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
 
     if (window == nullptr)
@@ -108,16 +107,18 @@ int App::run()
 
     data.ui.init();
     data.canvas.init();
+    data.splash.init();
 
     data.controller.init();
 
     data.puzzles.init();
 
+    data.activeEventHandler = &data.splash;
+    data.activeRenderHandler = &data.splash;
+
     SDL_Event event;
 
 	bool quit = false;
-
-    // this could be retrieved with SDL_GetModState
 
 	while (!quit)
     {

@@ -146,7 +146,6 @@ void GameState::addNewComponent(Component *component, bool addCircuitComponents,
     if (component->info->name == "Circuit")
     {
         component->circuitBoard = new Board();
-		//component->circuitBoardFrame = new CoordinateFrame(component->location.boardPos, component->location.boardPos + 1, params().circuitDims);
 		component->circuitBoard->cells.allocate(constants::circuitBoardSize, constants::circuitBoardSize);
 
         if (addCircuitComponents)

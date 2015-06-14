@@ -12,12 +12,12 @@ struct CanvasConnection
     Texture *tex;
 };
 
-class GameCanvas
+class GameCanvas : public RenderHandler
 {
 public:
     GameCanvas(AppData &_app) : app(_app) {}
     void init();
-    void render();
+    void render() override;
 
     bool backgroundDirty;
 

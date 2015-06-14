@@ -1,4 +1,20 @@
 
+class EventHandler
+{
+public:
+    virtual void mouseDown(Uint8 button, int x, int y, bool shift, bool ctrl) {}
+    virtual void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) {}
+    virtual void mouseMove(Uint32 buttonState, int x, int y) {}
+    virtual void keyDown(SDL_Keycode key, bool shift, bool ctrl) {}
+    virtual void keyUp(SDL_Keycode key) {}
+};
+
+class RenderHandler
+{
+public:
+    virtual void render() = 0;
+};
+
 namespace depthLayers
 {
     const float selection = 0.9f;

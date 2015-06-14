@@ -1,7 +1,7 @@
 
 struct AppData
 {
-    AppData() : ui(*this), canvas(*this), controller(*this)
+    AppData() : ui(*this), canvas(*this), controller(*this), splash(*this)
     {
         
     }
@@ -39,11 +39,19 @@ struct AppData
         return nullptr;
     }
 
+    SplashScreen splash;
+
+    EventHandler *activeEventHandler;
+    RenderHandler *activeRenderHandler;
+
     GameController controller;
     GameUI ui;
     GameCanvas canvas;
     GameState state;
+    
     PuzzleManager puzzles;
+
+
     RendererOpenGL renderer;
     AudioDevice audio;
 	
