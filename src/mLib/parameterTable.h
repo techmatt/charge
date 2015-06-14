@@ -25,6 +25,11 @@ public:
         params[parameterName].push_back(to_string(value));
     }
 
+    void setBool(const string &parameterName, bool value)
+    {
+        setInt(parameterName, value ? 1 : 0);
+    }
+
     template<class T>
     void set(const string &parameterName, const T &value)
     {
@@ -65,6 +70,11 @@ public:
     int getInt(const string &parameterName) const
     {
         return convert::toInt(getString(parameterName));
+    }
+
+    bool getBool(const string &parameterName) const
+    {
+        return convert::toInt(getString(parameterName)) == 0 ? false : true;
     }
 
     vec2i getVec2i(const string &parameterName) const
@@ -132,6 +142,19 @@ public:
                 }
             }
         }
+    }
+
+    void save(const string &filename)
+    {
+        vector<string> lines;
+        appendLines(lines);
+        util::saveLinesToFile(lines, filename);
+    }
+
+    void load(const string &filename)
+    {
+        int lineIndex = 0;
+        fromLines(util::getFileLines(filename), lineIndex);
     }
     
     string name;

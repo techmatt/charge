@@ -111,8 +111,6 @@ int App::run()
 
     data.controller.init();
 
-    data.puzzles.init();
-
     data.activeEventHandler = &data.splash;
     data.activeRenderHandler = &data.splash;
 
@@ -132,29 +130,29 @@ int App::run()
             {
                 const bool shift = (event.key.keysym.mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
                 const bool ctrl = (event.key.keysym.mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
-                data.ui.keyDown(event.key.keysym.sym, shift, ctrl);
+                data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl);
 			}
             if (event.type == SDL_KEYUP)
             {
-                data.ui.keyUp(event.key.keysym.sym);
+                data.activeEventHandler->keyUp(event.key.keysym.sym);
             }
             if (event.type == SDL_MOUSEBUTTONDOWN)
             {
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
                 const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
-                data.ui.mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
                 const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
-                data.ui.mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
             if (event.type == SDL_MOUSEMOTION)
             {
-                data.ui.mouseMove(event.motion.state, event.motion.x, event.motion.y);
+                data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y);
             }
 		}
 
@@ -168,7 +166,7 @@ int App::run()
         //
         data.renderer.clear();
 
-        data.canvas.render();
+        data.activeRenderHandler->render();
 
         data.renderer.present();
     }

@@ -11,6 +11,7 @@ struct GameParameters
         params.readParameter("assetDir", assetDirBase);
 
         assetDir = util::getWorkingDirectory() + assetDirBase;
+        rootDir = assetDir + "../";
 
         params.readParameter("canonicalDims", canonicalDims);
 
@@ -48,6 +49,7 @@ struct GameParameters
 		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
 
+    string rootDir;
     string assetDir;
     string assetDirBase;
 

@@ -44,14 +44,13 @@ struct AppData
     EventHandler *activeEventHandler;
     RenderHandler *activeRenderHandler;
 
+    UserSession session;
+
     GameController controller;
     GameUI ui;
     GameCanvas canvas;
     GameState state;
     
-    PuzzleManager puzzles;
-
-
     RendererOpenGL renderer;
     AudioDevice audio;
 	

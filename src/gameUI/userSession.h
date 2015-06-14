@@ -1,32 +1,35 @@
 
-struct UserSessionLevelState
+enum LevelState
 {
-    bool solved;
+    Unsolved = 0,
+    Solved = 1,
+};
+
+struct UserSessionLevelInfo
+{
+    UserSessionLevelInfo()
+    {
+        state = LevelState::Unsolved;
+    }
+    LevelState state;
 };
 
 //
-// information on a single user session. Automatically saved and loaded at each level transition or every X frames.
+// information on a single user session. Automatically saved and loaded at each level transition.
 //
 struct UserSession
 {
-    void init();
+    void init(int slotIndex);
 
-    void saveToFile();
+    void save();
+    void load();
 
-    // typically, this is just "SessionA", "SessionB", or "SessionC"
     // this folder contains your custom data and your solutions.
+    // typically, this is just "SessionA", "SessionB", or "SessionC"
     string folder;
 
-    vector<UserSessionLevelState> levels;
+    vector<UserSessionLevelInfo> levels;
 
     bool playMusic;
     bool playSounds;
-};
-
-//
-// all session data
-//
-struct UserSessionSet
-{
-    vector<UserSession> slots;
 };

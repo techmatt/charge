@@ -67,9 +67,7 @@ void GameState::savePuzzle(const string &filename)
 
     puzzleTable.setTable("buildableComponents", buildableComponents.toTable());
 
-    vector<string> lines;
-    puzzleTable.appendLines(lines);
-    util::saveLinesToFile(lines, filename);
+    puzzleTable.save(filename);
 }
 
 void GameState::loadPuzzle(const string &filename, const string &puzzleName)
@@ -80,8 +78,7 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
     name = puzzleName;
 
     ParameterTable puzzleTable;
-    int lineIndex = 0;
-    puzzleTable.fromLines(util::getFileLines(filename), lineIndex);
+    puzzleTable.load(filename);
 
     buildableComponents = ComponentBuildState(puzzleTable.getTable("buildableComponents"));
 
