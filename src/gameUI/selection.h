@@ -8,6 +8,9 @@ struct ComponentSelection
 	bool selectionIsInCircuit;
 	//Grid2<BoardCell> cells;
 
+    // checks if the user is allowed to copy the current selection
+    bool isValidCopy() const;
+
 	// check whether the selection is in the circuit
 	// bool selectionIsInCircuit() { return (cells.dimX() == constants::circuitBoardSize) }
 

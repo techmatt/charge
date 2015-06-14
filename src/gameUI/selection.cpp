@@ -1,5 +1,17 @@
 #include "main.h"
 
+bool ComponentSelection::isValidCopy() const
+{
+    for (Component *c : components)
+    {
+        if (c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece && !c->isCircuit())
+            return false;
+
+        if (c->location.circuitPos != constants::invalidCoord)
+            return false;
+    }
+    return true;
+}
 
 void ComponentSelection::copyToComponentSet(ComponentSet &cset, GameState &state) // copies a selection buffer to an already allocated componentset
 {

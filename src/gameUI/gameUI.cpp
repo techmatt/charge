@@ -86,8 +86,10 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
     if (key == SDLK_c)
     {
         // COPY if there is anything in the selection buffer
-        if (selection.components.size() > 0)
+        if (selection.components.size() > 0 && selection.isValidCopy())
             selection.copyToComponentSet(copyBuffer, app.state);
+        else
+            copyBuffer.clear();
     }
 
     if (key == SDLK_v)
