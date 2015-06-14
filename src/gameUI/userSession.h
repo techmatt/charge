@@ -61,7 +61,16 @@ struct UserSession
         for (int i = 0; i < campaignLevels.size(); i++)
             if (campaignLevels[i].state == LevelState::Solved)
                 result = i;
-        return min(result + 1, (int)campaignLevels.size());
+        return min(result, (int)campaignLevels.size());
+    }
+
+    int highestAccessiblePuzzle() const
+    {
+        int solved = 0;
+        for (int i = 0; i < campaignLevels.size(); i++)
+            if (campaignLevels[i].state == LevelState::Solved)
+                solved++;
+        return min(solved + 3, (int)campaignLevels.size());
     }
 
     string dataFile() const;
@@ -69,6 +78,7 @@ struct UserSession
     void load();
 
     void recordVictoryCampaign(AppData &app);
+    void saveProgress(AppData &app);
 
     // this folder contains your custom data and your solutions.
     // typically, this is just "SessionA", "SessionB", or "SessionC"

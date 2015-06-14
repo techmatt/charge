@@ -7,7 +7,7 @@ void GameController::init()
     speed = GameSpeed::x1;
     designActionTaken = false;
     puzzleVerificationMode = false;
-    viewMode = ControllerViewMode::Design;
+    viewMode = ControllerViewMode::BasePuzzle;
     editorMode = EditorMode::Campaign;
     currentPuzzleIndex = 0;
     fractionalSpeedTicksLeft = 0;
@@ -88,8 +88,7 @@ void GameController::loadCurrentPuzzle()
 {
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
     app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
-
-    //app.state.savePuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl");
+    viewMode = ControllerViewMode::BasePuzzle;
 }
 
 void GameController::loadCurrentProvidedSolution()
@@ -100,7 +99,7 @@ void GameController::loadCurrentProvidedSolution()
 
     if (!util::fileExists(puzzleFilename) || !util::fileExists(solutionFilename))
     {
-        recordError("File not found!", "Couldn't find " + puzzleFilename);
+        recordError("File not found!", "Couldn't find the provided solution for " + puzzle.filename + "!");
         return;
     }
 
@@ -110,16 +109,67 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Example solution " + to_string(puzzle.index) + ": " + puzzle.name);
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
+
+    viewMode = ControllerViewMode::ProvidedSolution;
 
     //
     // Load the base puzzle file.
     // TODO: We should verify the solution is compatiable with the underlying puzzle file.
     //
-    GameState baseState;
+    /*GameState baseState;
     baseState.init();
     baseState.loadPuzzle(puzzleFilename, "comparison");
-    app.state.buildableComponents = baseState.buildableComponents;
+    app.state.buildableComponents = baseState.buildableComponents;*/
+}
+
+void GameController::cycleUserSolution()
+{
+    if (viewMode == ControllerViewMode::ProvidedSolution)
+    {
+        viewMode = ControllerViewMode::BasePuzzle;
+        loadCurrentPuzzle();
+        return;
+    }
+
+    if (viewMode == ControllerViewMode::BasePuzzle)
+        viewMode = ControllerViewMode::UserSolutionRecent;
+    else if (viewMode == ControllerViewMode::UserSolutionRecent)
+        viewMode = ControllerViewMode::UserSolutionBestTime;
+    else if (viewMode == ControllerViewMode::UserSolutionBestTime)
+        viewMode = ControllerViewMode::UserSolutionFewestPieces;
+
+    loadUserSolution();
+}
+
+void GameController::loadUserSolution()
+{
+    const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
+
+    SolutionType type;
+    string description;
+    if (viewMode == ControllerViewMode::UserSolutionRecent) {
+        type = SolutionType::MostRecent;
+        description = "most recent";
+    }
+    if (viewMode == ControllerViewMode::UserSolutionBestTime) {
+        type = SolutionType::BestStepCount;
+        description = "fastest";
+    }
+    if (viewMode == ControllerViewMode::UserSolutionFewestPieces) {
+        type = SolutionType::BestPiecesUsed;
+        description = "fewest components";
+    }
+
+    const string filename = app.session.getSolutionFilename(puzzle.filename, true, type);
+
+    if (!util::fileExists(filename))
+    {
+        recordError("Not solved yet", "You haven't solved this level yet!");
+        return;
+    }
+
+    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")");
 }
 
 void GameController::recordDesignAction()
@@ -135,6 +185,7 @@ void GameController::recordError(const string &title, const string &description)
     tooltipErrorTitle = title;
     tooltipErrorDescription = description;
     app.canvas.errorResetBuffer = true;
+    app.audio.playEffect("Error");
 }
 
 void GameController::changeEditorMode(EditorMode newMode)
@@ -288,7 +339,7 @@ void GameController::recordVictory()
 {
     speed = GameSpeed::x1;
 
-    if (viewMode == ControllerViewMode::Design)
+    if (viewMode != ControllerViewMode::ProvidedSolution)
     {
         app.session.recordVictoryCampaign(app);
     }

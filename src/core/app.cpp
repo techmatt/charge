@@ -172,6 +172,7 @@ int App::run()
     }
 
     data.session.save();
+    data.session.saveProgress(data);
 
     SDL_Quit();
 

@@ -104,6 +104,15 @@ string UserSession::getSolutionFilename(const string &puzzleName, bool campaign,
     return params().rootDir + folder + subFolder + puzzleName + suffix + ".pzl";
 }
 
+void UserSession::saveProgress(AppData &app)
+{
+    const string filenameRecent = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::MostRecent);
+    const string filenameStepCount = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::BestStepCount);
+    
+    if (!util::fileExists(filenameStepCount))
+        app.state.savePuzzle(filenameRecent);
+}
+
 void UserSession::recordVictoryCampaign(AppData &app)
 {
     const string filenameRecent = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::MostRecent);

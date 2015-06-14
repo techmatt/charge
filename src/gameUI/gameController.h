@@ -14,10 +14,10 @@ enum class EditorMode
 enum class ControllerViewMode
 {
     ProvidedSolution,
+    BasePuzzle,
     UserSolutionRecent,
     UserSolutionBestTime,
     UserSolutionFewestPieces,
-    Design,
 };
 
 enum class GameSpeed
@@ -74,6 +74,8 @@ public:
 
     void loadCurrentPuzzle();
     void loadCurrentProvidedSolution();
+    void cycleUserSolution();
+    void loadUserSolution();
 
     void recordDesignAction();
     
