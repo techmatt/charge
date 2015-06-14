@@ -5,6 +5,7 @@ class LodePNG
 {
 public:
   static Bitmap load(const std::string &filename);
+  static Bitmap load(const vector<BYTE> &data);
   static void save(const Bitmap &image, const std::string &filename);
 };
 

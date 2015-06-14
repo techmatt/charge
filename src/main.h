@@ -68,6 +68,7 @@ class Texture;
 #include "gameUI/UIHelper.h"
 #include "gameUI/gameCanvas.h"
 #include "gameUI/gameUI.h"
+#include "gameUI/splashScreen.h"
 #include "gameUI/gameController.h"
 
 #include "core/app.h"

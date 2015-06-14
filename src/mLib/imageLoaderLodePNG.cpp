@@ -29,6 +29,26 @@ Bitmap LodePNG::load(const std::string &filename)
     return result;
 }
 
+Bitmap LodePNG::load(const vector<BYTE> &data)
+{
+    std::vector<BYTE> image;
+    UINT width, height;
+
+    UINT error = lodepng::decode(image, width, height, data);
+
+    MLIB_ASSERT_STR(!error, std::string(lodepng_error_text(error)));
+
+    Bitmap result;
+
+    if (!error)
+    {
+        result.allocate(width, height);
+        memcpy(result.data(), &image[0], 4 * width * height);
+    }
+
+    return result;
+}
+
 void LodePNG::save(const Bitmap &image, const std::string &filename)
 {
     const size_t pixelCount = image.width() * image.height();

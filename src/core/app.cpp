@@ -68,8 +68,25 @@ int App::run()
 
     //Setup our window and renderer
     //g_SDL_matt_window_aspect_ratio = (double)params().canonicalDims.y / (double)params().canonicalDims.x;
-    int windowHeight = math::round(params().canonicalDims.y) * 2;
-    int windowWidth = math::round(params().canonicalDims.x) * 2;
+    int windowHeight = math::round(params().canonicalDims.y);
+    int windowWidth = math::round(params().canonicalDims.x);
+
+    SDL_DisplayMode displayMode;
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) == 0)
+    {
+        const int minDim = min(displayMode.w, displayMode.h);
+        windowHeight = math::round((double)minDim * 0.8);
+        windowWidth = math::round(windowHeight * params().canonicalDims.x / params().canonicalDims.y);
+
+        // in case of weird aspect ratio monitors
+        while (windowWidth > displayMode.w)
+        {
+            windowHeight = math::round(windowHeight * 0.8);
+            windowWidth = math::round(windowWidth * 0.8);
+        }
+    }
+
+
 	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
 
     if (window == nullptr)
@@ -100,9 +117,7 @@ int App::run()
 
 	bool quit = false;
 
-    // we maintain these ourselves so they are available to the mouse events
-    bool shiftState = false;
-    bool ctrlState = false;
+    // this could be retrieved with SDL_GetModState
 
 	while (!quit)
     {
@@ -117,30 +132,24 @@ int App::run()
                 const bool shift = (event.key.keysym.mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
                 const bool ctrl = (event.key.keysym.mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
                 data.ui.keyDown(event.key.keysym.sym, shift, ctrl);
-
-                if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
-                    shiftState = true;
-
-                if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
-                    ctrlState = true;
 			}
             if (event.type == SDL_KEYUP)
             {
-                if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
-                    shiftState = false;
-
-                if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
-                    ctrlState = false;
-
                 data.ui.keyUp(event.key.keysym.sym);
             }
             if (event.type == SDL_MOUSEBUTTONDOWN)
             {
-                data.ui.mouseDown(event.button.button, event.button.x, event.button.y, shiftState, ctrlState);
+                const SDL_Keymod mod = SDL_GetModState();
+                const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
+                const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                data.ui.mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-                data.ui.mouseUp(event.button.button, event.button.x, event.button.y, shiftState, ctrlState);
+                const SDL_Keymod mod = SDL_GetModState();
+                const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
+                const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                data.ui.mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
             if (event.type == SDL_MOUSEMOTION)
             {
