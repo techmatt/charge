@@ -1,0 +1,20 @@
+Puzzle~4~19
+buildableComponents~2
+ComponentBuildState~1~1
+Wire=1
+component0000~8
+Component~7~7
+boardPos=4 11
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0001~5
+Component~4~4
+boardPos=18 11
+color=1
+name=ChargeGoal
+puzzleType=1
+componentCount=2
