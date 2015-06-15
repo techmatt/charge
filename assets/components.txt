@@ -1,7 +1,7 @@
 Component name	Menu X	Menu Y	Hotkey	Colored	Grayed	Semantic name	Description
 Wire	0	0	W	no	no	Wire	Allows charge to flow.
 Splitter	1	0	S	no	no	Splitter	Splits a large charge into multiple smaller charges.|Orange splits into 2 Red|Yellow splits into 3 Red|Green splits into 2 Orange|Blue splits into 2 Yellow
-Amplifier	2	0	A	no	no	Amplifier	Accepts two charges and emits a charge that is one level higher than the larger of the receieved charges.
+Amplifier	2	0	A	no	no	Amplifier	"Accepts two charges and emits a charge that is one level higher than the larger of the receieved charges.|Red = 1, Orange = 2, Yellow = 3, Green = 4, Blue = 5"
 FilteredAmplifier	3	0	L	yes	no	# Amplifier	Accept two charges and emits a # charge.  Will not accept a second charge unless the sum is strong enough to produce a # charge.
 TeleportSource	4	0	T	yes	no	# Transmitter	Teleports a charge to the closest # receiver.
 TeleportDestination	5	0	R	yes	no	# Receiver	Accepts charges from # transmitters.  Otherwise behave like a normal wire.
@@ -16,7 +16,7 @@ TrapSprung	-1	-1	!	yes	yes	# Trap (Closed)	"Behaves like a normal wire for the f
 TrapReset	3	1	E	yes	yes	# Crank	Resets all # traps.
 PowerSource	6	1	O	yes	no	# Generator	Produces # charge and sends it to adjacent components.
 MegaHold	4	2	!	yes	yes	# Goal Battery	"Accumulates all incoming # charge, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
-ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win!"
+ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win! |A goal will hold onto charge as long as it has no other destination to move towards."
 Blocker	6	2	!	no	no	Blocker	Blockers never allow charge to pass through them.
 WireMajorAccelerator	-1	-1	!	no	no	Major Accelerator	Wires can be modified to change the speed charge travels through them.
 WireMinorAccelerator	-1	-1	!	no	no	Minor Accelerator	Wires can be modified to change the speed charge travels through them.
