@@ -34,6 +34,8 @@ struct GameParameters
         params.readParameter("tooltipDefaultStart", tooltipDefaultStart);
         params.readParameter("tooltipSize", tooltipSize);
 
+        params.readParameter("godMode", godMode);
+
         circuitDims = vec2i(constants::circuitBoardSize, constants::circuitBoardSize);
 
         //
@@ -79,6 +81,8 @@ struct GameParameters
 	CoordinateFrame componentMenuInWindow;
 	CoordinateFrame puzzleMenuInWindow;
 	CoordinateFrame circuitInWindow;
+
+    bool godMode;
 
     //
     // derived parameters

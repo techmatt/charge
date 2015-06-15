@@ -544,6 +544,9 @@ void GameCanvas::renderTooltip()
         if (clickComponent->modifiers.color == ChargeType::Gray && (clickComponent->info->name == "GateSwitch" || clickComponent->info->name == "TrapReset" || clickComponent->info->name == "MegaHold"))
             info = &database().getComponent(clickComponent->info->name + "GrayProxy");
 
+        if (clickComponent->modifiers.speed != WireType::Standard)
+            info = &database().getComponent(GameUtil::speedToTextureName(clickComponent->modifiers.speed));
+
         renderTooltip(params().tooltipDefaultStart, info->semanticName, info->description, clickComponent->modifiers, "", clickComponent);
         return;
     }

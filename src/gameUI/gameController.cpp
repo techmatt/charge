@@ -103,7 +103,7 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    if (app.session.campaignLevels[app.controller.currentPuzzleIndex].state != LevelState::Solved)
+    if (app.session.campaignLevels[app.controller.currentPuzzleIndex].state != LevelState::Solved && !params().godMode)
     {
         recordError("Cannot view solution", "You can't view the provided solution to this level until you have solved it yourself!");
         return;

@@ -67,7 +67,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
     if (key == SDLK_RIGHT)
     {
         //app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-        if (app.controller.currentPuzzleIndex >= app.session.highestAccessiblePuzzle())
+        if (app.controller.currentPuzzleIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
             app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
         else
         {
