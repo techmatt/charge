@@ -127,7 +127,7 @@ void ComponentSet::flipAboutVerical()
     }
 }
 
-void ComponentSet::addToComponents(GameState &state, vec2i offset)
+void ComponentSet::addToComponents(GameState &state, vec2i offset, int preferenceOverride)
 {
 
     // add the components in the list 1-by-1 to the game state
@@ -137,6 +137,8 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
         if (c.location.inCircuit()) continue;
         Component* newComponent = c.makeNewComponent();
         newComponent->location.boardPos += offset;
+        if (preferenceOverride != -1)
+            newComponent->modifiers.chargePreference = preferenceOverride;
 		state.addNewComponent(newComponent, components.size() == 1, false);	//If we are only copying a single thing, add component boundaries, otherwise don't.
     }
 
@@ -152,7 +154,7 @@ void ComponentSet::addToComponents(GameState &state, vec2i offset)
     state.updateAll();
 }
 
-void ComponentSet::addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset)
+void ComponentSet::addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset, int preferenceOverride)
 {
     // add the components in the list 1-by-1 to the game state
     // do the elements not in circuits first.
@@ -162,6 +164,8 @@ void ComponentSet::addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offs
         Component* newComponent = c.makeNewComponent();
         newComponent->location.circuitPos = c.location.boardPos + offset;
         newComponent->location.boardPos = posOfCircuit;
+        if (preferenceOverride != -1)
+            newComponent->modifiers.chargePreference = preferenceOverride;
         state.addNewComponent(newComponent, false, false);
     }
     state.updateAll();

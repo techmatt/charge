@@ -5,7 +5,7 @@ Number	Puzzle name	Puzzle file	Tip	Verified
 4	Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	no
 5	Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	no
 6	Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.	no
-7	A Stitch in Time	7-StitchTime	A charge will stay in a Goal if it has nowhere else to go.	no
+7	A Stitch in Time	7-StitchTime	A charge will stay in a Goal if the other destinations it can move towards are blocked.	no
 8	Power to the People	8-PowerPeople	Amplifiers can produce stronger charges.	no
 9	Lemon-aid	9-LemonAid	Charges can interfere with each other in undesired ways.	no
 10	There and Back Again	10-ThereAndBackAgain	Charge prefers less recently used components.	no

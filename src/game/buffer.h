@@ -52,8 +52,8 @@ struct ComponentSet
 	rect2i boundingBox() const;
 
 	//functions
-	void addToComponents(GameState &state, vec2i offset);
-	void addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset);
+	void addToComponents(GameState &state, vec2i offset, int preferenceOverride = -1);
+    void addToCircuit(GameState &state, vec2i posOfCircuit, vec2i offset, int preferenceOverride = -1);
 
 	// create new component sets
 	static ComponentSet allToBuffer(const GameState &state);

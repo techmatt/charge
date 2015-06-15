@@ -169,8 +169,7 @@ void GameUI::removeHoverComponent()
 
     // and delete the actual component
     app.state.removeComponent(c);
-    app.canvas.backgroundDirty = true;
-    app.controller.designActionTaken = true;
+    app.controller.recordDesignAction();
     app.undoBuffer.save(app.state);
 }
 
@@ -447,7 +446,44 @@ void GameUI::addHoverComponent(const GameLocation &location)
 
     vec2i buffermin = activePlacementBuffer.boundingBox().min();
 
-    //figure out component placement
+    const Board &board = location.inCircuit() ? *app.activeCircuit()->circuitBoard : app.state.board;
+
+    //
+    // when overriding a single placement, copy the preference of the replaced component.
+    //
+    int preferenceOverride = -1;
+
+    //
+    // in the case of a single placement, the user can override an existing non-circuit placement with their placement if they
+    // are exactly over the target.
+    //
+    if (activePlacementBuffer.components.size() == 1 && activePlacementBuffer.components.front().baseInfo->name != "Circuit")
+    {
+        const ComponentDefiningProperties &c = activePlacementBuffer.components.front();
+
+        vec2i componentLocation;
+
+        if (location.inCircuit())
+            componentLocation = location.circuitPos + c.location.boardPos - buffermin;
+        else
+            componentLocation = location.boardPos + c.location.boardPos - buffermin;
+
+        if (board.cells.coordValid(componentLocation))
+        {
+            Component *c = board.cells(componentLocation).c;
+            if (c != nullptr && c->location == location && c->modifiers.puzzleType == ComponentPuzzleType::User && c->info->name != "CircuitBoundary" && c->info->name != "Circuit")
+            {
+                if (c->modifiers.chargePreference != 2)
+                    preferenceOverride = c->modifiers.chargePreference;
+                selection.remove(c);
+                app.state.removeComponent(c);
+            }
+        }
+    }
+    
+    //
+    // test if we can build at the specified location
+    //
     for (const ComponentDefiningProperties &c : activePlacementBuffer.components)
     {
         if (c.location.inCircuit()) continue;
@@ -459,11 +495,8 @@ void GameUI::addHoverComponent(const GameLocation &location)
         else
             componentLocation = GameLocation(location.boardPos + c.location.boardPos - buffermin, c.location.circuitPos);
 
-
-
         const vec2i coordBase = componentLocation.boardPos;
-        const Board &board = location.inCircuit() ? *app.activeCircuit()->circuitBoard : app.state.board;
-
+        
         for (int xOffset = 0; xOffset <= 1; xOffset++)
             for (int yOffset = 0; yOffset <= 1; yOffset++)
             {
@@ -474,22 +507,20 @@ void GameUI::addHoverComponent(const GameLocation &location)
                         return;
                 }
             }
-
     }
 
     // verfied that we can build the thing at the specified place
     // build it
 
-
     if (location.inCircuit())
     {
         vec2i offset = location.circuitPos - buffermin;
-        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset);
+        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset, preferenceOverride);
     }
     else
     {
         vec2i offset = location.boardPos - buffermin;
-        activePlacementBuffer.addToComponents(app.state, offset);
+        activePlacementBuffer.addToComponents(app.state, offset, preferenceOverride);
     }
 
     app.controller.recordDesignAction();
