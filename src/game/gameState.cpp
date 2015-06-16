@@ -36,7 +36,7 @@ void GameState::clearBoard()
     board.cells.allocate(params().boardDims.x, params().boardDims.y);
     resetPuzzle();
 
-    name = "untitled";
+    puzzleName = "untitled";
 
     buildableComponents.loadDefaults();
 }
@@ -99,12 +99,12 @@ void GameState::savePuzzle(const string &filename)
     puzzleTable.save(filename);
 }
 
-void GameState::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
+void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bool loadAsPuzzle)
 {
     clearBoard();
 
     //name = util::removeExtensions(util::fileNameFromPath(filename));
-    name = puzzleName;
+    puzzleName = _puzzleName;
 
     ParameterTable puzzleTable;
     puzzleTable.load(filename);

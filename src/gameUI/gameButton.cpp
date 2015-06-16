@@ -16,8 +16,11 @@ void GameButton::initTooltip()
     if (hotkey.size() == 0)
         hotkey = "!";
 
-    if (name == "Start" || name == "Stop")
-        hotkeyCode = SDLK_RETURN;
+    if (hotkey == "Enter") hotkeyCode = SDLK_RETURN;
+    if (hotkey == "Left") hotkeyCode = SDLK_LEFT;
+    if (hotkey == "Right") hotkeyCode = SDLK_RIGHT;
+    if (hotkey == "Up") hotkeyCode = SDLK_UP;
+    if (hotkey == "Down") hotkeyCode = SDLK_DOWN;
 
     if (type == ButtonType::ChargePreference)
     {
@@ -197,6 +200,33 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             app.controller.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)), false);
             app.undoBuffer.reset(app.state);
         }
+    }
+
+    if (name == "PrevLevel")
+    {
+        int newPuzzleIndex = math::max(app.controller.currentCampaignIndex - 1, 0);
+        app.controller.loadCampaignPuzzle(newPuzzleIndex);
+    }
+
+    if (name == "NextLevel")
+    {
+        if (app.controller.currentCampaignIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
+            app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
+        else
+        {
+            int newPuzzleIndex = math::mod(app.controller.currentCampaignIndex + 1, database().puzzles.size());
+            app.controller.loadCampaignPuzzle(newPuzzleIndex);
+        }
+    }
+
+    if (name == "ViewProvidedSolution")
+    {
+        app.controller.loadCurrentProvidedSolution();
+    }
+
+    if (name == "ViewYourProgress" || name == "ViewYourSolution")
+    {
+        app.controller.cycleUserSolution();
     }
 
     auto transformComponentSet = [&](ComponentSet &cSet)

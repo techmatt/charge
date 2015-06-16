@@ -17,7 +17,7 @@ struct UserSessionLevelInfo
     UserSessionLevelInfo()
     {
         state = LevelState::Unsolved;
-        filename = "none";
+        puzzleFilename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
         bestComponentCost = std::numeric_limits<int>::max();
@@ -26,23 +26,24 @@ struct UserSessionLevelInfo
     ParameterTable toTable(const string &tableName) const
     {
         ParameterTable table(tableName);
-        table.setString("filename", filename);
+        table.setString("puzzleFilename", puzzleFilename);
         table.setInt("state", (int)state);
         table.setInt("bestStepCount", bestStepCount);
         table.setInt("bestComponentCost", bestComponentCost);
         return table;
     }
+
     static UserSessionLevelInfo fromTable(const ParameterTable &table)
     {
         UserSessionLevelInfo result;
-        result.filename = table.getString("filename");
+        result.puzzleFilename = table.getString("puzzleFilename");
         result.state = (LevelState)table.getInt("state");
         result.bestStepCount = table.getInt("bestStepCount");
         result.bestComponentCost = table.getInt("bestComponentCost");
         return result;
     }
 
-    string filename;
+    string puzzleFilename;
     LevelState state;
     int bestStepCount;
     int bestComponentCost;
@@ -55,7 +56,7 @@ struct UserSession
 {
     void init(int slotIndex);
 
-    int activePuzzle() const
+    int currentCampaignLevel() const
     {
         int result = 0;
         for (int i = 0; i < campaignLevels.size(); i++)
@@ -73,6 +74,20 @@ struct UserSession
         return min(solved + 3, (int)campaignLevels.size());
     }
 
+    const UserSessionLevelInfo* getLevelInfo(const string &puzzleFilename) const
+    {
+        for (int i = 0; i < campaignLevels.size(); i++)
+        {
+            if (campaignLevels[i].puzzleFilename == puzzleFilename)
+                return &campaignLevels[i];
+        }
+
+        if (customLevels.count(puzzleFilename) > 0)
+            return &customLevels.find(puzzleFilename)->second;
+
+        return nullptr;
+    }
+
     string dataFile() const;
     void save();
     void load();
@@ -84,7 +99,7 @@ struct UserSession
     // typically, this is just "SessionA", "SessionB", or "SessionC"
     string folder;
 
-    string getSolutionFilename(const string &puzzleName, bool campaign, SolutionType type) const;
+    string getSolutionFilename(const string &puzzleFilename, SolutionType type) const;
 
     vector<UserSessionLevelInfo> campaignLevels;
 

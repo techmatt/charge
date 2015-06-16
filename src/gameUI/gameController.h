@@ -108,7 +108,8 @@ public:
     GameSpeed speed;
     bool designActionTaken;
 
-    int currentPuzzleIndex;
+    int currentCampaignIndex;
+    string currentPuzzleFilename;
 
     int fractionalSpeedTicksLeft;
 

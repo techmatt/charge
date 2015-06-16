@@ -10,7 +10,7 @@ void UserSession::init(int slotIndex)
 
     for (int i = 0; i < campaignLevels.size(); i++)
     {
-        campaignLevels[i].filename = database().puzzles[i].filename;
+        campaignLevels[i].puzzleFilename = database().puzzles[i].filename;
     }
 
     playMusic = false;
@@ -77,7 +77,7 @@ void UserSession::load()
         if (table.hasParameter(paramName))
         {
             auto info = UserSessionLevelInfo::fromTable(table.getTable(paramName));
-            customLevels[info.filename] = info;
+            customLevels[info.puzzleFilename] = info;
         }
     }
 
@@ -89,8 +89,13 @@ string UserSession::dataFile() const
     return params().rootDir + folder + "progress.dat";
 }
 
-string UserSession::getSolutionFilename(const string &puzzleName, bool campaign, SolutionType type) const
+string UserSession::getSolutionFilename(const string &puzzleFilename, SolutionType type) const
 {
+    bool campaign = false;
+    for (auto &x : campaignLevels)
+        if (x.puzzleFilename == puzzleFilename)
+            campaign = true;
+
     const string subFolder = campaign ? "campaign/" : "custom/";
 
     util::makeDirectory(params().rootDir + folder);
@@ -101,7 +106,7 @@ string UserSession::getSolutionFilename(const string &puzzleName, bool campaign,
     if (type == SolutionType::Fastest) suffix = "_Fastest";
     if (type == SolutionType::Cheapest) suffix = "_Cheapest";
 
-    return params().rootDir + folder + subFolder + puzzleName + suffix + ".pzl";
+    return params().rootDir + folder + subFolder + puzzleFilename + suffix + ".pzl";
 }
 
 void UserSession::saveProgress(AppData &app)
@@ -114,8 +119,8 @@ void UserSession::saveProgress(AppData &app)
     if (userPieceCount == 0)
         return;
 
-    const string filenameRecent = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::MostRecent);
-    const string filenameStepCount = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::Fastest);
+    const string filenameRecent = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent);
+    const string filenameStepCount = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Fastest);
     
     if (!util::fileExists(filenameStepCount))
         app.state.savePuzzle(filenameRecent);
@@ -123,11 +128,11 @@ void UserSession::saveProgress(AppData &app)
 
 void UserSession::recordVictoryCampaign(AppData &app)
 {
-    const string filenameRecent = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::MostRecent);
-    const string filenameStepCount = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::Fastest);
-    const string filenameComponentCost = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::Cheapest);
+    const string filenameRecent = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent);
+    const string filenameStepCount = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Fastest);
+    const string filenameComponentCost = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Cheapest);
 
-    auto &info = campaignLevels[app.controller.currentPuzzleIndex];
+    auto &info = campaignLevels[app.controller.currentCampaignIndex];
 
     info.state = LevelState::Solved;
 

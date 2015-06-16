@@ -81,7 +81,7 @@ struct GameState
     //
     // semantic puzzle name
     //
-    string name;
+    string puzzleName;
 
     // map from 7x7 circuit coordinate to the offset from the circuit's origin
     // to the neighboring component. Aligned refers to the case where two circuits are perfectly aligned.

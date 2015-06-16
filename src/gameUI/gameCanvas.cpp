@@ -151,7 +151,7 @@ void GameCanvas::render()
 
     renderHoverComponent();
 
-    renderText(getFontTexture(app.state.name, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
+    renderText(getFontTexture(app.state.puzzleName, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
 
     renderTooltip();
 }
@@ -578,8 +578,9 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
 
     if (hotkey.size() > 0 && hotkey[0] != '!')
     {
-        renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f, attributeBottom), 12.0f);
-        renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f, attributeBottom), 12.0f);
+        float offset = hotkey.size() > 1 ? 5.0f : 0.0f;
+        renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f - offset, attributeBottom), 12.0f);
+        renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f - offset, attributeBottom), 12.0f);
     }
 
     if (component != nullptr)

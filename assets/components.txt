@@ -26,14 +26,14 @@ WireMajorDelay	-1	-1	!	no	no	Major Delay	Wires can be modified to change the spe
 CircuitBoundary	-1	-1	!	no	no	Circuit Boundary	The boundary of a circuit can be configured to block the flow of charge.
 CloseAll	-1	-1	!	no	no	Close All	Closes all inactive circuit boundaries.
 CircuitPaste	-1	-1	!	no	no	Invalid	ZZ
-CircuitRotate90	-1	-1	!	no	no	Invalid	ZZ
-CircuitRotateN90	-1	-1	!	no	no	Invalid	ZZ
-CircuitFlipHorizontal	-1	-1	!	no	no	Invalid	ZZ
-CircuitFlipVertical	-1	-1	!	no	no	Invalid	ZZ
+CircuitRotate90	-1	-1	!	no	no	Rotate Clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
+CircuitRotateN90	-1	-1	!	no	no	Rotate Counter-clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
+CircuitFlipHorizontal	-1	-1	!	no	no	Flip Horizontal	"Flips the current selection horizontally.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
+CircuitFlipVertical	-1	-1	!	no	no	Flip Vertical	"Flips the current selection vertically.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitCopy	-1	-1	!	no	no	Invalid	ZZ
 GateClosedGrayProxy	0	2	N	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateSwitchGrayProxy	1	2	M	no	no	Gray Button	Toggles the closest Gray gate.
-TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	QQ
+TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a Gray crank."
 TrapResetGrayProxy	3	2	K	no	no	Gray Crank	Resets the closest Gray trap.
 MegaHoldGrayProxy	-1	-1	!	no	no	Rainbow Goal Battery	"Accumulates incoming charge of any color, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
 Preference0	-1	-1	7	no	no	Major Rejector	Charge favors moving towards a component that is more accepting of charge.
@@ -53,3 +53,8 @@ Save	-1	-1	!	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and p
 Load	-1	-1	!	no	no	Load Puzzle	Loads a previously saved puzzle.
 Music	-1	-1	!	no	no	Toggle Music	Toggles game music.
 SoundEffect	-1	-1	!	no	no	Toggle Sound	Toggles audio effects.
+PrevLevel	-1	-1	Left	no	no	Previous Level	 
+NextLevel	-1	-1	Right	no	no	Next Level	 
+ViewProvidedSolution	-1	-1	Up	no	no	See Provided Solution	 
+ViewYourProgress	-1	-1	Down	no	no	Load Progress	 Your progress on each level is automatically saved.
+ViewYourSolution	-1	-1	Down	no	no	Load Your Solution	"Cycles through your most recent solution, your fastest solution, and you cheapest solution."

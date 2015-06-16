@@ -51,31 +51,6 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
         }
     }
 
-    if (key == SDLK_LEFT)
-    {
-        //app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
-        int newPuzzleIndex = math::max(app.controller.currentPuzzleIndex - 1, 0);
-        app.controller.loadCampaignPuzzle(newPuzzleIndex);
-    }
-    if (key == SDLK_RIGHT)
-    {
-        //app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-        if (app.controller.currentPuzzleIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
-            app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
-        else
-        {
-            int newPuzzleIndex  = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-            app.controller.loadCampaignPuzzle(newPuzzleIndex);
-        }
-    }
-    if (key == SDLK_UP)
-    {
-        app.controller.loadCurrentProvidedSolution();
-    }
-    if (key == SDLK_DOWN)
-    {
-        app.controller.cycleUserSolution();
-    }
     if (key == SDLK_z)
     {
         // undo and redo
