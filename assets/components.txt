@@ -41,15 +41,15 @@ Preference1	-1	-1	8	no	no	Minor Rejector	Charge favors moving towards a componen
 Preference2	-1	-1	9	no	no	Neutral	Charge favors moving towards a component that is more accepting of charge.
 Preference3	-1	-1	0	no	no	Minor Acceptor	Charge favors moving towards a component that is more accepting of charge.
 Preference4	-1	-1	-	no	no	Major Acceptor	Charge favors moving towards a component that is more accepting of charge.
-Start	-1	-1	-	no	no	Start Puzzle	You cannot modify the puzzle once it has started.
-Stop	-1	-1	-	no	no	Stop Puzzle	You cannot modify the puzzle once it has started.
-x0	-1	-1	-	no	no	Pause	Modifies the game speed.  Press space to temporarially increase game speed.
-Quarter	-1	-1	-	no	no	Quarter Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-x1	-1	-1	-	no	no	Normal Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-x3	-1	-1	-	no	no	Triple Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-x5	-1	-1	-	no	no	5x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-x10	-1	-1	-	no	no	Pause	Modifies the game speed.  Press space to temporarially increase game speed.
-Save	-1	-1	-	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and progress is automatically saved.
-Load	-1	-1	-	no	no	Load Puzzle	Loads a previously saved puzzle.
-Music	-1	-1	-	no	no	Toggle Music	Toggles game music.
-Sound	-1	-1	-	no	no	Toggle Sound	Toggles audio effects.
+Start	-1	-1	Enter	no	no	Start Puzzle	You cannot modify the puzzle once it has started.
+Stop	-1	-1	Enter	no	no	Stop Puzzle	You cannot modify the puzzle once it has started.
+speedPause	-1	-1	!	no	no	Pause	Modifies the game speed.  Press space to temporarially increase game speed.
+speedQuarter	-1	-1	!	no	no	Quarter Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX1	-1	-1	!	no	no	Normal Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX3	-1	-1	!	no	no	Triple Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX5	-1	-1	!	no	no	5x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX10	-1	-1	!	no	no	Pause	Modifies the game speed.  Press space to temporarially increase game speed.
+Save	-1	-1	!	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and progress is automatically saved.
+Load	-1	-1	!	no	no	Load Puzzle	Loads a previously saved puzzle.
+Music	-1	-1	!	no	no	Toggle Music	Toggles game music.
+SoundEffect	-1	-1	!	no	no	Toggle Sound	Toggles audio effects.

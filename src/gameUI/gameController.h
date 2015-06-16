@@ -16,8 +16,8 @@ enum class ControllerViewMode
     ProvidedSolution,
     BasePuzzle,
     UserSolutionRecent,
-    UserSolutionBestTime,
-    UserSolutionFewestPieces,
+    UserSolutionFastest,
+    UserSolutionCheapest,
 };
 
 enum class GameSpeed

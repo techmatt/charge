@@ -139,9 +139,9 @@ void GameController::cycleUserSolution()
     if (viewMode == ControllerViewMode::BasePuzzle)
         viewMode = ControllerViewMode::UserSolutionRecent;
     else if (viewMode == ControllerViewMode::UserSolutionRecent)
-        viewMode = ControllerViewMode::UserSolutionBestTime;
-    else if (viewMode == ControllerViewMode::UserSolutionBestTime)
-        viewMode = ControllerViewMode::UserSolutionFewestPieces;
+        viewMode = ControllerViewMode::UserSolutionFastest;
+    else if (viewMode == ControllerViewMode::UserSolutionFastest)
+        viewMode = ControllerViewMode::UserSolutionCheapest;
 
     loadUserSolution();
 }
@@ -156,13 +156,13 @@ void GameController::loadUserSolution()
         type = SolutionType::MostRecent;
         description = "most recent";
     }
-    if (viewMode == ControllerViewMode::UserSolutionBestTime) {
-        type = SolutionType::BestStepCount;
+    if (viewMode == ControllerViewMode::UserSolutionFastest) {
+        type = SolutionType::Fastest;
         description = "fastest";
     }
-    if (viewMode == ControllerViewMode::UserSolutionFewestPieces) {
-        type = SolutionType::BestPiecesUsed;
-        description = "fewest components";
+    if (viewMode == ControllerViewMode::UserSolutionCheapest) {
+        type = SolutionType::Cheapest;
+        description = "cheapest";
     }
 
     const string filename = app.session.getSolutionFilename(puzzle.filename, true, type);

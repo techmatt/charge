@@ -1,9 +1,9 @@
 
 #include "main.h"
 
-int GameState::piecesUsed() const
+int GameState::componentCost() const
 {
-    int pieceCount = 0;
+    int cost = 0;
 
     for (Component *c : components)
     {
@@ -11,20 +11,20 @@ int GameState::piecesUsed() const
             continue;
 
         if (c->modifiers.puzzleType == ComponentPuzzleType::CopiedCircuit)
-            pieceCount++;
+            cost++;
         else if (c->isCircuit())
-            pieceCount += 10;
+            cost += 10;
         else if (c->info->name == "Wire" && c->modifiers.speed == WireType::Standard)
         {
-            pieceCount++;
+            cost++;
         }
         else
         {
-            pieceCount += 2;
+            cost += 2;
         }
     }
 
-    return pieceCount;
+    return cost;
 }
 
 void GameState::clearBoard()
@@ -93,6 +93,9 @@ void GameState::savePuzzle(const string &filename)
 
     puzzleTable.setTable("buildableComponents", buildableComponents.toTable());
 
+    puzzleTable.setInt("componentCost", victoryInfo.componentCost);
+    puzzleTable.setInt("stepCount", victoryInfo.stepCount);
+
     puzzleTable.save(filename);
 }
 
@@ -107,6 +110,12 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName, boo
     puzzleTable.load(filename);
 
     buildableComponents = ComponentBuildState(puzzleTable.getTable("buildableComponents"));
+
+    if (puzzleTable.hasParameter("componentCost"))
+    {
+        victoryInfo.componentCost = puzzleTable.getInt("componentCost");
+        victoryInfo.stepCount = puzzleTable.getInt("stepCount");
+    }
 
     const int componentCount = puzzleTable.getInt("componentCount");
 
@@ -571,7 +580,7 @@ void GameState::step(AppData &app)
 
     if (victory)
     {
-        victoryInfo.piecesUsed = piecesUsed();
+        victoryInfo.componentCost = componentCost();
         victoryInfo.stepCount = stepCount;
         app.audio.playEffect("Victory");
         app.controller.recordVictory();

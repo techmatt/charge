@@ -1,8 +1,13 @@
 
 struct GameVictoryInfo
 {
+    GameVictoryInfo()
+    {
+        stepCount = -1;
+        componentCost = -1;
+    }
     int stepCount;
-    int piecesUsed;
+    int componentCost;
 };
 
 struct GameState
@@ -25,7 +30,7 @@ struct GameState
 
     void setPuzzlePieceState(GameState &basePuzzle);
 
-    int piecesUsed() const;
+    int componentCost() const;
 
     // given a circuit boundary component, find its neighbor on the board, if any.
     // this may give a component on either the board or on another circuit.

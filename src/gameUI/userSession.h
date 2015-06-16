@@ -8,8 +8,8 @@ enum LevelState
 enum SolutionType
 {
     MostRecent,
-    BestStepCount,
-    BestPiecesUsed,
+    Fastest,
+    Cheapest,
 };
 
 struct UserSessionLevelInfo
@@ -20,7 +20,7 @@ struct UserSessionLevelInfo
         filename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
-        bestPiecesUsed = std::numeric_limits<int>::max();
+        bestComponentCost = std::numeric_limits<int>::max();
     }
 
     ParameterTable toTable(const string &tableName) const
@@ -29,7 +29,7 @@ struct UserSessionLevelInfo
         table.setString("filename", filename);
         table.setInt("state", (int)state);
         table.setInt("bestStepCount", bestStepCount);
-        table.setInt("bestPiecesUsed", bestPiecesUsed);
+        table.setInt("bestComponentCost", bestComponentCost);
         return table;
     }
     static UserSessionLevelInfo fromTable(const ParameterTable &table)
@@ -38,14 +38,14 @@ struct UserSessionLevelInfo
         result.filename = table.getString("filename");
         result.state = (LevelState)table.getInt("state");
         result.bestStepCount = table.getInt("bestStepCount");
-        result.bestPiecesUsed = table.getInt("bestPiecesUsed");
+        result.bestComponentCost = table.getInt("bestComponentCost");
         return result;
     }
 
     string filename;
     LevelState state;
     int bestStepCount;
-    int bestPiecesUsed;
+    int bestComponentCost;
 };
 
 //
