@@ -302,14 +302,20 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::PuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::PuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
 
-	buttons.push_back(GameButton("CircuitRotate90", vec2i(8, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-	buttons.push_back(GameButton("CircuitRotateN90", vec2i(9, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-	buttons.push_back(GameButton("CircuitFlipVertical", vec2i(10, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-	buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(11, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    if (params().godMode)
+    {
+        buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    }
 
+    if (app.ui.activePlacementBuffer.components.size() >= 2 || (app.ui.selection.components.size() == 1 && app.ui.selection.components.front()->isCircuit()))
+    {
+        buttons.push_back(GameButton("CircuitRotate90", vec2i(8, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitRotateN90", vec2i(9, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitFlipVertical", vec2i(10, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(11, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+    }
 
     for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::PuzzleControl, ComponentModifiers()));
@@ -318,24 +324,24 @@ void GameController::updateButtonList()
     buttons.push_back(GameButton("SoundEffect", vec2i(7, 1), ButtonType::PuzzleControl, ComponentModifiers()));
 
     //
-    // Add power source indicators
+    // Add indicators
     //
-    if (component != nullptr && component->info->name == "PowerSource")
+    if (component != nullptr && app.controller.editorMode == EditorMode::LevelEditor)
     {
-        buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(component->intrinsics.totalCharges)));
-        buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s"));
-        buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(component->intrinsics.secondsPerEmission) + "s"));
-    }
+        if (component->info->name == "PowerSource")
+        {
+            buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(component->intrinsics.totalCharges)));
+            buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s"));
+            buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(component->intrinsics.secondsPerEmission) + "s"));
+        }
 
-    //
-    // Add megahold indicators
-    //
-    if (component != nullptr && component->info->name == "MegaHold")
-    {
-        const double dischargeFreq = component->intrinsics.ticksPerDischarge * constants::secondsPerStep;
-        buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + util::formatDouble(dischargeFreq, 2) + "s"));
-        buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(component->intrinsics.chargesLostPerDischarge)));
-        buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(component->intrinsics.totalChargeRequired)));
+        if (component->info->name == "MegaHold")
+        {
+            const double dischargeFreq = component->intrinsics.ticksPerDischarge * constants::secondsPerStep;
+            buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + util::formatDouble(dischargeFreq, 2) + "s"));
+            buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(component->intrinsics.chargesLostPerDischarge)));
+            buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(component->intrinsics.totalChargeRequired)));
+        }
     }
 }
 
