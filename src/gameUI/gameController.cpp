@@ -58,6 +58,10 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
+    // TODO: we can allow copying components between levels, but only after we implment verifying if the components can be built in the other level.
+    if (editorMode != EditorMode::LevelEditor)
+        app.ui.copyBuffer.clear();
+
     if (util::endsWith(filename, ".txt"))
     {
         loadLegacyPuzzle(filename);

@@ -68,7 +68,6 @@ void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHe
 {
     const float aspect = (float)tex.bmp().dimX() / (float)tex.bmp().dimY();
 
-    // TODO: the 58 here is a guess
     const float lineCount = tex.bmp().dimY() / 58.0f;
     const float height = lineCount * lineHeight;
 

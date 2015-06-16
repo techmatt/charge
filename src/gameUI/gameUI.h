@@ -32,7 +32,6 @@ public:
 
     int hoverButtonIndex;
 
-    // TODO: consider moving this to Board
     bool canNotBuildAtPosition(const Board &b, const ComponentDefiningProperties &cdp, const vec2i &coord) const
     {
         //TODO: check whether the component is actually buildable in this puzzle with the corresponding properties
