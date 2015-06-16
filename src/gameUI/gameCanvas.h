@@ -76,6 +76,7 @@ private:
     void renderButtonBackground(const GameButton &button, bool selected);
     void renderButtonForeground(const GameButton &button, bool selected);
     void renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon);
+    void renderLocalizedComponentHover(const string &name, const rect2f &screenRect, float depth, const IconState &icon);
 
     void renderHoverComponent();
 

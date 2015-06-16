@@ -16,6 +16,9 @@ void GameButton::initTooltip()
     if (hotkey.size() == 0)
         hotkey = "!";
 
+    if (name == "Start" || name == "Stop")
+        hotkeyCode = SDLK_RETURN;
+
     if (type == ButtonType::ChargePreference)
     {
         tooltip = &database().getComponent("Preference" + to_string((int)modifiers.chargePreference));
@@ -64,10 +67,10 @@ void GameButton::initTooltip()
         if (name == "CloseAll") hotkey = "3";
     }
 
-    if (hotkey[0] >= 'A' && hotkey[0] <= 'Z')
+    if (hotkey.size() == 1 && hotkey[0] >= 'A' && hotkey[0] <= 'Z')
         hotkeyCode = SDLK_a + hotkey[0] - 'A';
 
-    if (hotkey[0] >= '0' && hotkey[0] <= '9')
+    if (hotkey.size() == 1 && hotkey[0] >= '0' && hotkey[0] <= '9')
         hotkeyCode = SDLK_0 + hotkey[0] - '0';
 
     if (hotkey[0] == '-')
@@ -137,9 +140,8 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
+        app.controller.speed = GameSpeed::x1;
         app.state.resetPuzzle();
-        if (app.controller.speed == GameSpeed::x0)
-            app.controller.speed = GameSpeed::x1;
     }
     if (name == "Stop")
     {

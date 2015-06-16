@@ -35,13 +35,6 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
         selection.empty();
     }
 
-    if (key == SDLK_RETURN)
-    {
-        app.controller.designActionTaken = false;
-        app.controller.puzzleMode = PuzzleMode::Executing;
-        app.state.resetPuzzle();
-    }
-
     if (key == SDLK_F5)
     {
         ParameterFile parameterFile("../assets/parameters.txt");

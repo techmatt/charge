@@ -289,7 +289,7 @@ void GameCanvas::renderHoverComponent()
         //float depth = depthLayers::hoverComponent;
 
         const rect2f screenRect = GameUtil::locationInLocationToWindowRect(canonicalDims, componentLocation, location, 2);
-        renderLocalizedComponent(c.baseInfo->name, nullptr, screenRect, depth, IconState(c.modifiers, false, false));
+        renderLocalizedComponentHover(c.baseInfo->name, screenRect, depth, IconState(c.modifiers, false, false));
 
         // render the green field
         if (!componentLocation.inCircuit())
@@ -626,13 +626,24 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
     }
 }
 
+void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f &screenRect, float depth, const IconState &icon)
+{
+    if (icon.modifiers.boundary == CircuitBoundaryType::Closed)
+        return;
+
+    Texture &baseTex = database().getTexture(app.renderer, "WireBase");
+    Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
+    Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
+
+    render(preferenceTex, screenRect, depth, Colors::White());
+
+    render(baseTex, screenRect, depth, Colors::White());
+
+    render(componentTex, screenRect, depth, Colors::White());
+}
+
 void GameCanvas::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
 {
-    /*if (!isButton && name == "Blocker" &&
-    (app.ui.selectedMenuComponent == nullptr || app.ui.selectedMenuComponent->name != "Blocker"))
-    //(app.state.getComponent(selectedGameLocation) == nullptr || app.state.getComponent(selectedGameLocation)->info->name != "Blocker"))
-    return;*/
-
     Texture &baseTex = database().getTexture(app.renderer, "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
     Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];

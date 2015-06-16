@@ -23,7 +23,7 @@ namespace depthLayers
     const float tooltip = 0.005f;
     const float hoverComponent = 0.1f;
     const float hoverCircuitComponent = 0.06f;
-    const float hoverComponentGrid = 0.05f;
+    const float hoverComponentGrid = 0.07f;
     const float hoverMiniCircuitOffset = 0.005f;
     const float background = 1.0f;
 
