@@ -517,14 +517,14 @@ void GameCanvas::renderTooltip()
     }
 
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
-    if (button != nullptr && // !app.activeCircuit() &&
-        (button->type == ButtonType::Component || button->type == ButtonType::ChargeColor || button->type == ButtonType::ChargePreference ||
-        button->type == ButtonType::CircuitBoundary || button->type == ButtonType::GateState || button->type == ButtonType::TrapState ||
-        button->type == ButtonType::WireSpeed))
+    if (button != nullptr && button->tooltip != nullptr)
     {
-        float startY = button->canonicalRect.max().y + 5.0f;
+        vec2f start = params().tooltipDefaultStart;
 
-        renderTooltip(vec2f(params().tooltipDefaultStart.x, startY), button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr);
+        if (button->type != ButtonType::PuzzleControl)
+            start.y = button->canonicalRect.max().y + 5.0f;
+
+        renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }

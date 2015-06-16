@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mLib\common.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
+    <ClCompile Include="mLib\FileDialog.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
+    <ClCompile Include="mLib\lodepng.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
+    <ClCompile Include="mLib\utility.cpp">
+      <Filter>mLib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="expression.h" />
+    <ClInclude Include="mLib\common.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\FileDialog.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\GLProgram.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\GLQuad.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\grid2.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\lodepng.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\matrix4.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\mLib.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\parameterFile.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\parameterTable.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\rect2.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\RGBColor.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\stringUtil.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\stringUtilConvert.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\utility.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\vec2.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\vec3.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+    <ClInclude Include="mLib\vec4.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="mLib">
+      <UniqueIdentifier>{8466d91e-9a2a-4f3a-b224-1a6cdd9f962f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mLib\grid2.inl">
+      <Filter>mLib</Filter>
+    </None>
+  </ItemGroup>
+</Project>

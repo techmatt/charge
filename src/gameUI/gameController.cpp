@@ -309,7 +309,7 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
     }
 
-    if (app.ui.activePlacementBuffer.components.size() >= 2 || (app.ui.selection.components.size() == 1 && app.ui.selection.components.front()->isCircuit()))
+    if (app.ui.activePlacementBuffer.components.size() >= 2 || (component != nullptr && component->isCircuit() && component->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece))
     {
         buttons.push_back(GameButton("CircuitRotate90", vec2i(8, 0), ButtonType::PuzzleControl, ComponentModifiers()));
         buttons.push_back(GameButton("CircuitRotateN90", vec2i(9, 0), ButtonType::PuzzleControl, ComponentModifiers()));

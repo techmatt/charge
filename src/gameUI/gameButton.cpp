@@ -7,6 +7,7 @@
 void GameButton::initTooltip()
 {
     tooltip = component;
+
     hotkeyCode = 0;
     hotkey = "!";
     if (tooltip == nullptr)
@@ -71,6 +72,9 @@ void GameButton::initTooltip()
 
     if (hotkey[0] == '-')
         hotkeyCode = SDLK_MINUS;
+
+    if (tooltip == nullptr && database().hasComponent(name))
+        tooltip = &database().getComponent(name);
 }
 
 void GameButton::leftClick(AppData &app, Component *selectedComponent) const
