@@ -304,19 +304,13 @@ void GameController::updateButtonList()
     buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::PuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::PuzzleControl, ComponentModifiers()));
 
-    /*PrevLevel
-NextLevel
-ViewProvidedSolution
-ViewYourProgress
-ViewYourSolution
-*/
     buttons.push_back(GameButton("PrevLevel", vec2i(9, 1), ButtonType::PuzzleControl, ComponentModifiers()));
     buttons.push_back(GameButton("NextLevel", vec2i(10, 1), ButtonType::PuzzleControl, ComponentModifiers()));
 
     auto levelInfo = app.session.getLevelInfo(app.controller.currentPuzzleFilename);
     if (levelInfo != nullptr)
     {
-        if (levelInfo->state == LevelState::Solved)
+        if (levelInfo->state == LevelState::Solved || params().godMode)
         {
             buttons.push_back(GameButton("ViewProvidedSolution", vec2i(12, 1), ButtonType::PuzzleControl, ComponentModifiers()));
             buttons.push_back(GameButton("ViewYourSolution", vec2i(13, 1), ButtonType::PuzzleControl, ComponentModifiers()));

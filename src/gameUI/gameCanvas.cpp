@@ -521,8 +521,15 @@ void GameCanvas::renderTooltip()
     {
         vec2f start = params().tooltipDefaultStart;
 
-        if (button->type != ButtonType::PuzzleControl)
+        if (button->type == ButtonType::PuzzleControl)
+        {
+            if (app.activeCircuit() != nullptr)
+                return;
+        }
+        else
+        {
             start.y = button->canonicalRect.max().y + 5.0f;
+        }
 
         renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
@@ -638,7 +645,8 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
 
     render(preferenceTex, screenRect, depth, Colors::White());
 
-    render(baseTex, screenRect, depth, Colors::White());
+    if (name != "Blocker")
+        render(baseTex, screenRect, depth, Colors::White());
 
     render(componentTex, screenRect, depth, Colors::White());
 }
@@ -968,7 +976,7 @@ void GameCanvas::renderMegaHoldCircuit(const Component &component, bool trailRen
 
 void GameCanvas::renderSuperMegaHold(const Component &component)
 {
-    Texture &tex = database().getTexture(app.renderer, "SuperMegaHold");
+    Texture &tex = database().getTexture(app.renderer, "SuperMegaHold" + GameUtil::suffixFromCharge(component.modifiers.color));
 
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize));
 

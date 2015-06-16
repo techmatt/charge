@@ -266,6 +266,9 @@ void GameState::step(AppData &app)
     {
         victoryChargeScaleFactorPositive = min(victoryChargeScaleFactorPositive * 1.01f, 1.5f);
         victoryChargeScaleFactorNegative *= 0.995f;
+
+        explodingCharges.clear();
+
         return;
     }
 
