@@ -12,7 +12,7 @@ void GameController::init()
     currentPuzzleIndex = 0;
     fractionalSpeedTicksLeft = 0;
 
-    loadCurrentPuzzle();
+    loadCampaignPuzzle(currentPuzzleIndex);
 }
 
 void GameController::step()
@@ -56,14 +56,14 @@ void GameController::step()
     }
 }
 
-void GameController::loadPuzzle(const string &filename, const string &puzzleName)
+void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
     if (util::endsWith(filename, ".txt"))
     {
         loadLegacyPuzzle(filename);
         return;
     }
-    app.state.loadPuzzle(filename, puzzleName);
+    app.state.loadPuzzle(filename, puzzleName, loadAsPuzzle);
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
     app.canvas.backgroundDirty = true;
@@ -84,10 +84,14 @@ PuzzleInfo& GameController::getCurrentPuzzle()
     return database().puzzles[currentPuzzleIndex];
 }
 
-void GameController::loadCurrentPuzzle()
+void GameController::loadCampaignPuzzle(int puzzleIndex)
 {
+    app.session.saveProgress(app);
+
+    app.controller.currentPuzzleIndex = puzzleIndex;
+
     const PuzzleInfo &puzzle = database().puzzles[app.controller.currentPuzzleIndex];
-    app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
+    app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
     viewMode = ControllerViewMode::BasePuzzle;
 }
 
@@ -109,7 +113,7 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)", true);
 
     viewMode = ControllerViewMode::ProvidedSolution;
 
@@ -128,7 +132,7 @@ void GameController::cycleUserSolution()
     if (viewMode == ControllerViewMode::ProvidedSolution)
     {
         viewMode = ControllerViewMode::BasePuzzle;
-        loadCurrentPuzzle();
+        loadCampaignPuzzle(currentPuzzleIndex);
         return;
     }
 
@@ -169,7 +173,7 @@ void GameController::loadUserSolution()
         return;
     }
 
-    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")");
+    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")", false);
 }
 
 void GameController::recordDesignAction()

@@ -22,8 +22,7 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.activeEventHandler = &app.ui;
     app.activeRenderHandler = &app.canvas;
     app.session.init(slotIndex);
-    app.controller.currentPuzzleIndex = app.session.activePuzzle();
-    app.controller.loadCurrentPuzzle();
+    app.controller.loadCampaignPuzzle(app.session.activePuzzle());
 }
 
 void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)

@@ -106,6 +106,14 @@ string UserSession::getSolutionFilename(const string &puzzleName, bool campaign,
 
 void UserSession::saveProgress(AppData &app)
 {
+    int userPieceCount = 0;
+    for (Component *c : app.state.components)
+        if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece)
+            userPieceCount++;
+
+    if (userPieceCount == 0)
+        return;
+
     const string filenameRecent = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::MostRecent);
     const string filenameStepCount = app.session.getSolutionFilename(database().puzzles[app.controller.currentPuzzleIndex].filename, true, SolutionType::BestStepCount);
     

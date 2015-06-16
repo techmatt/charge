@@ -10,7 +10,7 @@ struct GameState
 	void init();
     
     void savePuzzle(const string &filename);
-    void loadPuzzle(const string &filename, const string &puzzleName);
+    void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
 
     void clearBoard();
     void resetPuzzle();
@@ -22,6 +22,8 @@ struct GameState
     void addNewComponent(Component *component, bool addCircuitComponents = true, bool updateConnections = true);
     void removeComponent(Component *component, bool updateConnections = true);
     void step(AppData &app);
+
+    void setPuzzlePieceState(GameState &basePuzzle);
 
     int piecesUsed() const;
 

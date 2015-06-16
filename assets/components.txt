@@ -16,7 +16,7 @@ TrapSprung	-1	-1	!	yes	yes	# Trap (Closed)	"Behaves like a normal wire for the f
 TrapReset	3	1	E	yes	yes	# Crank	Resets all # traps.
 PowerSource	6	1	O	yes	no	# Generator	Produces # charge and sends it to adjacent components.
 MegaHold	4	2	!	yes	yes	# Goal Battery	"Accumulates all incoming # charge, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
-ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win! |A goal will hold onto charge as long as it has no other destination to move towards."
+ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win! ||A goal will hold onto charge as long as it has no other destination to move towards."
 Blocker	6	2	!	no	no	Blocker	Blockers never allow charge to pass through them.
 WireMajorAccelerator	-1	-1	!	no	no	Major Accelerator	Wires can be modified to change the speed charge travels through them.
 WireMinorAccelerator	-1	-1	!	no	no	Minor Accelerator	Wires can be modified to change the speed charge travels through them.

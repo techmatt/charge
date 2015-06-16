@@ -68,11 +68,11 @@ public:
     void recordVictory();
 
     void loadLegacyPuzzle(const string &filename);
-    void loadPuzzle(const string &filename, const string &puzzleName);
+    void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
     
     PuzzleInfo& getCurrentPuzzle();
 
-    void loadCurrentPuzzle();
+    void loadCampaignPuzzle(int newIndex);
     void loadCurrentProvidedSolution();
     void cycleUserSolution();
     void loadUserSolution();

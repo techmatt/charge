@@ -96,7 +96,7 @@ void GameState::savePuzzle(const string &filename)
     puzzleTable.save(filename);
 }
 
-void GameState::loadPuzzle(const string &filename, const string &puzzleName)
+void GameState::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
     clearBoard();
 
@@ -137,8 +137,9 @@ void GameState::loadPuzzle(const string &filename, const string &puzzleName)
         if (c->info->name != "Circuit")
             addNewComponent(c, false, false);
 
-    for (auto &c : components)
-        c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
+    if (loadAsPuzzle)
+        for (auto &c : components)
+            c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
 
     //
     // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.

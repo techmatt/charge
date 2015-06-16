@@ -61,8 +61,8 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
     if (key == SDLK_LEFT)
     {
         //app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex - 1, database().puzzles.size());
-        app.controller.currentPuzzleIndex = math::max(app.controller.currentPuzzleIndex - 1, 0);
-        app.controller.loadCurrentPuzzle();
+        int newPuzzleIndex = math::max(app.controller.currentPuzzleIndex - 1, 0);
+        app.controller.loadCampaignPuzzle(newPuzzleIndex);
     }
     if (key == SDLK_RIGHT)
     {
@@ -71,8 +71,8 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
             app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
         else
         {
-            app.controller.currentPuzzleIndex = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
-            app.controller.loadCurrentPuzzle();
+            int newPuzzleIndex  = math::mod(app.controller.currentPuzzleIndex + 1, database().puzzles.size());
+            app.controller.loadCampaignPuzzle(newPuzzleIndex);
         }
     }
     if (key == SDLK_UP)
