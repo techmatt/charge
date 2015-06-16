@@ -170,6 +170,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
         // Just a click
         if (hover.valid())
         {
+            app.canvas.backgroundDirty = true;
             Component* hoverComponent = app.state.getComponent(hover, false);
             if (ctrl || shift){
                 if (hoverComponent != nullptr)
@@ -184,8 +185,6 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
         }
 
     }
-
-    app.canvas.backgroundDirty = true;
 }
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)

@@ -25,9 +25,5 @@ struct Board
     bool coordValidForNewComponent(const vec2i &v) const;
     void addNewComponent(Component *component);
 
-    int findNeighboringComponents(const vec2i &source, Component *neighbors[6]);
-
-    //ParameterTable toTable(const string &tableName) const;
-
     Grid2<BoardCell> cells;
 };

@@ -43,11 +43,6 @@ struct GameState
 
     Component* getComponent(const GameLocation &pos, bool skipInactiveBoundary = true);
 
-    //
-    // returns the number of neighbors.
-    //
-    int findNeighboringComponents(Component &component, Component *neighbors[6]);
-
     Component* connectableComponentAtRelativePosition(Component* component, vec2i relativePosition);
 
     Component* findClosestMatch(Component *start);

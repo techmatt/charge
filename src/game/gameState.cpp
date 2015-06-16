@@ -650,7 +650,6 @@ Component* GameState::findCircuitBoundaryNeighbor(Component &component)
     Component *result = board.cells(worldCoord).c;
 
     if (result != nullptr && result->location.boardPos == worldCoord)
-        // TODO: for circuits, this needs to introspect into the circuit
         return result;
     else
         return nullptr;
@@ -668,7 +667,6 @@ Component* GameState::findCircuitBoundaryNeighborAligned(Component &component)
     Component *result = board.cells(worldCoord).c;
 
     if (result != nullptr && result->location.boardPos == worldCoord && result->info->name == "Circuit")
-        // TODO: this returns the circuit, but not the mapping into the circuit
         return result;
     else
         return nullptr;
@@ -680,26 +678,6 @@ void GameState::updateCircuitBoundaries()
     {
         if (c->info->name == "CircuitBoundary")
             c->circuitBoundaryNeighbor = findCircuitBoundaryNeighbor(*c);
-    }
-}
-
-int GameState::findNeighboringComponents(Component &component, Component *neighbors[6])
-{
-    if (component.location.inCircuit())
-    {
-        if (component.info->name == "CircuitBoundary")
-        {
-            // TODO: the circuit boundary connects to either another component in the circuit, a component on the mian board, or a component in another circuit.
-            return 0;
-        }
-        else
-        {
-            return getCircuit(component.location).circuitBoard->findNeighboringComponents(component.location.circuitPos, neighbors);
-        }
-    }
-    else
-    {
-        return board.findNeighboringComponents(component.location.boardPos, neighbors);
     }
 }
 

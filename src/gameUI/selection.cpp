@@ -7,6 +7,7 @@ bool ComponentSelection::isValidCopy() const
         if (c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece && !c->isCircuit())
             return false;
 
+        // TODO: this is wrong, but not doing this will crash
         if (c->location.circuitPos != constants::invalidCoord)
             return false;
     }

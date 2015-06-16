@@ -236,7 +236,9 @@ void GameController::updateButtonList()
     {
         const ComponentInfo &info = *component->info;
 
-        if (component->info->name != "Circuit" && component->info->name != "Blocker" && component->info->name != "PowerSource")
+        const bool allowPreference = (currentCampaignIndex == -1 || currentCampaignIndex >= constants::preferenceCampaignLevelStart);
+
+        if (component->info->name != "Circuit" && component->info->name != "Blocker" && component->info->name != "PowerSource" && allowPreference)
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
@@ -246,12 +248,21 @@ void GameController::updateButtonList()
 
         if (info.name == "Wire")
         {
+            int speedCount = 0;
             for (int speed = 0; speed <= 4; speed++)
             {
                 ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
                 if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
-                    buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::WireSpeed, modifier));
+                    speedCount++;
             }
+
+            if (speedCount > 1)
+                for (int speed = 0; speed <= 4; speed++)
+                {
+                    ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
+                    if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
+                        buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::WireSpeed, modifier));
+                }
         }
         else if (info.name == "CircuitBoundary")
         {
