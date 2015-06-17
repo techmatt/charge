@@ -95,10 +95,10 @@ void ComponentSet::flipAboutHorizonal()
 
         if (c.location.inCircuit())
         {
-            temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2 - 1, constants::circuitBoardSize / 2 - 1);
+            temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
             x = temp.x; y = temp.y;
             temp.y = -y; temp.x = x;
-            c.location.circuitPos = temp - vec2i(1, 1) + vec2i(center);
+			c.location.circuitPos = temp - vec2i(1, 1) + vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);;
         }
     }
 }
@@ -119,10 +119,10 @@ void ComponentSet::flipAboutVerical()
 
         if (c.location.inCircuit())
         {
-            temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2 - 1, constants::circuitBoardSize / 2 - 1);
+            temp = c.location.circuitPos + vec2i(1, 1) - vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
             x = temp.x; y = temp.y;
             temp.y = y; temp.x = -x;
-            c.location.circuitPos = temp - vec2i(1, 1) + vec2i(center);
+			c.location.circuitPos = temp - vec2i(1, 1) + vec2i(constants::circuitBoardSize / 2, constants::circuitBoardSize / 2);
         }
     }
 }
