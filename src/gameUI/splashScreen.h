@@ -14,5 +14,10 @@ public:
     void render() override;
 
 private:
+    void bloom();
+
     AppData &app;
+
+    RenderTarget bloomTexture0;
+    RenderTarget bloomTexture1;
 };
