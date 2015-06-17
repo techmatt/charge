@@ -75,7 +75,7 @@ void GameState::init()
     }
 }
 
-void GameState::savePuzzle(const string &filename)
+void GameState::savePuzzle(const string &filename, const string &_basePuzzleFilename)
 {
     for (Component *c : components)
         c->info = c->baseInfo;
@@ -96,7 +96,11 @@ void GameState::savePuzzle(const string &filename)
     puzzleTable.setInt("componentCost", victoryInfo.componentCost);
     puzzleTable.setInt("stepCount", victoryInfo.stepCount);
 
+    puzzleTable.setString("basePuzzleFilename", _basePuzzleFilename);
+
     puzzleTable.save(filename);
+
+    
 }
 
 void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bool loadAsPuzzle)
@@ -149,6 +153,10 @@ void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bo
     if (loadAsPuzzle)
         for (auto &c : components)
             c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
+
+    basePuzzleFilename = "unknown";
+    if (puzzleTable.hasParameter("basePuzzleFilename"))
+        basePuzzleFilename = puzzleTable.getString("basePuzzleFilename");
 
     //
     // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.

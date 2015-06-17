@@ -123,7 +123,7 @@ void UserSession::saveProgress(AppData &app)
     const string filenameStepCount = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Fastest);
     
     if (!util::fileExists(filenameStepCount))
-        app.state.savePuzzle(filenameRecent);
+        app.state.savePuzzle(filenameRecent, app.controller.currentPuzzleFilename);
 }
 
 void UserSession::recordVictoryCampaign(AppData &app)
@@ -136,18 +136,18 @@ void UserSession::recordVictoryCampaign(AppData &app)
 
     info.state = LevelState::Solved;
 
-    app.state.savePuzzle(filenameRecent);
+    app.state.savePuzzle(filenameRecent, app.controller.currentPuzzleFilename);
 
     if (app.state.victoryInfo.componentCost <= info.bestComponentCost)
     {
         info.bestComponentCost = app.state.victoryInfo.componentCost;
-        app.state.savePuzzle(filenameComponentCost);
+        app.state.savePuzzle(filenameComponentCost, app.controller.currentPuzzleFilename);
     }
 
     if (app.state.victoryInfo.stepCount <= info.bestStepCount)
     {
         info.bestStepCount = app.state.victoryInfo.stepCount;
-        app.state.savePuzzle(filenameStepCount);
+        app.state.savePuzzle(filenameStepCount, app.controller.currentPuzzleFilename);
     }
 
     save();

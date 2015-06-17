@@ -14,7 +14,7 @@ struct GameState
 {
 	void init();
     
-    void savePuzzle(const string &filename);
+    void savePuzzle(const string &filename, const string &basePuzzleFilename);
     void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
 
     void clearBoard();
@@ -77,6 +77,8 @@ struct GameState
     // semantic puzzle name
     //
     string puzzleName;
+
+    string basePuzzleFilename;
 
     // map from 7x7 circuit coordinate to the offset from the circuit's origin
     // to the neighboring component. Aligned refers to the case where two circuits are perfectly aligned.

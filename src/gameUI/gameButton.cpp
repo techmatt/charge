@@ -189,7 +189,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             filename = util::replace(filename, '.', ' ');
             filename = util::replace(filename, ',', ' ');
             filename += ".pzl";
-            app.state.savePuzzle(filename);
+            app.state.savePuzzle(filename, app.controller.currentPuzzleFilename);
         }
     }
     if (name == "Load")

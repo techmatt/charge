@@ -68,6 +68,17 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
         return;
     }
     app.state.loadPuzzle(filename, puzzleName, loadAsPuzzle);
+
+    if (app.state.basePuzzleFilename != "unknown")
+    {
+        currentPuzzleFilename = app.state.basePuzzleFilename;
+
+        currentCampaignIndex = -1;
+        for (int i = 0; i < database().puzzles.size(); i++)
+            if (database().puzzles[i].filename == currentPuzzleFilename)
+                currentCampaignIndex = i;
+    }
+
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
     app.canvas.backgroundDirty = true;
