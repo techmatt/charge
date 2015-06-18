@@ -8,6 +8,8 @@ const bool dumpHighlightMode = false;
 
 void SplashScreen::init()
 {
+    app.renderer.bindMainRenderTarget();
+
     for (const string &line : util::getFileLines(params().assetDir + "highlightsSplashA.txt"))
     {
         auto parts = util::split(line, ' ');
@@ -42,9 +44,9 @@ void SplashScreen::bloom()
     const float s = 0.98f;
 
     frameIndex++;
-    time += 0.04f;
+    time += 0.03f;
 
-    if (frameIndex % 80 == 0)
+    if (frameIndex % 100 == 0)
     {
         if (rand() % 4 == 0)
         {
@@ -84,8 +86,6 @@ void SplashScreen::bloom()
     float intensity = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
     app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensity, 0.0f));
 
-    bloomTexture0.unbindRenderTarget();
-
     //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");
 
     //
@@ -97,8 +97,6 @@ void SplashScreen::bloom()
 
     glClear(GL_COLOR_BUFFER_BIT);
     app.renderer.renderSplashB(vec2f(1.0f, 0.0f) / (float)bloomSize.x);
-
-    bloomTexture1.unbindRenderTarget();
 
     //LodePNG::save(bloomTexture1.getImage(), "bloomTextureB.png");
 
@@ -113,7 +111,8 @@ void SplashScreen::bloom()
     app.renderer.renderSplashB(vec2f(0.0f, 1.0f) / (float)bloomSize.y);
 
     glEnable(GL_BLEND);
-    bloomTexture0.unbindRenderTarget();
+    
+    app.renderer.bindMainRenderTarget();
 
     glViewport(0, 0, app.renderer.getWindowSize().x, app.renderer.getWindowSize().y);
 

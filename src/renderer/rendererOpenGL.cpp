@@ -5,6 +5,8 @@ void RendererOpenGL::init(SDL_Window *window)
 {
     _window = window;
 
+    useMotionBlur = false;
+
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
     _context = SDL_GL_CreateContext(window);
@@ -90,9 +92,26 @@ mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth, float
     return _windowToNDC * translateC * rotate * translateB * translateA * scaleA;
 }
 
+void RendererOpenGL::bindMainRenderTarget()
+{
+    if (useMotionBlur)
+    {
+        if (_motionBlurRenderTarget.dimensions() != vec2i(_windowSize))
+        {
+            _motionBlurRenderTarget.init(*this, vec2i(_windowSize));
+        }
+
+        _motionBlurRenderTarget.bindAsRenderTarget();
+    }
+    else
+    {
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+    }
+}
+
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
-	SDL_Rect dst;
+    SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
     dst.y = (int)(destinationRect.min().y);
     dst.w = (int)(destinationRect.max().x) - dst.x;

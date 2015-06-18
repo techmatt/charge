@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
+void RenderTarget::init(RendererOpenGL &renderer, const vec2i &dimensions)
 {
     releaseMemory();
     _dimensions = dimensions;
@@ -34,7 +34,7 @@ void RenderTarget::init(Renderer &renderer, const vec2i &dimensions)
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    unbindRenderTarget();
+    renderer.bindMainRenderTarget();
 }
 
 void RenderTarget::bindAsRenderTarget()

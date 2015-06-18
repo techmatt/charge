@@ -23,7 +23,7 @@ public:
         _dimensions = vec2i(0, 0);
     }
 
-    void init(Renderer &renderer, const vec2i &dimensions);
+    void init(RendererOpenGL &renderer, const vec2i &dimensions);
 
     void clear(const vec4f &color)
     {

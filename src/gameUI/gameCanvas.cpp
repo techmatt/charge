@@ -79,6 +79,8 @@ void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHe
 
 void GameCanvas::render()
 {
+    app.renderer.bindMainRenderTarget();
+
     canonicalDims = GameUtil::getCanonicalSize();
     coordinateFrame = app.renderer.getWindowCoordinateFrame();
 
@@ -199,8 +201,6 @@ void GameCanvas::renderTrails()
         }
     }
 
-    trailTexture0.unbindRenderTarget();
-
     //LodePNG::save(trailTexture0.getImage(), "trailTextureA.png");
 
     //
@@ -213,8 +213,6 @@ void GameCanvas::renderTrails()
 
     glClear(GL_COLOR_BUFFER_BIT);
     app.renderer.renderGaussian(vec2f(1.0f, 0.0f) / (float)trailTexture0.dimensions().x);
-
-    trailTexture1.unbindRenderTarget();
 
     //LodePNG::save(trailTexture1.getImage(), "trailTextureB.png");
 
@@ -230,7 +228,8 @@ void GameCanvas::renderTrails()
     app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
 
     glEnable(GL_BLEND);
-    trailTexture0.unbindRenderTarget();
+    
+    app.renderer.bindMainRenderTarget();
 
     //LodePNG::save(trailTexture0.getImage(), "trailTextureC.png");
 

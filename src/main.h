@@ -30,7 +30,7 @@ struct UndoBuffer;
 struct ComponentSet;
 struct AppData;
 class Renderer;
-class RendererSDL;
+class RendererOpenGL;
 class Texture;
 
 #include "game/enums.h"
@@ -43,10 +43,11 @@ class Texture;
 
 #include "audio/audioDevice.h"
 
-#include "renderer/renderer.h"
-#include "renderer/rendererOpenGL.h"
 #include "renderer/texture.h"
 #include "renderer/renderTarget.h"
+#include "renderer/renderer.h"
+#include "renderer/rendererOpenGL.h"
+
 
 #include "game/misc.h"
 #include "game/component.h"

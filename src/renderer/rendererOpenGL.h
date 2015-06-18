@@ -33,7 +33,14 @@ public:
 
     TTF_Font* getFont(const string &fontName);
 
+    // binds the motion blur render target (if active) or the window's render target
+    void bindMainRenderTarget();
+
+    bool useMotionBlur;
+
 private:
+    void setupRenderMotionBlur();
+
     void updateWindowSize();
 
     mat4f makeWindowTransform(const rect2f &rect, float depth);
@@ -52,6 +59,8 @@ private:
     GLProgram _gaussianProgram;
     GLProgram _splashAProgram;
     GLProgram _splashBProgram;
+
+    RenderTarget _motionBlurRenderTarget;
 
     vec2f _windowSize;
     mat4f _windowToNDC;
