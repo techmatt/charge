@@ -33,7 +33,6 @@ class Renderer;
 class RendererSDL;
 class Texture;
 
-
 #include "game/enums.h"
 #include "core/constants.h"
 
