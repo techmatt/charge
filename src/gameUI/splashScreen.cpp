@@ -4,9 +4,16 @@
 // GetAsyncKeyState
 #include "windows.h"
 
+const bool dumpHighlightMode = false;
+
 void SplashScreen::init()
 {
-
+    for (const string &line : util::getFileLines(params().assetDir + "highlightsSplashA.txt"))
+    {
+        auto parts = util::split(line, ' ');
+        if (parts.size() == 3)
+            splashHighlights.push_back(vec3f(convert::toFloat(parts[0]), convert::toFloat(parts[1]), convert::toFloat(parts[2])));
+    }
 }
 
 void SplashScreen::render()
@@ -37,13 +44,22 @@ void SplashScreen::bloom()
     frameIndex++;
     time += 0.04f;
 
-    if (frameIndex % 100 == 0)
+    if (frameIndex % 80 == 0)
     {
-        do {
-            focusColorATarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
-        } while (focusColorATarget.length() < 0.3f);
+        if (rand() % 4 == 0)
+        {
+            do {
+                focusColorATarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
+            } while (focusColorATarget.length() < 0.3f);
+        }
+        else
+            focusColorATarget = splashHighlights[rand() % splashHighlights.size()];
     }
-    focusColorA = focusColorA * s + focusColorATarget * (1.0f - s);
+
+    if (!dumpHighlightMode)
+    {
+        focusColorA = focusColorA * s + focusColorATarget * (1.0f - s);
+    }
 
     const vec2i bloomSize = app.renderer.getWindowSize() / 4;
     if (bloomTexture0.dimensions() != bloomSize)
@@ -65,7 +81,8 @@ void SplashScreen::bloom()
 
     //vec3f colorA(113.0f / 255.0f, 178.0f / 255.0f, 124.0f / 255.0f);
 
-    app.renderer.renderSplashA(focusColorA, focusColorB, vec2f((sin(time) * 0.5f + 0.5f) * 1.5f, 0.0f));
+    float intensity = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
+    app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensity, 0.0f));
 
     bloomTexture0.unbindRenderTarget();
 
@@ -133,23 +150,31 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
 
 void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
 {
-    const Bitmap &bmp = database().getTexture(app.renderer, "splash").bmp();
-    
-    float x2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().x, 0.0f, (float)bmp.width(), (float)x);
-    float y2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().y, (float)bmp.height(), 0.0f, (float)y);
+    if (dumpHighlightMode)
+    {
+        const Bitmap &bmp = database().getTexture(app.renderer, "splash").bmp();
 
-    int bmpX = math::clamp((int)x2, 0, (int)bmp.width() - 1);
-    int bmpY = math::clamp((int)y2, 0, (int)bmp.height() - 1);
+        float x2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().x, 0.0f, (float)bmp.width(), (float)x);
+        float y2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().y, (float)bmp.height(), 0.0f, (float)y);
 
-    //focusColorA = vec4f(bmp(bmpX, bmpY)).getVec3();
+        int bmpX = math::clamp((int)x2, 0, (int)bmp.width() - 1);
+        int bmpY = math::clamp((int)y2, 0, (int)bmp.height() - 1);
+
+        focusColorA = vec4f(bmp(bmpX, bmpY)).getVec3();
+    }
 }
 
 void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
 {
+    if (dumpHighlightMode)
+    {
+        ofstream highlightFile("highlights.txt", ios::app);
+        highlightFile << focusColorA << endl;
+    }
     transferToPuzzleMode(0);
 }
 
 void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 {
-    //transferToPuzzleMode(0);
+    transferToPuzzleMode(0);
 }

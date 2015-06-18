@@ -25,4 +25,6 @@ private:
 
     RenderTarget bloomTexture0;
     RenderTarget bloomTexture1;
+
+    vector<vec3f> splashHighlights;
 };

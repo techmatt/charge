@@ -191,7 +191,6 @@ public:
 	}
 
 	const T& operator[](int i) const {
-		assert(i < 3);
 		return array[i];
 	}
 
