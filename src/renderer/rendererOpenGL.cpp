@@ -23,8 +23,10 @@ void RendererOpenGL::init(SDL_Window *window)
     const string shaderDir = params().assetDir + "shaders/";
 
     _gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
-
+    _splashAProgram.load(shaderDir + "splashA.vert", shaderDir + "splashA.frag");
+    _splashBProgram.load(shaderDir + "splashB.vert", shaderDir + "splashB.frag");
     _quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
+
     _quadProgram.bind();
 
     _quad.init();
@@ -149,16 +151,18 @@ void RendererOpenGL::renderGaussian(const vec2f &kernelOffset)
     _quadProgram.bind();
 }
 
-void RendererOpenGL::renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, float pulse)
+void RendererOpenGL::renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, const vec2f &pulse)
 {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-    _gaussianProgram.bind();
+    _splashAProgram.bind();
 
-    _gaussianProgram.setTransform(_quadToNDC);
-    _gaussianProgram.setColor(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
-    _gaussianProgram.setKernelOffset(vec2f(1.0f, 1.0f));
+    _splashAProgram.setTransform(_quadToNDC);
+    _splashAProgram.setVec3("focusColorA", focusColorA);
+    _splashAProgram.setVec3("focusColorB", focusColorB);
+    _splashAProgram.setVec2("pulse", pulse);
+    
     _quad.render();
 
     _quadProgram.bind();
@@ -169,11 +173,11 @@ void RendererOpenGL::renderSplashB(const vec2f &kernelOffset)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-    _gaussianProgram.bind();
+    _splashBProgram.bind();
 
-    _gaussianProgram.setTransform(_quadToNDC);
-    _gaussianProgram.setColor(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
-    _gaussianProgram.setKernelOffset(kernelOffset);
+    _splashBProgram.setTransform(_quadToNDC);
+    _splashBProgram.setColor(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+    _splashBProgram.setKernelOffset(kernelOffset);
     _quad.render();
 
     _quadProgram.bind();

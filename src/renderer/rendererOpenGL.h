@@ -15,7 +15,7 @@ public:
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color) override;
 
-    void renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, float pulse);
+    void renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, const vec2f &pulse);
     void renderSplashB(const vec2f &kernelOffset);
 
     void renderFullScreen(const vec4f &color);

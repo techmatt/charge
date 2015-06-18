@@ -140,6 +140,24 @@ public:
         glUniform2f(kernelOffsetLocation, kernelOffset.x, kernelOffset.y);
     }
 
+    void setVec2(const char *variableName, const vec2f &v)
+    {
+        GLint location = glGetUniformLocation(shaderProgram, variableName);
+        glUniform2f(location, v.x, v.y);
+    }
+
+    void setVec3(const char *variableName, const vec3f &v)
+    {
+        GLint location = glGetUniformLocation(shaderProgram, variableName);
+        glUniform3f(location, v.x, v.y, v.z);
+    }
+
+    void setVec4(const char *variableName, const vec4f &v)
+    {
+        GLint location = glGetUniformLocation(shaderProgram, variableName);
+        glUniform4f(location, v.x, v.y, v.z, v.w);
+    }
+
 private:
 
     //

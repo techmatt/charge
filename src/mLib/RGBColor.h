@@ -62,10 +62,22 @@ struct RGBColor
         return RGBColor(rand() & 255, rand() & 255, rand() & 255);
     }
 
-    operator vec4f()
+    operator vec4f() const
     {
         static const float rcp = 1.0f / 255.0f;
         return vec4f(r * rcp, g * rcp, b * rcp, a * rcp);
+    }
+
+    vec4f toVec4f() const
+    {
+        static const float rcp = 1.0f / 255.0f;
+        return vec4f(r * rcp, g * rcp, b * rcp, a * rcp);
+    }
+
+    vec3f toVec3f() const
+    {
+        static const float rcp = 1.0f / 255.0f;
+        return vec3f(r * rcp, g * rcp, b * rcp);
     }
 
     BYTE r, g, b, a;

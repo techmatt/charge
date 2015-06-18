@@ -14,8 +14,11 @@ void SplashScreen::render()
     vec2f canonicalDims = GameUtil::getCanonicalSize();
     CoordinateFrame frame = app.renderer.getWindowCoordinateFrame();
 
-    rect2f backgroundRect(vec2f(0.0f, 0.0f), canonicalDims);
-    app.renderer.render(database().getTexture(app.renderer, "splash"), frame.toContainer(backgroundRect), 0.99f, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+    //rect2f backgroundRect(vec2f(0.0f, 0.0f), canonicalDims);
+    //app.renderer.render(database().getTexture(app.renderer, "splash"), frame.toContainer(backgroundRect), 0.99f, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+    database().getTexture(app.renderer, "splash").bindOpenGL();
+    app.renderer.renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
     bloom();
 
@@ -24,12 +27,32 @@ void SplashScreen::render()
 
 void SplashScreen::bloom()
 {
-    const vec2i bloomSize = app.renderer.getWindowSize() / 2;
+    static float time = 0.0f;
+    static int frameIndex = 0;
+
+    const Bitmap &bmp = database().getTexture(app.renderer, "splash").bmp();
+
+    const float s = 0.98f;
+
+    frameIndex++;
+    time += 0.04f;
+
+    if (frameIndex % 100 == 0)
+    {
+        do {
+            focusColorATarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
+        } while (focusColorATarget.length() < 0.3f);
+    }
+    focusColorA = focusColorA * s + focusColorATarget * (1.0f - s);
+
+    const vec2i bloomSize = app.renderer.getWindowSize() / 4;
     if (bloomTexture0.dimensions() != bloomSize)
     {
         bloomTexture0.init(app.renderer, bloomSize);
         bloomTexture1.init(app.renderer, bloomSize);
     }
+
+    glViewport(0, 0, bloomSize.x, bloomSize.y);
 
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_BLEND);
@@ -40,9 +63,13 @@ void SplashScreen::bloom()
     
     database().getTexture(app.renderer, "splash").bindOpenGL();
 
-    app.renderer.renderSplashA(vec3f(0.0f, 1.0f, 0.0f), vec3f(0.0f, 1.0f, 0.0f), 1.0f);
+    //vec3f colorA(113.0f / 255.0f, 178.0f / 255.0f, 124.0f / 255.0f);
+
+    app.renderer.renderSplashA(focusColorA, focusColorB, vec2f((sin(time) * 0.5f + 0.5f) * 1.5f, 0.0f));
 
     bloomTexture0.unbindRenderTarget();
+
+    //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");
 
     //
     // blur in X to trailTexture1
@@ -56,7 +83,7 @@ void SplashScreen::bloom()
 
     bloomTexture1.unbindRenderTarget();
 
-    //LodePNG::save(trailTexture1.getImage(), "trailTextureB.png");
+    //LodePNG::save(bloomTexture1.getImage(), "bloomTextureB.png");
 
     //
     // blur in Y back to trailTexture0
@@ -70,6 +97,10 @@ void SplashScreen::bloom()
 
     glEnable(GL_BLEND);
     bloomTexture0.unbindRenderTarget();
+
+    glViewport(0, 0, app.renderer.getWindowSize().x, app.renderer.getWindowSize().y);
+
+    //LodePNG::save(bloomTexture0.getImage(), "bloomTextureC.png");
 
     bloomTexture0.bindAsTexture();
 
@@ -85,12 +116,12 @@ void SplashScreen::bloom()
     //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
-    if (GetAsyncKeyState(VK_F8))
+    /*if (GetAsyncKeyState(VK_F8))
     {
         cout << "Saving trail textures..." << endl;
         LodePNG::save(bloomTexture0.getImage(), "bloomTexture0.png");
         LodePNG::save(bloomTexture1.getImage(), "bloomTexture1.png");
-    }
+    }*/
 }
 void SplashScreen::transferToPuzzleMode(int slotIndex)
 {
@@ -100,6 +131,19 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.controller.loadCampaignPuzzle(app.session.currentCampaignLevel());
 }
 
+void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
+{
+    const Bitmap &bmp = database().getTexture(app.renderer, "splash").bmp();
+    
+    float x2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().x, 0.0f, (float)bmp.width(), (float)x);
+    float y2 = math::linearMap(0.0f, (float)app.renderer.getWindowSize().y, (float)bmp.height(), 0.0f, (float)y);
+
+    int bmpX = math::clamp((int)x2, 0, (int)bmp.width() - 1);
+    int bmpY = math::clamp((int)y2, 0, (int)bmp.height() - 1);
+
+    //focusColorA = vec4f(bmp(bmpX, bmpY)).getVec3();
+}
+
 void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
 {
     transferToPuzzleMode(0);
@@ -107,5 +151,5 @@ void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
 
 void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 {
-    transferToPuzzleMode(0);
+    //transferToPuzzleMode(0);
 }

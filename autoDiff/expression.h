@@ -8,6 +8,7 @@ struct Expression
 {
     virtual void print() = 0;
     virtual double evaluate(const Binding &binding) = 0;
+    virtual Expression* differentiate() = 0;
 };
 
 struct Variable : public Expression

@@ -181,6 +181,10 @@
     <None Include="..\assets\shaders\gaussian.vert" />
     <None Include="..\assets\shaders\quad.frag" />
     <None Include="..\assets\shaders\quad.vert" />
+    <None Include="..\assets\shaders\splashA.frag" />
+    <None Include="..\assets\shaders\splashA.vert" />
+    <None Include="..\assets\shaders\splashB.frag" />
+    <None Include="..\assets\shaders\splashB.vert" />
     <None Include="..\src\mLib\grid2.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

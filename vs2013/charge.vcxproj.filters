@@ -273,5 +273,17 @@
     <None Include="..\assets\shaders\gaussian.vert">
       <Filter>shaders</Filter>
     </None>
+    <None Include="..\assets\shaders\splashA.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\splashA.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\splashB.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\splashB.vert">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
