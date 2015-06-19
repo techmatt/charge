@@ -45,6 +45,10 @@ public:
         _motionBlurFramesLeft = frameCount;
     }
 
+    float _motionBlurMinAlpha;
+    int _motionBlurFramesLeft;
+    bool _firstMotionBlurFrame;
+
 private:
     void updateWindowSize();
 
@@ -72,8 +76,4 @@ private:
     vec2f _windowSize;
     mat4f _windowToNDC;
     mat4f _quadToNDC;
-
-    float _motionBlurMinAlpha;
-    int _motionBlurFramesLeft;
-    bool _firstMotionBlurFrame;
 };

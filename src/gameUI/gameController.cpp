@@ -58,7 +58,10 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
-    app.renderer.initMotionBlur(0.3f, 100);
+    if (app.renderer._motionBlurFramesLeft == 0)
+        app.renderer.initMotionBlur(0.3f, 100);
+    else
+        app.renderer.initMotionBlur(1.0f, 100);
 
     // TODO: we can allow copying components between levels, but only after we implment verifying if the components can be built in the other level.
     if (editorMode != EditorMode::LevelEditor)

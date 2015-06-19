@@ -50,19 +50,23 @@ void SplashScreen::bloom()
 
     if (frameIndex % 100 == 0)
     {
+        vec3f newTarget;
         if (rand() % 4 == 0)
         {
             do {
-                focusColorATarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
-            } while (focusColorATarget.length() < 0.3f);
+                newTarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
+            } while (newTarget.length() < 0.3f);
         }
         else
-            focusColorATarget = splashHighlights[rand() % splashHighlights.size()];
+            newTarget = splashHighlights[rand() % splashHighlights.size()];
+        if (frameIndex % 200 == 0) focusColorATarget = newTarget;
+        else focusColorBTarget = newTarget;
     }
 
     if (!dumpHighlightMode)
     {
         focusColorA = focusColorA * s + focusColorATarget * (1.0f - s);
+        focusColorB = focusColorB * s + focusColorBTarget * (1.0f - s);
     }
 
     const vec2i bloomSize = app.renderer.getWindowSize() / 4;
@@ -85,8 +89,9 @@ void SplashScreen::bloom()
 
     //vec3f colorA(113.0f / 255.0f, 178.0f / 255.0f, 124.0f / 255.0f);
 
-    float intensity = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
-    app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensity, 0.0f));
+    float intensityA = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
+    float intensityB = dumpHighlightMode ? 1.0f : (sin(time + math::PIf) * 0.5f + 0.5f) * 1.5f;
+    app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensityA, intensityB));
 
     //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");
 

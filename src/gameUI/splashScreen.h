@@ -18,8 +18,7 @@ private:
     void bloom();
 
     vec3f focusColorA, focusColorB;
-
-    vec3f focusColorATarget;
+    vec3f focusColorATarget, focusColorBTarget;
 
     AppData &app;
 
