@@ -10,7 +10,7 @@ void SplashScreen::init()
 {
     app.renderer.bindMainRenderTarget();
 
-    app.renderer.initMotionBlur(0.4f, numeric_limits<int>::max());
+    app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
 
     for (const string &line : util::getFileLines(params().assetDir + "highlightsSplashA.txt"))
     {
@@ -51,7 +51,7 @@ void SplashScreen::bloom()
     if (frameIndex % 100 == 0)
     {
         vec3f newTarget;
-        if (rand() % 4 == 0)
+        if (rand() % 8 == 0)
         {
             do {
                 newTarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
@@ -90,7 +90,7 @@ void SplashScreen::bloom()
     //vec3f colorA(113.0f / 255.0f, 178.0f / 255.0f, 124.0f / 255.0f);
 
     float intensityA = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
-    float intensityB = dumpHighlightMode ? 1.0f : (sin(time + math::PIf) * 0.5f + 0.5f) * 1.5f;
+    float intensityB = dumpHighlightMode ? 1.0f : (sin(time * 1.5f + math::PIf) * 0.5f + 0.5f) * 1.5f;
     app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensityA, intensityB));
 
     //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");

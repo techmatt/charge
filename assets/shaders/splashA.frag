@@ -19,7 +19,7 @@ void main(void)
 {
 	vec3 color = texture(sampler, ex_TexCoord).xyz;
 	
-	float threshold = 0.1;
+	float threshold = 0.15;
 
 	float scaleA = f(max(0.0, 1.0 - length(color - focusColorA) / threshold)) * pulse.x;
 	float scaleB = f(max(0.0, 1.0 - length(color - focusColorB) / threshold)) * pulse.y;
