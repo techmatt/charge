@@ -506,7 +506,7 @@ void GameCanvas::renderTooltip()
 {
     if (app.controller.tooltipErrorTitle.size() > 0)
     {
-        renderTooltip(params().tooltipDefaultStart, app.controller.tooltipErrorTitle, app.controller.tooltipErrorDescription, ComponentModifiers(), "!", nullptr, true);
+        renderTooltip(params().tooltipDefaultStart, app.controller.tooltipErrorTitle, app.controller.tooltipErrorDescription, ComponentModifiers(), "!", nullptr, true, false);
         return;
     }
 
@@ -514,6 +514,7 @@ void GameCanvas::renderTooltip()
     if (button != nullptr && button->tooltip != nullptr)
     {
         vec2f start = params().tooltipDefaultStart;
+        bool transparent = false;
 
         if (button->type == ButtonType::PuzzleControl)
         {
@@ -523,9 +524,10 @@ void GameCanvas::renderTooltip()
         else
         {
             start.y = button->canonicalRect.max().y + 5.0f;
+            transparent = true;
         }
 
-        renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr);
+        renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr, false, transparent);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }
@@ -548,7 +550,7 @@ void GameCanvas::renderTooltip()
         if (clickComponent->modifiers.speed != WireType::Standard)
             info = &database().getComponent(GameUtil::speedToTextureName(clickComponent->modifiers.speed));
 
-        renderTooltip(params().tooltipDefaultStart, info->semanticName, info->description, clickComponent->modifiers, "", clickComponent);
+        renderTooltip(params().tooltipDefaultStart, info->semanticName, info->description, clickComponent->modifiers, "", clickComponent, false, app.activeCircuit() != nullptr);
         return;
     }
 
@@ -556,10 +558,10 @@ void GameCanvas::renderTooltip()
     // render level tip
     //
     if (app.activeCircuit() == nullptr)
-        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr);
+        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
 }
 
-void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error)
+void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error, bool transparent)
 {
     auto splice = [&](const string &s) {
         string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
@@ -568,8 +570,13 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
     };
 
     Texture &tex = error ? database().getTexture(app.renderer, "TooltipError") : database().getTexture(app.renderer, "Tooltip");
+
+    if (!transparent) glDisable(GL_BLEND);
+    
     const rect2f rect(canonicalStart, canonicalStart + params().tooltipSize);
     render(tex, rect, depthLayers::tooltip);
+
+    if (!transparent) glEnable(GL_BLEND);
 
     renderText(getFontTexture(splice(title), FontType::TooltipName), canonicalStart + vec2f(15.0f, 9.0f), 18.0f);
     renderText(getFontTexture(splice(description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);

@@ -251,7 +251,9 @@ void RendererOpenGL::present()
 
             _motionBlurRenderTargetB.bindAsTexture();
 
+            glDisable(GL_BLEND);
             renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+            glEnable(GL_BLEND);
 
             _motionBlurFramesLeft--;
         }
