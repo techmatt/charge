@@ -21,6 +21,8 @@ public:
     void renderFullScreen(const vec4f &color);
     void renderGaussian(const vec2f &kernelOffset);
 
+    void renderMotionBlur(const vec4f &color);
+
     void clear() override;
     void present() override;
 
@@ -36,11 +38,14 @@ public:
     // binds the motion blur render target (if active) or the window's render target
     void bindMainRenderTarget();
 
-    bool useMotionBlur;
+    void initMotionBlur(float minAlpha, int frameCount)
+    {
+        _motionBlurMinAlpha = minAlpha;
+        _firstMotionBlurFrame = true;
+        _motionBlurFramesLeft = frameCount;
+    }
 
 private:
-    void setupRenderMotionBlur();
-
     void updateWindowSize();
 
     mat4f makeWindowTransform(const rect2f &rect, float depth);
@@ -56,13 +61,19 @@ private:
 
     GLQuad _quad;
     GLProgram _quadProgram;
+    GLProgram _motionProgram;
     GLProgram _gaussianProgram;
     GLProgram _splashAProgram;
     GLProgram _splashBProgram;
 
-    RenderTarget _motionBlurRenderTarget;
+    RenderTarget _motionBlurRenderTargetA;
+    RenderTarget _motionBlurRenderTargetB;
 
     vec2f _windowSize;
     mat4f _windowToNDC;
     mat4f _quadToNDC;
+
+    float _motionBlurMinAlpha;
+    int _motionBlurFramesLeft;
+    bool _firstMotionBlurFrame;
 };

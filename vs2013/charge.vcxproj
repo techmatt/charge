@@ -179,6 +179,8 @@
   <ItemGroup>
     <None Include="..\assets\shaders\gaussian.frag" />
     <None Include="..\assets\shaders\gaussian.vert" />
+    <None Include="..\assets\shaders\motion.frag" />
+    <None Include="..\assets\shaders\motion.vert" />
     <None Include="..\assets\shaders\quad.frag" />
     <None Include="..\assets\shaders\quad.vert" />
     <None Include="..\assets\shaders\splashA.frag" />

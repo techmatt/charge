@@ -58,6 +58,8 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
+    app.renderer.initMotionBlur(0.4f, 60);
+
     // TODO: we can allow copying components between levels, but only after we implment verifying if the components can be built in the other level.
     if (editorMode != EditorMode::LevelEditor)
         app.ui.copyBuffer.clear();
@@ -391,6 +393,8 @@ void GameController::updateButtonList()
 
 void GameController::recordVictory()
 {
+    app.renderer.initMotionBlur(0.4f, 200);
+
     speed = GameSpeed::x1;
 
     if (viewMode != ControllerViewMode::ProvidedSolution)

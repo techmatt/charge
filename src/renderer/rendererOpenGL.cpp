@@ -5,7 +5,8 @@ void RendererOpenGL::init(SDL_Window *window)
 {
     _window = window;
 
-    useMotionBlur = false;
+    _motionBlurFramesLeft = 0;
+    _motionBlurMinAlpha = 1.0f;
 
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
@@ -27,6 +28,7 @@ void RendererOpenGL::init(SDL_Window *window)
     _gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
     _splashAProgram.load(shaderDir + "splashA.vert", shaderDir + "splashA.frag");
     _splashBProgram.load(shaderDir + "splashB.vert", shaderDir + "splashB.frag");
+    _motionProgram.load(shaderDir + "motion.vert", shaderDir + "motion.frag");
     _quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
 
     _quadProgram.bind();
@@ -94,14 +96,15 @@ mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth, float
 
 void RendererOpenGL::bindMainRenderTarget()
 {
-    if (useMotionBlur)
+    if (_motionBlurFramesLeft > 0)
     {
-        if (_motionBlurRenderTarget.dimensions() != vec2i(_windowSize))
+        if (_motionBlurRenderTargetA.dimensions() != vec2i(_windowSize))
         {
-            _motionBlurRenderTarget.init(*this, vec2i(_windowSize));
+            _motionBlurRenderTargetA.init(*this, vec2i(_windowSize));
+            _motionBlurRenderTargetB.init(*this, vec2i(_windowSize));
         }
 
-        _motionBlurRenderTarget.bindAsRenderTarget();
+        _motionBlurRenderTargetA.bindAsRenderTarget();
     }
     else
     {
@@ -143,6 +146,20 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
     _quadProgram.setColor(color);
     _quad.render();
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void RendererOpenGL::renderMotionBlur(const vec4f &color)
+{
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    _motionProgram.bind();
+
+    _motionProgram.setTransform(_quadToNDC);
+    _motionProgram.setColor(color);
+    _quad.render();
+
+    _quadProgram.bind();
 }
 
 void RendererOpenGL::renderFullScreen(const vec4f &color)
@@ -204,8 +221,39 @@ void RendererOpenGL::renderSplashB(const vec2f &kernelOffset)
 
 void RendererOpenGL::present()
 {
+    if (_motionBlurFramesLeft > 0)
+    {
+        _motionBlurRenderTargetA.unbindRenderTarget();
+        _motionBlurRenderTargetA.bindAsTexture();
+
+        _motionBlurRenderTargetB.bindAsRenderTarget();
+
+        float alpha = _motionBlurMinAlpha;
+
+        if (_firstMotionBlurFrame)
+        {
+            alpha = 1.0f;
+            _firstMotionBlurFrame = false;
+        }
+
+        if (_motionBlurFramesLeft < 50)
+            alpha = math::linearMap(0.0f, 50.0f, 1.0f, _motionBlurMinAlpha, (float)_motionBlurFramesLeft);
+
+        renderMotionBlur(vec4f(1.0f, 1.0f, 1.0f, alpha));
+
+        _motionBlurRenderTargetB.unbindRenderTarget();
+
+        _motionBlurRenderTargetB.bindAsTexture();
+        
+        renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+        _motionBlurFramesLeft--;
+    }
+
 	SDL_GL_SwapWindow(_window);
     updateWindowSize();
+
+    bindMainRenderTarget();
 }
 
 void RendererOpenGL::setRenderTarget(Texture &target)

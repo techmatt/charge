@@ -20,6 +20,8 @@ void SplashScreen::init()
 
 void SplashScreen::render()
 {
+    app.renderer.initMotionBlur(0.4f, 100);
+
     vec2f canonicalDims = GameUtil::getCanonicalSize();
     CoordinateFrame frame = app.renderer.getWindowCoordinateFrame();
 
@@ -145,6 +147,8 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.activeRenderHandler = &app.canvas;
     app.session.init(slotIndex);
     app.controller.loadCampaignPuzzle(app.session.currentCampaignLevel());
+
+    app.renderer.initMotionBlur(0.1f, 80);
 }
 
 void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
