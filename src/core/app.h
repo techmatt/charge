@@ -20,7 +20,7 @@ struct AppData
         //Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
 		Component* selectedComponent=ui.selection.singleElement();
         if (!locationA.inCircuit() || !locationB.inCircuit() || (!soundPlayedThisSecond && activeCircuit() == nullptr) ||
-            (selectedComponent != nullptr && (selectedComponent->location.boardPos == locationA.boardPos || selectedComponent->location.boardPos == locationB.boardPos)) || name == "ChargeDeath")
+            (selectedComponent != nullptr && (selectedComponent->location.boardPos == locationA.boardPos || selectedComponent->location.boardPos == locationB.boardPos)) || name == "ChargeDeath" || name == "GoalHold")
         {
             soundPlayedThisSecond = true;
             soundsPlayedThisTick.insert(name);

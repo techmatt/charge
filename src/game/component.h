@@ -228,8 +228,10 @@ struct Component
 
 	//
 	// type of held charge (or ChargeType::None)
+    // prevHeldCharge is only stored for audio purposes
 	//
 	ChargeType heldCharge;
+    ChargeType prevHeldCharge;
 
 	//
 	// this is needed to deal with splitters

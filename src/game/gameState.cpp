@@ -305,6 +305,7 @@ void GameState::step(AppData &app)
 		component->willTrigger = false;
 		component->tick(app);
 		component->numChargesTargetingThisTick = 0;
+        component->prevHeldCharge = component->heldCharge;
         component->heldCharge = ChargeType::None;
 		component->sourceOfLastChargeToAttemptToMoveHere.boardPos = constants::invalidCoord;
 
@@ -325,6 +326,9 @@ void GameState::step(AppData &app)
 		if (c.held) {
 			destination->lastChargeVisit = stepCount - constants::chargeRequiredTimeDifference + 1;
             destination->heldCharge = c.level;
+
+            if (c.level == destination->modifiers.color && destination->prevHeldCharge == ChargeType::None)
+                app.playEffect("GoalHold", destination->location);
 		} 
 		c.held = false;
 	}
