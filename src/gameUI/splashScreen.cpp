@@ -10,6 +10,8 @@ void SplashScreen::init()
 {
     app.renderer.bindMainRenderTarget();
 
+    app.renderer.initMotionBlur(0.4f, numeric_limits<int>::max());
+
     for (const string &line : util::getFileLines(params().assetDir + "highlightsSplashA.txt"))
     {
         auto parts = util::split(line, ' ');
@@ -20,8 +22,6 @@ void SplashScreen::init()
 
 void SplashScreen::render()
 {
-    app.renderer.initMotionBlur(0.4f, 100);
-
     vec2f canonicalDims = GameUtil::getCanonicalSize();
     CoordinateFrame frame = app.renderer.getWindowCoordinateFrame();
 
@@ -131,7 +131,6 @@ void SplashScreen::bloom()
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
     /*if (GetAsyncKeyState(VK_F8))

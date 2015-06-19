@@ -174,7 +174,6 @@ void GameCanvas::renderTrails()
     //
     trailTexture0.bindAsRenderTarget();
 
-    //glClear(GL_COLOR_BUFFER_BIT);
     //app.renderer.render(database().getTexture(app.renderer, "Border"), rect2f(100.0f, 100.0f, 150.0f, 150.0f), 0.5f, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
     for (const auto &charge : app.state.charges)
@@ -223,8 +222,6 @@ void GameCanvas::renderTrails()
 
     trailTexture1.bindAsTexture();
 
-    //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    //glClear(GL_COLOR_BUFFER_BIT);
     app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
 
     glEnable(GL_BLEND);
@@ -245,7 +242,6 @@ void GameCanvas::renderTrails()
     //app.renderer.renderGaussian(vec2f(0.0f, 1.0f) / (float)trailTexture0.dimensions().y);
     app.renderer.renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
-    //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
     //if (GetAsyncKeyState(VK_F8))

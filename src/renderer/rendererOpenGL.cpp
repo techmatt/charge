@@ -221,6 +221,8 @@ void RendererOpenGL::renderSplashB(const vec2f &kernelOffset)
 
 void RendererOpenGL::present()
 {
+    bindMainRenderTarget();
+
     if (_motionBlurFramesLeft > 0)
     {
         _motionBlurRenderTargetA.unbindRenderTarget();
@@ -232,22 +234,31 @@ void RendererOpenGL::present()
 
         if (_firstMotionBlurFrame)
         {
-            alpha = 1.0f;
+            vec2i w = getWindowSize();
+            glBlitFramebuffer(0, 0, w.x, w.y, 0, 0, w.x, w.y, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
             _firstMotionBlurFrame = false;
+            _motionBlurRenderTargetB.unbindRenderTarget();
+        }
+        else
+        {
+            if (_motionBlurFramesLeft < 50)
+                alpha = math::linearMap(0.0f, 50.0f, 1.0f, _motionBlurMinAlpha, (float)_motionBlurFramesLeft);
+
+            renderMotionBlur(vec4f(1.0f, 1.0f, 1.0f, alpha));
+
+            _motionBlurRenderTargetB.unbindRenderTarget();
+
+            _motionBlurRenderTargetB.bindAsTexture();
+
+            renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+            _motionBlurFramesLeft--;
         }
 
-        if (_motionBlurFramesLeft < 50)
-            alpha = math::linearMap(0.0f, 50.0f, 1.0f, _motionBlurMinAlpha, (float)_motionBlurFramesLeft);
-
-        renderMotionBlur(vec4f(1.0f, 1.0f, 1.0f, alpha));
-
-        _motionBlurRenderTargetB.unbindRenderTarget();
-
-        _motionBlurRenderTargetB.bindAsTexture();
-        
-        renderFullScreen(vec4f(1.0f, 1.0f, 1.0f, 1.0f));
-
-        _motionBlurFramesLeft--;
+        // HACK to avoid the black fade issue. slower, but fine.
+        //if (_motionBlurFramesLeft == 0)
+        //    _motionBlurFramesLeft = 1;
     }
 
 	SDL_GL_SwapWindow(_window);

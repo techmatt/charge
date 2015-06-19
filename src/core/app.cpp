@@ -164,6 +164,7 @@ int App::run()
         //
         // render the game
         //
+        data.renderer.bindMainRenderTarget();
         data.renderer.clear();
 
         data.activeRenderHandler->render();

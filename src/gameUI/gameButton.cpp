@@ -145,6 +145,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         app.controller.puzzleMode = PuzzleMode::Executing;
         app.controller.speed = GameSpeed::x1;
         app.state.resetPuzzle();
+        app.renderer.initMotionBlur(0.5f, 5);
     }
     if (name == "Stop")
     {
