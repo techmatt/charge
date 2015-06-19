@@ -165,20 +165,3 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
     }
     return *textures.at(fullTextureName);
 }
-
-pair<const ComponentInfo*, ChargeType> Database::componentFromKey(SDL_Keycode key) const
-{
-    if (key >= SDLK_a && key <= SDLK_z)
-    {
-        auto c = alphabetKeyToComponent[key - SDLK_a];
-        ChargeType color = ChargeType::None;
-        if (c != nullptr)
-        {
-            color = c->defaultPrimaryCharge();
-            if (util::endsWith(c->name, "GrayProxy"))
-                return make_pair(&getComponent(util::remove(c->name, "GrayProxy")), ChargeType::Gray);
-        }
-        return make_pair(c, color);
-    }
-    return make_pair(nullptr, ChargeType::None);
-}

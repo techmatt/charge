@@ -8,6 +8,7 @@ const bool dumpHighlightMode = false;
 
 void SplashScreen::init()
 {
+    srand((unsigned int)time(nullptr));
     app.renderer.bindMainRenderTarget();
 
     app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
@@ -52,14 +53,10 @@ void SplashScreen::bloom()
     {
         vec3f newTarget;
         if (rand() % 8 == 0)
-        {
-            do {
-                newTarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
-            } while (newTarget.length() < 0.3f);
-        }
+            newTarget = bmp(rand() % bmp.width(), rand() % bmp.height()).toVec3f();
         else
             newTarget = splashHighlights[rand() % splashHighlights.size()];
-        if (frameIndex % 200 == 0) focusColorATarget = newTarget;
+        if (rand() % 2 == 0) focusColorATarget = newTarget;
         else focusColorBTarget = newTarget;
     }
 
@@ -89,8 +86,8 @@ void SplashScreen::bloom()
 
     //vec3f colorA(113.0f / 255.0f, 178.0f / 255.0f, 124.0f / 255.0f);
 
-    float intensityA = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f) * 1.5f;
-    float intensityB = dumpHighlightMode ? 1.0f : (sin(time * 1.5f + math::PIf) * 0.5f + 0.5f) * 1.5f;
+    float intensityA = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f);
+    float intensityB = dumpHighlightMode ? 1.0f : (sin(time * 0.75f + math::PIf) * 0.5f + 0.5f);
     app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensityA, intensityB));
 
     //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");
@@ -178,7 +175,10 @@ void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
         ofstream highlightFile("highlights.txt", ios::app);
         highlightFile << focusColorA << endl;
     }
-    transferToPuzzleMode(0);
+    else
+    {
+        transferToPuzzleMode(0);
+    }
 }
 
 void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
