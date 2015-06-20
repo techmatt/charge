@@ -71,7 +71,7 @@ struct UserSession
         for (int i = 0; i < campaignLevels.size(); i++)
             if (campaignLevels[i].state == LevelState::Solved)
                 solved++;
-        return min(solved + 3, (int)campaignLevels.size());
+        return min(solved + params().maxSkippedLevels, (int)campaignLevels.size());
     }
 
     const UserSessionLevelInfo* getLevelInfo(const string &puzzleFilename) const

@@ -36,6 +36,8 @@ struct GameParameters
 
         params.readParameter("godMode", godMode);
 
+        params.readParameter("maxSkippedLevels", maxSkippedLevels);
+
         circuitDims = vec2i(constants::circuitBoardSize, constants::circuitBoardSize);
 
         //
@@ -83,6 +85,8 @@ struct GameParameters
 	CoordinateFrame circuitInWindow;
 
     bool godMode;
+
+    int maxSkippedLevels;
 
     //
     // derived parameters

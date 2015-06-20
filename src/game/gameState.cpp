@@ -38,6 +38,8 @@ void GameState::clearBoard()
 
     puzzleName = "untitled";
 
+    victoryInfo = GameVictoryInfo();
+
     buildableComponents.loadDefaults();
 }
 

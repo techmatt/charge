@@ -571,6 +571,12 @@ void GameCanvas::renderTooltip()
         if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved)
             solvedState = " (Solved)";
         renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name + solvedState, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
+
+        if (app.state.victoryInfo.stepCount != -1)
+        {
+            renderText(getFontTexture("Solve time: " + util::formatDouble((double)app.state.victoryInfo.stepCount / (double)constants::stepsPerSecond, 2, false) + "s", FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 120.0f), 12.0f);
+            renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
+        }
     }
 }
 
