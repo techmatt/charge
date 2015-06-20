@@ -157,7 +157,11 @@ void GameCanvas::render()
     renderTooltip();
 
     if (SDL_GetModState() & KMOD_ALT)
-        renderText(getFontTexture("fps: " + util::formatDouble(app.frameTimer.framesPerSecond(), 1), FontType::TooltipName), vec2f(0.0f, 0.0f), 12.0f);
+    {
+        float fps = app.frameTimer.framesPerSecond();
+        if (abs(fps - 60.0f) < 1.0f)  fps = 60.0f;
+        renderText(getFontTexture("fps: " + util::formatDouble(fps, 1, false), FontType::TooltipName), vec2f(0.0f, 0.0f), 12.0f);
+    }
 }
 
 void GameCanvas::renderTrails()
@@ -561,7 +565,13 @@ void GameCanvas::renderTooltip()
     // render level tip
     //
     if (app.activeCircuit() == nullptr)
-        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
+    {
+        string solvedState;
+        auto sessionInfo = app.session.getLevelInfo(app.controller.currentPuzzleFilename);
+        if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved)
+            solvedState = " (Solved)";
+        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name + solvedState, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
+    }
 }
 
 void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error, bool transparent)
@@ -610,7 +620,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
         if (component->info->name == "MegaHold")
         {
             double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
-            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2) + " charge per second", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
+            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2, true) + " charge per second", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
             renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
         }
     }
