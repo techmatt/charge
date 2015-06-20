@@ -251,6 +251,9 @@
     <ClInclude Include="..\src\gameUI\splashScreen.h">
       <Filter>gameUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mLib\timer.h">
+      <Filter>mLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

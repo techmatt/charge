@@ -162,6 +162,7 @@
     <ClInclude Include="..\src\mLib\RGBColor.h" />
     <ClInclude Include="..\src\mLib\stringUtil.h" />
     <ClInclude Include="..\src\mLib\stringUtilConvert.h" />
+    <ClInclude Include="..\src\mLib\timer.h" />
     <ClInclude Include="..\src\mLib\utility.h" />
     <ClInclude Include="..\src\mLib\vec2.h" />
     <ClInclude Include="..\src\mLib\vec3.h" />

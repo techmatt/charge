@@ -39,12 +39,12 @@ struct AppData
         return nullptr;
     }
 
-    SplashScreen splash;
-
     EventHandler *activeEventHandler;
     RenderHandler *activeRenderHandler;
 
     UserSession session;
+
+    SplashScreen splash;
 
     GameController controller;
     GameUI ui;
@@ -55,6 +55,8 @@ struct AppData
     AudioDevice audio;
 	
 	UndoBuffer undoBuffer;
+
+    FrameTimer frameTimer;
 
     set<string> soundsPlayedThisTick;
     int soundCountTicks;

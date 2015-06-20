@@ -155,6 +155,9 @@ void GameCanvas::render()
     renderText(getFontTexture(app.state.puzzleName, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
 
     renderTooltip();
+
+    if (SDL_GetModState() & KMOD_ALT)
+        renderText(getFontTexture("fps: " + util::formatDouble(app.frameTimer.framesPerSecond(), 1), FontType::TooltipName), vec2f(0.0f, 0.0f), 12.0f);
 }
 
 void GameCanvas::renderTrails()

@@ -128,8 +128,8 @@ int App::run()
 			}
 			if (event.type == SDL_KEYDOWN)
             {
-                const bool shift = (event.key.keysym.mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
-                const bool ctrl = (event.key.keysym.mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                const bool shift = (event.key.keysym.mod & KMOD_SHIFT) != 0;
+                const bool ctrl = (event.key.keysym.mod & KMOD_CTRL) != 0;
                 data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl);
 			}
             if (event.type == SDL_KEYUP)
@@ -139,15 +139,15 @@ int App::run()
             if (event.type == SDL_MOUSEBUTTONDOWN)
             {
                 const SDL_Keymod mod = SDL_GetModState();
-                const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
-                const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                const bool shift = (mod & KMOD_SHIFT) != 0;
+                const bool ctrl = (mod & KMOD_CTRL) != 0;
                 data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
                 const SDL_Keymod mod = SDL_GetModState();
-                const bool shift = (mod & (KMOD_LSHIFT | KMOD_RSHIFT)) != 0;
-                const bool ctrl = (mod & (KMOD_LCTRL | KMOD_RCTRL)) != 0;
+                const bool shift = (mod & KMOD_SHIFT) != 0;
+                const bool ctrl = (mod & KMOD_CTRL) != 0;
                 data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
 			}
             if (event.type == SDL_MOUSEMOTION)
@@ -159,6 +159,7 @@ int App::run()
         //
         // advance the game
         //
+        data.frameTimer.frame();
         data.controller.step();
 
         //

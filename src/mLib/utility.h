@@ -612,7 +612,7 @@ namespace util
     {
         double x = 7.40200133400;
         ostringstream stream;
-        stream << fixed << setprecision(2) << value;
+        stream << fixed << setprecision(decimalPlaces) << value;
         string s = stream.str();
         while (s.size() > 0 && s.back() == '0')
             s.pop_back();

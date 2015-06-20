@@ -1,4 +1,5 @@
-Puzzle~321~2057
+Puzzle~322~2066
+basePuzzleFilename=58b-TheUnfilteredFilter
 buildableComponents~44
 ComponentBuildState~43~43
 Amplifier=1
@@ -46,59 +47,59 @@ WireType::MinorAccelerator=1
 WireType::MinorDelay=1
 component0000~4
 Component~3~3
-boardPos=20 16
-name=Blocker
+boardPos=2 10
+name=Circuit
 puzzleType=0
 component0001~4
 Component~3~3
-boardPos=2 10
+boardPos=2 18
 name=Circuit
 puzzleType=0
 component0002~4
 Component~3~3
+boardPos=20 22
+name=Circuit
+puzzleType=0
+component0003~4
+Component~3~3
+boardPos=2 22
+name=Circuit
+puzzleType=0
+component0004~4
+Component~3~3
+boardPos=2 4
+name=Circuit
+puzzleType=0
+component0005~4
+Component~3~3
+boardPos=20 16
+name=Blocker
+puzzleType=0
+component0006~4
+Component~3~3
 boardPos=8 8
 name=Blocker
 puzzleType=0
-component0003~6
+component0007~6
 Component~5~5
 boardPos=2 4
 boundary=2
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=0
-component0004~5
+component0008~5
 Component~4~4
 boardPos=2 4
 circuitPos=8 4
 name=Hold
 puzzleType=0
-component0005~4
-Component~3~3
-boardPos=2 18
-name=Circuit
-puzzleType=0
-component0006~4
-Component~3~3
-boardPos=20 22
-name=Circuit
-puzzleType=0
-component0007~6
+component0009~6
 Component~5~5
 boardPos=2 4
 circuitPos=4 8
 name=Wire
 puzzleType=0
 speed=0
-component0008~4
-Component~3~3
-boardPos=2 22
-name=Circuit
-puzzleType=0
-component0009~4
-Component~3~3
-boardPos=2 4
-name=Circuit
-puzzleType=0
 component0010~4
 Component~3~3
 boardPos=6 6
@@ -1665,11 +1666,12 @@ boardPos=2 4
 circuitPos=10 4
 name=Hold
 puzzleType=0
-component0254~4
-Component~3~3
+component0254~5
+Component~4~4
 boardPos=4 22
 name=Wire
 puzzleType=0
+speed=0
 component0255~4
 Component~3~3
 boardPos=6 18
@@ -1810,11 +1812,12 @@ circuitPos=8 10
 color=2
 name=ChargeGoal
 puzzleType=0
-component0278~4
-Component~3~3
+component0278~5
+Component~4~4
 boardPos=18 22
 name=Wire
 puzzleType=0
+speed=0
 component0279~6
 Component~5~5
 boardPos=20 22
@@ -1961,36 +1964,42 @@ boundary=1
 circuitPos=2 0
 name=CircuitBoundary
 puzzleType=0
-component0300~4
-Component~3~3
+component0300~5
+Component~4~4
 boardPos=16 22
 name=Wire
 puzzleType=0
-component0301~4
-Component~3~3
+speed=0
+component0301~5
+Component~4~4
 boardPos=14 22
 name=Wire
 puzzleType=0
-component0302~4
-Component~3~3
+speed=0
+component0302~5
+Component~4~4
 boardPos=12 22
 name=Wire
 puzzleType=0
-component0303~4
-Component~3~3
+speed=0
+component0303~5
+Component~4~4
 boardPos=10 22
 name=Wire
 puzzleType=0
-component0304~4
-Component~3~3
+speed=0
+component0304~5
+Component~4~4
 boardPos=8 22
 name=Wire
 puzzleType=0
-component0305~4
-Component~3~3
+speed=0
+component0305~5
+Component~4~4
 boardPos=6 22
 name=Wire
 puzzleType=0
+speed=0
 component0306~5
 Component~4~4
 boardPos=2 22

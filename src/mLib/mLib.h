@@ -36,4 +36,6 @@ using namespace std;
 
 #include "FileDialog.h"
 
+#include "timer.h"
+
 #endif  // MLIBCORE_H_
