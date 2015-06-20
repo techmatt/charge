@@ -262,6 +262,8 @@ void GameState::removeComponent(Component *component, bool updateConnections)
 
 void GameState::step(AppData &app)
 {
+    bool playGoalHoldSound = false;
+
     for (Component * c : components)
     {
         c->tickGraphics();
@@ -328,7 +330,7 @@ void GameState::step(AppData &app)
             destination->heldCharge = c.level;
 
             if (c.level == destination->modifiers.color && destination->prevHeldCharge == ChargeType::None)
-                app.playEffect("GoalHold", destination->location);
+                playGoalHoldSound = true;
 		} 
 		c.held = false;
 	}
@@ -599,6 +601,10 @@ void GameState::step(AppData &app)
         victoryInfo.stepCount = stepCount;
         app.audio.playEffect("Victory");
         app.controller.recordVictory();
+    }
+    else
+    {
+        if(playGoalHoldSound) app.playEffect("GoalHold", GameLocation(vec2i(0, 0)));
     }
     
     stepCount++;
