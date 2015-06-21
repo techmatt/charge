@@ -538,8 +538,6 @@ namespace util
 		return std::make_pair(begin, end); // still possible that begin == key or end == key
 	}
 
-
-
 	template<class Matrix, class FloatType>
 	unsigned int rank(Matrix mat, unsigned int dimension, FloatType eps = (FloatType)0.00001) 
 	{
@@ -629,6 +627,8 @@ namespace util
     }
 
     string getWorkingDirectory();
+
+    void sleep(int milliseconds);
     
 }  // namespace utility
 

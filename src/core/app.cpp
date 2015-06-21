@@ -170,6 +170,10 @@ int App::run()
 
         data.activeRenderHandler->render();
 
+        int extraSleepTimeMS = math::round(((1.0f / constants::FPSlimit) - data.frameTimer.elapsedTime()) * 1000.0f);
+        if (extraSleepTimeMS >= 3)
+            util::sleep(extraSleepTimeMS);
+
         data.renderer.present();
     }
 

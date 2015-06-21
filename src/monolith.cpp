@@ -8,7 +8,6 @@
 //
 #include "core/app.cpp"
 #include "core/gameUtil.cpp"
-#include "core/SDLUtil.cpp"
 
 //
 // game source files
@@ -19,14 +18,18 @@
 #include "game/database.cpp"
 #include "game/gameState.cpp"
 #include "game/legacyLoader.cpp"
+#include "game/buffer.cpp"
 
 //
 // gameUI source files
 //
 #include "gameUI/gameButton.cpp"
 #include "gameUI/gameUI.cpp"
+#include "gameUI/gameCanvas.cpp"
+#include "gameUI/splashScreen.cpp"
+#include "gameUI/selection.cpp"
 #include "gameUI/gameController.cpp"
-#include "gameUI/puzzleManager.cpp"
+#include "gameUI/userSession.cpp"
 
 //
 // mLib source files
@@ -35,10 +38,11 @@
 #include "mLib/imageLoaderLodePNG.cpp"
 #include "mLib/lodepng.cpp"
 #include "mLib/utility.cpp"
+#include "mLib/fileDialog.cpp"
 
 //
 // renderer source files
 //
 #include "renderer/texture.cpp"
+#include "renderer/renderTarget.cpp"
 #include "renderer/rendererOpenGL.cpp"
-#include "renderer/rendererSDL.cpp"

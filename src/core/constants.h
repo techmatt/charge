@@ -14,6 +14,8 @@ namespace constants
     static const int maxPreferenceLevel = 5;
     static const int wireConnectorClasses = 6;
 
+    static const float FPSlimit = 60.0f;
+
     static const float chargeScaleWithLevelFactor = 0.07f;
     static const int stepsPerSecond = 60;
     static const float secondsPerStep = 1.0f / (float)stepsPerSecond;

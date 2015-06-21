@@ -23,6 +23,6 @@ attributeMenuCanonicalEntrySize = 100, 15
 tooltipDefaultStart = 403, 250
 tooltipSize = 254, 120
 
-godMode = false
+godMode = true
 
-maxSkippedLevels = 40
+maxSkippedLevels = 400

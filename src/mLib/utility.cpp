@@ -236,6 +236,11 @@ namespace util
 			CreateDirectoryA(soFar.c_str(), nullptr);
 		}
 	}
+
+    void sleep(int milliseconds)
+    {
+        Sleep(milliseconds);
+    }
 #endif
 
 #ifdef LINUX

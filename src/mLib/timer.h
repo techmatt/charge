@@ -68,6 +68,11 @@ public:
 		return (float)m_secondsPerFrame;
 	}
 
+    float elapsedTime()
+    {
+        return (float)m_clock.getElapsedTime();
+    }
+
 private:
 	Timer m_clock;
 	double m_secondsPerFrame;
