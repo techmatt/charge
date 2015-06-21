@@ -112,8 +112,8 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
 
                 if (p.value == Colors::Cyan())
                     p.value = RGBColor(255, 255, 255, 0);
-                else
-                    p.value.a = 255;
+               // else
+                //    p.value.a = 255;
             }
         }
         else if (getStoredChargeLayer)
@@ -132,8 +132,8 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
             {
                 if (p.value == Colors::Cyan())
                     p.value = RGBColor(255, 255, 255, 0);
-                else
-                    p.value.a = 255;
+                //else
+                //    p.value.a = 255;
 
                 if (p.value == Colors::Magenta())
                 {
