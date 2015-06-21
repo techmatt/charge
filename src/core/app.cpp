@@ -75,7 +75,7 @@ int App::run()
     if (SDL_GetCurrentDisplayMode(0, &displayMode) == 0)
     {
         const int minDim = min(displayMode.w, displayMode.h);
-        windowHeight = math::round((double)minDim * 0.8);
+        windowHeight = math::round((double)minDim * 0.9);
         windowWidth = math::round(windowHeight * params().canonicalDims.x / params().canonicalDims.y);
 
         // in case of weird aspect ratio monitors
@@ -86,7 +86,7 @@ int App::run()
         }
     }
 
-	SDL_Window *window = SDL_CreateWindow("Charge!", 50, 50, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
+	SDL_Window *window = SDL_CreateWindow("Charge!", 15, 35, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
 
     if (window == nullptr)
     {

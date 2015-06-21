@@ -1,7 +1,7 @@
 Number	Puzzle name	Puzzle file	Tip	Verified
 1	The Path to Success	1-PathToSuccess	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	no
 2	The Bent Road	2-BentRoad	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	no
-3	Kinder Garden	3-KinderGarden	"There are five colors of charge, ordered from red (weakest), orange, yellow, green, to blue (strongest)."	no
+3	Kinder Garden	3-KinderGarden	"There are five colors of charge, ordered from red (weakest), orange, yellow, green, to blue (strongest).||Your progress and solutions for each puzzle are saved automatically."	no
 4	Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	no
 5	Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	no
 6	Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.	no
