@@ -7,7 +7,7 @@ int GameState::componentCost() const
 
     for (Component *c : components)
     {
-        if (c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece)
+        if (c->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece || c->info->name == "CircuitBoundary")
             continue;
 
         if (c->modifiers.puzzleType == ComponentPuzzleType::CopiedCircuit)
