@@ -1,11 +1,6 @@
 
 struct GameParameters
 {
-    GameParameters()
-    {
-        memset(this, 0, sizeof(GameParameters));
-    }
-
     void load(const ParameterFile &params)
     {
         params.readParameter("assetDir", assetDirBase);
