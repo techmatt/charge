@@ -659,7 +659,7 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
     if (icon.modifiers.boundary == CircuitBoundaryType::Closed)
         return;
 
-    Texture &baseTex = database().getTexture(app.renderer, name == "Wire" ? "PureWire" : "WireBase");
+    Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
     Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
 
@@ -673,7 +673,7 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
 
 void GameCanvas::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
 {
-    Texture &baseTex = database().getTexture(app.renderer, name == "Wire" ? "PureWire" : "WireBase");
+    Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
     Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
     Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
 

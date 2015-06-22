@@ -107,9 +107,14 @@ int App::run()
 
     data.ui.init();
     data.canvas.init();
+    data.controller.init();
+
+    //
+    // should init last to control motion blur state
+    //
     data.splash.init();
 
-    data.controller.init();
+    
 
     data.activeEventHandler = &data.splash;
     data.activeRenderHandler = &data.splash;
@@ -117,11 +122,15 @@ int App::run()
     SDL_Event event;
 
 	bool quit = false;
+    bool minimized = false;
 
 	while (!quit)
     {
+        bool eventFound = false;
+
 		while (SDL_PollEvent(&event))
         {
+            eventFound = true;
             if (event.type == SDL_QUIT || event.type == SDL_APP_TERMINATING)
             {
 				quit = true;
@@ -154,6 +163,13 @@ int App::run()
             {
                 data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y);
             }
+            if (event.type == SDL_WINDOWEVENT)
+            {
+                if (event.window.event == SDL_WINDOWEVENT_MINIMIZED)
+                    minimized = true;
+                if (event.window.event == SDL_WINDOWEVENT_MAXIMIZED || event.window.event == SDL_WINDOWEVENT_RESTORED || event.window.event == SDL_WINDOWEVENT_ENTER)
+                    minimized = false;
+            }
 		}
 
         //
@@ -163,18 +179,25 @@ int App::run()
         data.controller.step();
 
         //
-        // render the game
+        // render frame only if necessary
         //
-        data.renderer.bindMainRenderTarget();
-        data.renderer.clear();
+        bool renderFrame = !minimized && (eventFound || data.renderer._motionBlurFramesLeft > 0 || data.controller.puzzleMode == PuzzleMode::Executing);
+        if (renderFrame)
+        {
+            //
+            // render the game
+            //
+            data.renderer.bindMainRenderTarget();
+            data.renderer.clear();
 
-        data.activeRenderHandler->render();
+            data.activeRenderHandler->render();
+
+            data.renderer.present();
+        }
 
         int extraSleepTimeMS = math::round(((1.0f / constants::FPSlimit) - data.frameTimer.elapsedTime()) * 1000.0f);
         if (extraSleepTimeMS >= 3)
             util::sleep(extraSleepTimeMS);
-
-        data.renderer.present();
     }
 
     data.session.save();

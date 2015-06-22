@@ -4,6 +4,8 @@
 // this file is for static game constants that are never going to change
 //
 
+//#define USE_SMALL_WIRE 1
+
 namespace constants
 {
     static const vec2i invalidCoord(-100, -100);
@@ -40,7 +42,14 @@ namespace constants
 
     static const bool useScanlinePriority = true;
 
+#if USE_SMALL_WIRE
+    static const bool useSmallWire = true;
+    static const vec2f connectorDims[3] = { vec2f(0.33f, 0.05f), vec2f(0.33f, 0.056f), vec2f(0.33f, 0.05f) };
+#else
+    static const bool useSmallWire = false;
     static const vec2f connectorDims[3] = { vec2f(0.18f, 0.05f), vec2f(0.2f, 0.056f), vec2f(0.18f, 0.05f) };
+#endif
+    
 
     static const char *fileExtension = ".pzl";
 
