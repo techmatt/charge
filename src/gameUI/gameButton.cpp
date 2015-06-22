@@ -1,9 +1,6 @@
 
 #include "main.h"
 
-// only used for GetAsyncKeyState
-#include <Windows.h>
-
 void GameButton::initTooltip()
 {
     tooltip = component;
@@ -166,7 +163,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         app.controller.puzzleVerificationMode = false;
         app.controller.changeEditorMode(EditorMode::LevelEditor);
 
-        if (GetAsyncKeyState(VK_SHIFT))
+        if (SDL_GetModState() & KMOD_SHIFT)
         {
             app.controller.puzzleVerificationMode = true;
             app.controller.loadCurrentProvidedSolution();

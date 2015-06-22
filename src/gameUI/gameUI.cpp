@@ -1,9 +1,6 @@
 
 #include "main.h"
 
-// GetAsyncKeyState
-#include <Windows.h>
-
 void GameUI::init()
 {
     //selectedGameLocation.boardPos = constants::invalidCoord;

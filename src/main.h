@@ -4,13 +4,14 @@
 
 #include <SDL.h>
 #include <SDL_audio.h>
-#include <SDL_image.h>
-#include <SDL_TTF.h>
+#include <SDL_ttf.h>
 #include <SDL_mixer.h>
 
+#ifdef _WIN32
 // TODO: try and link glew statically instead
 //#define GL3_PROTOTYPES 1
 #include <gl/glew.h>
+#endif
 
 #include "mLib/mLib.h"
 

@@ -1,9 +1,6 @@
 
 #include "main.h"
 
-// GetAsyncKeyState
-#include "windows.h"
-
 const bool dumpHighlightMode = false;
 
 void SplashScreen::init()
