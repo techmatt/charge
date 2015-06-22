@@ -1,0 +1,5 @@
+g++ -o monolith monolith.cpp `sdl2-config --cflags --libs` -lGLEW -lGL -lSDL2_ttf -lSDL2_mixer -std=c++11 -lm -I ./ -w -g
+
+gdb ./monolith
+run
+where
