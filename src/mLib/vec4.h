@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <cassert>
 
+#include <assert.h>
+
 //! 4D vector.
 template <class T>
 class vec4

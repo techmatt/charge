@@ -3,7 +3,7 @@
 
 void Board::updateBlockedGrid()
 {
-    for (auto &cell : cells)
+    for (const auto &cell : cells)
     {
         cell.value.blocked = false;
         if (cell.value.c != nullptr && cell.value.c->info->name == "Blocker")
@@ -23,7 +23,7 @@ void Board::updateBlockedGrid()
             return false;
         };
         bool changed = false;
-        for (auto &cell : cells)
+        for (const auto &cell : cells)
         {
             if (!cell.value.blocked)
             {

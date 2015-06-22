@@ -2,6 +2,8 @@
 #ifndef CORE_MATH_MATRIX4X4_H_
 #define CORE_MATH_MATRIX4X4_H_
 
+#include <assert.h>
+
 //! This class provides functions to handle 4-dimensional matrices
 /*! The arrangement of the matrix is row-like.
     The index of a specific position is:
@@ -217,10 +219,6 @@ public:
 		return res;
 	}
 
-	//! overwrite the matrix with a rotation-matrix around a coordinate-axis (angle is specified in degrees)
-	void setRotation(const vec3<FloatType> &axis, FloatType angle) {
-		*this = Matrix3x3<FloatType>::rotation(axis, angle);
-	}
 	static Matrix4 rotation(const vec3<FloatType> &axis, FloatType angle) {
 		Matrix4 res;	res.setRotation(axis, angle);
 		return res;

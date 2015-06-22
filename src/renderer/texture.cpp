@@ -21,7 +21,7 @@ void Texture::drawText(TTF_Font *font, const string &text, RGBColor color, int w
     for (int y = 0; y < surface->h; y++)
         memcpy(&_bmp(0, y), (BYTE *)surface->pixels + y * surface->pitch, sizeof(RGBColor) * _bmp.width());
 
-    for (auto &p : _bmp)
+    for (const auto &p : _bmp)
     {
         const BYTE b = p.value.b;
         p.value.b = p.value.r;

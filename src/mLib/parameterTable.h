@@ -36,7 +36,6 @@ public:
         params[parameterName].push_back(convert::toString(value));
     }
 
-    template<>
     void set(const string &parameterName, const string &value)
     {
         params[parameterName].push_back(value);

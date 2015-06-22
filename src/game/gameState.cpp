@@ -244,11 +244,11 @@ void GameState::removeComponent(Component *component, bool updateConnections)
         }
     }
 
-    for (auto &cell : board.cells)
+    for (const auto &cell : board.cells)
     {
         if (cell.value.c != nullptr && cell.value.c->circuitBoard != nullptr)
         {
-            for (auto &cellInner : cell.value.c->circuitBoard->cells)
+            for (const auto &cellInner : cell.value.c->circuitBoard->cells)
                 if (cellInner.value.c == component) cellInner.value.c = nullptr;
         }
         if (cell.value.c == component) cell.value.c = nullptr;
