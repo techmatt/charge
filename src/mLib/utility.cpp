@@ -281,7 +281,7 @@ string getWorkingDirectory()
 
 void sleep(int milliseconds)
     {
-        sleep(milliseconds);
+        usleep(milliseconds * 1000);
     }
 #endif
 }  // namespace util
