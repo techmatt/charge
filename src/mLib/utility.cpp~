@@ -247,14 +247,6 @@ namespace util
 #endif
 
 #ifdef LINUX
-
-string getWorkingDirectory()
-    {
-        char result[1024];
-        getcwd(result, 1024);
-        return string(result) + "/";
-    }
-
 	void copyStringToClipboard(const std::string &S)
 	{
 

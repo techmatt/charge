@@ -14,6 +14,7 @@
 //
 #include "game/board.cpp"
 #include "game/charge.cpp"
+#include "game/coordinates.cpp"
 #include "game/component.cpp"
 #include "game/database.cpp"
 #include "game/gameState.cpp"
@@ -23,7 +24,6 @@
 //
 // gameUI source files
 //
-#include "gameUI/coordinates.cpp"
 #include "gameUI/gameButton.cpp"
 #include "gameUI/gameUI.cpp"
 #include "gameUI/gameCanvas.cpp"
