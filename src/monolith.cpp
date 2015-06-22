@@ -38,7 +38,7 @@
 #include "mLib/imageLoaderLodePNG.cpp"
 #include "mLib/lodepng.cpp"
 #include "mLib/utility.cpp"
-#include "mLib/fileDialog.cpp"
+#include "mLib/FileDialog.cpp"
 
 //
 // renderer source files
