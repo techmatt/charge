@@ -1,4 +1,14 @@
 
+inline void checkGLError()
+{
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR)
+    {
+        cout << "OpenGL error: " << error << endl;
+        for (int i = 0; i < 100; i++)error = glGetError();
+    }
+}
+
 class GLProgram
 {
 public:
@@ -18,14 +28,17 @@ public:
 
         /* Create an empty vertex shader handle */
         vertexShader = glCreateShader(GL_VERTEX_SHADER);
+        checkGLError();
 
         /* Send the vertex shader source code to GL */
         /* Note that the source code is NULL character terminated. */
         /* GL will automatically detect that therefore the length info can be 0 in this case (the last parameter) */
         GLchar *vertexSourceData = (GLchar*)vertexSource.data();
         glShaderSource(vertexShader, 1, (const GLchar**)&vertexSourceData, 0);
+        checkGLError();
 
         glCompileShader(vertexShader);
+        checkGLError();
 
         glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiledVS);
         if (!isCompiledVS)
@@ -74,6 +87,7 @@ public:
         /* GL shader programs are monolithic. It is a single piece made of 1 vertex shader and 1 fragment shader. */
         /* Assign our program handle a "name" */
         shaderProgram = glCreateProgram();
+        checkGLError();
 
         /* Attach our shaders to our program */
         glAttachShader(shaderProgram, vertexShader);
@@ -110,7 +124,10 @@ public:
             MLIB_ERROR("failed to link program");
         }
 
+        checkGLError();
+
         bind();
+
         transformLocation = glGetUniformLocation(shaderProgram, "transform");
         colorLocation = glGetUniformLocation(shaderProgram, "color");
         kernelOffsetLocation = glGetUniformLocation(shaderProgram, "kernelOffset");
@@ -119,9 +136,14 @@ public:
     void bind()
     {
         glUseProgram(shaderProgram);
+        checkGLError();
 
         GLint samplerLocation = glGetUniformLocation(shaderProgram, "sampler");
+        checkGLError();
+
         glProgramUniform1i(shaderProgram, samplerLocation, 0);
+        checkGLError();
+
         glActiveTexture(GL_TEXTURE0);
     }
 

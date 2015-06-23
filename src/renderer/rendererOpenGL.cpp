@@ -8,6 +8,11 @@ void RendererOpenGL::init(SDL_Window *window)
     _motionBlurFramesLeft = 0;
     _motionBlurMinAlpha = 1.0f;
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
     _context = SDL_GL_CreateContext(window);
@@ -17,11 +22,19 @@ void RendererOpenGL::init(SDL_Window *window)
         SDL_Quit();
     }
 
+    checkGLError();
+
+    checkGLError();
+
     GLenum err = glewInit();
     MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
 
-    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
-    MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
+    //int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
+    //MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
+
+    checkGLError();
+
+    checkGLError();
 
     const string shaderDir = params().assetDir + "shaders/";
 
@@ -31,9 +44,15 @@ void RendererOpenGL::init(SDL_Window *window)
     _motionProgram.load(shaderDir + "motion.vert", shaderDir + "motion.frag");
     _quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
 
+    checkGLError();
+
     _quadProgram.bind();
 
+    checkGLError();
+
     _quad.init();
+
+    checkGLError();
 
     glEnable(GL_TEXTURE_2D);
 
