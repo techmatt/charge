@@ -9,3 +9,5 @@ sudo apt-get install libglew-dev
 gdb ./monolith
 run
 where
+
+g++ -o monolith monolith.cpp -I/Library/Frameworks/SDL2.framework/Headers -I/Library/Frameworks/SDL2_ttf.framework/Headers -I/Library/Frameworks/SDL2_mixer.framework/Headers/ -framework SDL2  -std=c++11 -lm -I ./ -w -g -I/usr/local/Cellar/glew/1.12.0/include/GL/ -framework OpenGL -framework SDL2_mixer -framework SDL2_ttf `pkg-config --cflags --libs glew`
