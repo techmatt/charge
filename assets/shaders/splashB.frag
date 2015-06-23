@@ -5,17 +5,17 @@ precision highp float;
 in  vec2 ex_TexCoord;
 out vec4 fragColor;
 
-uniform sampler2D sampler;
+uniform sampler2D mySampler;
 uniform vec2 kernelOffset;
  
 void main(void) {
-	vec4 c0 = texture(sampler, ex_TexCoord + kernelOffset * -3.0f).xyzw;
-	vec4 c1 = texture(sampler, ex_TexCoord + kernelOffset * -2.0f).xyzw;
-	vec4 c2 = texture(sampler, ex_TexCoord + kernelOffset * -1.0f).xyzw;
-	vec4 c3 = texture(sampler, ex_TexCoord).xyzw;
-	vec4 c4 = texture(sampler, ex_TexCoord + kernelOffset * 1.0f).xyzw;
-	vec4 c5 = texture(sampler, ex_TexCoord + kernelOffset * 2.0f).xyzw;
-	vec4 c6 = texture(sampler, ex_TexCoord + kernelOffset * 3.0f).xyzw;
+	vec4 c0 = texture(mySampler, ex_TexCoord + kernelOffset * -3.0f).xyzw;
+	vec4 c1 = texture(mySampler, ex_TexCoord + kernelOffset * -2.0f).xyzw;
+	vec4 c2 = texture(mySampler, ex_TexCoord + kernelOffset * -1.0f).xyzw;
+	vec4 c3 = texture(mySampler, ex_TexCoord).xyzw;
+	vec4 c4 = texture(mySampler, ex_TexCoord + kernelOffset * 1.0f).xyzw;
+	vec4 c5 = texture(mySampler, ex_TexCoord + kernelOffset * 2.0f).xyzw;
+	vec4 c6 = texture(mySampler, ex_TexCoord + kernelOffset * 3.0f).xyzw;
 
 	float p0 = 0.1;
 	float p1 = 0.2;

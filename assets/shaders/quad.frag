@@ -5,10 +5,10 @@ precision highp float;
 in  vec2 ex_TexCoord;
 out vec4 fragColor;
 
-uniform sampler2D sampler;
+uniform sampler2D mySampler;
 uniform vec4 color;
  
 void main(void) {
-	fragColor = texture(sampler, ex_TexCoord).xyzw * color;
-	//gl_FragColor = vec4(texture(sampler, ex_TexCoord).xyz, 0.5f) * color;
+	fragColor = texture(mySampler, ex_TexCoord).xyzw * color;
+	//gl_FragColor = vec4(texture(mySampler, ex_TexCoord).xyz, 0.5f) * color;
 }

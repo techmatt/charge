@@ -5,7 +5,7 @@ precision highp float;
 in  vec2 ex_TexCoord;
 out vec4 fragColor;
 
-uniform sampler2D sampler;
+uniform sampler2D mySampler;
 uniform vec3 focusColorA;
 uniform vec3 focusColorB;
 uniform vec2 pulse;
@@ -17,7 +17,7 @@ float f(float x)
 
 void main(void)
 {
-	vec3 color = texture(sampler, ex_TexCoord).xyz;
+	vec3 color = texture(mySampler, ex_TexCoord).xyz;
 	
 	float threshold = 0.15;
 

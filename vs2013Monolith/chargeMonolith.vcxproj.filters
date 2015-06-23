@@ -79,6 +79,5 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\monolith.cpp" />
-    <ClCompile Include="..\src\gameUI\coordinates.cpp" />
   </ItemGroup>
 </Project>

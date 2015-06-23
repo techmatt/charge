@@ -9,9 +9,13 @@ void RendererOpenGL::init(SDL_Window *window)
     _motionBlurMinAlpha = 1.0f;
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+
+#ifdef _WIN32
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+#else
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+#endif
 
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
@@ -22,18 +26,13 @@ void RendererOpenGL::init(SDL_Window *window)
         SDL_Quit();
     }
 
-    checkGLError();
-
-    checkGLError();
-
     GLenum err = glewInit();
     MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
+    // ignore the first error out of glew
+    GLenum error = glGetError();
 
-    //int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
-    //MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
-
-    checkGLError();
-
+    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
+    MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
     checkGLError();
 
     const string shaderDir = params().assetDir + "shaders/";

@@ -1,4 +1,14 @@
 
+inline void checkGLError()
+{
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR)
+    {
+        cout << "OpenGL error: " << error << endl;
+        for (int i = 0; i < 100; i++)error = glGetError();
+    }
+}
+
 class GLQuad
 {
 public:
@@ -16,14 +26,19 @@ public:
             { 1.0, 1.0, }, /* Blue */
             { 1.0, 0.0, } }; /* White */
 
+        checkGLError();
+
         /* Allocate and assign a Vertex Array Object to our handle */
         glGenVertexArrays(1, &vao);
+        checkGLError();
 
         /* Bind our Vertex Array Object as the current used object */
         glBindVertexArray(vao);
+        checkGLError();
 
         /* Allocate and assign two Vertex Buffer Objects to our handle */
         glGenBuffers(2, vbo);
+        checkGLError();
 
         /* Bind our first VBO as being the active buffer and storing vertex attributes (coordinates) */
         glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);

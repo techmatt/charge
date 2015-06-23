@@ -1,14 +1,4 @@
 
-inline void checkGLError()
-{
-    GLenum error = glGetError();
-    if (error != GL_NO_ERROR)
-    {
-        cout << "OpenGL error: " << error << endl;
-        for (int i = 0; i < 100; i++)error = glGetError();
-    }
-}
-
 class GLProgram
 {
 public:
@@ -135,16 +125,16 @@ public:
 
     void bind()
     {
+        glActiveTexture(GL_TEXTURE0);
+
         glUseProgram(shaderProgram);
         checkGLError();
 
-        GLint samplerLocation = glGetUniformLocation(shaderProgram, "sampler");
+        GLint samplerLocation = glGetUniformLocation(shaderProgram, "mySampler");
         checkGLError();
 
-        glProgramUniform1i(shaderProgram, samplerLocation, 0);
+        glUniform1i(samplerLocation, 0);
         checkGLError();
-
-        glActiveTexture(GL_TEXTURE0);
     }
 
     void setTransform(const mat4f &transform)
