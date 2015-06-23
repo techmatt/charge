@@ -26,6 +26,7 @@ void RendererOpenGL::init(SDL_Window *window)
         SDL_Quit();
     }
 
+#ifndef __APPLE__
     GLenum err = glewInit();
     MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
     // ignore the first error out of glew
@@ -34,6 +35,7 @@ void RendererOpenGL::init(SDL_Window *window)
     int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
     MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
     checkGLError();
+#endif
 
     const string shaderDir = params().assetDir + "shaders/";
 

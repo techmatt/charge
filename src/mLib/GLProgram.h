@@ -125,8 +125,9 @@ public:
 
     void bind()
     {
+        checkGLError();
         glActiveTexture(GL_TEXTURE0);
-
+        checkGLError();
         glUseProgram(shaderProgram);
         checkGLError();
 

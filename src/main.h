@@ -2,14 +2,27 @@
 #ifndef __CHARGE_MAIN
 #define __CHARGE_MAIN
 
+#ifdef __APPLE__
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
+#include <SDL2_ttf/SDL_ttf.h>
+#include <SDL2_mixer/SDL_mixer.h>
+#else
 #include <SDL.h>
 #include <SDL_audio.h>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
+#endif
 
 // TODO: try and link glew statically instead
 //#define GL3_PROTOTYPES 1
+
+#ifdef __APPLE__
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
+#else
 #include <GL/glew.h>
+#endif
 
 #include "mLib/mLib.h"
 
