@@ -3,6 +3,7 @@
 precision highp float;
 
 in  vec2 ex_TexCoord;
+out vec4 fragColor;
 
 uniform sampler2D sampler;
 uniform vec4 color;
@@ -36,5 +37,5 @@ void main(void) {
 	//float alpha = min(1.0, length(v.xyz));
 	//v.w = alpha;
 	
-	gl_FragColor = vec4(v) * color;
+	fragColor = vec4(v) * color;
 }

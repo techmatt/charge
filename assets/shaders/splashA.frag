@@ -3,6 +3,7 @@
 precision highp float;
 
 in  vec2 ex_TexCoord;
+out vec4 fragColor;
 
 uniform sampler2D sampler;
 uniform vec3 focusColorA;
@@ -23,5 +24,5 @@ void main(void)
 	float scaleA = f(max(0.0, 1.0 - length(color - focusColorA) / threshold)) * pulse.x;
 	float scaleB = f(max(0.0, 1.0 - length(color - focusColorB) / threshold)) * pulse.y;
 
-	gl_FragColor = vec4((scaleA + scaleB) * color, 1.0);
+	fragColor = vec4((scaleA + scaleB) * color, 1.0);
 }

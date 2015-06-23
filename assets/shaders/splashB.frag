@@ -3,6 +3,7 @@
 precision highp float;
 
 in  vec2 ex_TexCoord;
+out vec4 fragColor;
 
 uniform sampler2D sampler;
 uniform vec2 kernelOffset;
@@ -31,5 +32,5 @@ void main(void) {
 
 	vec4 v = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3 + c4 * w4 + c5 * w5 + c6 * w6;
 
-	gl_FragColor = vec4(v);
+	fragColor = vec4(v);
 }
