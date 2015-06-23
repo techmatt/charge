@@ -2,7 +2,7 @@
 
 rect2f CoordinateFrame::toContainer(const rect2f &rect) const
 {
-	return rect2f(toContainer(rect.minB), toContainer(rect.maxB));
+	return rect2f(toContainer(rect.min()), toContainer(rect.max()));
 }
 vec2f CoordinateFrame::toContainer(const vec2f &vec) const
 {
@@ -11,7 +11,7 @@ vec2f CoordinateFrame::toContainer(const vec2f &vec) const
 
 rect2f CoordinateFrame::fromContainer(const rect2f &rect) const
 {
-	return rect2f(fromContainer(rect.minB), fromContainer(rect.maxB));
+	return rect2f(fromContainer(rect.min()), fromContainer(rect.max()));
 }
 vec2f CoordinateFrame::fromContainer(const vec2f &vec) const
 {

@@ -26,8 +26,8 @@ public:
 	}
 	CoordinateFrame(const rect2f &_shape)
 	{
-		start = _shape.minB;
-		end = _shape.maxB;
+        start = _shape.min();
+        end = _shape.max();
 		internalDimensions = end - start;
 		frameScale = vec2f(1.0f, 1.0f);
 	}
@@ -40,8 +40,8 @@ public:
 	}
 	CoordinateFrame(const rect2f &_shape, const vec2f &_internalDimensions)
 	{
-		start = _shape.minB;
-		end = _shape.maxB;
+        start = _shape.min();
+        end = _shape.max();
 		internalDimensions = _internalDimensions;
 		frameScale = vec2f((end.x - start.x) / internalDimensions.x, (end.x - start.x) / internalDimensions.x);
 	}
