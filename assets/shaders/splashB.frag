@@ -3,7 +3,6 @@
 precision highp float;
 
 in  vec2 ex_TexCoord;
-out vec4 gl_FragColor;
 
 uniform sampler2D sampler;
 uniform vec2 kernelOffset;

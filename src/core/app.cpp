@@ -64,6 +64,8 @@ int App::run()
         return 1;
     }
 
+
+
     TTF_Init();
 
     //Setup our window and renderer
