@@ -4,7 +4,7 @@
 void RendererSDL::init(SDL_Window *window)
 {
 	_window = window;
-	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    _renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
 	if (_renderer == nullptr)
 	{
         cout << "Error creating SDL renderer" << endl;

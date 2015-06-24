@@ -51,8 +51,8 @@ struct AppData
     GameCanvas canvas;
     GameState state;
     
-    RendererOpenGL renderer;
-    //RendererSDL renderer;
+    //RendererOpenGL renderer;
+    RendererSDL renderer;
     AudioDevice audio;
 	
 	UndoBuffer undoBuffer;

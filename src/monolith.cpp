@@ -47,3 +47,4 @@
 #include "renderer/texture.cpp"
 #include "renderer/renderTarget.cpp"
 #include "renderer/rendererOpenGL.cpp"
+#include "renderer/rendererSDL.cpp"
