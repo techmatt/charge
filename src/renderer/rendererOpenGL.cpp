@@ -267,10 +267,6 @@ void RendererOpenGL::present()
 
             _motionBlurFramesLeft--;
         }
-
-        // HACK to avoid the black fade issue. slower, but fine.
-        //if (_motionBlurFramesLeft == 0)
-        //    _motionBlurFramesLeft = 1;
     }
 
 	SDL_GL_SwapWindow(_window);

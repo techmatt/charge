@@ -68,7 +68,10 @@ class App
 {
 public:
     int run();
+    int runRendererTest();
 
 private:
+    void initRenderer();
+
     AppData data;
 };

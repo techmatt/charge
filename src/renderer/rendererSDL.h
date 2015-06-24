@@ -19,9 +19,7 @@ public:
 
     void clear();
 
-	//void render(Texture &tex, const rect2i &destinationRect, const CoordinateFrame &frame);
-    //void render(Texture &tex, const rect2i &destinationRect, float angle, const CoordinateFrame &frame);
-    void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color);
+	void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color);
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color);
 	void present();
     void setRenderTarget(Texture &target);

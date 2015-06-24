@@ -56,12 +56,13 @@ return TRUE;
 }
 }
 */
-int App::run()
+
+void App::initRenderer()
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
     {
         cout << "SDL_Init error: " << SDL_GetError() << endl;
-        return 1;
+        return;
     }
 
     TTF_Init();
@@ -86,17 +87,69 @@ int App::run()
         }
     }
 
-	SDL_Window *window = SDL_CreateWindow("Charge!", 15, 35, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
+    SDL_Window *window = SDL_CreateWindow("Charge!", 15, 35, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE); //SDL_WINDOW_FULLSCREEN_DESKTOP
 
     if (window == nullptr)
     {
         cout << "SDL_CreateWindow error: " << SDL_GetError() << endl;
-        return 1;
+        return;
     }
 
     data.audio.init();
 
     data.renderer.init(window);
+}
+
+int App::runRendererTest()
+{
+    initRenderer();
+
+    SDL_Event event;
+
+    bool quit = false;
+
+    Bitmap bmp(80, 100);
+    for (const auto &p : bmp)
+        p.value = RGBColor(p.x % 256, p.y % 256, (p.x * p.y) % 256);
+
+    while (!quit)
+    {
+        bool eventFound = false;
+
+        while (SDL_PollEvent(&event))
+        {
+            eventFound = true;
+            if (event.type == SDL_QUIT || event.type == SDL_APP_TERMINATING)
+            {
+                quit = true;
+            }
+        }
+
+        //
+        // render the game
+        //
+        data.renderer.bindMainRenderTarget();
+        data.renderer.clear();
+
+        Texture tex;
+        tex.load(data.renderer, bmp);
+
+        data.renderer.render(tex, rect2f(10.0f, 20.0f, 80.0f, 190.0f), 0.5f, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+
+        data.renderer.present();
+    }
+
+    SDL_Quit();
+
+    cout << "Press any key to continue..." << endl;
+    cin.get();
+
+    return 0;
+}
+
+int App::run()
+{
+    initRenderer();
 
     database().initTextures(data.renderer);
 
@@ -113,8 +166,6 @@ int App::run()
     // should init last to control motion blur state
     //
     data.splash.init();
-
-    
 
     data.activeEventHandler = &data.splash;
     data.activeRenderHandler = &data.splash;

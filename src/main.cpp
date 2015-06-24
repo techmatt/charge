@@ -28,5 +28,6 @@ int main(int argc, char* argv[])
     initGameParams(parameterFile);
 
     App app;
-    return app.run();
+    //return app.run();
+    return app.runRendererTest();
 }

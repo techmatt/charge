@@ -39,6 +39,7 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float dept
 
 void RendererSDL::clear()
 {
+    SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
     SDL_RenderClear(_renderer);
 }
 
@@ -86,7 +87,7 @@ CoordinateFrame RendererSDL::getWindowCoordinateFrame()
 	}
 	else
 	{
-		start = vec2f((height - width/aspectRatio) / 2.0f,0.0f);
+		start = vec2f((height - width/aspectRatio) / 2.0f, 0.0f);
 		end = vec2f((height + width / aspectRatio) / 2.0f, width);
 	}
 
