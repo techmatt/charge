@@ -44,8 +44,6 @@ public:
     // binds the motion blur render target (if active) or the window's render target
     void bindMainRenderTarget();
 
-    void initMotionBlur(float minAlpha, int frameCount) {}
-    
     float _motionBlurMinAlpha;
     int _motionBlurFramesLeft;
     bool _firstMotionBlurFrame;

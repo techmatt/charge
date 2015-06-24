@@ -24,5 +24,6 @@ tooltipDefaultStart = 403, 250
 tooltipSize = 254, 120
 
 godMode = false
+useSDLFallback = false
 
 maxSkippedLevels = 400

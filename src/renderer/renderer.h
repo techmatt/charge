@@ -31,5 +31,17 @@ public:
 
     virtual void bindMainRenderTarget() = 0;
 
+    virtual void renderFullScreen(Texture &tex, const vec4f &color) = 0;
+    virtual void renderFullScreen(const vec4f &color) = 0;
+
+    virtual bool motionBlurActive() { return false; }
+
+    virtual void initMotionBlur(float minAlpha, int frameCount) {}
+
+    virtual void renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, const vec2f &pulse) {}
+    virtual void renderSplashB(const vec2f &kernelOffset) {}
+    virtual void renderGaussian(const vec2f &kernelOffset) {}
+    virtual void renderMotionBlur(const vec4f &color) {}
+
     virtual CoordinateFrame getWindowCoordinateFrame() = 0;	// this is the coordinate frame of the rendered area in the entire window.
 };

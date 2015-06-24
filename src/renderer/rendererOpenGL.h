@@ -38,16 +38,17 @@ public:
     // binds the motion blur render target (if active) or the window's render target
     void bindMainRenderTarget() override;
 
+    virtual bool motionBlurActive() override
+    {
+        return (_motionBlurFramesLeft > 0);
+    }
+
     void initMotionBlur(float minAlpha, int frameCount)
     {
         _motionBlurMinAlpha = minAlpha;
         _firstMotionBlurFrame = true;
         _motionBlurFramesLeft = frameCount;
     }
-
-    float _motionBlurMinAlpha;
-    int _motionBlurFramesLeft;
-    bool _firstMotionBlurFrame;
 
 private:
     void updateWindowSize();
@@ -71,4 +72,8 @@ private:
     vec2f _windowSize;
     mat4f _windowToNDC;
     mat4f _quadToNDC;
+
+    float _motionBlurMinAlpha;
+    int _motionBlurFramesLeft;
+    bool _firstMotionBlurFrame;
 };

@@ -30,6 +30,7 @@ struct GameParameters
         params.readParameter("tooltipSize", tooltipSize);
 
         params.readParameter("godMode", godMode);
+        params.readParameter("useSDLFallback", useSDLFallback);
 
         params.readParameter("maxSkippedLevels", maxSkippedLevels);
 
@@ -80,6 +81,8 @@ struct GameParameters
 	CoordinateFrame circuitInWindow;
 
     bool godMode;
+
+    bool useSDLFallback;
 
     int maxSkippedLevels;
 

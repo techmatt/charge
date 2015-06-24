@@ -27,7 +27,14 @@ int main(int argc, char* argv[])
     ParameterFile parameterFile("../assets/parameters.txt");
     initGameParams(parameterFile);
 
-    App app;
+    Renderer *renderer;
+
+    if (params().useSDLFallback)
+        renderer = new RendererSDL();
+    else
+        renderer = new RendererOpenGL();
+
+    App app(*renderer);
     return app.run();
     //return app.runRendererTest();
 }

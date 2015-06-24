@@ -232,7 +232,7 @@ int App::run()
         //
         // render frame only if necessary
         //
-        bool renderFrame = !minimized && (eventFound || data.renderer._motionBlurFramesLeft > 0 || data.controller.puzzleMode == PuzzleMode::Executing);
+        bool renderFrame = !minimized && (eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing);
         if (renderFrame)
         {
             //

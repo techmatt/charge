@@ -670,6 +670,12 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
         render(baseTex, screenRect, depth, Colors::White());
 
     render(componentTex, screenRect, depth, Colors::White());
+
+    if (database().hasComponent(name) && database().getComponent(name).hasStoredChargeLayer)
+    {
+        Texture &chargeLayerTex = database().getTexture(app.renderer, name, icon.modifiers, true);
+        render(chargeLayerTex, screenRect, depth, GameUtil::chargeColor(ChargeType::Gray));
+    }
 }
 
 void GameCanvas::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)

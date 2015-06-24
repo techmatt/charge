@@ -23,7 +23,7 @@ double Timer::getTime()	{
 #ifdef LINUX
     struct timeval timevalue;
     gettimeofday(&timevalue, nullptr);
-    return (UINT64)timevalue.tv_sec * 1000000ULL + (UINT64)timevalue.tv_usec;
+    return ((UINT64)timevalue.tv_sec * 1000000ULL + (UINT64)timevalue.tv_usec) * 0.000001;
 #endif //LINUX
 }
 

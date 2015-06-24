@@ -58,7 +58,7 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
 {
-    if (app.renderer._motionBlurFramesLeft == 0)
+    if (app.renderer.motionBlurActive() == 0)
         app.renderer.initMotionBlur(0.3f, 100);
     else
         app.renderer.initMotionBlur(1.0f, 100);

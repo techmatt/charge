@@ -1,7 +1,7 @@
 
 struct AppData
 {
-    AppData() : ui(*this), canvas(*this), controller(*this), splash(*this)
+    AppData(Renderer &_renderer) : ui(*this), canvas(*this), controller(*this), splash(*this), renderer(_renderer)
     {
         
     }
@@ -50,9 +50,9 @@ struct AppData
     GameUI ui;
     GameCanvas canvas;
     GameState state;
-    
-    //RendererOpenGL renderer;
-    RendererSDL renderer;
+
+    Renderer &renderer;
+
     AudioDevice audio;
 	
 	UndoBuffer undoBuffer;
@@ -67,6 +67,8 @@ struct AppData
 class App
 {
 public:
+    App(Renderer &renderer) : data(renderer) {}
+
     int run();
     int runRendererTest();
 
