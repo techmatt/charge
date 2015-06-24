@@ -172,6 +172,18 @@ void RendererOpenGL::renderMotionBlur(const vec4f &color)
     _quadProgram.bind();
 }
 
+void RendererOpenGL::renderFullScreen(Texture &tex, const vec4f &color)
+{
+    tex.bindOpenGL();
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+    _quadProgram.setTransform(_quadToNDC);
+    _quadProgram.setColor(color);
+    _quad.render();
+}
+
 void RendererOpenGL::renderFullScreen(const vec4f &color)
 {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

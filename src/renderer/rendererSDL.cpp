@@ -98,3 +98,15 @@ void RendererSDL::bindMainRenderTarget()
 {
     SDL_SetRenderTarget(SDL(), nullptr);
 }
+
+void RendererSDL::renderFullScreen(Texture &tex, const vec4f &color)
+{
+    const vec2i windowSize = getWindowSize();
+    const rect2f rect(0.0f, 0.0f, (float)windowSize.x, (float)windowSize.y);
+    render(tex, rect, 0.5f, color);
+}
+
+void RendererSDL::renderFullScreen(const vec4f &color)
+{
+    cout << "SDL textures are not bound" << endl;
+}

@@ -35,7 +35,8 @@ public:
     void renderSplashA(const vec3f &focusColorA, const vec3f &focusColorB, const vec2f &pulse) {}
     void renderSplashB(const vec2f &kernelOffset) {}
 
-    void renderFullScreen(const vec4f &color) {}
+    void renderFullScreen(Texture &tex, const vec4f &color);
+    void renderFullScreen(const vec4f &color);
     void renderGaussian(const vec2f &kernelOffset) {}
 
     void renderMotionBlur(const vec4f &color) {}

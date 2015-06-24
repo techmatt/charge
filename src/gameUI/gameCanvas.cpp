@@ -130,7 +130,8 @@ void GameCanvas::render()
         renderButtonForeground(button, false);
     }
 
-    renderTrails();
+    if (app.renderer.type() == RendererType::OpenGL)
+        renderTrails();
 
     for (const auto &charge : app.state.charges)
     {
