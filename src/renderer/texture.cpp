@@ -1,12 +1,14 @@
 ﻿
 #include "main.h"
 
-void Texture::drawText(TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
+void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
 {
     if (text.size() == 0)
     {
         return;
     }
+
+    _renderer = &renderer;
 
     const SDL_Color SDLColor = { color.r, color.g, color.b, color.a };
     
@@ -28,17 +30,21 @@ void Texture::drawText(TTF_Font *font, const string &text, RGBColor color, int w
         p.value.r = b;
     }
 
-    initOpenGL(false);
+    if (renderer.type() == RendererType::SDL)
+        initSDL();
+    else
+        initOpenGL(false);
 
     SDL_FreeSurface(surface);
 }
 
 void Texture::load(Renderer &renderer, const string &filename)
 {
+    _renderer = &renderer;
     _bmp = LodePNG::load(filename);
 
     if (renderer.type() == RendererType::SDL)
-        initSDL(renderer);
+        initSDL();
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
@@ -46,40 +52,39 @@ void Texture::load(Renderer &renderer, const string &filename)
 
 void Texture::load(Renderer &renderer, const Bitmap &bmp)
 {
+    _renderer = &renderer;
 	_bmp = bmp;
 
     if (renderer.type() == RendererType::SDL)
-        initSDL(renderer);
+        initSDL();
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
 }
 
-void Texture::initSDL(Renderer &renderer)
+void Texture::initSDL()
 {
     releaseSDLMemory();
-
-    cout << "SDL textures not supported anymore" << endl;
 
     _SDLTexture = nullptr;
     
     //SDL_PIXELFORMAT_ARGB8888 seems to be the default texture for windows
-    //SDL_CreateTexture(renderer.SDL(), SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, (int)_bmp.width(), (int)_bmp.height());
+    SDL_CreateTexture(_renderer->SDL(), SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, (int)_bmp.width(), (int)_bmp.height());
 
-    /*_SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0xFF000000);
+    _SDLSurface = SDL_CreateRGBSurfaceFrom(_bmp.data(), (int)_bmp.width(), (int)_bmp.height(), 32, (int)_bmp.width() * sizeof(RGBColor), 0x0000FF, 0x00FF00, 0xFF0000, 0xFF000000);
     if (_SDLSurface == nullptr)
     {
-        SDL::logError("SDL_CreateRGBSurfaceFrom");
+        //SDL::logError("SDL_CreateRGBSurfaceFrom");
         return;
     }
 
-    _SDLTexture = SDL_CreateTextureFromSurface(renderer.SDL(), _SDLSurface);
+    _SDLTexture = SDL_CreateTextureFromSurface(_renderer->SDL(), _SDLSurface);
 
     if (_SDLTexture == nullptr)
     {
-        SDL::logError("SDL_CreateTextureFromSurface");
+        //SDL::logError("SDL_CreateTextureFromSurface");
         return;
-    }*/
+    }
 
     //SDL_FreeSurface(loadedImage);
 }

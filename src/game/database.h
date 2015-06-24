@@ -110,7 +110,11 @@ struct Database
     Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);
     //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireType speed);
 
+    TTF_Font* getFont(const string &fontName);
+
     map<string, ComponentInfo*> components;
+
+    map<string, TTF_Font*> _fonts;
 
     vector<PuzzleInfo> puzzles;
 

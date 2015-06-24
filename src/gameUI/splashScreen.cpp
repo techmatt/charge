@@ -6,9 +6,9 @@ const bool dumpHighlightMode = false;
 void SplashScreen::init()
 {
     srand((unsigned int)time(nullptr));
-    app.renderer.bindMainRenderTarget();
-
     app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
+
+    app.renderer.bindMainRenderTarget();
 
     for (const string &line : util::getFileLines(params().assetDir + "highlightsSplashA.txt"))
     {

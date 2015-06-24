@@ -30,6 +30,15 @@ void Database::init()
     fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
 }
 
+TTF_Font* Database::getFont(const string &fontName)
+{
+    if (_fonts.count(fontName) == 0)
+    {
+        _fonts[fontName] = TTF_OpenFont((params().assetDir + "fonts/" + fontName + ".ttf").c_str(), 50);
+    }
+    return _fonts[fontName];
+}
+
 void Database::initTextures(Renderer &renderer)
 {
     for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue + 1; chargeLevel++)

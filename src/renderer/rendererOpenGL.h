@@ -33,10 +33,8 @@ public:
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.
 
-    TTF_Font* getFont(const string &fontName);
-
     // binds the motion blur render target (if active) or the window's render target
-    void bindMainRenderTarget();
+    void bindMainRenderTarget() override;
 
     void initMotionBlur(float minAlpha, int frameCount)
     {
@@ -58,11 +56,6 @@ private:
     SDL_Window *_window;
     SDL_GLContext _context;
     
-    //
-    // we could abstract fonts into its own class, if needed
-    //
-    map<string, TTF_Font*> _fonts;
-
     GLQuad _quad;
     GLProgram _quadProgram;
     GLProgram _motionProgram;

@@ -117,6 +117,7 @@
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
     <ClCompile Include="..\src\renderer\rendererOpenGL.cpp" />
+    <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
     <ClCompile Include="..\src\renderer\renderTarget.cpp" />
     <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="..\src\mLib\vec4.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
     <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
+    <ClInclude Include="..\src\renderer\rendererSDL.h" />
     <ClInclude Include="..\src\renderer\renderTarget.h" />
     <ClInclude Include="..\src\renderer\texture.h" />
   </ItemGroup>

@@ -29,5 +29,7 @@ public:
 
     virtual vec2i getWindowSize() = 0;
 
+    virtual void bindMainRenderTarget() = 0;
+
     virtual CoordinateFrame getWindowCoordinateFrame() = 0;	// this is the coordinate frame of the rendered area in the entire window.
 };

@@ -27,7 +27,7 @@ Texture& GameCanvas::getFontTexture(const string &text, FontType font, int wrapW
     if (cache.count(text) == 0)
     {
         auto &info = database().fonts[(int)font];
-        Texture *t = new Texture(app.renderer.getFont(info.name), text, info.color, wrapWidth);
+        Texture *t = new Texture(app.renderer, database().getFont(info.name), text, info.color, wrapWidth);
         cache[text] = t;
     }
     return *cache[text];

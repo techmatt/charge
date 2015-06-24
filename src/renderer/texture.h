@@ -11,10 +11,10 @@ public:
     {
         initInternal();
     }
-    Texture(TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
+    Texture(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
     {
         initInternal();
-        drawText(font, text, color, wrapWidth);
+        drawText(renderer, font, text, color, wrapWidth);
     }
     Texture(Renderer &renderer, const string &filename)
     {
@@ -54,7 +54,7 @@ public:
     void load(Renderer &renderer, const string &filename);
     void load(Renderer &renderer, const Bitmap &bmp);
 
-    void drawText(TTF_Font *font, const string &text, RGBColor color, int wrapWidth);
+    void drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth);
 
     void bindOpenGL();
 
@@ -71,12 +71,15 @@ public:
 private:
     void initInternal()
     {
+        _renderer = nullptr;
         _SDLTexture = nullptr;
         _SDLSurface = nullptr;
         _OpenGLTexture = 0;
     }
-    void initSDL(Renderer &renderer);
+    void initSDL();
     void initOpenGL(bool useMipmaps);
+
+    Renderer* _renderer;
 
     Bitmap _bmp;
     SDL_Texture* _SDLTexture;

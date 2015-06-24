@@ -78,16 +78,6 @@ void RendererOpenGL::init(SDL_Window *window)
 	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-TTF_Font* RendererOpenGL::getFont(const string &fontName)
-{
-    if (_fonts.count(fontName) == 0)
-    {
-        _fonts[fontName] = TTF_OpenFont((params().assetDir + "fonts/" + fontName + ".ttf").c_str(), 50);
-    }
-    return _fonts[fontName];
-}
-
-
 void RendererOpenGL::updateWindowSize()
 {
     _windowSize = getWindowSize();

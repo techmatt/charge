@@ -20,9 +20,9 @@ int main(int argc, char* argv[])
     chdir("Charge.app/Contents/MacOS");
 #endif
 
-    char cwd[1024];
-    getcwd(cwd, sizeof(cwd));
-    printf("%s\n",cwd);
+    //char cwd[1024];
+    //getcwd(cwd, sizeof(cwd));
+    //printf("%s\n",cwd);
     
     ParameterFile parameterFile("../assets/parameters.txt");
     initGameParams(parameterFile);

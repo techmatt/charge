@@ -59,6 +59,7 @@ class Texture;
 #include "renderer/renderTarget.h"
 #include "renderer/renderer.h"
 #include "renderer/rendererOpenGL.h"
+#include "renderer/rendererSDL.h"
 
 
 #include "game/misc.h"

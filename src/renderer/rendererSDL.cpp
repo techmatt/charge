@@ -1,9 +1,5 @@
 
-RendererSDL is not supported
-
 #include "main.h"
-
-
 
 void RendererSDL::init(SDL_Window *window)
 {
@@ -11,14 +7,14 @@ void RendererSDL::init(SDL_Window *window)
 	_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (_renderer == nullptr)
 	{
-		SDL::logError("CreateRenderer");
+        cout << "Error creating SDL renderer" << endl;
 		SDL_Quit();
 	}
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
 	SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -26,10 +22,11 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect)
     dst.w = (int)(destinationRect.max().x) - dst.x;
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
+    SDL_SetTextureColorMod(tex.SDL(), util::boundToByte(color.r * 255.0f), util::boundToByte(color.g * 255.0f), util::boundToByte(color.b * 255.0f));
 	SDL_RenderCopy(_renderer, tex.SDL(), NULL, &dst);
 }
 
-void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angle)
+void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
 {
 	SDL_Rect dst;
     dst.x = (int)(destinationRect.min().x);
@@ -37,7 +34,7 @@ void RendererSDL::render(Texture &tex, const rect2f &destinationRect, float angl
     dst.w = (int)(destinationRect.max().x) - dst.x;
     dst.h = (int)(destinationRect.max().y) - dst.y;
 
-	SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(_renderer, tex.SDL(), NULL, &dst, rotation, NULL, SDL_FLIP_NONE);
 }
 
 void RendererSDL::clear()
@@ -94,4 +91,9 @@ CoordinateFrame RendererSDL::getWindowCoordinateFrame()
 	}
 
     return CoordinateFrame(start, end, vec2f(canonical));
+}
+
+void RendererSDL::bindMainRenderTarget()
+{
+    SDL_SetRenderTarget(SDL(), nullptr);
 }
