@@ -153,8 +153,10 @@ void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bo
             addNewComponent(c, false, false);
 
     if (loadAsPuzzle)
+    {
         for (auto &c : components)
             c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
+    }
 
     basePuzzleFilename = "unknown";
     if (puzzleTable.hasParameter("basePuzzleFilename"))

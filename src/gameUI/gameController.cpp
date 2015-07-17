@@ -112,7 +112,8 @@ void GameController::loadCampaignPuzzle(int puzzleIndex)
     currentPuzzleFilename = database().puzzles[currentCampaignIndex].filename;
 
     const PuzzleInfo &puzzle = getCurrentPuzzle();
-    app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
+    loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
+    app.state.victoryInfo = GameVictoryInfo();
     viewMode = ControllerViewMode::BasePuzzle;
 }
 
