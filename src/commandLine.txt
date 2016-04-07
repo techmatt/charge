@@ -1,10 +1,8 @@
 g++ -o monolith monolith.cpp `sdl2-config --cflags --libs` -lGLEW -lGL -lSDL2_ttf -lSDL2_mixer -std=c++11 -lm -I ./ -w -g
 
-sudo apt-get install libsdl2-dev
-sudo apt-get install libsdl2-ttf-dev
-sudo apt-get install libsdl2-mixer-dev
-sudo apt-get install freeglut3
-sudo apt-get install libglew-dev
+sudo apt-get install libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev freeglut3 libglew-dev
+
+sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
 
 gdb ./monolith
 run
