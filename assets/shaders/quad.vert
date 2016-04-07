@@ -1,4 +1,4 @@
-#version 150
+#version 130
 
 // in_Position was bound to attribute index 0 and in_TexCoord was bound to attribute index 1
 in vec2 in_Position;
