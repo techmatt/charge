@@ -325,7 +325,7 @@ void LegacyLoader::load(const string &filename, GameState &result)
     // the remaining 24 lines encode the board layout. This information is already encoded.
     //
 
-    result.clearBoard();
+    result.clearAndResetBoard();
 
     //
     // add all circuits

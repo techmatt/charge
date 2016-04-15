@@ -27,14 +27,18 @@ int GameState::componentCost() const
     return cost;
 }
 
-void GameState::clearBoard()
+void GameState::clearComponents()
 {
     for (Component *c : components)
         delete c;
     components.clear();
-
     board.cells.allocate(params().boardDims.x, params().boardDims.y);
     resetPuzzle();
+}
+
+void GameState::clearAndResetBoard()
+{
+    clearComponents();
 
     puzzleName = "untitled";
 
@@ -45,7 +49,7 @@ void GameState::clearBoard()
 
 void GameState::init()
 {
-    clearBoard();
+    clearAndResetBoard();
 
     auto &tableA = circuitBoundaryNeighborOffsetTable;
     auto &tableB = circuitBoundaryNeighborOffsetTableAligned;
@@ -107,7 +111,7 @@ void GameState::savePuzzle(const string &filename, const string &_basePuzzleFile
 
 void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bool loadAsPuzzle)
 {
-    clearBoard();
+    clearAndResetBoard();
 
     //name = util::removeExtensions(util::fileNameFromPath(filename));
     puzzleName = _puzzleName;

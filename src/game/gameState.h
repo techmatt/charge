@@ -17,7 +17,8 @@ struct GameState
     void savePuzzle(const string &filename, const string &basePuzzleFilename);
     void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
 
-    void clearBoard();
+    void clearComponents();
+    void clearAndResetBoard();
     void resetPuzzle();
     
     void updateComponentConnections();

@@ -16,7 +16,8 @@ struct ComponentDefiningProperties
 
 		intrinsics = c.intrinsics;
 	}
-	const ComponentInfo* baseInfo;
+
+    const ComponentInfo* baseInfo;
 
 	GameLocation location;
 
@@ -32,6 +33,19 @@ struct ComponentDefiningProperties
 
 		return result;
 	}
+
+    UINT64 hash() const
+    {
+        UINT64 result = 0;
+        result += util::hash64(location.boardPos.x) * 4318;
+        result += util::hash64(location.boardPos.y) * 57421;
+        result += util::hash64(location.circuitPos.x) * 5467;
+        result += util::hash64(location.circuitPos.y) * 431;
+        result += std::hash<std::string>()(baseInfo->name) * 153;
+        result += util::hash64(modifiers) * 517;
+        result += util::hash64(intrinsics) * 219;
+        return result;
+    }
 };
 
 struct ComponentSet
@@ -42,9 +56,22 @@ struct ComponentSet
 		Component temp(info->name, color, GameLocation(vec2i(0,0)));
 		components.push_back(ComponentDefiningProperties(temp));
 	}
-	
-	// properties
+
+    // properties
 	vector<ComponentDefiningProperties> components;
+
+    static bool equivalent(const ComponentSet &a, const ComponentSet &b)
+    {
+        return a.hash() == b.hash();
+    }
+
+    UINT64 hash() const
+    {
+        UINT64 sum = 0;
+        for (auto &c : components)
+            sum += c.hash();
+        return sum;
+    }
 
 	void flipAboutHorizonal();
 	void flipAboutVerical();
@@ -87,20 +114,26 @@ struct UndoBuffer
 
 	void save(GameState &state)
 	{
+        ComponentSet newState = ComponentSet::allToBuffer(state);
+        if (current != maxBackward && ComponentSet::equivalent(newState, *buffer[current]))
+        {
+            return;
+        }
+
 		current = (current + 1) % constants::bufferSize;
 		if (current == maxBackward) maxBackward = (maxBackward + 1) % constants::bufferSize;
 		maxForward = current;
 
 		if (buffer[current]!=nullptr) delete(buffer[current]);
 
-		buffer[current] = new ComponentSet(ComponentSet::allToBuffer(state));
+        buffer[current] = new ComponentSet(newState);
 	}
 	void back(GameState &state)
 	{
 		if (current == maxBackward) return;
 		//ui.selectedGameLocation = GameLocation();
 		current = (current - 1) % constants::bufferSize;
-		state.clearBoard();
+		state.clearComponents();
 		buffer[current]->addToComponents(state,vec2i(0,0));
 	}
 	void forward(GameState &state)
@@ -108,7 +141,7 @@ struct UndoBuffer
 		if (current == maxForward) return;
 		//ui.selectedGameLocation = GameLocation();
 		current = (current + 1) % constants::bufferSize;
-		state.clearBoard();
+		state.clearComponents();
 		buffer[current]->addToComponents(state, vec2i(0, 0));
 	}
 	void reset(GameState &state)
