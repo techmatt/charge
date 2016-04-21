@@ -6,13 +6,21 @@ canonicalDims = 672, 464
 boardDims = 24, 24
 
 boardCanonicalStart = 8, 27
-circuitCanonicalStart = 418, 215
+circuitCanonicalStart = 418, 230
 circuitBackgroundCanonicalBoundarySize = 4
 
 canonicalCellSize = 16
 
-componentMenuCanonicalStart = 403, 8
-componentMenuCanonicalEntrySize = 37
+componentMenuCanonicalStart = 398, 3
+componentMenuCanonicalEntrySize = 34
+
+affinityMenuCanonicalStart = 398, 122
+doorMenuCanonicalStart = 579, 122
+typeMenuCanonicalStart = 398, 173
+
+menuButtonOffset = 7, 14
+menuTextOffset = 3, 2
+menuBorderOffset = 4, 3
 
 puzzleMenuCanonicalStart = 7, 418
 puzzleMenuCanonicalEntrySize = 24
@@ -26,4 +34,4 @@ tooltipSize = 254, 120
 godMode = true
 useSDLFallback = false
 
-maxSkippedLevels = 400
+maxSkippedLevels = 3

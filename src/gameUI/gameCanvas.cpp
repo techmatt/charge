@@ -157,6 +157,11 @@ void GameCanvas::render()
 
     renderTooltip();
 
+    for (auto &entry : menuText)
+    {
+        renderText(getFontTexture(entry.text, FontType::MenuTitle), entry.coord, 10.0f);
+    }
+
     if (SDL_GetModState() & KMOD_ALT)
     {
         float fps = app.frameTimer.framesPerSecond();
@@ -318,9 +323,21 @@ void GameCanvas::renderHoverComponent()
     }
 }
 
+void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions)
+{
+    const rect2f rect(canonicalStartCoord, canonicalStartCoord + params().menuButtonOffset + params().menuBorderOffset + gridDimensions * params().componentMenuCanonicalEntrySize);
+    addBackgroundObject(database().getTexture(app.renderer, "MenuBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+
+    MenuTextEntry entry;
+    entry.coord = canonicalStartCoord + params().menuTextOffset;
+    entry.text = menuName;
+    menuText.push_back(entry);
+}
+
 void GameCanvas::updateBackgroundObjects()
 {
     backgroundObjects.clear();
+    menuText.clear();
 
     app.controller.updateButtonList();
 
@@ -329,6 +346,15 @@ void GameCanvas::updateBackgroundObjects()
     //app.renderer.setRenderTarget(background);
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
+
+    renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3));
+
+    if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
+    if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
+    if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
+    if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
+    if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
+    if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
 
     if (app.activeCircuit() != nullptr)
     {
@@ -575,8 +601,8 @@ void GameCanvas::renderTooltip()
 
         if (app.state.victoryInfo.stepCount != -1)
         {
-            renderText(getFontTexture("Solve time: " + util::formatDouble((double)app.state.victoryInfo.stepCount / (double)constants::stepsPerSecond, 2, false) + "s", FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 120.0f), 12.0f);
-            renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
+            renderText(getFontTexture("Solve time: " + util::formatDouble((double)app.state.victoryInfo.stepCount / (double)constants::stepsPerSecond, 2, false) + "s", FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 126.0f), 12.0f);
+            //renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
         }
     }
 }

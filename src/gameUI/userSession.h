@@ -1,15 +1,15 @@
 
-enum LevelState
+enum class LevelState
 {
     Unsolved = 0,
     Solved = 1,
 };
 
-enum SolutionType
+enum class SolutionType
 {
-    MostRecent,
-    Fastest,
-    Cheapest,
+    MostRecent = 0,
+    Fastest = 1,
+    Cheapest = 2,
 };
 
 struct UserSessionLevelInfo
@@ -20,7 +20,6 @@ struct UserSessionLevelInfo
         puzzleFilename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
-        bestComponentCost = std::numeric_limits<int>::max();
     }
 
     ParameterTable toTable(const string &tableName) const
@@ -82,8 +81,8 @@ struct UserSession
                 return &campaignLevels[i];
         }
 
-        if (customLevels.count(puzzleFilename) > 0)
-            return &customLevels.find(puzzleFilename)->second;
+        //if (customLevels.count(puzzleFilename) > 0)
+        //    return &customLevels.find(puzzleFilename)->second;
 
         return nullptr;
     }

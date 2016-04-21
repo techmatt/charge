@@ -15,9 +15,7 @@ enum class ControllerViewMode
 {
     ProvidedSolution,
     BasePuzzle,
-    UserSolutionRecent,
-    UserSolutionFastest,
-    UserSolutionCheapest,
+    UserSolution,
 };
 
 enum class GameSpeed
@@ -74,7 +72,6 @@ public:
 
     void loadCampaignPuzzle(int newIndex);
     void loadCurrentProvidedSolution();
-    void cycleUserSolution();
     void loadUserSolution();
 
     void recordDesignAction();
@@ -100,6 +97,12 @@ public:
     }
 
     vector<GameButton> buttons;
+    bool affinityMenu;
+    bool gateMenu;
+    bool trapMenu;
+    bool wireSpeedMenu;
+    bool colorMenu;
+    bool circuitBoundaryMenu;
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;

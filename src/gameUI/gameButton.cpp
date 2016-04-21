@@ -225,7 +225,8 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
     if (name == "ViewYourProgress" || name == "ViewYourSolution")
     {
-        app.controller.cycleUserSolution();
+        app.controller.viewMode = ControllerViewMode::UserSolution;
+        app.controller.loadUserSolution();
     }
 
     auto transformComponentSet = [&](ComponentSet &cSet)

@@ -88,6 +88,10 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
     designActionTaken = true;
     app.canvas.backgroundDirty = true;
     app.ui.selection.empty();
+
+    app.ui.selectedMenuComponent = nullptr;
+    app.ui.activePlacementBuffer.clear();
+    app.ui.selection.empty();
 }
 
 void GameController::loadLegacyPuzzle(const string &filename)
@@ -149,24 +153,20 @@ void GameController::loadCurrentProvidedSolution()
     app.state.buildableComponents = baseState.buildableComponents;*/
 }
 
-void GameController::cycleUserSolution()
+/*void GameController::cycleUserSolution()
 {
-    if (viewMode == ControllerViewMode::ProvidedSolution || viewMode == ControllerViewMode::UserSolutionCheapest)
+    if (viewMode == ControllerViewMode::BasePuzzle)
+        viewMode = ControllerViewMode::UserSolution;
+    else if (viewMode == ControllerViewMode::ProvidedSolution || viewMode == ControllerViewMode::UserSolution)
     {
         viewMode = ControllerViewMode::BasePuzzle;
         loadCampaignPuzzle(currentCampaignIndex);
         return;
     }
 
-    if (viewMode == ControllerViewMode::BasePuzzle)
-        viewMode = ControllerViewMode::UserSolutionRecent;
-    else if (viewMode == ControllerViewMode::UserSolutionRecent)
-        viewMode = ControllerViewMode::UserSolutionFastest;
-    else if (viewMode == ControllerViewMode::UserSolutionFastest)
-        viewMode = ControllerViewMode::UserSolutionCheapest;
-
+    
     loadUserSolution();
-}
+}*/
 
 void GameController::loadUserSolution()
 {
@@ -174,19 +174,11 @@ void GameController::loadUserSolution()
 
     SolutionType type;
     string description;
-    if (viewMode == ControllerViewMode::UserSolutionRecent) {
+    if (viewMode == ControllerViewMode::UserSolution) {
         type = SolutionType::MostRecent;
         description = "most recent";
     }
-    if (viewMode == ControllerViewMode::UserSolutionFastest) {
-        type = SolutionType::Fastest;
-        description = "fastest";
-    }
-    if (viewMode == ControllerViewMode::UserSolutionCheapest) {
-        type = SolutionType::Cheapest;
-        description = "cheapest";
-    }
-
+    
     const string filename = app.session.getSolutionFilename(puzzle.filename, type);
 
     if (!util::fileExists(filename))
@@ -227,6 +219,12 @@ void GameController::changeEditorMode(EditorMode newMode)
 void GameController::updateButtonList()
 {
     buttons.clear();
+    affinityMenu = false;
+    gateMenu = false;
+    trapMenu = false;
+    wireSpeedMenu = false;
+    colorMenu = false;
+    circuitBoundaryMenu = false;
 
     //
     // Add all buildable components
@@ -263,7 +261,8 @@ void GameController::updateButtonList()
         {
             for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
             {
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 3), ButtonType::ChargePreference, ComponentModifiers(component->modifiers.color, chargePreference)));
+                affinityMenu = true;
+                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 0), ButtonType::ChargePreference, ComponentModifiers(component->modifiers.color, chargePreference)));
             }
         }
 
@@ -282,14 +281,18 @@ void GameController::updateButtonList()
                 {
                     ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
                     if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
-                        buttons.push_back(GameButton("Wire", vec2i((int)speed, 4), ButtonType::WireSpeed, modifier));
+                    {
+                        wireSpeedMenu = true;
+                        buttons.push_back(GameButton("Wire", vec2i((int)speed, 0), ButtonType::WireSpeed, modifier));
+                    }
                 }
         }
         else if (info.name == "CircuitBoundary")
         {
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 4), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
-            buttons.push_back(GameButton("CloseAll", vec2i(2, 4), ButtonType::CircuitBoundary, ComponentModifiers()));
+            circuitBoundaryMenu = true;
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
+            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
+            buttons.push_back(GameButton("CloseAll", vec2i(2, 0), ButtonType::CircuitBoundary, ComponentModifiers()));
         }
         else
         {
@@ -306,7 +309,10 @@ void GameController::updateButtonList()
             for (ChargeType charge : chargeLevels)
             {
                 if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
-                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 4), ButtonType::ChargeColor, ComponentModifiers(charge)));
+                {
+                    colorMenu = true;
+                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 0), ButtonType::ChargeColor, ComponentModifiers(charge)));
+                }
                 chargeIndex++;
             }
 
@@ -315,13 +321,15 @@ void GameController::updateButtonList()
             //
             if (info.name == "TrapSprung" || info.name == "TrapOpen")
             {
-                buttons.push_back(GameButton("TrapOpen", vec2i(0, 5), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
-                buttons.push_back(GameButton("TrapSprung", vec2i(1, 5), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
+                trapMenu = true;
+                buttons.push_back(GameButton("TrapOpen", vec2i(0, 0), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
+                buttons.push_back(GameButton("TrapSprung", vec2i(1, 0), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
             }
             if (info.name == "GateOpen" || info.name == "GateClosed")
             {
-                buttons.push_back(GameButton("GateOpen", vec2i(0, 5), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
-                buttons.push_back(GameButton("GateClosed", vec2i(1, 5), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
+                gateMenu = true;
+                buttons.push_back(GameButton("GateOpen", vec2i(0, 0), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
+                buttons.push_back(GameButton("GateClosed", vec2i(1, 0), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
             }
         }
     }

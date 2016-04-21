@@ -20,6 +20,14 @@ struct GameParameters
         params.readParameter("componentMenuCanonicalStart", componentMenuCanonicalStart);
         params.readParameter("componentMenuCanonicalEntrySize", componentMenuCanonicalEntrySize);
 
+        params.readParameter("menuButtonOffset", menuButtonOffset);
+        params.readParameter("menuBorderOffset", menuBorderOffset);
+        params.readParameter("menuTextOffset", menuTextOffset);
+        
+        params.readParameter("affinityMenuCanonicalStart", affinityMenuCanonicalStart);
+        params.readParameter("doorMenuCanonicalStart", doorMenuCanonicalStart);
+        params.readParameter("typeMenuCanonicalStart", typeMenuCanonicalStart);
+
         params.readParameter("puzzleMenuCanonicalStart", puzzleMenuCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
@@ -63,7 +71,13 @@ struct GameParameters
     float circuitBackgroundCanonicalBoundarySize;
     int canonicalCellSize;
     
+    vec2f menuTextOffset;
+    vec2f menuButtonOffset;
+    vec2f menuBorderOffset;
 	vec2f componentMenuCanonicalStart;
+    vec2f affinityMenuCanonicalStart;
+    vec2f doorMenuCanonicalStart;
+    vec2f typeMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
 
     vec2f puzzleMenuCanonicalStart;

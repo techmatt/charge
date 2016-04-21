@@ -100,13 +100,13 @@ struct UndoBuffer
 		int current=0;
 		int maxForward = 0;
 		int maxBackward = 0;
-		for (int i = 0; i < constants::bufferSize; i++)
-			buffer[i] = nullptr;
+		//for (int i = 0; i < constants::bufferSize; i++)
+		//	buffer[i] = nullptr;
 
 	}
 
     // TODO: this would probably be easier to just use ComponentSet instead of ComponentSet*
-	ComponentSet* buffer[constants::bufferSize];
+	ComponentSet buffer[constants::bufferSize];
 
 	int current;
 	int maxForward;
@@ -115,7 +115,7 @@ struct UndoBuffer
 	void save(GameState &state)
 	{
         ComponentSet newState = ComponentSet::allToBuffer(state);
-        if (current != maxBackward && ComponentSet::equivalent(newState, *buffer[current]))
+        if (current != maxBackward && ComponentSet::equivalent(newState, buffer[current]))
         {
             return;
         }
@@ -124,9 +124,9 @@ struct UndoBuffer
 		if (current == maxBackward) maxBackward = (maxBackward + 1) % constants::bufferSize;
 		maxForward = current;
 
-		if (buffer[current]!=nullptr) delete(buffer[current]);
+		//if (buffer[current]!=nullptr) delete(buffer[current]);
 
-        buffer[current] = new ComponentSet(newState);
+        buffer[current] = ComponentSet(newState);
 	}
 	void back(GameState &state)
 	{
@@ -134,7 +134,7 @@ struct UndoBuffer
 		//ui.selectedGameLocation = GameLocation();
 		current = (current - 1) % constants::bufferSize;
 		state.clearComponents();
-		buffer[current]->addToComponents(state,vec2i(0,0));
+		buffer[current].addToComponents(state,vec2i(0,0));
 	}
 	void forward(GameState &state)
 	{
@@ -142,7 +142,7 @@ struct UndoBuffer
 		//ui.selectedGameLocation = GameLocation();
 		current = (current + 1) % constants::bufferSize;
 		state.clearComponents();
-		buffer[current]->addToComponents(state, vec2i(0, 0));
+		buffer[current].addToComponents(state, vec2i(0, 0));
 	}
 	void reset(GameState &state)
 	{
@@ -150,8 +150,8 @@ struct UndoBuffer
 		maxBackward = 0;
 		maxForward = 0;
 
-		if (buffer[0] != nullptr) delete(buffer[0]);
-		buffer[current] = new ComponentSet(ComponentSet::allToBuffer(state));
+		//if (buffer[0] != nullptr) delete(buffer[0]);
+		buffer[current] = ComponentSet(ComponentSet::allToBuffer(state));
 	}
 
 

@@ -256,8 +256,8 @@ int App::run()
 
     SDL_Quit();
 
-    cout << "Press any key to continue..." << endl;
-    cin.get();
+    //cout << "Press any key to continue..." << endl;
+    //cin.get();
 
     return 0;
 }

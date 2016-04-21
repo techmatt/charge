@@ -9,6 +9,7 @@ enum class FontType
     TooltipKeyB,
     TooltipHotkey,
     ComponentAttribute,
+    MenuTitle,
     Count,
 };
 

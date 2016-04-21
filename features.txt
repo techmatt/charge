@@ -66,3 +66,5 @@ Puzzles with implicit timers, where the goal is to produce a "mega charge" befor
 Puzzle where goal is to build the longest delay cycle possible in 1 or 2 circuits for 1 or 2 charges (of different colors)
 
 Multi-user "start new game" in splash screen
+
+http://cooltext.com/Render-Image?RenderID=178380305632011&LogoId=1783803056

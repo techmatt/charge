@@ -67,10 +67,26 @@ private:
             const vec2i base = params().attributeMenuCanonicalStart + vec2f::directProduct(menuCoord, params().attributeMenuCanonicalEntrySize);
             return rect2i(base, base + params().attributeMenuCanonicalEntrySize - 4);
         }
-        else
+        else if (type == ButtonType::Component)
         {
-            const vec2i base = params().componentMenuCanonicalStart + menuCoord * params().componentMenuCanonicalEntrySize;
+            const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
+        else if (type == ButtonType::ChargePreference)
+        {
+            const vec2i base = params().affinityMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
+        }
+        else if (type == ButtonType::GateState || type == ButtonType::TrapState)
+        {
+            const vec2i base = params().doorMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
+        }
+        else if (type == ButtonType::WireSpeed || type == ButtonType::ChargeColor || type == ButtonType::CircuitBoundary)
+        {
+            const vec2i base = params().typeMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
+        }
+        return rect2i(params().componentMenuCanonicalStart, params().componentMenuCanonicalStart + params().canonicalCellSize * vec2i(2, 2));
     }
 };

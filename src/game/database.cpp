@@ -28,6 +28,7 @@ void Database::init()
     fonts[(int)FontType::TooltipKeyB] = FontInfo("trebuc", 36.0f, RGBColor(183, 255, 183));
     fonts[(int)FontType::TooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50));
     fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::MenuTitle] = FontInfo("trebuc", 36.0f, RGBColor(64, 64, 64));
 }
 
 TTF_Font* Database::getFont(const string &fontName)

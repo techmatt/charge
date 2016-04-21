@@ -12,6 +12,12 @@ struct CanvasConnection
     Texture *tex;
 };
 
+struct MenuTextEntry
+{
+    string text;
+    vec2f coord;
+};
+
 class GameCanvas : public RenderHandler
 {
 public:
@@ -52,6 +58,7 @@ private:
     }
 
     void updateBackgroundObjects();
+    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions);
     void renderBuildingGrid();
 
     void renderComponents();
@@ -86,6 +93,7 @@ private:
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 
     vector<UIRenderObject> backgroundObjects;
+    vector<MenuTextEntry> menuText;
 
     map<string, Texture*> textCache[(int)FontType::Count];
 
