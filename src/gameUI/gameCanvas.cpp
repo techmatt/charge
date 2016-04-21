@@ -64,7 +64,7 @@ void GameCanvas::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, o.rotation, color);
 }
 
-void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHeight, const vec4f &color)
+void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHeight, const vec4f &color, float depth)
 {
     const float aspect = (float)tex.bmp().dimX() / (float)tex.bmp().dimY();
 
@@ -74,7 +74,7 @@ void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHe
     const float width = aspect * height;
 
     const rect2f rect(start, vec2f(start.x + width, start.y + height));
-    app.renderer.render(tex, coordinateFrame.toContainer(rect), depthLayers::font, color);
+    app.renderer.render(tex, coordinateFrame.toContainer(rect), depth, color);
 }
 
 void GameCanvas::render()
@@ -155,12 +155,12 @@ void GameCanvas::render()
 
     renderText(getFontTexture(app.state.puzzleName, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
 
-    renderTooltip();
-
     for (auto &entry : menuText)
     {
-        renderText(getFontTexture(entry.text, FontType::MenuTitle), entry.coord, 10.0f);
+        renderText(getFontTexture(entry.text, FontType::MenuTitle), entry.coord, 10.0f, vec4f(1.0f, 1.0f, 1.0f, 1.0f), depthLayers::fontMenu);
     }
+
+    renderTooltip();
 
     if (SDL_GetModState() & KMOD_ALT)
     {

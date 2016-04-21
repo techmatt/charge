@@ -39,7 +39,7 @@ Number	Puzzle name	Puzzle file	Tip	Verified
 38	Infinite Possibilities	38-InfinitePossibilites	Finite input can beget infinite output.	no
 39	New Horizons	39-NewHorizons	Chips are a powerful tool to eliminate certain space constraints.	no
 40	Punch the Keys	40-PunchTheKeys	Pay attention to the already existing chips.	no
-41	One With Nothing	41-OneWithNothing	"Chips built into the level can be copied, pasted, rotated, and flipped."	no
+41	One With Nothing	41-OneWithNothing	"Chips built into the level can be copied (C), pasted (V), rotated, and flipped."	no
 42	To Each His Own	42-ToEachHisOwn	Chips you build now might come in handy later.	no
 43	Creative License	43-CreativeLicense	Sitting back and thinking can sometimes produce better results.	no
 44	One for All	44-OneForAll	Sometimes lots of small charges are more useful than larger ones.	no

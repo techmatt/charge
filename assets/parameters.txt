@@ -6,7 +6,7 @@ canonicalDims = 672, 464
 boardDims = 24, 24
 
 boardCanonicalStart = 8, 27
-circuitCanonicalStart = 418, 230
+circuitCanonicalStart = 418, 232
 circuitBackgroundCanonicalBoundarySize = 4
 
 canonicalCellSize = 16
