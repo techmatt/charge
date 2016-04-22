@@ -2,6 +2,7 @@
 #include "main.h"
 
 #ifdef __APPLE__
+#import <CoreFoundation/CoreFoundation.h>
 #include <unistd.h>
 #endif
 
@@ -16,13 +17,17 @@ void initGameParams(const ParameterFile &params)
 
 int main(int argc, char* argv[])
 {
+
 #ifdef __APPLE__
-    chdir("Charge.app/Contents/MacOS");
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX)) {
+        return 1;
+    }
+    chdir(path);
 #endif
 
-    //char cwd[1024];
-    //getcwd(cwd, sizeof(cwd));
-    //printf("%s\n",cwd);
     
     ParameterFile parameterFile("../assets/parameters.txt");
     initGameParams(parameterFile);
