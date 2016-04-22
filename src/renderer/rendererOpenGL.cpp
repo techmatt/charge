@@ -1,4 +1,4 @@
-
+﻿
 #include "main.h"
 
 void RendererOpenGL::init(SDL_Window *window)
@@ -13,6 +13,7 @@ void RendererOpenGL::init(SDL_Window *window)
 
 #ifdef _WIN32
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 #else
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 #endif
@@ -35,7 +36,18 @@ void RendererOpenGL::init(SDL_Window *window)
     int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
     MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
     checkGLError();
+
+    cout << "GL vendor/renderer: " << glGetString(GL_VENDOR) << "," << glGetString(GL_RENDERER) << endl;
+    cout << "GL version: " << glGetString(GL_VERSION) << endl;
+    cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
 #endif
+
+#ifdef __APPLE__
+    cout << "GL vendor/renderer: " << glGetString(GL_VENDOR) << "," << glGetString(GL_RENDERER) << endl;
+    cout << "GL version: " << glGetString(GL_VERSION) << endl;
+    cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
+#endif
+
 
     const string shaderDir = params().assetDir + "shaders/";
 
