@@ -42,35 +42,45 @@ public:
 
         /* Bind our first VBO as being the active buffer and storing vertex attributes (coordinates) */
         glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+        checkGLError();
 
         /* Copy the vertex data from diamond to our buffer */
         /* 8 * sizeof(GLfloat) is the size of the diamond array, since it contains 8 GLfloat values */
         glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), diamond, GL_STATIC_DRAW);
+        checkGLError();
 
         /* Specify that our coordinate data is going into attribute index 0, and contains two floats per vertex */
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+        checkGLError();
 
         /* Enable attribute index 0 as being used */
         glEnableVertexAttribArray(0);
+        checkGLError();
 
         /* Bind our second VBO as being the active buffer and storing vertex attributes (colors) */
         glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+        checkGLError();
 
         /* Copy the color data from colors to our buffer */
         /* 12 * sizeof(GLfloat) is the size of the colors array, since it contains 12 GLfloat values */
         glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), texCoords, GL_STATIC_DRAW);
+        checkGLError();
 
         /* Specify that our color data is going into attribute index 1, and contains three floats per vertex */
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+        checkGLError();
 
         /* Enable attribute index 1 as being used */
         glEnableVertexAttribArray(1);
+        checkGLError();
     }
 
     void render()
     {
         /* Invoke glDrawArrays telling that our data is a line loop and we want to draw 2-4 vertexes */
-        glDrawArrays(GL_QUADS, 0, 4);
+        checkGLError();
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        checkGLError();
     }
 
 private:

@@ -12,8 +12,8 @@ void RendererOpenGL::init(SDL_Window *window)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
 #ifdef _WIN32
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 #else
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 #endif
@@ -28,14 +28,17 @@ void RendererOpenGL::init(SDL_Window *window)
     }
 
 #ifndef __APPLE__
+    glewExperimental = GL_TRUE;
     GLenum err = glewInit();
     MLIB_ASSERT_STR(err == GLEW_OK, "glewInit failed");
     // ignore the first error out of glew
     GLenum error = glGetError();
 
-    int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
-    MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
     checkGLError();
+
+    //int VAOSupported = glewIsSupported("GL_ARB_vertex_array_object");
+    //MLIB_ASSERT_STR(VAOSupported != 0, "GL_ARB_vertex_array_object not supported");
+    //checkGLError();
 
     cout << "GL vendor/renderer: " << glGetString(GL_VENDOR) << "," << glGetString(GL_RENDERER) << endl;
     cout << "GL version: " << glGetString(GL_VERSION) << endl;
@@ -48,6 +51,7 @@ void RendererOpenGL::init(SDL_Window *window)
     cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
 #endif
 
+    checkGLError();
 
     const string shaderDir = params().assetDir + "shaders/";
 
@@ -66,18 +70,21 @@ void RendererOpenGL::init(SDL_Window *window)
     _quad.init();
 
     checkGLError();
-
-    glEnable(GL_TEXTURE_2D);
-
+    
     glEnable(GL_DEPTH_TEST);
+    checkGLError();
 
     glDepthFunc(GL_LEQUAL);
+    checkGLError();
 
     glEnable(GL_BLEND);
+    checkGLError();
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    checkGLError();
 
     glBlendEquation(GL_FUNC_ADD);
+    checkGLError();
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
 
@@ -95,6 +102,7 @@ void RendererOpenGL::updateWindowSize()
     _windowSize = getWindowSize();
     _windowToNDC = mat4f::translation(-1.0f, 1.0f, 0.0f) * mat4f::scale(2.0f / _windowSize.x, -2.0f / _windowSize.y, 1.0f);
     glViewport(0, 0, (int)_windowSize.x, (int)_windowSize.y);
+    checkGLError();
 }
 
 mat4f RendererOpenGL::makeWindowTransform(const rect2f &rect, float depth)
@@ -130,7 +138,9 @@ void RendererOpenGL::bindMainRenderTarget()
     }
     else
     {
+        checkGLError();
         glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        checkGLError();
     }
 }
 
@@ -190,10 +200,14 @@ void RendererOpenGL::renderFullScreen(Texture &tex, const vec4f &color)
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    checkGLError();
 
     _quadProgram.setTransform(_quadToNDC);
+    checkGLError();
     _quadProgram.setColor(color);
+    checkGLError();
     _quad.render();
+    checkGLError();
 }
 
 void RendererOpenGL::renderFullScreen(const vec4f &color)
@@ -225,6 +239,8 @@ void RendererOpenGL::renderSplashA(const vec3f &focusColorA, const vec3f &focusC
 {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    checkGLError();
 
     _splashAProgram.bind();
 
@@ -347,7 +363,9 @@ CoordinateFrame RendererOpenGL::getWindowCoordinateFrame()
 void RendererOpenGL::clear()
 {
     glClearColor(0.0, 0.0, 0.0, 1.0);
+    checkGLError();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    checkGLError();
 
     updateWindowSize();
 }

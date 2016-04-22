@@ -91,10 +91,11 @@ void Texture::initSDL()
 
 void Texture::initOpenGL(bool useMipmaps)
 {
-    glEnable(GL_TEXTURE_2D);
-
+    checkGLError();
     glGenTextures(1, &_OpenGLTexture);
+    checkGLError();
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
+    checkGLError();
 
     const GLsizei width = (GLsizei)_bmp.width();
     const GLsizei height = (GLsizei)_bmp.height();
@@ -105,29 +106,40 @@ void Texture::initOpenGL(bool useMipmaps)
         mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
 
         glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
+        checkGLError();
+
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
+        checkGLError();
 
         glGenerateMipmap(GL_TEXTURE_2D);
+        checkGLError();
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        checkGLError();
     }
     else
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
+        checkGLError();
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        checkGLError();
     }
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    checkGLError();
 
+    checkGLError();
     glBindTexture(GL_TEXTURE_2D, 0);
+    checkGLError();
 }
 
 void Texture::bindOpenGL()
 {
     //SDL_GL_BindTexture(_SDLTexture, nullptr, nullptr);
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
+    checkGLError();
 }

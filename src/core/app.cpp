@@ -98,6 +98,7 @@ void App::initRenderer()
     data.audio.init();
 
     data.renderer.init(window);
+    checkGLError();
 }
 
 int App::runRendererTest()
@@ -150,10 +151,13 @@ int App::runRendererTest()
 int App::run()
 {
     initRenderer();
+    checkGLError();
 
     database().initTextures(data.renderer);
+    checkGLError();
 
     data.state.init();
+    checkGLError();
 
 	data.undoBuffer.init();
 	data.undoBuffer.reset(data.state);
@@ -161,11 +165,14 @@ int App::run()
     data.ui.init();
     data.canvas.init();
     data.controller.init();
+    checkGLError();
 
     //
     // should init last to control motion blur state
     //
+    checkGLError();
     data.splash.init();
+    checkGLError();
 
     data.activeEventHandler = &data.splash;
     data.activeRenderHandler = &data.splash;
@@ -235,6 +242,8 @@ int App::run()
         bool renderFrame = !minimized && (eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing);
         if (renderFrame)
         {
+            checkGLError();
+
             //
             // render the game
             //

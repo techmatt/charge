@@ -162,6 +162,7 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
 
         if (componentName == "Background") isAlphaTexture = false;
 
+        checkGLError();
         if (isAlphaTexture)
         {
             SDL_SetTextureBlendMode(t->SDL(), SDL_BLENDMODE_BLEND);
@@ -170,6 +171,7 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         {
             SDL_SetTextureBlendMode(t->SDL(), SDL_BLENDMODE_NONE);
         }
+        checkGLError();
 
         textures[fullTextureName] = t;
     }

@@ -6,7 +6,9 @@ const bool dumpHighlightMode = false;
 void SplashScreen::init()
 {
     srand((unsigned int)time(nullptr));
+    checkGLError();
     app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
+    checkGLError();
 
     app.renderer.bindMainRenderTarget();
 
@@ -36,6 +38,8 @@ void SplashScreen::render()
 
 void SplashScreen::bloom()
 {
+    checkGLError();
+
     static float time = 0.0f;
     static int frameIndex = 0;
 
@@ -70,6 +74,8 @@ void SplashScreen::bloom()
         bloomTexture1.init(app.renderer, bloomSize);
     }
 
+    checkGLError();
+
     glViewport(0, 0, bloomSize.x, bloomSize.y);
 
     glDisable(GL_DEPTH_TEST);
@@ -78,6 +84,8 @@ void SplashScreen::bloom()
     bloomTexture0.bindAsRenderTarget();
 
     glClear(GL_COLOR_BUFFER_BIT);
+
+    checkGLError();
     
     database().getTexture(app.renderer, "splash").bindOpenGL();
 
@@ -85,6 +93,7 @@ void SplashScreen::bloom()
 
     float intensityA = dumpHighlightMode ? 1.0f : (sin(time) * 0.5f + 0.5f);
     float intensityB = dumpHighlightMode ? 1.0f : (sin(time * 0.75f + math::PIf) * 0.5f + 0.5f);
+    checkGLError();
     app.renderer.renderSplashA(focusColorA, focusColorB, vec2f(intensityA, intensityB));
 
     //LodePNG::save(bloomTexture0.getImage(), "bloomTextureA.png");
@@ -92,6 +101,7 @@ void SplashScreen::bloom()
     //
     // blur in X to trailTexture1
     //
+    checkGLError();
     bloomTexture1.bindAsRenderTarget();
 
     bloomTexture0.bindAsTexture();
