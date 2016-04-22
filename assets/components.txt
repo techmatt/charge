@@ -53,8 +53,8 @@ Save	-1	-1	!	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and p
 Load	-1	-1	!	no	no	Load Puzzle	Loads a previously saved puzzle.
 Music	-1	-1	!	no	no	Toggle Music	Toggles game music.
 SoundEffect	-1	-1	!	no	no	Toggle Sound	Toggles audio effects.
-PrevLevel	-1	-1	Left	no	no	Previous Level	 
-NextLevel	-1	-1	Right	no	no	Next Level	 
+PrevLevel	-1	-1	Left	no	no	Previous Puzzle	 
+NextLevel	-1	-1	Right	no	no	Next Puzzle	 
 ViewProvidedSolution	-1	-1	Up	no	no	See Provided Solution	 
 ViewYourProgress	-1	-1	Down	no	no	Load Progress	 Your progress on each level is automatically saved.
-ViewYourSolution	-1	-1	Down	no	no	Load Your Solution	"Cycles through your most recent solution, your fastest solution, and you cheapest solution."
+ViewYourSolution	-1	-1	Down	no	no	Load Your Solution	Loads your most recent solution.

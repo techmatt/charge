@@ -28,7 +28,11 @@ struct GameParameters
         params.readParameter("doorMenuCanonicalStart", doorMenuCanonicalStart);
         params.readParameter("typeMenuCanonicalStart", typeMenuCanonicalStart);
 
-        params.readParameter("puzzleMenuCanonicalStart", puzzleMenuCanonicalStart);
+        params.readParameter("puzzleMenuACanonicalStart", puzzleMenuACanonicalStart);
+        params.readParameter("puzzleMenuBCanonicalStart", puzzleMenuBCanonicalStart);
+        params.readParameter("puzzleMenuCCanonicalStart", puzzleMenuCCanonicalStart);
+        params.readParameter("puzzleMenuDCanonicalStart", puzzleMenuDCanonicalStart);
+        params.readParameter("puzzleMenuECanonicalStart", puzzleMenuECanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
         params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
@@ -53,7 +57,11 @@ struct GameParameters
 		// The canonical frame covers the rendered area and runs from 0,0 to params().canonicalDims
 		boardInWindow = CoordinateFrame(boardCanonicalRect, vec2f(boardDims));
 		componentMenuInWindow = CoordinateFrame(boardCanonicalRect);
-		puzzleMenuInWindow = CoordinateFrame(puzzleMenuCanonicalStart);
+		puzzleMenuAInWindow = CoordinateFrame(puzzleMenuACanonicalStart);
+        puzzleMenuBInWindow = CoordinateFrame(puzzleMenuBCanonicalStart);
+        puzzleMenuCInWindow = CoordinateFrame(puzzleMenuCCanonicalStart);
+        puzzleMenuDInWindow = CoordinateFrame(puzzleMenuDCanonicalStart);
+        puzzleMenuEInWindow = CoordinateFrame(puzzleMenuECanonicalStart);
 		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
 
@@ -80,7 +88,11 @@ struct GameParameters
     vec2f typeMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
 
-    vec2f puzzleMenuCanonicalStart;
+    vec2f puzzleMenuACanonicalStart;
+    vec2f puzzleMenuBCanonicalStart;
+    vec2f puzzleMenuCCanonicalStart;
+    vec2f puzzleMenuDCanonicalStart;
+    vec2f puzzleMenuECanonicalStart;
     int puzzleMenuCanonicalEntrySize;
 
     vec2f attributeMenuCanonicalStart;
@@ -91,7 +103,11 @@ struct GameParameters
 
 	CoordinateFrame boardInWindow;
 	CoordinateFrame componentMenuInWindow;
-	CoordinateFrame puzzleMenuInWindow;
+	CoordinateFrame puzzleMenuAInWindow;
+    CoordinateFrame puzzleMenuBInWindow;
+    CoordinateFrame puzzleMenuCInWindow;
+    CoordinateFrame puzzleMenuDInWindow;
+    CoordinateFrame puzzleMenuEInWindow;
 	CoordinateFrame circuitInWindow;
 
     bool godMode;

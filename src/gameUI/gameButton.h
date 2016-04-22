@@ -8,7 +8,11 @@ enum class ButtonType
     GateState,
     TrapState,
     ChargePreference,
-    PuzzleControl,
+    PuzzleControlA,
+    PuzzleControlB,
+    PuzzleControlC,
+    PuzzleControlD,
+    PuzzleControlE,
     ComponentAttribute,
 };
 
@@ -57,10 +61,33 @@ private:
 
     static rect2i getCanonicalRect(const vec2i &menuCoord, ButtonType type)
     {
-        if (type == ButtonType::PuzzleControl)
+        const int sizeA = params().puzzleMenuCanonicalEntrySize;
+        const int sizeB = params().componentMenuCanonicalEntrySize;
+        if (type == ButtonType::PuzzleControlA)
         {
-            const vec2i base = params().puzzleMenuCanonicalStart + menuCoord * params().puzzleMenuCanonicalEntrySize;
-            return rect2i(base, base + params().puzzleMenuCanonicalEntrySize - 4);
+            const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
+            return rect2i(base, base + sizeA - 4);
+        }
+        else if (type == ButtonType::PuzzleControlB)
+        {
+            const vec2i base = params().puzzleMenuBCanonicalStart + vec2i(menuCoord.x * (sizeA - 4), 0);
+            return rect2i(base, base + sizeA - 4);
+        }
+        else if (type == ButtonType::PuzzleControlC)
+        {
+            const vec2i base = params().puzzleMenuCCanonicalStart + menuCoord * sizeA;
+            return rect2i(base, base + sizeA - 4);
+        }
+        else if (type == ButtonType::PuzzleControlD)
+        {
+            const vec2i base = params().puzzleMenuDCanonicalStart + vec2i(menuCoord.x * (sizeA - 4), 0);
+            return rect2i(base, base + sizeA - 4);
+        }
+        else if (type == ButtonType::PuzzleControlE)
+        {
+            const vec2f buttonSize((sizeA - 4) * 2.0f, sizeA - 4.0f);
+            const vec2f base = params().puzzleMenuECanonicalStart + vec2f(menuCoord.x * (buttonSize.x + 4.0f), menuCoord.y * (buttonSize.y + 4.0f));
+            return rect2i(base, base + buttonSize);
         }
         else if (type == ButtonType::ComponentAttribute)
         {
@@ -69,22 +96,22 @@ private:
         }
         else if (type == ButtonType::Component)
         {
-            const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + vec2i::directProduct(menuCoord, vec2i(sizeB + 1, sizeB));
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
         else if (type == ButtonType::ChargePreference)
         {
-            const vec2i base = params().affinityMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            const vec2i base = params().affinityMenuCanonicalStart + params().menuButtonOffset + menuCoord * sizeB;
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
         else if (type == ButtonType::GateState || type == ButtonType::TrapState)
         {
-            const vec2i base = params().doorMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            const vec2i base = params().doorMenuCanonicalStart + params().menuButtonOffset + menuCoord * sizeB;
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
         else if (type == ButtonType::WireSpeed || type == ButtonType::ChargeColor || type == ButtonType::CircuitBoundary)
         {
-            const vec2i base = params().typeMenuCanonicalStart + params().menuButtonOffset + menuCoord * params().componentMenuCanonicalEntrySize;
+            const vec2i base = params().typeMenuCanonicalStart + params().menuButtonOffset + menuCoord * sizeB;
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
         }
         return rect2i(params().componentMenuCanonicalStart, params().componentMenuCanonicalStart + params().canonicalCellSize * vec2i(2, 2));

@@ -64,7 +64,14 @@ void GameCanvas::render(const UIRenderObject &o)
         render(t, o.rect, o.depth, o.rotation, color);
 }
 
-void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHeight, const vec4f &color, float depth)
+/*void GameCanvas::renderShadowText(const string &text, const FontType type, const vec2f &start, const float lineHeight, vec4f colorMain, vec4f colorShadow, float depth)
+{
+    Texture &tex = getFontTexture(app.state.puzzleName, FontType::LevelName);
+    renderText(tex, start + vec2f(0.5f, 0.5f), lineHeight, vec4f(1.0f, 1.0f, 1.0f, 1.0f), depth);
+    renderText(tex, start, lineHeight, vec4f(1.0f, 1.0f, 1.0f, 1.0f), depth);
+}*/
+
+void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHeight, float depth)
 {
     const float aspect = (float)tex.bmp().dimX() / (float)tex.bmp().dimY();
 
@@ -74,7 +81,7 @@ void GameCanvas::renderText(Texture &tex, const vec2f &start, const float lineHe
     const float width = aspect * height;
 
     const rect2f rect(start, vec2f(start.x + width, start.y + height));
-    app.renderer.render(tex, coordinateFrame.toContainer(rect), depth, color);
+    app.renderer.render(tex, coordinateFrame.toContainer(rect), depth, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
 void GameCanvas::render()
@@ -154,10 +161,11 @@ void GameCanvas::render()
     renderHoverComponent();
 
     renderText(getFontTexture(app.state.puzzleName, FontType::LevelName), vec2f(5.0f, 1.0f), 20.0f);
+    //renderShadowText(app.state.puzzleName, FontType::LevelName, vec2f(5.0f, 1.0f), 20.0f, vec4f(0.05f, 0.3f, 0.2f, 1.0f), vec4f(0.0f, 0.0f, 0.0f, 1.0f));
 
     for (auto &entry : menuText)
     {
-        renderText(getFontTexture(entry.text, FontType::MenuTitle), entry.coord, 10.0f, vec4f(1.0f, 1.0f, 1.0f, 1.0f), depthLayers::fontMenu);
+        renderText(getFontTexture(entry.text, FontType::MenuTitle), entry.coord, 10.0f, depthLayers::fontMenu);
     }
 
     renderTooltip();
@@ -323,9 +331,14 @@ void GameCanvas::renderHoverComponent()
     }
 }
 
-void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions)
+void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension)
 {
-    const rect2f rect(canonicalStartCoord, canonicalStartCoord + params().menuButtonOffset + params().menuBorderOffset + gridDimensions * params().componentMenuCanonicalEntrySize);
+    const rect2f rect(canonicalStartCoord, canonicalStartCoord + params().menuButtonOffset + params().menuBorderOffset + vec2f::directProduct(vec2f(gridDimensions), vec2f((float)params().componentMenuCanonicalEntrySize) + extension));
+    renderMenuBackground(menuName, canonicalStartCoord, rect);
+}
+
+void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const rect2f &rect)
+{
     addBackgroundObject(database().getTexture(app.renderer, "MenuBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
 
     MenuTextEntry entry;
@@ -347,7 +360,18 @@ void GameCanvas::updateBackgroundObjects()
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
-    renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3));
+    renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
+
+    const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
+    const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
+    renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+
+    if (app.controller.transformMenu)
+    {
+        const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
+        const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
+        renderMenuBackground("Transform components", transformMenuStart, transformRect);
+    }
 
     if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
     if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
@@ -384,7 +408,7 @@ void GameCanvas::updateBackgroundObjects()
             selected |= (button.type == ButtonType::TrapState && selectedComponent->info->name == button.name);
             selected |= (button.type == ButtonType::GateState && selectedComponent->info->name == button.name);
         }
-        if (button.type == ButtonType::PuzzleControl)
+        if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {
             selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
             selected |= (button.name == "ModePuzzle" && app.controller.editorMode == EditorMode::Campaign);
@@ -549,8 +573,16 @@ void GameCanvas::renderTooltip()
     {
         vec2f start = params().tooltipDefaultStart;
         bool transparent = false;
-
-        if (button->type == ButtonType::PuzzleControl)
+        
+        if (button->type == ButtonType::PuzzleControlD)
+        {
+            if (app.activeCircuit() != nullptr)
+            {
+                transparent = true;
+                start = button->canonicalRect.min() - vec2i(100, 140);
+            }
+        }
+        else if (button->type == ButtonType::PuzzleControlA || button->type == ButtonType::PuzzleControlB || button->type == ButtonType::PuzzleControlC || button->type == ButtonType::PuzzleControlE)
         {
             if (app.activeCircuit() != nullptr)
                 return;

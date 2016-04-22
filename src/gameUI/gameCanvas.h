@@ -41,7 +41,7 @@ private:
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f));
 
-    void renderText(Texture &tex, const vec2f &start, const float height, const vec4f &color = vec4f(1.0f, 1.0f, 1.0f, 1.0f), float depth = depthLayers::fontStandard);
+    void renderText(Texture &tex, const vec2f &start, const float height, float depth = depthLayers::fontStandard);
 
     void render(const UIRenderObject &o);
 
@@ -58,7 +58,8 @@ private:
     }
 
     void updateBackgroundObjects();
-    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions);
+    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension = vec2f(0.0f, 0.0f));
+    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const rect2f &rect);
     void renderBuildingGrid();
 
     void renderComponents();

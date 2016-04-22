@@ -225,6 +225,7 @@ void GameController::updateButtonList()
     wireSpeedMenu = false;
     colorMenu = false;
     circuitBoundaryMenu = false;
+    transformMenu = false;
 
     //
     // Add all buildable components
@@ -338,49 +339,52 @@ void GameController::updateButtonList()
     // Add puzzle control buttons
     //
     if (app.controller.puzzleMode == PuzzleMode::Design)
-        buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("Start", vec2i(0, 0), ButtonType::PuzzleControlA, ComponentModifiers()));
     if (app.controller.puzzleMode == PuzzleMode::Executing)
-        buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Save", vec2i(2, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("Load", vec2i(3, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("Stop", vec2i(0, 0), ButtonType::PuzzleControlA, ComponentModifiers()));
+    
+    buttons.push_back(GameButton("Save", vec2i(0, 0), ButtonType::PuzzleControlC, ComponentModifiers()));
+    buttons.push_back(GameButton("Load", vec2i(1, 0), ButtonType::PuzzleControlC, ComponentModifiers()));
 
-    buttons.push_back(GameButton("PrevLevel", vec2i(9, 1), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("NextLevel", vec2i(10, 1), ButtonType::PuzzleControl, ComponentModifiers()));
+    buttons.push_back(GameButton("Music", vec2i(0, 1), ButtonType::PuzzleControlC, ComponentModifiers()));
+    buttons.push_back(GameButton("SoundEffect", vec2i(1, 1), ButtonType::PuzzleControlC, ComponentModifiers()));
+    
+    buttons.push_back(GameButton("PrevLevel", vec2i(0, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
+    buttons.push_back(GameButton("NextLevel", vec2i(1, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
 
     auto levelInfo = app.session.getLevelInfo(app.controller.currentPuzzleFilename);
     if (levelInfo != nullptr)
     {
         if (levelInfo->state == LevelState::Solved || params().godMode)
         {
-            buttons.push_back(GameButton("ViewProvidedSolution", vec2i(12, 1), ButtonType::PuzzleControl, ComponentModifiers()));
-            buttons.push_back(GameButton("ViewYourSolution", vec2i(13, 1), ButtonType::PuzzleControl, ComponentModifiers()));
+            buttons.push_back(GameButton("ViewProvidedSolution", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
+            buttons.push_back(GameButton("ViewYourSolution", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
         else if (util::fileExists(app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent)))
         {
-            buttons.push_back(GameButton("ViewYourProgress", vec2i(12, 1), ButtonType::PuzzleControl, ComponentModifiers()));
+            buttons.push_back(GameButton("ViewYourProgress", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
     }
 
     if (params().godMode)
     {
-        buttons.push_back(GameButton("ModePuzzle", vec2i(5, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-        buttons.push_back(GameButton("ModeLevelEditor", vec2i(6, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton("ModePuzzle", vec2i(0, -1), ButtonType::PuzzleControlA, ComponentModifiers()));
+        buttons.push_back(GameButton("ModeLevelEditor", vec2i(1, -1), ButtonType::PuzzleControlA, ComponentModifiers()));
     }
 
     if (app.ui.activePlacementBuffer.components.size() >= 2 || (component != nullptr && component->isCircuit() && component->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece))
     {
-        buttons.push_back(GameButton("CircuitRotate90", vec2i(8, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-        buttons.push_back(GameButton("CircuitRotateN90", vec2i(9, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-        buttons.push_back(GameButton("CircuitFlipVertical", vec2i(10, 0), ButtonType::PuzzleControl, ComponentModifiers()));
-        buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(11, 0), ButtonType::PuzzleControl, ComponentModifiers()));
+        transformMenu = true;
+        buttons.push_back(GameButton("CircuitRotate90", vec2i(0, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitRotateN90", vec2i(1, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitFlipVertical", vec2i(2, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
+        buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(3, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
     }
 
     for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
-        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 1), ButtonType::PuzzleControl, ComponentModifiers()));
+        buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 0), ButtonType::PuzzleControlB, ComponentModifiers()));
 
-    buttons.push_back(GameButton("Music", vec2i(6, 1), ButtonType::PuzzleControl, ComponentModifiers()));
-    buttons.push_back(GameButton("SoundEffect", vec2i(7, 1), ButtonType::PuzzleControl, ComponentModifiers()));
-
+    
     //
     // Add indicators
     //

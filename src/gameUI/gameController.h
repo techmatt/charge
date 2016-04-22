@@ -103,6 +103,7 @@ public:
     bool wireSpeedMenu;
     bool colorMenu;
     bool circuitBoundaryMenu;
+    bool transformMenu;
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;
