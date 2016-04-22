@@ -223,10 +223,10 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         app.controller.loadCurrentProvidedSolution();
     }
 
-    if (name == "ViewYourProgress" || name == "ViewYourSolution")
+    if (name == "ClearPuzzle")
     {
         app.controller.viewMode = ControllerViewMode::UserSolution;
-        app.controller.loadUserSolution();
+        app.controller.loadCampaignPuzzle(app.controller.currentCampaignIndex);
     }
 
     auto transformComponentSet = [&](ComponentSet &cSet)
@@ -269,7 +269,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 					tempSelection.copyToComponentSet(cSet, app.state);
 
 					GameLocation circuitLocation = c->location;
-					transformComponentSet(cSet);
+                    transformComponentSet(cSet);
 
 					for (ComponentDefiningProperties &cdf : cSet.components)
 						cdf.location.boardPos = circuitLocation.boardPos;

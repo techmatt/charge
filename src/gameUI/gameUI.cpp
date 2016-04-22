@@ -30,6 +30,12 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 
         //selectedGameLocation.boardPos = constants::invalidCoord;
         selection.empty();
+
+        if (app.controller.puzzleMode != PuzzleMode::Design)
+        {
+            app.controller.puzzleMode = PuzzleMode::Design;
+            app.state.resetPuzzle();
+        }
     }
 
     if (key == SDLK_F5)
@@ -186,7 +192,6 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
 {
-
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
@@ -199,6 +204,12 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
     // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
     //
     app.canvas.backgroundDirty = true;
+    const bool eraserSelected = (app.ui.selectedMenuComponent != nullptr && app.ui.selectedMenuComponent->name == "Eraser");
+    if (eraserSelected && (mouseButton == SDL_BUTTON_RIGHT || mouseButton == SDL_BUTTON_LEFT))
+    {
+        removeHoverComponent();
+        return;
+    }
 
     if (mouseButton == SDL_BUTTON_RIGHT)
     {
@@ -212,7 +223,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
             removeHoverComponent();
         }
     }
-
+    
     if (mouseButton == SDL_BUTTON_LEFT)
     {
         if (activePlacementBuffer.isEmpty())
@@ -331,16 +342,20 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     x = mouseHoverCoord.x;
     y = mouseHoverCoord.y;
 
-    if (buttonState & SDL_BUTTON_LMASK)
+    const bool eraserSelected = (app.ui.selectedMenuComponent != nullptr && app.ui.selectedMenuComponent->name == "Eraser");
+    if (eraserSelected && (buttonState & SDL_BUTTON_RMASK || buttonState & SDL_BUTTON_LMASK))
     {
-        addHoverComponent(hoverLocation(true));
+        removeHoverComponent();
+        return;
     }
-    if (buttonState & SDL_BUTTON_RMASK)
+    else if (buttonState & SDL_BUTTON_RMASK)
     {
         removeHoverComponent();
     }
-
-    hoverButtonIndex;
+    else if (buttonState & SDL_BUTTON_LMASK)
+    {
+        addHoverComponent(hoverLocation(true));
+    }
 }
 
 GameLocation GameUI::hoverLocation(bool constructionOffset,const vec2f mouseOffsetFromHover) const

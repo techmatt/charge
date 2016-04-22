@@ -240,7 +240,7 @@ void GameController::updateButtonList()
             {
                 realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
             }
-            if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
+            if (app.controller.editorMode == EditorMode::LevelEditor || realInfo->name == "Eraser" || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
                 buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::Component, ComponentModifiers(info)));
         }
     }
@@ -363,6 +363,11 @@ void GameController::updateButtonList()
         else if (util::fileExists(app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent)))
         {
             buttons.push_back(GameButton("ViewYourProgress", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
+            buttons.push_back(GameButton("ClearPuzzle", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
+        }
+        else
+        {
+            buttons.push_back(GameButton("ClearPuzzle", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
     }
 

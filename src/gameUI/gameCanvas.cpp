@@ -307,7 +307,7 @@ void GameCanvas::renderHoverComponent()
         renderLocalizedComponentHover(c.baseInfo->name, screenRect, depth, IconState(c.modifiers, false, false));
 
         // render the green field
-        if (!componentLocation.inCircuit())
+        if (!componentLocation.inCircuit() && c.baseInfo->name != "Eraser")
         {
             const vec2i coordBase = componentLocation.boardPos;
             const Board &board = location.inCircuit() ? *app.activeCircuit()->circuitBoard : app.state.board;
@@ -370,7 +370,7 @@ void GameCanvas::updateBackgroundObjects()
     {
         const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
         const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
-        renderMenuBackground("Transform components", transformMenuStart, transformRect);
+        renderMenuBackground("Transform options", transformMenuStart, transformRect);
     }
 
     if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
@@ -603,7 +603,7 @@ void GameCanvas::renderTooltip()
     Component *selectedComponent = app.ui.selection.singleElement();
     if (clickComponent != nullptr && hoverComponent == clickComponent && hoverComponent == selectedComponent &&
         (clickComponent->modifiers.puzzleType == ComponentPuzzleType::PuzzlePiece || hoverComponent->info->name == "PowerSource" || hoverComponent->info->name == "MegaHold") &&
-        clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&
+        clickComponent->info->name != "Blocker" && clickComponent->info->name != "Circuit" &&clickComponent->info->name != "Eraser" &&
         (!app.activeCircuit() || hoverComponent->info->name == "PowerSource" || hoverComponent->info->name == "MegaHold"))
     {
         if (clickComponent->inactiveCircuitMegaHold(app.state))
@@ -724,7 +724,7 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
 
     render(preferenceTex, screenRect, depth, Colors::White());
 
-    if (name != "Blocker")
+    if (name != "Blocker" && name != "Eraser")
         render(baseTex, screenRect, depth, Colors::White());
 
     render(componentTex, screenRect, depth, Colors::White());
@@ -752,7 +752,7 @@ void GameCanvas::renderLocalizedComponent(const string &name, const Component *d
 
     record(preferenceTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
-    if (name != "Blocker" && icon.modifiers.boundary != CircuitBoundaryType::Closed && name != "CloseAll")
+    if (name != "Blocker" && name != "Eraser" && icon.modifiers.boundary != CircuitBoundaryType::Closed && name != "CloseAll")
         record(baseTex, screenRect, 1.0f, UIRenderType::Standard, Colors::White(), nullptr);
 
     record(componentTex, screenRect, depthLayers::component, UIRenderType::Standard, Colors::White(), dynamicComponent);

@@ -13,11 +13,12 @@ GateSwitch	1	1	B	yes	yes	# Switch	Toggles all # gates.
 Circuit	4	1	X	no	no	Chip	"Allows you to build a 5x5 grid of components on a single tile. Can be flipped and rotated, as well as copied (c) and pasted (v)."
 TrapOpen	2	1	P	yes	yes	# Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
 TrapSprung	-1	-1	!	yes	yes	# Trap (Closed)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
-TrapReset	3	1	E	yes	yes	# Crank	Resets all # traps.
+TrapReset	3	1	U	yes	yes	# Crank	Resets all # traps.
 PowerSource	6	1	O	yes	no	# Generator	Produces # charge and sends it to adjacent components.
 MegaHold	4	2	!	yes	yes	# Goal Battery	"Accumulates all incoming # charge, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
 ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win! ||A goal will hold onto charge as long as it has no other destination to move towards."
 Blocker	6	2	!	no	no	Blocker	Blockers never allow charge to pass through them.
+Eraser	6	2	E	no	no	Eraser	The eraser makes it easy to delete many components.  You can also drag the right mouse button.
 WireMajorAccelerator	-1	-1	!	no	no	Major Accelerator	Wires can be modified to change the speed charge travels through them.
 WireMinorAccelerator	-1	-1	!	no	no	Minor Accelerator	Wires can be modified to change the speed charge travels through them.
 WireStandard	-1	-1	!	no	no	Standard Speed	Wires can be modified to change the speed charge travels through them.
@@ -58,3 +59,4 @@ NextLevel	-1	-1	Right	no	no	Next Puzzle
 ViewProvidedSolution	-1	-1	Up	no	no	See Provided Solution	 
 ViewYourProgress	-1	-1	Down	no	no	Load Progress	 Your progress on each level is automatically saved.
 ViewYourSolution	-1	-1	Down	no	no	Load Your Solution	Loads your most recent solution.
+ClearPuzzle	-1	-1	!	no	no	Clear Puzzle	Deletes all added components in the puzzle.
