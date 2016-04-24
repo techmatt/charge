@@ -221,6 +221,13 @@ int App::run()
             {
                 data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y);
             }
+            if (event.type == SDL_MOUSEWHEEL)
+            {
+                const SDL_Keymod mod = SDL_GetModState();
+                const bool shift = (mod & KMOD_SHIFT) != 0;
+                const bool ctrl = (mod & KMOD_CTRL) != 0;
+                data.activeEventHandler->mouseWheel(event.wheel.x, event.wheel.y, shift, ctrl);
+            }
             if (event.type == SDL_WINDOWEVENT)
             {
                 if (event.window.event == SDL_WINDOWEVENT_MINIMIZED)

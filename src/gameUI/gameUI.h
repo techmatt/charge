@@ -8,6 +8,7 @@ public:
     void mouseDown(Uint8 button, int x, int y, bool shift, bool ctrl) override;
     void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) override;
     void mouseMove(Uint32 buttonState, int x, int y) override;
+    void mouseWheel(int x, int y, bool shift, bool ctrl) override;
     void keyDown(SDL_Keycode key, bool shift, bool ctrl) override;
     void keyUp(SDL_Keycode key) override;
 

@@ -225,8 +225,10 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
     if (name == "ClearPuzzle")
     {
-        app.controller.viewMode = ControllerViewMode::UserSolution;
-        app.controller.loadCampaignPuzzle(app.controller.currentCampaignIndex);
+        const PuzzleInfo &puzzle = app.controller.getCurrentPuzzle();
+        app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
+        app.state.victoryInfo = GameVictoryInfo();
+        app.controller.viewMode = ControllerViewMode::BasePuzzle;
     }
 
     auto transformComponentSet = [&](ComponentSet &cSet)

@@ -335,6 +335,37 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
     }
 }
 
+void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
+{
+    Component *selectedComponent = app.ui.selection.singleElement();
+    if (selectedComponent == nullptr) return;
+
+    int selectedIndex = -1;
+    vector<GameButton*> buttons;
+    for (auto &b : app.controller.buttons)
+    {
+        if (b.type == ButtonType::ChargePreference)
+        {
+            if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
+            buttons.push_back(&b);
+        }
+        if (b.type == ButtonType::ChargeColor)
+        {
+            if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
+            buttons.push_back(&b);
+        }
+        if (b.type == ButtonType::WireSpeed)
+        {
+            if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
+            buttons.push_back(&b);
+        }
+    }
+
+    if (selectedIndex == -1) return;
+
+    cout << "wheel: " << y << endl;
+}
+
 void GameUI::mouseMove(Uint32 buttonState, int x, int y)
 {
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
