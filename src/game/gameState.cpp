@@ -29,6 +29,7 @@ int GameState::componentCost() const
 
 void GameState::clearComponents()
 {
+	app.ui.selection.empty();
     for (Component *c : components)
         delete c;
     components.clear();
@@ -180,6 +181,7 @@ void GameState::resetPuzzle()
     globalRotationOffset = 0.0f;
     victoryChargeScaleFactorPositive = 1.0f;
     victoryChargeScaleFactorNegative = 1.0f;
+	
     charges.clear();
     explodingCharges.clear();
     for (Component *c : components)

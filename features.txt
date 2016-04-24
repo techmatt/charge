@@ -69,7 +69,6 @@ Multi-user "start new game" in splash screen
 
 http://cooltext.com/Render-Image?RenderID=178380305632011&LogoId=1783803056
 
- * middle mouse scroll to cycle color, alt+middle mouse
  * clicking on circuit should take you inside
  * left on puzzle 1 should wrap around
  * ctrl+Z crashes

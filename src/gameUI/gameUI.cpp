@@ -344,26 +344,33 @@ void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
     vector<GameButton*> buttons;
     for (auto &b : app.controller.buttons)
     {
-        if (b.type == ButtonType::ChargePreference)
-        {
-            if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
-            buttons.push_back(&b);
-        }
-        if (b.type == ButtonType::ChargeColor)
-        {
-            if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
-            buttons.push_back(&b);
-        }
-        if (b.type == ButtonType::WireSpeed)
-        {
-            if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
-            buttons.push_back(&b);
-        }
+		if (shift)
+		{
+			if (b.type == ButtonType::ChargePreference)
+			{
+				if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
+				buttons.push_back(&b);
+			}
+		}
+		else
+		{
+			if (b.type == ButtonType::ChargeColor)
+			{
+				if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
+				buttons.push_back(&b);
+			}
+			if (b.type == ButtonType::WireSpeed)
+			{
+				if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
+				buttons.push_back(&b);
+			}
+		}
     }
 
     if (selectedIndex == -1) return;
 
-    cout << "wheel: " << y << endl;
+	int newSelected = math::mod(selectedIndex + y, buttons.size());
+	buttons[newSelected]->leftClick(app, selection.singleElement());
 }
 
 void GameUI::mouseMove(Uint32 buttonState, int x, int y)

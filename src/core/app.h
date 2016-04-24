@@ -1,7 +1,7 @@
 
 struct AppData
 {
-    AppData(Renderer &_renderer) : ui(*this), canvas(*this), controller(*this), splash(*this), renderer(_renderer)
+    AppData(Renderer &_renderer) : ui(*this), canvas(*this), controller(*this), splash(*this), renderer(_renderer), state(*this)
     {
         
     }

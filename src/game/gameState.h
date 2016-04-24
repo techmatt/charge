@@ -12,6 +12,8 @@ struct GameVictoryInfo
 
 struct GameState
 {
+	GameState(AppData &_app) : app(_app) {}
+
 	void init();
     
     void savePuzzle(const string &filename, const string &basePuzzleFilename);
@@ -32,6 +34,8 @@ struct GameState
     void setPuzzlePieceState(GameState &basePuzzle);
 
     int componentCost() const;
+
+	AppData &app;
 
     // given a circuit boundary component, find its neighbor on the board, if any.
     // this may give a component on either the board or on another circuit.
