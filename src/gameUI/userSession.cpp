@@ -26,7 +26,7 @@ void UserSession::save()
 
     ParameterTable table("Session");
 
-    table.setString("folder", sessionFolder);
+    table.setString("sessionFolder", sessionFolder);
 
     for (int levelIndex = 0; levelIndex < campaignLevels.size(); levelIndex++)
     {
@@ -89,13 +89,14 @@ string UserSession::dataFile() const
 
 string UserSession::getSolutionFilename(const string &levelPack, const string &levelPackPuzzleName, SolutionType type) const
 {
-    const string subFolder = levelPack;
+    const string subFolder = levelPack + "/";
 
     util::makeDirectory(params().rootDir + sessionFolder);
     util::makeDirectory(params().rootDir + sessionFolder + subFolder);
 
     string suffix = "";
-    if (type == SolutionType::MostRecent) suffix = "_Recent";
+    if (type == SolutionType::Progress) suffix = "_Progress";
+    if (type == SolutionType::Recent) suffix = "_Recent";
     if (type == SolutionType::Fastest) suffix = "_Fastest";
     if (type == SolutionType::Cheapest) suffix = "_Cheapest";
 
@@ -109,24 +110,29 @@ void UserSession::saveProgress(AppData &app)
         if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece)
             userPieceCount++;
 
+    cout << "UserPieceCount: " << userPieceCount << endl;
     if (userPieceCount == 0)
         return;
 
-	if (app.state.puzzleFileType != "UserProgress" && app.state.puzzleFileType != "UserSolution")
+    if (app.state.puzzleFileType != "BasePuzzle" && app.state.puzzleFileType != "UserProgress" && app.state.puzzleFileType != "UserSolution")
 		return;
 
-    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent);
-    const string filenameStepCount = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Fastest);
+    const string filenameProgress = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Progress);
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Recent);
     
-	if (!util::fileExists(filenameStepCount))
+    app.state.puzzleFileType = "UserProgress";
+    app.state.savePuzzle(filenameProgress);
+
+    /*if (app.state.victoryInfo.valid())
 	{
-		app.state.savePuzzle(filenameRecent);
-	}
+        app.state.puzzleFileType = "UserSolution";
+        app.state.savePuzzle(filenameRecent);
+	}*/
 }
 
 void UserSession::recordVictory(AppData &app)
 {
-    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent);
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Recent);
     const string filenameStepCount = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Fastest);
     const string filenameComponentCost = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Cheapest);
 

@@ -7,9 +7,10 @@ enum class LevelState
 
 enum class SolutionType
 {
-    MostRecent = 0,
-    Fastest = 1,
-    Cheapest = 2,
+    Progress = 0,
+    Recent = 1,
+    Fastest = 2,
+    Cheapest = 3,
 };
 
 struct UserSessionLevelInfo

@@ -113,7 +113,7 @@ void GameState::savePuzzle(const string &filename)
     
 }
 
-void GameState::allowEditing()
+void GameState::disableEditing()
 {
 	for (auto &c : components)
 		c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;

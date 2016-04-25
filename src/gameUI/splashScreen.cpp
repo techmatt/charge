@@ -154,7 +154,7 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.activeEventHandler = &app.ui;
     app.activeRenderHandler = &app.canvas;
     app.session.init(slotIndex);
-    app.controller.loadLevelPackPuzzle("Campaign", app.session.currentCampaignLevel());
+    app.controller.loadLevelPackPuzzle("Campaign", app.session.currentCampaignLevel(), "BasePuzzle");
 
     app.renderer.initMotionBlur(0.1f, 80);
 }

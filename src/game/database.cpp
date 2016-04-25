@@ -15,9 +15,10 @@ void Database::init()
         components[component->name] = component;
     }
 
-    for (auto &line : GameUtil::readTSVFile(params().assetDir + "levels.txt"))
+    auto lines = GameUtil::readTSVFile(params().assetDir + "levels.txt");
+    for (int puzzleIndex = 0; puzzleIndex < (int)lines.size(); puzzleIndex++)
     {
-        allPuzzles.push_back(PuzzleInfo(line));
+        allPuzzles.push_back(PuzzleInfo(lines[puzzleIndex], puzzleIndex));
     }
 
     fonts[(int)FontType::LevelName] = FontInfo("21st", 36.0f, RGBColor(0, 0, 0));
@@ -63,6 +64,7 @@ void Database::initTextures(Renderer &renderer)
 
 void Database::processAllCampaignLevels(AppData &app)
 {
+    int puzzleIndex = 0;
 	for (auto &puzzle : allPuzzles)
 	{
 		cout << "Processing puzzle " << puzzle.filename << endl;
@@ -71,13 +73,15 @@ void Database::processAllCampaignLevels(AppData &app)
 		state.loadPuzzle(basePuzzleFilename, "none");
 		
 		state.levelPack = "Campaign";
-		state.levelPackPuzzleIndex = puzzle.index;
+        state.levelPackPuzzleIndex = puzzleIndex;
 		state.levelPackPuzzleName = puzzle.name;
 		state.puzzleFileType = "BasePuzzle";
 
 		state.savePuzzle(basePuzzleFilename);
+        puzzleIndex++;
 	}
 
+    puzzleIndex = 0;
 	for (auto &puzzle : allPuzzles)
 	{
 		cout << "Processing puzzle solution " << puzzle.filename << endl;
@@ -87,11 +91,12 @@ void Database::processAllCampaignLevels(AppData &app)
 		state.loadPuzzle(basePuzzleFilename, "none");
 
 		state.levelPack = "Campaign";
-		state.levelPackPuzzleIndex = puzzle.index;
+		state.levelPackPuzzleIndex = puzzleIndex;
 		state.levelPackPuzzleName = puzzle.name;
 		state.puzzleFileType = "ProvidedSolution";
 
 		state.savePuzzle(basePuzzleFilename);
+        puzzleIndex++;
 	}
 }
 

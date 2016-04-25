@@ -6,6 +6,10 @@ struct GameVictoryInfo
         stepCount = -1;
         componentCost = -1;
     }
+    bool valid() const
+    {
+        return (stepCount > 0);
+    }
     int stepCount;
     int componentCost;
 };
@@ -18,7 +22,7 @@ struct GameState
     
     void savePuzzle(const string &filename);
     void loadPuzzle(const string &filename, const string &puzzleName);
-	void allowEditing();
+	void disableEditing();
 
     void clearComponents();
     void clearAndResetBoard();

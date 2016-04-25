@@ -77,11 +77,11 @@ struct ComponentInfo
 struct PuzzleInfo
 {
     PuzzleInfo() {}
-    PuzzleInfo(const map<string, string> &m)
+    PuzzleInfo(const map<string, string> &m, int _index)
     {
+        index = _index;
         name = m.at("Puzzle name");
         filename = m.at("Puzzle file");
-        index = convert::toInt(m.at("Number"));
         tip = util::replace(m.at("Tip"), '|', '\n');
     }
 

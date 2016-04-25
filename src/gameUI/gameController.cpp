@@ -7,11 +7,11 @@ void GameController::init()
     speed = GameSpeed::x1;
     designActionTaken = false;
     puzzleVerificationMode = false;
-    viewMode = ControllerViewMode::BasePuzzle;
+    //viewMode = ControllerViewMode::BasePuzzle;
     editorMode = EditorMode::Campaign;
     fractionalSpeedTicksLeft = 0;
 
-    loadLevelPackPuzzle("Campaign", 0);
+    loadLevelPackPuzzle("Campaign", 0, "BasePuzzle");
 }
 
 void GameController::step()
@@ -112,14 +112,15 @@ const PuzzleInfo& GameController::getActivePuzzle()
 	return database().getPuzzleInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
 }
 
-void GameController::loadLevelPackPuzzle(const string &levelPack, int newIndex)
+void GameController::loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType)
 {
     app.session.saveProgress(app);
 
     const PuzzleInfo &puzzle = database().getPuzzleInfo(levelPack, newIndex);
-    loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
+    loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name);
+    app.state.disableEditing();
     app.state.victoryInfo = GameVictoryInfo();
-    viewMode = ControllerViewMode::BasePuzzle;
+    app.state.puzzleFileType = puzzleFileType;
 }
 
 void GameController::loadCurrentProvidedSolution()
@@ -142,58 +143,30 @@ void GameController::loadCurrentProvidedSolution()
     }
 
     app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
-
-    viewMode = ControllerViewMode::ProvidedSolution;
-
-    //
-    // Load the base puzzle file.
-    // TODO: We should verify the solution is compatiable with the underlying puzzle file.
-    //
-    /*GameState baseState;
-    baseState.init();
-    baseState.loadPuzzle(puzzleFilename, "comparison");
-    app.state.buildableComponents = baseState.buildableComponents;*/
+    app.state.disableEditing();
 }
-
-/*void GameController::cycleUserSolution()
-{
-    if (viewMode == ControllerViewMode::BasePuzzle)
-        viewMode = ControllerViewMode::UserSolution;
-    else if (viewMode == ControllerViewMode::ProvidedSolution || viewMode == ControllerViewMode::UserSolution)
-    {
-        viewMode = ControllerViewMode::BasePuzzle;
-        loadCampaignPuzzle(currentCampaignIndex);
-        return;
-    }
-
-    
-    loadUserSolution();
-}*/
 
 void GameController::loadUserSolution()
 {
 	const PuzzleInfo &puzzle = getActivePuzzle();
 
-    SolutionType type;
-    string description;
-    if (viewMode == ControllerViewMode::UserSolution) {
-        type = SolutionType::MostRecent;
-        description = "your solution";
-    }
-	else
-	{
-		cout << "Unrecognized mode: " << (int)viewMode << endl;
-	}
-    
-    const string filename = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, type);
-
-    if (!util::fileExists(filename))
+    const string filenameProgress = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Progress);
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Recent);
+    if (!util::fileExists(filenameProgress) && !util::fileExists(filenameRecent))
     {
-        recordError("Not solved yet", "You haven't solved this level yet!");
+        recordError("Not attempted yet?", "You haven't attempted this level yet!");
         return;
     }
 
-    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")");
+    string description = "your progress";
+    string filename = filenameProgress;
+    if (util::fileExists(filenameRecent))
+    {
+        description = "your solution";
+        filename = filenameRecent;
+    }
+    
+    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (" + description + ")");
 }
 
 void GameController::recordDesignAction()
@@ -369,7 +342,7 @@ void GameController::updateButtonList()
             buttons.push_back(GameButton("ViewProvidedSolution", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
             buttons.push_back(GameButton("ViewYourSolution", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
-        else if (util::fileExists(app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent)))
+        else if (util::fileExists(app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Progress)))
         {
             buttons.push_back(GameButton("ViewYourProgress", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
             buttons.push_back(GameButton("ClearPuzzle", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
@@ -427,7 +400,9 @@ void GameController::recordVictory()
 
     speed = GameSpeed::x1;
 
-    if (viewMode != ControllerViewMode::ProvidedSolution)
+    //if (viewMode != ControllerViewMode::ProvidedSolution)
+    //BasePuzzle,ProvidedSolution,UserProgress,UserSolution,Custom
+    if (app.state.puzzleFileType == "BasePuzzle" || app.state.puzzleFileType == "UserProgress" || app.state.puzzleFileType == "UserSolution")
     {
         app.session.recordVictory(app);
     }

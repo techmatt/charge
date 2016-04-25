@@ -1,84 +1,84 @@
-Number	Puzzle name	Puzzle file	Tip	Verified
-1	The Path to Success	1-PathToSuccess	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	no
-2	The Bent Road	2-BentRoad	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	no
-3	Kinder Garden	3-KinderGarden	"There are five colors of charge, ordered from red (weakest), orange, yellow, green, to blue (strongest).||Your progress and solutions for each puzzle are saved automatically."	no
-4	Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	no
-5	Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	no
-6	Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.	no
-7	A Stitch in Time	7-StitchTime	A charge will stay in a Goal if the other destinations it can move towards are blocked.	no
-8	Power to the People	8-PowerPeople	Amplifiers can produce stronger charges.	no
-9	Lemon-aid	9-LemonAid	Charges can interfere with each other in undesired ways.	no
-10	There and Back Again	10-ThereAndBackAgain	Charge prefers less recently used components.	no
-11	Tower of Babel	11-TowerBabel	High-level charges can be split into smaller charges.	no
-12	One Small Step	12-OneSmallStep	Splitting and ampiflying can act in complimentary ways.	no
-13	One Giant Leap	13-OneGiantLeap	You might learn something new from the official solution for levels you have already solved.	no
-14	Ding Dong Ditch	14-DingDong	Gates and switches can let charges control themselves.	no
-15	Minimum Security	15-MinSecurity	New components can overcome new obstacles.	no
-16	Double Trouble	16-DoubleTrouble	Charges are easier to control when they have similar timing along a wire.	no
-17	Beam Me Up	17-BeamUp	Click on a Generator to see how many charges it emits and how frequently it emits them.	no
-18	Six String Samurai	18-SixStringSamurai	You can hold down spacebar to temporarially speed up the game.	no
-19	Reindeer Games	19-ReindeerGames	Some puzzles are harder than they seem.	no
-20	The Green-Eyed Monster	20-GreenMonster	Select multiple components with Control or Shift.  You can copy (C) and paste (V) components.	no
-21	Stations of Life	21-StationsOfLife	Colored Amplifiers can be more efficient than regular ones.	no
-22	A Penny Saved	22-PennySaved	Efficiency in both space and charge is important.	no
-23	Red Tide	23-RedTide	Delays and Accelerators can help to prevent charge destruction.	no
-24	Moment of Glory	24-MomentOfGlory	Sometimes you have nothing better to do than wait.	no
-25	It's a Trap!	26-Trap	Traps force you to consider other options.	no
-26	Trapasaurus	27-Trapasarus	Traps can be useful.	no
-27	Bonanza	28-Bonanza	Traps can be tricky.	no
-28	Hold Your Horses	29-HoldYourHorses	Holds allow charge to wait until there is a valid destination for the charge to move to.	no
-29	Cram Time	25-CramTime	"At a junction, charge will pick a different direction each time."	no
-30	Open Sesame	30-OpenSesame	Cranks let you open Traps of the corresponding color.	no
-31	A Silver Lining	31-SilverLining	A Gray Crank will only open the closest Gray Trap.  A Gray Switch will only open the closest Gray Gate.	no
-32	We Require More	32-WeRequireMore	Sometimes it is a bad idea to open a Gate.	no
-33	Cornered	33-Cornered	Timing can be everything.	no
-34	Doom House	34-DoomHouse	Some puzzles have to be solved one step at a time.	no
-35	Different Strokes	35-DifferentStrokes	Colored Amplifiers will only produce charge of the right color.	no
-36	Labyrinth	36-Labyrinth	Some tasks are easier with the right components.	no
-37	Color Queue	37-ColorQueue	Pressing a Switch twice in a row will allow only a single charge to pass through a Gate.	no
-38	Infinite Possibilities	38-InfinitePossibilites	Finite input can beget infinite output.	no
-39	New Horizons	39-NewHorizons	Chips are a powerful tool to eliminate certain space constraints.	no
-40	Punch the Keys	40-PunchTheKeys	Pay attention to the already existing chips.	no
-41	One With Nothing	41-OneWithNothing	"Chips built into the level can be copied (C), pasted (V), rotated, and flipped."	no
-42	To Each His Own	42-ToEachHisOwn	Chips you build now might come in handy later.	no
-43	Creative License	43-CreativeLicense	Sitting back and thinking can sometimes produce better results.	no
-44	One for All	44-OneForAll	Sometimes lots of small charges are more useful than larger ones.	no
-45	Wishing Well	45-WishingWell	Charge is a precious resource.	no
-46	Infinite Regress	46-InfiniteRegress	Many puzzles have multiple solutions.	no
-47	Trick or Treat	47-TrickOrTreat	"111,111,111 x 111,111,111 = 12,345,678,987,654,321"	no
-48	Smorgasbord	48-Smorgasbord	"Sometimes, working with short bursts of charge is important."	no
-49	Deja Vu	49-DejaVu	You should be able to handle this one.	no
-50	Discharged	49b-Discharged	"Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels."	no
-51	Jacob's Ladder	51-JacobsLadder	Batteries do not accept charge of the wrong color.	no
-52	Thinking Inside the Box	52-ThinkingBox	You can skip up to three levels and come back to them later.	no
-53	Ye Who Enter Here	53-YeWhoEnterHere	Abandon all hope.	no
-54	Ramming Speed	54-RammingSpeed	The charge must flow. . .	no
-55	Compressor	55-Compressor	Figuring out what's going on is the key to some puzzles.	no
-56	Batter Up	50-BatterUp	Some Goal Batteries discharge very quickly.	no
-57	Web We Weave	56-WebWeWeave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	no
-58	Mob Rule	57-MobRule	A held charge will exit back to the component it came from if that path becomes unblocked.	no
-59	The Butterfly Effect	58-TheButterflyEffect	"The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words."	no
-60	The Unfiltered Filter	58b-TheUnfilteredFilter	"Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations."	no
-61	Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	no
-62	Fun For the Whole Family	60-FunFamily	"""Almost"" is the longest word in the English language with all the letters in alphabetical order."	no
-63	Baby Busy Beaver	60b-BabyBusyBeaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	no
-64	Size Isn't Everything	61-SizeEverything	"Shave and a haircut, one chip."	no
-65	Brave New World	62-BraveNewWorld	"Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games."	no
-66	Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	no
-67	Double Cross	64-DoubleCross	Charge is not always good.	no
-68	Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	no
-69	Overengineering	66-Overengineering	Try working from both the beginning and the end to solve a puzzle.	no
-70	Do-Se-Do	67-DoSeDo	I just wish I had time for one more bowl of Chili.	no
-71	Deus Ex Machina	68-DeusExMachina	Boss time!	no
-72	The Three Stooges	69-ThreeStooges	The level editor lets you make new Charge puzzles.	no
-73	Pride Parade	70-PrideParade	All together now!	no
-74	Through the Filter Glass	70b-ThroughTheFilterGlass	"If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?"	no
-75	Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	no
-76	Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	no
-77	Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	no
-78	Turing Complete	74-TuringComplete	Proof by construction.	no
-79	Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	no
-80	Chargin' Up	76-ChargingUp	Some levels have lasers.	no
-81	Line Dancing	77-LineDancing	You may want to get a pen for this level.	no
-82	Chips Ahoy	78-ChipsAhoy	Do it yourself!	no
-83	Final Destination	79-FinalDestination	Good luck!	no
+Puzzle name	Puzzle file	Tip	Verified
+The Path to Success	1-PathToSuccess	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	no
+The Bent Road	2-BentRoad	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	no
+Kinder Garden	3-KinderGarden	"There are five colors of charge, ordered from red (weakest), orange, yellow, green, to blue (strongest).||Your progress and solutions for each puzzle are saved automatically."	no
+Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	no
+Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	no
+Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.	no
+A Stitch in Time	7-StitchTime	A charge will stay in a Goal if the other destinations it can move towards are blocked.	no
+Power to the People	8-PowerPeople	Amplifiers can produce stronger charges.	no
+Lemon-aid	9-LemonAid	Charges can interfere with each other in undesired ways.	no
+There and Back Again	10-ThereAndBackAgain	Charge prefers less recently used components.	no
+Tower of Babel	11-TowerBabel	High-level charges can be split into smaller charges.	no
+One Small Step	12-OneSmallStep	Splitting and ampiflying can act in complimentary ways.	no
+One Giant Leap	13-OneGiantLeap	You might learn something new from the official solution for levels you have already solved.	no
+Ding Dong Ditch	14-DingDong	Gates and switches can let charges control themselves.	no
+Minimum Security	15-MinSecurity	New components can overcome new obstacles.	no
+Double Trouble	16-DoubleTrouble	Charges are easier to control when they have similar timing along a wire.	no
+Beam Me Up	17-BeamUp	Click on a Generator to see how many charges it emits and how frequently it emits them.	no
+Six String Samurai	18-SixStringSamurai	You can hold down spacebar to temporarially speed up the game.	no
+Reindeer Games	19-ReindeerGames	Some puzzles are harder than they seem.	no
+The Green-Eyed Monster	20-GreenMonster	Select multiple components with Control or Shift.  You can copy (C) and paste (V) components.	no
+Stations of Life	21-StationsOfLife	Colored Amplifiers can be more efficient than regular ones.	no
+A Penny Saved	22-PennySaved	Efficiency in both space and charge is important.	no
+Red Tide	23-RedTide	Delays and Accelerators can help to prevent charge destruction.	no
+Moment of Glory	24-MomentOfGlory	Sometimes you have nothing better to do than wait.	no
+It's a Trap!	26-Trap	Traps force you to consider other options.	no
+Trapasaurus	27-Trapasarus	Traps can be useful.	no
+Bonanza	28-Bonanza	Traps can be tricky.	no
+Hold Your Horses	29-HoldYourHorses	Holds allow charge to wait until there is a valid destination for the charge to move to.	no
+Cram Time	25-CramTime	"At a junction, charge will pick a different direction each time."	no
+Open Sesame	30-OpenSesame	Cranks let you open Traps of the corresponding color.	no
+A Silver Lining	31-SilverLining	A Gray Crank will only open the closest Gray Trap.  A Gray Switch will only open the closest Gray Gate.	no
+We Require More	32-WeRequireMore	Sometimes it is a bad idea to open a Gate.	no
+Cornered	33-Cornered	Timing can be everything.	no
+Doom House	34-DoomHouse	Some puzzles have to be solved one step at a time.	no
+Different Strokes	35-DifferentStrokes	Colored Amplifiers will only produce charge of the right color.	no
+Labyrinth	36-Labyrinth	Some tasks are easier with the right components.	no
+Color Queue	37-ColorQueue	Pressing a Switch twice in a row will allow only a single charge to pass through a Gate.	no
+Infinite Possibilities	38-InfinitePossibilites	Finite input can beget infinite output.	no
+New Horizons	39-NewHorizons	Chips are a powerful tool to eliminate certain space constraints.	no
+Punch the Keys	40-PunchTheKeys	Pay attention to the already existing chips.	no
+One With Nothing	41-OneWithNothing	"Chips built into the level can be copied (C), pasted (V), rotated, and flipped."	no
+To Each His Own	42-ToEachHisOwn	Chips you build now might come in handy later.	no
+Creative License	43-CreativeLicense	Sitting back and thinking can sometimes produce better results.	no
+One for All	44-OneForAll	Sometimes lots of small charges are more useful than larger ones.	no
+Wishing Well	45-WishingWell	Charge is a precious resource.	no
+Infinite Regress	46-InfiniteRegress	Many puzzles have multiple solutions.	no
+Trick or Treat	47-TrickOrTreat	"111,111,111 x 111,111,111 = 12,345,678,987,654,321"	no
+Smorgasbord	48-Smorgasbord	"Sometimes, working with short bursts of charge is important."	no
+Deja Vu	49-DejaVu	You should be able to handle this one.	no
+Discharged	49b-Discharged	"Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels."	no
+Jacob's Ladder	51-JacobsLadder	Batteries do not accept charge of the wrong color.	no
+Thinking Inside the Box	52-ThinkingBox	You can skip up to three levels and come back to them later.	no
+Ye Who Enter Here	53-YeWhoEnterHere	Abandon all hope.	no
+Ramming Speed	54-RammingSpeed	The charge must flow. . .	no
+Compressor	55-Compressor	Figuring out what's going on is the key to some puzzles.	no
+Batter Up	50-BatterUp	Some Goal Batteries discharge very quickly.	no
+Web We Weave	56-WebWeWeave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	no
+Mob Rule	57-MobRule	A held charge will exit back to the component it came from if that path becomes unblocked.	no
+The Butterfly Effect	58-TheButterflyEffect	"The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words."	no
+The Unfiltered Filter	58b-TheUnfilteredFilter	"Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations."	no
+Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	no
+Fun For the Whole Family	60-FunFamily	"""Almost"" is the longest word in the English language with all the letters in alphabetical order."	no
+Baby Busy Beaver	60b-BabyBusyBeaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	no
+Size Isn't Everything	61-SizeEverything	"Shave and a haircut, one chip."	no
+Brave New World	62-BraveNewWorld	"Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games."	no
+Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	no
+Double Cross	64-DoubleCross	Charge is not always good.	no
+Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	no
+Overengineering	66-Overengineering	Try working from both the beginning and the end to solve a puzzle.	no
+Do-Se-Do	67-DoSeDo	I just wish I had time for one more bowl of Chili.	no
+Deus Ex Machina	68-DeusExMachina	Boss time!	no
+The Three Stooges	69-ThreeStooges	The level editor lets you make new Charge puzzles.	no
+Pride Parade	70-PrideParade	All together now!	no
+Through the Filter Glass	70b-ThroughTheFilterGlass	"If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?"	no
+Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	no
+Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	no
+Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	no
+Turing Complete	74-TuringComplete	Proof by construction.	no
+Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	no
+Chargin' Up	76-ChargingUp	Some levels have lasers.	no
+Line Dancing	77-LineDancing	You may want to get a pen for this level.	no
+Chips Ahoy	78-ChipsAhoy	Do it yourself!	no
+Final Destination	79-FinalDestination	Good luck!	no

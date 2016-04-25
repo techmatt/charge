@@ -11,12 +11,12 @@ enum class EditorMode
     LevelEditor,
 };
 
-enum class ControllerViewMode
+/*enum class ControllerViewMode
 {
     ProvidedSolution,
     BasePuzzle,
     UserSolution,
-};
+};*/
 
 enum class GameSpeed
 {
@@ -70,7 +70,7 @@ public:
     
     const PuzzleInfo& getActivePuzzle();
 
-    void loadLevelPackPuzzle(const string &levelPack, int newIndex);
+    void loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType);
     void loadCurrentProvidedSolution();
     void loadUserSolution();
 
@@ -107,7 +107,7 @@ public:
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;
-    ControllerViewMode viewMode;
+    //ControllerViewMode viewMode;
 
     GameSpeed speed;
     bool designActionTaken;

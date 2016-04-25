@@ -209,7 +209,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 		else
 			newPuzzleIndex = math::max(app.state.levelPackPuzzleIndex - 1, 0);
 			
-        app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex);
+        app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex, "BasePuzzle");
     }
 
     if (name == "NextLevel")
@@ -219,7 +219,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         else
         {
             int newPuzzleIndex = math::mod(app.state.levelPackPuzzleIndex + 1, database().allPuzzles.size());
-			app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex);
+            app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex, "BasePuzzle");
         }
     }
 
@@ -230,7 +230,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
 	if (name == "ViewYourProgress" || name == "ViewYourSolution")
 	{
-		app.controller.viewMode = ControllerViewMode::UserSolution;
+		//app.controller.viewMode = ControllerViewMode::UserSolution;
 		app.controller.loadUserSolution();
 	}
 
@@ -238,8 +238,9 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     {
         const PuzzleInfo &puzzle = app.controller.getActivePuzzle();
         app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
+        app.state.disableEditing();
         app.state.victoryInfo = GameVictoryInfo();
-        app.controller.viewMode = ControllerViewMode::BasePuzzle;
+        //app.controller.viewMode = ControllerViewMode::BasePuzzle;
     }
 
     auto transformComponentSet = [&](ComponentSet &cSet)
