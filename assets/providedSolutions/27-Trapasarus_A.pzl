@@ -1,4 +1,4 @@
-Puzzle~42~243
+Puzzle~48~249
 buildableComponents~7
 ComponentBuildState~6~6
 TrapOpenGray=1
@@ -241,4 +241,10 @@ boardPos=10 16
 color=6
 name=TrapOpen
 puzzleType=1
+componentCost=-1
 componentCount=40
+levelPack=Campaign
+levelPackPuzzleIndex=26
+levelPackPuzzleName=Trapasaurus
+puzzleFileType=ProvidedSolution
+stepCount=-1

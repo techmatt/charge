@@ -1,4 +1,4 @@
-Puzzle~413~2646
+Puzzle~419~2652
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -2644,4 +2644,10 @@ circuitPos=6 5
 color=3
 name=ChargeFilter
 puzzleType=0
+componentCost=-1
 componentCount=411
+levelPack=Campaign
+levelPackPuzzleIndex=47
+levelPackPuzzleName=Trick or Treat
+puzzleFileType=BasePuzzle
+stepCount=-1

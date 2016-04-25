@@ -1,4 +1,4 @@
-Puzzle~93~629
+Puzzle~99~635
 buildableComponents~11
 ComponentBuildState~10~10
 ChargeFilterBlue=1
@@ -627,4 +627,10 @@ Component~3~3
 boardPos=21 0
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=91
+levelPack=Campaign
+levelPackPuzzleIndex=40
+levelPackPuzzleName=Punch the Keys
+puzzleFileType=BasePuzzle
+stepCount=-1

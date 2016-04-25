@@ -1,4 +1,4 @@
-Puzzle~88~515
+Puzzle~94~521
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -513,4 +513,10 @@ Component~3~3
 boardPos=10 12
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=86
+levelPack=Campaign
+levelPackPuzzleIndex=46
+levelPackPuzzleName=Infinite Regress
+puzzleFileType=BasePuzzle
+stepCount=-1

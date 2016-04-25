@@ -1,4 +1,4 @@
-Puzzle~124~679
+Puzzle~130~685
 buildableComponents~18
 ComponentBuildState~17~17
 Circuit=1
@@ -677,4 +677,10 @@ Component~3~3
 boardPos=1 0
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=122
+levelPack=Campaign
+levelPackPuzzleIndex=70
+levelPackPuzzleName=Do-Se-Do
+puzzleFileType=BasePuzzle
+stepCount=-1

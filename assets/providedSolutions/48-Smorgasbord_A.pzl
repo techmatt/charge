@@ -1,4 +1,4 @@
-Puzzle~158~957
+Puzzle~164~963
 buildableComponents~10
 ComponentBuildState~9~9
 Circuit=1
@@ -955,4 +955,10 @@ boardPos=12 2
 circuitPos=6 8
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=156
+levelPack=Campaign
+levelPackPuzzleIndex=48
+levelPackPuzzleName=Smorgasbord
+puzzleFileType=ProvidedSolution
+stepCount=-1

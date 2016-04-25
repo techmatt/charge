@@ -1,4 +1,4 @@
-Puzzle~632~4142
+Puzzle~638~4148
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -4140,4 +4140,10 @@ Component~3~3
 boardPos=21 13
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=630
+levelPack=Campaign
+levelPackPuzzleIndex=68
+levelPackPuzzleName=Rocket Science
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~85~488
+Puzzle~91~494
 buildableComponents~17
 ComponentBuildState~16~16
 GateClosedBlue=1
@@ -486,4 +486,10 @@ puzzleType=1
 secondsBeforeFirstEmission=2
 secondsPerEmission=1
 totalCharges=1
+componentCost=-1
 componentCount=83
+levelPack=Campaign
+levelPackPuzzleIndex=37
+levelPackPuzzleName=Color Queue
+puzzleFileType=BasePuzzle
+stepCount=-1

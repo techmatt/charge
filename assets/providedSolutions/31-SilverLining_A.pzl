@@ -1,4 +1,4 @@
-Puzzle~94~526
+Puzzle~100~532
 buildableComponents~30
 ComponentBuildState~29~29
 GateClosedBlue=1
@@ -524,4 +524,10 @@ Component~3~3
 boardPos=2 6
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=92
+levelPack=Campaign
+levelPackPuzzleIndex=31
+levelPackPuzzleName=A Silver Lining
+puzzleFileType=ProvidedSolution
+stepCount=-1

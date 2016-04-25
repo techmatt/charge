@@ -1,4 +1,4 @@
-Puzzle~12~79
+Puzzle~18~85
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
@@ -77,4 +77,10 @@ boardPos=15 3
 color=3
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=10
+levelPack=Campaign
+levelPackPuzzleIndex=3
+levelPackPuzzleName=Kinder Garden
+puzzleFileType=BasePuzzle
+stepCount=-1

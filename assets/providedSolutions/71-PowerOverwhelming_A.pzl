@@ -1,4 +1,4 @@
-Puzzle~692~4917
+Puzzle~698~4923
 buildableComponents~16
 ComponentBuildState~15~15
 TeleportDestinationBlue=1
@@ -4915,4 +4915,10 @@ boardPos=17 0
 color=5
 name=TeleportSource
 puzzleType=1
+componentCost=-1
 componentCount=690
+levelPack=Campaign
+levelPackPuzzleIndex=75
+levelPackPuzzleName=Power Overwhelming
+puzzleFileType=ProvidedSolution
+stepCount=-1

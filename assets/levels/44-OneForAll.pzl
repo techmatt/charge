@@ -1,4 +1,4 @@
-Puzzle~466~3071
+Puzzle~472~3077
 buildableComponents~9
 ComponentBuildState~8~8
 Circuit=1
@@ -3069,4 +3069,10 @@ Component~3~3
 boardPos=6 15
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=464
+levelPack=Campaign
+levelPackPuzzleIndex=44
+levelPackPuzzleName=One for All
+puzzleFileType=BasePuzzle
+stepCount=-1

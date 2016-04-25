@@ -188,7 +188,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             filename = util::replace(filename, ',', ' ');
             //const string puzzleName = util::fileNameFromPath(filename);
             filename += ".pzl";
-            app.state.savePuzzle(filename, app.controller.currentPuzzleFilename);
+            app.state.savePuzzle(filename);
         }
     }
     if (name == "Load")
@@ -196,7 +196,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         const string filename = FileDialog::showOpen();
         if (filename.size() > 0)
         {
-            app.controller.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)), false);
+            app.controller.loadPuzzle(filename, util::removeExtensions(util::fileNameFromPath(filename)));
             app.undoBuffer.reset(app.state);
         }
     }
@@ -204,22 +204,22 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     if (name == "PrevLevel")
     {
 		int newPuzzleIndex = 0;
-		if (app.controller.currentCampaignIndex == 0)
+		if (app.state.levelPackPuzzleIndex == 0)
 			newPuzzleIndex = (int)app.session.highestAccessiblePuzzle();
 		else
-			newPuzzleIndex = math::max(app.controller.currentCampaignIndex - 1, 0);
+			newPuzzleIndex = math::max(app.state.levelPackPuzzleIndex - 1, 0);
 			
-        app.controller.loadCampaignPuzzle(newPuzzleIndex);
+        app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex);
     }
 
     if (name == "NextLevel")
     {
-        if (app.controller.currentCampaignIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
+        if (app.state.levelPackPuzzleIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
             app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
         else
         {
-            int newPuzzleIndex = math::mod(app.controller.currentCampaignIndex + 1, database().puzzles.size());
-            app.controller.loadCampaignPuzzle(newPuzzleIndex);
+            int newPuzzleIndex = math::mod(app.state.levelPackPuzzleIndex + 1, database().allPuzzles.size());
+			app.controller.loadLevelPackPuzzle("Campaign", newPuzzleIndex);
         }
     }
 
@@ -236,8 +236,8 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
     if (name == "ClearPuzzle")
     {
-        const PuzzleInfo &puzzle = app.controller.getCurrentPuzzle();
-        app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
+        const PuzzleInfo &puzzle = app.controller.getActivePuzzle();
+        app.controller.loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
         app.state.victoryInfo = GameVictoryInfo();
         app.controller.viewMode = ControllerViewMode::BasePuzzle;
     }

@@ -1,4 +1,4 @@
-Puzzle~18~96
+Puzzle~24~102
 buildableComponents~7
 ComponentBuildState~6~6
 Amplifier=1
@@ -94,4 +94,10 @@ Component~3~3
 boardPos=14 14
 name=Amplifier
 puzzleType=1
+componentCost=-1
 componentCount=16
+levelPack=Campaign
+levelPackPuzzleIndex=8
+levelPackPuzzleName=Power to the People
+puzzleFileType=ProvidedSolution
+stepCount=-1

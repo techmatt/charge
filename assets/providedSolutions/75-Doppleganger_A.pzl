@@ -1,4 +1,4 @@
-Puzzle~167~1039
+Puzzle~173~1045
 buildableComponents~54
 ComponentBuildState~53~53
 Amplifier=1
@@ -1037,4 +1037,10 @@ circuitPos=10 6
 color=1
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=165
+levelPack=Campaign
+levelPackPuzzleIndex=79
+levelPackPuzzleName=Doppleganger
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~39~214
+Puzzle~45~220
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
@@ -212,4 +212,10 @@ Component~3~3
 boardPos=17 15
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=37
+levelPack=Campaign
+levelPackPuzzleIndex=3
+levelPackPuzzleName=Kinder Garden
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~478~3260
+Puzzle~484~3266
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -3258,4 +3258,10 @@ circuitPos=10 6
 color=6
 name=GateSwitch
 puzzleType=1
+componentCost=-1
 componentCount=476
+levelPack=Campaign
+levelPackPuzzleIndex=67
+levelPackPuzzleName=Double Cross
+puzzleFileType=ProvidedSolution
+stepCount=-1

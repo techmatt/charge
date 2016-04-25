@@ -1,4 +1,4 @@
-Puzzle~43~224
+Puzzle~49~230
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -222,4 +222,10 @@ Component~3~3
 boardPos=16 4
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=41
+levelPack=Campaign
+levelPackPuzzleIndex=20
+levelPackPuzzleName=The Green-Eyed Monster
+puzzleFileType=ProvidedSolution
+stepCount=-1

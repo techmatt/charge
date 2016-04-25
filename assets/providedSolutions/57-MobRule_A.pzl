@@ -1,4 +1,4 @@
-Puzzle~111~651
+Puzzle~117~657
 buildableComponents~36
 ComponentBuildState~35~35
 ChargeGoalBlue=1
@@ -649,4 +649,10 @@ boardPos=2 1
 name=Wire
 puzzleType=1
 speed=0
+componentCost=-1
 componentCount=109
+levelPack=Campaign
+levelPackPuzzleIndex=58
+levelPackPuzzleName=Mob Rule
+puzzleFileType=ProvidedSolution
+stepCount=-1

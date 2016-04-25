@@ -1,4 +1,4 @@
-Puzzle~587~3884
+Puzzle~593~3890
 buildableComponents~9
 ComponentBuildState~8~8
 Circuit=1
@@ -3882,4 +3882,10 @@ boardPos=20 9
 circuitPos=6 10
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=585
+levelPack=Campaign
+levelPackPuzzleIndex=57
+levelPackPuzzleName=Web We Weave
+puzzleFileType=ProvidedSolution
+stepCount=-1

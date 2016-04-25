@@ -1,4 +1,4 @@
-Puzzle~78~419
+Puzzle~84~425
 buildableComponents~8
 ComponentBuildState~7~7
 GateSwitchGray=1
@@ -417,4 +417,10 @@ Component~3~3
 boardPos=7 4
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=76
+levelPack=Campaign
+levelPackPuzzleIndex=32
+levelPackPuzzleName=We Require More
+puzzleFileType=ProvidedSolution
+stepCount=-1

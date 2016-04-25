@@ -1,4 +1,4 @@
-Puzzle~57~513
+Puzzle~63~519
 buildableComponents~43
 ComponentBuildState~42~42
 Amplifier=1
@@ -511,4 +511,10 @@ puzzleType=0
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1000
+componentCost=-1
 componentCount=55
+levelPack=Campaign
+levelPackPuzzleIndex=76
+levelPackPuzzleName=Quantity Control
+puzzleFileType=BasePuzzle
+stepCount=-1

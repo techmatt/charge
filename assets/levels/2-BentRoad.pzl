@@ -1,4 +1,4 @@
-Puzzle~78~394
+Puzzle~84~400
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
@@ -392,4 +392,10 @@ Component~3~3
 boardPos=8 8
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=76
+levelPack=Campaign
+levelPackPuzzleIndex=2
+levelPackPuzzleName=The Bent Road
+puzzleFileType=BasePuzzle
+stepCount=-1

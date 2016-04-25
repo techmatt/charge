@@ -1,4 +1,4 @@
-Puzzle~836~5629
+Puzzle~842~5635
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -5627,4 +5627,10 @@ boardPos=16 15
 circuitPos=8 10
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=834
+levelPack=Campaign
+levelPackPuzzleIndex=47
+levelPackPuzzleName=Trick or Treat
+puzzleFileType=ProvidedSolution
+stepCount=-1

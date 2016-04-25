@@ -1,4 +1,4 @@
-Puzzle~356~2409
+Puzzle~362~2415
 buildableComponents~35
 ComponentBuildState~34~34
 ChargeFilterBlue=1
@@ -2407,4 +2407,10 @@ boardPos=4 2
 color=5
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=354
+levelPack=Campaign
+levelPackPuzzleIndex=45
+levelPackPuzzleName=Wishing Well
+puzzleFileType=ProvidedSolution
+stepCount=-1

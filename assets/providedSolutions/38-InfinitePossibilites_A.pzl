@@ -1,4 +1,4 @@
-Puzzle~40~233
+Puzzle~46~239
 buildableComponents~22
 ComponentBuildState~21~21
 Amplifier=1
@@ -231,4 +231,10 @@ boardPos=8 15
 color=1
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=38
+levelPack=Campaign
+levelPackPuzzleIndex=38
+levelPackPuzzleName=Infinite Possibilities
+puzzleFileType=ProvidedSolution
+stepCount=-1

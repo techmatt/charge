@@ -1,4 +1,4 @@
-Puzzle~676~4528
+Puzzle~682~4534
 buildableComponents~43
 ComponentBuildState~42~42
 Amplifier=1
@@ -4526,4 +4526,10 @@ Component~3~3
 boardPos=17 19
 name=Amplifier
 puzzleType=1
+componentCost=-1
 componentCount=674
+levelPack=Campaign
+levelPackPuzzleIndex=54
+levelPackPuzzleName=Ramming Speed
+puzzleFileType=ProvidedSolution
+stepCount=-1

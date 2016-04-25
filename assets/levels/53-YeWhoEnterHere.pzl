@@ -1,4 +1,4 @@
-Puzzle~47~291
+Puzzle~53~297
 buildableComponents~38
 ComponentBuildState~37~37
 Amplifier=1
@@ -289,4 +289,10 @@ Component~3~3
 boardPos=6 22
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=45
+levelPack=Campaign
+levelPackPuzzleIndex=53
+levelPackPuzzleName=Ye Who Enter Here
+puzzleFileType=BasePuzzle
+stepCount=-1

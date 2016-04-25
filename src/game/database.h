@@ -96,6 +96,8 @@ struct Database
     void init();
     void initTextures(Renderer &renderer);
 
+	void processAllCampaignLevels(AppData &app);
+
     bool hasComponent(const string &componentName) const
     {
         return (components.count(componentName) > 0);
@@ -107,6 +109,21 @@ struct Database
         return *(components.at(componentName));
     }
 
+	const PuzzleInfo& getPuzzleInfo(const string &levelPack, int levelPackIndex) const
+	{
+		if (levelPack != "Campaign")
+		{
+			cout << "Accessing non-campaign not yet supported" << endl;
+			cin.get();
+		}
+		if (levelPackIndex < 0 || levelPackIndex >= allPuzzles.size())
+		{
+			cout << "Out of bounds" << endl;
+			cin.get();
+		}
+		return allPuzzles[levelPackIndex];
+	}
+
     Texture& getTexture(Renderer &renderer, const string &textureName);
     Texture& getTexture(Renderer &renderer, const string &textureName, const ComponentModifiers &modifiers, bool getStoredChargeLayer = false);
     //Texture& getTexture(Renderer &renderer, const string &textureName, ChargeType chargePrimary, ChargeType chargeSecondary, WireType speed);
@@ -117,7 +134,7 @@ struct Database
 
     map<string, TTF_Font*> _fonts;
 
-    vector<PuzzleInfo> puzzles;
+    vector<PuzzleInfo> allPuzzles;
 
     //
     // commonly accessed textures

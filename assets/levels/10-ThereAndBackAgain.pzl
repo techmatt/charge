@@ -1,4 +1,4 @@
-Puzzle~38~196
+Puzzle~44~202
 buildableComponents~7
 ComponentBuildState~6~6
 Amplifier=1
@@ -194,4 +194,10 @@ Component~3~3
 boardPos=1 7
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=36
+levelPack=Campaign
+levelPackPuzzleIndex=10
+levelPackPuzzleName=There and Back Again
+puzzleFileType=BasePuzzle
+stepCount=-1

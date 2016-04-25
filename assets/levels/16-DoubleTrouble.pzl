@@ -1,4 +1,4 @@
-Puzzle~54~296
+Puzzle~60~302
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -294,4 +294,10 @@ boardPos=12 16
 color=1
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=52
+levelPack=Campaign
+levelPackPuzzleIndex=16
+levelPackPuzzleName=Double Trouble
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~1896~12938
+Puzzle~1902~12944
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -12936,4 +12936,10 @@ Component~3~3
 boardPos=3 18
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=1894
+levelPack=Campaign
+levelPackPuzzleIndex=72
+levelPackPuzzleName=The Three Stooges
+puzzleFileType=ProvidedSolution
+stepCount=-1

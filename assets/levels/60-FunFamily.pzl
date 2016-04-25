@@ -1,4 +1,4 @@
-Puzzle~14~95
+Puzzle~20~101
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -93,4 +93,10 @@ Component~3~3
 boardPos=19 5
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=12
+levelPack=Campaign
+levelPackPuzzleIndex=62
+levelPackPuzzleName=Fun For the Whole Family
+puzzleFileType=BasePuzzle
+stepCount=-1

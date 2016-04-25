@@ -1,4 +1,4 @@
-Puzzle~19~102
+Puzzle~25~108
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -100,4 +100,10 @@ boardPos=22 15
 color=3
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=17
+levelPack=Campaign
+levelPackPuzzleIndex=23
+levelPackPuzzleName=Red Tide
+puzzleFileType=BasePuzzle
+stepCount=-1

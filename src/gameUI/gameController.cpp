@@ -9,10 +9,9 @@ void GameController::init()
     puzzleVerificationMode = false;
     viewMode = ControllerViewMode::BasePuzzle;
     editorMode = EditorMode::Campaign;
-    currentCampaignIndex = 0;
     fractionalSpeedTicksLeft = 0;
 
-    loadCampaignPuzzle(currentCampaignIndex);
+    loadLevelPackPuzzle("Campaign", 0);
 }
 
 void GameController::step()
@@ -56,7 +55,7 @@ void GameController::step()
     }
 }
 
-void GameController::loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle)
+void GameController::loadPuzzle(const string &filename, const string &puzzleName)
 {
     if (app.renderer.motionBlurActive() == 0)
         app.renderer.initMotionBlur(0.3f, 100);
@@ -72,9 +71,9 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
         loadLegacyPuzzle(filename);
         return;
     }
-    app.state.loadPuzzle(filename, puzzleName, loadAsPuzzle);
+    app.state.loadPuzzle(filename, puzzleName);
 
-    if (app.state.basePuzzleFilename != "unknown")
+    /*if (app.state.basePuzzleFilename != "unknown")
     {
         currentPuzzleFilename = app.state.basePuzzleFilename;
 
@@ -86,7 +85,7 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
                 currentCampaignIndex = i;
 
 		cout << "campaign index: " << currentCampaignIndex << endl;
-    }
+    }*/
 
     app.undoBuffer.reset(app.state);
     designActionTaken = true;
@@ -107,27 +106,25 @@ void GameController::loadLegacyPuzzle(const string &filename)
     app.ui.selection.empty();
 }
 
-PuzzleInfo& GameController::getCurrentPuzzle()
+const PuzzleInfo& GameController::getActivePuzzle()
 {
-    return database().puzzles[currentCampaignIndex];
+	//getPuzzleInfo(const string &levelPack, int levelPackIndex)
+	return database().getPuzzleInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
 }
 
-void GameController::loadCampaignPuzzle(int puzzleIndex)
+void GameController::loadLevelPackPuzzle(const string &levelPack, int newIndex)
 {
     app.session.saveProgress(app);
 
-    currentCampaignIndex = puzzleIndex;
-    currentPuzzleFilename = database().puzzles[currentCampaignIndex].filename;
-
-    const PuzzleInfo &puzzle = getCurrentPuzzle();
-    loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name, true);
+    const PuzzleInfo &puzzle = database().getPuzzleInfo(levelPack, newIndex);
+    loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name);
     app.state.victoryInfo = GameVictoryInfo();
     viewMode = ControllerViewMode::BasePuzzle;
 }
 
 void GameController::loadCurrentProvidedSolution()
 {
-    const PuzzleInfo &puzzle = getCurrentPuzzle();
+    const PuzzleInfo &puzzle = getActivePuzzle();
     const string puzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
     const string solutionFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
 
@@ -137,13 +134,14 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    if ((app.session.getLevelInfo(currentPuzzleFilename) == nullptr || app.session.getLevelInfo(currentPuzzleFilename)->state != LevelState::Solved) && !params().godMode)
+	auto info = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
+    if ((info == nullptr || info->state != LevelState::Solved) && !params().godMode)
     {
         recordError("Cannot view solution", "You can't view the provided solution to this level until you have solved it yourself!");
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)", true);
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
 
     viewMode = ControllerViewMode::ProvidedSolution;
 
@@ -174,7 +172,7 @@ void GameController::loadCurrentProvidedSolution()
 
 void GameController::loadUserSolution()
 {
-    const PuzzleInfo &puzzle = database().puzzles[currentCampaignIndex];
+	const PuzzleInfo &puzzle = getActivePuzzle();
 
     SolutionType type;
     string description;
@@ -187,7 +185,7 @@ void GameController::loadUserSolution()
 		cout << "Unrecognized mode: " << (int)viewMode << endl;
 	}
     
-    const string filename = app.session.getSolutionFilename(puzzle.filename, type);
+    const string filename = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, type);
 
     if (!util::fileExists(filename))
     {
@@ -195,7 +193,7 @@ void GameController::loadUserSolution()
         return;
     }
 
-    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")", false);
+    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (" + description + ")");
 }
 
 void GameController::recordDesignAction()
@@ -363,7 +361,7 @@ void GameController::updateButtonList()
     buttons.push_back(GameButton("PrevLevel", vec2i(0, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
     buttons.push_back(GameButton("NextLevel", vec2i(1, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
 
-    auto levelInfo = app.session.getLevelInfo(app.controller.currentPuzzleFilename);
+    auto levelInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
     if (levelInfo != nullptr)
     {
         if (levelInfo->state == LevelState::Solved || params().godMode)
@@ -371,7 +369,7 @@ void GameController::updateButtonList()
             buttons.push_back(GameButton("ViewProvidedSolution", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
             buttons.push_back(GameButton("ViewYourSolution", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
-        else if (util::fileExists(app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent)))
+        else if (util::fileExists(app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent)))
         {
             buttons.push_back(GameButton("ViewYourProgress", vec2i(0, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
             buttons.push_back(GameButton("ClearPuzzle", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
@@ -431,12 +429,12 @@ void GameController::recordVictory()
 
     if (viewMode != ControllerViewMode::ProvidedSolution)
     {
-        app.session.recordVictoryCampaign(app);
+        app.session.recordVictory(app);
     }
 
-    if (puzzleVerificationMode)
+    /*if (puzzleVerificationMode)
     {
         currentCampaignIndex = math::mod(currentCampaignIndex + 1, database().puzzles.size());
         loadCurrentProvidedSolution();
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-Puzzle~86~529
+Puzzle~92~535
 buildableComponents~37
 ComponentBuildState~36~36
 ChargeFilterBlue=1
@@ -527,4 +527,10 @@ name=MegaHold
 puzzleType=0
 ticksPerDischarge=90
 totalChargeRequired=50
+componentCost=-1
 componentCount=84
+levelPack=Campaign
+levelPackPuzzleIndex=51
+levelPackPuzzleName=Jacob's Ladder
+puzzleFileType=BasePuzzle
+stepCount=-1

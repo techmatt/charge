@@ -1,4 +1,4 @@
-Puzzle~213~1358
+Puzzle~219~1364
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -1356,4 +1356,10 @@ Component~3~3
 boardPos=22 0
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=211
+levelPack=Campaign
+levelPackPuzzleIndex=59
+levelPackPuzzleName=The Butterfly Effect
+puzzleFileType=BasePuzzle
+stepCount=-1

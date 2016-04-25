@@ -1,4 +1,4 @@
-Puzzle~141~724
+Puzzle~147~730
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
@@ -722,4 +722,10 @@ Component~3~3
 boardPos=13 18
 name=Wire
 puzzleType=0
+componentCost=-1
 componentCount=139
+levelPack=Campaign
+levelPackPuzzleIndex=1
+levelPackPuzzleName=The Path to Success
+puzzleFileType=ProvidedSolution
+stepCount=-1

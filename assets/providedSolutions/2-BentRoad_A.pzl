@@ -1,4 +1,4 @@
-Puzzle~86~434
+Puzzle~92~440
 buildableComponents~2
 ComponentBuildState~1~1
 Wire=1
@@ -432,4 +432,10 @@ Component~3~3
 boardPos=10 16
 name=Wire
 puzzleType=0
+componentCost=-1
 componentCount=84
+levelPack=Campaign
+levelPackPuzzleIndex=2
+levelPackPuzzleName=The Bent Road
+puzzleFileType=ProvidedSolution
+stepCount=-1

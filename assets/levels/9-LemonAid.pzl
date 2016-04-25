@@ -1,4 +1,4 @@
-Puzzle~60~309
+Puzzle~66~315
 buildableComponents~7
 ComponentBuildState~6~6
 Amplifier=1
@@ -307,4 +307,10 @@ Component~3~3
 boardPos=20 11
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=58
+levelPack=Campaign
+levelPackPuzzleIndex=9
+levelPackPuzzleName=Lemon-aid
+puzzleFileType=BasePuzzle
+stepCount=-1

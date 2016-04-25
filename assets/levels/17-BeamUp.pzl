@@ -1,4 +1,4 @@
-Puzzle~62~328
+Puzzle~68~334
 buildableComponents~18
 ComponentBuildState~17~17
 Amplifier=1
@@ -326,4 +326,10 @@ Component~3~3
 boardPos=13 4
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=60
+levelPack=Campaign
+levelPackPuzzleIndex=17
+levelPackPuzzleName=Beam Me Up
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~112~580
+Puzzle~118~586
 buildableComponents~7
 ComponentBuildState~6~6
 Hold=1
@@ -578,4 +578,10 @@ Component~3~3
 boardPos=10 7
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=110
+levelPack=Campaign
+levelPackPuzzleIndex=28
+levelPackPuzzleName=Hold Your Horses
+puzzleFileType=ProvidedSolution
+stepCount=-1

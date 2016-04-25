@@ -1,4 +1,4 @@
-Puzzle~35~249
+Puzzle~41~255
 buildableComponents~57
 ComponentBuildState~56~56
 Amplifier=1
@@ -247,4 +247,10 @@ Component~3~3
 boardPos=20 11
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=33
+levelPack=Campaign
+levelPackPuzzleIndex=56
+levelPackPuzzleName=Batter Up
+puzzleFileType=BasePuzzle
+stepCount=-1

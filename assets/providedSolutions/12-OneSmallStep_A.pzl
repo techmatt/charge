@@ -1,4 +1,4 @@
-Puzzle~26~136
+Puzzle~32~142
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -134,4 +134,10 @@ Component~3~3
 boardPos=20 15
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=24
+levelPack=Campaign
+levelPackPuzzleIndex=12
+levelPackPuzzleName=One Small Step
+puzzleFileType=ProvidedSolution
+stepCount=-1

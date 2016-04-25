@@ -1,4 +1,4 @@
-Puzzle~45~264
+Puzzle~51~270
 buildableComponents~22
 ComponentBuildState~21~21
 Amplifier=1
@@ -262,4 +262,10 @@ puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=20
+componentCost=-1
 componentCount=43
+levelPack=Campaign
+levelPackPuzzleIndex=43
+levelPackPuzzleName=Creative License
+puzzleFileType=BasePuzzle
+stepCount=-1

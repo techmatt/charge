@@ -1,4 +1,4 @@
-Puzzle~668~4385
+Puzzle~674~4391
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -4383,4 +4383,10 @@ circuitPos=4 10
 color=1
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=666
+levelPack=Campaign
+levelPackPuzzleIndex=68
+levelPackPuzzleName=Rocket Science
+puzzleFileType=ProvidedSolution
+stepCount=-1

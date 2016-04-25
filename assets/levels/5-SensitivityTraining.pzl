@@ -1,4 +1,4 @@
-Puzzle~115~608
+Puzzle~121~614
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -606,4 +606,10 @@ Component~3~3
 boardPos=15 2
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=113
+levelPack=Campaign
+levelPackPuzzleIndex=5
+levelPackPuzzleName=Sensitivity Training
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~67~379
+Puzzle~73~385
 buildableComponents~30
 ComponentBuildState~29~29
 GateClosedBlue=1
@@ -377,4 +377,10 @@ Component~3~3
 boardPos=19 22
 name=Hold
 puzzleType=1
+componentCost=-1
 componentCount=65
+levelPack=Campaign
+levelPackPuzzleIndex=31
+levelPackPuzzleName=A Silver Lining
+puzzleFileType=BasePuzzle
+stepCount=-1

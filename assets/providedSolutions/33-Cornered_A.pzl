@@ -1,4 +1,4 @@
-Puzzle~49~276
+Puzzle~55~282
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -274,4 +274,10 @@ Component~3~3
 boardPos=14 6
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=47
+levelPack=Campaign
+levelPackPuzzleIndex=33
+levelPackPuzzleName=Cornered
+puzzleFileType=ProvidedSolution
+stepCount=-1

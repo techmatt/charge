@@ -66,11 +66,11 @@ public:
     void recordVictory();
 
     void loadLegacyPuzzle(const string &filename);
-    void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
+    void loadPuzzle(const string &filename, const string &puzzleName);
     
-    PuzzleInfo& getCurrentPuzzle();
+    const PuzzleInfo& getActivePuzzle();
 
-    void loadCampaignPuzzle(int newIndex);
+    void loadLevelPackPuzzle(const string &levelPack, int newIndex);
     void loadCurrentProvidedSolution();
     void loadUserSolution();
 
@@ -111,9 +111,6 @@ public:
 
     GameSpeed speed;
     bool designActionTaken;
-
-    int currentCampaignIndex;
-    string currentPuzzleFilename;
 
     int fractionalSpeedTicksLeft;
 

@@ -4,13 +4,13 @@ void UserSession::init(int slotIndex)
 {
     string s = "A";
     s[0] += slotIndex;
-    folder = "Session" + s + "/";
+	sessionFolder = "Session" + s + "/";
 
-    campaignLevels.resize(database().puzzles.size());
+    campaignLevels.resize(database().allPuzzles.size());
 
     for (int i = 0; i < campaignLevels.size(); i++)
     {
-        campaignLevels[i].puzzleFilename = database().puzzles[i].filename;
+        campaignLevels[i].puzzleFilename = database().allPuzzles[i].filename;
     }
 
     playMusic = false;
@@ -21,25 +21,24 @@ void UserSession::init(int slotIndex)
 
 void UserSession::save()
 {
-    if (folder.size() == 0)
+    if (sessionFolder.size() == 0)
         return;
 
     ParameterTable table("Session");
 
-    table.setString("folder", folder);
+    table.setString("folder", sessionFolder);
 
     for (int levelIndex = 0; levelIndex < campaignLevels.size(); levelIndex++)
     {
         table.setTable("campaignLevel" + util::zeroPad(levelIndex, 3), campaignLevels[levelIndex].toTable("campaignLevel"));
     }
 
-    table.setInt("customLevelCount", (int)customLevels.size());
-
-    int customLevelIndex = 0;
+    /*table.setInt("customLevelCount", (int)customLevels.size());
+	int customLevelIndex = 0;
     for (auto &level : customLevels)
     {
         table.setTable("customLevel" + util::zeroPad(customLevelIndex++, 3), level.second.toTable("customLevel"));
-    }
+    }*/
 
     table.setBool("playMusic", playMusic);
     table.setBool("playSounds", playSounds);
@@ -49,7 +48,7 @@ void UserSession::save()
 
 void UserSession::load()
 {
-    if (folder.size() == 0)
+    if (sessionFolder.size() == 0)
         return;
 
     if (!util::fileExists(dataFile()))
@@ -58,7 +57,7 @@ void UserSession::load()
     ParameterTable table;
     table.load(dataFile());
 
-    folder = table.getString("folder");
+	sessionFolder = table.getString("sessionFolder");
     playMusic = table.getBool("playMusic");
     playSounds = table.getBool("playSounds");
 
@@ -69,9 +68,8 @@ void UserSession::load()
             campaignLevels[levelIndex] = UserSessionLevelInfo::fromTable(table.getTable(paramName));
     }
 
-    int customLevelCount = table.getInt("customLevelCount");
-
-    for (int customLevelIndex = 0; customLevelIndex < customLevelCount; customLevelIndex++)
+    /*int customLevelCount = table.getInt("customLevelCount");
+	for (int customLevelIndex = 0; customLevelIndex < customLevelCount; customLevelIndex++)
     {
         string paramName = "customLevel" + util::zeroPad(customLevelIndex, 3);
         if (table.hasParameter(paramName))
@@ -79,39 +77,34 @@ void UserSession::load()
             auto info = UserSessionLevelInfo::fromTable(table.getTable(paramName));
             customLevels[info.puzzleFilename] = info;
         }
-    }
+    }*/
 
 }
 
 string UserSession::dataFile() const
 {
-    util::makeDirectory(params().rootDir + folder);
-    return params().rootDir + folder + "progress.dat";
+    util::makeDirectory(params().rootDir + sessionFolder);
+    return params().rootDir + sessionFolder + "progress.dat";
 }
 
-string UserSession::getSolutionFilename(const string &puzzleFilename, SolutionType type) const
+string UserSession::getSolutionFilename(const string &levelPack, const string &levelPackPuzzleName, SolutionType type) const
 {
-    bool campaign = false;
-    for (auto &x : campaignLevels)
-        if (x.puzzleFilename == puzzleFilename)
-            campaign = true;
+    const string subFolder = levelPack;
 
-    const string subFolder = campaign ? "campaign/" : "custom/";
-
-    util::makeDirectory(params().rootDir + folder);
-    util::makeDirectory(params().rootDir + folder + subFolder);
+    util::makeDirectory(params().rootDir + sessionFolder);
+    util::makeDirectory(params().rootDir + sessionFolder + subFolder);
 
     string suffix = "";
     if (type == SolutionType::MostRecent) suffix = "_Recent";
     if (type == SolutionType::Fastest) suffix = "_Fastest";
     if (type == SolutionType::Cheapest) suffix = "_Cheapest";
 
-    return params().rootDir + folder + subFolder + puzzleFilename + suffix + ".pzl";
+    return params().rootDir + sessionFolder + subFolder + levelPackPuzzleName + suffix + ".pzl";
 }
 
 void UserSession::saveProgress(AppData &app)
 {
-    int userPieceCount = 0;
+	int userPieceCount = 0;
     for (Component *c : app.state.components)
         if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece)
             userPieceCount++;
@@ -119,35 +112,45 @@ void UserSession::saveProgress(AppData &app)
     if (userPieceCount == 0)
         return;
 
-    const string filenameRecent = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent);
-    const string filenameStepCount = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Fastest);
+	if (app.state.puzzleFileType != "UserProgress" && app.state.puzzleFileType != "UserSolution")
+		return;
+
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent);
+    const string filenameStepCount = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Fastest);
     
-    if (!util::fileExists(filenameStepCount))
-        app.state.savePuzzle(filenameRecent, app.controller.currentPuzzleFilename);
+	if (!util::fileExists(filenameStepCount))
+	{
+		app.state.savePuzzle(filenameRecent);
+	}
 }
 
-void UserSession::recordVictoryCampaign(AppData &app)
+void UserSession::recordVictory(AppData &app)
 {
-    const string filenameRecent = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::MostRecent);
-    const string filenameStepCount = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Fastest);
-    const string filenameComponentCost = app.session.getSolutionFilename(app.controller.currentPuzzleFilename, SolutionType::Cheapest);
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::MostRecent);
+    const string filenameStepCount = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Fastest);
+    const string filenameComponentCost = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Cheapest);
 
-    auto &info = campaignLevels[app.controller.currentCampaignIndex];
+	if (app.state.levelPack != "Campaign")
+	{
+		return;
+	}
+
+    auto &info = campaignLevels[app.state.levelPackPuzzleIndex];
 
     info.state = LevelState::Solved;
 
-    app.state.savePuzzle(filenameRecent, app.controller.currentPuzzleFilename);
+    app.state.savePuzzle(filenameRecent);
 
     if (app.state.victoryInfo.componentCost <= info.bestComponentCost)
     {
         info.bestComponentCost = app.state.victoryInfo.componentCost;
-        app.state.savePuzzle(filenameComponentCost, app.controller.currentPuzzleFilename);
+        app.state.savePuzzle(filenameComponentCost);
     }
 
     if (app.state.victoryInfo.stepCount <= info.bestStepCount)
     {
         info.bestStepCount = app.state.victoryInfo.stepCount;
-        app.state.savePuzzle(filenameStepCount, app.controller.currentPuzzleFilename);
+        app.state.savePuzzle(filenameStepCount);
     }
 
     save();

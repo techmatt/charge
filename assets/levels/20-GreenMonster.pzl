@@ -1,4 +1,4 @@
-Puzzle~8~49
+Puzzle~14~55
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -47,4 +47,10 @@ boardPos=18 11
 color=3
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=6
+levelPack=Campaign
+levelPackPuzzleIndex=20
+levelPackPuzzleName=The Green-Eyed Monster
+puzzleFileType=BasePuzzle
+stepCount=-1

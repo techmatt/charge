@@ -1,4 +1,4 @@
-Puzzle~74~383
+Puzzle~80~389
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -381,4 +381,10 @@ Component~3~3
 boardPos=19 15
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=72
+levelPack=Campaign
+levelPackPuzzleIndex=4
+levelPackPuzzleName=Speed Racer
+puzzleFileType=BasePuzzle
+stepCount=-1

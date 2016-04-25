@@ -1,4 +1,4 @@
-Puzzle~523~3467
+Puzzle~529~3473
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -3465,4 +3465,10 @@ boundary=2
 circuitPos=12 12
 name=CircuitBoundary
 puzzleType=1
+componentCost=-1
 componentCount=521
+levelPack=Campaign
+levelPackPuzzleIndex=77
+levelPackPuzzleName=Jigsaw
+puzzleFileType=BasePuzzle
+stepCount=-1

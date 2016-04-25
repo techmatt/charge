@@ -1,5 +1,4 @@
-Puzzle~483~3165
-basePuzzleFilename=58b-TheUnfilteredFilter
+Puzzle~486~3168
 buildableComponents~44
 ComponentBuildState~43~43
 Amplifier=1
@@ -3163,4 +3162,8 @@ name=TrapReset
 puzzleType=0
 componentCost=1001
 componentCount=478
+levelPack=Campaign
+levelPackPuzzleIndex=60
+levelPackPuzzleName=The Unfiltered Filter
+puzzleFileType=ProvidedSolution
 stepCount=2458

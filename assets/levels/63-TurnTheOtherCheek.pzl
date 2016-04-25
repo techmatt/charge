@@ -1,4 +1,4 @@
-Puzzle~145~896
+Puzzle~151~902
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -894,4 +894,10 @@ Component~3~3
 boardPos=0 14
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=143
+levelPack=Campaign
+levelPackPuzzleIndex=66
+levelPackPuzzleName=Turn the Other Cheek
+puzzleFileType=BasePuzzle
+stepCount=-1

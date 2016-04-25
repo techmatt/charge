@@ -1,4 +1,4 @@
-Puzzle~987~6717
+Puzzle~993~6723
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -6715,4 +6715,10 @@ Component~3~3
 boardPos=0 0
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=985
+levelPack=Campaign
+levelPackPuzzleIndex=77
+levelPackPuzzleName=Jigsaw
+puzzleFileType=ProvidedSolution
+stepCount=-1

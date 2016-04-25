@@ -1,4 +1,4 @@
-Puzzle~233~1662
+Puzzle~239~1668
 buildableComponents~43
 ComponentBuildState~42~42
 Amplifier=1
@@ -1660,4 +1660,10 @@ boardPos=17 5
 color=1
 name=GateSwitch
 puzzleType=1
+componentCost=-1
 componentCount=231
+levelPack=Campaign
+levelPackPuzzleIndex=76
+levelPackPuzzleName=Quantity Control
+puzzleFileType=ProvidedSolution
+stepCount=-1

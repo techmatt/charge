@@ -1,4 +1,4 @@
-Puzzle~97~561
+Puzzle~103~567
 buildableComponents~34
 ComponentBuildState~33~33
 Amplifier=1
@@ -559,4 +559,10 @@ boardPos=2 18
 color=1
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=95
+levelPack=Campaign
+levelPackPuzzleIndex=30
+levelPackPuzzleName=Open Sesame
+puzzleFileType=ProvidedSolution
+stepCount=-1

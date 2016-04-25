@@ -1,4 +1,4 @@
-Puzzle~86~456
+Puzzle~92~462
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -454,4 +454,10 @@ Component~3~3
 boardPos=6 10
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=84
+levelPack=Campaign
+levelPackPuzzleIndex=16
+levelPackPuzzleName=Double Trouble
+puzzleFileType=ProvidedSolution
+stepCount=-1

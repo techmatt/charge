@@ -1,4 +1,4 @@
-Puzzle~111~618
+Puzzle~117~624
 buildableComponents~9
 ComponentBuildState~8~8
 Circuit=1
@@ -616,4 +616,10 @@ Component~3~3
 boardPos=15 0
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=109
+levelPack=Campaign
+levelPackPuzzleIndex=57
+levelPackPuzzleName=Web We Weave
+puzzleFileType=BasePuzzle
+stepCount=-1

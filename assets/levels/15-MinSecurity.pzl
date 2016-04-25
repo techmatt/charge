@@ -1,4 +1,4 @@
-Puzzle~141~750
+Puzzle~145~754
 buildableComponents~16
 ComponentBuildState~15~15
 TeleportDestinationBlue=1
@@ -748,4 +748,8 @@ name=TeleportDestination
 puzzleType=1
 componentCost=-1
 componentCount=137
+levelPack=Campaign
+levelPackPuzzleIndex=15
+levelPackPuzzleName=Minimum Security
+puzzleFileType=BasePuzzle
 stepCount=-1

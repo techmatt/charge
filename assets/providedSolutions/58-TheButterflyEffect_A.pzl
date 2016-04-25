@@ -1,4 +1,4 @@
-Puzzle~1353~9148
+Puzzle~1359~9154
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -9146,4 +9146,10 @@ boardPos=1 6
 circuitPos=9 10
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=1351
+levelPack=Campaign
+levelPackPuzzleIndex=59
+levelPackPuzzleName=The Butterfly Effect
+puzzleFileType=ProvidedSolution
+stepCount=-1

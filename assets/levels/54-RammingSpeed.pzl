@@ -1,4 +1,4 @@
-Puzzle~36~247
+Puzzle~42~253
 buildableComponents~43
 ComponentBuildState~42~42
 Amplifier=1
@@ -245,4 +245,10 @@ name=MegaHold
 puzzleType=1
 ticksPerDischarge=60
 totalChargeRequired=1
+componentCost=-1
 componentCount=34
+levelPack=Campaign
+levelPackPuzzleIndex=54
+levelPackPuzzleName=Ramming Speed
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~53~487
+Puzzle~59~493
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -485,4 +485,10 @@ puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=5
+componentCost=-1
 componentCount=51
+levelPack=Campaign
+levelPackPuzzleIndex=83
+levelPackPuzzleName=Final Destination
+puzzleFileType=BasePuzzle
+stepCount=-1

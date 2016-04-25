@@ -1,4 +1,4 @@
-Puzzle~152~863
+Puzzle~158~869
 buildableComponents~18
 ComponentBuildState~17~17
 Amplifier=1
@@ -861,4 +861,10 @@ boardPos=9 13
 circuitPos=9 8
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=150
+levelPack=Campaign
+levelPackPuzzleIndex=42
+levelPackPuzzleName=To Each His Own
+puzzleFileType=ProvidedSolution
+stepCount=-1

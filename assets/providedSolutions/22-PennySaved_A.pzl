@@ -1,4 +1,4 @@
-Puzzle~131~668
+Puzzle~137~674
 buildableComponents~10
 ComponentBuildState~9~9
 FilteredAmplifierBlue=1
@@ -666,4 +666,10 @@ Component~3~3
 boardPos=16 0
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=129
+levelPack=Campaign
+levelPackPuzzleIndex=22
+levelPackPuzzleName=A Penny Saved
+puzzleFileType=ProvidedSolution
+stepCount=-1

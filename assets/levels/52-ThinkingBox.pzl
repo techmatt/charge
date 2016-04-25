@@ -1,5 +1,4 @@
-Puzzle~438~2971
-basePuzzleFilename=52-ThinkingBox
+Puzzle~441~2974
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -2969,4 +2968,8 @@ name=CircuitBoundary
 puzzleType=0
 componentCost=0
 componentCount=433
+levelPack=Campaign
+levelPackPuzzleIndex=52
+levelPackPuzzleName=Thinking Inside the Box
+puzzleFileType=BasePuzzle
 stepCount=606

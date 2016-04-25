@@ -1,4 +1,4 @@
-Puzzle~82~473
+Puzzle~88~479
 buildableComponents~34
 ComponentBuildState~33~33
 Amplifier=1
@@ -471,4 +471,10 @@ boardPos=10 6
 name=Wire
 puzzleType=1
 speed=4
+componentCost=-1
 componentCount=80
+levelPack=Campaign
+levelPackPuzzleIndex=30
+levelPackPuzzleName=Open Sesame
+puzzleFileType=BasePuzzle
+stepCount=-1

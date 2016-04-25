@@ -1,4 +1,4 @@
-Puzzle~497~3282
+Puzzle~503~3288
 buildableComponents~9
 ComponentBuildState~8~8
 Circuit=1
@@ -3280,4 +3280,10 @@ chargePreference=4
 circuitPos=10 6
 name=Hold
 puzzleType=1
+componentCost=-1
 componentCount=495
+levelPack=Campaign
+levelPackPuzzleIndex=44
+levelPackPuzzleName=One for All
+puzzleFileType=ProvidedSolution
+stepCount=-1

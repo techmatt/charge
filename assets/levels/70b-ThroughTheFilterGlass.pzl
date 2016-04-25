@@ -1,4 +1,4 @@
-Puzzle~671~4524
+Puzzle~677~4530
 buildableComponents~37
 ComponentBuildState~36~36
 Amplifier=1
@@ -82,52 +82,52 @@ Component~3~3
 boardPos=8 16
 name=Circuit
 puzzleType=0
-component0009~6
+component0009~4
+Component~3~3
+boardPos=6 6
+name=Circuit
+puzzleType=0
+component0010~4
+Component~3~3
+boardPos=8 6
+name=Circuit
+puzzleType=0
+component0011~4
+Component~3~3
+boardPos=16 18
+name=Circuit
+puzzleType=0
+component0012~4
+Component~3~3
+boardPos=18 18
+name=Circuit
+puzzleType=0
+component0013~4
+Component~3~3
+boardPos=18 14
+name=Circuit
+puzzleType=0
+component0014~4
+Component~3~3
+boardPos=16 14
+name=Circuit
+puzzleType=0
+component0015~4
+Component~3~3
+boardPos=18 16
+name=Circuit
+puzzleType=0
+component0016~4
+Component~3~3
+boardPos=16 16
+name=Circuit
+puzzleType=0
+component0017~6
 Component~5~5
 boardPos=4 2
 boundary=2
 circuitPos=10 0
 name=CircuitBoundary
-puzzleType=0
-component0010~4
-Component~3~3
-boardPos=6 6
-name=Circuit
-puzzleType=0
-component0011~4
-Component~3~3
-boardPos=8 6
-name=Circuit
-puzzleType=0
-component0012~4
-Component~3~3
-boardPos=16 18
-name=Circuit
-puzzleType=0
-component0013~4
-Component~3~3
-boardPos=18 18
-name=Circuit
-puzzleType=0
-component0014~4
-Component~3~3
-boardPos=18 14
-name=Circuit
-puzzleType=0
-component0015~4
-Component~3~3
-boardPos=16 14
-name=Circuit
-puzzleType=0
-component0016~4
-Component~3~3
-boardPos=18 16
-name=Circuit
-puzzleType=0
-component0017~4
-Component~3~3
-boardPos=16 16
-name=Circuit
 puzzleType=0
 component0018~6
 Component~5~5
@@ -4522,4 +4522,10 @@ Component~3~3
 boardPos=14 12
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=669
+levelPack=Campaign
+levelPackPuzzleIndex=74
+levelPackPuzzleName=Through the Filter Glass
+puzzleFileType=BasePuzzle
+stepCount=-1

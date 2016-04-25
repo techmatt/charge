@@ -1,4 +1,4 @@
-Puzzle~537~3690
+Puzzle~543~3696
 buildableComponents~13
 ComponentBuildState~12~12
 Circuit=1
@@ -3688,4 +3688,10 @@ Component~3~3
 boardPos=18 15
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=535
+levelPack=Campaign
+levelPackPuzzleIndex=81
+levelPackPuzzleName=Line Dancing
+puzzleFileType=BasePuzzle
+stepCount=-1

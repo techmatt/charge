@@ -1,4 +1,4 @@
-Puzzle~117~661
+Puzzle~123~667
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -659,4 +659,10 @@ Component~3~3
 boardPos=0 15
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=115
+levelPack=Campaign
+levelPackPuzzleIndex=64
+levelPackPuzzleName=Size Isn't Everything
+puzzleFileType=BasePuzzle
+stepCount=-1

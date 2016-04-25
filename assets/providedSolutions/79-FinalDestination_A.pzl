@@ -1,4 +1,4 @@
-Puzzle~5274~36849
+Puzzle~5280~36855
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -36847,4 +36847,10 @@ boardPos=10 6
 circuitPos=8 7
 name=Hold
 puzzleType=1
+componentCost=-1
 componentCount=5272
+levelPack=Campaign
+levelPackPuzzleIndex=83
+levelPackPuzzleName=Final Destination
+puzzleFileType=ProvidedSolution
+stepCount=-1

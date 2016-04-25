@@ -1,5 +1,4 @@
-Puzzle~97~568
-basePuzzleFilename=49b-Discharged
+Puzzle~100~571
 buildableComponents~42
 ComponentBuildState~41~41
 Amplifier=1
@@ -566,4 +565,8 @@ name=Wire
 puzzleType=0
 componentCost=0
 componentCount=92
+levelPack=Campaign
+levelPackPuzzleIndex=50
+levelPackPuzzleName=Discharged
+puzzleFileType=ProvidedSolution
 stepCount=1390

@@ -17,7 +17,7 @@ void Database::init()
 
     for (auto &line : GameUtil::readTSVFile(params().assetDir + "levels.txt"))
     {
-        puzzles.push_back(PuzzleInfo(line));
+        allPuzzles.push_back(PuzzleInfo(line));
     }
 
     fonts[(int)FontType::LevelName] = FontInfo("21st", 36.0f, RGBColor(0, 0, 0));
@@ -59,6 +59,40 @@ void Database::initTextures(Renderer &renderer)
 
     squareBlocked = &getTexture(renderer, "SquareBlocked");
     squareOpen = &getTexture(renderer, "SquareOpen");
+}
+
+void Database::processAllCampaignLevels(AppData &app)
+{
+	for (auto &puzzle : allPuzzles)
+	{
+		cout << "Processing puzzle " << puzzle.filename << endl;
+		GameState state(app);
+		const string basePuzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
+		state.loadPuzzle(basePuzzleFilename, "none");
+		
+		state.levelPack = "Campaign";
+		state.levelPackPuzzleIndex = puzzle.index;
+		state.levelPackPuzzleName = puzzle.name;
+		state.puzzleFileType = "BasePuzzle";
+
+		state.savePuzzle(basePuzzleFilename);
+	}
+
+	for (auto &puzzle : allPuzzles)
+	{
+		cout << "Processing puzzle solution " << puzzle.filename << endl;
+
+		GameState state(app);
+		const string basePuzzleFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
+		state.loadPuzzle(basePuzzleFilename, "none");
+
+		state.levelPack = "Campaign";
+		state.levelPackPuzzleIndex = puzzle.index;
+		state.levelPackPuzzleName = puzzle.name;
+		state.puzzleFileType = "ProvidedSolution";
+
+		state.savePuzzle(basePuzzleFilename);
+	}
 }
 
 Texture& Database::getTexture(Renderer &renderer, const string &textureName)

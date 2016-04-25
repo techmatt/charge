@@ -1,4 +1,4 @@
-Puzzle~246~1699
+Puzzle~252~1705
 buildableComponents~22
 ComponentBuildState~21~21
 Amplifier=1
@@ -1697,4 +1697,10 @@ boardPos=15 15
 color=5
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=244
+levelPack=Campaign
+levelPackPuzzleIndex=65
+levelPackPuzzleName=Brave New World
+puzzleFileType=ProvidedSolution
+stepCount=-1

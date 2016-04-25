@@ -1,5 +1,4 @@
-Puzzle~117~684
-basePuzzleFilename=60b-BabyBusyBeaver
+Puzzle~120~687
 buildableComponents~43
 ComponentBuildState~42~42
 ChargeFilterBlue=1
@@ -682,4 +681,8 @@ name=Wire
 puzzleType=0
 componentCost=216
 componentCount=112
+levelPack=Campaign
+levelPackPuzzleIndex=63
+levelPackPuzzleName=Baby Busy Beaver
+puzzleFileType=ProvidedSolution
 stepCount=4134

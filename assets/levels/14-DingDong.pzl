@@ -1,4 +1,4 @@
-Puzzle~25~135
+Puzzle~31~141
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -133,4 +133,10 @@ Component~3~3
 boardPos=20 15
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=23
+levelPack=Campaign
+levelPackPuzzleIndex=14
+levelPackPuzzleName=Ding Dong Ditch
+puzzleFileType=BasePuzzle
+stepCount=-1

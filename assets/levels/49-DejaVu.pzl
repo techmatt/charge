@@ -1,4 +1,4 @@
-Puzzle~32~165
+Puzzle~38~171
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -163,4 +163,10 @@ puzzleType=0
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1
+componentCost=-1
 componentCount=30
+levelPack=Campaign
+levelPackPuzzleIndex=49
+levelPackPuzzleName=Deja Vu
+puzzleFileType=BasePuzzle
+stepCount=-1

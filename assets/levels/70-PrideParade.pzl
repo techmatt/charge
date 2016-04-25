@@ -1,4 +1,4 @@
-Puzzle~31~226
+Puzzle~37~232
 buildableComponents~47
 ComponentBuildState~46~46
 ChargeFilterBlue=1
@@ -224,4 +224,10 @@ puzzleType=1
 secondsBeforeFirstEmission=2
 secondsPerEmission=7
 totalCharges=1000
+componentCost=-1
 componentCount=29
+levelPack=Campaign
+levelPackPuzzleIndex=73
+levelPackPuzzleName=Pride Parade
+puzzleFileType=BasePuzzle
+stepCount=-1

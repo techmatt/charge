@@ -1,4 +1,4 @@
-Puzzle~59~303
+Puzzle~65~309
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -301,4 +301,10 @@ Component~3~3
 boardPos=7 3
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=57
+levelPack=Campaign
+levelPackPuzzleIndex=25
+levelPackPuzzleName=It's a Trap!
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~130~818
+Puzzle~136~824
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -816,4 +816,10 @@ Component~3~3
 boardPos=10 6
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=128
+levelPack=Campaign
+levelPackPuzzleIndex=69
+levelPackPuzzleName=Overengineering
+puzzleFileType=BasePuzzle
+stepCount=-1

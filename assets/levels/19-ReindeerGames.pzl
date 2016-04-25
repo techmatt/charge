@@ -1,4 +1,4 @@
-Puzzle~81~417
+Puzzle~87~423
 buildableComponents~10
 ComponentBuildState~9~9
 TeleportDestinationGreen=1
@@ -415,4 +415,10 @@ Component~3~3
 boardPos=20 22
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=79
+levelPack=Campaign
+levelPackPuzzleIndex=19
+levelPackPuzzleName=Reindeer Games
+puzzleFileType=BasePuzzle
+stepCount=-1

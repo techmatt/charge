@@ -1,4 +1,4 @@
-Puzzle~1599~10903
+Puzzle~1605~10909
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -10901,4 +10901,10 @@ boardPos=16 6
 circuitPos=6 10
 name=Hold
 puzzleType=1
+componentCost=-1
 componentCount=1597
+levelPack=Campaign
+levelPackPuzzleIndex=69
+levelPackPuzzleName=Overengineering
+puzzleFileType=ProvidedSolution
+stepCount=-1

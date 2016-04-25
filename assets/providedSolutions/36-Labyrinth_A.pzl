@@ -1,4 +1,4 @@
-Puzzle~146~771
+Puzzle~152~777
 buildableComponents~11
 ComponentBuildState~10~10
 ChargeFilterBlue=1
@@ -769,4 +769,10 @@ boardPos=10 10
 color=5
 name=ChargeFilter
 puzzleType=1
+componentCost=-1
 componentCount=144
+levelPack=Campaign
+levelPackPuzzleIndex=36
+levelPackPuzzleName=Labyrinth
+puzzleFileType=ProvidedSolution
+stepCount=-1

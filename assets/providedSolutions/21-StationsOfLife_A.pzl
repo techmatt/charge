@@ -1,4 +1,4 @@
-Puzzle~15~88
+Puzzle~21~94
 buildableComponents~10
 ComponentBuildState~9~9
 FilteredAmplifierBlue=1
@@ -86,4 +86,10 @@ Component~3~3
 boardPos=16 12
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=13
+levelPack=Campaign
+levelPackPuzzleIndex=21
+levelPackPuzzleName=Stations of Life
+puzzleFileType=ProvidedSolution
+stepCount=-1

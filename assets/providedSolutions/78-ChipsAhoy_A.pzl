@@ -1,4 +1,4 @@
-Puzzle~1122~7879
+Puzzle~1128~7885
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -7877,4 +7877,10 @@ boardPos=22 6
 color=1
 name=TrapReset
 puzzleType=1
+componentCost=-1
 componentCount=1120
+levelPack=Campaign
+levelPackPuzzleIndex=82
+levelPackPuzzleName=Chips Ahoy
+puzzleFileType=ProvidedSolution
+stepCount=-1

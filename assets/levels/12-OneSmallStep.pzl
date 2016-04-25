@@ -1,4 +1,4 @@
-Puzzle~14~76
+Puzzle~20~82
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -74,4 +74,10 @@ Component~3~3
 boardPos=22 9
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=12
+levelPack=Campaign
+levelPackPuzzleIndex=12
+levelPackPuzzleName=One Small Step
+puzzleFileType=BasePuzzle
+stepCount=-1

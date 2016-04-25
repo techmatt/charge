@@ -1,4 +1,4 @@
-Puzzle~417~2849
+Puzzle~423~2855
 buildableComponents~47
 ComponentBuildState~46~46
 ChargeFilterBlue=1
@@ -2847,4 +2847,10 @@ boardPos=10 18
 name=Wire
 puzzleType=1
 speed=0
+componentCost=-1
 componentCount=415
+levelPack=Campaign
+levelPackPuzzleIndex=71
+levelPackPuzzleName=Deus Ex Machina
+puzzleFileType=ProvidedSolution
+stepCount=-1

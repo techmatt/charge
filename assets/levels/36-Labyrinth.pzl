@@ -1,4 +1,4 @@
-Puzzle~83~448
+Puzzle~89~454
 buildableComponents~11
 ComponentBuildState~10~10
 ChargeFilterBlue=1
@@ -446,4 +446,10 @@ boardPos=10 20
 chargePreference=4
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=81
+levelPack=Campaign
+levelPackPuzzleIndex=36
+levelPackPuzzleName=Labyrinth
+puzzleFileType=BasePuzzle
+stepCount=-1

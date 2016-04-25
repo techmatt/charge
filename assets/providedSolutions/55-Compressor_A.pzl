@@ -1,4 +1,4 @@
-Puzzle~1535~10476
+Puzzle~1541~10482
 buildableComponents~13
 ComponentBuildState~12~12
 Circuit=1
@@ -10474,4 +10474,10 @@ boundary=1
 circuitPos=12 2
 name=CircuitBoundary
 puzzleType=1
+componentCost=-1
 componentCount=1533
+levelPack=Campaign
+levelPackPuzzleIndex=55
+levelPackPuzzleName=Compressor
+puzzleFileType=ProvidedSolution
+stepCount=-1

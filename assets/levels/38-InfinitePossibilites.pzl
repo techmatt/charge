@@ -1,4 +1,4 @@
-Puzzle~25~153
+Puzzle~31~159
 buildableComponents~22
 ComponentBuildState~21~21
 Amplifier=1
@@ -151,4 +151,10 @@ Component~3~3
 boardPos=22 21
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=23
+levelPack=Campaign
+levelPackPuzzleIndex=38
+levelPackPuzzleName=Infinite Possibilities
+puzzleFileType=BasePuzzle
+stepCount=-1

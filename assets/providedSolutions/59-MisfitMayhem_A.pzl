@@ -1,4 +1,4 @@
-Puzzle~2468~16923
+Puzzle~2474~16929
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -16921,4 +16921,10 @@ circuitPos=8 7
 name=Wire
 puzzleType=1
 speed=0
+componentCost=-1
 componentCount=2466
+levelPack=Campaign
+levelPackPuzzleIndex=61
+levelPackPuzzleName=Misfit Mayhem
+puzzleFileType=ProvidedSolution
+stepCount=-1

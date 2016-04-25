@@ -1,4 +1,4 @@
-Puzzle~4~27
+Puzzle~10~33
 buildableComponents~10
 ComponentBuildState~9~9
 FilteredAmplifierBlue=1
@@ -25,4 +25,10 @@ boardPos=18 12
 color=5
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=2
+levelPack=Campaign
+levelPackPuzzleIndex=21
+levelPackPuzzleName=Stations of Life
+puzzleFileType=BasePuzzle
+stepCount=-1

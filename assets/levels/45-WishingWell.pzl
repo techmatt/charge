@@ -1,4 +1,4 @@
-Puzzle~224~1501
+Puzzle~230~1507
 buildableComponents~35
 ComponentBuildState~34~34
 ChargeFilterBlue=1
@@ -1499,4 +1499,10 @@ puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=3
+componentCost=-1
 componentCount=222
+levelPack=Campaign
+levelPackPuzzleIndex=45
+levelPackPuzzleName=Wishing Well
+puzzleFileType=BasePuzzle
+stepCount=-1

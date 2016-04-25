@@ -82,7 +82,7 @@ void GameState::init()
     }
 }
 
-void GameState::savePuzzle(const string &filename, const string &_basePuzzleFilename)
+void GameState::savePuzzle(const string &filename)
 {
     for (Component *c : components)
         c->info = c->baseInfo;
@@ -103,14 +103,23 @@ void GameState::savePuzzle(const string &filename, const string &_basePuzzleFile
     puzzleTable.setInt("componentCost", victoryInfo.componentCost);
     puzzleTable.setInt("stepCount", victoryInfo.stepCount);
 
-    puzzleTable.setString("basePuzzleFilename", _basePuzzleFilename);
+    puzzleTable.setString("puzzleFileType", puzzleFileType);
+	puzzleTable.setString("levelPack", levelPack);
+	puzzleTable.setString("levelPackPuzzleName", levelPackPuzzleName);
+	puzzleTable.setInt("levelPackPuzzleIndex", levelPackPuzzleIndex);
 
     puzzleTable.save(filename);
 
     
 }
 
-void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bool loadAsPuzzle)
+void GameState::allowEditing()
+{
+	for (auto &c : components)
+		c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
+}
+
+void GameState::loadPuzzle(const string &filename, const string &_puzzleName)
 {
     clearAndResetBoard();
 
@@ -157,15 +166,21 @@ void GameState::loadPuzzle(const string &filename, const string &_puzzleName, bo
         if (c->info->name != "Circuit")
             addNewComponent(c, false, false);
 
-    if (loadAsPuzzle)
-    {
-        for (auto &c : components)
-            c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
-    }
+	puzzleFileType = "Unknown";
+    if (puzzleTable.hasParameter("puzzleFileType"))
+		puzzleFileType = puzzleTable.getString("puzzleFileType");
 
-    basePuzzleFilename = "unknown";
-    if (puzzleTable.hasParameter("basePuzzleFilename"))
-        basePuzzleFilename = puzzleTable.getString("basePuzzleFilename");
+	levelPack = "Unknown";
+	if (puzzleTable.hasParameter("levelPack"))
+		levelPack = puzzleTable.getString("levelPack");
+
+	levelPackPuzzleName = "Unknown";
+	if (puzzleTable.hasParameter("levelPackPuzzleName"))
+		levelPackPuzzleName = puzzleTable.getString("levelPackPuzzleName");
+
+	levelPackPuzzleIndex = -1;
+	if (puzzleTable.hasParameter("levelPackPuzzleIndex"))
+		levelPackPuzzleIndex = puzzleTable.getInt("levelPackPuzzleIndex");
 
     //
     // normally this is done in addNewComponent, but this is noticably slower so is avoided until the puzzle is fully loaded.

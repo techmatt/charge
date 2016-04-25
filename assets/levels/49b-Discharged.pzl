@@ -1,5 +1,4 @@
-Puzzle~56~361
-basePuzzleFilename=49b-Discharged
+Puzzle~59~364
 buildableComponents~42
 ComponentBuildState~41~41
 Amplifier=1
@@ -359,4 +358,8 @@ name=Blocker
 puzzleType=1
 componentCost=-1
 componentCount=51
+levelPack=Campaign
+levelPackPuzzleIndex=50
+levelPackPuzzleName=Discharged
+puzzleFileType=BasePuzzle
 stepCount=-1

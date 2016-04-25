@@ -1,4 +1,4 @@
-Puzzle~120~623
+Puzzle~126~629
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -621,4 +621,10 @@ Component~3~3
 boardPos=22 18
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=118
+levelPack=Campaign
+levelPackPuzzleIndex=6
+levelPackPuzzleName=Dealing with Rejection
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~406~2719
+Puzzle~412~2725
 buildableComponents~37
 ComponentBuildState~36~36
 ChargeFilterBlue=1
@@ -2717,4 +2717,10 @@ boardPos=17 11
 circuitPos=8 9
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=404
+levelPack=Campaign
+levelPackPuzzleIndex=51
+levelPackPuzzleName=Jacob's Ladder
+puzzleFileType=ProvidedSolution
+stepCount=-1

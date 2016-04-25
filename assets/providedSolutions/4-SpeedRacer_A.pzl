@@ -1,4 +1,4 @@
-Puzzle~84~440
+Puzzle~90~446
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -438,4 +438,10 @@ boardPos=14 12
 name=Wire
 puzzleType=1
 speed=4
+componentCost=-1
 componentCount=82
+levelPack=Campaign
+levelPackPuzzleIndex=4
+levelPackPuzzleName=Speed Racer
+puzzleFileType=ProvidedSolution
+stepCount=-1

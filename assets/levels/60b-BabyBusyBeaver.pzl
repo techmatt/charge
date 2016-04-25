@@ -1,5 +1,4 @@
-Puzzle~73~417
-basePuzzleFilename=60b-BabyBusyBeaver
+Puzzle~76~420
 buildableComponents~43
 ComponentBuildState~42~42
 ChargeFilterBlue=1
@@ -415,4 +414,8 @@ name=Blocker
 puzzleType=0
 componentCost=216
 componentCount=68
+levelPack=Campaign
+levelPackPuzzleIndex=63
+levelPackPuzzleName=Baby Busy Beaver
+puzzleFileType=BasePuzzle
 stepCount=4134

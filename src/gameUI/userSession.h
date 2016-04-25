@@ -73,14 +73,12 @@ struct UserSession
         return min(solved + params().maxSkippedLevels, (int)campaignLevels.size());
     }
 
-    const UserSessionLevelInfo* getLevelInfo(const string &puzzleFilename) const
+    const UserSessionLevelInfo* getLevelInfo(const string &levelPack, int puzzleIndex) const
     {
-        for (int i = 0; i < campaignLevels.size(); i++)
-        {
-            if (campaignLevels[i].puzzleFilename == puzzleFilename)
-                return &campaignLevels[i];
-        }
-
+		if (levelPack == "Campaign")
+		{
+			return &campaignLevels[puzzleIndex];
+		}
         //if (customLevels.count(puzzleFilename) > 0)
         //    return &customLevels.find(puzzleFilename)->second;
 
@@ -91,18 +89,16 @@ struct UserSession
     void save();
     void load();
 
-    void recordVictoryCampaign(AppData &app);
+    void recordVictory(AppData &app);
     void saveProgress(AppData &app);
 
     // this folder contains your custom data and your solutions.
     // typically, this is just "SessionA", "SessionB", or "SessionC"
-    string folder;
+    string sessionFolder;
 
-    string getSolutionFilename(const string &puzzleFilename, SolutionType type) const;
+    string getSolutionFilename(const string &levelPack, const string &levelPackPuzzleName, SolutionType type) const;
 
     vector<UserSessionLevelInfo> campaignLevels;
-
-    map<string, UserSessionLevelInfo> customLevels;
 
     bool playMusic;
     bool playSounds;

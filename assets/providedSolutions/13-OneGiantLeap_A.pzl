@@ -1,4 +1,4 @@
-Puzzle~34~176
+Puzzle~40~182
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -174,4 +174,10 @@ Component~3~3
 boardPos=17 9
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=32
+levelPack=Campaign
+levelPackPuzzleIndex=13
+levelPackPuzzleName=One Giant Leap
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,5 +1,4 @@
-Puzzle~322~2066
-basePuzzleFilename=58b-TheUnfilteredFilter
+Puzzle~325~2069
 buildableComponents~44
 ComponentBuildState~43~43
 Amplifier=1
@@ -2064,4 +2063,8 @@ name=Blocker
 puzzleType=0
 componentCost=991
 componentCount=317
+levelPack=Campaign
+levelPackPuzzleIndex=60
+levelPackPuzzleName=The Unfiltered Filter
+puzzleFileType=BasePuzzle
 stepCount=2242

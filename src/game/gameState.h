@@ -12,12 +12,13 @@ struct GameVictoryInfo
 
 struct GameState
 {
-	GameState(AppData &_app) : app(_app) {}
+	GameState(AppData &_app) : app(_app) { init(); }
 
 	void init();
     
-    void savePuzzle(const string &filename, const string &basePuzzleFilename);
-    void loadPuzzle(const string &filename, const string &puzzleName, bool loadAsPuzzle);
+    void savePuzzle(const string &filename);
+    void loadPuzzle(const string &filename, const string &puzzleName);
+	void allowEditing();
 
     void clearComponents();
     void clearAndResetBoard();
@@ -79,11 +80,17 @@ struct GameState
     float victoryChargeScaleFactorNegative;
 
     //
-    // semantic puzzle name
+    // semantic puzzle name. Not saved in the file.
     //
     string puzzleName;
 
-    string basePuzzleFilename;
+	// BasePuzzle,ProvidedSolution,UserProgress,UserSolution,Custom
+	string puzzleFileType;
+    
+	// Campaign,<anything>,Custom
+	string levelPack;
+	string levelPackPuzzleName;
+	int levelPackPuzzleIndex;
 
     // map from 7x7 circuit coordinate to the offset from the circuit's origin
     // to the neighboring component. Aligned refers to the case where two circuits are perfectly aligned.

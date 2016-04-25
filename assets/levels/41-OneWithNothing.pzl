@@ -1,4 +1,4 @@
-Puzzle~39~260
+Puzzle~45~266
 buildableComponents=ComponentBuildState~0~0
 component0000~4
 Component~3~3
@@ -258,4 +258,10 @@ boundary=2
 circuitPos=12 8
 name=CircuitBoundary
 puzzleType=0
+componentCost=-1
 componentCount=37
+levelPack=Campaign
+levelPackPuzzleIndex=41
+levelPackPuzzleName=One With Nothing
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~40~243
+Puzzle~46~249
 buildableComponents~2
 ComponentBuildState~1~1
 TrapOpenGray=1
@@ -241,4 +241,10 @@ boardPos=18 11
 color=6
 name=TrapOpen
 puzzleType=1
+componentCost=-1
 componentCount=38
+levelPack=Campaign
+levelPackPuzzleIndex=27
+levelPackPuzzleName=Bonanza
+puzzleFileType=ProvidedSolution
+stepCount=-1

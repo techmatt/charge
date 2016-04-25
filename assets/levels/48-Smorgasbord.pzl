@@ -1,4 +1,4 @@
-Puzzle~130~770
+Puzzle~136~776
 buildableComponents~10
 ComponentBuildState~9~9
 Circuit=1
@@ -768,4 +768,10 @@ Component~3~3
 boardPos=21 1
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=128
+levelPack=Campaign
+levelPackPuzzleIndex=48
+levelPackPuzzleName=Smorgasbord
+puzzleFileType=BasePuzzle
+stepCount=-1

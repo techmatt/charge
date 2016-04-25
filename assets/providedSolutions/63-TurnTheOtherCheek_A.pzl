@@ -1,4 +1,4 @@
-Puzzle~181~1142
+Puzzle~187~1148
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -1140,4 +1140,10 @@ circuitPos=10 7
 color=6
 name=TrapReset
 puzzleType=1
+componentCost=-1
 componentCount=179
+levelPack=Campaign
+levelPackPuzzleIndex=66
+levelPackPuzzleName=Turn the Other Cheek
+puzzleFileType=ProvidedSolution
+stepCount=-1

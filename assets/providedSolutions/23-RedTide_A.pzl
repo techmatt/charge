@@ -1,4 +1,4 @@
-Puzzle~48~254
+Puzzle~54~260
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -252,4 +252,10 @@ Component~3~3
 boardPos=6 11
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=46
+levelPack=Campaign
+levelPackPuzzleIndex=23
+levelPackPuzzleName=Red Tide
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~17~93
+Puzzle~23~99
 buildableComponents~7
 ComponentBuildState~6~6
 TrapOpenGray=1
@@ -91,4 +91,10 @@ Component~3~3
 boardPos=8 16
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=15
+levelPack=Campaign
+levelPackPuzzleIndex=26
+levelPackPuzzleName=Trapasaurus
+puzzleFileType=BasePuzzle
+stepCount=-1

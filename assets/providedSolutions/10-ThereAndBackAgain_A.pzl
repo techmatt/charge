@@ -1,4 +1,4 @@
-Puzzle~41~212
+Puzzle~47~218
 buildableComponents~7
 ComponentBuildState~6~6
 Amplifier=1
@@ -210,4 +210,10 @@ Component~3~3
 boardPos=17 12
 name=Amplifier
 puzzleType=1
+componentCost=-1
 componentCount=39
+levelPack=Campaign
+levelPackPuzzleIndex=10
+levelPackPuzzleName=There and Back Again
+puzzleFileType=ProvidedSolution
+stepCount=-1

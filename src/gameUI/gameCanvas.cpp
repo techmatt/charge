@@ -626,10 +626,10 @@ void GameCanvas::renderTooltip()
     if (app.activeCircuit() == nullptr)
     {
         string solvedState;
-        auto sessionInfo = app.session.getLevelInfo(app.controller.currentPuzzleFilename);
+        auto sessionInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
         if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved)
             solvedState = " (Solved)";
-        renderTooltip(params().tooltipDefaultStart, app.controller.getCurrentPuzzle().name + solvedState, app.controller.getCurrentPuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
+        renderTooltip(params().tooltipDefaultStart, app.controller.getActivePuzzle().name + solvedState, app.controller.getActivePuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
 
         if (app.state.victoryInfo.stepCount != -1)
         {

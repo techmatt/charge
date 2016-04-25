@@ -1,4 +1,4 @@
-Puzzle~146~746
+Puzzle~152~752
 buildableComponents~10
 ComponentBuildState~9~9
 TeleportDestinationGreen=1
@@ -744,4 +744,10 @@ boardPos=18 2
 color=4
 name=TeleportDestination
 puzzleType=1
+componentCost=-1
 componentCount=144
+levelPack=Campaign
+levelPackPuzzleIndex=19
+levelPackPuzzleName=Reindeer Games
+puzzleFileType=ProvidedSolution
+stepCount=-1

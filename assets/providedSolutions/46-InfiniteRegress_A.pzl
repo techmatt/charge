@@ -1,4 +1,4 @@
-Puzzle~109~622
+Puzzle~115~628
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -620,4 +620,10 @@ Component~3~3
 boardPos=22 2
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=107
+levelPack=Campaign
+levelPackPuzzleIndex=46
+levelPackPuzzleName=Infinite Regress
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~387~2575
+Puzzle~393~2581
 buildableComponents~17
 ComponentBuildState~16~16
 GateClosedBlue=1
@@ -2573,4 +2573,10 @@ boardPos=16 0
 color=2
 name=GateSwitch
 puzzleType=1
+componentCost=-1
 componentCount=385
+levelPack=Campaign
+levelPackPuzzleIndex=78
+levelPackPuzzleName=Turing Complete
+puzzleFileType=ProvidedSolution
+stepCount=-1

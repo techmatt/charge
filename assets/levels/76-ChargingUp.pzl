@@ -1,4 +1,4 @@
-Puzzle~57~442
+Puzzle~63~448
 buildableComponents~47
 ComponentBuildState~46~46
 ChargeFilterBlue=1
@@ -440,4 +440,10 @@ puzzleType=0
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=6
+componentCost=-1
 componentCount=55
+levelPack=Campaign
+levelPackPuzzleIndex=80
+levelPackPuzzleName=Chargin' Up
+puzzleFileType=BasePuzzle
+stepCount=-1

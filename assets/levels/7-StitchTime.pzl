@@ -1,4 +1,4 @@
-Puzzle~118~594
+Puzzle~124~600
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -592,4 +592,10 @@ Component~3~3
 boardPos=22 19
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=116
+levelPack=Campaign
+levelPackPuzzleIndex=7
+levelPackPuzzleName=A Stitch in Time
+puzzleFileType=BasePuzzle
+stepCount=-1

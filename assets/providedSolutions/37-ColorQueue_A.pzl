@@ -1,4 +1,4 @@
-Puzzle~107~620
+Puzzle~113~626
 buildableComponents~17
 ComponentBuildState~16~16
 GateClosedBlue=1
@@ -618,4 +618,10 @@ boardPos=8 18
 name=Wire
 puzzleType=1
 speed=0
+componentCost=-1
 componentCount=105
+levelPack=Campaign
+levelPackPuzzleIndex=37
+levelPackPuzzleName=Color Queue
+puzzleFileType=ProvidedSolution
+stepCount=-1

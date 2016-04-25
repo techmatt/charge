@@ -1,4 +1,4 @@
-Puzzle~428~2886
+Puzzle~434~2892
 buildableComponents~47
 ComponentBuildState~46~46
 ChargeFilterBlue=1
@@ -2884,4 +2884,10 @@ boardPos=0 18
 circuitPos=8 10
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=426
+levelPack=Campaign
+levelPackPuzzleIndex=73
+levelPackPuzzleName=Pride Parade
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~344~2332
+Puzzle~350~2338
 buildableComponents~17
 ComponentBuildState~16~16
 GateClosedBlue=1
@@ -2330,4 +2330,10 @@ Component~3~3
 boardPos=6 18
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=342
+levelPack=Campaign
+levelPackPuzzleIndex=78
+levelPackPuzzleName=Turing Complete
+puzzleFileType=BasePuzzle
+stepCount=-1

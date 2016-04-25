@@ -1,4 +1,4 @@
-Puzzle~60~350
+Puzzle~66~356
 buildableComponents~22
 ComponentBuildState~21~21
 Amplifier=1
@@ -348,4 +348,10 @@ boardPos=6 10
 color=1
 name=TeleportSource
 puzzleType=1
+componentCost=-1
 componentCount=58
+levelPack=Campaign
+levelPackPuzzleIndex=43
+levelPackPuzzleName=Creative License
+puzzleFileType=ProvidedSolution
+stepCount=-1

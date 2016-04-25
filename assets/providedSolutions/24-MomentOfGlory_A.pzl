@@ -1,4 +1,4 @@
-Puzzle~85~448
+Puzzle~91~454
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -446,4 +446,10 @@ chargePreference=3
 color=5
 name=GateClosed
 puzzleType=1
+componentCost=-1
 componentCount=83
+levelPack=Campaign
+levelPackPuzzleIndex=24
+levelPackPuzzleName=Moment of Glory
+puzzleFileType=ProvidedSolution
+stepCount=-1

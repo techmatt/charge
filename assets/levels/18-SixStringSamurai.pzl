@@ -1,4 +1,4 @@
-Puzzle~18~100
+Puzzle~24~106
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -98,4 +98,10 @@ puzzleType=1
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1
+componentCost=-1
 componentCount=16
+levelPack=Campaign
+levelPackPuzzleIndex=18
+levelPackPuzzleName=Six String Samurai
+puzzleFileType=BasePuzzle
+stepCount=-1

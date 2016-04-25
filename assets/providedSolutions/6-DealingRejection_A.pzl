@@ -1,4 +1,4 @@
-Puzzle~126~658
+Puzzle~132~664
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -656,4 +656,10 @@ boardPos=9 15
 chargePreference=0
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=124
+levelPack=Campaign
+levelPackPuzzleIndex=6
+levelPackPuzzleName=Dealing with Rejection
+puzzleFileType=ProvidedSolution
+stepCount=-1

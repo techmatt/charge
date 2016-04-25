@@ -1,4 +1,4 @@
-Puzzle~104~545
+Puzzle~110~551
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -543,4 +543,10 @@ boardPos=8 12
 name=Wire
 puzzleType=1
 speed=4
+componentCost=-1
 componentCount=102
+levelPack=Campaign
+levelPackPuzzleIndex=34
+levelPackPuzzleName=Doom House
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~1034~7026
+Puzzle~1040~7032
 buildableComponents~37
 ComponentBuildState~36~36
 Amplifier=1
@@ -7024,4 +7024,10 @@ circuitPos=10 6
 color=3
 name=TrapReset
 puzzleType=1
+componentCost=-1
 componentCount=1032
+levelPack=Campaign
+levelPackPuzzleIndex=74
+levelPackPuzzleName=Through the Filter Glass
+puzzleFileType=ProvidedSolution
+stepCount=-1

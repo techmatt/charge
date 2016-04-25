@@ -1,4 +1,4 @@
-Puzzle~64~342
+Puzzle~70~348
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -340,4 +340,10 @@ Component~3~3
 boardPos=10 6
 name=Blocker
 puzzleType=1
+componentCost=-1
 componentCount=62
+levelPack=Campaign
+levelPackPuzzleIndex=34
+levelPackPuzzleName=Doom House
+puzzleFileType=BasePuzzle
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~344~2176
+Puzzle~350~2182
 buildableComponents~23
 ComponentBuildState~22~22
 Amplifier=1
@@ -2174,4 +2174,10 @@ chargePreference=3
 color=3
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=342
+levelPack=Campaign
+levelPackPuzzleIndex=39
+levelPackPuzzleName=New Horizons
+puzzleFileType=ProvidedSolution
+stepCount=-1

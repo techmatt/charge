@@ -1,4 +1,4 @@
-Puzzle~20~105
+Puzzle~26~111
 buildableComponents~8
 ComponentBuildState~7~7
 Amplifier=1
@@ -103,4 +103,10 @@ boardPos=20 11
 color=5
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=18
+levelPack=Campaign
+levelPackPuzzleIndex=13
+levelPackPuzzleName=One Giant Leap
+puzzleFileType=BasePuzzle
+stepCount=-1

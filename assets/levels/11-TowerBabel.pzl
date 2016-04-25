@@ -1,4 +1,4 @@
-Puzzle~32~188
+Puzzle~38~194
 buildableComponents~6
 ComponentBuildState~5~5
 Wire=1
@@ -186,4 +186,10 @@ boardPos=12 19
 color=3
 name=ChargeGoal
 puzzleType=1
+componentCost=-1
 componentCount=30
+levelPack=Campaign
+levelPackPuzzleIndex=11
+levelPackPuzzleName=Tower of Babel
+puzzleFileType=BasePuzzle
+stepCount=-1

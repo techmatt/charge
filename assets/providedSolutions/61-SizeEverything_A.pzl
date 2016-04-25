@@ -1,4 +1,4 @@
-Puzzle~154~910
+Puzzle~160~916
 buildableComponents~53
 ComponentBuildState~52~52
 Amplifier=1
@@ -908,4 +908,10 @@ chargePreference=1
 circuitPos=6 6
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=152
+levelPack=Campaign
+levelPackPuzzleIndex=64
+levelPackPuzzleName=Size Isn't Everything
+puzzleFileType=ProvidedSolution
+stepCount=-1

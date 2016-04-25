@@ -1,4 +1,4 @@
-Puzzle~52~282
+Puzzle~58~288
 buildableComponents~12
 ComponentBuildState~11~11
 Amplifier=1
@@ -280,4 +280,10 @@ Component~3~3
 boardPos=16 6
 name=Wire
 puzzleType=1
+componentCost=-1
 componentCount=50
+levelPack=Campaign
+levelPackPuzzleIndex=35
+levelPackPuzzleName=Different Strokes
+puzzleFileType=ProvidedSolution
+stepCount=-1

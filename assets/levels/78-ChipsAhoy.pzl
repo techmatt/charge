@@ -1,4 +1,4 @@
-Puzzle~113~782
+Puzzle~119~788
 buildableComponents~47
 ComponentBuildState~46~46
 ChargeFilterBlue=1
@@ -780,4 +780,10 @@ boundary=2
 circuitPos=0 2
 name=CircuitBoundary
 puzzleType=1
+componentCost=-1
 componentCount=111
+levelPack=Campaign
+levelPackPuzzleIndex=82
+levelPackPuzzleName=Chips Ahoy
+puzzleFileType=BasePuzzle
+stepCount=-1

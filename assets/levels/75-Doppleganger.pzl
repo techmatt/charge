@@ -1,4 +1,4 @@
-Puzzle~122~717
+Puzzle~128~723
 buildableComponents~54
 ComponentBuildState~53~53
 Amplifier=1
@@ -715,4 +715,10 @@ Component~3~3
 boardPos=11 7
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=120
+levelPack=Campaign
+levelPackPuzzleIndex=79
+levelPackPuzzleName=Doppleganger
+puzzleFileType=BasePuzzle
+stepCount=-1

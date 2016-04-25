@@ -1,4 +1,4 @@
-Puzzle~62~380
+Puzzle~68~386
 buildableComponents~36
 ComponentBuildState~35~35
 ChargeGoalBlue=1
@@ -378,4 +378,10 @@ Component~3~3
 boardPos=6 9
 name=Blocker
 puzzleType=0
+componentCost=-1
 componentCount=60
+levelPack=Campaign
+levelPackPuzzleIndex=58
+levelPackPuzzleName=Mob Rule
+puzzleFileType=BasePuzzle
+stepCount=-1

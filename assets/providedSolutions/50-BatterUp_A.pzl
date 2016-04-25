@@ -1,4 +1,4 @@
-Puzzle~127~915
+Puzzle~133~921
 buildableComponents~57
 ComponentBuildState~56~56
 Amplifier=1
@@ -913,4 +913,10 @@ puzzleType=1
 secondsBeforeFirstEmission=1
 secondsPerEmission=1
 totalCharges=16777215
+componentCost=-1
 componentCount=125
+levelPack=Campaign
+levelPackPuzzleIndex=56
+levelPackPuzzleName=Batter Up
+puzzleFileType=ProvidedSolution
+stepCount=-1

@@ -1,4 +1,4 @@
-Puzzle~144~917
+Puzzle~150~923
 buildableComponents~11
 ComponentBuildState~10~10
 ChargeFilterBlue=1
@@ -915,4 +915,10 @@ boardPos=19 18
 name=Wire
 puzzleType=1
 speed=4
+componentCost=-1
 componentCount=142
+levelPack=Campaign
+levelPackPuzzleIndex=40
+levelPackPuzzleName=Punch the Keys
+puzzleFileType=ProvidedSolution
+stepCount=-1

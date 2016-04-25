@@ -1,4 +1,4 @@
-Puzzle~5~24
+Puzzle~11~30
 buildableComponents~2
 ComponentBuildState~1~1
 TrapOpenGray=1
@@ -22,4 +22,10 @@ Component~3~3
 boardPos=14 11
 name=Amplifier
 puzzleType=1
+componentCost=-1
 componentCount=3
+levelPack=Campaign
+levelPackPuzzleIndex=27
+levelPackPuzzleName=Bonanza
+puzzleFileType=BasePuzzle
+stepCount=-1
