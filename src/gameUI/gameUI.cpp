@@ -208,10 +208,8 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
     if (eraserSelected && (mouseButton == SDL_BUTTON_RIGHT || mouseButton == SDL_BUTTON_LEFT))
     {
         removeHoverComponent();
-        return;
     }
-
-    if (mouseButton == SDL_BUTTON_RIGHT)
+    else if (mouseButton == SDL_BUTTON_RIGHT)
     {
         if (!activePlacementBuffer.isEmpty())
         {
@@ -223,8 +221,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
             removeHoverComponent();
         }
     }
-    
-    if (mouseButton == SDL_BUTTON_LEFT)
+    else if (mouseButton == SDL_BUTTON_LEFT)
     {
         if (activePlacementBuffer.isEmpty())
         {
