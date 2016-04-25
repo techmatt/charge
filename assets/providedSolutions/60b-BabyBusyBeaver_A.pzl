@@ -1,4 +1,4 @@
-Puzzle~73~417
+Puzzle~117~684
 basePuzzleFilename=60b-BabyBusyBeaver
 buildableComponents~43
 ComponentBuildState~42~42
@@ -54,10 +54,11 @@ Component~3~3
 boardPos=16 12
 name=Blocker
 puzzleType=0
-component0002~4
-Component~3~3
-boardPos=16 18
-name=Blocker
+component0002~5
+Component~4~4
+boardPos=2 2
+color=1
+name=TrapSprung
 puzzleType=0
 component0003~4
 Component~3~3
@@ -271,38 +272,46 @@ name=GateClosed
 puzzleType=0
 component0041~4
 Component~3~3
-boardPos=8 22
-name=Blocker
+boardPos=2 10
+name=Wire
 puzzleType=0
-component0042~4
-Component~3~3
-boardPos=0 4
-name=Blocker
+component0042~6
+Component~5~5
+boardPos=4 4
+chargePreference=3
+color=6
+name=TrapOpen
 puzzleType=0
 component0043~4
 Component~3~3
-boardPos=0 12
-name=Blocker
+boardPos=2 4
+name=Wire
 puzzleType=0
-component0044~4
-Component~3~3
-boardPos=6 22
-name=Blocker
+component0044~6
+Component~5~5
+boardPos=4 8
+chargePreference=3
+color=6
+name=TrapOpen
 puzzleType=0
 component0045~4
 Component~3~3
 boardPos=16 0
 name=Blocker
 puzzleType=0
-component0046~4
-Component~3~3
-boardPos=2 22
-name=Blocker
+component0046~6
+Component~5~5
+boardPos=6 10
+chargePreference=4
+color=5
+name=TeleportSource
 puzzleType=0
-component0047~4
-Component~3~3
-boardPos=12 22
-name=Blocker
+component0047~6
+Component~5~5
+boardPos=4 10
+chargePreference=3
+color=6
+name=TrapOpen
 puzzleType=0
 component0048~4
 Component~3~3
@@ -358,40 +367,48 @@ Component~3~3
 boardPos=0 6
 name=Blocker
 puzzleType=0
-component0057~4
-Component~3~3
-boardPos=10 22
-name=Blocker
+component0057~6
+Component~5~5
+boardPos=6 8
+chargePreference=4
+color=5
+name=TeleportSource
 puzzleType=0
 component0058~4
 Component~3~3
-boardPos=16 16
-name=Blocker
+boardPos=2 0
+name=Hold
 puzzleType=0
-component0059~4
-Component~3~3
-boardPos=0 16
-name=Blocker
+component0059~6
+Component~5~5
+boardPos=4 6
+chargePreference=3
+color=6
+name=TrapOpen
 puzzleType=0
-component0060~4
-Component~3~3
-boardPos=0 8
-name=Blocker
+component0060~6
+Component~5~5
+boardPos=6 6
+chargePreference=4
+color=5
+name=TeleportSource
 puzzleType=0
-component0061~4
-Component~3~3
-boardPos=16 20
-name=Blocker
+component0061~6
+Component~5~5
+boardPos=6 4
+chargePreference=4
+color=5
+name=TeleportSource
 puzzleType=0
 component0062~4
 Component~3~3
-boardPos=0 10
-name=Blocker
+boardPos=2 6
+name=Wire
 puzzleType=0
 component0063~4
 Component~3~3
-boardPos=4 22
-name=Blocker
+boardPos=2 8
+name=Wire
 puzzleType=0
 component0064~4
 Component~3~3
@@ -413,6 +430,256 @@ Component~3~3
 boardPos=0 22
 name=Blocker
 puzzleType=0
+component0068~4
+Component~3~3
+boardPos=0 16
+name=Blocker
+puzzleType=0
+component0069~4
+Component~3~3
+boardPos=16 16
+name=Blocker
+puzzleType=0
+component0070~4
+Component~3~3
+boardPos=16 18
+name=Blocker
+puzzleType=0
+component0071~4
+Component~3~3
+boardPos=16 20
+name=Blocker
+puzzleType=0
+component0072~4
+Component~3~3
+boardPos=0 4
+name=Blocker
+puzzleType=0
+component0073~4
+Component~3~3
+boardPos=0 12
+name=Blocker
+puzzleType=0
+component0074~4
+Component~3~3
+boardPos=0 10
+name=Blocker
+puzzleType=0
+component0075~5
+Component~4~4
+boardPos=4 0
+color=5
+name=TeleportDestination
+puzzleType=0
+component0076~4
+Component~3~3
+boardPos=0 8
+name=Blocker
+puzzleType=0
+component0077~5
+Component~4~4
+boardPos=10 4
+color=1
+name=TrapReset
+puzzleType=0
+component0078~6
+Component~5~5
+boardPos=14 20
+chargePreference=1
+color=2
+name=TrapReset
+puzzleType=0
+component0079~5
+Component~4~4
+boardPos=14 18
+color=3
+name=TrapSprung
+puzzleType=0
+component0080~5
+Component~4~4
+boardPos=14 22
+color=3
+name=TeleportDestination
+puzzleType=0
+component0081~5
+Component~4~4
+boardPos=10 6
+name=Wire
+puzzleType=0
+speed=0
+component0082~4
+Component~3~3
+boardPos=2 22
+name=Blocker
+puzzleType=0
+component0083~4
+Component~3~3
+boardPos=4 22
+name=Blocker
+puzzleType=0
+component0084~4
+Component~3~3
+boardPos=6 22
+name=Blocker
+puzzleType=0
+component0085~4
+Component~3~3
+boardPos=8 22
+name=Blocker
+puzzleType=0
+component0086~4
+Component~3~3
+boardPos=10 22
+name=Blocker
+puzzleType=0
+component0087~4
+Component~3~3
+boardPos=12 22
+name=Blocker
+puzzleType=0
+component0088~5
+Component~4~4
+boardPos=10 2
+name=Wire
+puzzleType=0
+speed=0
+component0089~6
+Component~5~5
+boardPos=12 2
+chargePreference=3
+name=Wire
+puzzleType=0
+speed=0
+component0090~5
+Component~4~4
+boardPos=14 2
+name=Wire
+puzzleType=0
+speed=0
+component0091~5
+Component~4~4
+boardPos=14 4
+name=Wire
+puzzleType=0
+speed=0
+component0092~5
+Component~4~4
+boardPos=14 6
+name=Wire
+puzzleType=0
+speed=0
+component0093~5
+Component~4~4
+boardPos=14 8
+name=Wire
+puzzleType=0
+speed=0
+component0094~5
+Component~4~4
+boardPos=14 10
+name=Wire
+puzzleType=0
+speed=0
+component0095~5
+Component~4~4
+boardPos=14 12
+name=Wire
+puzzleType=0
+speed=0
+component0096~5
+Component~4~4
+boardPos=14 14
+name=Wire
+puzzleType=0
+speed=0
+component0097~5
+Component~4~4
+boardPos=14 16
+name=Wire
+puzzleType=0
+speed=0
+component0098~5
+Component~4~4
+boardPos=12 16
+name=Wire
+puzzleType=0
+speed=0
+component0099~4
+Component~3~3
+boardPos=10 16
+name=Wire
+puzzleType=0
+component0100~5
+Component~4~4
+boardPos=10 14
+name=Wire
+puzzleType=0
+speed=0
+component0101~5
+Component~4~4
+boardPos=10 12
+name=Wire
+puzzleType=0
+speed=0
+component0102~5
+Component~4~4
+boardPos=10 10
+name=Wire
+puzzleType=0
+speed=0
+component0103~5
+Component~4~4
+boardPos=10 8
+name=Wire
+puzzleType=0
+speed=0
+component0104~5
+Component~4~4
+boardPos=2 14
+color=3
+name=TrapReset
+puzzleType=0
+component0105~4
+Component~3~3
+boardPos=2 16
+name=Hold
+puzzleType=0
+component0106~5
+Component~4~4
+boardPos=2 18
+color=2
+name=TrapSprung
+puzzleType=0
+component0107~4
+Component~3~3
+boardPos=4 18
+name=Wire
+puzzleType=0
+component0108~5
+Component~4~4
+boardPos=6 18
+color=3
+name=TeleportSource
+puzzleType=0
+component0109~6
+Component~5~5
+boardPos=6 12
+chargePreference=4
+color=5
+name=TeleportSource
+puzzleType=0
+component0110~6
+Component~5~5
+boardPos=4 12
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0111~4
+Component~3~3
+boardPos=2 12
+name=Wire
+puzzleType=0
 componentCost=216
-componentCount=68
+componentCount=112
 stepCount=4134

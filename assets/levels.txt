@@ -61,24 +61,24 @@ Number	Puzzle name	Puzzle file	Tip	Verified
 60	The Unfiltered Filter	58b-TheUnfilteredFilter	"Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations."	no
 61	Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	no
 62	Fun For the Whole Family	60-FunFamily	"""Almost"" is the longest word in the English language with all the letters in alphabetical order."	no
-63	Size Isn't Everything	61-SizeEverything	"Shave and a haircut, one chip."	no
-64	Brave New World	62-BraveNewWorld	"Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games."	no
-65	Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	no
-66	Double Cross	64-DoubleCross	Charge is not always good.	no
-67	Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	no
-68	Overengineering	66-Overengineering	Try working from both the beginning and the end to solve a puzzle.	no
-69	Do-Se-Do	67-DoSeDo	I just wish I had time for one more bowl of Chili.	no
-70	Deus Ex Machina	68-DeusExMachina	Boss time!	no
-71	The Three Stooges	69-ThreeStooges	The level editor lets you make new Charge puzzles.	no
-72	Pride Parade	70-PrideParade	All together now!	no
-73	Through the Filter Glass	70b-ThroughTheFilterGlass	"If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?"	no
-74	Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	no
-75	Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	no
-76	Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	no
-77	Turing Complete	74-TuringComplete	Proof by construction.	no
-78	Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	no
-79	Chargin' Up	76-ChargingUp	Some levels have lasers.	no
-80	Line Dancing	77-LineDancing	You may want to get a pen for this level.	no
-81	Chips Ahoy	78-ChipsAhoy	Do it yourself!	no
-82	Final Destination	79-FinalDestination	Good luck!	no
-83	Rainbow Road	81-RainbowRoad	"By the time we arrived, as evening was approaching, I felt as sore as a rock must feel when the waterfall has pounded on it all day long."	no
+63	Baby Busy Beaver	60b-BabyBusyBeaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	no
+64	Size Isn't Everything	61-SizeEverything	"Shave and a haircut, one chip."	no
+65	Brave New World	62-BraveNewWorld	"Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games."	no
+66	Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	no
+67	Double Cross	64-DoubleCross	Charge is not always good.	no
+68	Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	no
+69	Overengineering	66-Overengineering	Try working from both the beginning and the end to solve a puzzle.	no
+70	Do-Se-Do	67-DoSeDo	I just wish I had time for one more bowl of Chili.	no
+71	Deus Ex Machina	68-DeusExMachina	Boss time!	no
+72	The Three Stooges	69-ThreeStooges	The level editor lets you make new Charge puzzles.	no
+73	Pride Parade	70-PrideParade	All together now!	no
+74	Through the Filter Glass	70b-ThroughTheFilterGlass	"If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?"	no
+75	Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	no
+76	Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	no
+77	Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	no
+78	Turing Complete	74-TuringComplete	Proof by construction.	no
+79	Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	no
+80	Chargin' Up	76-ChargingUp	Some levels have lasers.	no
+81	Line Dancing	77-LineDancing	You may want to get a pen for this level.	no
+82	Chips Ahoy	78-ChipsAhoy	Do it yourself!	no
+83	Final Destination	79-FinalDestination	Good luck!	no

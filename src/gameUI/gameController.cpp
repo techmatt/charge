@@ -78,10 +78,14 @@ void GameController::loadPuzzle(const string &filename, const string &puzzleName
     {
         currentPuzzleFilename = app.state.basePuzzleFilename;
 
+		cout << "basePuzzleName: " << app.state.basePuzzleFilename << endl;
+
         currentCampaignIndex = -1;
         for (int i = 0; i < database().puzzles.size(); i++)
             if (database().puzzles[i].filename == currentPuzzleFilename)
                 currentCampaignIndex = i;
+
+		cout << "campaign index: " << currentCampaignIndex << endl;
     }
 
     app.undoBuffer.reset(app.state);
@@ -244,7 +248,9 @@ void GameController::updateButtonList()
             {
                 realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
             }
-            if (app.controller.editorMode == EditorMode::LevelEditor || realInfo->name == "Eraser" || app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
+            if ((app.controller.editorMode == EditorMode::LevelEditor && realInfo->name != "Eraser") ||
+				(app.controller.editorMode == EditorMode::Campaign && realInfo->name == "Eraser") ||
+			    app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
                 buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::Component, ComponentModifiers(info)));
         }
     }
@@ -260,7 +266,8 @@ void GameController::updateButtonList()
     {
         const ComponentInfo &info = *component->info;
 
-        const bool allowPreference = (currentCampaignIndex == -1 || currentCampaignIndex >= constants::preferenceCampaignLevelStart);
+        //const bool allowPreference = (currentCampaignIndex == -1 || currentCampaignIndex >= constants::preferenceCampaignLevelStart);
+		const bool allowPreference = true;
 
         if (component->info->name != "Circuit" && component->info->name != "Blocker" && component->info->name != "PowerSource" && allowPreference)
         {
