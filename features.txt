@@ -1,49 +1,26 @@
 
-Bugs
- * copying a single element within a circuit doesn't work (crashes)
- * horizontal / vertical flipping crashes
- * don't allow multi-select of puzzle pieces; more importantly, don't allow them to be copied unless they are a single circuit (or possibly a set of circuits)
- * add buildable set to undo buffer, or just load it from the current buffer (currently it resets entirely)
- 
 Features to implement
 
 SPLASH SCREEN
  * Play!
  * Level editor (different background etc. to make it very clear?)
  * Play mode has an exit to the splash screen, that then connects back to the level editor, to avoid people getting confused about what mode they are in.
- * "puzzle solved" screen can have the option to save an additional solution (1st solution saved by default.)
 
 PLAY MODE
- * select level (or go to relative level)
+ * select level
  * load saved progress (last save, regardless of whether it was a good solution)
  * load most recent user-solution
  * load other user-solutions
  * load provided solution(s)
 
-KNOWN BUGS
- * charges can still sometimes pass through major delay wires in opposite directions
-
-GAME MODEL
- * mega-circuit-holds
-
 GAME UI
- * puzzle speed control
- * sound
  * level editor
  * splash screen
  * level selection
- * blocker / boundary rendering
- * load old-style puzzles
 
 CHANGES
  * Multi-select, modification of shared properties
- * Copying and pasting arbitrary elements
- * Multi-copy, rotation of multi-copied elements
  * ability to copy between levels for both components and circuits
- * make choice of teleport consistent when ambiguous
- * fixes for charge movement in certain edge cases:
-    * charges should no longer pass through each other
-    * fix collision errors when charges cross wires with different speeds.
 
 CHANGES: GAME UI
  * Ability to save/load multiple solutions for puzzles
@@ -57,19 +34,13 @@ CHANGES: GAME PUZZLES
  * Addition of a puzzle that relies on rotation non-invariance
  * a puzzle where you can only build goal-holds instead of wires
  * a puzzle where there are several built-in loops, like a wire running over a button. these interfere massively with the player's stuff, and the player has to exactly cancel out these button/crank presses.
+ * busy beaver - Puzzle where goal is to build the longest delay cycle possible in 1 or 2 circuits for 1 or 2 charges (of different colors)
  * final destination, but with one mega-hold circuit for each color. doing different colors makes it a bit harder.
  * a teleporter only level, no wires
-
-Super-amplifiers -> allow production beyond 5 charge? perhaps a more interesting concept than a mega-hold (which is really just a "rate check".)
-Puzzles with implicit timers, where the goal is to produce a "mega charge" before the implicit timer kills some victory condition.
-
-Puzzle where goal is to build the longest delay cycle possible in 1 or 2 circuits for 1 or 2 charges (of different colors)
 
 Multi-user "start new game" in splash screen
 
 http://cooltext.com/Render-Image?RenderID=178380305632011&LogoId=1783803056
 
  * clicking on circuit should take you inside
- * left on puzzle 1 should wrap around
- * ctrl+Z crashes
- * fix bug with saving progress
+ * charges left in power sources

@@ -176,8 +176,12 @@ void GameController::loadUserSolution()
     string description;
     if (viewMode == ControllerViewMode::UserSolution) {
         type = SolutionType::MostRecent;
-        description = "most recent";
+        description = "your solution";
     }
+	else
+	{
+		cout << "Unrecognized mode: " << (int)viewMode << endl;
+	}
     
     const string filename = app.session.getSolutionFilename(puzzle.filename, type);
 

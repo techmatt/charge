@@ -1,0 +1,33 @@
+Puzzle~10~32
+basePuzzleFilename=2-BentRoad
+buildableComponents~2
+ComponentBuildState~1~1
+Wire=1
+component0000~4
+Component~3~3
+boardPos=6 11
+name=Wire
+puzzleType=0
+component0001~4
+Component~3~3
+boardPos=7 13
+name=Wire
+puzzleType=0
+component0002~4
+Component~3~3
+boardPos=9 14
+name=Wire
+puzzleType=0
+component0003~4
+Component~3~3
+boardPos=11 15
+name=Wire
+puzzleType=0
+component0004~4
+Component~3~3
+boardPos=13 15
+name=Wire
+puzzleType=0
+componentCost=-1
+componentCount=5
+stepCount=-1

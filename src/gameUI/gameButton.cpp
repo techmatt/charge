@@ -203,7 +203,12 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
     if (name == "PrevLevel")
     {
-        int newPuzzleIndex = math::max(app.controller.currentCampaignIndex - 1, 0);
+		int newPuzzleIndex = 0;
+		if (app.controller.currentCampaignIndex == 0)
+			newPuzzleIndex = (int)app.session.highestAccessiblePuzzle();
+		else
+			newPuzzleIndex = math::max(app.controller.currentCampaignIndex - 1, 0);
+			
         app.controller.loadCampaignPuzzle(newPuzzleIndex);
     }
 
@@ -222,6 +227,12 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     {
         app.controller.loadCurrentProvidedSolution();
     }
+
+	if (name == "ViewYourProgress" || name == "ViewYourSolution")
+	{
+		app.controller.viewMode = ControllerViewMode::UserSolution;
+		app.controller.loadUserSolution();
+	}
 
     if (name == "ClearPuzzle")
     {
