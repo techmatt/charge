@@ -76,6 +76,7 @@ Through the Filter Glass	70b-ThroughTheFilterGlass	"If I had a world of my own, 
 Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	no
 Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	no
 Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	no
+Adult Busy Beaver	72b-AdultBusyBeaver	"Busy beaver is so hard to compute that given 6 possible states and 2 symbols, all we know is that the value is at least 3.5 × 10^18267."	no
 Turing Complete	74-TuringComplete	Proof by construction.	no
 Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	no
 Chargin' Up	76-ChargingUp	Some levels have lasers.	no
