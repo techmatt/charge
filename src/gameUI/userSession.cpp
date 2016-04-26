@@ -110,7 +110,7 @@ void UserSession::saveProgress(AppData &app)
         if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece)
             userPieceCount++;
 
-    cout << "UserPieceCount: " << userPieceCount << endl;
+    //cout << "UserPieceCount: " << userPieceCount << endl;
     if (userPieceCount == 0)
         return;
 
