@@ -43,6 +43,7 @@ TTF_Font* Database::getFont(const string &fontName)
 
 void Database::initTextures(Renderer &renderer)
 {
+	cout << "Begin texture loading..." << endl;
     for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue + 1; chargeLevel++)
     {
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
@@ -60,6 +61,8 @@ void Database::initTextures(Renderer &renderer)
 
     squareBlocked = &getTexture(renderer, "SquareBlocked");
     squareOpen = &getTexture(renderer, "SquareOpen");
+
+	cout << "Done texture loading..." << endl;
 }
 
 void Database::processAllCampaignLevels(AppData &app)
@@ -191,7 +194,9 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
             }
         }
 
+		cout << "Creating texture for " << componentName << " (" << bmp.dimX() << "," << bmp.dimY() << ")" << endl;
         Texture *t = new Texture(renderer, bmp);
+		cout << "Done creating texture" << endl;
 
         //
         // configure alpha mode
