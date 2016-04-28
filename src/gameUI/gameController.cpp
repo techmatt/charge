@@ -142,7 +142,7 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution)");
     app.state.disableEditing();
 }
 

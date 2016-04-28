@@ -1,0 +1,6730 @@
+Puzzle~1022~6729
+buildableComponents=ComponentBuildState~0~0
+component0000~4
+Component~3~3
+boardPos=2 0
+name=Circuit
+puzzleType=0
+component0001~4
+Component~3~3
+boardPos=6 0
+name=Circuit
+puzzleType=0
+component0002~4
+Component~3~3
+boardPos=4 0
+name=Circuit
+puzzleType=0
+component0003~4
+Component~3~3
+boardPos=10 0
+name=Circuit
+puzzleType=0
+component0004~4
+Component~3~3
+boardPos=0 10
+name=Circuit
+puzzleType=0
+component0005~4
+Component~3~3
+boardPos=6 14
+name=Circuit
+puzzleType=0
+component0006~4
+Component~3~3
+boardPos=8 0
+name=Circuit
+puzzleType=0
+component0007~4
+Component~3~3
+boardPos=12 0
+name=Circuit
+puzzleType=0
+component0008~4
+Component~3~3
+boardPos=4 14
+name=Circuit
+puzzleType=0
+component0009~4
+Component~3~3
+boardPos=8 14
+name=Circuit
+puzzleType=0
+component0010~4
+Component~3~3
+boardPos=6 12
+name=Circuit
+puzzleType=0
+component0011~4
+Component~3~3
+boardPos=8 10
+name=Circuit
+puzzleType=0
+component0012~4
+Component~3~3
+boardPos=20 8
+name=Circuit
+puzzleType=0
+component0013~4
+Component~3~3
+boardPos=12 14
+name=Circuit
+puzzleType=0
+component0014~4
+Component~3~3
+boardPos=8 12
+name=Circuit
+puzzleType=0
+component0015~4
+Component~3~3
+boardPos=6 8
+name=Circuit
+puzzleType=0
+component0016~4
+Component~3~3
+boardPos=10 14
+name=Circuit
+puzzleType=0
+component0017~4
+Component~3~3
+boardPos=12 10
+name=Circuit
+puzzleType=0
+component0018~4
+Component~3~3
+boardPos=12 12
+name=Circuit
+puzzleType=0
+component0019~4
+Component~3~3
+boardPos=18 8
+name=Circuit
+puzzleType=0
+component0020~4
+Component~3~3
+boardPos=8 8
+name=Circuit
+puzzleType=0
+component0021~4
+Component~3~3
+boardPos=10 12
+name=Circuit
+puzzleType=0
+component0022~4
+Component~3~3
+boardPos=4 12
+name=Circuit
+puzzleType=0
+component0023~4
+Component~3~3
+boardPos=18 12
+name=Circuit
+puzzleType=0
+component0024~4
+Component~3~3
+boardPos=20 12
+name=Circuit
+puzzleType=0
+component0025~4
+Component~3~3
+boardPos=20 4
+name=Circuit
+puzzleType=0
+component0026~4
+Component~3~3
+boardPos=18 4
+name=Circuit
+puzzleType=0
+component0027~4
+Component~3~3
+boardPos=16 4
+name=Circuit
+puzzleType=0
+component0028~4
+Component~3~3
+boardPos=12 8
+name=Circuit
+puzzleType=0
+component0029~4
+Component~3~3
+boardPos=10 8
+name=Circuit
+puzzleType=0
+component0030~4
+Component~3~3
+boardPos=6 10
+name=Circuit
+puzzleType=0
+component0031~4
+Component~3~3
+boardPos=10 10
+name=Circuit
+puzzleType=0
+component0032~6
+Component~5~5
+boardPos=12 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0033~6
+Component~5~5
+boardPos=8 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0034~6
+Component~5~5
+boardPos=10 12
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0035~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0036~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0037~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0038~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0039~6
+Component~5~5
+boardPos=20 12
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0040~6
+Component~5~5
+boardPos=20 8
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0041~4
+Component~3~3
+boardPos=18 14
+name=Blocker
+puzzleType=0
+component0042~4
+Component~3~3
+boardPos=14 6
+name=Blocker
+puzzleType=0
+component0043~4
+Component~3~3
+boardPos=18 16
+name=Blocker
+puzzleType=0
+component0044~4
+Component~3~3
+boardPos=18 18
+name=Blocker
+puzzleType=0
+component0045~4
+Component~3~3
+boardPos=18 20
+name=Blocker
+puzzleType=0
+component0046~4
+Component~3~3
+boardPos=18 22
+name=Blocker
+puzzleType=0
+component0047~4
+Component~3~3
+boardPos=8 22
+name=Hold
+puzzleType=0
+component0048~4
+Component~3~3
+boardPos=2 22
+name=Hold
+puzzleType=0
+component0049~4
+Component~3~3
+boardPos=4 22
+name=Hold
+puzzleType=0
+component0050~4
+Component~3~3
+boardPos=6 22
+name=Hold
+puzzleType=0
+component0051~4
+Component~3~3
+boardPos=10 22
+name=Hold
+puzzleType=0
+component0052~4
+Component~3~3
+boardPos=12 22
+name=Hold
+puzzleType=0
+component0053~4
+Component~3~3
+boardPos=14 22
+name=Hold
+puzzleType=0
+component0054~4
+Component~3~3
+boardPos=16 22
+name=Hold
+puzzleType=0
+component0055~8
+Component~7~7
+boardPos=0 22
+color=4
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=1
+secondsPerEmission=1
+totalCharges=17
+component0056~4
+Component~3~3
+boardPos=8 16
+name=Blocker
+puzzleType=0
+component0057~4
+Component~3~3
+boardPos=16 20
+name=Hold
+puzzleType=0
+component0058~4
+Component~3~3
+boardPos=16 18
+name=Hold
+puzzleType=0
+component0059~4
+Component~3~3
+boardPos=14 18
+name=Hold
+puzzleType=0
+component0060~4
+Component~3~3
+boardPos=12 18
+name=Hold
+puzzleType=0
+component0061~4
+Component~3~3
+boardPos=10 18
+name=Hold
+puzzleType=0
+component0062~4
+Component~3~3
+boardPos=8 18
+name=Hold
+puzzleType=0
+component0063~4
+Component~3~3
+boardPos=6 18
+name=Hold
+puzzleType=0
+component0064~4
+Component~3~3
+boardPos=4 18
+name=Hold
+puzzleType=0
+component0065~4
+Component~3~3
+boardPos=2 18
+name=Hold
+puzzleType=0
+component0066~4
+Component~3~3
+boardPos=10 16
+name=Blocker
+puzzleType=0
+component0067~4
+Component~3~3
+boardPos=12 16
+name=Blocker
+puzzleType=0
+component0068~4
+Component~3~3
+boardPos=14 16
+name=Blocker
+puzzleType=0
+component0069~4
+Component~3~3
+boardPos=16 16
+name=Blocker
+puzzleType=0
+component0070~4
+Component~3~3
+boardPos=6 16
+name=Blocker
+puzzleType=0
+component0071~4
+Component~3~3
+boardPos=4 16
+name=Blocker
+puzzleType=0
+component0072~4
+Component~3~3
+boardPos=2 16
+name=Blocker
+puzzleType=0
+component0073~4
+Component~3~3
+boardPos=0 20
+name=Blocker
+puzzleType=0
+component0074~4
+Component~3~3
+boardPos=2 20
+name=Blocker
+puzzleType=0
+component0075~4
+Component~3~3
+boardPos=4 20
+name=Blocker
+puzzleType=0
+component0076~4
+Component~3~3
+boardPos=6 20
+name=Blocker
+puzzleType=0
+component0077~4
+Component~3~3
+boardPos=8 20
+name=Blocker
+puzzleType=0
+component0078~4
+Component~3~3
+boardPos=10 20
+name=Blocker
+puzzleType=0
+component0079~4
+Component~3~3
+boardPos=12 20
+name=Blocker
+puzzleType=0
+component0080~4
+Component~3~3
+boardPos=14 20
+name=Blocker
+puzzleType=0
+component0081~6
+Component~5~5
+boardPos=0 12
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0082~4
+Component~3~3
+boardPos=0 14
+name=Wire
+puzzleType=0
+component0083~4
+Component~3~3
+boardPos=2 4
+name=Blocker
+puzzleType=0
+component0084~4
+Component~3~3
+boardPos=2 2
+name=Blocker
+puzzleType=0
+component0085~4
+Component~3~3
+boardPos=2 14
+name=Wire
+puzzleType=0
+component0086~4
+Component~3~3
+boardPos=0 0
+name=Hold
+puzzleType=0
+component0087~4
+Component~3~3
+boardPos=14 8
+name=Blocker
+puzzleType=0
+component0088~4
+Component~3~3
+boardPos=14 10
+name=Blocker
+puzzleType=0
+component0089~4
+Component~3~3
+boardPos=12 2
+name=Blocker
+puzzleType=0
+component0090~4
+Component~3~3
+boardPos=10 2
+name=Blocker
+puzzleType=0
+component0091~4
+Component~3~3
+boardPos=0 16
+name=Wire
+puzzleType=0
+component0092~6
+Component~5~5
+boardPos=0 18
+chargePreference=3
+color=4
+name=TrapOpen
+puzzleType=0
+component0093~4
+Component~3~3
+boardPos=8 2
+name=Blocker
+puzzleType=0
+component0094~4
+Component~3~3
+boardPos=6 2
+name=Blocker
+puzzleType=0
+component0095~4
+Component~3~3
+boardPos=4 2
+name=Blocker
+puzzleType=0
+component0096~4
+Component~3~3
+boardPos=0 2
+name=Blocker
+puzzleType=0
+component0097~5
+Component~4~4
+boardPos=14 0
+color=1
+name=TeleportDestination
+puzzleType=0
+component0098~4
+Component~3~3
+boardPos=0 4
+name=Blocker
+puzzleType=0
+component0099~4
+Component~3~3
+boardPos=4 6
+name=Blocker
+puzzleType=0
+component0100~4
+Component~3~3
+boardPos=6 6
+name=Blocker
+puzzleType=0
+component0101~4
+Component~3~3
+boardPos=8 6
+name=Blocker
+puzzleType=0
+component0102~4
+Component~3~3
+boardPos=10 6
+name=Blocker
+puzzleType=0
+component0103~4
+Component~3~3
+boardPos=12 6
+name=Blocker
+puzzleType=0
+component0104~4
+Component~3~3
+boardPos=2 6
+name=Blocker
+puzzleType=0
+component0105~4
+Component~3~3
+boardPos=0 6
+name=Blocker
+puzzleType=0
+component0106~4
+Component~3~3
+boardPos=0 8
+name=Blocker
+puzzleType=0
+component0107~4
+Component~3~3
+boardPos=2 8
+name=Blocker
+puzzleType=0
+component0108~4
+Component~3~3
+boardPos=2 10
+name=Blocker
+puzzleType=0
+component0109~4
+Component~3~3
+boardPos=2 12
+name=Blocker
+puzzleType=0
+component0110~4
+Component~3~3
+boardPos=14 12
+name=Blocker
+puzzleType=0
+component0111~4
+Component~3~3
+boardPos=14 14
+name=Blocker
+puzzleType=0
+component0112~4
+Component~3~3
+boardPos=16 14
+name=Blocker
+puzzleType=0
+component0113~4
+Component~3~3
+boardPos=16 12
+name=Blocker
+puzzleType=0
+component0114~4
+Component~3~3
+boardPos=16 10
+name=Blocker
+puzzleType=0
+component0115~4
+Component~3~3
+boardPos=16 8
+name=Blocker
+puzzleType=0
+component0116~4
+Component~3~3
+boardPos=16 6
+name=Blocker
+puzzleType=0
+component0117~5
+Component~4~4
+boardPos=18 8
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0118~4
+Component~3~3
+boardPos=16 2
+name=Blocker
+puzzleType=0
+component0119~4
+Component~3~3
+boardPos=16 0
+name=Blocker
+puzzleType=0
+component0120~4
+Component~3~3
+boardPos=14 4
+name=Blocker
+puzzleType=0
+component0121~4
+Component~3~3
+boardPos=14 2
+name=Blocker
+puzzleType=0
+component0122~4
+Component~3~3
+boardPos=12 4
+name=Blocker
+puzzleType=0
+component0123~4
+Component~3~3
+boardPos=10 4
+name=Blocker
+puzzleType=0
+component0124~4
+Component~3~3
+boardPos=8 4
+name=Blocker
+puzzleType=0
+component0125~4
+Component~3~3
+boardPos=6 4
+name=Blocker
+puzzleType=0
+component0126~4
+Component~3~3
+boardPos=4 4
+name=Blocker
+puzzleType=0
+component0127~6
+Component~5~5
+boardPos=20 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0128~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0129~6
+Component~5~5
+boardPos=2 0
+chargePreference=3
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0130~6
+Component~5~5
+boardPos=8 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0131~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0132~6
+Component~5~5
+boardPos=8 0
+circuitPos=2 2
+color=2
+name=ChargeGoal
+puzzleType=0
+component0133~6
+Component~5~5
+boardPos=8 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0134~6
+Component~5~5
+boardPos=10 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0135~6
+Component~5~5
+boardPos=8 0
+circuitPos=4 2
+color=2
+name=ChargeGoal
+puzzleType=0
+component0136~6
+Component~5~5
+boardPos=2 0
+circuitPos=2 2
+color=5
+name=ChargeGoal
+puzzleType=0
+component0137~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0138~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0139~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0140~6
+Component~5~5
+boardPos=2 0
+circuitPos=10 2
+color=5
+name=ChargeGoal
+puzzleType=0
+component0141~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0142~5
+Component~4~4
+boardPos=8 14
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0143~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0144~5
+Component~4~4
+boardPos=6 12
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0145~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0146~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0147~5
+Component~4~4
+boardPos=6 14
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0148~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0149~5
+Component~4~4
+boardPos=6 14
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0150~5
+Component~4~4
+boardPos=6 14
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0151~5
+Component~4~4
+boardPos=6 14
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0152~5
+Component~4~4
+boardPos=12 12
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0153~5
+Component~4~4
+boardPos=6 12
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0154~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0155~5
+Component~4~4
+boardPos=6 14
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0156~6
+Component~5~5
+boardPos=10 12
+circuitPos=10 5
+name=Wire
+puzzleType=0
+speed=4
+component0157~5
+Component~4~4
+boardPos=6 12
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0158~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0159~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0160~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0161~6
+Component~5~5
+boardPos=0 10
+circuitPos=2 8
+color=5
+name=TrapReset
+puzzleType=0
+component0162~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0163~6
+Component~5~5
+boardPos=8 0
+circuitPos=10 2
+color=2
+name=ChargeGoal
+puzzleType=0
+component0164~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0165~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0166~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0167~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0168~6
+Component~5~5
+boardPos=12 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0169~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0170~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0171~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0172~6
+Component~5~5
+boardPos=12 14
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0173~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0174~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0175~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0176~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0177~6
+Component~5~5
+boardPos=0 10
+circuitPos=10 4
+name=Wire
+puzzleType=0
+speed=0
+component0178~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0179~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0180~6
+Component~5~5
+boardPos=6 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0181~6
+Component~5~5
+boardPos=0 10
+circuitPos=8 4
+name=Wire
+puzzleType=0
+speed=0
+component0182~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0183~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0184~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0185~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0186~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0187~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0188~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0189~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0190~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0191~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0192~6
+Component~5~5
+boardPos=8 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0193~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0194~6
+Component~5~5
+boardPos=0 10
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=0
+component0195~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0196~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0197~6
+Component~5~5
+boardPos=4 0
+chargePreference=3
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0198~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0199~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0200~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0201~6
+Component~5~5
+boardPos=12 0
+circuitPos=10 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0202~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0203~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0204~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0205~5
+Component~4~4
+boardPos=8 12
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0206~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0207~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0208~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0209~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0210~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0211~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0212~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0213~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0214~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0215~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0216~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0217~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0218~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0219~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0220~6
+Component~5~5
+boardPos=18 4
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0221~5
+Component~4~4
+boardPos=10 14
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0222~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0223~7
+Component~6~6
+boardPos=0 10
+chargePreference=3
+circuitPos=4 8
+color=4
+name=TrapReset
+puzzleType=0
+component0224~6
+Component~5~5
+boardPos=0 10
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=0
+component0225~6
+Component~5~5
+boardPos=0 10
+circuitPos=2 4
+name=Wire
+puzzleType=0
+speed=0
+component0226~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0227~5
+Component~4~4
+boardPos=6 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0228~5
+Component~4~4
+boardPos=6 8
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0229~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0230~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0231~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0232~6
+Component~5~5
+boardPos=10 14
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0233~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0234~5
+Component~4~4
+boardPos=18 4
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0235~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0236~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0237~6
+Component~5~5
+boardPos=10 12
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0238~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0239~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0240~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0241~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0242~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0243~6
+Component~5~5
+boardPos=12 0
+circuitPos=4 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0244~7
+Component~6~6
+boardPos=12 0
+chargePreference=3
+circuitPos=8 5
+color=1
+name=ChargeFilter
+puzzleType=0
+component0245~6
+Component~5~5
+boardPos=12 0
+circuitPos=8 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0246~6
+Component~5~5
+boardPos=6 0
+circuitPos=4 2
+color=3
+name=ChargeGoal
+puzzleType=0
+component0247~6
+Component~5~5
+boardPos=4 0
+circuitPos=8 2
+color=4
+name=ChargeGoal
+puzzleType=0
+component0248~6
+Component~5~5
+boardPos=4 0
+circuitPos=2 2
+color=4
+name=ChargeGoal
+puzzleType=0
+component0249~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0250~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0251~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0252~6
+Component~5~5
+boardPos=6 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0253~6
+Component~5~5
+boardPos=10 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0254~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0255~6
+Component~5~5
+boardPos=12 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0256~7
+Component~6~6
+boardPos=10 0
+boundary=1
+chargePreference=3
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0257~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0258~7
+Component~6~6
+boardPos=6 0
+chargePreference=3
+circuitPos=8 5
+color=3
+name=ChargeFilter
+puzzleType=0
+component0259~6
+Component~5~5
+boardPos=6 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0260~6
+Component~5~5
+boardPos=6 0
+circuitPos=8 2
+color=3
+name=ChargeGoal
+puzzleType=0
+component0261~6
+Component~5~5
+boardPos=6 0
+circuitPos=4 5
+color=3
+name=ChargeFilter
+puzzleType=0
+component0262~6
+Component~5~5
+boardPos=6 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0263~7
+Component~6~6
+boardPos=10 0
+chargePreference=3
+circuitPos=6 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0264~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0265~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0266~6
+Component~5~5
+boardPos=4 0
+circuitPos=4 5
+color=4
+name=ChargeFilter
+puzzleType=0
+component0267~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0268~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0269~6
+Component~5~5
+boardPos=4 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0270~6
+Component~5~5
+boardPos=4 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0271~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0272~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0273~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0274~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0275~6
+Component~5~5
+boardPos=4 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0276~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0277~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0278~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0279~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0280~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0281~7
+Component~6~6
+boardPos=4 0
+chargePreference=3
+circuitPos=8 5
+color=4
+name=ChargeFilter
+puzzleType=0
+component0282~6
+Component~5~5
+boardPos=4 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0283~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0284~6
+Component~5~5
+boardPos=2 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0285~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0286~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0287~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0288~6
+Component~5~5
+boardPos=4 0
+circuitPos=4 2
+color=4
+name=ChargeGoal
+puzzleType=0
+component0289~6
+Component~5~5
+boardPos=20 12
+circuitPos=7 10
+name=Wire
+puzzleType=0
+speed=4
+component0290~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0291~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0292~6
+Component~5~5
+boardPos=2 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0293~6
+Component~5~5
+boardPos=6 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0294~6
+Component~5~5
+boardPos=6 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0295~6
+Component~5~5
+boardPos=6 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0296~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0297~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0298~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0299~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0300~6
+Component~5~5
+boardPos=2 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0301~6
+Component~5~5
+boardPos=2 0
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0302~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0303~6
+Component~5~5
+boardPos=4 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0304~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0305~7
+Component~6~6
+boardPos=2 0
+chargePreference=3
+circuitPos=8 5
+color=5
+name=ChargeFilter
+puzzleType=0
+component0306~6
+Component~5~5
+boardPos=2 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0307~6
+Component~5~5
+boardPos=2 0
+circuitPos=8 2
+color=5
+name=ChargeGoal
+puzzleType=0
+component0308~6
+Component~5~5
+boardPos=2 0
+circuitPos=4 5
+color=5
+name=ChargeFilter
+puzzleType=0
+component0309~6
+Component~5~5
+boardPos=2 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0310~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0311~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0312~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0313~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0314~6
+Component~5~5
+boardPos=4 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0315~7
+Component~6~6
+boardPos=4 0
+boundary=1
+chargePreference=3
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0316~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0317~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0318~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0319~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0320~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0321~6
+Component~5~5
+boardPos=4 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0322~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0323~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0324~6
+Component~5~5
+boardPos=12 0
+circuitPos=4 5
+color=1
+name=ChargeFilter
+puzzleType=0
+component0325~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0326~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0327~5
+Component~4~4
+boardPos=18 4
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0328~5
+Component~4~4
+boardPos=12 12
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0329~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0330~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0331~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0332~6
+Component~5~5
+boardPos=10 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0333~6
+Component~5~5
+boardPos=8 0
+circuitPos=2 6
+name=Wire
+puzzleType=0
+speed=4
+component0334~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0335~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0336~6
+Component~5~5
+boardPos=12 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0337~5
+Component~4~4
+boardPos=18 4
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0338~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0339~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0340~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0341~6
+Component~5~5
+boardPos=8 0
+circuitPos=8 2
+color=2
+name=ChargeGoal
+puzzleType=0
+component0342~6
+Component~5~5
+boardPos=2 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0343~6
+Component~5~5
+boardPos=8 0
+circuitPos=4 5
+color=2
+name=ChargeFilter
+puzzleType=0
+component0344~6
+Component~5~5
+boardPos=12 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0345~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0346~6
+Component~5~5
+boardPos=4 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0347~6
+Component~5~5
+boardPos=10 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0348~6
+Component~5~5
+boardPos=10 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0349~7
+Component~6~6
+boardPos=12 0
+chargePreference=3
+circuitPos=6 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0350~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0351~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0352~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0353~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0354~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0355~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0356~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0357~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0358~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0359~6
+Component~5~5
+boardPos=6 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0360~7
+Component~6~6
+boardPos=6 0
+boundary=1
+chargePreference=3
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0361~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0362~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0363~6
+Component~5~5
+boardPos=10 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0364~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0365~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0366~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0367~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0368~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0369~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0370~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0371~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0372~5
+Component~4~4
+boardPos=12 14
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0373~5
+Component~4~4
+boardPos=18 4
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0374~5
+Component~4~4
+boardPos=18 4
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0375~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0376~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0377~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0378~5
+Component~4~4
+boardPos=8 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0379~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0380~7
+Component~6~6
+boardPos=8 0
+chargePreference=3
+circuitPos=8 5
+color=2
+name=ChargeFilter
+puzzleType=0
+component0381~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0382~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0383~6
+Component~5~5
+boardPos=10 0
+circuitPos=4 5
+color=1
+name=ChargeFilter
+puzzleType=0
+component0384~6
+Component~5~5
+boardPos=10 0
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=4
+component0385~6
+Component~5~5
+boardPos=10 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0386~6
+Component~5~5
+boardPos=10 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0387~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0388~6
+Component~5~5
+boardPos=2 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0389~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0390~5
+Component~4~4
+boardPos=8 8
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0391~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0392~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0393~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0394~5
+Component~4~4
+boardPos=20 4
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0395~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0396~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0397~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0398~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0399~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0400~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0401~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0402~6
+Component~5~5
+boardPos=10 0
+circuitPos=4 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0403~6
+Component~5~5
+boardPos=4 0
+circuitPos=10 2
+color=4
+name=ChargeGoal
+puzzleType=0
+component0404~7
+Component~6~6
+boardPos=10 0
+chargePreference=3
+circuitPos=8 5
+color=1
+name=ChargeFilter
+puzzleType=0
+component0405~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0406~6
+Component~5~5
+boardPos=2 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0407~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0408~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0409~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0410~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0411~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0412~6
+Component~5~5
+boardPos=8 8
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0413~6
+Component~5~5
+boardPos=10 0
+circuitPos=8 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0414~6
+Component~5~5
+boardPos=8 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0415~6
+Component~5~5
+boardPos=2 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0416~6
+Component~5~5
+boardPos=8 0
+chargePreference=3
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0417~6
+Component~5~5
+boardPos=2 0
+circuitPos=4 2
+color=5
+name=ChargeGoal
+puzzleType=0
+component0418~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0419~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0420~6
+Component~5~5
+boardPos=8 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0421~6
+Component~5~5
+boardPos=8 0
+circuitPos=3 8
+name=Wire
+puzzleType=0
+speed=4
+component0422~6
+Component~5~5
+boardPos=6 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0423~6
+Component~5~5
+boardPos=6 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0424~6
+Component~5~5
+boardPos=4 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0425~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0426~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0427~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0428~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0429~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0430~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0431~6
+Component~5~5
+boardPos=0 10
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=0
+component0432~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0433~6
+Component~5~5
+boardPos=0 10
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0434~6
+Component~5~5
+boardPos=0 10
+circuitPos=8 8
+name=Wire
+puzzleType=0
+speed=0
+component0435~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0436~6
+Component~5~5
+boardPos=0 10
+circuitPos=4 4
+name=Wire
+puzzleType=0
+speed=0
+component0437~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0438~6
+Component~5~5
+boardPos=0 10
+circuitPos=6 10
+color=6
+name=TrapOpen
+puzzleType=0
+component0439~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0440~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0441~6
+Component~5~5
+boardPos=0 10
+circuitPos=6 8
+name=Wire
+puzzleType=0
+speed=0
+component0442~6
+Component~5~5
+boardPos=0 10
+circuitPos=10 8
+name=Wire
+puzzleType=0
+speed=0
+component0443~5
+Component~4~4
+boardPos=8 14
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0444~6
+Component~5~5
+boardPos=0 10
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0445~5
+Component~4~4
+boardPos=8 14
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0446~5
+Component~4~4
+boardPos=8 14
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0447~5
+Component~4~4
+boardPos=8 14
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0448~5
+Component~4~4
+boardPos=8 14
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0449~5
+Component~4~4
+boardPos=8 14
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0450~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0451~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0452~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0453~5
+Component~4~4
+boardPos=12 12
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0454~5
+Component~4~4
+boardPos=12 12
+circuitPos=6 6
+name=Splitter
+puzzleType=0
+component0455~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0456~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0457~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0458~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0459~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0460~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0461~6
+Component~5~5
+boardPos=12 12
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0462~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0463~5
+Component~4~4
+boardPos=12 12
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0464~5
+Component~4~4
+boardPos=12 12
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0465~5
+Component~4~4
+boardPos=12 12
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0466~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0467~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0468~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0469~6
+Component~5~5
+boardPos=10 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0470~6
+Component~5~5
+boardPos=16 4
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0471~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0472~6
+Component~5~5
+boardPos=16 4
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0473~6
+Component~5~5
+boardPos=16 4
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0474~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0475~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0476~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0477~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0478~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0479~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0480~6
+Component~5~5
+boardPos=6 0
+circuitPos=2 2
+color=3
+name=ChargeGoal
+puzzleType=0
+component0481~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0482~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0483~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0484~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0485~6
+Component~5~5
+boardPos=20 4
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0486~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0487~5
+Component~4~4
+boardPos=20 4
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0488~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0489~6
+Component~5~5
+boardPos=20 4
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0490~5
+Component~4~4
+boardPos=20 4
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0491~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0492~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0493~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0494~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0495~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0496~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0497~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0498~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0499~5
+Component~4~4
+boardPos=20 4
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0500~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0501~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0502~6
+Component~5~5
+boardPos=6 0
+circuitPos=10 2
+color=3
+name=ChargeGoal
+puzzleType=0
+component0503~6
+Component~5~5
+boardPos=6 0
+chargePreference=3
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0504~6
+Component~5~5
+boardPos=12 0
+circuitPos=2 2
+color=1
+name=ChargeGoal
+puzzleType=0
+component0505~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0506~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0507~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0508~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0509~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0510~6
+Component~5~5
+boardPos=12 0
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0511~7
+Component~6~6
+boardPos=12 0
+boundary=1
+chargePreference=3
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0512~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0513~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0514~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0515~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0516~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0517~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0518~6
+Component~5~5
+boardPos=12 0
+circuitPos=9 8
+name=Wire
+puzzleType=0
+speed=4
+component0519~6
+Component~5~5
+boardPos=12 0
+circuitPos=7 8
+name=Wire
+puzzleType=0
+speed=4
+component0520~6
+Component~5~5
+boardPos=12 0
+circuitPos=5 8
+name=Wire
+puzzleType=0
+speed=4
+component0521~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0522~6
+Component~5~5
+boardPos=12 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0523~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0524~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0525~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0526~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0527~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0528~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0529~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0530~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0531~6
+Component~5~5
+boardPos=8 14
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0532~6
+Component~5~5
+boardPos=8 14
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0533~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0534~6
+Component~5~5
+boardPos=8 14
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0535~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0536~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0537~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0538~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0539~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0540~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0541~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0542~6
+Component~5~5
+boardPos=8 14
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0543~5
+Component~4~4
+boardPos=6 12
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0544~5
+Component~4~4
+boardPos=6 12
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0545~5
+Component~4~4
+boardPos=6 12
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0546~5
+Component~4~4
+boardPos=6 12
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0547~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0548~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0549~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0550~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0551~6
+Component~5~5
+boardPos=6 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0552~6
+Component~5~5
+boardPos=6 12
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0553~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0554~6
+Component~5~5
+boardPos=6 12
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0555~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0556~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0557~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0558~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0559~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0560~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0561~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0562~6
+Component~5~5
+boardPos=6 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0563~5
+Component~4~4
+boardPos=6 14
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0564~5
+Component~4~4
+boardPos=6 14
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0565~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0566~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0567~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0568~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0569~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0570~6
+Component~5~5
+boardPos=6 14
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0571~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0572~6
+Component~5~5
+boardPos=6 14
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0573~6
+Component~5~5
+boardPos=6 14
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0574~6
+Component~5~5
+boardPos=6 14
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0575~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0576~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0577~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0578~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0579~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0580~5
+Component~4~4
+boardPos=20 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0581~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0582~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0583~5
+Component~4~4
+boardPos=20 8
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0584~5
+Component~4~4
+boardPos=20 8
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0585~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0586~5
+Component~4~4
+boardPos=18 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0587~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0588~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0589~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0590~6
+Component~5~5
+boardPos=18 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0591~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0592~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0593~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0594~6
+Component~5~5
+boardPos=20 8
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0595~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0596~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0597~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0598~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0599~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0600~5
+Component~4~4
+boardPos=8 12
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0601~5
+Component~4~4
+boardPos=8 10
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0602~5
+Component~4~4
+boardPos=8 10
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0603~5
+Component~4~4
+boardPos=8 10
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0604~5
+Component~4~4
+boardPos=8 10
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0605~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0606~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0607~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0608~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0609~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0610~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0611~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0612~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0613~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0614~6
+Component~5~5
+boardPos=8 10
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0615~6
+Component~5~5
+boardPos=8 10
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0616~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0617~6
+Component~5~5
+boardPos=8 10
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0618~5
+Component~4~4
+boardPos=8 12
+circuitPos=6 6
+name=Splitter
+puzzleType=0
+component0619~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0620~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0621~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0622~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0623~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0624~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0625~6
+Component~5~5
+boardPos=8 12
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0626~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0627~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0628~6
+Component~5~5
+boardPos=10 12
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0629~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0630~6
+Component~5~5
+boardPos=12 10
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0631~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0632~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0633~5
+Component~4~4
+boardPos=16 4
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0634~5
+Component~4~4
+boardPos=16 4
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0635~5
+Component~4~4
+boardPos=16 4
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0636~4
+Component~3~3
+boardPos=18 2
+name=Blocker
+puzzleType=0
+component0637~6
+Component~5~5
+boardPos=10 14
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0638~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0639~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0640~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0641~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0642~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0643~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0644~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0645~5
+Component~4~4
+boardPos=16 4
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0646~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0647~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0648~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0649~6
+Component~5~5
+boardPos=20 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0650~6
+Component~5~5
+boardPos=10 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0651~6
+Component~5~5
+boardPos=8 12
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0652~6
+Component~5~5
+boardPos=8 12
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0653~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0654~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0655~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0656~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0657~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0658~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0659~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0660~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0661~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0662~5
+Component~4~4
+boardPos=8 12
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0663~5
+Component~4~4
+boardPos=8 12
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0664~5
+Component~4~4
+boardPos=8 12
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0665~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0666~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0667~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0668~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0669~6
+Component~5~5
+boardPos=20 12
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0670~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0671~6
+Component~5~5
+boardPos=20 12
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0672~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0673~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0674~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0675~5
+Component~4~4
+boardPos=20 12
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0676~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0677~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0678~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0679~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0680~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0681~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0682~6
+Component~5~5
+boardPos=20 12
+circuitPos=6 4
+name=Wire
+puzzleType=0
+speed=0
+component0683~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0684~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0685~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0686~5
+Component~4~4
+boardPos=8 12
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0687~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0688~5
+Component~4~4
+boardPos=10 12
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0689~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0690~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0691~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0692~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0693~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0694~5
+Component~4~4
+boardPos=8 10
+circuitPos=6 6
+name=Splitter
+puzzleType=0
+component0695~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0696~6
+Component~5~5
+boardPos=8 0
+circuitPos=10 6
+name=Wire
+puzzleType=0
+speed=4
+component0697~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0698~6
+Component~5~5
+boardPos=6 8
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0699~6
+Component~5~5
+boardPos=6 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0700~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0701~5
+Component~4~4
+boardPos=8 10
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0702~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0703~5
+Component~4~4
+boardPos=18 8
+circuitPos=6 6
+name=Amplifier
+puzzleType=0
+component0704~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0705~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0706~5
+Component~4~4
+boardPos=18 8
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0707~6
+Component~5~5
+boardPos=12 14
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0708~5
+Component~4~4
+boardPos=8 10
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0709~6
+Component~5~5
+boardPos=8 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0710~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0711~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0712~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0713~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0714~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0715~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0716~7
+Component~6~6
+boardPos=8 0
+boundary=1
+chargePreference=3
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0717~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0718~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0719~5
+Component~4~4
+boardPos=16 4
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0720~5
+Component~4~4
+boardPos=16 4
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0721~5
+Component~4~4
+boardPos=16 4
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0722~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0723~6
+Component~5~5
+boardPos=16 4
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0724~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0725~6
+Component~5~5
+boardPos=18 4
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0726~5
+Component~4~4
+boardPos=12 14
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0727~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0728~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0729~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0730~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0731~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0732~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0733~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0734~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0735~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0736~5
+Component~4~4
+boardPos=10 14
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0737~5
+Component~4~4
+boardPos=10 14
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0738~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0739~6
+Component~5~5
+boardPos=8 0
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0740~5
+Component~4~4
+boardPos=10 14
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0741~5
+Component~4~4
+boardPos=10 14
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0742~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0743~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0744~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0745~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0746~5
+Component~4~4
+boardPos=12 14
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0747~6
+Component~5~5
+boardPos=8 10
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0748~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0749~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0750~6
+Component~5~5
+boardPos=4 14
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0751~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0752~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0753~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0754~5
+Component~4~4
+boardPos=4 14
+circuitPos=6 6
+name=Wire
+puzzleType=0
+component0755~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0756~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0757~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0758~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0759~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0760~5
+Component~4~4
+boardPos=4 14
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0761~5
+Component~4~4
+boardPos=4 14
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0762~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0763~5
+Component~4~4
+boardPos=4 14
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0764~5
+Component~4~4
+boardPos=4 14
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0765~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0766~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0767~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0768~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0769~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0770~6
+Component~5~5
+boardPos=4 14
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0771~6
+Component~5~5
+boardPos=4 14
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0772~4
+Component~3~3
+boardPos=20 2
+name=Blocker
+puzzleType=0
+component0773~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0774~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0775~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0776~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0777~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0778~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0779~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0780~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0781~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0782~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0783~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0784~6
+Component~5~5
+boardPos=4 12
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0785~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0786~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0787~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0788~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0789~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0790~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0791~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0792~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0793~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0794~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0795~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0796~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0797~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0798~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0799~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0800~5
+Component~4~4
+boardPos=4 12
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0801~5
+Component~4~4
+boardPos=4 12
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0802~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0803~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0804~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0805~6
+Component~5~5
+boardPos=10 12
+circuitPos=4 6
+name=Wire
+puzzleType=0
+speed=0
+component0806~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0807~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0808~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0809~6
+Component~5~5
+boardPos=4 12
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0810~6
+Component~5~5
+boardPos=4 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0811~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0812~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0813~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0814~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0815~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0816~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0817~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0818~5
+Component~4~4
+boardPos=12 10
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0819~4
+Component~3~3
+boardPos=19 0
+name=Blocker
+puzzleType=0
+component0820~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0821~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0822~4
+Component~3~3
+boardPos=22 0
+name=Blocker
+puzzleType=0
+component0823~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0824~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0825~6
+Component~5~5
+boardPos=12 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0826~5
+Component~4~4
+boardPos=12 10
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0827~5
+Component~4~4
+boardPos=12 10
+circuitPos=2 6
+name=Wire
+puzzleType=0
+component0828~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0829~6
+Component~5~5
+boardPos=10 14
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0830~6
+Component~5~5
+boardPos=12 12
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0831~5
+Component~4~4
+boardPos=12 10
+circuitPos=4 6
+name=Wire
+puzzleType=0
+component0832~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0833~5
+Component~4~4
+boardPos=12 10
+circuitPos=6 6
+name=Splitter
+puzzleType=0
+component0834~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0835~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0836~5
+Component~4~4
+boardPos=12 10
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0837~6
+Component~5~5
+boardPos=12 10
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0838~5
+Component~4~4
+boardPos=12 10
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0839~6
+Component~5~5
+boardPos=12 10
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0840~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0841~6
+Component~5~5
+boardPos=10 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0842~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0843~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0844~6
+Component~5~5
+boardPos=10 12
+circuitPos=7 2
+name=Wire
+puzzleType=0
+speed=4
+component0845~6
+Component~5~5
+boardPos=10 12
+circuitPos=8 4
+name=Wire
+puzzleType=0
+speed=4
+component0846~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0847~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0848~6
+Component~5~5
+boardPos=12 14
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0849~5
+Component~4~4
+boardPos=12 14
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0850~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0851~6
+Component~5~5
+boardPos=12 10
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0852~6
+Component~5~5
+boardPos=20 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0853~5
+Component~4~4
+boardPos=12 14
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0854~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0855~6
+Component~5~5
+boardPos=8 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0856~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0857~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0858~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0859~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0860~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0861~5
+Component~4~4
+boardPos=20 8
+circuitPos=6 6
+name=Splitter
+puzzleType=0
+component0862~5
+Component~4~4
+boardPos=20 8
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0863~5
+Component~4~4
+boardPos=20 8
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0864~6
+Component~5~5
+boardPos=20 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0865~5
+Component~4~4
+boardPos=18 8
+circuitPos=6 8
+name=Hold
+puzzleType=0
+component0866~6
+Component~5~5
+boardPos=18 8
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0867~6
+Component~5~5
+boardPos=18 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0868~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0869~6
+Component~5~5
+boardPos=18 8
+boundary=1
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0870~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0871~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0872~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0873~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0874~6
+Component~5~5
+boardPos=18 8
+chargePreference=3
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0875~5
+Component~4~4
+boardPos=20 8
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0876~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0877~6
+Component~5~5
+boardPos=18 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0878~5
+Component~4~4
+boardPos=18 8
+circuitPos=4 6
+name=Hold
+puzzleType=0
+component0879~4
+Component~3~3
+boardPos=22 2
+name=Blocker
+puzzleType=0
+component0880~4
+Component~3~3
+boardPos=22 4
+name=Blocker
+puzzleType=0
+component0881~4
+Component~3~3
+boardPos=22 8
+name=Blocker
+puzzleType=0
+component0882~4
+Component~3~3
+boardPos=22 6
+name=Blocker
+puzzleType=0
+component0883~4
+Component~3~3
+boardPos=20 6
+name=Blocker
+puzzleType=0
+component0884~4
+Component~3~3
+boardPos=18 6
+name=Blocker
+puzzleType=0
+component0885~4
+Component~3~3
+boardPos=20 10
+name=Blocker
+puzzleType=0
+component0886~4
+Component~3~3
+boardPos=18 10
+name=Blocker
+puzzleType=0
+component0887~4
+Component~3~3
+boardPos=22 10
+name=Blocker
+puzzleType=0
+component0888~4
+Component~3~3
+boardPos=22 12
+name=Blocker
+puzzleType=0
+component0889~4
+Component~3~3
+boardPos=20 17
+name=Blocker
+puzzleType=0
+component0890~4
+Component~3~3
+boardPos=20 19
+name=Blocker
+puzzleType=0
+component0891~4
+Component~3~3
+boardPos=20 22
+name=Blocker
+puzzleType=0
+component0892~4
+Component~3~3
+boardPos=22 22
+name=Blocker
+puzzleType=0
+component0893~4
+Component~3~3
+boardPos=22 20
+name=Blocker
+puzzleType=0
+component0894~4
+Component~3~3
+boardPos=22 18
+name=Blocker
+puzzleType=0
+component0895~4
+Component~3~3
+boardPos=22 16
+name=Blocker
+puzzleType=0
+component0896~4
+Component~3~3
+boardPos=22 14
+name=Blocker
+puzzleType=0
+component0897~4
+Component~3~3
+boardPos=20 14
+name=Blocker
+puzzleType=0
+component0898~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0899~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0900~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0901~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0902~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0903~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0904~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0905~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0906~5
+Component~4~4
+boardPos=18 12
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0907~5
+Component~4~4
+boardPos=18 12
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0908~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0909~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0910~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0911~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0912~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0913~6
+Component~5~5
+boardPos=18 12
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0914~6
+Component~5~5
+boardPos=18 12
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0915~6
+Component~5~5
+boardPos=20 12
+circuitPos=10 7
+name=Wire
+puzzleType=0
+speed=4
+component0916~6
+Component~5~5
+boardPos=20 12
+circuitPos=8 8
+name=Wire
+puzzleType=0
+speed=4
+component0917~5
+Component~4~4
+boardPos=20 4
+circuitPos=8 6
+name=Wire
+puzzleType=0
+component0918~6
+Component~5~5
+boardPos=18 4
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0919~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0920~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0921~6
+Component~5~5
+boardPos=20 4
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0922~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0923~6
+Component~5~5
+boardPos=12 8
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0924~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0925~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0926~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0927~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0928~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0929~5
+Component~4~4
+boardPos=12 8
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0930~5
+Component~4~4
+boardPos=12 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0931~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0932~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0933~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0934~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0935~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0936~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0937~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0938~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0939~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0940~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0941~6
+Component~5~5
+boardPos=12 8
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0942~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0943~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0944~6
+Component~5~5
+boardPos=12 8
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0945~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0946~6
+Component~5~5
+boardPos=10 8
+circuitPos=6 6
+color=1
+name=TeleportSource
+puzzleType=0
+component0947~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0948~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0949~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0950~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0951~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0952~5
+Component~4~4
+boardPos=10 8
+circuitPos=6 8
+name=Wire
+puzzleType=0
+component0953~5
+Component~4~4
+boardPos=10 8
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0954~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0955~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0956~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0957~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0958~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0959~6
+Component~5~5
+boardPos=10 8
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0960~5
+Component~4~4
+boardPos=6 10
+circuitPos=8 6
+name=Hold
+puzzleType=0
+component0961~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component0962~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component0963~6
+Component~5~5
+boardPos=6 10
+chargePreference=3
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component0964~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component0965~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component0966~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component0967~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component0968~6
+Component~5~5
+boardPos=6 10
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component0969~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component0970~6
+Component~5~5
+boardPos=6 10
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component0971~6
+Component~5~5
+boardPos=6 10
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component0972~5
+Component~4~4
+boardPos=6 10
+circuitPos=6 8
+name=Hold
+puzzleType=0
+component0973~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component0974~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component0975~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0976~5
+Component~4~4
+boardPos=6 10
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0977~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0978~5
+Component~4~4
+boardPos=6 10
+circuitPos=6 6
+name=Amplifier
+puzzleType=0
+component0979~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0980~5
+Component~4~4
+boardPos=6 10
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0981~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0982~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0983~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0984~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0985~6
+Component~5~5
+boardPos=6 10
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0986~5
+Component~4~4
+boardPos=6 10
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0987~5
+Component~4~4
+boardPos=10 10
+circuitPos=6 2
+name=Wire
+puzzleType=0
+component0988~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=12 4
+name=CircuitBoundary
+puzzleType=0
+component0989~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=12 2
+name=CircuitBoundary
+puzzleType=0
+component0990~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=0 2
+name=CircuitBoundary
+puzzleType=0
+component0991~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=2 12
+name=CircuitBoundary
+puzzleType=0
+component0992~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=2 0
+name=CircuitBoundary
+puzzleType=0
+component0993~5
+Component~4~4
+boardPos=10 10
+circuitPos=6 10
+name=Wire
+puzzleType=0
+component0994~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=10 12
+name=CircuitBoundary
+puzzleType=0
+component0995~5
+Component~4~4
+boardPos=10 10
+circuitPos=6 6
+name=Amplifier
+puzzleType=0
+component0996~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=4 0
+name=CircuitBoundary
+puzzleType=0
+component0997~5
+Component~4~4
+boardPos=10 10
+circuitPos=10 6
+name=Wire
+puzzleType=0
+component0998~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=12 10
+name=CircuitBoundary
+puzzleType=0
+component0999~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=0 10
+name=CircuitBoundary
+puzzleType=0
+component1000~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=4 12
+name=CircuitBoundary
+puzzleType=0
+component1001~5
+Component~4~4
+boardPos=10 10
+circuitPos=6 8
+name=Hold
+puzzleType=0
+component1002~6
+Component~5~5
+boardPos=10 10
+boundary=1
+circuitPos=6 0
+name=CircuitBoundary
+puzzleType=0
+component1003~6
+Component~5~5
+boardPos=10 10
+boundary=1
+circuitPos=6 12
+name=CircuitBoundary
+puzzleType=0
+component1004~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=0 6
+name=CircuitBoundary
+puzzleType=0
+component1005~6
+Component~5~5
+boardPos=10 10
+boundary=1
+circuitPos=12 6
+name=CircuitBoundary
+puzzleType=0
+component1006~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=8 0
+name=CircuitBoundary
+puzzleType=0
+component1007~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=8 12
+name=CircuitBoundary
+puzzleType=0
+component1008~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=0 8
+name=CircuitBoundary
+puzzleType=0
+component1009~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=12 8
+name=CircuitBoundary
+puzzleType=0
+component1010~6
+Component~5~5
+boardPos=10 10
+chargePreference=3
+circuitPos=6 4
+name=Wire
+puzzleType=0
+component1011~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=10 0
+name=CircuitBoundary
+puzzleType=0
+component1012~6
+Component~5~5
+boardPos=10 10
+boundary=2
+circuitPos=0 4
+name=CircuitBoundary
+puzzleType=0
+component1013~5
+Component~4~4
+boardPos=10 10
+circuitPos=8 6
+name=Hold
+puzzleType=0
+componentCost=888
+componentCount=1014
+levelPack=Campaign
+levelPackPuzzleIndex=39
+levelPackPuzzleName=Punch the Keys
+puzzleFileType=BasePuzzle
+stepCount=7039

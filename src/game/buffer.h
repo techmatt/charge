@@ -132,7 +132,7 @@ struct UndoBuffer
 	{
 		if (current == maxBackward) return;
 		//ui.selectedGameLocation = GameLocation();
-		current = (current - 1) % constants::bufferSize;
+		current = math::mod(current - 1, constants::bufferSize);
 		state.clearComponents();
 		buffer[current].addToComponents(state,vec2i(0,0));
 	}
