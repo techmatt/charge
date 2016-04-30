@@ -21,6 +21,7 @@ struct UserSessionLevelInfo
         puzzleFilename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
+		bestComponentCost = std::numeric_limits<int>::max();
     }
 
     ParameterTable toTable(const string &tableName) const

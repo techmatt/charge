@@ -701,15 +701,15 @@ void GameCanvas::renderVictoryPanel()
     if (sessionInfo == nullptr || sessionInfo->state != LevelState::Solved)
         return;
 
-    Texture &tex = database().getTexture(app.renderer, "Tooltip");
+    Texture &tex = database().getTexture(app.renderer, "VictoryPanel");
 
     glDisable(GL_BLEND);
 
     const vec2i victoryPanelStart(403, 350);
-    const vec2i victoryPanelSize(254, 120);
+    const vec2i victoryPanelSize(254, 82);
 
-    const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 30.0f);
-    const int tableHeight = 13;
+    const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 31.0f);
+    const int tableHeight = 15;
     const int row0 = tableStart.y + tableHeight * 0;
     const int row1 = tableStart.y + tableHeight * 1;
     const int row2 = tableStart.y + tableHeight * 2;
@@ -733,45 +733,14 @@ void GameCanvas::renderVictoryPanel()
     renderText(getFontTexture("Solve time", FontType::TooltipDescriptionA), vec2i(col0, row1), 12.0f);
     renderText(getFontTexture("Component cost", FontType::TooltipDescriptionA), vec2i(col0, row2), 12.0f);
 
+	renderText(getFontTexture(formatSteps(sessionInfo->recentStepCount), FontType::TooltipDescriptionA), vec2i(col1, row1), 12.0f);
+	renderText(getFontTexture(to_string(sessionInfo->recentComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col1, row2), 12.0f);
+
     renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
-    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
+    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row2), 12.0f);
 
-    //renderText(getFontTexture(to_string(app.state. - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
-
-    //renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
-
-    //renderText(getFontTexture(splice(description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
-
-    /*const float attributeSpacing = 17.0f;
-    const float attributeBottom = 97.0f;
-
-    if (hotkey.size() > 0 && hotkey[0] != '!')
-    {
-        float offset = hotkey.size() > 1 ? 5.0f : 0.0f;
-        renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f - offset, attributeBottom), 12.0f);
-        renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f - offset, attributeBottom), 12.0f);
-    }
-
-    if (component != nullptr)
-    {
-        if (component->info->name == "PowerSource")
-        {
-            if (component->intrinsics.totalCharges > 1)
-                renderText(getFontTexture("Emits a charge every " + to_string(component->intrinsics.secondsPerEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing * 2.0f), 12.0f);
-            renderText(getFontTexture("First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
-
-            if (component->chargesRemaining >= 500)
-                renderText(getFontTexture("Infinite charges", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
-            else
-                renderText(getFontTexture("Charges remaining: " + to_string(component->chargesRemaining) + " / " + to_string(component->intrinsics.totalCharges), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
-        }
-        if (component->info->name == "MegaHold")
-        {
-            double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
-            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2, true) + " charge per second", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
-            renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
-        }
-    }*/
+	renderText(getFontTexture(formatSteps(curPuzzle.stepCountPar), FontType::TooltipDescriptionA), vec2i(col3, row1), 12.0f);
+	renderText(getFontTexture(to_string(curPuzzle.componentCostPar - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col3, row2), 12.0f);
 }
 
 void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
