@@ -82,6 +82,10 @@ struct PuzzleInfo
         index = _index;
         name = m.at("Puzzle name");
         filename = m.at("Puzzle file");
+        stepCountPar = convert::toInt(m.at("Step count par"));
+        componentCostPar = convert::toInt(m.at("Component cost par"));
+        baseComponentCost = convert::toInt(m.at("Base component cost"));
+        rawTip = m.at("Tip");
         tip = util::replace(m.at("Tip"), '|', '\n');
     }
 
@@ -89,6 +93,11 @@ struct PuzzleInfo
     string name;
     string filename;
     string tip;
+    string rawTip;
+
+    int stepCountPar;
+    int componentCostPar;
+    int baseComponentCost;
 };
 
 struct Database

@@ -170,6 +170,11 @@ void GameCanvas::render()
 
     renderTooltip();
 
+    if (app.activeCircuit() == nullptr)
+    {
+        renderVictoryPanel();
+    }
+
     if (SDL_GetModState() & KMOD_ALT)
     {
         float fps = app.frameTimer.framesPerSecond();
@@ -625,17 +630,11 @@ void GameCanvas::renderTooltip()
     //
     if (app.activeCircuit() == nullptr)
     {
-        string solvedState;
-        auto sessionInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
-        if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved)
-            solvedState = " (Solved)";
-        renderTooltip(params().tooltipDefaultStart, app.controller.getActivePuzzle().name + solvedState, app.controller.getActivePuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
-
-        if (app.state.victoryInfo.stepCount != -1)
-        {
-            renderText(getFontTexture("Solve time: " + util::formatDouble((double)app.state.victoryInfo.stepCount / (double)constants::stepsPerSecond, 2, false) + "s", FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 126.0f), 12.0f);
-            //renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
-        }
+        //string solvedState;
+        //auto sessionInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
+        //if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved)
+        //    solvedState = " (Solved)";
+        renderTooltip(params().tooltipDefaultStart, app.controller.getActivePuzzle().name, app.controller.getActivePuzzle().tip, ComponentModifiers(), "!", nullptr, false, false);
     }
 }
 
@@ -647,7 +646,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
         return r;
     };
 
-    Texture &tex = error ? database().getTexture(app.renderer, "TooltipError") : database().getTexture(app.renderer, "Tooltip");
+    Texture &tex = database().getTexture(app.renderer, error ? "TooltipError" : "Tooltip");
 
     if (!transparent) glDisable(GL_BLEND);
     
@@ -689,6 +688,90 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
             renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
         }
     }
+}
+
+void GameCanvas::renderVictoryPanel()
+{
+    auto formatSteps = [](int stepCount) {
+        return util::formatDouble((double)stepCount / (double)constants::stepsPerSecond, 2, false) + "s";
+    };
+
+    auto sessionInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
+    const PuzzleInfo &curPuzzle = app.controller.getActivePuzzle();
+    if (sessionInfo == nullptr || sessionInfo->state != LevelState::Solved)
+        return;
+
+    Texture &tex = database().getTexture(app.renderer, "Tooltip");
+
+    glDisable(GL_BLEND);
+
+    const vec2i victoryPanelStart(403, 350);
+    const vec2i victoryPanelSize(254, 120);
+
+    const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 30.0f);
+    const int tableHeight = 13;
+    const int row0 = tableStart.y + tableHeight * 0;
+    const int row1 = tableStart.y + tableHeight * 1;
+    const int row2 = tableStart.y + tableHeight * 2;
+
+    const int col0 = tableStart.x;
+    const int col1 = col0 + 80;
+    const int col2 = col1 + 55;
+    const int col3 = col2 + 55;
+
+    const rect2f rect(victoryPanelStart, victoryPanelStart + victoryPanelSize);
+    render(tex, rect, depthLayers::tooltip);
+
+    glEnable(GL_BLEND);
+
+    renderText(getFontTexture("Puzzle solved!", FontType::TooltipName), victoryPanelStart + vec2f(15.0f, 9.0f), 18.0f);
+
+    renderText(getFontTexture("Your score", FontType::TooltipDescriptionA), vec2i(col1, row0), 12.0f);
+    renderText(getFontTexture("Your best", FontType::TooltipDescriptionA), vec2i(col2, row0), 12.0f);
+    renderText(getFontTexture("Par", FontType::TooltipDescriptionA), vec2i(col3, row0), 12.0f);
+
+    renderText(getFontTexture("Solve time", FontType::TooltipDescriptionA), vec2i(col0, row1), 12.0f);
+    renderText(getFontTexture("Component cost", FontType::TooltipDescriptionA), vec2i(col0, row2), 12.0f);
+
+    renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
+    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
+
+    //renderText(getFontTexture(to_string(app.state. - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
+
+    //renderText(getFontTexture("Component cost: " + to_string(app.state.victoryInfo.componentCost), FontType::TooltipDescriptionA), params().tooltipDefaultStart + vec2f(5.0f, 140.0f), 12.0f);
+
+    //renderText(getFontTexture(splice(description), FontType::TooltipDescriptionA, 1050), canonicalStart + vec2f(15.0f, 30.0f), 12.0f);
+
+    /*const float attributeSpacing = 17.0f;
+    const float attributeBottom = 97.0f;
+
+    if (hotkey.size() > 0 && hotkey[0] != '!')
+    {
+        float offset = hotkey.size() > 1 ? 5.0f : 0.0f;
+        renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f - offset, attributeBottom), 12.0f);
+        renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f - offset, attributeBottom), 12.0f);
+    }
+
+    if (component != nullptr)
+    {
+        if (component->info->name == "PowerSource")
+        {
+            if (component->intrinsics.totalCharges > 1)
+                renderText(getFontTexture("Emits a charge every " + to_string(component->intrinsics.secondsPerEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing * 2.0f), 12.0f);
+            renderText(getFontTexture("First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
+
+            if (component->chargesRemaining >= 500)
+                renderText(getFontTexture("Infinite charges", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+            else
+                renderText(getFontTexture("Charges remaining: " + to_string(component->chargesRemaining) + " / " + to_string(component->intrinsics.totalCharges), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+        }
+        if (component->info->name == "MegaHold")
+        {
+            double chargeLossPerSecond = (double)component->intrinsics.chargesLostPerDischarge / (double)component->intrinsics.ticksPerDischarge / (double)constants::secondsPerStep;
+            renderText(getFontTexture("Loses " + util::formatDouble(chargeLossPerSecond, 2, true) + " charge per second", FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom - attributeSpacing), 12.0f);
+            renderText(getFontTexture("Charge level: " + to_string(component->megaHoldTotalCharge) + " / " + to_string(component->intrinsics.totalChargeRequired), FontType::TooltipDescriptionB), canonicalStart + vec2f(15.0f, attributeBottom), 12.0f);
+        }
+    }*/
 }
 
 void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
