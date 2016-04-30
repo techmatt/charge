@@ -311,4 +311,13 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         {
             app.controller.speed = (GameSpeed)speed;
         }
+
+	if (name == "CircuitCopy")
+	{
+		app.ui.copy();
+	}
+	if (name == "CircuitPaste")
+	{
+		app.ui.paste();
+	}
 }

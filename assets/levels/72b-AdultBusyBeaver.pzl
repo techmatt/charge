@@ -389,7 +389,7 @@ boardPos=4 22
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0062~5
@@ -409,7 +409,7 @@ boardPos=7 22
 color=2
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777211
 component0065~4
@@ -444,7 +444,7 @@ boardPos=2 22
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0071~4

@@ -359,7 +359,7 @@ boardPos=10 2
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777214
 component0070~4

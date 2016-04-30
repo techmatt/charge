@@ -33,6 +33,7 @@ struct GameParameters
         params.readParameter("puzzleMenuCCanonicalStart", puzzleMenuCCanonicalStart);
         params.readParameter("puzzleMenuDCanonicalStart", puzzleMenuDCanonicalStart);
         params.readParameter("puzzleMenuECanonicalStart", puzzleMenuECanonicalStart);
+		params.readParameter("puzzleMenuFCanonicalStart", puzzleMenuFCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
 
         params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
@@ -64,6 +65,7 @@ struct GameParameters
         puzzleMenuCInWindow = CoordinateFrame(puzzleMenuCCanonicalStart);
         puzzleMenuDInWindow = CoordinateFrame(puzzleMenuDCanonicalStart);
         puzzleMenuEInWindow = CoordinateFrame(puzzleMenuECanonicalStart);
+		puzzleMenuFInWindow = CoordinateFrame(puzzleMenuFCanonicalStart);
 		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
 
@@ -95,6 +97,7 @@ struct GameParameters
     vec2f puzzleMenuCCanonicalStart;
     vec2f puzzleMenuDCanonicalStart;
     vec2f puzzleMenuECanonicalStart;
+	vec2f puzzleMenuFCanonicalStart;
     int puzzleMenuCanonicalEntrySize;
 
     vec2f attributeMenuCanonicalStart;
@@ -110,6 +113,7 @@ struct GameParameters
     CoordinateFrame puzzleMenuCInWindow;
     CoordinateFrame puzzleMenuDInWindow;
     CoordinateFrame puzzleMenuEInWindow;
+	CoordinateFrame puzzleMenuFInWindow;
 	CoordinateFrame circuitInWindow;
 
     bool godMode;

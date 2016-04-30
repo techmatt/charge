@@ -587,7 +587,7 @@ void GameCanvas::renderTooltip()
                 start = button->canonicalRect.min() - vec2i(100, 140);
             }
         }
-        else if (button->type == ButtonType::PuzzleControlA || button->type == ButtonType::PuzzleControlB || button->type == ButtonType::PuzzleControlC || button->type == ButtonType::PuzzleControlE)
+        else if (button->type == ButtonType::PuzzleControlA || button->type == ButtonType::PuzzleControlB || button->type == ButtonType::PuzzleControlC || button->type == ButtonType::PuzzleControlE || button->type == ButtonType::PuzzleControlF)
         {
             if (app.activeCircuit() != nullptr)
                 return;
@@ -598,7 +598,7 @@ void GameCanvas::renderTooltip()
             transparent = true;
         }
 
-        renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->hotkey, nullptr, false, transparent);
+        renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->tooltipHotkey(), nullptr, false, transparent);
         //renderTooltip(params().tooltipDefaultStart, *button->tooltip, button->modifiers, button->hotkey, nullptr);
         return;
     }

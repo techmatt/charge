@@ -27,6 +27,7 @@ puzzleMenuBCanonicalStart = 42, 435
 puzzleMenuCCanonicalStart = 155, 418
 puzzleMenuDCanonicalStart = 212, 435
 puzzleMenuECanonicalStart = 308, 418
+puzzleMenuFCanonicalStart = 228, 428
 
 puzzleMenuCanonicalEntrySize = 24
 

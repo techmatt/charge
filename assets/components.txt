@@ -26,12 +26,12 @@ WireMinorDelay	-1	-1	!	no	no	Minor Delay	Wires can be modified to change the spe
 WireMajorDelay	-1	-1	!	no	no	Major Delay	Wires can be modified to change the speed charge travels through them.  You can use the mouse wheel to cycle through wire speeds.
 CircuitBoundary	-1	-1	!	no	no	Circuit Boundary	The boundary of a circuit can be configured to block the flow of charge.
 CloseAll	-1	-1	!	no	no	Close All	Closes all inactive circuit boundaries.
-CircuitPaste	-1	-1	!	no	no	Invalid	ZZ
+CircuitPaste	-1	-1	!	no	no	Paste Components	Pastes all copied components.  Use shift to select multiple components.  You have an unlimited supply of all available components.
 CircuitRotate90	-1	-1	!	no	no	Rotate Clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitRotateN90	-1	-1	!	no	no	Rotate Counter-clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipHorizontal	-1	-1	!	no	no	Flip Horizontal	"Flips the current selection horizontally.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipVertical	-1	-1	!	no	no	Flip Vertical	"Flips the current selection vertically.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
-CircuitCopy	-1	-1	!	no	no	Invalid	ZZ
+CircuitCopy	-1	-1	!	no	no	Copy Selection	Copies all selected components.  Use shift to select multiple components.  You have an unlimited supply of all available components.
 GateClosedGrayProxy	0	2	N	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateSwitchGrayProxy	1	2	M	no	no	Gray Button	Toggles the closest Gray gate.
 TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a Gray crank."

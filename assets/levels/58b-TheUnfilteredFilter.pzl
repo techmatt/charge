@@ -273,7 +273,7 @@ boardPos=22 0
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0041~5
@@ -629,7 +629,7 @@ circuitPos=2 2
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0102~9
@@ -639,7 +639,7 @@ circuitPos=4 2
 color=2
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0103~9
@@ -649,7 +649,7 @@ circuitPos=6 2
 color=3
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0104~6
@@ -666,7 +666,7 @@ circuitPos=10 2
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0106~4
@@ -708,7 +708,7 @@ circuitPos=8 2
 color=4
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0113~5
@@ -1012,7 +1012,7 @@ circuitPos=2 2
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0159~9
@@ -1022,7 +1022,7 @@ circuitPos=4 2
 color=2
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0160~6
@@ -1039,7 +1039,7 @@ circuitPos=6 2
 color=3
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0162~6
@@ -1056,7 +1056,7 @@ circuitPos=10 2
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0164~9
@@ -1066,7 +1066,7 @@ circuitPos=8 2
 color=4
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0165~5
@@ -1206,7 +1206,7 @@ circuitPos=8 2
 color=4
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0187~9
@@ -1216,7 +1216,7 @@ circuitPos=10 2
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0188~4
@@ -1323,7 +1323,7 @@ circuitPos=6 2
 color=3
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0207~6
@@ -1366,7 +1366,7 @@ circuitPos=4 2
 color=2
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0213~6
@@ -1447,7 +1447,7 @@ circuitPos=2 2
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0225~9
@@ -1457,7 +1457,7 @@ circuitPos=4 2
 color=2
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0226~9
@@ -1467,7 +1467,7 @@ circuitPos=6 2
 color=3
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0227~6
@@ -1484,7 +1484,7 @@ circuitPos=10 2
 color=5
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0229~9
@@ -1494,7 +1494,7 @@ circuitPos=2 2
 color=1
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0230~6
@@ -1656,7 +1656,7 @@ circuitPos=8 2
 color=4
 name=PowerSource
 puzzleType=0
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=15
 totalCharges=2
 component0253~5

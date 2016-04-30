@@ -51,7 +51,7 @@ struct ComponentIntrinsics
         //
         totalCharges = 0xFFFFFF;
         secondsPerEmission = 1;
-        secondsBeforeFirstEmission = 1;
+        secondsBeforeFirstEmission = 0;
         
         //
         // default mega hold properties

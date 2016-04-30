@@ -120,6 +120,17 @@ void GameState::disableEditing()
 		c->modifiers.puzzleType = ComponentPuzzleType::PuzzlePiece;
 }
 
+void GameState::rezeroFirstEmission()
+{
+	for (auto &c : components)
+		if (util::startsWith(c->baseInfo->name, "PowerSource") && c->intrinsics.secondsBeforeFirstEmission != 1)
+			return;
+	cout << "Rezeroing all power sources" << endl;
+	for (auto &c : components)
+		if (util::startsWith(c->baseInfo->name, "PowerSource"))
+			c->intrinsics.secondsBeforeFirstEmission = 0;
+}
+
 void GameState::loadPuzzle(const string &filename, const string &_puzzleName)
 {
     clearAndResetBoard();

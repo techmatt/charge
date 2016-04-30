@@ -74,6 +74,7 @@ void Database::processAllCampaignLevels(AppData &app)
 		GameState state(app);
 		const string basePuzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
 		state.loadPuzzle(basePuzzleFilename, "none");
+		state.rezeroFirstEmission();
 		
 		state.levelPack = "Campaign";
         state.levelPackPuzzleIndex = puzzleIndex;
@@ -96,6 +97,7 @@ void Database::processAllCampaignLevels(AppData &app)
 		GameState state(app);
 		const string basePuzzleFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
 		state.loadPuzzle(basePuzzleFilename, "none");
+		state.rezeroFirstEmission();
 
 		state.levelPack = "Campaign";
 		state.levelPackPuzzleIndex = puzzleIndex;
