@@ -30,6 +30,8 @@ struct UserSessionLevelInfo
         table.setInt("state", (int)state);
         table.setInt("bestStepCount", bestStepCount);
         table.setInt("bestComponentCost", bestComponentCost);
+        table.setInt("recentStepCount", recentStepCount);
+        table.setInt("recentComponentCost", recentComponentCost);
         return table;
     }
 
@@ -40,6 +42,8 @@ struct UserSessionLevelInfo
         result.state = (LevelState)table.getInt("state");
         result.bestStepCount = table.getInt("bestStepCount");
         result.bestComponentCost = table.getInt("bestComponentCost");
+        result.recentStepCount = table.getInt("recentStepCount");
+        result.recentComponentCost = table.getInt("recentComponentCost");
         return result;
     }
 
@@ -47,6 +51,8 @@ struct UserSessionLevelInfo
     LevelState state;
     int bestStepCount;
     int bestComponentCost;
+    int recentStepCount;
+    int recentComponentCost;
 };
 
 //

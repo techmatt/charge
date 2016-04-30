@@ -55,14 +55,14 @@ void RendererOpenGL::init(SDL_Window *window)
 
     const string shaderDir = params().assetDir + "shaders/";
 
-	cout << "Doing OpenGL things A..." << endl;
+    if (debugCalls) cout << "Doing OpenGL things A..." << endl;
     _gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
     _splashAProgram.load(shaderDir + "splashA.vert", shaderDir + "splashA.frag");
     _splashBProgram.load(shaderDir + "splashB.vert", shaderDir + "splashB.frag");
     _motionProgram.load(shaderDir + "motion.vert", shaderDir + "motion.frag");
     _quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
 
-	cout << "Doing OpenGL things B..." << endl;
+    if (debugCalls) cout << "Doing OpenGL things B..." << endl;
     checkGLError();
 
     _quadProgram.bind();
@@ -89,7 +89,7 @@ void RendererOpenGL::init(SDL_Window *window)
     checkGLError();
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
-	cout << "Doing OpenGL things C..." << endl;
+    if (debugCalls) cout << "Doing OpenGL things C..." << endl;
 
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);

@@ -399,6 +399,10 @@ void GameController::recordVictory()
     app.renderer.initMotionBlur(0.4f, 200);
 
     speed = GameSpeed::x1;
+    app.ui.selectedMenuComponent = nullptr;
+    app.ui.activePlacementBuffer.clear();
+    app.ui.selection.empty();
+    app.canvas.backgroundDirty = true;
 
     //if (viewMode != ControllerViewMode::ProvidedSolution)
     //BasePuzzle,ProvidedSolution,UserProgress,UserSolution,Custom

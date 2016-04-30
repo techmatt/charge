@@ -43,7 +43,7 @@ TTF_Font* Database::getFont(const string &fontName)
 
 void Database::initTextures(Renderer &renderer)
 {
-	cout << "Begin texture loading..." << endl;
+    if (debugCalls) cout << "Begin texture loading..." << endl;
     for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue + 1; chargeLevel++)
     {
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
@@ -62,7 +62,7 @@ void Database::initTextures(Renderer &renderer)
     squareBlocked = &getTexture(renderer, "SquareBlocked");
     squareOpen = &getTexture(renderer, "SquareOpen");
 
-	cout << "Done texture loading..." << endl;
+    if (debugCalls) cout << "Done texture loading..." << endl;
 }
 
 void Database::processAllCampaignLevels(AppData &app)
@@ -80,10 +80,14 @@ void Database::processAllCampaignLevels(AppData &app)
 		state.levelPackPuzzleName = puzzle.name;
 		state.puzzleFileType = "BasePuzzle";
 
+        puzzle.baseComponentCost = state.componentCost();
+
 		state.savePuzzle(basePuzzleFilename);
         puzzleIndex++;
 	}
 
+    ofstream file(params().assetDir + "levelsProcessed.txt");
+    file << "Puzzle name\tPuzzle file\tTip\tStep count par\tComponent cost par\tBase component cost" << endl;
     puzzleIndex = 0;
 	for (auto &puzzle : allPuzzles)
 	{
@@ -99,6 +103,16 @@ void Database::processAllCampaignLevels(AppData &app)
 		state.puzzleFileType = "ProvidedSolution";
 
 		state.savePuzzle(basePuzzleFilename);
+
+        while (!state.victory)
+            state.step(app);
+
+        puzzle.stepCountPar = state.victoryInfo.stepCount;
+        
+        puzzle.componentCostPar = state.componentCost();
+
+        file << puzzle.name << "\t" << puzzle.filename << "\t" << puzzle.rawTip << "\t" << puzzle.stepCountPar << "\t" << puzzle.componentCostPar << "\t" << puzzle.baseComponentCost << endl;
+
         puzzleIndex++;
 	}
 }
@@ -194,9 +208,9 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
             }
         }
 
-		cout << "Creating texture for " << componentName << " (" << bmp.dimX() << "," << bmp.dimY() << ")" << endl;
+		if(debugCalls) cout << "Creating texture for " << componentName << " (" << bmp.dimX() << "," << bmp.dimY() << ")" << endl;
         Texture *t = new Texture(renderer, bmp);
-		cout << "Done creating texture" << endl;
+        if (debugCalls) cout << "Done creating texture" << endl;
 
         //
         // configure alpha mode
