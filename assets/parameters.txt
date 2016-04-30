@@ -38,5 +38,6 @@ tooltipSize = 254, 120
 
 godMode = true
 useSDLFallback = false
+useMipmaps = true
 
 maxSkippedLevels = 300
