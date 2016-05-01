@@ -16,7 +16,7 @@ boardPos=12 13
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=15
 component0001~4

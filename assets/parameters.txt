@@ -27,16 +27,18 @@ puzzleMenuBCanonicalStart = 42, 435
 puzzleMenuCCanonicalStart = 155, 418
 puzzleMenuDCanonicalStart = 212, 435
 puzzleMenuECanonicalStart = 308, 418
+puzzleMenuFCanonicalStart = 228, 428
 
 puzzleMenuCanonicalEntrySize = 24
 
 attributeMenuCanonicalStart = 240, 415
 attributeMenuCanonicalEntrySize = 100, 15
 
-tooltipDefaultStart = 403, 250
+tooltipDefaultStart = 403, 225
 tooltipSize = 254, 120
 
 godMode = false
 useSDLFallback = false
+useMipmaps = false
 
 maxSkippedLevels = 300

@@ -110,7 +110,7 @@ void UserSession::saveProgress(AppData &app)
         if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece)
             userPieceCount++;
 
-    cout << "UserPieceCount: " << userPieceCount << endl;
+    //cout << "UserPieceCount: " << userPieceCount << endl;
     if (userPieceCount == 0)
         return;
 
@@ -138,7 +138,7 @@ void UserSession::recordVictory(AppData &app)
 
 	if (app.state.levelPack != "Campaign")
 	{
-		return;
+        return;
 	}
 
     auto &info = campaignLevels[app.state.levelPackPuzzleIndex];
@@ -146,6 +146,8 @@ void UserSession::recordVictory(AppData &app)
     info.state = LevelState::Solved;
 
     app.state.savePuzzle(filenameRecent);
+    info.recentComponentCost = app.state.victoryInfo.componentCost;
+    info.recentStepCount = app.state.victoryInfo.stepCount;
 
     if (app.state.victoryInfo.componentCost <= info.bestComponentCost)
     {

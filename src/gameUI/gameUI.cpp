@@ -67,17 +67,12 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 
     if (key == SDLK_c)
     {
-        // COPY if there is anything in the selection buffer
-        if (selection.components.size() > 0 && selection.isValidCopy())
-            selection.copyToComponentSet(copyBuffer, app.state);
-        else
-            copyBuffer.clear();
+		copy();
     }
 
     if (key == SDLK_v)
     {
-        selectedMenuComponent = nullptr;
-        activePlacementBuffer = copyBuffer;
+		paste();
     }
 
     if (key == SDLK_F8)
@@ -540,4 +535,19 @@ void GameUI::addHoverComponent(const GameLocation &location)
     app.controller.recordDesignAction();
     app.undoBuffer.save(app.state); //saves to the backwards/forwards buffer
 
+}
+
+void GameUI::copy()
+{
+	// COPY if there is anything in the selection buffer
+	if (selection.components.size() > 0 && selection.isValidCopy())
+		selection.copyToComponentSet(copyBuffer, app.state);
+	else
+		copyBuffer.clear();
+}
+
+void GameUI::paste()
+{
+	selectedMenuComponent = nullptr;
+	activePlacementBuffer = copyBuffer;
 }

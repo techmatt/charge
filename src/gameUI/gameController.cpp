@@ -142,7 +142,7 @@ void GameController::loadCurrentProvidedSolution()
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index) + ": " + puzzle.name + " (example solution)");
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution)");
     app.state.disableEditing();
 }
 
@@ -367,6 +367,11 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("CircuitFlipVertical", vec2i(2, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
         buttons.push_back(GameButton("CircuitFlipHorizontal", vec2i(3, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
     }
+	else
+	{
+		buttons.push_back(GameButton("CircuitCopy", vec2i(0, 0), ButtonType::PuzzleControlF, ComponentModifiers()));
+		buttons.push_back(GameButton("CircuitPaste", vec2i(1, 0), ButtonType::PuzzleControlF, ComponentModifiers()));
+	}
 
     for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 0), ButtonType::PuzzleControlB, ComponentModifiers()));
@@ -399,6 +404,10 @@ void GameController::recordVictory()
     app.renderer.initMotionBlur(0.4f, 200);
 
     speed = GameSpeed::x1;
+    app.ui.selectedMenuComponent = nullptr;
+    app.ui.activePlacementBuffer.clear();
+    app.ui.selection.empty();
+    app.canvas.backgroundDirty = true;
 
     //if (viewMode != ControllerViewMode::ProvidedSolution)
     //BasePuzzle,ProvidedSolution,UserProgress,UserSolution,Custom

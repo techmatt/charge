@@ -74,3 +74,5 @@ namespace constants
 
 	static float dragThreshold = 3.0f;
 }
+
+const bool debugCalls = false;

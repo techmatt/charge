@@ -14,6 +14,20 @@ public:
 
     GameLocation hoverLocation(bool constructionOffset, const vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
 
+	bool canNotBuildAtPosition(const Board &b, const ComponentDefiningProperties &cdp, const vec2i &coord) const
+	{
+		//TODO: check whether the component is actually buildable in this puzzle with the corresponding properties
+		const BoardCell &cell = b.cells(coord);
+		return (cell.c != nullptr || cell.blocked) ||
+			(b.isCircuitBoard() && min(coord.x, constants::circuitBoardSize - 1 - coord.x) <= 1 && min(coord.y, constants::circuitBoardSize - 1 - coord.y) <= 1) ||
+			(b.isCircuitBoard() && (cdp.baseInfo->name == "Circuit" || cdp.baseInfo->name == "FixedCircuit"));
+	}
+
+	void addHoverComponent(const GameLocation &location);
+
+	void copy();
+	void paste();
+
 	// the list of selected components
 	ComponentSelection selection;
 
@@ -32,17 +46,6 @@ public:
     vec2f clickScreenLocation;
 
     int hoverButtonIndex;
-
-    bool canNotBuildAtPosition(const Board &b, const ComponentDefiningProperties &cdp, const vec2i &coord) const
-    {
-        //TODO: check whether the component is actually buildable in this puzzle with the corresponding properties
-        const BoardCell &cell = b.cells(coord);
-        return (cell.c != nullptr || cell.blocked) ||
-            (b.isCircuitBoard() && min(coord.x, constants::circuitBoardSize - 1 - coord.x) <= 1 && min(coord.y, constants::circuitBoardSize - 1 - coord.y) <= 1) ||
-            (b.isCircuitBoard() && (cdp.baseInfo->name == "Circuit" || cdp.baseInfo->name == "FixedCircuit"));
-    }
-
-    void addHoverComponent(const GameLocation &location);
 
 private:
 

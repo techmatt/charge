@@ -28,8 +28,9 @@ int main(int argc, char* argv[])
     chdir(path);
 #endif
 
+    string paramFilename = "../assets/parameters.txt";
     
-    ParameterFile parameterFile("../assets/parameters.txt");
+    ParameterFile parameterFile(paramFilename);
     initGameParams(parameterFile);
 
     Renderer *renderer;

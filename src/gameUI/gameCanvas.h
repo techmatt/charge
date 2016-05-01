@@ -90,6 +90,7 @@ private:
 
     void renderTooltip();
     void renderTooltip(const vec2f &canonicalStart, const string &title, const string &description, const ComponentModifiers &modifiers, const string &hotkey, const Component *component, bool error, bool transparent);
+    void renderVictoryPanel();
 
     Texture& getFontTexture(const string &text, FontType font, int wrapWidth = 0);
 

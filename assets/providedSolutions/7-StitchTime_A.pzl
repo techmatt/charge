@@ -277,7 +277,7 @@ boardPos=8 10
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=2
 component0054~4

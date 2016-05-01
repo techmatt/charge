@@ -21,6 +21,7 @@ struct UserSessionLevelInfo
         puzzleFilename = "none";
 
         bestStepCount = std::numeric_limits<int>::max();
+		bestComponentCost = std::numeric_limits<int>::max();
     }
 
     ParameterTable toTable(const string &tableName) const
@@ -30,6 +31,8 @@ struct UserSessionLevelInfo
         table.setInt("state", (int)state);
         table.setInt("bestStepCount", bestStepCount);
         table.setInt("bestComponentCost", bestComponentCost);
+        table.setInt("recentStepCount", recentStepCount);
+        table.setInt("recentComponentCost", recentComponentCost);
         return table;
     }
 
@@ -40,6 +43,8 @@ struct UserSessionLevelInfo
         result.state = (LevelState)table.getInt("state");
         result.bestStepCount = table.getInt("bestStepCount");
         result.bestComponentCost = table.getInt("bestComponentCost");
+        result.recentStepCount = table.getInt("recentStepCount");
+        result.recentComponentCost = table.getInt("recentComponentCost");
         return result;
     }
 
@@ -47,6 +52,8 @@ struct UserSessionLevelInfo
     LevelState state;
     int bestStepCount;
     int bestComponentCost;
+    int recentStepCount;
+    int recentComponentCost;
 };
 
 //
@@ -71,7 +78,7 @@ struct UserSession
         for (int i = 0; i < campaignLevels.size(); i++)
             if (campaignLevels[i].state == LevelState::Solved)
                 solved++;
-        return min(solved + params().maxSkippedLevels, (int)campaignLevels.size());
+        return min(solved + params().maxSkippedLevels, (int)campaignLevels.size() - 1);
     }
 
     const UserSessionLevelInfo* getLevelInfo(const string &levelPack, int puzzleIndex) const

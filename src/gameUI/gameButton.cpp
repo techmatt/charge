@@ -214,7 +214,9 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 
     if (name == "NextLevel")
     {
-        if (app.state.levelPackPuzzleIndex >= app.session.highestAccessiblePuzzle() && !params().godMode)
+        if (!params().godMode &&
+            (app.state.levelPackPuzzleIndex != (int)app.session.campaignLevels.size() - 1) &&
+            app.state.levelPackPuzzleIndex >= app.session.highestAccessiblePuzzle())
             app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
         else
         {
@@ -309,4 +311,13 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         {
             app.controller.speed = (GameSpeed)speed;
         }
+
+	if (name == "CircuitCopy")
+	{
+		app.ui.copy();
+	}
+	if (name == "CircuitPaste")
+	{
+		app.ui.paste();
+	}
 }

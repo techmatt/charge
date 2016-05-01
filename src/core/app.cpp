@@ -155,15 +155,18 @@ int App::run()
     initRenderer();
     checkGLError();
 
+	if(debugCalls) cout << "Doing database things..." << endl;
     database().initTextures(data.renderer);
     checkGLError();
 
+    if (debugCalls) cout << "Doing data things..." << endl;
     data.state.init();
     checkGLError();
 
 	data.undoBuffer.init();
 	data.undoBuffer.reset(data.state);
 
+    if (debugCalls) cout << "Doing UI things..." << endl;
     data.ui.init();
     data.canvas.init();
     data.controller.init();
@@ -175,6 +178,7 @@ int App::run()
     checkGLError();
     data.splash.init();
     checkGLError();
+    if (debugCalls) cout << "Running splash screen..." << endl;
 
     data.activeEventHandler = &data.splash;
     data.activeRenderHandler = &data.splash;

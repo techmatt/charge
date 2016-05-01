@@ -91,48 +91,60 @@ void Texture::initSDL()
 
 void Texture::initOpenGL(bool useMipmaps)
 {
+	if(debugCalls) cout << "Begin initOpenGL" << endl;
     checkGLError();
+	if (debugCalls) cout << "glGenTextures" << endl;
     glGenTextures(1, &_OpenGLTexture);
-    checkGLError();
+	checkGLError();
+	if (debugCalls) cout << "glBindTexture" << endl;
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
     checkGLError();
 
     const GLsizei width = (GLsizei)_bmp.width();
     const GLsizei height = (GLsizei)_bmp.height();
 
+	useMipmaps &= params().useMipmaps;
     if (useMipmaps)
     {
         int mipMapCount = (int)log2((double)std::min(width, height));
         mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
 
+		if (debugCalls) cout << "glTexStorage2D" << endl;
         glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
         checkGLError();
 
+		if (debugCalls) cout << "glTexSubImage2D" << endl;
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
         checkGLError();
 
+		if (debugCalls) cout << "glGenerateMipmap" << endl;
         glGenerateMipmap(GL_TEXTURE_2D);
         checkGLError();
 
+		if (debugCalls) cout << "glTexParameteri" << endl;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         checkGLError();
     }
     else
     {
+		if (debugCalls) cout << "glTexImage2D" << endl;
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, _bmp.data());
         checkGLError();
 
+		if (debugCalls) cout << "glTexParameteri" << endl;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         checkGLError();
     }
 
+	if (debugCalls) cout << "glTexParameteri" << endl;
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     checkGLError();
 
     checkGLError();
+	if (debugCalls) cout << "glBindTexture" << endl;
     glBindTexture(GL_TEXTURE_2D, 0);
     checkGLError();
 }

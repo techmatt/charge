@@ -43,6 +43,7 @@ TTF_Font* Database::getFont(const string &fontName)
 
 void Database::initTextures(Renderer &renderer)
 {
+    if (debugCalls) cout << "Begin texture loading..." << endl;
     for (int chargeLevel = (int)ChargeType::Red; chargeLevel <= (int)ChargeType::Blue + 1; chargeLevel++)
     {
         chargeTextures[chargeLevel] = &getTexture(renderer, "ChargeTexture" + to_string(chargeLevel - 1));
@@ -60,6 +61,8 @@ void Database::initTextures(Renderer &renderer)
 
     squareBlocked = &getTexture(renderer, "SquareBlocked");
     squareOpen = &getTexture(renderer, "SquareOpen");
+
+    if (debugCalls) cout << "Done texture loading..." << endl;
 }
 
 void Database::processAllCampaignLevels(AppData &app)
@@ -71,16 +74,21 @@ void Database::processAllCampaignLevels(AppData &app)
 		GameState state(app);
 		const string basePuzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
 		state.loadPuzzle(basePuzzleFilename, "none");
+		state.rezeroFirstEmission();
 		
 		state.levelPack = "Campaign";
         state.levelPackPuzzleIndex = puzzleIndex;
 		state.levelPackPuzzleName = puzzle.name;
 		state.puzzleFileType = "BasePuzzle";
 
+        puzzle.baseComponentCost = state.componentCost();
+
 		state.savePuzzle(basePuzzleFilename);
         puzzleIndex++;
 	}
 
+    ofstream file(params().assetDir + "levelsProcessed.txt");
+    file << "Puzzle name\tPuzzle file\tTip\tStep count par\tComponent cost par\tBase component cost" << endl;
     puzzleIndex = 0;
 	for (auto &puzzle : allPuzzles)
 	{
@@ -89,6 +97,7 @@ void Database::processAllCampaignLevels(AppData &app)
 		GameState state(app);
 		const string basePuzzleFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
 		state.loadPuzzle(basePuzzleFilename, "none");
+		state.rezeroFirstEmission();
 
 		state.levelPack = "Campaign";
 		state.levelPackPuzzleIndex = puzzleIndex;
@@ -96,6 +105,16 @@ void Database::processAllCampaignLevels(AppData &app)
 		state.puzzleFileType = "ProvidedSolution";
 
 		state.savePuzzle(basePuzzleFilename);
+
+        while (!state.victory)
+            state.step(app);
+
+        puzzle.stepCountPar = state.victoryInfo.stepCount;
+        
+        puzzle.componentCostPar = state.componentCost();
+
+        file << puzzle.name << "\t" << puzzle.filename << "\t" << puzzle.rawTip << "\t" << puzzle.stepCountPar << "\t" << puzzle.componentCostPar << "\t" << puzzle.baseComponentCost << endl;
+
         puzzleIndex++;
 	}
 }
@@ -191,7 +210,9 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
             }
         }
 
+		if(debugCalls) cout << "Creating texture for " << componentName << " (" << bmp.dimX() << "," << bmp.dimY() << ")" << endl;
         Texture *t = new Texture(renderer, bmp);
+        if (debugCalls) cout << "Done creating texture" << endl;
 
         //
         // configure alpha mode

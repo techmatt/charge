@@ -8,7 +8,7 @@ boardPos=2 2
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0001~4
@@ -32,7 +32,7 @@ boardPos=20 2
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0005~4
@@ -61,7 +61,7 @@ boardPos=2 18
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0010~5
@@ -108,7 +108,7 @@ boardPos=11 14
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0018~4
@@ -158,7 +158,7 @@ boardPos=13 10
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=1
 component0027~4

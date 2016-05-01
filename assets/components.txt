@@ -13,7 +13,7 @@ GateSwitch	1	1	B	yes	yes	# Switch	Toggles all # gates.
 Circuit	4	1	X	no	no	Chip	"Allows you to build a 5x5 grid of components on a single tile. Can be flipped and rotated, as well as copied (c) and pasted (v)."
 TrapOpen	2	1	P	yes	yes	# Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
 TrapSprung	-1	-1	!	yes	yes	# Trap (Closed)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
-TrapReset	3	1	U	yes	yes	# Crank	Resets all # traps.
+TrapReset	3	1	D	yes	yes	# Crank	Resets all # traps.
 PowerSource	6	1	O	yes	no	# Generator	Produces # charge and sends it to adjacent components.
 MegaHold	4	2	!	yes	yes	# Goal Battery	"Accumulates all incoming # charge, but also peridoically loses charge.  Once all goals are filled correctly, you win!"
 ChargeGoal	5	2	!	yes	no	# Goal	"Once all goals are filled with a charge of the same color, you win! ||A goal will hold onto charge as long as it has no other destination to move towards."
@@ -26,12 +26,12 @@ WireMinorDelay	-1	-1	!	no	no	Minor Delay	Wires can be modified to change the spe
 WireMajorDelay	-1	-1	!	no	no	Major Delay	Wires can be modified to change the speed charge travels through them.  You can use the mouse wheel to cycle through wire speeds.
 CircuitBoundary	-1	-1	!	no	no	Circuit Boundary	The boundary of a circuit can be configured to block the flow of charge.
 CloseAll	-1	-1	!	no	no	Close All	Closes all inactive circuit boundaries.
-CircuitPaste	-1	-1	!	no	no	Invalid	ZZ
+CircuitPaste	-1	-1	!	no	no	Paste Components	Pastes all copied components.  Use shift to select multiple components.  You have an unlimited supply of all available components.
 CircuitRotate90	-1	-1	!	no	no	Rotate Clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitRotateN90	-1	-1	!	no	no	Rotate Counter-clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipHorizontal	-1	-1	!	no	no	Flip Horizontal	"Flips the current selection horizontally.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipVertical	-1	-1	!	no	no	Flip Vertical	"Flips the current selection vertically.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
-CircuitCopy	-1	-1	!	no	no	Invalid	ZZ
+CircuitCopy	-1	-1	!	no	no	Copy Selection	Copies all selected components.  Use shift to select multiple components.  You have an unlimited supply of all available components.
 GateClosedGrayProxy	0	2	N	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateSwitchGrayProxy	1	2	M	no	no	Gray Button	Toggles the closest Gray gate.
 TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a Gray crank."

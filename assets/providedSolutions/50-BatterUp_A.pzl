@@ -299,7 +299,7 @@ boardPos=0 10
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0042~8
@@ -308,7 +308,7 @@ boardPos=2 6
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0043~8
@@ -317,7 +317,7 @@ boardPos=4 8
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0044~8
@@ -326,7 +326,7 @@ boardPos=4 6
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0045~8
@@ -335,7 +335,7 @@ boardPos=6 4
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0046~8
@@ -344,7 +344,7 @@ boardPos=6 2
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0047~8
@@ -353,7 +353,7 @@ boardPos=10 0
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0048~8
@@ -362,7 +362,7 @@ boardPos=8 4
 color=1
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0049~4
@@ -543,7 +543,7 @@ boardPos=14 4
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0080~8
@@ -552,7 +552,7 @@ boardPos=16 4
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0081~8
@@ -561,7 +561,7 @@ boardPos=16 2
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0082~8
@@ -570,7 +570,7 @@ boardPos=18 6
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0083~8
@@ -579,7 +579,7 @@ boardPos=20 6
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0084~8
@@ -588,7 +588,7 @@ boardPos=18 8
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0085~8
@@ -597,7 +597,7 @@ boardPos=22 10
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0086~8
@@ -606,7 +606,7 @@ boardPos=12 0
 color=2
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0087~5
@@ -627,7 +627,7 @@ boardPos=2 16
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0090~8
@@ -636,7 +636,7 @@ boardPos=0 12
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0091~8
@@ -645,7 +645,7 @@ boardPos=4 14
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0092~8
@@ -654,7 +654,7 @@ boardPos=4 16
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0093~8
@@ -663,7 +663,7 @@ boardPos=6 20
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0094~8
@@ -672,7 +672,7 @@ boardPos=6 18
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0095~8
@@ -681,7 +681,7 @@ boardPos=8 18
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0096~8
@@ -690,7 +690,7 @@ boardPos=10 22
 color=4
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0097~8
@@ -699,7 +699,7 @@ boardPos=12 22
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0098~8
@@ -708,7 +708,7 @@ boardPos=14 18
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0099~8
@@ -717,7 +717,7 @@ boardPos=16 18
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0100~8
@@ -726,7 +726,7 @@ boardPos=16 20
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0101~8
@@ -735,7 +735,7 @@ boardPos=20 16
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0102~8
@@ -744,7 +744,7 @@ boardPos=18 16
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0103~8
@@ -753,7 +753,7 @@ boardPos=18 14
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0104~8
@@ -762,7 +762,7 @@ boardPos=22 12
 color=3
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0105~4
@@ -829,7 +829,7 @@ boardPos=9 11
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0116~8
@@ -838,7 +838,7 @@ boardPos=13 11
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0117~8
@@ -847,7 +847,7 @@ boardPos=13 7
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0118~8
@@ -856,7 +856,7 @@ boardPos=15 7
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0119~8
@@ -865,7 +865,7 @@ boardPos=9 7
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0120~8
@@ -874,7 +874,7 @@ boardPos=7 7
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0121~8
@@ -883,7 +883,7 @@ boardPos=7 15
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0122~8
@@ -892,7 +892,7 @@ boardPos=9 15
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0123~8
@@ -901,7 +901,7 @@ boardPos=13 15
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 component0124~8
@@ -910,7 +910,7 @@ boardPos=15 15
 color=5
 name=PowerSource
 puzzleType=1
-secondsBeforeFirstEmission=1
+secondsBeforeFirstEmission=0
 secondsPerEmission=1
 totalCharges=16777215
 componentCost=-1

@@ -13,6 +13,7 @@ enum class ButtonType
     PuzzleControlC,
     PuzzleControlD,
     PuzzleControlE,
+	PuzzleControlF,
     ComponentAttribute,
 };
 
@@ -44,6 +45,15 @@ struct GameButton
     }
 
     void leftClick(AppData &app, Component *selectedComponent) const;
+
+	string tooltipHotkey() const
+	{
+		if (name == "CircuitCopy")
+			return "C";
+		if (name == "CircuitPaste")
+			return "V";
+		return hotkey;
+	}
 
     const ComponentInfo *component;
     string name;
@@ -89,6 +99,11 @@ private:
             const vec2f base = params().puzzleMenuECanonicalStart + vec2f(menuCoord.x * (buttonSize.x + 4.0f), menuCoord.y * (buttonSize.y + 4.0f));
             return rect2i(base, base + buttonSize);
         }
+		else if (type == ButtonType::PuzzleControlF)
+		{
+			const vec2i base = params().puzzleMenuFCanonicalStart + menuCoord * sizeA;
+			return rect2i(base, base + sizeA - 4);
+		}
         else if (type == ButtonType::ComponentAttribute)
         {
             const vec2i base = params().attributeMenuCanonicalStart + vec2f::directProduct(menuCoord, params().attributeMenuCanonicalEntrySize);
