@@ -594,8 +594,8 @@ void GameCanvas::renderTooltip()
         }
         else
         {
-            start.y = button->canonicalRect.max().y + 5.0f;
-            transparent = true;
+            //start.y = button->canonicalRect.max().y + 5.0f;
+            transparent = false;
         }
 
         renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->tooltipHotkey(), nullptr, false, transparent);

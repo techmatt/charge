@@ -450,7 +450,7 @@ void GameUI::addHoverComponent(const GameLocation &location)
     if (!location.valid())
         return;
 
-    if (location.inCircuit() && app.activeCircuit() == nullptr)
+    if (location.inCircuit() && (app.activeCircuit() == nullptr || app.activeCircuit()->modifiers.puzzleType != ComponentPuzzleType::User))
         return;
 
     vec2i buffermin = activePlacementBuffer.boundingBox().min();
