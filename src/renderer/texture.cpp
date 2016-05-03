@@ -108,7 +108,6 @@ void Texture::initOpenGL(bool useMipmaps)
     {
         int mipMapCount = (int)log2((double)std::min(width, height));
         mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
-
 		if (debugCalls) cout << "glTexStorage2D" << endl;
         glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
         checkGLError();

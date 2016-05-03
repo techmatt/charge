@@ -43,6 +43,10 @@ void RendererOpenGL::init(SDL_Window *window)
     cout << "GL vendor/renderer: " << glGetString(GL_VENDOR) << "," << glGetString(GL_RENDERER) << endl;
     cout << "GL version: " << glGetString(GL_VERSION) << endl;
     cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
+
+	int mipmapsSupported = (int)glewIsSupported("GL_ARB_texture_storage");
+	cout << "glTexStorage2D supported: " << mipmapsSupported << endl;
+	if (!mipmapsSupported) mutableParams().useMipmaps = false;
 #endif
 
 #ifdef __APPLE__
