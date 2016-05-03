@@ -150,7 +150,7 @@ int App::runRendererTest()
 
 int App::run()
 {
-	//database().processAllCampaignLevels(data);
+	database().processAllCampaignLevels(data);
 
     initRenderer();
     checkGLError();
