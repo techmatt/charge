@@ -279,6 +279,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 				if (c->info->name == "Circuit" && c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece &&
 					(name == "CircuitRotateN90" || name == "CircuitRotate90" || name == "CircuitFlipHorizontal" || name == "CircuitFlipVertical"))
 				{
+                    app.controller.recordDesignAction();
 					tempSelection.newSelectionFromComponent(c);
 
 					ComponentSet cSet;

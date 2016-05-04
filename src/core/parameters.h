@@ -45,6 +45,7 @@ struct GameParameters
         params.readParameter("godMode", godMode);
         params.readParameter("useSDLFallback", useSDLFallback);
 		params.readParameter("useMipmaps", useMipmaps);
+        params.readParameter("alwaysUpdateBackground", alwaysUpdateBackground);
 		
 
         params.readParameter("maxSkippedLevels", maxSkippedLevels);
@@ -120,6 +121,7 @@ struct GameParameters
 
     bool useSDLFallback;
 	bool useMipmaps;
+    bool alwaysUpdateBackground;
 
     int maxSkippedLevels;
 

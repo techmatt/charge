@@ -86,6 +86,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
         Component *selectedComponent = selection.singleElement();
         if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
         {
+            app.controller.recordDesignAction();
             //delete all the selected components
             for (Component *c : app.ui.selection.components)
                 app.state.removeComponent(c, false);

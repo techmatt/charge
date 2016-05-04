@@ -91,6 +91,7 @@ void GameCanvas::render()
     canonicalDims = GameUtil::getCanonicalSize();
     coordinateFrame = app.renderer.getWindowCoordinateFrame();
 
+    const bool updateBackground = params().alwaysUpdateBackground || backgroundDirty;
     if (backgroundDirty)
     {
         backgroundDirty = false;
@@ -104,7 +105,10 @@ void GameCanvas::render()
             app.controller.tooltipErrorTitle = "";
             app.controller.tooltipErrorDescription = "";
         }
+    }
 
+    if (updateBackground)
+    {
         updateBackgroundObjects();
 
         //
