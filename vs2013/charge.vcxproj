@@ -116,12 +116,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
+    <ClCompile Include="..\src\renderer\rendererD3D11.cpp" />
     <ClCompile Include="..\src\renderer\rendererOpenGL.cpp" />
     <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
     <ClCompile Include="..\src\renderer\renderTarget.cpp" />
     <ClCompile Include="..\src\renderer\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11ConstantBuffer.h" />
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11PixelShader.h" />
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11VertexShader.h" />
     <ClInclude Include="..\src\audio\audioDevice.h" />
     <ClInclude Include="..\src\core\app.h" />
     <ClInclude Include="..\src\core\constants.h" />
@@ -168,7 +172,9 @@
     <ClInclude Include="..\src\mLib\vec2.h" />
     <ClInclude Include="..\src\mLib\vec3.h" />
     <ClInclude Include="..\src\mLib\vec4.h" />
+    <ClInclude Include="..\src\renderer\D3D11ShaderManager.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
+    <ClInclude Include="..\src\renderer\rendererD3D11.h" />
     <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
     <ClInclude Include="..\src\renderer\rendererSDL.h" />
     <ClInclude Include="..\src\renderer\renderTarget.h" />

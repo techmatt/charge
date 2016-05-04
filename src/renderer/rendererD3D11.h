@@ -1,12 +1,12 @@
 
-class RendererOpenGL : public Renderer
+class RendererD3D11 : public Renderer
 {
 public:
     void init(SDL_Window *window);
 
     RendererType type() override
     {
-        return RendererType::OpenGL;
+        return RendererType::D3D11;
     }
 
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;
@@ -53,15 +53,29 @@ private:
     SDL_Window *_window;
     SDL_GLContext _context;
     
-    GLQuad _quad;
-    GLProgram _quadProgram;
-    GLProgram _motionProgram;
-    GLProgram _gaussianProgram;
-    GLProgram _splashAProgram;
-    GLProgram _splashBProgram;
+    ID3D11Device *m_device;
+    ID3D11DeviceContext *m_context;
+    ID3D11RenderTargetView *m_renderTargetView;
+    ID3D11Debug *m_debug;
 
-    RenderTarget _motionBlurRenderTargetA;
-    RenderTarget _motionBlurRenderTargetB;
+    IDXGISwapChain *m_swapChain;
+    DXGI_SWAP_CHAIN_DESC m_swapChainDesc;	//settings
+
+
+    ID3D11RasterizerState *m_rasterState;
+    D3D11_RASTERIZER_DESC m_rasterDesc;
+
+    ID3D11Texture2D *m_depthBuffer;
+    ID3D11DepthStencilState *m_depthState;
+    ID3D11DepthStencilView *m_depthStencilView;
+
+    ID3D11SamplerState *m_samplerState;
+
+    ID3D11Texture2D *m_captureBuffer;
+
+    //D3D11ShaderManager m_shaderManager;
+
+    D3D_FEATURE_LEVEL m_featureLevel;
 
     vec2f _windowSize;
     mat4f _windowToNDC;

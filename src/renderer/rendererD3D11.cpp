@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-void RendererOpenGL::init(SDL_Window *window)
+/*void RendererOpenGL::init(SDL_Window *window)
 {
     _window = window;
 
@@ -322,6 +322,16 @@ void RendererOpenGL::present()
     bindMainRenderTarget();
 }
 
+void RendererOpenGL::setRenderTarget(Texture &target)
+{
+	//SDL_SetRenderTarget(_renderer, target.SDL());
+}
+
+void RendererOpenGL::setDefaultRenderTarget()
+{
+	//SDL_SetRenderTarget(_renderer, NULL);
+}
+
 vec2i RendererOpenGL::getWindowSize()
 {
     vec2i result;
@@ -366,3 +376,4 @@ void RendererOpenGL::clear()
 
     updateWindowSize();
 }
+*/

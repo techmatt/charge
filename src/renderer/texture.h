@@ -78,6 +78,7 @@ private:
     }
     void initSDL();
     void initOpenGL(bool useMipmaps);
+    void initD3D11();
 
     Renderer* _renderer;
 

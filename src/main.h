@@ -43,6 +43,7 @@ struct ComponentSet;
 struct AppData;
 class Renderer;
 class RendererOpenGL;
+class RendererD3D11;
 class Texture;
 
 #include "game/enums.h"
@@ -58,6 +59,15 @@ class Texture;
 #include "renderer/texture.h"
 #include "renderer/renderTarget.h"
 #include "renderer/renderer.h"
+
+#ifdef _WIN32
+#include "d3d11.h"
+#include "renderer/rendererD3D11.h"
+//#include "renderer/D3D11ConstantBuffer.h"
+//#include "renderer/D3D11VertexShader.h"
+//#include "renderer/D3D11PixelShader.h"
+#endif
+
 #include "renderer/rendererOpenGL.h"
 #include "renderer/rendererSDL.h"
 

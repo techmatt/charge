@@ -19,6 +19,9 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{0e89afc4-841f-4bc6-b4e9-86efa7b47b92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3D11">
+      <UniqueIdentifier>{d3b0be15-fcd5-416f-84b3-9ef311c9424a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\board.cpp">
@@ -103,6 +106,9 @@
       <Filter>gameUI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\renderer\rendererSDL.cpp">
+      <Filter>renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\renderer\rendererD3D11.cpp">
       <Filter>renderer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -259,6 +265,21 @@
     </ClInclude>
     <ClInclude Include="..\src\renderer\rendererSDL.h">
       <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\renderer\rendererD3D11.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11ConstantBuffer.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11PixelShader.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11VertexShader.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\renderer\D3D11ShaderManager.h">
+      <Filter>D3D11</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
