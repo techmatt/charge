@@ -7,24 +7,28 @@ enum class FontType
     TooltipDescriptionB,
     TooltipKeyA,
     TooltipKeyB,
-    TooltipHotkey,
     ComponentAttribute,
     MenuTitle,
+    LevelSelectIndex,
     Count,
 };
 
 struct FontInfo
 {
     FontInfo() {}
-    FontInfo(const string &_name, float _height, RGBColor _color)
+    FontInfo(const string &_name, float _height, RGBColor _color, float _glowStrength = 0.0f, RGBColor _glowColor = RGBColor(0, 0, 0))
     {
         name = _name;
         height = _height;
         color = _color;
+        glowStrength = _glowStrength;
+        glowColor = _glowColor;
     }
     string name;
     float height;
     RGBColor color;
+    float glowStrength;
+    RGBColor glowColor;
 };
 
 struct ComponentInfo

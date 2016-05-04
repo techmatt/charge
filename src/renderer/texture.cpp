@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
+void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth, float glowStrength, RGBColor glowColor)
 {
     if (text.size() == 0)
     {
@@ -28,6 +28,11 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
         const BYTE b = p.value.b;
         p.value.b = p.value.r;
         p.value.r = b;
+    }
+
+    if (glowStrength > 0.0f)
+    {
+        _bmp = GameUtil::processGlow(_bmp, glowStrength, glowColor.toVec3f(), color.toVec3f());
     }
 
     if (renderer.type() == RendererType::SDL)

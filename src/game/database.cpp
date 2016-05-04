@@ -21,15 +21,17 @@ void Database::init()
         allPuzzles.push_back(PuzzleInfo(lines[puzzleIndex], puzzleIndex));
     }
 
-    fonts[(int)FontType::LevelName] = FontInfo("21st", 36.0f, RGBColor(0, 0, 0));
-    fonts[(int)FontType::TooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83));
-    fonts[(int)FontType::TooltipDescriptionA] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250));
-    fonts[(int)FontType::TooltipDescriptionB] = FontInfo("trebuc", 36.0f, RGBColor(255, 201, 147));
-    fonts[(int)FontType::TooltipKeyA] = FontInfo("trebuc", 36.0f, RGBColor(200, 200, 200));
-    fonts[(int)FontType::TooltipKeyB] = FontInfo("trebuc", 36.0f, RGBColor(183, 255, 183));
-    fonts[(int)FontType::TooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50));
-    fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0));
-    fonts[(int)FontType::MenuTitle] = FontInfo("trebuc", 36.0f, RGBColor(64, 64, 64));
+    //fonts[(int)FontType::LevelName] = FontInfo("21st", 36.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::LevelName] = FontInfo("trebuc", 36.0f, RGBColor(255, 255, 255), 1.5f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipName] = FontInfo("trebuc", 36.0f, RGBColor(247, 222, 83), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipDescriptionA] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipDescriptionB] = FontInfo("trebuc", 36.0f, RGBColor(255, 201, 147), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipKeyA] = FontInfo("trebuc", 36.0f, RGBColor(200, 200, 200), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::TooltipKeyB] = FontInfo("trebuc", 36.0f, RGBColor(183, 255, 183), 2.0f, RGBColor(0, 0, 0));
+    //fonts[(int)FontType::TooltipHotkey] = FontInfo("arial", 36.0f, RGBColor(50, 200, 50), 1.5f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::MenuTitle] = FontInfo("trebuc", 36.0f, RGBColor(255, 255, 255), 2.0f, RGBColor(0, 0, 0));
+    fonts[(int)FontType::LevelSelectIndex] = FontInfo("trebuc", 36.0f, RGBColor(255, 255, 255), 2.0f, RGBColor(0, 0, 0));
 }
 
 TTF_Font* Database::getFont(const string &fontName)

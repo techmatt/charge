@@ -35,12 +35,12 @@ levelSelectMenuCanonicalEntrySize = 25
 attributeMenuCanonicalStart = 210, 415
 attributeMenuCanonicalEntrySize = 100, 15
 
-tooltipDefaultStart = 403, 225
+tooltipDefaultStart = 403, 240
 tooltipSize = 254, 120
 
 godMode = false
 useSDLFallback = false
-useMipmaps = false
+useMipmaps = true
 alwaysUpdateBackground = true
 
 maxSkippedLevels = 50

@@ -27,7 +27,7 @@ Texture& GameCanvas::getFontTexture(const string &text, FontType font, int wrapW
     if (cache.count(text) == 0)
     {
         auto &info = database().fonts[(int)font];
-        Texture *t = new Texture(app.renderer, database().getFont(info.name), text, info.color, wrapWidth);
+        Texture *t = new Texture(app.renderer, database().getFont(info.name), text, info.color, wrapWidth, info.glowStrength, info.glowColor);
         cache[text] = t;
     }
     return *cache[text];
@@ -574,7 +574,11 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 {
     if (button.type == ButtonType::ComponentAttribute)
     {
-        renderText(getFontTexture(button.text, FontType::LevelName), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+        renderText(getFontTexture(button.text, FontType::LevelSelectIndex), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+    }
+    if (button.type == ButtonType::LevelSelect)
+    {
+        renderText(getFontTexture(to_string(button.levelIndex + 1), FontType::LevelSelectIndex), button.canonicalRect.min() + vec2f(4.0f, 3.0f), 12.0f);
     }
 }
 
@@ -588,7 +592,7 @@ void GameCanvas::renderTooltip()
 
     if (app.controller.levelSelectMenu)
     {
-        return;
+        //return;
     }
 
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
@@ -723,7 +727,7 @@ void GameCanvas::renderVictoryPanel()
 
     glDisable(GL_BLEND);
 
-    const vec2i victoryPanelStart(403, 350);
+    const vec2i victoryPanelStart(403, 370);
     const vec2i victoryPanelSize(254, 82);
 
     const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 31.0f);

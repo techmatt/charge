@@ -1,6 +1,59 @@
 
 #include "main.h"
 
+Bitmap GameUtil::processGlow(const Bitmap &bmpStart, float glowStrength, const vec3f &glowColor, const vec3f &textColor)
+{
+    const int border = 4;
+    const float glowStrength2 = glowStrength * glowStrength;
+    Bitmap bmpExpanded(bmpStart.dimX() + border * 2, bmpStart.dimY() + border * 2, bmpStart(0, 0));
+    for (auto &p : bmpStart)
+        bmpExpanded(p.x + border, p.y + border) = p.value;
+
+    Grid2f bmpAdd(bmpExpanded.dimX(), bmpExpanded.dimY(), 0.0f);
+    for (auto &p : bmpExpanded)
+    {
+        const int glowRadius = 4;
+
+        const float glowScale = 0.5f * ((float)p.value.a / 255.0f);
+        if (glowScale > 0.0f)
+        {
+            for (int xOffset = -glowRadius; xOffset <= glowRadius; xOffset++)
+                for (int yOffset = -glowRadius; yOffset <= glowRadius; yOffset++)
+                {
+                    const int x = xOffset + (int)p.x;
+                    const int y = yOffset + (int)p.y;
+                    if (bmpAdd.coordValid(x, y))
+                    {
+                        const float radiusSq = float(xOffset * xOffset + yOffset * yOffset);
+                        const float value = expf(-radiusSq / glowStrength2);
+                        bmpAdd(x, y) += value * glowScale;
+                    }
+                }
+        }
+    }
+
+    Bitmap bmpOut = bmpExpanded;
+    for (auto &p : bmpOut)
+    {
+        if (p.value.a == 255)
+            continue;
+
+        const float v = math::clamp(bmpAdd(p.x, p.y), 0.0f, 1.0f);
+        if (v == 0.0f)
+            continue;
+
+        const float baseAlpha = p.value.a / 255.0f;
+        const vec3f baseColor = textColor * baseAlpha;
+
+        p.value = RGBColor(vec4f(baseColor + (1.0f - baseAlpha) * glowColor, v));
+    }
+
+    //LodePNG::save(bmpOut, "C:/code/debug.png");
+    //cin.get();
+
+    return bmpOut;
+}
+
 rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, const GameLocation &location, const GameLocation &containingLocation, int size)
 {
     // this is really weird.  If containing location is not in a circuit, it's the same as locationToWindowRect
