@@ -1,6 +1,9 @@
 
 assetDir = ../assets/
 
+graphics=OpenGL
+#graphics=D3D11
+
 canonicalDims = 672, 464
 
 boardDims = 24, 24

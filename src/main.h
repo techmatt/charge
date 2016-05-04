@@ -28,6 +28,8 @@
 
 using namespace std;
 
+void chargeFatalError(const string &text);
+
 //
 // Forward declarations
 //

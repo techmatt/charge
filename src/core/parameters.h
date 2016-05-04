@@ -8,8 +8,9 @@ struct GameParameters
         assetDir = util::getWorkingDirectory() + assetDirBase;
         rootDir = assetDir + "../";
 
-        params.readParameter("canonicalDims", canonicalDims);
+        params.readParameter("graphics", graphics);
 
+        params.readParameter("canonicalDims", canonicalDims);
         params.readParameter("boardDims", boardDims);
         
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
@@ -70,6 +71,8 @@ struct GameParameters
 		puzzleMenuFInWindow = CoordinateFrame(puzzleMenuFCanonicalStart);
 		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
+
+    string graphics;
 
     string rootDir;
     string assetDir;

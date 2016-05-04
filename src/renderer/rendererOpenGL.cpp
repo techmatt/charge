@@ -94,14 +94,6 @@ void RendererOpenGL::init(SDL_Window *window)
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
     if (debugCalls) cout << "Doing OpenGL things C..." << endl;
-
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    //SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
-    //SDL_GL_SetSwapInterval(1);
-    //SDL_GL_MakeCurrent(window, _context);
-	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
 void RendererOpenGL::updateWindowSize()
@@ -153,12 +145,6 @@ void RendererOpenGL::bindMainRenderTarget()
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
-    SDL_Rect dst;
-    dst.x = (int)(destinationRect.min().x);
-    dst.y = (int)(destinationRect.min().y);
-    dst.w = (int)(destinationRect.max().x) - dst.x;
-    dst.h = (int)(destinationRect.max().y) - dst.y;
-
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
@@ -171,12 +157,6 @@ void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float d
 
 void RendererOpenGL::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
 {
-    SDL_Rect dst;
-    dst.x = (int)(destinationRect.min().x);
-    dst.y = (int)(destinationRect.min().y);
-    dst.w = (int)(destinationRect.max().x) - dst.x;
-    dst.h = (int)(destinationRect.max().y) - dst.y;
-
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
