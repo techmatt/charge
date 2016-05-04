@@ -37,9 +37,9 @@ attributeMenuCanonicalEntrySize = 100, 15
 tooltipDefaultStart = 403, 225
 tooltipSize = 254, 120
 
-godMode = true
+godMode = false
 useSDLFallback = false
-useMipmaps = true
+useMipmaps = false
 alwaysUpdateBackground = true
 
 maxSkippedLevels = 300

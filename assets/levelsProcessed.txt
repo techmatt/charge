@@ -31,7 +31,7 @@ Cram Time	25-CramTime	At a junction, charge will pick a different direction each
 Open Sesame	30-OpenSesame	Cranks let you open Traps of the corresponding color.	1483	190	160
 A Silver Lining	31-SilverLining	A Gray Crank will only open the closest Gray Trap.  A Gray Switch will only open the closest Gray Gate.	1502	157	119
 We Require More	32-WeRequireMore	Sometimes it is a bad idea to open a Gate.	1494	102	42
-Cornered	33-Cornered	Timing can be everything.	519	76	16
+Cornered	33-Cornered	Timing can be everything.|To advance more slowly, pause the game then use the space bar.	519	76	16
 Doom House	34-DoomHouse	Some puzzles have to be solved one step at a time.	527	163	120
 Different Strokes	35-DifferentStrokes	Colored Amplifiers will only produce charge of the right color.	2072	81	54
 Labyrinth	36-Labyrinth	Some tasks are easier with the right components.	652	227	156
@@ -59,7 +59,7 @@ Batter Up	50-BatterUp	Some Goal Batteries discharge very quickly.	782	250	66
 Web We Weave	56-WebWeWeave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	1134	632	218
 Size Isn't Everything	61-SizeEverything	Shave and a haircut, one chip.	925	260	226
 Mob Rule	57-MobRule	A held charge will exit back to the component it came from if that path becomes unblocked.	1026	202	120
-Logically Connected	57b-LogicalConnectivity	Charge is a Turing-complete machine.	3927	1828	1650
+Logically Connected	57b-LogicalConnectivity	Charge is a Turing-complete machine.	5757	2226	2048
 The Butterfly Effect	58-TheButterflyEffect	The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.	2882	853	207
 The Unfiltered Filter	58b-TheUnfilteredFilter	Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations.	2398	601	460
 Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	1979	1710	978
