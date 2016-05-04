@@ -44,6 +44,6 @@ tooltipSize = 254, 120
 godMode = false
 useSDLFallback = false
 useMipmaps = true
-alwaysUpdateBackground = true
+alwaysRender = true
 
 maxSkippedLevels = 50
