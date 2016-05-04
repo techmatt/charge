@@ -59,7 +59,9 @@ inline string buttonNameFromSpeed(GameSpeed speed)
 class GameController
 {
 public:
-    GameController(AppData &_app) : app(_app) {}
+    GameController(AppData &_app) : app(_app) {
+        levelSelectMenu = false;
+    }
     void init();
     void step();
 
@@ -72,6 +74,7 @@ public:
 
     void loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType);
     void loadCurrentProvidedSolution();
+    bool userSolutionExists();
     void loadUserSolution();
 
     void recordDesignAction();
@@ -97,6 +100,7 @@ public:
     }
 
     vector<GameButton> buttons;
+    bool levelSelectMenu;
     bool affinityMenu;
     bool gateMenu;
     bool trapMenu;

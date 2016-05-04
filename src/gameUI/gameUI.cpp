@@ -15,6 +15,13 @@ void GameUI::init()
     spaceUp = true;
 }
 
+void GameUI::clearSelection()
+{
+    selectedMenuComponent = nullptr;
+    activePlacementBuffer.clear();
+    selection.empty();
+}
+
 void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 {
     //
@@ -24,13 +31,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 
     if (key == SDLK_ESCAPE)
     {
-        selectedMenuComponent = nullptr;
-
-        activePlacementBuffer.clear();
-
-        //selectedGameLocation.boardPos = constants::invalidCoord;
-        selection.empty();
-
+        clearSelection();
         if (app.controller.puzzleMode != PuzzleMode::Design)
         {
             app.controller.puzzleMode = PuzzleMode::Design;
@@ -224,11 +225,14 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
             GameLocation hover = hoverLocation(false);
             clickLocation = hover;
             clickScreenLocation = mouseHoverCoord;
+            if (clickLocation.valid())
+                app.controller.levelSelectMenu = false;
 
             // stuff that was gets processed when the mouse is released, in case of a click and drag event
         }
         else
         {
+            app.controller.levelSelectMenu = false;
             addHoverComponent(hoverLocation(true));
         }
     }
@@ -386,6 +390,17 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     else if (buttonState & SDL_BUTTON_LMASK)
     {
         addHoverComponent(hoverLocation(true));
+    }
+
+    const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
+    if (button != nullptr && button->type == ButtonType::LevelSelect)
+    {
+        //auto levelInfo = app.session.getLevelInfo("Campaign", button->levelIndex);
+        if (button->levelIndex > app.session.highestAccessiblePuzzle())
+            return;
+        app.controller.loadLevelPackPuzzle("Campaign", button->levelIndex, "BasePuzzle");
+        if (app.controller.userSolutionExists())
+            app.controller.loadUserSolution();
     }
 }
 

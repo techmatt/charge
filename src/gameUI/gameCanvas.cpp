@@ -369,30 +369,39 @@ void GameCanvas::updateBackgroundObjects()
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
-    renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
-
-    const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
-    const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
-    renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
-
-    if (app.controller.transformMenu)
+    if (app.controller.levelSelectMenu)
     {
-        const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
-        const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
-        renderMenuBackground("Transform options", transformMenuStart, transformRect);
+        const vec2f start = params().componentMenuCanonicalStart;
+        const vec2f size(260.0f, 250.0f);
+        renderMenuBackground("Puzzle select", start, rect2f(start, start + size));
     }
-
-    if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
-    if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
-    if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
-    if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
-    if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
-    if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
-
-    if (app.activeCircuit() != nullptr)
+    else
     {
-        const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
-        addBackgroundObject(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+        renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
+
+        const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
+        const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
+        renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+
+        if (app.controller.transformMenu)
+        {
+            const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
+            const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
+            renderMenuBackground("Transform options", transformMenuStart, transformRect);
+        }
+
+        if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
+        if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
+
+        if (app.activeCircuit() != nullptr)
+        {
+            const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
+            addBackgroundObject(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+        }
     }
 
     renderBuildingGrid();
@@ -577,6 +586,11 @@ void GameCanvas::renderTooltip()
         return;
     }
 
+    if (app.controller.levelSelectMenu)
+    {
+        return;
+    }
+
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
     if (button != nullptr && button->tooltip != nullptr)
     {
@@ -755,6 +769,25 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
 
         const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
         addBackgroundObject(borderTex, screenRect, depthLayers::background);
+
+
+        if (button.type == ButtonType::LevelSelect)
+        {
+            string suffix;
+            auto info = app.session.getLevelInfo("Campaign", button.levelIndex);
+            if (button.levelIndex > app.session.highestAccessiblePuzzle())
+                suffix = "Inaccessible";
+            else if (info->state == LevelState::Solved)
+                suffix = "Solved";
+            else if (info->state == LevelState::Unsolved)
+                suffix = "Accessible";
+            renderLocalizedComponent("ChoosePuzzle" + suffix, nullptr, screenRect, 0.0f, IconState(button.modifiers, false));
+            return;
+        }
+
+        //if (levelIndex > app.session.highestAccessiblePuzzle())
+        //if (info->state == LevelState::Solved)
+
 
         renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
 

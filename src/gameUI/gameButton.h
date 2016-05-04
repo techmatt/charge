@@ -14,6 +14,7 @@ enum class ButtonType
     PuzzleControlD,
     PuzzleControlE,
 	PuzzleControlF,
+    LevelSelect,
     ComponentAttribute,
 };
 
@@ -43,6 +44,16 @@ struct GameButton
 
         initTooltip();
     }
+    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const int _levelIndex)
+    {
+        component = nullptr;
+        name = _name;
+        type = _type;
+        canonicalRect = getCanonicalRect(menuCoord, type);
+        levelIndex = _levelIndex;
+
+        initTooltip();
+    }
 
     void leftClick(AppData &app, Component *selectedComponent) const;
 
@@ -65,6 +76,7 @@ struct GameButton
     const ComponentInfo *tooltip;
     string hotkey;
     SDL_Keycode hotkeyCode;
+    int levelIndex;
 
 private:
     void initTooltip();
@@ -73,6 +85,7 @@ private:
     {
         const int sizeA = params().puzzleMenuCanonicalEntrySize;
         const int sizeB = params().componentMenuCanonicalEntrySize;
+        const int sizeC = params().levelSelectMenuCanonicalEntrySize;
         if (type == ButtonType::PuzzleControlA)
         {
             const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
@@ -113,6 +126,11 @@ private:
         {
             const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + vec2i::directProduct(menuCoord, vec2i(sizeB + 1, sizeB));
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
+        }
+        else if (type == ButtonType::LevelSelect)
+        {
+            const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + menuCoord * sizeC;
+            return rect2i(base, base + (sizeC - 4) * vec2i(1, 1));
         }
         else if (type == ButtonType::ChargePreference)
         {

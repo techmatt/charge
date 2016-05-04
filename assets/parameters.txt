@@ -30,16 +30,17 @@ puzzleMenuECanonicalStart = 308, 418
 puzzleMenuFCanonicalStart = 228, 428
 
 puzzleMenuCanonicalEntrySize = 24
+levelSelectMenuCanonicalEntrySize = 25
 
-attributeMenuCanonicalStart = 240, 415
+attributeMenuCanonicalStart = 210, 415
 attributeMenuCanonicalEntrySize = 100, 15
 
 tooltipDefaultStart = 403, 225
 tooltipSize = 254, 120
 
-godMode = true
+godMode = false
 useSDLFallback = false
 useMipmaps = true
 alwaysUpdateBackground = true
 
-maxSkippedLevels = 300
+maxSkippedLevels = 50

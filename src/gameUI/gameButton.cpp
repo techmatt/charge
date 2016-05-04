@@ -177,6 +177,16 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     {
         app.audio.playSoundEffects = !app.audio.playSoundEffects;
     }
+    if (name == "LevelSelect")
+    {
+        app.controller.levelSelectMenu = true;
+        app.ui.clearSelection();
+        if (app.controller.puzzleMode != PuzzleMode::Design)
+        {
+            app.controller.puzzleMode = PuzzleMode::Design;
+            app.state.resetPuzzle();
+        }
+    }
     if (name == "Save")
     {
         string filename = FileDialog::showSave();
@@ -321,4 +331,16 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 	{
 		app.ui.paste();
 	}
+
+    if (name == "ChoosePuzzle")
+    {
+        if (levelIndex > app.session.highestAccessiblePuzzle())
+        {
+            app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
+        }
+        else
+        {
+            app.controller.levelSelectMenu = false;
+        }
+    }
 }

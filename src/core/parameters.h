@@ -35,6 +35,7 @@ struct GameParameters
         params.readParameter("puzzleMenuECanonicalStart", puzzleMenuECanonicalStart);
 		params.readParameter("puzzleMenuFCanonicalStart", puzzleMenuFCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
+        params.readParameter("levelSelectMenuCanonicalEntrySize", levelSelectMenuCanonicalEntrySize);
 
         params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
         params.readParameter("attributeMenuCanonicalEntrySize", attributeMenuCanonicalEntrySize);
@@ -92,6 +93,7 @@ struct GameParameters
     vec2f doorMenuCanonicalStart;
     vec2f typeMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
+    int levelSelectMenuCanonicalEntrySize;
 
     vec2f puzzleMenuACanonicalStart;
     vec2f puzzleMenuBCanonicalStart;

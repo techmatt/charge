@@ -25,6 +25,7 @@ public:
 
 	void addHoverComponent(const GameLocation &location);
 
+    void clearSelection();
 	void copy();
 	void paste();
 
