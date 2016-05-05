@@ -213,15 +213,7 @@ void RendererD3D11::bindMainRenderTarget()
 
 void RendererD3D11::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
-    /*SDL_Rect dst;
-    dst.x = (int)(destinationRect.min().x);
-    dst.y = (int)(destinationRect.min().y);
-    dst.w = (int)(destinationRect.max().x) - dst.x;
-    dst.h = (int)(destinationRect.max().y) - dst.y;
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-
+    /*
     tex.bindOpenGL();
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
     _quadProgram.setColor(color);

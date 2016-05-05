@@ -24,19 +24,19 @@ public:
 		const string& entryPointPS = "pixelShaderMain",
 		const string& shaderModelPS = "ps_4_0");
 
-	D3D11ShaderPair& getShaders(const std::string &shaderName)
+	D3D11ShaderPair& getShaders(const string &shaderName)
 	{
 		MLIB_ASSERT_STR(_shaders.count(shaderName) > 0, "shader not found in shader manager");
 		return _shaders.find(shaderName)->second;
 	}
 
-    const D3D11ShaderPair& getShaders(const std::string &shaderName) const
+    const D3D11ShaderPair& getShaders(const string &shaderName) const
     {
         MLIB_ASSERT_STR(_shaders.count(shaderName) > 0, "shader not found in shader manager");
         return _shaders.find(shaderName)->second;
     }
 
-	void bindShaders(const std::string &shaderName) const
+	void bindShaders(const string &shaderName) const
 	{
 		auto &shaders = getShaders(shaderName);
 		shaders.ps.bind();

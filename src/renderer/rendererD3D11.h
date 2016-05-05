@@ -9,6 +9,15 @@ public:
         return RendererType::D3D11;
     }
 
+	ID3D11Device& device()
+	{
+		return *_device;
+	}
+	ID3D11DeviceContext& context()
+	{
+		return *_context;
+	}
+
     void render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color) override;
     void render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color) override;
 

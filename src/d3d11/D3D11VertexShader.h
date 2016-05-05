@@ -17,10 +17,10 @@ public:
 	}
 	void load(
 		RendererD3D11 &g,
-		const std::string &filename, 
-		const std::string& entryPoint = "vertexShaderMain", 
-		const std::string& shaderModel = "vs_4_0",
-		const std::vector<std::pair<std::string, std::string>>& shaderMacros = std::vector<std::pair<std::string, std::string>>());
+		const string &filename, 
+		const string& entryPoint = "vertexShaderMain", 
+		const string& shaderModel = "vs_4_0",
+		const vector<pair<string, string>>& shaderMacros = vector<pair<string, string>>());
 
 	void release();
 	void reset();
@@ -31,7 +31,7 @@ private:
 	RendererD3D11 *_graphics;
 	ID3D11VertexShader *_shader;
 	ID3D10Blob *_blob;
-	std::string _filename;
+	string _filename;
 
 	ID3D11InputLayout *_standardLayout;
 };
