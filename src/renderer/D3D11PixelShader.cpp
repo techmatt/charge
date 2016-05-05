@@ -6,35 +6,35 @@ void ml::D3D11PixelShader::load(
 	const std::string& shaderModel,
 	const std::vector<std::pair<std::string, std::string>>& shaderMacros)
 {
-    m_graphics = &g.castD3D11();
+    _graphics = &g.castD3D11();
 
 	release();
-	SAFE_RELEASE(m_blob);
+	SAFE_RELEASE(_blob);
 
-	m_filename = filename;
+	_filename = filename;
 	g.castD3D11().registerAsset(this);
 
-	m_blob = D3D11Utility::CompileShader(m_filename, entryPoint, shaderModel, shaderMacros);
-	MLIB_ASSERT_STR(m_blob != nullptr, "CompileShader failed");
+	_blob = D3D11Utility::CompileShader(_filename, entryPoint, shaderModel, shaderMacros);
+	MLIB_ASSERT_STR(_blob != nullptr, "CompileShader failed");
 
 	reset();
 }
 
 void ml::D3D11PixelShader::release()
 {
-	SAFE_RELEASE(m_shader);
+	SAFE_RELEASE(_shader);
 }
 
 void ml::D3D11PixelShader::reset()
 {
 	release();
 
-	auto &device = m_graphics->getDevice();
+	auto &device = _graphics->getDevice();
 
-	D3D_VALIDATE(device.CreatePixelShader(m_blob->GetBufferPointer(), m_blob->GetBufferSize(), nullptr, &m_shader));
+	D3D_VALIDATE(device.CreatePixelShader(_blob->GetBufferPointer(), _blob->GetBufferSize(), nullptr, &_shader));
 }
 
 void ml::D3D11PixelShader::bind() const
 {
-	m_graphics->getContext().PSSetShader(m_shader, nullptr, 0);
+	_graphics->getContext().PSSetShader(_shader, nullptr, 0);
 }

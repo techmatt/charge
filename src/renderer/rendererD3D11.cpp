@@ -10,6 +10,98 @@ void RendererD3D11::init(SDL_Window *window)
 
     const string shaderDir = params().assetDir + "shaders/";
 
+    SDL_SysWMinfo windowInfo;
+    SDL_GetWindowWMInfo(window, &windowInfo);
+
+    SDL_GetWindowSize(_window, &_width, &_height);
+
+    _swapChainDesc.OutputWindow = windowInfo.info.win.window;
+    _swapChainDesc.BufferDesc.Width = _width;
+    _swapChainDesc.BufferDesc.Height = _height;
+
+    UINT createDeviceFlags = 0;
+    //#ifdef _DEBUG
+    //	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
+    //#endif
+
+    D3D_FEATURE_LEVEL featureLevels[] =
+    {
+        D3D_FEATURE_LEVEL_11_0,
+        D3D_FEATURE_LEVEL_10_1,
+        D3D_FEATURE_LEVEL_10_0,
+    };
+    UINT numFeatureLevels = ARRAYSIZE(featureLevels);
+
+    D3D_VALIDATE(D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, createDeviceFlags, featureLevels, numFeatureLevels,
+        D3D11_SDK_VERSION, &_swapChainDesc, &_swapChain, &_device, &_featureLevel, &_context));
+
+    createViews();
+
+    //
+    // Setup the rasterizer state
+    //
+    _rasterDesc.AntialiasedLineEnable = false;
+    _rasterDesc.CullMode = D3D11_CULL_NONE;
+    _rasterDesc.DepthBias = 0;
+    _rasterDesc.DepthBiasClamp = 0.0f;
+    _rasterDesc.DepthClipEnable = true;
+    _rasterDesc.FillMode = D3D11_FILL_SOLID;
+    _rasterDesc.FrontCounterClockwise = false;
+    _rasterDesc.MultisampleEnable = false;
+    _rasterDesc.ScissorEnable = false;
+    _rasterDesc.SlopeScaledDepthBias = 0.0f;
+
+    D3D_VALIDATE(_device->CreateRasterizerState(&_rasterDesc, &_rasterState));
+    _context->RSSetState(_rasterState);
+
+
+    //
+    // Setup the depth state
+    //
+    D3D11_DEPTH_STENCIL_DESC depthStateDesc;
+    depthStateDesc.DepthEnable = true;
+    depthStateDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    depthStateDesc.DepthFunc = D3D11_COMPARISON_LESS;
+    depthStateDesc.StencilEnable = false;
+    D3D_VALIDATE(_device->CreateDepthStencilState(&depthStateDesc, &_depthState));
+    _context->OMSetDepthStencilState(_depthState, 1);
+
+
+    //
+    // Setup the sampler state
+    //
+    D3D11_SAMPLER_DESC samplerStateDesc;
+    samplerStateDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+    samplerStateDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerStateDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerStateDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerStateDesc.MipLODBias = 0.0f;
+    samplerStateDesc.MaxAnisotropy = 1;
+    samplerStateDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+    samplerStateDesc.MinLOD = -FLT_MAX;
+    samplerStateDesc.MaxLOD = FLT_MAX;
+    D3D_VALIDATE(_device->CreateSamplerState(&samplerStateDesc, &_samplerState));
+    _context->PSSetSamplers(0, 1, &_samplerState);
+
+    ID3D11BlendState* d3dBlendState;
+    D3D11_BLEND_DESC omDesc;
+    ZeroMemory(&omDesc, sizeof(D3D11_BLEND_DESC));
+    omDesc.RenderTarget[0].BlendEnable = true;
+    omDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+    omDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+    omDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    omDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ZERO;
+    omDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+    omDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    omDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+    D3D_VALIDATE(_device->CreateBlendState(&omDesc, &d3dBlendState));
+    _context->OMSetBlendState(d3dBlendState, 0, 0xffffffff);
+
+#ifdef _DEBUG
+    _device->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(&_debug));
+#endif
+
+
     //_gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
     //_splashAProgram.load(shaderDir + "splashA.vert", shaderDir + "splashA.frag");
     //_splashBProgram.load(shaderDir + "splashB.vert", shaderDir + "splashB.frag");
@@ -17,6 +109,60 @@ void RendererD3D11::init(SDL_Window *window)
     //_quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
+}
+
+void RendererD3D11::createViews() {
+
+    //
+    // Create a render target view
+    //
+    ID3D11Texture2D* backBuffer = nullptr;
+    D3D_VALIDATE(_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuffer));
+
+    D3D_VALIDATE(_device->CreateRenderTargetView(backBuffer, nullptr, &_renderTargetView));
+    backBuffer->Release();
+
+    //
+    // Create the depth buffer
+    //
+    D3D11_TEXTURE2D_DESC depthDesc;
+    depthDesc.Width = _width;
+    depthDesc.Height = _height;
+    depthDesc.MipLevels = 1;
+    depthDesc.ArraySize = 1;
+    depthDesc.Format = DXGI_FORMAT_D32_FLOAT;
+    depthDesc.SampleDesc.Count = 1;
+    depthDesc.SampleDesc.Quality = 0;
+    depthDesc.Usage = D3D11_USAGE_DEFAULT;
+    depthDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+    depthDesc.CPUAccessFlags = 0;
+    depthDesc.MiscFlags = 0;
+    D3D_VALIDATE(_device->CreateTexture2D(&depthDesc, nullptr, &_depthBuffer));
+
+    //
+    // Setup the depth stencil view
+    //
+    D3D11_DEPTH_STENCIL_VIEW_DESC depthViewDesc;
+    depthViewDesc.Flags = 0;
+    depthViewDesc.Format = DXGI_FORMAT_D32_FLOAT;
+    depthViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+    depthViewDesc.Texture2D.MipSlice = 0;
+
+    // Create the depth stencil stencil view
+    D3D_VALIDATE(_device->CreateDepthStencilView(_depthBuffer, &depthViewDesc, &_depthStencilView));
+    _context->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
+
+    //
+    // Setup the viewport
+    //
+    D3D11_VIEWPORT viewport;
+    viewport.Width = (FLOAT)_width;
+    viewport.Height = (FLOAT)_height;
+    viewport.MinDepth = 0.0f;
+    viewport.MaxDepth = 1.0f;
+    viewport.TopLeftX = 0;
+    viewport.TopLeftY = 0;
+    _context->RSSetViewports(1, &viewport);
 }
 
 void RendererD3D11::updateWindowSize()

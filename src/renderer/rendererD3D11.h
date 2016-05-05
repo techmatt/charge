@@ -22,6 +22,8 @@ public:
 
     void renderMotionBlur(const vec4f &color);
 
+    void createViews();
+
     void clear() override;
     void present() override;
 
@@ -51,31 +53,32 @@ private:
     mat4f makeWindowTransform(const rect2f &rect, float depth, float rotation);
 
     SDL_Window *_window;
-    SDL_GLContext _context;
-    
-    ID3D11Device *m_device;
-    ID3D11DeviceContext *m_context;
-    ID3D11RenderTargetView *m_renderTargetView;
-    ID3D11Debug *m_debug;
 
-    IDXGISwapChain *m_swapChain;
-    DXGI_SWAP_CHAIN_DESC m_swapChainDesc;	//settings
+    ID3D11Device *_device;
+    ID3D11DeviceContext *_context;
+    ID3D11RenderTargetView *_renderTargetView;
+    ID3D11Debug *_debug;
+
+    IDXGISwapChain *_swapChain;
+    DXGI_SWAP_CHAIN_DESC _swapChainDesc;	//settings
 
 
-    ID3D11RasterizerState *m_rasterState;
-    D3D11_RASTERIZER_DESC m_rasterDesc;
+    ID3D11RasterizerState *_rasterState;
+    D3D11_RASTERIZER_DESC _rasterDesc;
 
-    ID3D11Texture2D *m_depthBuffer;
-    ID3D11DepthStencilState *m_depthState;
-    ID3D11DepthStencilView *m_depthStencilView;
+    ID3D11Texture2D *_depthBuffer;
+    ID3D11DepthStencilState *_depthState;
+    ID3D11DepthStencilView *_depthStencilView;
 
-    ID3D11SamplerState *m_samplerState;
+    ID3D11SamplerState *_samplerState;
 
-    ID3D11Texture2D *m_captureBuffer;
+    ID3D11Texture2D *_captureBuffer;
 
-    //D3D11ShaderManager m_shaderManager;
+    //D3D11ShaderManager _shaderManager;
 
-    D3D_FEATURE_LEVEL m_featureLevel;
+    D3D_FEATURE_LEVEL _featureLevel;
+
+    int _width, _height;
 
     vec2f _windowSize;
     mat4f _windowToNDC;

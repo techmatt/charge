@@ -460,11 +460,11 @@ static unsigned readBitsFromStream(size_t* bitpointer, const unsigned char* bits
 #define FIRST_LENGTH_CODE_INDEX 257
 #define LAST_LENGTH_CODE_INDEX 285
 /*256 literals, the end code, some length codes, and 2 unused codes*/
-#define NUM_DEFLATE_CODE_SYMBOLS 288
+#define NU_DEFLATE_CODE_SYMBOLS 288
 /*the distance codes have their own symbols, 30 used, 2 unused*/
-#define NUM_DISTANCE_SYMBOLS 32
+#define NU_DISTANCE_SYMBOLS 32
 /*the code length codes. 0-15: code lengths, 16: copy previous 3-6 times, 17: 3-10 zeros, 18: 11-138 zeros*/
-#define NUM_CODE_LENGTH_CODES 19
+#define NU_CODE_LENGTH_CODES 19
 
 /*the base lengths represented by codes 257-285*/
 static const unsigned LENGTHBASE[29]
@@ -488,7 +488,7 @@ static const unsigned DISTANCEEXTRA[30]
 
 /*the order in which "code length alphabet code lengths" are stored, out of this
 the huffman tree of the dynamic huffman tree lengths is generated*/
-static const unsigned CLCL_ORDER[NUM_CODE_LENGTH_CODES]
+static const unsigned CLCL_ORDER[NU_CODE_LENGTH_CODES]
   = {16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15};
 
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -893,7 +893,7 @@ static unsigned HuffmanTree_getLength(const HuffmanTree* tree, unsigned index)
 static unsigned generateFixedLitLenTree(HuffmanTree* tree)
 {
   unsigned i, error = 0;
-  unsigned* bitlen = (unsigned*)lodepng_malloc(NUM_DEFLATE_CODE_SYMBOLS * sizeof(unsigned));
+  unsigned* bitlen = (unsigned*)lodepng_malloc(NU_DEFLATE_CODE_SYMBOLS * sizeof(unsigned));
   if(!bitlen) return 83; /*alloc fail*/
 
   /*288 possible codes: 0-255=literals, 256=endcode, 257-285=lengthcodes, 286-287=unused*/
@@ -902,7 +902,7 @@ static unsigned generateFixedLitLenTree(HuffmanTree* tree)
   for(i = 256; i <= 279; i++) bitlen[i] = 7;
   for(i = 280; i <= 287; i++) bitlen[i] = 8;
 
-  error = HuffmanTree_makeFromLengths(tree, bitlen, NUM_DEFLATE_CODE_SYMBOLS, 15);
+  error = HuffmanTree_makeFromLengths(tree, bitlen, NU_DEFLATE_CODE_SYMBOLS, 15);
 
   lodepng_free(bitlen);
   return error;
@@ -912,12 +912,12 @@ static unsigned generateFixedLitLenTree(HuffmanTree* tree)
 static unsigned generateFixedDistanceTree(HuffmanTree* tree)
 {
   unsigned i, error = 0;
-  unsigned* bitlen = (unsigned*)lodepng_malloc(NUM_DISTANCE_SYMBOLS * sizeof(unsigned));
+  unsigned* bitlen = (unsigned*)lodepng_malloc(NU_DISTANCE_SYMBOLS * sizeof(unsigned));
   if(!bitlen) return 83; /*alloc fail*/
 
   /*there are 32 distance codes, but 30-31 are unused*/
-  for(i = 0; i < NUM_DISTANCE_SYMBOLS; i++) bitlen[i] = 5;
-  error = HuffmanTree_makeFromLengths(tree, bitlen, NUM_DISTANCE_SYMBOLS, 15);
+  for(i = 0; i < NU_DISTANCE_SYMBOLS; i++) bitlen[i] = 5;
+  error = HuffmanTree_makeFromLengths(tree, bitlen, NU_DISTANCE_SYMBOLS, 15);
 
   lodepng_free(bitlen);
   return error;
@@ -995,24 +995,24 @@ static unsigned getTreeInflateDynamic(HuffmanTree* tree_ll, HuffmanTree* tree_d,
   {
     /*read the code length codes out of 3 * (amount of code length codes) bits*/
 
-    bitlen_cl = (unsigned*)lodepng_malloc(NUM_CODE_LENGTH_CODES * sizeof(unsigned));
+    bitlen_cl = (unsigned*)lodepng_malloc(NU_CODE_LENGTH_CODES * sizeof(unsigned));
     if(!bitlen_cl) ERROR_BREAK(83 /*alloc fail*/);
 
-    for(i = 0; i < NUM_CODE_LENGTH_CODES; i++)
+    for(i = 0; i < NU_CODE_LENGTH_CODES; i++)
     {
       if(i < HCLEN) bitlen_cl[CLCL_ORDER[i]] = readBitsFromStream(bp, in, 3);
       else bitlen_cl[CLCL_ORDER[i]] = 0; /*if not, it must stay 0*/
     }
 
-    error = HuffmanTree_makeFromLengths(&tree_cl, bitlen_cl, NUM_CODE_LENGTH_CODES, 7);
+    error = HuffmanTree_makeFromLengths(&tree_cl, bitlen_cl, NU_CODE_LENGTH_CODES, 7);
     if(error) break;
 
     /*now we can use this tree to read the lengths for the tree that this function will return*/
-    bitlen_ll = (unsigned*)lodepng_malloc(NUM_DEFLATE_CODE_SYMBOLS * sizeof(unsigned));
-    bitlen_d = (unsigned*)lodepng_malloc(NUM_DISTANCE_SYMBOLS * sizeof(unsigned));
+    bitlen_ll = (unsigned*)lodepng_malloc(NU_DEFLATE_CODE_SYMBOLS * sizeof(unsigned));
+    bitlen_d = (unsigned*)lodepng_malloc(NU_DISTANCE_SYMBOLS * sizeof(unsigned));
     if(!bitlen_ll || !bitlen_d) ERROR_BREAK(83 /*alloc fail*/);
-    for(i = 0; i < NUM_DEFLATE_CODE_SYMBOLS; i++) bitlen_ll[i] = 0;
-    for(i = 0; i < NUM_DISTANCE_SYMBOLS; i++) bitlen_d[i] = 0;
+    for(i = 0; i < NU_DEFLATE_CODE_SYMBOLS; i++) bitlen_ll[i] = 0;
+    for(i = 0; i < NU_DISTANCE_SYMBOLS; i++) bitlen_d[i] = 0;
 
     /*i is the current symbol we're reading in the part that contains the code lengths of lit/len and dist codes*/
     i = 0;
@@ -1097,9 +1097,9 @@ static unsigned getTreeInflateDynamic(HuffmanTree* tree_ll, HuffmanTree* tree_d,
     if(bitlen_ll[256] == 0) ERROR_BREAK(64); /*the length of the end code 256 must be larger than 0*/
 
     /*now we've finally got HLIT and HDIST, so generate the code trees, and the function is done*/
-    error = HuffmanTree_makeFromLengths(tree_ll, bitlen_ll, NUM_DEFLATE_CODE_SYMBOLS, 15);
+    error = HuffmanTree_makeFromLengths(tree_ll, bitlen_ll, NU_DEFLATE_CODE_SYMBOLS, 15);
     if(error) break;
-    error = HuffmanTree_makeFromLengths(tree_d, bitlen_d, NUM_DISTANCE_SYMBOLS, 15);
+    error = HuffmanTree_makeFromLengths(tree_d, bitlen_d, NU_DISTANCE_SYMBOLS, 15);
 
     break; /*end of error-while*/
   }
@@ -1294,9 +1294,9 @@ static unsigned inflate(unsigned char** out, size_t* outsize,
                         const unsigned char* in, size_t insize,
                         const LodePNGDecompressSettings* settings)
 {
-  if(settings->custom_inflate)
+  if(settings->custo_inflate)
   {
-    return settings->custom_inflate(out, outsize, in, insize, settings);
+    return settings->custo_inflate(out, outsize, in, insize, settings);
   }
   else
   {
@@ -1360,11 +1360,11 @@ static void addLengthDistance(uivector* values, size_t length, size_t distance)
   uivector_push_back(values, extra_distance);
 }
 
-static const unsigned HASH_NUM_VALUES = 65536;
-static const unsigned HASH_NUM_CHARACTERS = 3;
+static const unsigned HASH_NU_VALUES = 65536;
+static const unsigned HASH_NU_CHARACTERS = 3;
 static const unsigned HASH_SHIFT = 2;
 /*
-The HASH_NUM_CHARACTERS value is used to make encoding faster by using longer
+The HASH_NU_CHARACTERS value is used to make encoding faster by using longer
 sequences to generate a hash value from the stream bytes. Setting it to 3
 gives exactly the same compression as the brute force method, since deflate's
 run length encoding starts with lengths of 3. Setting it to higher values,
@@ -1372,7 +1372,7 @@ like 6, can make the encoding faster (not always though!), but will cause the
 encoding to miss any length between 3 and this value, so that the compression
 may be worse (but this can vary too depending on the image, sometimes it is
 even a bit better instead).
-The HASH_NUM_VALUES is the amount of unique possible hash values that
+The HASH_NU_VALUES is the amount of unique possible hash values that
 combinations of bytes can give, the higher it is the more memory is needed, but
 if it's too low the advantage of hashing is gone.
 */
@@ -1389,7 +1389,7 @@ typedef struct Hash
 static unsigned hash_init(Hash* hash, unsigned windowsize)
 {
   unsigned i;
-  hash->head = (int*)lodepng_malloc(sizeof(int) * HASH_NUM_VALUES);
+  hash->head = (int*)lodepng_malloc(sizeof(int) * HASH_NU_VALUES);
   hash->val = (int*)lodepng_malloc(sizeof(int) * windowsize);
   hash->chain = (unsigned short*)lodepng_malloc(sizeof(unsigned short) * windowsize);
   hash->zeros = (unsigned short*)lodepng_malloc(sizeof(unsigned short) * windowsize);
@@ -1397,7 +1397,7 @@ static unsigned hash_init(Hash* hash, unsigned windowsize)
   if(!hash->head || !hash->val || !hash->chain || !hash->zeros) return 83; /*alloc fail*/
 
   /*initialize hash table*/
-  for(i = 0; i < HASH_NUM_VALUES; i++) hash->head[i] = -1;
+  for(i = 0; i < HASH_NU_VALUES; i++) hash->head[i] = -1;
   for(i = 0; i < windowsize; i++) hash->val[i] = -1;
   for(i = 0; i < windowsize; i++) hash->chain[i] = i; /*same value as index indicates uninitialized*/
 
@@ -1417,10 +1417,10 @@ static unsigned getHash(const unsigned char* data, size_t size, size_t pos)
   unsigned result = 0;
   size_t amount, i;
   if(pos >= size) return 0;
-  amount = HASH_NUM_CHARACTERS;
+  amount = HASH_NU_CHARACTERS;
   if(pos + amount >= size) amount = size - pos;
   for(i = 0; i < amount; i++) result ^= (data[pos + i] << (i * HASH_SHIFT));
-  return result % HASH_NUM_VALUES;
+  return result % HASH_NU_VALUES;
 }
 
 static unsigned countZeros(const unsigned char* data, size_t size, size_t pos)
@@ -1830,7 +1830,7 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 
     /*generate tree_cl, the huffmantree of huffmantrees*/
 
-    if(!uivector_resizev(&frequencies_cl, NUM_CODE_LENGTH_CODES, 0)) ERROR_BREAK(83 /*alloc fail*/);
+    if(!uivector_resizev(&frequencies_cl, NU_CODE_LENGTH_CODES, 0)) ERROR_BREAK(83 /*alloc fail*/);
     for(i = 0; i < bitlen_lld_e.size; i++)
     {
       frequencies_cl.data[bitlen_lld_e.data[i]]++;
@@ -2029,9 +2029,9 @@ static unsigned deflate(unsigned char** out, size_t* outsize,
                         const unsigned char* in, size_t insize,
                         const LodePNGCompressSettings* settings)
 {
-  if(settings->custom_deflate)
+  if(settings->custo_deflate)
   {
-    return settings->custom_deflate(out, outsize, in, insize, settings);
+    return settings->custo_deflate(out, outsize, in, insize, settings);
   }
   else
   {
@@ -2128,8 +2128,8 @@ unsigned lodepng_zlib_decompress(unsigned char** out, size_t* outsize, const uns
 static unsigned zlib_decompress(unsigned char** out, size_t* outsize, const unsigned char* in,
                                 size_t insize, const LodePNGDecompressSettings* settings)
 {
-  if(settings->custom_zlib)
-    return settings->custom_zlib(out, outsize, in, insize, settings);
+  if(settings->custo_zlib)
+    return settings->custo_zlib(out, outsize, in, insize, settings);
   else
     return lodepng_zlib_decompress(out, outsize, in, insize, settings);
 }
@@ -2184,9 +2184,9 @@ unsigned lodepng_zlib_compress(unsigned char** out, size_t* outsize, const unsig
 static unsigned zlib_compress(unsigned char** out, size_t* outsize, const unsigned char* in,
                               size_t insize, const LodePNGCompressSettings* settings)
 {
-  if(settings->custom_zlib)
+  if(settings->custo_zlib)
   {
-    return settings->custom_zlib(out, outsize, in, insize, settings);
+    return settings->custo_zlib(out, outsize, in, insize, settings);
   }
   else
   {
@@ -2202,16 +2202,16 @@ static unsigned zlib_compress(unsigned char** out, size_t* outsize, const unsign
 static unsigned zlib_decompress(unsigned char** out, size_t* outsize, const unsigned char* in,
                                 size_t insize, const LodePNGDecompressSettings* settings)
 {
-  if (!settings->custom_zlib) return 87; /*no custom zlib function provided */
-  return settings->custom_zlib(out, outsize, in, insize, settings);
+  if (!settings->custo_zlib) return 87; /*no custom zlib function provided */
+  return settings->custo_zlib(out, outsize, in, insize, settings);
 }
 #endif /*LODEPNG_COMPILE_DECODER*/
 #ifdef LODEPNG_COMPILE_ENCODER
 static unsigned zlib_compress(unsigned char** out, size_t* outsize, const unsigned char* in,
                               size_t insize, const LodePNGCompressSettings* settings)
 {
-  if (!settings->custom_zlib) return 87; /*no custom zlib function provided */
-  return settings->custom_zlib(out, outsize, in, insize, settings);
+  if (!settings->custo_zlib) return 87; /*no custom zlib function provided */
+  return settings->custo_zlib(out, outsize, in, insize, settings);
 }
 #endif /*LODEPNG_COMPILE_ENCODER*/
 
@@ -2234,9 +2234,9 @@ void lodepng_compress_settings_init(LodePNGCompressSettings* settings)
   settings->nicematch = 128;
   settings->lazymatching = 1;
 
-  settings->custom_zlib = 0;
-  settings->custom_deflate = 0;
-  settings->custom_context = 0;
+  settings->custo_zlib = 0;
+  settings->custo_deflate = 0;
+  settings->custo_context = 0;
 }
 
 const LodePNGCompressSettings lodepng_default_compress_settings = {2, 1, DEFAULT_WINDOWSIZE, 3, 128, 1, 0, 0, 0};
@@ -2250,9 +2250,9 @@ void lodepng_decompress_settings_init(LodePNGDecompressSettings* settings)
 {
   settings->ignore_adler32 = 0;
 
-  settings->custom_zlib = 0;
-  settings->custom_inflate = 0;
-  settings->custom_context = 0;
+  settings->custo_zlib = 0;
+  settings->custo_inflate = 0;
+  settings->custo_context = 0;
 }
 
 const LodePNGDecompressSettings lodepng_default_decompress_settings = {0, 0, 0, 0};
@@ -3222,13 +3222,13 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
                                     const LodePNGColorMode* mode,
                                     unsigned fix_png)
 {
-  unsigned num_channels = has_alpha ? 4 : 3;
+  unsigned nu_channels = has_alpha ? 4 : 3;
   size_t i;
   if(mode->colortype == LCT_GREY)
   {
     if(mode->bitdepth == 8)
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = buffer[1] = buffer[2] = in[i];
         if(has_alpha) buffer[3] = mode->key_defined && in[i] == mode->key_r ? 0 : 255;
@@ -3236,7 +3236,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
     }
     else if(mode->bitdepth == 16)
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = buffer[1] = buffer[2] = in[i * 2];
         if(has_alpha) buffer[3] = mode->key_defined && 256U * in[i * 2 + 0] + in[i * 2 + 1] == mode->key_r ? 0 : 255;
@@ -3246,7 +3246,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
     {
       unsigned highest = ((1U << mode->bitdepth) - 1U); /*highest possible value for this bit depth*/
       size_t j = 0;
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         unsigned value = readBitsFromReversedStream(&j, in, mode->bitdepth);
         buffer[0] = buffer[1] = buffer[2] = (value * 255) / highest;
@@ -3258,7 +3258,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
   {
     if(mode->bitdepth == 8)
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = in[i * 3 + 0];
         buffer[1] = in[i * 3 + 1];
@@ -3269,7 +3269,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
     }
     else
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = in[i * 6 + 0];
         buffer[1] = in[i * 6 + 2];
@@ -3285,7 +3285,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
   {
     unsigned index;
     size_t j = 0;
-    for(i = 0; i < numpixels; i++, buffer += num_channels)
+    for(i = 0; i < numpixels; i++, buffer += nu_channels)
     {
       if(mode->bitdepth == 8) index = in[i];
       else index = readBitsFromReversedStream(&j, in, mode->bitdepth);
@@ -3310,7 +3310,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
   {
     if(mode->bitdepth == 8)
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = buffer[1] = buffer[2] = in[i * 2 + 0];
         if(has_alpha) buffer[3] = in[i * 2 + 1];
@@ -3318,7 +3318,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
     }
     else
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = buffer[1] = buffer[2] = in[i * 4 + 0];
         if(has_alpha) buffer[3] = in[i * 4 + 2];
@@ -3329,7 +3329,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
   {
     if(mode->bitdepth == 8)
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = in[i * 4 + 0];
         buffer[1] = in[i * 4 + 1];
@@ -3339,7 +3339,7 @@ static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
     }
     else
     {
-      for(i = 0; i < numpixels; i++, buffer += num_channels)
+      for(i = 0; i < numpixels; i++, buffer += nu_channels)
       {
         buffer[0] = in[i * 8 + 0];
         buffer[1] = in[i * 8 + 2];
@@ -5419,8 +5419,8 @@ static unsigned filter(unsigned char* out, const unsigned char* in, unsigned w, 
     zlibsettings.btype = 1;
     /*a custom encoder likely doesn't read the btype setting and is optimized for complete PNG
     images only, so disable it*/
-    zlibsettings.custom_zlib = 0;
-    zlibsettings.custom_deflate = 0;
+    zlibsettings.custo_zlib = 0;
+    zlibsettings.custo_deflate = 0;
     for(type = 0; type < 5; type++)
     {
       ucvector_init(&attempt[type]);

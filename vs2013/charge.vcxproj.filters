@@ -269,18 +269,6 @@
     <ClInclude Include="..\src\renderer\rendererD3D11.h">
       <Filter>renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11ConstantBuffer.h">
-      <Filter>D3D11</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11PixelShader.h">
-      <Filter>D3D11</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\mLib\include\application-d3d11\D3D11VertexShader.h">
-      <Filter>D3D11</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\renderer\D3D11ShaderManager.h">
-      <Filter>D3D11</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />

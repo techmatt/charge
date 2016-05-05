@@ -134,3 +134,6 @@ vs2013/highlights.txt
 /vs2013/.vs/charge/v14/.suo
 /vs2013/charge.VC.VC.opendb
 /vs2013/charge.VC.db
+/vs2013/x64/Debug/vc140.idb
+/vs2013/x64/Debug/vc140.pdb
+/vs2013/x64/Release/vc140.pdb

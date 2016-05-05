@@ -168,27 +168,27 @@ public:
 
     inline Grid2<T>& operator += (const Grid2<T> &value)
     {
-        MLIB_ASSERT_STR(m_dimX == value.m_dimX && m_dimY == value.m_dimY, "grid dimensions must be equal");
-        for (size_t y = 0; y < m_dimY; y++)
-            for (size_t x = 0; x < m_dimX; x++)
-                m_data[y * m_dimX + x] += value(x, y);
+        MLIB_ASSERT_STR(_dimX == value._dimX && _dimY == value._dimY, "grid dimensions must be equal");
+        for (size_t y = 0; y < _dimY; y++)
+            for (size_t x = 0; x < _dimX; x++)
+                _data[y * _dimX + x] += value(x, y);
         return *this;
     }
 
     inline Grid2<T>& operator *= (T value)
     {
-        for (size_t y = 0; y < m_dimY; y++)
-            for (size_t x = 0; x < m_dimX; x++)
-                m_data[y * m_dimX + x] *= value;
+        for (size_t y = 0; y < _dimY; y++)
+            for (size_t x = 0; x < _dimX; x++)
+                _data[y * _dimX + x] *= value;
         return *this;
     }
 
     inline Grid2<T> operator * (T value)
     {
-        Grid2<T> result(m_dimX, m_dimY);
-        for (size_t y = 0; y < m_dimY; y++)
-            for (size_t x = 0; x < m_dimX; x++)
-                result(x, y) = m_data[y * m_dimX + x] * value;
+        Grid2<T> result(_dimX, _dimY);
+        for (size_t y = 0; y < _dimY; y++)
+            for (size_t x = 0; x < _dimX; x++)
+                result(x, y) = _data[y * _dimX + x] * value;
         return result;
     }
 
@@ -198,16 +198,16 @@ public:
     inline T& operator() (size_t x, size_t y)
     {
 #if defined(MLIB_BOUNDS_CHECK) || defined(_DEBUG)
-        MLIB_ASSERT_STR((x < m_dimX) && (y < m_dimY), "Out-of-bounds grid access");
+        MLIB_ASSERT_STR((x < _dimX) && (y < _dimY), "Out-of-bounds grid access");
 #endif
-        return m_data[y * m_dimX + x];
+        return _data[y * _dimX + x];
     }
     inline const T& operator() (size_t x, size_t y) const
     {
 #if defined(MLIB_BOUNDS_CHECK) || defined(_DEBUG)
-        MLIB_ASSERT_STR((x < m_dimX) && (y < m_dimY), "Out-of-bounds grid access");
+        MLIB_ASSERT_STR((x < _dimX) && (y < _dimY), "Out-of-bounds grid access");
 #endif
-        return m_data[y * m_dimX + x];
+        return _data[y * _dimX + x];
     }
     inline T& operator() (const vec2i &v)
     {
@@ -220,47 +220,47 @@ public:
 
     inline size_t dimX() const
     {
-        return m_dimX;
+        return _dimX;
     }
 
     inline size_t dimY() const
     {
-        return m_dimY;
+        return _dimY;
     }
 
     inline vec2i dims() const
     {
-        return vec2i(m_dimX, m_dimY);
+        return vec2i(_dimX, _dimY);
     }
 
     inline size_t width() const
     {
-        return m_dimX;
+        return _dimX;
     }
 
     inline size_t height() const
     {
-        return m_dimY;
+        return _dimY;
     }
 
     inline size_t getNumElements() const
     {
-        return m_dimX * m_dimY;
+        return _dimX * _dimY;
     }
 
     inline bool isSquare() const
     {
-        return (m_dimX == m_dimY);
+        return (_dimX == _dimY);
     }
 
     inline T* data()
     {
-        return m_data;
+        return _data;
     }
 
     inline const T* data() const
     {
-        return m_data;
+        return _data;
     }
 
     //
@@ -268,7 +268,7 @@ public:
     //
     inline bool coordValid(int x, int y) const
     {
-        return (x >= 0 && x < int(m_dimX) && y >= 0 && y < int(m_dimY));
+        return (x >= 0 && x < int(_dimX) && y >= 0 && y < int(_dimY));
     }
 
     inline bool coordValid(vec2i coord) const
@@ -278,32 +278,32 @@ public:
 
     void setRow(size_t row, const std::vector<T> &values)
     {
-        for (size_t col = 0; col < m_dimY; col++) m_data[row * m_dimX + col] = values[col];
+        for (size_t col = 0; col < _dimY; col++) _data[row * _dimX + col] = values[col];
     }
 
     void setCol(size_t col, const std::vector<T> &values)
     {
-        for (size_t row = 0; row < m_dimX; row++) m_data[row * m_dimX + col] = values[row];
+        for (size_t row = 0; row < _dimX; row++) _data[row * _dimX + col] = values[row];
     }
 
     std::vector<T> getRow(size_t y) const
     {
-        std::vector<T> result(m_dimX);
-        const T *CPtr = m_data;
-        for (size_t x = 0; x < m_dimX; x++)
+        std::vector<T> result(_dimX);
+        const T *CPtr = _data;
+        for (size_t x = 0; x < _dimX; x++)
         {
-            result[x] = CPtr[y * m_dimX + x];
+            result[x] = CPtr[y * _dimX + x];
         }
         return result;
     }
 
     std::vector<T> getCol(size_t x) const
     {
-        std::vector<T> result(m_dimY);
-        const T *CPtr = m_data;
-        for (size_t y = 0; y < m_dimY; y++)
+        std::vector<T> result(_dimY);
+        const T *CPtr = _data;
+        for (size_t y = 0; y < _dimY; y++)
         {
-            result[y] = CPtr[y * m_dimX + x];
+            result[y] = CPtr[y * _dimX + x];
         }
         return result;
     }
@@ -318,7 +318,7 @@ public:
     std::vector<T> toStdVector() const
     {
         std::vector<T> result;
-        for (size_t i = 0; i < m_dimX * m_dimY; i++)
+        for (size_t i = 0; i < _dimX * _dimY; i++)
             result.push_back(i);
         return result;
     }
@@ -344,8 +344,8 @@ public:
     }
 
 protected:
-    T *m_data;
-    size_t m_dimX, m_dimY;
+    T *_data;
+    size_t _dimX, _dimY;
 };
 
 template <class T> inline bool operator == (const Grid2<T> &a, const Grid2<T> &b)

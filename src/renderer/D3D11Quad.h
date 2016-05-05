@@ -12,24 +12,24 @@ public:
 
 	D3D11TriMesh()
 	{
-        m_graphics = nullptr;
-		m_vertexBuffer = nullptr;
-		m_indexBuffer = nullptr;
+        _graphics = nullptr;
+		_vertexBuffer = nullptr;
+		_indexBuffer = nullptr;
 	}
 
 	template<class T>
 	D3D11TriMesh(GraphicsDevice &g, const MeshData<T>& meshData)
     {
-		m_vertexBuffer = nullptr;
-		m_indexBuffer = nullptr;
+		_vertexBuffer = nullptr;
+		_indexBuffer = nullptr;
 		load(g, meshData);
 	}
 
 	template<class T>
 	D3D11TriMesh(GraphicsDevice &g, const TriMesh<T>& triMesh)
     {
-		m_vertexBuffer = nullptr;
-		m_indexBuffer = nullptr;
+		_vertexBuffer = nullptr;
+		_indexBuffer = nullptr;
 		load(g, triMesh);
 	}
 
@@ -40,16 +40,16 @@ public:
 
     void load(GraphicsDevice &g, const D3D11TriMesh& mesh)
     {
-		m_graphics = &g.castD3D11();
-        m_triMesh = mesh.m_triMesh;
+		_graphics = &g.castD3D11();
+        _triMesh = mesh._triMesh;
         reset();
     }
 
 	template<class T>
 	void load(GraphicsDevice &g, const TriMesh<T>& triMesh)
     {
-        m_graphics = &g.castD3D11();
-        m_triMesh = triMesh;
+        _graphics = &g.castD3D11();
+        _triMesh = triMesh;
 		reset();
 	}
 
@@ -73,17 +73,17 @@ public:
 	//! computes and returns the bounding box; no caching
     bbox3f computeBoundingBox() const
     {
-        return m_triMesh.computeBoundingBox();
+        return _triMesh.computeBoundingBox();
     }
 
     const TriMeshf& getTriMesh() const
     {
-        return m_triMesh;
+        return _triMesh;
 	}
 
 	void getMeshData(MeshDataf& meshData) const
     {
-        meshData = m_triMesh.getMeshData();
+        meshData = _triMesh.getMeshData();
 	}
 
 	MeshDataf getMeshData() const {
@@ -94,42 +94,42 @@ public:
 
     D3D11TriMesh(const D3D11TriMesh &t)
     {
-        m_vertexBuffer = nullptr;
-        m_indexBuffer = nullptr;
-        load(*t.m_graphics, t);
+        _vertexBuffer = nullptr;
+        _indexBuffer = nullptr;
+        load(*t._graphics, t);
     }
     D3D11TriMesh(D3D11TriMesh &&t)
     {
-        m_graphics = t.m_graphics; t.m_graphics = nullptr;
-        m_vertexBuffer = t.m_vertexBuffer; t.m_vertexBuffer = nullptr;
-        m_indexBuffer = t.m_indexBuffer; t.m_indexBuffer = nullptr;
-        m_triMesh = std::move(t.m_triMesh);
+        _graphics = t._graphics; t._graphics = nullptr;
+        _vertexBuffer = t._vertexBuffer; t._vertexBuffer = nullptr;
+        _indexBuffer = t._indexBuffer; t._indexBuffer = nullptr;
+        _triMesh = std::move(t._triMesh);
     }
 
     void operator = (const D3D11TriMesh& t)
     {
-        m_vertexBuffer = nullptr;
-        m_indexBuffer = nullptr;
-        load(*t.m_graphics, t);
+        _vertexBuffer = nullptr;
+        _indexBuffer = nullptr;
+        load(*t._graphics, t);
     }
 
     void operator = (D3D11TriMesh&& t)
     {
-        m_graphics = t.m_graphics; t.m_graphics = nullptr;
-        m_vertexBuffer = t.m_vertexBuffer; t.m_vertexBuffer = nullptr;
-        m_indexBuffer = t.m_indexBuffer; t.m_indexBuffer = nullptr;
-        m_triMesh = std::move(t.m_triMesh);
+        _graphics = t._graphics; t._graphics = nullptr;
+        _vertexBuffer = t._vertexBuffer; t._vertexBuffer = nullptr;
+        _indexBuffer = t._indexBuffer; t._indexBuffer = nullptr;
+        _triMesh = std::move(t._triMesh);
     }
 
 private:
-	D3D11GraphicsDevice *m_graphics;
+	D3D11GraphicsDevice *_graphics;
     void initVB(GraphicsDevice &g);
 	void initIB(GraphicsDevice &g);
 
-	ID3D11Buffer *m_vertexBuffer;
-	ID3D11Buffer *m_indexBuffer;
+	ID3D11Buffer *_vertexBuffer;
+	ID3D11Buffer *_indexBuffer;
 	
-    TriMeshf m_triMesh;
+    TriMeshf _triMesh;
 };
 
 }  // namespace ml

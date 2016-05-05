@@ -10,7 +10,7 @@ class D3D11ShaderManager
 public:
 	D3D11ShaderManager()
 	{
-		m_graphics = NULL;
+		_graphics = NULL;
 	}
 
 	void init(GraphicsDevice &g);
@@ -27,14 +27,14 @@ public:
 
 	D3D11ShaderPair& getShaders(const std::string &shaderName)
 	{
-		MLIB_ASSERT_STR(m_shaders.count(shaderName) > 0, "shader not found in shader manager");
-		return m_shaders.find(shaderName)->second;
+		MLIB_ASSERT_STR(_shaders.count(shaderName) > 0, "shader not found in shader manager");
+		return _shaders.find(shaderName)->second;
 	}
 
     const D3D11ShaderPair& getShaders(const std::string &shaderName) const
     {
-        MLIB_ASSERT_STR(m_shaders.count(shaderName) > 0, "shader not found in shader manager");
-        return m_shaders.find(shaderName)->second;
+        MLIB_ASSERT_STR(_shaders.count(shaderName) > 0, "shader not found in shader manager");
+        return _shaders.find(shaderName)->second;
     }
 
 	void bindShaders(const std::string &shaderName) const
@@ -45,6 +45,6 @@ public:
 	}
 
 private:
-	D3D11GraphicsDevice *m_graphics;
-	std::map<std::string, D3D11ShaderPair> m_shaders;
+	D3D11GraphicsDevice *_graphics;
+	std::map<std::string, D3D11ShaderPair> _shaders;
 };

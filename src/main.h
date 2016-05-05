@@ -64,10 +64,13 @@ class Texture;
 
 #ifdef _WIN32
 #include "d3d11.h"
+#define D3D_VALIDATE(statement) { HRESULT hr = statement;  if(FAILED(hr)) { chargeFatalError(#statement); } }
+#include "SDL_syswm.h"
 #include "renderer/rendererD3D11.h"
-//#include "renderer/D3D11ConstantBuffer.h"
-//#include "renderer/D3D11VertexShader.h"
-//#include "renderer/D3D11PixelShader.h"
+#include "renderer/D3D11ConstantBuffer.h"
+#include "renderer/D3D11VertexShader.h"
+#include "renderer/D3D11PixelShader.h"
+#include "renderer/D3D11ShaderManager.h"
 #endif
 
 #include "renderer/rendererOpenGL.h"

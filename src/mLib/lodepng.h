@@ -41,7 +41,7 @@ compiler command to disable them without modifying this header, e.g.
 -DLODEPNG_NO_COMPILE_ZLIB for gcc.
 */
 /*deflate & zlib. If disabled, you must specify alternative zlib functions in
-the custom_zlib field of the compress and decompress settings*/
+the custo_zlib field of the compress and decompress settings*/
 #ifndef LODEPNG_NO_COMPILE_ZLIB
 #define LODEPNG_COMPILE_ZLIB
 #endif
@@ -252,17 +252,17 @@ struct LodePNGDecompressSettings
   unsigned ignore_adler32; /*if 1, continue and don't give an error message if the Adler32 checksum is corrupted*/
 
   /*use custom zlib decoder instead of built in one (default: null)*/
-  unsigned (*custom_zlib)(unsigned char**, size_t*,
+  unsigned (*custo_zlib)(unsigned char**, size_t*,
                           const unsigned char*, size_t,
                           const LodePNGDecompressSettings*);
   /*use custom deflate decoder instead of built in one (default: null)
-  if custom_zlib is used, custom_deflate is ignored since only the built in
-  zlib function will call custom_deflate*/
-  unsigned (*custom_inflate)(unsigned char**, size_t*,
+  if custo_zlib is used, custo_deflate is ignored since only the built in
+  zlib function will call custo_deflate*/
+  unsigned (*custo_inflate)(unsigned char**, size_t*,
                              const unsigned char*, size_t,
                              const LodePNGDecompressSettings*);
 
-  void* custom_context; /*optional custom settings for custom functions*/
+  void* custo_context; /*optional custom settings for custom functions*/
 };
 
 extern const LodePNGDecompressSettings lodepng_default_decompress_settings;
@@ -286,17 +286,17 @@ struct LodePNGCompressSettings /*deflate = compress*/
   unsigned lazymatching; /*use lazy matching: better compression but a bit slower. Default: true*/
 
   /*use custom zlib encoder instead of built in one (default: null)*/
-  unsigned (*custom_zlib)(unsigned char**, size_t*,
+  unsigned (*custo_zlib)(unsigned char**, size_t*,
                           const unsigned char*, size_t,
                           const LodePNGCompressSettings*);
   /*use custom deflate encoder instead of built in one (default: null)
-  if custom_zlib is used, custom_deflate is ignored since only the built in
-  zlib function will call custom_deflate*/
-  unsigned (*custom_deflate)(unsigned char**, size_t*,
+  if custo_zlib is used, custo_deflate is ignored since only the built in
+  zlib function will call custo_deflate*/
+  unsigned (*custo_deflate)(unsigned char**, size_t*,
                              const unsigned char*, size_t,
                              const LodePNGCompressSettings*);
 
-  void* custom_context; /*optional custom settings for custom functions*/
+  void* custo_context; /*optional custom settings for custom functions*/
 };
 
 extern const LodePNGCompressSettings lodepng_default_compress_settings;
