@@ -43,6 +43,13 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
     SDL_FreeSurface(surface);
 }
 
+void Texture::releaseD3D11Memory()
+{
+#ifdef _WIN32
+		if (_D3D11Texture != nullptr) delete _D3D11Texture;
+#endif
+}
+
 void Texture::load(Renderer &renderer, const string &filename)
 {
     _renderer = &renderer;
@@ -65,6 +72,9 @@ void Texture::load(Renderer &renderer, const Bitmap &bmp)
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
+
+	if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 }
 
 void Texture::initSDL()
@@ -153,9 +163,20 @@ void Texture::initOpenGL(bool useMipmaps)
     checkGLError();
 }
 
+void Texture::initD3D11()
+{
+	_D3D11Texture = new D3D11Texture2D;
+	_D3D11Texture->load(_renderer->castD3D11(), _bmp);
+}
+
 void Texture::bindOpenGL()
 {
     //SDL_GL_BindTexture(_SDLTexture, nullptr, nullptr);
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
     checkGLError();
+}
+
+void Texture::bindD3D11()
+{
+	_D3D11Texture->bind();
 }

@@ -42,5 +42,7 @@ public:
     virtual void renderGaussian(const vec2f &kernelOffset) {}
     virtual void renderMotionBlur(const vec4f &color) {}
 
+	virtual RendererD3D11& castD3D11() { return *((RendererD3D11*)nullptr); }
+
     virtual CoordinateFrame getWindowCoordinateFrame() = 0;	// this is the coordinate frame of the rendered area in the entire window.
 };

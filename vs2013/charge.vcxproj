@@ -91,6 +91,7 @@
     <ClCompile Include="..\src\core\gameUtil.cpp" />
     <ClCompile Include="..\src\d3d11\D3D11PixelShader.cpp" />
     <ClCompile Include="..\src\d3d11\D3D11RenderTarget.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11ShaderManager.cpp" />
     <ClCompile Include="..\src\d3d11\D3D11Texture2D.cpp" />
     <ClCompile Include="..\src\d3d11\D3D11TriMesh.cpp" />
     <ClCompile Include="..\src\d3d11\D3D11Utility.cpp" />
@@ -208,6 +209,12 @@
     <None Include="..\assets\shaders\splashB.frag" />
     <None Include="..\assets\shaders\splashB.vert" />
     <None Include="..\src\mLib\grid2.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\assets\shaders\quad.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

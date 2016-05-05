@@ -129,6 +129,9 @@
     <ClCompile Include="..\src\d3d11\D3D11PixelShader.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11ShaderManager.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -351,5 +354,10 @@
     <None Include="..\assets\shaders\motion.vert">
       <Filter>shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\assets\shaders\quad.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -3,6 +3,13 @@ struct TriMeshf
 {
 	struct Vertex
 	{
+		Vertex() {}
+		Vertex(const vec3f &_position, const vec2f &_texCoord)
+		{
+			position = _position;
+			texCoord = _texCoord;
+			color = vec4f(0.0f, 0.0f, 0.0f, 1.0f);
+		}
 		vec3f position;
 		vec4f color;
 		vec2f texCoord;

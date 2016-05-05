@@ -1,4 +1,10 @@
 
+struct BasicConstantBuffer
+{
+	mat4f worldViewProj;
+	vec4f modelColor;
+};
+
 class RendererD3D11 : public Renderer
 {
 public:
@@ -8,6 +14,10 @@ public:
     {
         return RendererType::D3D11;
     }
+	RendererD3D11& castD3D11() override
+	{
+		return *this;
+	}
 
 	ID3D11Device& device()
 	{
@@ -83,7 +93,11 @@ private:
 
     ID3D11Texture2D *_captureBuffer;
 
-    //D3D11ShaderManager _shaderManager;
+    D3D11ShaderManager _shaderManager;
+	D3D11ShaderPair *_quadShader;
+	D3D11TriMesh _quadMesh;
+
+	D3D11ConstantBuffer<BasicConstantBuffer> _constantBuffer;
 
     D3D_FEATURE_LEVEL _featureLevel;
 

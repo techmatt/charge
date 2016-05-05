@@ -8,8 +8,6 @@ void RendererD3D11::init(SDL_Window *window)
     _motionBlurFramesLeft = 0;
     _motionBlurMinAlpha = 1.0f;
 
-    const string shaderDir = params().assetDir + "shaders/";
-
     SDL_SysWMinfo windowInfo;
     SDL_GetWindowWMInfo(window, &windowInfo);
 
@@ -101,12 +99,22 @@ void RendererD3D11::init(SDL_Window *window)
     _device->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(&_debug));
 #endif
 
+	_shaderManager.init(*this);
+	const string shaderDir = params().assetDir + "shaders/";
+	_shaderManager.registerShader(shaderDir + "quad.hlsl", "quad");
+	
+	_quadShader = &_shaderManager.getShaders("quad");
 
-    //_gaussianProgram.load(shaderDir + "gaussian.vert", shaderDir + "gaussian.frag");
-    //_splashAProgram.load(shaderDir + "splashA.vert", shaderDir + "splashA.frag");
-    //_splashBProgram.load(shaderDir + "splashB.vert", shaderDir + "splashB.frag");
-    //_motionProgram.load(shaderDir + "motion.vert", shaderDir + "motion.frag");
-    //_quadProgram.load(shaderDir + "quad.vert", shaderDir + "quad.frag");
+	TriMeshf quad;
+	quad.indices.push_back(vec3ui(0, 1, 2));
+	quad.indices.push_back(vec3ui(0, 2, 3));
+	quad.vertices.push_back(TriMeshf::Vertex(vec3f(0.0f, 0.0f, 0.0f), vec2f(0.0f, 0.0f)));
+	quad.vertices.push_back(TriMeshf::Vertex(vec3f(1.0f, 0.0f, 0.0f), vec2f(1.0f, 0.0f)));
+	quad.vertices.push_back(TriMeshf::Vertex(vec3f(1.0f, 1.0f, 0.0f), vec2f(1.0f, 1.0f)));
+	quad.vertices.push_back(TriMeshf::Vertex(vec3f(0.0f, 1.0f, 0.0f), vec2f(0.0f, 1.0f)));
+	_quadMesh.load(*this, quad);
+
+	_constantBuffer.init(*this);
 
     _quadToNDC = mat4f::translation(-1.0f, -1.0f, 0.0f) * mat4f::scale(2.0f);
 }
@@ -213,6 +221,18 @@ void RendererD3D11::bindMainRenderTarget()
 
 void RendererD3D11::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
+	tex.bindD3D11();
+
+	_quadShader->ps.bind();
+	_quadShader->vs.bind();
+
+	BasicConstantBuffer constants;
+
+	constants.worldViewProj = makeWindowTransform(destinationRect, depth);
+	constants.modelColor = color;
+	_constantBuffer.updateAndBind(constants, 0);
+	_quadMesh.render();
+
     /*
     tex.bindOpenGL();
     _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
