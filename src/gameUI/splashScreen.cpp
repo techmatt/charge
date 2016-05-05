@@ -6,9 +6,9 @@ const bool dumpHighlightMode = false;
 void SplashScreen::init()
 {
     srand((unsigned int)time(nullptr));
-    checkGLError();
+	//checkGLError();
     app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
-    checkGLError();
+    //checkGLError();
 
     app.renderer.bindMainRenderTarget();
 

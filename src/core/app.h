@@ -69,6 +69,7 @@ class App
 public:
     App(Renderer &renderer) : data(renderer) {}
 
+	void checkpoint();
     int run();
     int runRendererTest();
 

@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-const bool debuggingD3D11 = true;
+const bool debuggingD3D11 = false;
 
 void RendererD3D11::init(SDL_Window *window)
 {

@@ -98,7 +98,7 @@ void App::initRenderer()
     data.audio.init();
 
     data.renderer.init(window);
-    checkGLError();
+    if(data.renderer.type() == RendererType::OpenGL) checkGLError();
 }
 
 int App::runRendererTest()
@@ -148,20 +148,25 @@ int App::runRendererTest()
     return 0;
 }
 
+void App::checkpoint()
+{
+	if (data.renderer.type() == RendererType::OpenGL) checkGLError();
+}
+
 int App::run()
 {
 	//database().processAllCampaignLevels(data);
 
     initRenderer();
-    checkGLError();
+	checkpoint();
 
 	if(debugCalls) cout << "Doing database things..." << endl;
     database().initTextures(data.renderer);
-    checkGLError();
+	checkpoint();
 
     if (debugCalls) cout << "Doing data things..." << endl;
     data.state.init();
-    checkGLError();
+	checkpoint();
 
 	data.undoBuffer.init();
 	data.undoBuffer.reset(data.state);
@@ -170,14 +175,14 @@ int App::run()
     data.ui.init();
     data.canvas.init();
     data.controller.init();
-    checkGLError();
+	checkpoint();
 
     //
     // should init last to control motion blur state
     //
-    checkGLError();
+	checkpoint();
     data.splash.init();
-    checkGLError();
+	checkpoint();
     if (debugCalls) cout << "Running splash screen..." << endl;
 
     data.activeEventHandler = &data.splash;
