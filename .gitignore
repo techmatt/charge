@@ -137,3 +137,6 @@ vs2013/highlights.txt
 /vs2013/x64/Debug/vc140.idb
 /vs2013/x64/Debug/vc140.pdb
 /vs2013/x64/Release/vc140.pdb
+/bin/debug/CompiledShaders/quad.hlsl.pixelShaderMain.p
+/bin/debug/CompiledShaders/quad.hlsl.vertexShaderMain.p
+/vs2013/x64/Debug/charge.tlog/charge.write.1u.tlog

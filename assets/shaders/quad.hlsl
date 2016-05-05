@@ -29,7 +29,7 @@ VertexShaderOutput vertexShaderMain(
 
 float4 pixelShaderMain(VertexShaderOutput input) : SV_Target
 {
-	float4 texColor = modelTexture.Sample(modelSampler, float2(input.texCoord.x, 1.0 - input.texCoord.y));
+	float4 texColor = modelTexture.Sample(modelSampler, float2(input.texCoord.x, input.texCoord.y));
 
-	return float4(modelColor.xyz * texColor.xyz, 1.0f);
+	return float4(modelColor.xyzw * texColor.xyzw);
 }

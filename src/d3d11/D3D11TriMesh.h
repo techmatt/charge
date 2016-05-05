@@ -8,7 +8,7 @@ struct TriMeshf
 		{
 			position = _position;
 			texCoord = _texCoord;
-			color = vec4f(0.0f, 0.0f, 0.0f, 1.0f);
+			color = vec4f(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		vec3f position;
 		vec4f color;

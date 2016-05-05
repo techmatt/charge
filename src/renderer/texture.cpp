@@ -35,10 +35,12 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
         _bmp = GameUtil::processGlow(_bmp, glowStrength, glowColor.toVec3f(), color.toVec3f());
     }
 
-    if (renderer.type() == RendererType::SDL)
-        initSDL();
-    else
-        initOpenGL(false);
+	if (renderer.type() == RendererType::SDL)
+		initSDL();
+	else if (renderer.type() == RendererType::OpenGL)
+		initOpenGL(false);
+	else if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 
     SDL_FreeSurface(surface);
 }
@@ -60,6 +62,9 @@ void Texture::load(Renderer &renderer, const string &filename)
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
+
+	if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 }
 
 void Texture::load(Renderer &renderer, const Bitmap &bmp)

@@ -1,6 +1,8 @@
 ﻿
 #include "main.h"
 
+const bool debuggingD3D11 = true;
+
 void RendererD3D11::init(SDL_Window *window)
 {
     _window = window;
@@ -9,24 +11,39 @@ void RendererD3D11::init(SDL_Window *window)
     _motionBlurMinAlpha = 1.0f;
 
     SDL_SysWMinfo windowInfo;
-    SDL_GetWindowWMInfo(window, &windowInfo);
+	SDL_VERSION(&windowInfo.version);
+	if (!SDL_GetWindowWMInfo(window, &windowInfo))
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Couldn't get window information: %s", SDL_GetError());
+	}
 
     SDL_GetWindowSize(_window, &_width, &_height);
 
-    _swapChainDesc.OutputWindow = windowInfo.info.win.window;
+	ZeroMemory(&_swapChainDesc, sizeof(_swapChainDesc));
+	_swapChainDesc.BufferCount = 1;
+	_swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	_swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
+	_swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
+	_swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	_swapChainDesc.SampleDesc.Count = 1;
+	_swapChainDesc.SampleDesc.Quality = 0;
+	_swapChainDesc.Windowed = TRUE;
+	_swapChainDesc.OutputWindow = windowInfo.info.win.window;
     _swapChainDesc.BufferDesc.Width = _width;
     _swapChainDesc.BufferDesc.Height = _height;
-
+	
     UINT createDeviceFlags = 0;
-    //#ifdef _DEBUG
-    //	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
-    //#endif
-
+    if(debuggingD3D11)
+    	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
+    
     D3D_FEATURE_LEVEL featureLevels[] =
     {
-        D3D_FEATURE_LEVEL_11_0,
-        D3D_FEATURE_LEVEL_10_1,
-        D3D_FEATURE_LEVEL_10_0,
+		D3D_FEATURE_LEVEL_11_0,
+		D3D_FEATURE_LEVEL_10_1,
+		D3D_FEATURE_LEVEL_10_0,
+		D3D_FEATURE_LEVEL_9_3,
+		D3D_FEATURE_LEVEL_9_2,
+		D3D_FEATURE_LEVEL_9_1,
     };
     UINT numFeatureLevels = ARRAYSIZE(featureLevels);
 
@@ -59,7 +76,7 @@ void RendererD3D11::init(SDL_Window *window)
     D3D11_DEPTH_STENCIL_DESC depthStateDesc;
     depthStateDesc.DepthEnable = true;
     depthStateDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-    depthStateDesc.DepthFunc = D3D11_COMPARISON_LESS;
+    depthStateDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
     depthStateDesc.StencilEnable = false;
     D3D_VALIDATE(_device->CreateDepthStencilState(&depthStateDesc, &_depthState));
     _context->OMSetDepthStencilState(_depthState, 1);
@@ -222,41 +239,28 @@ void RendererD3D11::bindMainRenderTarget()
 void RendererD3D11::render(Texture &tex, const rect2f &destinationRect, float depth, const vec4f &color)
 {
 	tex.bindD3D11();
-
 	_quadShader->ps.bind();
 	_quadShader->vs.bind();
 
 	BasicConstantBuffer constants;
-
 	constants.worldViewProj = makeWindowTransform(destinationRect, depth);
+	//constants.worldViewProj = _quadToNDC;
 	constants.modelColor = color;
 	_constantBuffer.updateAndBind(constants, 0);
 	_quadMesh.render();
-
-    /*
-    tex.bindOpenGL();
-    _quadProgram.setTransform(makeWindowTransform(destinationRect, depth));
-    _quadProgram.setColor(color);
-    _quad.render();
-    glBindTexture(GL_TEXTURE_2D, 0);*/
 }
 
 void RendererD3D11::render(Texture &tex, const rect2f &destinationRect, float depth, float rotation, const vec4f &color)
 {
-    /*SDL_Rect dst;
-    dst.x = (int)(destinationRect.min().x);
-    dst.y = (int)(destinationRect.min().y);
-    dst.w = (int)(destinationRect.max().x) - dst.x;
-    dst.h = (int)(destinationRect.max().y) - dst.y;
+	tex.bindD3D11();
+	_quadShader->ps.bind();
+	_quadShader->vs.bind();
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-
-    tex.bindOpenGL();
-    _quadProgram.setTransform(makeWindowTransform(destinationRect, depth, rotation));
-    _quadProgram.setColor(color);
-    _quad.render();
-    glBindTexture(GL_TEXTURE_2D, 0);*/
+	BasicConstantBuffer constants;
+	constants.worldViewProj = makeWindowTransform(destinationRect, depth, rotation);
+	constants.modelColor = color;
+	_constantBuffer.updateAndBind(constants, 0);
+	_quadMesh.render();
 }
 
 void RendererD3D11::renderMotionBlur(const vec4f &color)
@@ -275,28 +279,26 @@ void RendererD3D11::renderMotionBlur(const vec4f &color)
 
 void RendererD3D11::renderFullScreen(Texture &tex, const vec4f &color)
 {
-    /*tex.bindOpenGL();
+	tex.bindD3D11();
+	_quadShader->ps.bind();
+	_quadShader->vs.bind();
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    checkGLError();
-
-    _quadProgram.setTransform(_quadToNDC);
-    checkGLError();
-    _quadProgram.setColor(color);
-    checkGLError();
-    _quad.render();
-    checkGLError();*/
+	BasicConstantBuffer constants;
+	constants.worldViewProj = _quadToNDC;
+	constants.modelColor = color;
+	_constantBuffer.updateAndBind(constants, 0);
+	_quadMesh.render();
 }
 
 void RendererD3D11::renderFullScreen(const vec4f &color)
 {
-    /*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-    _quadProgram.setTransform(_quadToNDC);
-    _quadProgram.setColor(color);
-    _quad.render();*/
+	_quadShader->ps.bind();
+	_quadShader->vs.bind();
+	BasicConstantBuffer constants;
+	constants.worldViewProj = _quadToNDC;
+	constants.modelColor = color;
+	_constantBuffer.updateAndBind(constants, 0);
+	_quadMesh.render();
 }
 
 void RendererD3D11::renderGaussian(const vec2f &kernelOffset)
@@ -350,9 +352,10 @@ void RendererD3D11::renderSplashB(const vec2f &kernelOffset)
 
 void RendererD3D11::present()
 {
-    /*bindMainRenderTarget();
+	bindMainRenderTarget();
 
-    if (_motionBlurFramesLeft > 0)
+    /*
+	if (_motionBlurFramesLeft > 0)
     {
         _motionBlurRenderTargetA.unbindRenderTarget();
         _motionBlurRenderTargetA.bindAsTexture();
@@ -386,12 +389,12 @@ void RendererD3D11::present()
 
             _motionBlurFramesLeft--;
         }
-    }
+    }*/
 
-	SDL_GL_SwapWindow(_window);
+	_swapChain->Present(1, 0);
     updateWindowSize();
 
-    bindMainRenderTarget();*/
+    bindMainRenderTarget();
 }
 
 vec2i RendererD3D11::getWindowSize()
@@ -431,10 +434,9 @@ CoordinateFrame RendererD3D11::getWindowCoordinateFrame()
 
 void RendererD3D11::clear()
 {
-    /*glClearColor(0.0, 0.0, 0.0, 1.0);
-    checkGLError();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    checkGLError();
+	vec4f clearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	_context->ClearRenderTargetView(_renderTargetView, clearColor.array);
+	_context->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
-    updateWindowSize();*/
+    updateWindowSize();
 }
