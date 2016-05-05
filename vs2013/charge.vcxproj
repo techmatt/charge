@@ -13,18 +13,19 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B51C8B6C-1472-438B-9CC5-C0387737C021}</ProjectGuid>
     <RootNamespace>charge</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -39,14 +40,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\</IncludePath>
+    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
     <OutDir>$(SolutionDir)\..\bin\debug\</OutDir>
-    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\</IncludePath>
+    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
     <OutDir>$(SolutionDir)\..\bin\release\</OutDir>
-    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

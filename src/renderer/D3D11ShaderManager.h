@@ -13,17 +13,16 @@ public:
 		_graphics = NULL;
 	}
 
-	void init(GraphicsDevice &g);
+	void init(RendererD3D11 &g);
 
 	//! loads a vertex/pixel shader pair
 	void registerShader(
-		const std::string &filename,
-		const std::string &shaderName,
-		const std::string& entryPointVS = "vertexShaderMain",
-		const std::string& shaderModelVS = "vs_4_0",
-		const std::string& entryPointPS = "pixelShaderMain",
-		const std::string& shaderModelPS = "ps_4_0",
-		const std::vector<std::pair<std::string, std::string>>& shaderMacros = std::vector<std::pair<std::string, std::string>>());
+		const string &filename,
+		const string &shaderName,
+		const string& entryPointVS = "vertexShaderMain",
+		const string& shaderModelVS = "vs_4_0",
+		const string& entryPointPS = "pixelShaderMain",
+		const string& shaderModelPS = "ps_4_0");
 
 	D3D11ShaderPair& getShaders(const std::string &shaderName)
 	{
@@ -45,6 +44,6 @@ public:
 	}
 
 private:
-	D3D11GraphicsDevice *_graphics;
-	std::map<std::string, D3D11ShaderPair> _shaders;
+	RendererD3D11 *_graphics;
+	map<string, D3D11ShaderPair> _shaders;
 };

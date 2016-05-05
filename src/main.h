@@ -2,6 +2,8 @@
 #ifndef __CHARGE_MAIN
 #define __CHARGE_MAIN
 
+#define GLEW_NO_GLU
+
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_audio.h>
@@ -64,6 +66,7 @@ class Texture;
 
 #ifdef _WIN32
 #include "d3d11.h"
+#include "D3DCommon.h"
 #define D3D_VALIDATE(statement) { HRESULT hr = statement;  if(FAILED(hr)) { chargeFatalError(#statement); } }
 #include "SDL_syswm.h"
 #include "renderer/rendererD3D11.h"

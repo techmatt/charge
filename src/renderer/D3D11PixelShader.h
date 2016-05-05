@@ -30,6 +30,6 @@ public:
 private:
     RendererD3D11 *_graphics;
 	ID3D11PixelShader *_shader;
-	ID3DBlob *_blob;
+	ID3D10Blob *_blob;
 	string _filename;
 };
