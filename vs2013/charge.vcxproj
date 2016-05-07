@@ -60,7 +60,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d11.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D3DCompiler.lib;d3d11.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -80,7 +80,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>d3d11.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D3DCompiler.lib;d3d11.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
@@ -89,6 +89,13 @@
   <ItemGroup>
     <ClCompile Include="..\src\core\app.cpp" />
     <ClCompile Include="..\src\core\gameUtil.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11PixelShader.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11RenderTarget.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11ShaderManager.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11Texture2D.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11TriMesh.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11Utility.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11VertexShader.cpp" />
     <ClCompile Include="..\src\gameUI\coordinates.cpp" />
     <ClCompile Include="..\src\gameUI\gameButton.cpp" />
     <ClCompile Include="..\src\gameUI\gameCanvas.cpp" />
@@ -129,6 +136,14 @@
     <ClInclude Include="..\src\core\constants.h" />
     <ClInclude Include="..\src\core\gameUtil.h" />
     <ClInclude Include="..\src\core\parameters.h" />
+    <ClInclude Include="..\src\d3d11\D3D11ConstantBuffer.h" />
+    <ClInclude Include="..\src\d3d11\D3D11PixelShader.h" />
+    <ClInclude Include="..\src\d3d11\D3D11RenderTarget.h" />
+    <ClInclude Include="..\src\d3d11\D3D11ShaderManager.h" />
+    <ClInclude Include="..\src\d3d11\D3D11Texture2D.h" />
+    <ClInclude Include="..\src\d3d11\D3D11TriMesh.h" />
+    <ClInclude Include="..\src\d3d11\D3D11Utility.h" />
+    <ClInclude Include="..\src\d3d11\D3D11VertexShader.h" />
     <ClInclude Include="..\src\gameUI\coordinates.h" />
     <ClInclude Include="..\src\gameUI\gameButton.h" />
     <ClInclude Include="..\src\gameUI\gameCanvas.h" />
@@ -194,6 +209,12 @@
     <None Include="..\assets\shaders\splashB.frag" />
     <None Include="..\assets\shaders\splashB.vert" />
     <None Include="..\src\mLib\grid2.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\assets\shaders\quad.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

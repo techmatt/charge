@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     ParameterFile parameterFile(paramFilename);
     initGameParams(parameterFile);
 
-    Renderer *renderer;
+    Renderer *renderer = nullptr;
 
     if (params().useSDLFallback)
         renderer = new RendererSDL();

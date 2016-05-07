@@ -22,7 +22,7 @@ public:
 
 	void release()
 	{
-		SAFE_RELEASE(m_buffer);
+		SAFE_RELEASE(_buffer);
 	}
 
 	void reset()
@@ -46,7 +46,7 @@ public:
 
 	void update(const T &data)
 	{
-        _graphics->getContext().UpdateSubresource(_buffer, 0, nullptr, &data, 0, 0);
+        _graphics->context().UpdateSubresource(_buffer, 0, nullptr, &data, 0, 0);
 	}
 
 	void bind(UINT constantBufferIndex) 
@@ -57,12 +57,12 @@ public:
 
 	void bindVertexShader(UINT constantBufferIndex)
 	{
-        _graphics->getContext().VSSetConstantBuffers(constantBufferIndex, 1, &_buffer);
+        _graphics->context().VSSetConstantBuffers(constantBufferIndex, 1, &_buffer);
 	}
 
 	void bindPixelShader(UINT constantBufferIndex)
 	{
-        _graphics->getContext().PSSetConstantBuffers(constantBufferIndex, 1, &_buffer);
+        _graphics->context().PSSetConstantBuffers(constantBufferIndex, 1, &_buffer);
 	}
 
 private:

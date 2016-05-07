@@ -111,6 +111,27 @@
     <ClCompile Include="..\src\renderer\rendererD3D11.cpp">
       <Filter>renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11RenderTarget.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11Texture2D.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11TriMesh.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11Utility.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11VertexShader.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11PixelShader.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\d3d11\D3D11ShaderManager.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\board.h">
@@ -269,6 +290,30 @@
     <ClInclude Include="..\src\renderer\rendererD3D11.h">
       <Filter>renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11PixelShader.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11RenderTarget.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11ShaderManager.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11Texture2D.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11TriMesh.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11Utility.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11VertexShader.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\d3d11\D3D11ConstantBuffer.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\renderingNotes.txt" />
@@ -309,5 +354,10 @@
     <None Include="..\assets\shaders\motion.vert">
       <Filter>shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\assets\shaders\quad.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

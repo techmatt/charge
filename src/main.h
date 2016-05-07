@@ -49,6 +49,7 @@ class Renderer;
 class RendererOpenGL;
 class RendererD3D11;
 class Texture;
+class D3D11Texture2D;
 
 #include "game/enums.h"
 #include "core/constants.h"
@@ -67,13 +68,18 @@ class Texture;
 #ifdef _WIN32
 #include "d3d11.h"
 #include "D3DCommon.h"
+#include "D3DCompiler.h"
 #define D3D_VALIDATE(statement) { HRESULT hr = statement;  if(FAILED(hr)) { chargeFatalError(#statement); } }
 #include "SDL_syswm.h"
+#include "d3d11/D3D11Utility.h"
+#include "d3d11/D3D11ConstantBuffer.h"
+#include "d3d11/D3D11VertexShader.h"
+#include "d3d11/D3D11PixelShader.h"
+#include "d3d11/D3D11ShaderManager.h"
+#include "d3d11/D3D11TriMesh.h"
 #include "renderer/rendererD3D11.h"
-#include "renderer/D3D11ConstantBuffer.h"
-#include "renderer/D3D11VertexShader.h"
-#include "renderer/D3D11PixelShader.h"
-#include "renderer/D3D11ShaderManager.h"
+#include "d3d11/D3D11RenderTarget.h"
+#include "d3d11/D3D11Texture2D.h"
 #endif
 
 #include "renderer/rendererOpenGL.h"
@@ -101,7 +107,5 @@ class Texture;
 #include "gameUI/gameController.h"
 
 #include "core/app.h"
-
-
 
 #endif
