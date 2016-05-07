@@ -131,7 +131,7 @@ component0012~9
 Component~8~8
 boardPos=18 18
 chargePreference=4
-chargesLostPerDischarge=16
+chargesLostPerDischarge=18
 color=3
 name=MegaHold
 puzzleType=1

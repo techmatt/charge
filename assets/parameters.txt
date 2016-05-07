@@ -46,4 +46,4 @@ useSDLFallback = false
 useMipmaps = true
 alwaysRender = true
 
-maxSkippedLevels = 50
+maxSkippedLevels = 500
