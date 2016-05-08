@@ -188,7 +188,7 @@ void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
     }
 }
 
-void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
+void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 {
     transferToPuzzleMode(0);
 }

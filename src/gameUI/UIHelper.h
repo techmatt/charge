@@ -6,7 +6,7 @@ public:
     virtual void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) {}
     virtual void mouseMove(Uint32 buttonState, int x, int y) {}
     virtual void mouseWheel(int x, int y, bool shift, bool ctrl) {}
-    virtual void keyDown(SDL_Keycode key, bool shift, bool ctrl) {}
+    virtual void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) {}
     virtual void keyUp(SDL_Keycode key) {}
 };
 

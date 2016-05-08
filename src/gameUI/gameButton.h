@@ -18,13 +18,21 @@ enum class ButtonType
     ComponentAttribute,
 };
 
+enum class ModifierKey
+{
+	None,
+	Alt,
+	Shift,
+	Ctrl
+};
+
 struct GameButton
 {
     GameButton() {}
     GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const ComponentModifiers &_modifiers)
     {
         component = nullptr;
-        name = _name;
+		name = _name;
         type = _type;
         modifiers = _modifiers;
         canonicalRect = getCanonicalRect(menuCoord, type);
@@ -63,6 +71,8 @@ struct GameButton
 			return "C";
 		if (name == "CircuitPaste")
 			return "V";
+		if (name == "CircuitCut")
+			return "X";
 		return hotkey;
 	}
 
@@ -76,6 +86,7 @@ struct GameButton
     const ComponentInfo *tooltip;
     string hotkey;
     SDL_Keycode hotkeyCode;
+	ModifierKey modifierKey;
     int levelIndex;
 
 private:

@@ -208,7 +208,8 @@ int App::run()
             {
                 const bool shift = (event.key.keysym.mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (event.key.keysym.mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl);
+				const bool alt = (event.key.keysym.mod & KMOD_ALT) != 0;
+                data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl, alt);
 			}
             if (event.type == SDL_KEYUP)
             {

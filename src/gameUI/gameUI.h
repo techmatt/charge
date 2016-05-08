@@ -9,7 +9,7 @@ public:
     void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) override;
     void mouseMove(Uint32 buttonState, int x, int y) override;
     void mouseWheel(int x, int y, bool shift, bool ctrl) override;
-    void keyDown(SDL_Keycode key, bool shift, bool ctrl) override;
+    void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) override;
     void keyUp(SDL_Keycode key) override;
 
     GameLocation hoverLocation(bool constructionOffset, const vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
@@ -24,6 +24,8 @@ public:
 	}
 
 	void addHoverComponent(const GameLocation &location);
+
+	void cycleButtonSelection(ButtonType type, int direction);
 
     void clearSelection();
 	void copy();

@@ -22,7 +22,7 @@ void GameUI::clearSelection()
     selection.empty();
 }
 
-void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
+void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 {
     //
     // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
@@ -39,7 +39,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
         }
     }
 
-    if (key == SDLK_F5)
+    if (key == SDLK_F9)
     {
         ParameterFile parameterFile("../assets/parameters.txt");
         g_gameParams.load(parameterFile);
@@ -49,7 +49,12 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl)
 
     for (const GameButton &b : app.controller.buttons)
     {
-        if (b.hotkeyCode == key)
+		bool modifiersCorrect = true;
+		if (b.modifierKey == ModifierKey::None && (shift || ctrl || alt)) modifiersCorrect = false;
+		if (b.modifierKey == ModifierKey::Shift && !shift) modifiersCorrect = false;
+		if (b.modifierKey == ModifierKey::Ctrl && !ctrl) modifiersCorrect = false;
+		if (b.modifierKey == ModifierKey::Alt && !alt) modifiersCorrect = false;
+        if (b.hotkeyCode == key && modifiersCorrect)
         {
             b.leftClick(app, gameComponent);
         }

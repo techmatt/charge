@@ -4,6 +4,7 @@
 void GameButton::initTooltip()
 {
     tooltip = component;
+	modifierKey = ModifierKey::None;
 
     hotkeyCode = 0;
     hotkey = "!";
@@ -12,6 +13,21 @@ void GameButton::initTooltip()
     hotkey = component->hotkey;
     if (hotkey.size() == 0)
         hotkey = "!";
+	if (util::contains(hotkey, "Alt"))
+	{
+		modifierKey = ModifierKey::Alt;
+		hotkey = util::remove(hotkey, "Alt");
+	}
+	if (util::contains(hotkey, "Shift"))
+	{
+		modifierKey = ModifierKey::Shift;
+		hotkey = util::remove(hotkey, "Shift");
+	}
+	if (util::contains(hotkey, "Ctrl"))
+	{
+		modifierKey = ModifierKey::Ctrl;
+		hotkey = util::remove(hotkey, "Ctrl");
+	}
 
     if (hotkey == "Enter") hotkeyCode = SDLK_RETURN;
     if (hotkey == "Left") hotkeyCode = SDLK_LEFT;
@@ -19,16 +35,23 @@ void GameButton::initTooltip()
     if (hotkey == "Up") hotkeyCode = SDLK_UP;
     if (hotkey == "Down") hotkeyCode = SDLK_DOWN;
 
+	if (hotkey == "F1") hotkeyCode = SDLK_F1;
+	if (hotkey == "F2") hotkeyCode = SDLK_F2;
+	if (hotkey == "F3") hotkeyCode = SDLK_F3;
+	if (hotkey == "F4") hotkeyCode = SDLK_F4;
+	if (hotkey == "F5") hotkeyCode = SDLK_F5;
+	if (hotkey == "F6") hotkeyCode = SDLK_F6;
+
     if (type == ButtonType::ChargePreference)
     {
         tooltip = &database().getComponent("Preference" + to_string((int)modifiers.chargePreference));
         switch ((int)modifiers.chargePreference)
         {
-        case 0: hotkey = "7"; break;
-        case 1: hotkey = "8"; break;
-        case 2: hotkey = "9"; break;
-        case 3: hotkey = "0"; break;
-        case 4: hotkey = "-"; break;
+		case 0: hotkey = "1"; modifierKey = ModifierKey::Shift; break;
+        case 1: hotkey = "2"; modifierKey = ModifierKey::Shift; break;
+        case 2: hotkey = "3"; modifierKey = ModifierKey::Shift; break;
+        case 3: hotkey = "4"; modifierKey = ModifierKey::Shift; break;
+        case 4: hotkey = "5"; modifierKey = ModifierKey::Shift; break;
         }
     }
 
@@ -56,8 +79,8 @@ void GameButton::initTooltip()
 
     if (type == ButtonType::TrapState || type == ButtonType::GateState)
     {
-        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "Y";
-        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "U";
+        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "~";
+        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "~";
     }
 
     if (type == ButtonType::CircuitBoundary)
@@ -73,8 +96,12 @@ void GameButton::initTooltip()
     if (hotkey.size() == 1 && hotkey[0] >= '0' && hotkey[0] <= '9')
         hotkeyCode = SDLK_0 + hotkey[0] - '0';
 
-    if (hotkey[0] == '-')
-        hotkeyCode = SDLK_MINUS;
+    //if (hotkey[0] == '-')
+        //hotkeyCode = SDLK_MINUS;
+
+	if (modifierKey == ModifierKey::Alt) hotkey = "Alt+" + hotkey;
+	if (modifierKey == ModifierKey::Shift) hotkey = "Shift+" + hotkey;
+	if (modifierKey == ModifierKey::Ctrl) hotkey = "Ctrl+" + hotkey;
 
     if (tooltip == nullptr && database().hasComponent(name))
         tooltip = &database().getComponent(name);
