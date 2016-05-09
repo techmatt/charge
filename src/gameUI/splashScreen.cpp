@@ -159,7 +159,7 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.renderer.initMotionBlur(0.1f, 80);
 }
 
-void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
+void SplashScreen::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
 {
     if (dumpHighlightMode)
     {

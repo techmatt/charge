@@ -15,6 +15,7 @@ void GameUI::init()
     shiftUp = true;
 	leftClickUp = true;
 	rightClickUp = true;
+	cachedSpeed = GameSpeed::x0;
 }
 
 void GameUI::clearSelection()
@@ -47,12 +48,15 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 
     if (key == SDLK_ESCAPE)
     {
-        clearSelection();
-        if (app.controller.puzzleMode != PuzzleMode::Design)
+        if (app.controller.puzzleMode == PuzzleMode::Executing)
         {
             app.controller.puzzleMode = PuzzleMode::Design;
             app.state.resetPuzzle();
         }
+		else
+		{
+			clearSelection();
+		}
     }
 
 	if (key == SDLK_BACKQUOTE)
@@ -106,6 +110,25 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 	if (key == SDLK_x)
 	{
 		cut();
+	}
+
+	if (key == SDLK_SPACE)
+	{
+		if (app.controller.puzzleMode == PuzzleMode::Design)
+		{
+			for (const GameButton &b : app.controller.buttons)
+				if(b.name == "Start") b.leftClick(app, gameComponent);
+		}
+		else if (app.controller.puzzleMode == PuzzleMode::Executing)
+		{
+			if (app.controller.speed == GameSpeed::x0)
+				app.controller.speed = cachedSpeed;
+			else
+			{
+				cachedSpeed = app.controller.speed;
+				app.controller.speed = GameSpeed::x0;
+			}
+		}
 	}
 
     if (key == SDLK_F8)
@@ -167,7 +190,11 @@ void GameUI::removeHoverComponent()
 void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bool ctrl)
 {
 	if (mouseButton == SDL_BUTTON_LEFT) leftClickUp = true;
-	if (mouseButton == SDL_BUTTON_RIGHT) rightClickUp = true;
+	if (mouseButton == SDL_BUTTON_RIGHT)
+	{
+		rightClickUp = true;
+		rightClickUpRequired = false;
+	}
 
     // we only do this for left clicks
     if (mouseButton != SDL_BUTTON_LEFT)
@@ -190,6 +217,8 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
     if (mouseDelta.length() > constants::dragThreshold)
     {
         // The mouse was dragged
+		if(!shift)
+			cut();
     }
     else
     {
@@ -238,14 +267,15 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, 
     }
     else if (mouseButton == SDL_BUTTON_RIGHT)
     {
-		if (!activePlacementBuffer.isEmpty())
+		if (activePlacementBuffer.isEmpty())
         {
-            selectedMenuComponent = nullptr;
-            activePlacementBuffer.clear();
+			if(!rightClickUpRequired) removeHoverComponent();
         }
         else
         {
-            removeHoverComponent();
+			selectedMenuComponent = nullptr;
+			activePlacementBuffer.clear();
+			rightClickUpRequired = true;
         }
     }
     else if (mouseButton == SDL_BUTTON_LEFT)
@@ -412,7 +442,7 @@ void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
 	}
 }
 
-void GameUI::mouseMove(Uint32 buttonState, int x, int y)
+void GameUI::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
 {
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
@@ -422,16 +452,29 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y)
     const bool eraserSelected = (app.ui.selectedMenuComponent != nullptr && app.ui.selectedMenuComponent->name == "Eraser");
     if (eraserSelected && (buttonState & SDL_BUTTON_RMASK || buttonState & SDL_BUTTON_LMASK))
     {
-        removeHoverComponent();
+		if (!rightClickUpRequired)
+			removeHoverComponent();
         return;
     }
     else if (buttonState & SDL_BUTTON_RMASK)
     {
-        removeHoverComponent();
+		if (!rightClickUpRequired)
+			removeHoverComponent();
     }
     else if (buttonState & SDL_BUTTON_LMASK)
     {
-        addHoverComponent(hoverLocation(true));
+		if (shift)
+		{
+			app.canvas.backgroundDirty = true;
+			GameLocation hover = hoverLocation(false);
+			Component* hoverComponent = app.state.getComponent(hover, false);
+			if (ctrl || shift) {
+				if (hoverComponent != nullptr)
+					selection.add(hoverComponent);
+			}
+		}
+		else
+			addHoverComponent(hoverLocation(true));
     }
 
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
@@ -598,7 +641,8 @@ void GameUI::addHoverComponent(const GameLocation &location)
 void GameUI::cut()
 {
 	copy();
-	deleteSelection();
+	if(copyBuffer.components.size() > 0)
+		deleteSelection();
 }
 
 void GameUI::copy()

@@ -1,4 +1,14 @@
 
+enum class GameSpeed
+{
+	x0,
+	Quarter,
+	x1,
+	x4,
+	x10,
+	x20,
+};
+
 class GameUI : public EventHandler
 {
 public:
@@ -7,7 +17,7 @@ public:
     
     void mouseDown(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
     void mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
-    void mouseMove(Uint32 buttonState, int x, int y) override;
+    void mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl) override;
     void mouseWheel(int x, int y, bool shift, bool ctrl) override;
     void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) override;
     void keyUp(SDL_Keycode key) override;
@@ -52,6 +62,9 @@ public:
 
     int hoverButtonIndex;
 
+	// the speed we will return to when pause is toggled
+	GameSpeed cachedSpeed;
+
 private:
 
     AppData &app;
@@ -62,4 +75,5 @@ private:
     bool shiftUp;
 	bool leftClickUp;
 	bool rightClickUp;
+	bool rightClickUpRequired;
 };

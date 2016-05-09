@@ -18,15 +18,6 @@ enum class EditorMode
     UserSolution,
 };*/
 
-enum class GameSpeed
-{
-    x0,
-    Quarter,
-    x1,
-    x4,
-    x10,
-    x20,
-};
 
 inline int ticksFromSpeed(GameSpeed speed)
 {

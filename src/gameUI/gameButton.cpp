@@ -167,7 +167,9 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
-        app.controller.speed = GameSpeed::x1;
+		app.ui.cachedSpeed = GameSpeed::x0;
+		if (app.controller.speed == GameSpeed::x0)
+			app.controller.speed = GameSpeed::x1;
         app.state.resetPuzzle();
         app.renderer.initMotionBlur(0.5f, 5);
     }

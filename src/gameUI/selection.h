@@ -41,6 +41,7 @@ struct ComponentSelection
 	// adds an element to a selection set
 	void add(Component* c)
 	{
+		if (isIn(c)) return;
 		if (selectionIsInCircuit != c->location.inCircuit())
 			newSelectionFromComponent(c);
 		else if (selectionIsInCircuit && circuitLocation != c->location.boardPos)

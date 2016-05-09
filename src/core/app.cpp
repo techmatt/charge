@@ -231,7 +231,10 @@ int App::run()
 			}
             if (event.type == SDL_MOUSEMOTION)
             {
-                data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y);
+				const SDL_Keymod mod = SDL_GetModState();
+				const bool shift = (mod & KMOD_SHIFT) != 0;
+				const bool ctrl = (mod & KMOD_CTRL) != 0;
+                data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y, shift, ctrl);
             }
             if (event.type == SDL_MOUSEWHEEL)
             {
