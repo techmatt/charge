@@ -35,7 +35,7 @@ public:
 
 	void addHoverComponent(const GameLocation &location);
 
-	void cycleButtonSelection(ButtonType type, int direction);
+	void cycleButtonSelection(ButtonType type, int direction, bool wrap);
 
     void clearSelection();
 	void deleteSelection();

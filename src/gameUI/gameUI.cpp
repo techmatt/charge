@@ -61,8 +61,8 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 
 	if (key == SDLK_BACKQUOTE)
 	{
-		cycleButtonSelection(ButtonType::GateState, 1);
-		cycleButtonSelection(ButtonType::TrapState, 1);
+		cycleButtonSelection(ButtonType::GateState, 1, true);
+		cycleButtonSelection(ButtonType::TrapState, 1, true);
 	}
 
     if (key == SDLK_F9)
@@ -392,7 +392,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, 
     }
 }
 
-void GameUI::cycleButtonSelection(ButtonType type, int direction)
+void GameUI::cycleButtonSelection(ButtonType type, int direction, bool wrap)
 {
 	Component *selectedComponent = app.ui.selection.singleElement();
 	if (selectedComponent == nullptr) return;
@@ -425,7 +425,11 @@ void GameUI::cycleButtonSelection(ButtonType type, int direction)
 
 	if (selectedIndex == -1) return;
 
-	int newSelected = math::mod(selectedIndex + direction, buttons.size());
+	int newSelected;
+	if(wrap)
+		newSelected = math::mod(selectedIndex + direction, buttons.size());
+	else
+		newSelected = math::clamp(selectedIndex + direction, 0, (int)buttons.size() - 1);
 	buttons[newSelected]->leftClick(app, selection.singleElement());
 }
 
@@ -433,12 +437,12 @@ void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
 {
 	if (shift)
 	{
-		cycleButtonSelection(ButtonType::ChargePreference, y);
+		cycleButtonSelection(ButtonType::ChargePreference, y, false);
 	}
 	else
 	{
-		cycleButtonSelection(ButtonType::ChargeColor, y);
-		cycleButtonSelection(ButtonType::WireSpeed, y);
+		cycleButtonSelection(ButtonType::ChargeColor, y, true);
+		cycleButtonSelection(ButtonType::WireSpeed, y, false);
 	}
 }
 
