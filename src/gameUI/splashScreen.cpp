@@ -175,7 +175,7 @@ void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
     }
 }
 
-void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
+void SplashScreen::mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl)
 {
     if (dumpHighlightMode)
     {

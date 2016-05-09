@@ -400,7 +400,7 @@ void GameController::updateButtonList()
 		buttons.push_back(GameButton("CircuitPaste", vec2i(1, 0), ButtonType::PuzzleControlF, ComponentModifiers()));
 	}
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x10; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 0), ButtonType::PuzzleControlB, ComponentModifiers()));
 
     

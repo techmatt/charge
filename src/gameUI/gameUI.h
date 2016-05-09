@@ -5,8 +5,8 @@ public:
     GameUI(AppData &_app) : app(_app) {}
     void init();
     
-    void mouseDown(Uint8 button, int x, int y, bool shift, bool ctrl) override;
-    void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) override;
+    void mouseDown(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
+    void mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
     void mouseMove(Uint32 buttonState, int x, int y) override;
     void mouseWheel(int x, int y, bool shift, bool ctrl) override;
     void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) override;
@@ -28,6 +28,8 @@ public:
 	void cycleButtonSelection(ButtonType type, int direction);
 
     void clearSelection();
+	void deleteSelection();
+	void cut();
 	void copy();
 	void paste();
 
@@ -57,6 +59,7 @@ private:
     void removeHoverComponent();
 
     // true if the space key has been observed to be up. used to avoid space repeat.
-    bool spaceUp;
-    
+    bool shiftUp;
+	bool leftClickUp;
+	bool rightClickUp;
 };

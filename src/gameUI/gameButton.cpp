@@ -344,7 +344,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         transformComponentSet(app.ui.activePlacementBuffer);
     }
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x10; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
         {
             app.controller.speed = (GameSpeed)speed;

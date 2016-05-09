@@ -48,9 +48,9 @@ Stop	-1	-1	Enter	no	no	Stop Puzzle	You cannot modify the puzzle once it has star
 speedPause	-1	-1	F1	no	no	Pause	Modifies the game speed.  Press space to temporarially increase game speed.
 speedQuarter	-1	-1	F2	no	no	Quarter Speed	Modifies the game speed.  Press space to temporarially increase game speed.
 speedX1	-1	-1	F3	no	no	Normal Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-speedX3	-1	-1	F4	no	no	Triple Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-speedX5	-1	-1	F5	no	no	5x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
-speedX10	-1	-1	F6	no	no	10x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX4	-1	-1	F4	no	no	Quad Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX10	-1	-1	F5	no	no	10x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
+speedX20	-1	-1	F6	no	no	20x Speed	Modifies the game speed.  Press space to temporarially increase game speed.
 Save	-1	-1	!	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and progress is automatically saved.
 Load	-1	-1	!	no	no	Load Puzzle	Loads a previously saved puzzle.
 Music	-1	-1	!	no	no	Toggle Music	Toggles game music.

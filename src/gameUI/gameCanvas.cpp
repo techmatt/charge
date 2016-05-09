@@ -587,11 +587,6 @@ void GameCanvas::renderTooltip()
         return;
     }
 
-    if (app.controller.levelSelectMenu)
-    {
-        //return;
-    }
-
     const GameButton *button = app.controller.getHitButton(app.ui.mouseHoverCoord);
     if (button != nullptr && button->tooltip != nullptr)
     {
@@ -682,7 +677,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
 
     if (hotkey.size() > 0 && hotkey[0] != '!')
     {
-        float offset = hotkey.size() > 1 ? 5.0f : 0.0f;
+        float offset = hotkey.size() > 1 ? 22.0f : 0.0f;
         renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f - offset, attributeBottom), 12.0f);
         renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f - offset, attributeBottom), 12.0f);
     }

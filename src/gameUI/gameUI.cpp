@@ -12,7 +12,9 @@ void GameUI::init()
 
     hoverButtonIndex = -1;
 
-    spaceUp = true;
+    shiftUp = true;
+	leftClickUp = true;
+	rightClickUp = true;
 }
 
 void GameUI::clearSelection()
@@ -20,6 +22,20 @@ void GameUI::clearSelection()
     selectedMenuComponent = nullptr;
     activePlacementBuffer.clear();
     selection.empty();
+}
+
+void GameUI::deleteSelection()
+{
+	for (Component *c : selection.components)
+	{
+		if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece && c->baseInfo->name != "CircuitBoundary")
+		{
+			app.controller.recordDesignAction();
+			app.state.removeComponent(c, false);
+			app.state.updateAll();
+		}
+	}
+	selection.empty();
 }
 
 void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
@@ -38,6 +54,12 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
             app.state.resetPuzzle();
         }
     }
+
+	if (key == SDLK_BACKQUOTE)
+	{
+		cycleButtonSelection(ButtonType::GateState, 1);
+		cycleButtonSelection(ButtonType::TrapState, 1);
+	}
 
     if (key == SDLK_F9)
     {
@@ -81,6 +103,11 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		paste();
     }
 
+	if (key == SDLK_x)
+	{
+		cut();
+	}
+
     if (key == SDLK_F8)
     {
         // debug key to disable all components
@@ -89,32 +116,23 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 
     if (key == SDLK_DELETE || key == SDLK_BACKSPACE)
     {
-        Component *selectedComponent = selection.singleElement();
-        if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
-        {
-            app.controller.recordDesignAction();
-            //delete all the selected components
-            for (Component *c : app.ui.selection.components)
-                app.state.removeComponent(c, false);
-            app.state.updateAll();
-        }
-        selection.empty();
+		deleteSelection();
     }
 
-    if (key == SDLK_SPACE && spaceUp)
+    if (key == SDLK_LSHIFT && shiftUp)
     {
-        spaceUp = false;
-        if (app.controller.speed != GameSpeed::x10)
+		shiftUp = false;
+		if(app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x20)
             app.controller.speed = GameSpeed((int)app.controller.speed + 1);
     }
 }
 
 void GameUI::keyUp(SDL_Keycode key)
 {
-    if (key == SDLK_SPACE)
+    if (key == SDLK_LSHIFT)
     {
-        spaceUp = true;
-        if (app.controller.speed != GameSpeed::x0)
+		shiftUp = true;
+        if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x0)
             app.controller.speed = GameSpeed((int)app.controller.speed - 1);
         app.canvas.backgroundDirty = true;
     }
@@ -134,7 +152,7 @@ void GameUI::removeHoverComponent()
     //		if (cell.value.c != nullptr)
     //			selection.remove(cell.value.c);
 
-    if (c->circuitBoard != nullptr&&selection.selectionIsInCircuit && selection.circuitLocation == c->location.boardPos)
+    if (c->circuitBoard != nullptr && selection.selectionIsInCircuit && selection.circuitLocation == c->location.boardPos)
         selection.empty();
 
     // and remove the board from the selection
@@ -146,8 +164,11 @@ void GameUI::removeHoverComponent()
     app.undoBuffer.save(app.state);
 }
 
-void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
+void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bool ctrl)
 {
+	if (mouseButton == SDL_BUTTON_LEFT) leftClickUp = true;
+	if (mouseButton == SDL_BUTTON_RIGHT) rightClickUp = true;
+
     // we only do this for left clicks
     if (mouseButton != SDL_BUTTON_LEFT)
         return;
@@ -187,12 +208,16 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
                 if (hoverComponent != nullptr)
                     selection.newSelectionFromComponent(hoverComponent);
             }
-        }
 
+			if (clicks == 2)
+			{
+				cut();
+			}
+        }
     }
 }
 
-void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
+void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, bool ctrl)
 {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
@@ -213,7 +238,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
     }
     else if (mouseButton == SDL_BUTTON_RIGHT)
     {
-        if (!activePlacementBuffer.isEmpty())
+		if (!activePlacementBuffer.isEmpty())
         {
             selectedMenuComponent = nullptr;
             activePlacementBuffer.clear();
@@ -337,42 +362,54 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, bool shift, bool ctrl)
     }
 }
 
+void GameUI::cycleButtonSelection(ButtonType type, int direction)
+{
+	Component *selectedComponent = app.ui.selection.singleElement();
+	if (selectedComponent == nullptr) return;
+
+	int selectedIndex = -1;
+	vector<GameButton*> buttons;
+	for (auto &b : app.controller.buttons)
+	{
+		if (b.type == type && type == ButtonType::ChargePreference)
+		{
+			if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
+			buttons.push_back(&b);
+		}
+		if (b.type == type && type == ButtonType::ChargeColor)
+		{
+			if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
+			buttons.push_back(&b);
+		}
+		if (b.type == type && type == ButtonType::WireSpeed)
+		{
+			if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
+			buttons.push_back(&b);
+		}
+		if (b.type == type && (type == ButtonType::TrapState || type == ButtonType::GateState))
+		{
+			if (selectedComponent->info->name == b.name) selectedIndex = (int)buttons.size();
+			buttons.push_back(&b);
+		}
+	}
+
+	if (selectedIndex == -1) return;
+
+	int newSelected = math::mod(selectedIndex + direction, buttons.size());
+	buttons[newSelected]->leftClick(app, selection.singleElement());
+}
+
 void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
 {
-    Component *selectedComponent = app.ui.selection.singleElement();
-    if (selectedComponent == nullptr) return;
-
-    int selectedIndex = -1;
-    vector<GameButton*> buttons;
-    for (auto &b : app.controller.buttons)
-    {
-		if (shift)
-		{
-			if (b.type == ButtonType::ChargePreference)
-			{
-				if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
-				buttons.push_back(&b);
-			}
-		}
-		else
-		{
-			if (b.type == ButtonType::ChargeColor)
-			{
-				if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
-				buttons.push_back(&b);
-			}
-			if (b.type == ButtonType::WireSpeed)
-			{
-				if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
-				buttons.push_back(&b);
-			}
-		}
-    }
-
-    if (selectedIndex == -1) return;
-
-	int newSelected = math::mod(selectedIndex + y, buttons.size());
-	buttons[newSelected]->leftClick(app, selection.singleElement());
+	if (shift)
+	{
+		cycleButtonSelection(ButtonType::ChargePreference, y);
+	}
+	else
+	{
+		cycleButtonSelection(ButtonType::ChargeColor, y);
+		cycleButtonSelection(ButtonType::WireSpeed, y);
+	}
 }
 
 void GameUI::mouseMove(Uint32 buttonState, int x, int y)
@@ -558,6 +595,12 @@ void GameUI::addHoverComponent(const GameLocation &location)
 
 }
 
+void GameUI::cut()
+{
+	copy();
+	deleteSelection();
+}
+
 void GameUI::copy()
 {
 	// COPY if there is anything in the selection buffer
@@ -565,6 +608,7 @@ void GameUI::copy()
 		selection.copyToComponentSet(copyBuffer, app.state);
 	else
 		copyBuffer.clear();
+	paste();
 }
 
 void GameUI::paste()

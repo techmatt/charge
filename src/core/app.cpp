@@ -220,14 +220,14 @@ int App::run()
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, event.button.clicks, shift, ctrl);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, event.button.clicks, shift, ctrl);
 			}
             if (event.type == SDL_MOUSEMOTION)
             {
