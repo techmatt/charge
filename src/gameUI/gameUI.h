@@ -4,7 +4,8 @@ enum class GameSpeed
 	x0,
 	Quarter,
 	x1,
-	x4,
+	x3,
+	x5,
 	x10,
 	x20,
 };
@@ -74,6 +75,7 @@ private:
     // true if the space key has been observed to be up. used to avoid space repeat.
     bool tabUp;
 	bool leftClickUp;
+	int leftClickCounter;
 	bool rightClickUp;
 	bool rightClickUpRequired;
 };

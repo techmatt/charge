@@ -360,9 +360,6 @@ void GameCanvas::updateBackgroundObjects()
 
     app.controller.updateButtonList();
 
-	Component *referenceComponent = nullptr;
-	if (app.ui.selection.components.size() > 0) referenceComponent = app.ui.selection.components[0];
-
     //app.renderer.setRenderTarget(background);
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
@@ -411,18 +408,26 @@ void GameCanvas::updateBackgroundObjects()
         renderSpokes(*component);
     }
 
+	vector<ComponentDefiningProperties> referenceComponents;
+	if (app.ui.activePlacementBuffer.components.size() == 1)
+		referenceComponents.push_back(app.ui.activePlacementBuffer.components[0]);
+	else if (app.ui.selection.components.size() > 0)
+		referenceComponents.push_back(ComponentDefiningProperties(*app.ui.selection.components[0]));
+
     for (auto &button : app.controller.buttons)
     {
         bool selected = false;
         selected |= (button.type == ButtonType::Component && app.ui.selectedMenuComponent == button.component && app.ui.selectedMenuComponentColor == button.modifiers.color);
-        if (referenceComponent != nullptr)
+        if (referenceComponents.size() > 0)
         {
-            selected |= (button.type == ButtonType::ChargePreference && referenceComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-            selected |= (button.type == ButtonType::ChargeColor && referenceComponent->modifiers.color == button.modifiers.color);
-            selected |= (button.type == ButtonType::WireSpeed && referenceComponent->modifiers.speed == button.modifiers.speed);
-            selected |= (button.type == ButtonType::CircuitBoundary && referenceComponent->modifiers.boundary == button.modifiers.boundary);
-            selected |= (button.type == ButtonType::TrapState && referenceComponent->info->name == button.name);
-            selected |= (button.type == ButtonType::GateState && referenceComponent->info->name == button.name);
+			const ComponentModifiers &modifiers = referenceComponents[0].modifiers;
+			const ComponentInfo &info = *referenceComponents[0].baseInfo;
+            selected |= (button.type == ButtonType::ChargePreference && modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonType::ChargeColor && modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonType::WireSpeed && modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonType::CircuitBoundary && modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonType::TrapState && info.name == button.name);
+            selected |= (button.type == ButtonType::GateState && info.name == button.name);
         }
         if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {

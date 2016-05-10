@@ -1,5 +1,5 @@
 Component name	Menu X	Menu Y	Hotkey	Colored	Grayed	Semantic name	Description
-Wire	0	0	W	no	no	Wire	Allows charge to flow.
+Wire	0	0	W	no	no	Wire	"Allows charge to flow.  Starting at puzzle 4, wires can be upgraded to control the speed of charge."
 Splitter	1	0	S	no	no	Splitter	Splits a large charge into multiple smaller charges.|Orange splits into 2 Red|Yellow splits into 3 Red|Green splits into 2 Orange|Blue splits into 2 Yellow
 Amplifier	2	0	A	no	no	Amplifier	"Accepts two charges and emits a charge that is one level higher than the larger of the receieved charges.|Red = 1, Orange = 2, Yellow = 3, Green = 4, Blue = 5"
 FilteredAmplifier	3	0	L	yes	no	# Amplifier	Accept two charges and emits a # charge.  Will not accept a second charge unless the sum is strong enough to produce a # charge.
@@ -45,12 +45,13 @@ Preference3	-1	-1	!	no	no	Minor Acceptor	Charge favors moving towards a componen
 Preference4	-1	-1	!	no	no	Major Acceptor	Charge favors moving towards a component that is more accepting of charge.  You can use shift+mouse wheel to cycle through different affinities.
 Start	-1	-1	Enter	no	no	Start Puzzle	You cannot modify the puzzle once it has started.
 Stop	-1	-1	Enter	no	no	Stop Puzzle	You cannot modify the puzzle once it has started.
-speedPause	-1	-1	F1	no	no	Pause	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
-speedQuarter	-1	-1	F2	no	no	Quarter Speed	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
-speedX1	-1	-1	F3	no	no	Normal Speed	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
-speedX4	-1	-1	F4	no	no	Quad Speed	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
-speedX10	-1	-1	F5	no	no	10x Speed	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
-speedX20	-1	-1	F6	no	no	20x Speed	Modifies the game speed.  Press shift to temporarially increase game speed.  Press space to toggle pause.
+speedPause	-1	-1	!	no	no	Pause	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedQuarter	-1	-1	F1	no	no	Quarter Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedX1	-1	-1	F2	no	no	Normal Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedX3	-1	-1	F3	no	no	Triple Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedX5	-1	-1	F3	no	no	5x Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedX10	-1	-1	F4	no	no	10x Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
+speedX20	-1	-1	F5	no	no	20x Speed	Modifies the game speed.  Press tab to temporarially increase game speed.  Press space to toggle pause.
 Save	-1	-1	!	no	no	Save Puzzle	Saves the current puzzle.  Puzzle solutions and progress is automatically saved.
 Load	-1	-1	!	no	no	Load Puzzle	Loads a previously saved puzzle.
 Music	-1	-1	!	no	no	Toggle Music	Toggles game music.

@@ -255,42 +255,47 @@ void GameController::updateButtonList()
             }
         }
 
-		vector<Component*> allComponents;
-		if (singleComponent)
-			allComponents.push_back(singleComponent);
+		vector<ComponentDefiningProperties> allComponents;
+		if (app.ui.activePlacementBuffer.components.size() == 1)
+		{
+			allComponents.push_back(app.ui.activePlacementBuffer.components[0]);
+		}
 		else
 		{
-			for (Component *c : app.ui.selection.components)
-				allComponents.push_back(c);
+			if (singleComponent)
+				allComponents.push_back(ComponentDefiningProperties(*singleComponent));
+			else
+			{
+				for (Component *c : app.ui.selection.components)
+					allComponents.push_back(ComponentDefiningProperties(*c));
+			}
 		}
-
+		
 		bool componentsModifyable = true;
 		bool showAffinity = true;
 		bool showSpeed = true;
 		bool showCircuitBoundary = true;
 		bool homogenous = true;
-		for (Component *c : allComponents)
+		for (const ComponentDefiningProperties &c : allComponents)
 		{
-			const ComponentInfo &info = *c->info;
+			const ComponentInfo &info = *c.baseInfo;
 
-			if (c->modifiers.puzzleType != ComponentPuzzleType::User)
+			if (c.modifiers.puzzleType != ComponentPuzzleType::User)
 				componentsModifyable = false;
 			if (info.name == "Circuit" || info.name == "Blocker" || info.name == "PowerSource") showAffinity = false;
 			if (info.name != "Wire") showSpeed = false;
 			if (info.name != "CircuitBoundary") showCircuitBoundary = false;
-			if (info.name != allComponents[0]->info->name) homogenous = false;
+			if (info.name != allComponents[0].baseInfo->name) homogenous = false;
 		}
 		bool showColor = homogenous && !showSpeed && !showCircuitBoundary;
-		
 
-        //
+		//
         // Add color, delay, preference, and boundary buttons
         //
         if (allComponents.size() > 0 && componentsModifyable)
         {
-			Component *referenceComponent = allComponents[0];
-			const ComponentModifiers &referenceModifiers = referenceComponent->modifiers;
-            const ComponentInfo &info = *allComponents[0]->info;
+			const ComponentModifiers &referenceModifiers = allComponents[0].modifiers;
+            const ComponentInfo &info = *allComponents[0].baseInfo;
 
             if (showAffinity)
             {
@@ -427,7 +432,7 @@ void GameController::updateButtonList()
 		buttons.push_back(GameButton("CircuitPaste", vec2i(1, 0), ButtonType::PuzzleControlF, ComponentModifiers()));
 	}
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x10; speed++)
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         buttons.push_back(GameButton(buttonNameFromSpeed((GameSpeed)speed), vec2i(speed, 0), ButtonType::PuzzleControlB, ComponentModifiers()));
 
     

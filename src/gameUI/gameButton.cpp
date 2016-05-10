@@ -115,71 +115,96 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
         app.ui.selectedMenuComponentColor = modifiers.color;
 
         app.ui.activePlacementBuffer.clear();
-        app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, app.ui.selectedMenuComponentColor);
+        app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, modifiers.color);
     }
 
-    if (selectedComponents.size() > 0 && selectedComponents[0]->modifiers.puzzleType == ComponentPuzzleType::User)
+	if (app.ui.activePlacementBuffer.components.size() == 1)
+	{
+		ComponentDefiningProperties &component = app.ui.activePlacementBuffer.components[0];
+		if (type == ButtonType::ChargeColor)
+		{
+			component.modifiers.color = modifiers.color;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::ChargePreference)
+		{
+			component.modifiers.chargePreference = modifiers.chargePreference;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::WireSpeed)
+		{
+			component.modifiers.speed = modifiers.speed;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::GateState || type == ButtonType::TrapState)
+		{
+			component.baseInfo = &database().getComponent(name);
+			app.controller.recordDesignAction();
+		}
+	}
+    else if (selectedComponents.size() > 0 && selectedComponents[0]->modifiers.puzzleType == ComponentPuzzleType::User)
     {
-        if (type == ButtonType::ChargeColor)
-        {
-			for(Component *c : selectedComponents)
-				if(c->modifiers.puzzleType == ComponentPuzzleType::User)
+		if (type == ButtonType::ChargeColor)
+		{
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
 					c->modifiers.color = modifiers.color;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::ChargePreference)
-        {
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::ChargePreference)
+		{
 			for (Component *c : selectedComponents)
 				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
 					c->modifiers.chargePreference = modifiers.chargePreference;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::WireSpeed)
-        {
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::WireSpeed)
+		{
 			for (Component *c : selectedComponents)
 				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
 					c->modifiers.speed = modifiers.speed;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::CircuitBoundary)
-        {
-            if (name == "CloseAll")
-            {
-                if (app.activeCircuit())
-                {
-                    for (auto &component : app.state.components)
-                    {
-                        if (component->location.boardPos == app.activeCircuit()->location.boardPos &&
-                            component->inactiveBoundary())
-                        {
-                            component->modifiers.boundary = CircuitBoundaryType::Closed;
-                        }
-                    }
-                }
-            }
-            else
-            {
-				for (Component *c : selectedComponents)
-					if (c->modifiers.puzzleType == ComponentPuzzleType::User)
-						c->modifiers.boundary = modifiers.boundary;
-            }
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::GateState || type == ButtonType::TrapState)
-        {
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::GateState || type == ButtonType::TrapState)
+		{
 			for (Component *c : selectedComponents)
 				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
 					c->baseInfo = c->info = &database().getComponent(name);
-            app.controller.recordDesignAction();
-        }
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::CircuitBoundary)
+		{
+			if (name == "CloseAll")
+			{
+				if (app.activeCircuit())
+				{
+					for (auto &component : app.state.components)
+					{
+						if (component->location.boardPos == app.activeCircuit()->location.boardPos &&
+							component->inactiveBoundary())
+						{
+							component->modifiers.boundary = CircuitBoundaryType::Closed;
+						}
+					}
+				}
+			}
+			else
+			{
+				for (Component *c : selectedComponents)
+					if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+						c->modifiers.boundary = modifiers.boundary;
+			}
+			app.controller.recordDesignAction();
+		}
     }
     if (name == "Start")
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
-		app.ui.cachedSpeed = GameSpeed::x0;
+		if(app.ui.cachedSpeed == GameSpeed::x0)
+			app.ui.cachedSpeed = GameSpeed::x1;
 		if (app.controller.speed == GameSpeed::x0)
-			app.controller.speed = GameSpeed::x1;
+			app.controller.speed = app.ui.cachedSpeed;
         app.state.resetPuzzle();
         app.renderer.initMotionBlur(0.5f, 5);
     }
@@ -356,7 +381,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
         transformComponentSet(app.ui.activePlacementBuffer);
     }
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x10; speed++)
+    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
         {
             app.controller.speed = (GameSpeed)speed;

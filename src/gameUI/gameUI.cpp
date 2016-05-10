@@ -15,7 +15,8 @@ void GameUI::init()
     tabUp = true;
 	leftClickUp = true;
 	rightClickUp = true;
-	cachedSpeed = GameSpeed::x0;
+	cachedSpeed = GameSpeed::x1;
+	leftClickCounter = 0;
 }
 
 void GameUI::clearSelection()
@@ -41,6 +42,8 @@ void GameUI::deleteSelection()
 
 void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 {
+	leftClickCounter = 0;
+
     //
     // TODO: this is more aggressive than it needs to be, but it probably doesn't matter.
     //
@@ -204,7 +207,6 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
     if (!activePlacementBuffer.isEmpty())
         return;
 
-
     // the current coordinates
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
@@ -228,7 +230,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
             app.canvas.backgroundDirty = true;
             Component* hoverComponent = app.state.getComponent(hover, false);
             if (ctrl || shift){
-                if (hoverComponent != nullptr)
+                if (hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
                     selection.toggle(hoverComponent);
             }
             else
@@ -238,7 +240,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
                     selection.newSelectionFromComponent(hoverComponent);
             }
 
-			if (clicks == 2)
+			if (clicks == 2 && leftClickCounter >= 2 && hoverComponent != nullptr)
 			{
 				cut();
 			}
@@ -248,7 +250,10 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
 
 void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, bool ctrl)
 {
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
+    //const Uint8 *keys = SDL_GetKeyboardState(NULL);
+
+	if (mouseButton == SDL_BUTTON_LEFT) leftClickCounter++;
+	if (mouseButton == SDL_BUTTON_RIGHT) leftClickCounter = 0;
 
     CoordinateFrame windowFrame = app.renderer.getWindowCoordinateFrame();
     mouseHoverCoord = vec2i(windowFrame.fromContainer(vec2f((float)x, (float)y)));
@@ -394,31 +399,41 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, 
 
 void GameUI::cycleButtonSelection(ButtonType type, int direction, bool wrap)
 {
-	if (selection.components.size() == 0) return;
-	Component *referenceComponent = selection.components[0];
+	vector<ComponentDefiningProperties> referenceComponents;
+	if (activePlacementBuffer.components.size() == 1)
+		referenceComponents.push_back(activePlacementBuffer.components[0]);
+	else
+	{
+		if (selection.components.size() == 0) return;
+		referenceComponents.push_back(ComponentDefiningProperties(*selection.components[0]));
+	}
 	
+	const ComponentModifiers &modifiers = referenceComponents[0].modifiers;
+	const ComponentInfo &info = *referenceComponents[0].baseInfo;
+
+
 	int selectedIndex = -1;
 	vector<GameButton*> buttons;
 	for (auto &b : app.controller.buttons)
 	{
 		if (b.type == type && type == ButtonType::ChargePreference)
 		{
-			if (referenceComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
+			if (modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && type == ButtonType::ChargeColor)
 		{
-			if (referenceComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
+			if (modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && type == ButtonType::WireSpeed)
 		{
-			if (referenceComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
+			if (modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && (type == ButtonType::TrapState || type == ButtonType::GateState))
 		{
-			if (referenceComponent->info->name == b.name) selectedIndex = (int)buttons.size();
+			if (info.name == b.name) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 	}
@@ -435,6 +450,8 @@ void GameUI::cycleButtonSelection(ButtonType type, int direction, bool wrap)
 
 void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)
 {
+	leftClickCounter = 0;
+
 	if (shift)
 	{
 		cycleButtonSelection(ButtonType::ChargePreference, y, false);
@@ -473,7 +490,7 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
 			GameLocation hover = hoverLocation(false);
 			Component* hoverComponent = app.state.getComponent(hover, false);
 			if (ctrl || shift) {
-				if (hoverComponent != nullptr)
+				if (hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
 					selection.add(hoverComponent);
 			}
 		}
