@@ -877,8 +877,8 @@ vec2i GameState::CircuitToCircuitTargetLocation(vec2i displacement, vec2i circui
 
 Component* GameState::findClosestMatch(Component *start) {
 	// this finds the closest component of the corresponding type.  It allways prioritizes components that are in the same circuit.
-	float minDist = 1000.0f;
-	Component* bestComponent = nullptr;
+	double minDist = 1000.0;
+	vector<Component*> bestComponents;
 
 	for (const auto &c : components)
 	{
@@ -901,13 +901,42 @@ Component* GameState::findClosestMatch(Component *start) {
 		else continue;
 
 		// minimize
-		float dist = (float) (start->location.modifiedDistanceTo(c->location));
+		double dist = start->location.modifiedDistanceTo(c->location);
 		if (dist < minDist)
 		{
+			bestComponents.clear();
 			minDist = dist;
-			bestComponent = c;
+			bestComponents.push_back(c);
+		}
+		else if (dist == minDist)
+		{
+			bestComponents.push_back(c);
 		}
 	}
 
-	return bestComponent;
+	if (bestComponents.size() == 0)
+		return nullptr;
+
+	auto cost = [&](const Component *c) {
+		const vec2d diff = c->location.boardFrameLocationOfCenter() - start->location.boardFrameLocationOfCenter();
+		
+		double a0 = math::radiansToDegrees(atan2(-diff.y, diff.x));
+		if (a0 < 0.0) a0 += 360.0;
+
+		double angle = 360.0 - a0 + 90.0;
+		if (angle + .00001 >= 360.0) angle -= 360.0;
+		return angle;
+	};
+
+	sort(bestComponents.begin(), bestComponents.end(), [&](const Component *a, const Component *b) {
+		return cost(a) < cost(b);
+	});
+
+	/*cout << "Components: " << bestComponents.size() << endl;
+	for (auto &c : bestComponents)
+	{
+		cout << cost(c) << endl;
+	}*/
+
+	return bestComponents[0];
 }

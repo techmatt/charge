@@ -107,7 +107,7 @@ void GameButton::initTooltip()
         tooltip = &database().getComponent(name);
 }
 
-void GameButton::leftClick(AppData &app, Component *selectedComponent) const
+void GameButton::leftClick(AppData &app, const vector<Component*> &selectedComponents) const
 {
     if (type == ButtonType::Component)
     {
@@ -118,21 +118,27 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, app.ui.selectedMenuComponentColor);
     }
 
-    if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
+    if (selectedComponents.size() > 0 && selectedComponents[0]->modifiers.puzzleType == ComponentPuzzleType::User)
     {
         if (type == ButtonType::ChargeColor)
         {
-            selectedComponent->modifiers.color = modifiers.color;
+			for(Component *c : selectedComponents)
+				if(c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.color = modifiers.color;
             app.controller.recordDesignAction();
         }
         if (type == ButtonType::ChargePreference)
         {
-            selectedComponent->modifiers.chargePreference = modifiers.chargePreference;
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.chargePreference = modifiers.chargePreference;
             app.controller.recordDesignAction();
         }
         if (type == ButtonType::WireSpeed)
         {
-            selectedComponent->modifiers.speed = modifiers.speed;
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.speed = modifiers.speed;
             app.controller.recordDesignAction();
         }
         if (type == ButtonType::CircuitBoundary)
@@ -153,13 +159,17 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
             }
             else
             {
-                selectedComponent->modifiers.boundary = modifiers.boundary;
+				for (Component *c : selectedComponents)
+					if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+						c->modifiers.boundary = modifiers.boundary;
             }
             app.controller.recordDesignAction();
         }
         if (type == ButtonType::GateState || type == ButtonType::TrapState)
         {
-            selectedComponent->baseInfo = selectedComponent->info = &database().getComponent(name);
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->baseInfo = c->info = &database().getComponent(name);
             app.controller.recordDesignAction();
         }
     }

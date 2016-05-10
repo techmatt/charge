@@ -63,7 +63,7 @@ struct GameButton
         initTooltip();
     }
 
-    void leftClick(AppData &app, Component *selectedComponent) const;
+    void leftClick(AppData &app, const vector<Component*> &selectedComponents) const;
 
 	string tooltipHotkey() const
 	{

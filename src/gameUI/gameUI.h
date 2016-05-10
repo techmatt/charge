@@ -72,7 +72,7 @@ private:
     void removeHoverComponent();
 
     // true if the space key has been observed to be up. used to avoid space repeat.
-    bool shiftUp;
+    bool tabUp;
 	bool leftClickUp;
 	bool rightClickUp;
 	bool rightClickUpRequired;

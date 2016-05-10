@@ -12,7 +12,7 @@ void GameUI::init()
 
     hoverButtonIndex = -1;
 
-    shiftUp = true;
+    tabUp = true;
 	leftClickUp = true;
 	rightClickUp = true;
 	cachedSpeed = GameSpeed::x0;
@@ -71,7 +71,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
         g_gameParams.load(parameterFile);
     }
 
-    Component* gameComponent = selection.singleElement();
+    //Component* gameComponent = selection.singleElement();
 
     for (const GameButton &b : app.controller.buttons)
     {
@@ -82,7 +82,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		if (b.modifierKey == ModifierKey::Alt && !alt) modifiersCorrect = false;
         if (b.hotkeyCode == key && modifiersCorrect)
         {
-            b.leftClick(app, gameComponent);
+            b.leftClick(app, selection.components);
         }
     }
 
@@ -117,7 +117,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		if (app.controller.puzzleMode == PuzzleMode::Design)
 		{
 			for (const GameButton &b : app.controller.buttons)
-				if(b.name == "Start") b.leftClick(app, gameComponent);
+				if(b.name == "Start") b.leftClick(app, selection.components);
 		}
 		else if (app.controller.puzzleMode == PuzzleMode::Executing)
 		{
@@ -142,9 +142,9 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		deleteSelection();
     }
 
-    if (key == SDLK_LSHIFT && shiftUp)
+    if (key == SDLK_TAB && tabUp)
     {
-		shiftUp = false;
+		tabUp = false;
 		if(app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x20)
             app.controller.speed = GameSpeed((int)app.controller.speed + 1);
     }
@@ -152,9 +152,9 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 
 void GameUI::keyUp(SDL_Keycode key)
 {
-    if (key == SDLK_LSHIFT)
+    if (key == SDLK_TAB)
     {
-		shiftUp = true;
+		tabUp = true;
         if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x0)
             app.controller.speed = GameSpeed((int)app.controller.speed - 1);
         app.canvas.backgroundDirty = true;
@@ -388,37 +388,37 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, 
 
     if (mouseButton == SDL_BUTTON_LEFT)
     {
-        button.leftClick(app, gameComponent);
+        button.leftClick(app, selection.components);
     }
 }
 
 void GameUI::cycleButtonSelection(ButtonType type, int direction, bool wrap)
 {
-	Component *selectedComponent = app.ui.selection.singleElement();
-	if (selectedComponent == nullptr) return;
-
+	if (selection.components.size() == 0) return;
+	Component *referenceComponent = selection.components[0];
+	
 	int selectedIndex = -1;
 	vector<GameButton*> buttons;
 	for (auto &b : app.controller.buttons)
 	{
 		if (b.type == type && type == ButtonType::ChargePreference)
 		{
-			if (selectedComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
+			if (referenceComponent->modifiers.chargePreference == b.modifiers.chargePreference) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && type == ButtonType::ChargeColor)
 		{
-			if (selectedComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
+			if (referenceComponent->modifiers.color == b.modifiers.color) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && type == ButtonType::WireSpeed)
 		{
-			if (selectedComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
+			if (referenceComponent->modifiers.speed == b.modifiers.speed) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 		if (b.type == type && (type == ButtonType::TrapState || type == ButtonType::GateState))
 		{
-			if (selectedComponent->info->name == b.name) selectedIndex = (int)buttons.size();
+			if (referenceComponent->info->name == b.name) selectedIndex = (int)buttons.size();
 			buttons.push_back(&b);
 		}
 	}
@@ -430,7 +430,7 @@ void GameUI::cycleButtonSelection(ButtonType type, int direction, bool wrap)
 		newSelected = math::mod(selectedIndex + direction, buttons.size());
 	else
 		newSelected = math::clamp(selectedIndex + direction, 0, (int)buttons.size() - 1);
-	buttons[newSelected]->leftClick(app, selection.singleElement());
+	buttons[newSelected]->leftClick(app, selection.components);
 }
 
 void GameUI::mouseWheel(int x, int y, bool shift, bool ctrl)

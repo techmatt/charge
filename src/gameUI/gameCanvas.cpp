@@ -360,7 +360,8 @@ void GameCanvas::updateBackgroundObjects()
 
     app.controller.updateButtonList();
 
-    Component *selectedComponent = app.ui.selection.singleElement();
+	Component *referenceComponent = nullptr;
+	if (app.ui.selection.components.size() > 0) referenceComponent = app.ui.selection.components[0];
 
     //app.renderer.setRenderTarget(background);
 
@@ -414,14 +415,14 @@ void GameCanvas::updateBackgroundObjects()
     {
         bool selected = false;
         selected |= (button.type == ButtonType::Component && app.ui.selectedMenuComponent == button.component && app.ui.selectedMenuComponentColor == button.modifiers.color);
-        if (selectedComponent != nullptr)
+        if (referenceComponent != nullptr)
         {
-            selected |= (button.type == ButtonType::ChargePreference && selectedComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-            selected |= (button.type == ButtonType::ChargeColor && selectedComponent->modifiers.color == button.modifiers.color);
-            selected |= (button.type == ButtonType::WireSpeed && selectedComponent->modifiers.speed == button.modifiers.speed);
-            selected |= (button.type == ButtonType::CircuitBoundary && selectedComponent->modifiers.boundary == button.modifiers.boundary);
-            selected |= (button.type == ButtonType::TrapState && selectedComponent->info->name == button.name);
-            selected |= (button.type == ButtonType::GateState && selectedComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::ChargePreference && referenceComponent->modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonType::ChargeColor && referenceComponent->modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonType::WireSpeed && referenceComponent->modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonType::CircuitBoundary && referenceComponent->modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonType::TrapState && referenceComponent->info->name == button.name);
+            selected |= (button.type == ButtonType::GateState && referenceComponent->info->name == button.name);
         }
         if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {
