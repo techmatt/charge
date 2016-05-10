@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 void D3D11ShaderManager::init(RendererD3D11 &g)
 {
     _graphics = &g;
@@ -23,3 +25,5 @@ void D3D11ShaderManager::registerShader(
 		shaders.ps.load(*_graphics, filename, entryPointPS, shaderModelPS);
 	}
 }
+
+#endif

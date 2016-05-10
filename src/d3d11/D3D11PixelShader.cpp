@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 void D3D11PixelShader::load(
 	RendererD3D11 &g, 
 	const string &filename, 
@@ -39,3 +41,5 @@ void D3D11PixelShader::bind() const
 {
 	_graphics->context().PSSetShader(_shader, nullptr, 0);
 }
+
+#endif

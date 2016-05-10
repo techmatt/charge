@@ -46,8 +46,12 @@ int main(int argc, char* argv[])
         renderer = new RendererSDL();
     else if (params().graphics == "OpenGL")
         renderer = new RendererOpenGL();
-    else if (params().graphics == "D3D11")
-        renderer = new RendererD3D11();
+	else if (params().graphics == "D3D11")
+	{
+#ifdef INCLUDE_D3D
+		renderer = new RendererD3D11();
+#endif
+	}
     else
         chargeFatalError("Unrecognized graphics type: " + params().graphics);
 

@@ -1,6 +1,8 @@
 ﻿
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 const bool debuggingD3D11 = false;
 
 void RendererD3D11::init(SDL_Window *window)
@@ -440,3 +442,5 @@ void RendererD3D11::clear()
 
     updateWindowSize();
 }
+
+#endif

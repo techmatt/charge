@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 void D3D11Texture2D::load(RendererD3D11 &g, const Bitmap &image)
 {
     _graphics = &g;
@@ -54,3 +56,5 @@ void D3D11Texture2D::bind() const
         return;
     _graphics->context().PSSetShaderResources(0, 1, &_view);
 }
+
+#endif

@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 void D3D11RenderTarget::release()
 {
 		
@@ -142,3 +144,5 @@ void D3D11RenderTarget::clearDepth(float clearDepth)
 	auto &context = _graphics->context();
 	context.ClearDepthStencilView(_depthStencilDSV, D3D11_CLEAR_DEPTH, clearDepth, 0);
 }
+
+#endif

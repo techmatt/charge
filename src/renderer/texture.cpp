@@ -47,7 +47,7 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
 
 void Texture::releaseD3D11Memory()
 {
-#ifdef _WIN32
+#ifdef INCLUDE_D3D
 		if (_D3D11Texture != nullptr) delete _D3D11Texture;
 #endif
 }
@@ -170,8 +170,10 @@ void Texture::initOpenGL(bool useMipmaps)
 
 void Texture::initD3D11()
 {
+#ifdef INCLUDE_D3D
 	_D3D11Texture = new D3D11Texture2D;
 	_D3D11Texture->load(_renderer->castD3D11(), _bmp);
+#endif
 }
 
 void Texture::bindOpenGL()
@@ -183,5 +185,7 @@ void Texture::bindOpenGL()
 
 void Texture::bindD3D11()
 {
+#ifdef INCLUDE_D3D
 	_D3D11Texture->bind();
+#endif
 }

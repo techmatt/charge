@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 void D3D11VertexShader::load(
 	RendererD3D11 &g,
 	const string &filename,
@@ -48,3 +50,5 @@ void D3D11VertexShader::bind() const
 	context.VSSetShader(_shader, nullptr, 0);
 	context.IASetInputLayout(_standardLayout);
 }
+
+#endif

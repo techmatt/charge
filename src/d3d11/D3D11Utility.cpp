@@ -1,6 +1,8 @@
 
 #include "main.h"
 
+#ifdef INCLUDE_D3D
+
 string getExecutablePath()
 {
 	HMODULE hModule = GetModuleHandleW(NULL);
@@ -131,3 +133,5 @@ ID3DBlob* D3D11Utility::CompileShader(const string &filename, const string &entr
 
 	return blob;
 }
+
+#endif

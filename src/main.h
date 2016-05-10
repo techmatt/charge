@@ -3,6 +3,7 @@
 #define __CHARGE_MAIN
 
 #define GLEW_NO_GLU
+//#define INCLUDE_D3D
 
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
@@ -65,7 +66,7 @@ class D3D11Texture2D;
 #include "renderer/renderTarget.h"
 #include "renderer/renderer.h"
 
-#ifdef _WIN32
+#ifdef INCLUDE_D3D
 #include "d3d11.h"
 #include "D3DCommon.h"
 #include "D3DCompiler.h"
