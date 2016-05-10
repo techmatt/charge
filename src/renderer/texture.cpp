@@ -1,7 +1,7 @@
 ﻿
 #include "main.h"
 
-void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
+void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth, float glowStrength, RGBColor glowColor)
 {
     if (text.size() == 0)
     {
@@ -30,12 +30,26 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
         p.value.r = b;
     }
 
-    if (renderer.type() == RendererType::SDL)
-        initSDL();
-    else
-        initOpenGL(false);
+    if (glowStrength > 0.0f)
+    {
+        _bmp = GameUtil::processGlow(_bmp, glowStrength, glowColor.toVec3f(), color.toVec3f());
+    }
+
+	if (renderer.type() == RendererType::SDL)
+		initSDL();
+	else if (renderer.type() == RendererType::OpenGL)
+		initOpenGL(false);
+	else if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 
     SDL_FreeSurface(surface);
+}
+
+void Texture::releaseD3D11Memory()
+{
+#ifdef INCLUDE_D3D
+		if (_D3D11Texture != nullptr) delete _D3D11Texture;
+#endif
 }
 
 void Texture::load(Renderer &renderer, const string &filename)
@@ -48,6 +62,9 @@ void Texture::load(Renderer &renderer, const string &filename)
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
+
+	if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 }
 
 void Texture::load(Renderer &renderer, const Bitmap &bmp)
@@ -60,6 +77,9 @@ void Texture::load(Renderer &renderer, const Bitmap &bmp)
 
     if (renderer.type() == RendererType::OpenGL)
         initOpenGL(true);
+
+	if (renderer.type() == RendererType::D3D11)
+		initD3D11();
 }
 
 void Texture::initSDL()
@@ -108,7 +128,6 @@ void Texture::initOpenGL(bool useMipmaps)
     {
         int mipMapCount = (int)log2((double)std::min(width, height));
         mipMapCount = math::clamp(mipMapCount - 1, 1, 8);
-
 		if (debugCalls) cout << "glTexStorage2D" << endl;
         glTexStorage2D(GL_TEXTURE_2D, mipMapCount, GL_RGBA8, width, height);
         checkGLError();
@@ -149,9 +168,24 @@ void Texture::initOpenGL(bool useMipmaps)
     checkGLError();
 }
 
+void Texture::initD3D11()
+{
+#ifdef INCLUDE_D3D
+	_D3D11Texture = new D3D11Texture2D;
+	_D3D11Texture->load(_renderer->castD3D11(), _bmp);
+#endif
+}
+
 void Texture::bindOpenGL()
 {
     //SDL_GL_BindTexture(_SDLTexture, nullptr, nullptr);
     glBindTexture(GL_TEXTURE_2D, _OpenGLTexture);
     checkGLError();
+}
+
+void Texture::bindD3D11()
+{
+#ifdef INCLUDE_D3D
+	_D3D11Texture->bind();
+#endif
 }

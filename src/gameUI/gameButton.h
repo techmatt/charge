@@ -14,7 +14,16 @@ enum class ButtonType
     PuzzleControlD,
     PuzzleControlE,
 	PuzzleControlF,
+    LevelSelect,
     ComponentAttribute,
+};
+
+enum class ModifierKey
+{
+	None,
+	Alt,
+	Shift,
+	Ctrl
 };
 
 struct GameButton
@@ -23,7 +32,7 @@ struct GameButton
     GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const ComponentModifiers &_modifiers)
     {
         component = nullptr;
-        name = _name;
+		name = _name;
         type = _type;
         modifiers = _modifiers;
         canonicalRect = getCanonicalRect(menuCoord, type);
@@ -43,8 +52,18 @@ struct GameButton
 
         initTooltip();
     }
+    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const int _levelIndex)
+    {
+        component = nullptr;
+        name = _name;
+        type = _type;
+        canonicalRect = getCanonicalRect(menuCoord, type);
+        levelIndex = _levelIndex;
 
-    void leftClick(AppData &app, Component *selectedComponent) const;
+        initTooltip();
+    }
+
+    void leftClick(AppData &app, const vector<Component*> &selectedComponents) const;
 
 	string tooltipHotkey() const
 	{
@@ -52,6 +71,8 @@ struct GameButton
 			return "C";
 		if (name == "CircuitPaste")
 			return "V";
+		if (name == "CircuitCut")
+			return "X";
 		return hotkey;
 	}
 
@@ -65,6 +86,8 @@ struct GameButton
     const ComponentInfo *tooltip;
     string hotkey;
     SDL_Keycode hotkeyCode;
+	ModifierKey modifierKey;
+    int levelIndex;
 
 private:
     void initTooltip();
@@ -73,6 +96,7 @@ private:
     {
         const int sizeA = params().puzzleMenuCanonicalEntrySize;
         const int sizeB = params().componentMenuCanonicalEntrySize;
+        const int sizeC = params().levelSelectMenuCanonicalEntrySize;
         if (type == ButtonType::PuzzleControlA)
         {
             const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
@@ -113,6 +137,11 @@ private:
         {
             const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + vec2i::directProduct(menuCoord, vec2i(sizeB + 1, sizeB));
             return rect2i(base, base + params().canonicalCellSize * vec2i(2, 2));
+        }
+        else if (type == ButtonType::LevelSelect)
+        {
+            const vec2i base = params().componentMenuCanonicalStart + params().menuButtonOffset + menuCoord * sizeC;
+            return rect2i(base, base + (sizeC - 4) * vec2i(1, 1));
         }
         else if (type == ButtonType::ChargePreference)
         {

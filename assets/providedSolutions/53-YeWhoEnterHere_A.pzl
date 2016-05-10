@@ -1,4 +1,4 @@
-Puzzle~93~526
+Puzzle~123~708
 buildableComponents~38
 ComponentBuildState~37~37
 Amplifier=1
@@ -40,10 +40,10 @@ WireMinorAccelerator=1
 WireMinorDelay=1
 component0000~8
 Component~7~7
-boardPos=0 11
+boardPos=0 12
 color=1
 name=PowerSource
-puzzleType=1
+puzzleType=0
 secondsBeforeFirstEmission=0
 secondsPerEmission=2
 totalCharges=1000
@@ -51,477 +51,659 @@ component0001~4
 Component~3~3
 boardPos=20 0
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0002~5
 Component~4~4
 boardPos=22 20
 color=1
 name=GateSwitch
-puzzleType=1
+puzzleType=0
 component0003~4
 Component~3~3
 boardPos=22 18
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0004~4
 Component~3~3
 boardPos=22 22
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0005~4
 Component~3~3
 boardPos=20 22
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0006~4
 Component~3~3
 boardPos=20 18
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0007~4
 Component~3~3
 boardPos=20 2
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0008~5
 Component~4~4
 boardPos=22 16
 color=2
 name=GateSwitch
-puzzleType=1
+puzzleType=0
 component0009~4
 Component~3~3
 boardPos=20 14
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0010~4
 Component~3~3
 boardPos=22 14
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0011~5
 Component~4~4
 boardPos=20 12
 color=5
 name=FilteredAmplifier
-puzzleType=1
+puzzleType=0
 component0012~5
 Component~4~4
 boardPos=22 12
 color=3
 name=GateSwitch
-puzzleType=1
+puzzleType=0
 component0013~4
 Component~3~3
 boardPos=20 10
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0014~4
 Component~3~3
 boardPos=22 10
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0015~5
 Component~4~4
 boardPos=18 12
 color=2
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0016~4
 Component~3~3
 boardPos=18 14
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0017~4
 Component~3~3
 boardPos=18 10
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0018~4
 Component~3~3
 boardPos=22 6
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0019~5
 Component~4~4
 boardPos=22 8
 color=4
 name=GateSwitch
-puzzleType=1
+puzzleType=0
 component0020~4
 Component~3~3
 boardPos=20 6
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0021~4
 Component~3~3
 boardPos=18 6
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0022~5
 Component~4~4
 boardPos=18 8
 color=3
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0023~4
 Component~3~3
 boardPos=20 16
 name=Wire
-puzzleType=1
+puzzleType=0
 component0024~4
 Component~3~3
 boardPos=18 18
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0025~4
 Component~3~3
 boardPos=18 22
 name=Blocker
-puzzleType=1
-component0026~8
-Component~7~7
-boardPos=0 22
-color=1
-name=PowerSource
-puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=5
-totalCharges=1000
+puzzleType=0
+component0026~4
+Component~3~3
+boardPos=2 2
+name=Blocker
+puzzleType=0
 component0027~5
 Component~4~4
 boardPos=18 20
 color=3
 name=ChargeFilter
-puzzleType=1
+puzzleType=0
 component0028~4
 Component~3~3
 boardPos=18 0
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0029~5
 Component~4~4
 boardPos=20 8
 color=5
 name=GateOpen
-puzzleType=1
+puzzleType=0
 component0030~5
 Component~4~4
 boardPos=18 16
 color=1
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0031~5
 Component~4~4
 boardPos=20 20
 color=6
 name=TrapOpen
-puzzleType=1
+puzzleType=0
 component0032~5
 Component~4~4
 boardPos=18 4
 color=1
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0033~5
 Component~4~4
 boardPos=20 4
 color=2
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0034~5
 Component~4~4
 boardPos=22 4
 color=3
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0035~5
 Component~4~4
 boardPos=22 2
 color=4
 name=GateClosed
-puzzleType=1
+puzzleType=0
 component0036~5
 Component~4~4
 boardPos=22 0
 color=5
 name=ChargeGoal
-puzzleType=1
+puzzleType=0
 component0037~4
 Component~3~3
 boardPos=18 2
 name=Blocker
-puzzleType=1
-component0038~5
-Component~4~4
-boardPos=2 22
-color=1
-name=GateClosed
-puzzleType=1
-component0039~5
-Component~4~4
-boardPos=4 22
-color=5
-name=GateSwitch
-puzzleType=1
+puzzleType=0
+component0038~4
+Component~3~3
+boardPos=0 2
+name=Blocker
+puzzleType=0
+component0039~4
+Component~3~3
+boardPos=2 0
+name=Hold
+puzzleType=0
 component0040~4
 Component~3~3
-boardPos=0 20
+boardPos=4 2
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0041~4
 Component~3~3
-boardPos=2 20
+boardPos=6 2
 name=Blocker
-puzzleType=1
+puzzleType=0
 component0042~4
 Component~3~3
-boardPos=4 20
+boardPos=8 2
 name=Blocker
-puzzleType=1
-component0043~4
-Component~3~3
-boardPos=6 20
-name=Blocker
-puzzleType=1
-component0044~4
-Component~3~3
-boardPos=6 22
-name=Blocker
-puzzleType=1
-component0045~4
-Component~3~3
-boardPos=2 11
+puzzleType=0
+component0043~5
+Component~4~4
+boardPos=6 0
 name=Wire
-puzzleType=1
+puzzleType=0
+speed=0
+component0044~5
+Component~4~4
+boardPos=4 0
+color=1
+name=GateClosed
+puzzleType=0
+component0045~8
+Component~7~7
+boardPos=0 0
+color=1
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
 component0046~4
 Component~3~3
-boardPos=2 13
-name=Wire
-puzzleType=1
-component0047~4
-Component~3~3
-boardPos=2 15
-name=Wire
-puzzleType=1
-component0048~4
-Component~3~3
-boardPos=2 17
-name=Wire
-puzzleType=1
-component0049~4
-Component~3~3
-boardPos=4 18
-name=Wire
-puzzleType=1
-component0050~5
+boardPos=12 2
+name=Blocker
+puzzleType=0
+component0047~5
 Component~4~4
-boardPos=6 18
+boardPos=14 18
+color=2
+name=TeleportDestination
+puzzleType=0
+component0048~6
+Component~5~5
+boardPos=14 6
+chargePreference=1
 name=Wire
-puzzleType=1
+puzzleType=0
+speed=4
+component0049~5
+Component~4~4
+boardPos=8 0
+name=Wire
+puzzleType=0
 speed=0
+component0050~6
+Component~5~5
+boardPos=16 7
+chargePreference=3
+name=Wire
+puzzleType=0
+speed=4
 component0051~5
 Component~4~4
-boardPos=8 18
-name=Wire
-puzzleType=1
-speed=0
-component0052~5
-Component~4~4
-boardPos=8 20
-name=Wire
-puzzleType=1
-speed=0
+boardPos=14 8
+color=4
+name=TeleportDestination
+puzzleType=0
+component0052~4
+Component~3~3
+boardPos=14 2
+name=Blocker
+puzzleType=0
 component0053~5
 Component~4~4
-boardPos=8 22
+boardPos=16 12
+chargePreference=3
 name=Wire
-puzzleType=1
-speed=0
-component0054~5
-Component~4~4
-boardPos=10 22
-name=Wire
-puzzleType=1
-speed=0
-component0055~5
-Component~4~4
-boardPos=12 22
-name=Wire
-puzzleType=1
-speed=0
-component0056~4
+puzzleType=0
+component0054~4
 Component~3~3
-boardPos=14 21
-name=Amplifier
-puzzleType=1
+boardPos=10 2
+name=Blocker
+puzzleType=0
+component0055~6
+Component~5~5
+boardPos=16 17
+chargePreference=3
+name=Wire
+puzzleType=0
+speed=4
+component0056~5
+Component~4~4
+boardPos=14 13
+color=3
+name=TeleportDestination
+puzzleType=0
 component0057~4
 Component~3~3
-boardPos=16 20
-name=Amplifier
-puzzleType=1
+boardPos=14 0
+name=Blocker
+puzzleType=0
 component0058~6
 Component~5~5
 boardPos=14 16
 chargePreference=1
 name=Wire
-puzzleType=1
+puzzleType=0
 speed=4
-component0059~6
-Component~5~5
+component0059~5
+Component~4~4
 boardPos=14 11
 chargePreference=1
 name=Wire
-puzzleType=1
-speed=4
-component0060~6
-Component~5~5
-boardPos=14 6
-chargePreference=1
-name=Wire
-puzzleType=1
-speed=4
-component0061~6
-Component~5~5
-boardPos=16 7
-chargePreference=3
-name=Wire
-puzzleType=1
-speed=4
-component0062~6
-Component~5~5
-boardPos=16 12
-chargePreference=3
-name=Wire
-puzzleType=1
-speed=4
+puzzleType=0
+component0060~5
+Component~4~4
+boardPos=16 4
+color=5
+name=TeleportDestination
+puzzleType=0
+component0061~4
+Component~3~3
+boardPos=16 2
+name=Blocker
+puzzleType=0
+component0062~4
+Component~3~3
+boardPos=16 0
+name=Blocker
+puzzleType=0
 component0063~5
 Component~4~4
-boardPos=14 8
-color=3
-name=TeleportDestination
-puzzleType=1
+boardPos=12 0
+color=5
+name=GateSwitch
+puzzleType=0
 component0064~5
 Component~4~4
-boardPos=14 13
-color=2
-name=TeleportDestination
-puzzleType=1
+boardPos=10 0
+name=Wire
+puzzleType=0
+speed=0
 component0065~5
 Component~4~4
-boardPos=14 18
-color=1
-name=TeleportDestination
-puzzleType=1
-component0066~6
-Component~5~5
-boardPos=16 17
-chargePreference=3
-color=2
-name=GateOpen
-puzzleType=1
+boardPos=12 20
+chargePreference=1
+name=Wire
+puzzleType=0
+component0066~4
+Component~3~3
+boardPos=4 4
+name=Wire
+puzzleType=0
 component0067~4
 Component~3~3
-boardPos=2 9
-name=Amplifier
-puzzleType=1
-component0068~4
-Component~3~3
-boardPos=3 7
-name=Amplifier
-puzzleType=1
+boardPos=10 4
+name=Wire
+puzzleType=0
+component0068~5
+Component~4~4
+boardPos=14 21
+color=3
+name=FilteredAmplifier
+puzzleType=0
 component0069~4
 Component~3~3
-boardPos=5 7
-name=Amplifier
-puzzleType=1
-component0070~5
-Component~4~4
-boardPos=7 8
-color=2
-name=TeleportSource
-puzzleType=1
-component0071~6
-Component~5~5
-boardPos=4 11
-chargePreference=3
-color=2
-name=GateClosed
-puzzleType=1
+boardPos=0 8
+name=Wire
+puzzleType=0
+component0070~4
+Component~3~3
+boardPos=6 4
+name=Wire
+puzzleType=0
+component0071~4
+Component~3~3
+boardPos=8 4
+name=Wire
+puzzleType=0
 component0072~4
 Component~3~3
-boardPos=6 10
+boardPos=0 6
 name=Wire
-puzzleType=1
+puzzleType=0
 component0073~4
 Component~3~3
-boardPos=8 16
+boardPos=0 4
 name=Wire
-puzzleType=1
-component0074~5
-Component~4~4
-boardPos=7 14
-color=1
-name=TeleportSource
-puzzleType=1
-component0075~4
+puzzleType=0
+component0074~4
 Component~3~3
-boardPos=16 3
-name=Amplifier
-puzzleType=1
-component0076~6
+boardPos=2 4
+name=Wire
+puzzleType=0
+component0075~6
 Component~5~5
-boardPos=12 13
-chargePreference=4
-color=4
-name=GateClosed
-puzzleType=1
-component0077~4
-Component~3~3
-boardPos=11 11
-name=Wire
-puzzleType=1
-component0078~4
-Component~3~3
-boardPos=11 9
-name=Wire
-puzzleType=1
-component0079~4
-Component~3~3
-boardPos=11 7
-name=Wire
-puzzleType=1
-component0080~4
-Component~3~3
-boardPos=11 5
-name=Amplifier
-puzzleType=1
-component0081~4
-Component~3~3
-boardPos=12 3
-name=Amplifier
-puzzleType=1
-component0082~4
-Component~3~3
-boardPos=14 3
-name=Amplifier
-puzzleType=1
-component0083~5
-Component~4~4
-boardPos=10 16
+boardPos=3 6
+chargePreference=3
 color=6
 name=TrapOpen
-puzzleType=1
-component0084~5
-Component~4~4
-boardPos=11 18
+puzzleType=0
+component0076~6
+Component~5~5
+boardPos=5 6
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0077~6
+Component~5~5
+boardPos=7 6
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0078~6
+Component~5~5
+boardPos=3 8
+chargePreference=4
+color=2
+name=TeleportSource
+puzzleType=0
+component0079~6
+Component~5~5
+boardPos=5 8
+chargePreference=4
 color=3
 name=TeleportSource
-puzzleType=1
-componentCost=-1
-componentCount=85
+puzzleType=0
+component0080~6
+Component~5~5
+boardPos=7 8
+chargePreference=4
+color=4
+name=TeleportSource
+puzzleType=0
+component0081~4
+Component~3~3
+boardPos=11 6
+name=Wire
+puzzleType=0
+component0082~4
+Component~3~3
+boardPos=11 8
+name=Wire
+puzzleType=0
+component0083~4
+Component~3~3
+boardPos=11 10
+name=Wire
+puzzleType=0
+component0084~4
+Component~3~3
+boardPos=11 12
+name=Wire
+puzzleType=0
+component0085~4
+Component~3~3
+boardPos=11 14
+name=Wire
+puzzleType=0
+component0086~4
+Component~3~3
+boardPos=11 16
+name=Wire
+puzzleType=0
+component0087~4
+Component~3~3
+boardPos=11 18
+name=Wire
+puzzleType=0
+component0088~4
+Component~3~3
+boardPos=4 19
+name=Wire
+puzzleType=0
+component0089~5
+Component~4~4
+boardPos=7 11
+chargePreference=4
+name=Amplifier
+puzzleType=0
+component0090~5
+Component~4~4
+boardPos=7 13
+chargePreference=4
+name=Amplifier
+puzzleType=0
+component0091~5
+Component~4~4
+boardPos=7 15
+chargePreference=4
+name=Amplifier
+puzzleType=0
+component0092~4
+Component~3~3
+boardPos=0 10
+name=Wire
+puzzleType=0
+component0093~6
+Component~5~5
+boardPos=9 11
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0094~6
+Component~5~5
+boardPos=9 13
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0095~6
+Component~5~5
+boardPos=9 15
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0096~4
+Component~3~3
+boardPos=2 18
+name=Wire
+puzzleType=0
+component0097~4
+Component~3~3
+boardPos=5 11
+name=Wire
+puzzleType=0
+component0098~4
+Component~3~3
+boardPos=6 20
+name=Wire
+puzzleType=0
+component0099~6
+Component~5~5
+boardPos=9 18
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0100~6
+Component~5~5
+boardPos=7 18
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0101~4
+Component~3~3
+boardPos=3 12
+name=Wire
+puzzleType=0
+component0102~4
+Component~3~3
+boardPos=3 14
+name=Wire
+puzzleType=0
+component0103~5
+Component~4~4
+boardPos=12 22
+color=2
+name=FilteredAmplifier
+puzzleType=0
+component0104~4
+Component~3~3
+boardPos=16 20
+name=Wire
+puzzleType=0
+component0105~5
+Component~4~4
+boardPos=10 20
+color=1
+name=GateClosed
+puzzleType=0
+component0106~4
+Component~3~3
+boardPos=8 20
+name=Wire
+puzzleType=0
+component0107~6
+Component~5~5
+boardPos=5 15
+chargePreference=1
+color=3
+name=TeleportSource
+puzzleType=0
+component0108~6
+Component~5~5
+boardPos=5 17
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0109~6
+Component~5~5
+boardPos=3 16
+chargePreference=3
+color=6
+name=TrapOpen
+puzzleType=0
+component0110~5
+Component~4~4
+boardPos=0 17
+color=2
+name=FilteredAmplifier
+puzzleType=0
+component0111~6
+Component~5~5
+boardPos=0 19
+chargePreference=4
+color=3
+name=FilteredAmplifier
+puzzleType=0
+component0112~6
+Component~5~5
+boardPos=2 20
+chargePreference=4
+color=4
+name=FilteredAmplifier
+puzzleType=0
+component0113~6
+Component~5~5
+boardPos=4 21
+chargePreference=4
+color=5
+name=FilteredAmplifier
+puzzleType=0
+component0114~6
+Component~5~5
+boardPos=2 22
+chargePreference=3
+color=5
+name=TeleportSource
+puzzleType=0
+componentCost=202
+componentCount=115
 levelPack=Campaign
-levelPackPuzzleIndex=52
+levelPackPuzzleIndex=53
 levelPackPuzzleName=Ye Who Enter Here
 puzzleFileType=ProvidedSolution
-stepCount=-1
+stepCount=2016

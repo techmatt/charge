@@ -57,10 +57,10 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName)
 {
-    if (app.renderer.motionBlurActive() == 0)
-        app.renderer.initMotionBlur(0.3f, 100);
-    else
-        app.renderer.initMotionBlur(1.0f, 100);
+    //if (app.renderer.motionBlurActive() == 0)
+    //    app.renderer.initMotionBlur(0.3f, 100);
+    //else
+    //    app.renderer.initMotionBlur(1.0f, 100);
 
     // TODO: we can allow copying components between levels, but only after we implment verifying if the components can be built in the other level.
     if (editorMode != EditorMode::LevelEditor)
@@ -146,6 +146,14 @@ void GameController::loadCurrentProvidedSolution()
     app.state.disableEditing();
 }
 
+bool GameController::userSolutionExists()
+{
+    const PuzzleInfo &puzzle = getActivePuzzle();
+    const string filenameProgress = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Progress);
+    const string filenameRecent = app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Recent);
+    return util::fileExists(filenameProgress) || util::fileExists(filenameRecent);
+}
+
 void GameController::loadUserSolution()
 {
 	const PuzzleInfo &puzzle = getActivePuzzle();
@@ -206,113 +214,164 @@ void GameController::updateButtonList()
     circuitBoundaryMenu = false;
     transformMenu = false;
 
-    //
-    // Add all buildable components
-    //
-    for (auto &p : database().components)
+    Component *singleComponent = app.ui.selection.singleElement();
+    if (singleComponent != nullptr && singleComponent->inactiveCircuitMegaHold(app.state))
+		singleComponent = &singleComponent->getSuperMegaHoldTarget(app.state);
+
+    if (levelSelectMenu)
     {
-        const ComponentInfo &info = *p.second;
-        if (info.menuCoordinate.x != -1)
-        {
-            const ComponentInfo *realInfo = &info;
-            if (util::endsWith(info.name, "GrayProxy"))
+        const int gridSize = 10;
+        int levelIndex = 0;
+        for (int y = 0; y < gridSize; y++)
+            for (int x = 0; x < gridSize; x++)
             {
-                realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
+                const UserSessionLevelInfo *info = app.session.getLevelInfo("Campaign", levelIndex);
+                if (info == nullptr)
+                    continue;
+
+                buttons.push_back(GameButton("ChoosePuzzle", vec2i(x, y), ButtonType::LevelSelect, levelIndex));
+                levelIndex++;
             }
-            if ((app.controller.editorMode == EditorMode::LevelEditor && realInfo->name != "Eraser") ||
-				(app.controller.editorMode == EditorMode::Campaign && realInfo->name == "Eraser") ||
-			    app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
-                buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::Component, ComponentModifiers(info)));
-        }
     }
-
-    //
-    // Add color, delay, preference, and boundary buttons
-    //
-    Component *component = app.ui.selection.singleElement();
-    if (component != nullptr && component->inactiveCircuitMegaHold(app.state))
-        component = &component->getSuperMegaHoldTarget(app.state);
-
-    if (component != nullptr && component->modifiers.puzzleType == ComponentPuzzleType::User)
+    else
     {
-        const ComponentInfo &info = *component->info;
-
-        //const bool allowPreference = (currentCampaignIndex == -1 || currentCampaignIndex >= constants::preferenceCampaignLevelStart);
-		const bool allowPreference = true;
-
-        if (component->info->name != "Circuit" && component->info->name != "Blocker" && component->info->name != "PowerSource" && allowPreference)
+        //
+        // Add all buildable components
+        //
+        for (auto &p : database().components)
         {
-            for (int chargePreference = 0; chargePreference <= 4; chargePreference++)
+            const ComponentInfo &info = *p.second;
+            if (info.menuCoordinate.x != -1)
             {
-                affinityMenu = true;
-                buttons.push_back(GameButton(info.name, vec2i(chargePreference, 0), ButtonType::ChargePreference, ComponentModifiers(component->modifiers.color, chargePreference)));
+                const ComponentInfo *realInfo = &info;
+                if (util::endsWith(info.name, "GrayProxy"))
+                {
+                    realInfo = &database().getComponent(util::remove(info.name, "GrayProxy"));
+                }
+                if ((app.controller.editorMode == EditorMode::LevelEditor && realInfo->name != "Eraser") ||
+                    (app.controller.editorMode == EditorMode::Campaign && realInfo->name == "Eraser") ||
+                    app.state.buildableComponents.canBuild(realInfo->name, ComponentModifiers(info)))
+                    buttons.push_back(GameButton(realInfo->name, info.menuCoordinate, ButtonType::Component, ComponentModifiers(info)));
             }
         }
 
-        if (info.name == "Wire")
+		vector<ComponentDefiningProperties> allComponents;
+		if (app.ui.activePlacementBuffer.components.size() == 1)
+		{
+			allComponents.push_back(app.ui.activePlacementBuffer.components[0]);
+		}
+		else
+		{
+			if (singleComponent)
+				allComponents.push_back(ComponentDefiningProperties(*singleComponent));
+			else
+			{
+				for (Component *c : app.ui.selection.components)
+					allComponents.push_back(ComponentDefiningProperties(*c));
+			}
+		}
+		
+		bool componentsModifyable = true;
+		bool showAffinity = true;
+		bool showSpeed = true;
+		bool showCircuitBoundary = true;
+		bool homogenous = true;
+		for (const ComponentDefiningProperties &c : allComponents)
+		{
+			const ComponentInfo &info = *c.baseInfo;
+
+			if (c.modifiers.puzzleType != ComponentPuzzleType::User)
+				componentsModifyable = false;
+            if (info.name == "Eraser") showAffinity = false;
+			if (info.name == "Circuit" || info.name == "Blocker" || info.name == "PowerSource") showAffinity = false;
+			if (info.name != "Wire") showSpeed = false;
+			if (info.name != "CircuitBoundary") showCircuitBoundary = false;
+			if (info.name != allComponents[0].baseInfo->name) homogenous = false;
+		}
+		bool showColor = homogenous && !showSpeed && !showCircuitBoundary;
+
+		//
+        // Add color, delay, preference, and boundary buttons
+        //
+        if (allComponents.size() > 0 && componentsModifyable)
         {
-            int speedCount = 0;
-            for (int speed = 0; speed <= 4; speed++)
+			const ComponentModifiers &referenceModifiers = allComponents[0].modifiers;
+            const ComponentInfo &info = *allComponents[0].baseInfo;
+
+            if (showAffinity)
             {
-                ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
-                if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
-                    speedCount++;
+                for (int affinity = 0; affinity <= 4; affinity++)
+                {
+                    affinityMenu = true;
+                    buttons.push_back(GameButton(info.name, vec2i(affinity, 0), ButtonType::ChargePreference, ComponentModifiers(referenceModifiers.color, affinity)));
+                }
             }
 
-            if (speedCount > 1)
+            if (showSpeed)
+            {
+                int speedCount = 0;
                 for (int speed = 0; speed <= 4; speed++)
                 {
                     ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
                     if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
+                        speedCount++;
+                }
+
+                if (speedCount > 1)
+                    for (int speed = 0; speed <= 4; speed++)
                     {
-                        wireSpeedMenu = true;
-                        buttons.push_back(GameButton("Wire", vec2i((int)speed, 0), ButtonType::WireSpeed, modifier));
+                        ComponentModifiers modifier(ChargeType::None, 2, (WireType)speed);
+                        if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, modifier))
+                        {
+                            wireSpeedMenu = true;
+                            buttons.push_back(GameButton("Wire", vec2i((int)speed, 0), ButtonType::WireSpeed, modifier));
+                        }
                     }
-                }
-        }
-        else if (info.name == "CircuitBoundary")
-        {
-            circuitBoundaryMenu = true;
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
-            buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
-            buttons.push_back(GameButton("CloseAll", vec2i(2, 0), ButtonType::CircuitBoundary, ComponentModifiers()));
-        }
-        else
-        {
-            vector<ChargeType> chargeLevels;
-            if (info.colorUpgrades)
-            {
-                ChargeType start = info.name == "FilteredAmplifier" ? ChargeType::Orange : ChargeType::Red;
-                ChargeType end = info.grayUpgrade ? ChargeType::Gray : ChargeType::Blue;
-                for (int charge = (int)start; charge <= (int)end; charge++)
-                    chargeLevels.push_back((ChargeType)charge);
             }
-
-            int chargeIndex = 0;
-            for (ChargeType charge : chargeLevels)
+			if (showCircuitBoundary)
             {
-                if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
+                circuitBoundaryMenu = true;
+                buttons.push_back(GameButton("CircuitBoundary", vec2i(0, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Open)));
+                buttons.push_back(GameButton("CircuitBoundary", vec2i(1, 0), ButtonType::CircuitBoundary, ComponentModifiers(ChargeType::None, 2, WireType::Standard, CircuitBoundaryType::Closed)));
+                buttons.push_back(GameButton("CloseAll", vec2i(2, 0), ButtonType::CircuitBoundary, ComponentModifiers()));
+            }
+            if(showColor)
+            {
+                vector<ChargeType> chargeLevels;
+                if (info.colorUpgrades)
                 {
-                    colorMenu = true;
-                    buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 0), ButtonType::ChargeColor, ComponentModifiers(charge)));
+                    ChargeType start = info.name == "FilteredAmplifier" ? ChargeType::Orange : ChargeType::Red;
+                    ChargeType end = info.grayUpgrade ? ChargeType::Gray : ChargeType::Blue;
+                    for (int charge = (int)start; charge <= (int)end; charge++)
+                        chargeLevels.push_back((ChargeType)charge);
                 }
-                chargeIndex++;
-            }
 
-            //
-            // some components have a toggleable state
-            //
-            if (info.name == "TrapSprung" || info.name == "TrapOpen")
-            {
-                trapMenu = true;
-                buttons.push_back(GameButton("TrapOpen", vec2i(0, 0), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
-                buttons.push_back(GameButton("TrapSprung", vec2i(1, 0), ButtonType::TrapState, ComponentModifiers(component->modifiers.color)));
-            }
-            if (info.name == "GateOpen" || info.name == "GateClosed")
-            {
-                gateMenu = true;
-                buttons.push_back(GameButton("GateOpen", vec2i(0, 0), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
-                buttons.push_back(GameButton("GateClosed", vec2i(1, 0), ButtonType::GateState, ComponentModifiers(component->modifiers.color)));
+                int chargeIndex = 0;
+                for (ChargeType charge : chargeLevels)
+                {
+                    if (app.controller.editorMode == EditorMode::LevelEditor || app.state.buildableComponents.canBuild(info.name, ComponentModifiers(charge)))
+                    {
+                        colorMenu = true;
+                        buttons.push_back(GameButton(info.name, vec2i(chargeIndex, 0), ButtonType::ChargeColor, ComponentModifiers(charge)));
+                    }
+                    chargeIndex++;
+                }
+
+                //
+                // some components have a toggleable state
+                //
+                if (info.name == "TrapSprung" || info.name == "TrapOpen")
+                {
+                    trapMenu = true;
+                    buttons.push_back(GameButton("TrapOpen", vec2i(0, 0), ButtonType::TrapState, ComponentModifiers(referenceModifiers.color)));
+                    buttons.push_back(GameButton("TrapSprung", vec2i(1, 0), ButtonType::TrapState, ComponentModifiers(referenceModifiers.color)));
+                }
+                if (info.name == "GateOpen" || info.name == "GateClosed")
+                {
+                    gateMenu = true;
+                    buttons.push_back(GameButton("GateOpen", vec2i(0, 0), ButtonType::GateState, ComponentModifiers(referenceModifiers.color)));
+                    buttons.push_back(GameButton("GateClosed", vec2i(1, 0), ButtonType::GateState, ComponentModifiers(referenceModifiers.color)));
+                }
             }
         }
     }
@@ -333,6 +392,7 @@ void GameController::updateButtonList()
     
     buttons.push_back(GameButton("PrevLevel", vec2i(0, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
     buttons.push_back(GameButton("NextLevel", vec2i(1, 0), ButtonType::PuzzleControlE, ComponentModifiers()));
+    buttons.push_back(GameButton("LevelSelect", vec2i(2, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
 
     auto levelInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
     if (levelInfo != nullptr)
@@ -359,7 +419,7 @@ void GameController::updateButtonList()
         buttons.push_back(GameButton("ModeLevelEditor", vec2i(1, -1), ButtonType::PuzzleControlA, ComponentModifiers()));
     }
 
-    if (app.ui.activePlacementBuffer.components.size() >= 2 || (component != nullptr && component->isCircuit() && component->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece))
+    if (app.ui.activePlacementBuffer.components.size() >= 2 || (singleComponent != nullptr && singleComponent->isCircuit() && singleComponent->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece))
     {
         transformMenu = true;
         buttons.push_back(GameButton("CircuitRotate90", vec2i(0, 0), ButtonType::PuzzleControlD, ComponentModifiers()));
@@ -380,21 +440,21 @@ void GameController::updateButtonList()
     //
     // Add indicators
     //
-    if (component != nullptr && app.controller.editorMode == EditorMode::LevelEditor)
+    if (singleComponent != nullptr && app.controller.editorMode == EditorMode::LevelEditor)
     {
-        if (component->info->name == "PowerSource")
+        if (singleComponent->info->name == "PowerSource")
         {
-            buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(component->intrinsics.totalCharges)));
-            buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(component->intrinsics.secondsBeforeFirstEmission) + "s"));
-            buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(component->intrinsics.secondsPerEmission) + "s"));
+            buttons.push_back(GameButton("TotalCharge", vec2i(0, 0), ButtonType::ComponentAttribute, "Total charges: " + to_string(singleComponent->intrinsics.totalCharges)));
+            buttons.push_back(GameButton("FirstEmission", vec2i(0, 1), ButtonType::ComponentAttribute, "First charge at " + to_string(singleComponent->intrinsics.secondsBeforeFirstEmission) + "s"));
+            buttons.push_back(GameButton("EmissionFrequency", vec2i(0, 2), ButtonType::ComponentAttribute, "New charge every " + to_string(singleComponent->intrinsics.secondsPerEmission) + "s"));
         }
 
-        if (component->info->name == "MegaHold")
+        if (singleComponent->info->name == "MegaHold")
         {
-            const double dischargeFreq = component->intrinsics.ticksPerDischarge * constants::secondsPerStep;
+            const double dischargeFreq = singleComponent->intrinsics.ticksPerDischarge * constants::secondsPerStep;
             buttons.push_back(GameButton("TicksPerDischarge", vec2i(0, 0), ButtonType::ComponentAttribute, "Discharge every: " + util::formatDouble(dischargeFreq, 2, true) + "s"));
-            buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(component->intrinsics.chargesLostPerDischarge)));
-            buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(component->intrinsics.totalChargeRequired)));
+            buttons.push_back(GameButton("ChargesLostPerDischarge", vec2i(0, 1), ButtonType::ComponentAttribute, "Discharge size: " + to_string(singleComponent->intrinsics.chargesLostPerDischarge)));
+            buttons.push_back(GameButton("TotalChargeRequired", vec2i(0, 2), ButtonType::ComponentAttribute, "Total charge needed: " + to_string(singleComponent->intrinsics.totalChargeRequired)));
         }
     }
 }

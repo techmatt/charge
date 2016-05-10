@@ -725,11 +725,10 @@ boundary=1
 circuitPos=12 6
 name=CircuitBoundary
 puzzleType=0
-component0114~5
-Component~4~4
-boardPos=12 8
-circuitPos=2 6
-name=Wire
+component0114~4
+Component~3~3
+boardPos=6 15
+name=Blocker
 puzzleType=0
 component0115~6
 Component~5~5
@@ -901,9 +900,9 @@ name=CircuitBoundary
 puzzleType=0
 component0139~5
 Component~4~4
-boardPos=12 11
-circuitPos=4 6
-name=Wire
+boardPos=12 8
+circuitPos=2 6
+name=Hold
 puzzleType=0
 component0140~6
 Component~5~5
@@ -926,11 +925,10 @@ boundary=2
 circuitPos=0 8
 name=CircuitBoundary
 puzzleType=0
-component0143~5
-Component~4~4
-boardPos=12 11
-circuitPos=2 6
-name=Wire
+component0143~4
+Component~3~3
+boardPos=4 15
+name=Blocker
 puzzleType=0
 component0144~6
 Component~5~5
@@ -3059,15 +3057,17 @@ Component~3~3
 boardPos=4 13
 name=Blocker
 puzzleType=0
-component0462~4
-Component~3~3
-boardPos=4 15
-name=Blocker
+component0462~5
+Component~4~4
+boardPos=12 11
+circuitPos=4 6
+name=Hold
 puzzleType=0
-component0463~4
-Component~3~3
-boardPos=6 15
-name=Blocker
+component0463~5
+Component~4~4
+boardPos=12 11
+circuitPos=2 6
+name=Hold
 puzzleType=0
 componentCost=-1
 componentCount=464

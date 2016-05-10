@@ -1,7 +1,4 @@
 
-//
-// This should be a renderer, but I don't feel like keeping the renderer interface up-to-date until we need to abstract.
-//
 class RendererOpenGL : public Renderer
 {
 public:
@@ -28,9 +25,6 @@ public:
     void clear() override;
     void present() override;
 
-    void setRenderTarget(Texture &target) override;
-    void setDefaultRenderTarget() override;
-    
     vec2i getWindowSize() override;
 
 	CoordinateFrame getWindowCoordinateFrame();	// this is the coordinate frame of the rendered area in the entire window.

@@ -8,9 +8,9 @@ public:
 
     void transferToPuzzleMode(int slotIndex);
 
-    void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) override;
-    void mouseMove(Uint32 buttonState, int x, int y) override;
-    void keyDown(SDL_Keycode key, bool shift, bool ctrl) override;
+    void mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
+    void mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl) override;
+    void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) override;
 
     void render() override;
 

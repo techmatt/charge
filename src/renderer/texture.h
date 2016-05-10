@@ -11,10 +11,10 @@ public:
     {
         initInternal();
     }
-    Texture(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth)
+    Texture(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth, float glowStrength, RGBColor glowColor)
     {
         initInternal();
-        drawText(renderer, font, text, color, wrapWidth);
+        drawText(renderer, font, text, color, wrapWidth, glowStrength, glowColor);
     }
     Texture(Renderer &renderer, const string &filename)
     {
@@ -30,6 +30,7 @@ public:
     {
         releaseSDLMemory();
         releaseOpenGLMemory();
+		releaseD3D11Memory();
     }
 
     void releaseSDLMemory()
@@ -51,12 +52,15 @@ public:
         if (_OpenGLTexture != 0) glDeleteTextures(1, &_OpenGLTexture);
     }
 
+	void releaseD3D11Memory();
+	
     void load(Renderer &renderer, const string &filename);
     void load(Renderer &renderer, const Bitmap &bmp);
 
-    void drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth);
+    void drawText(Renderer &renderer, TTF_Font *font, const string &text, RGBColor color, int wrapWidth, float glowStrength, RGBColor glowColor);
 
     void bindOpenGL();
+	void bindD3D11();
 
     const Bitmap& bmp() const
     {
@@ -78,6 +82,7 @@ private:
     }
     void initSDL();
     void initOpenGL(bool useMipmaps);
+    void initD3D11();
 
     Renderer* _renderer;
 
@@ -85,4 +90,7 @@ private:
     SDL_Texture* _SDLTexture;
     SDL_Surface* _SDLSurface;
     GLuint _OpenGLTexture;
+#ifdef _WIN32
+	D3D11Texture2D *_D3D11Texture;
+#endif
 };

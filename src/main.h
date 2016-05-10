@@ -2,6 +2,9 @@
 #ifndef __CHARGE_MAIN
 #define __CHARGE_MAIN
 
+#define GLEW_NO_GLU
+//#define INCLUDE_D3D
+
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_audio.h>
@@ -28,6 +31,8 @@
 
 using namespace std;
 
+void chargeFatalError(const string &text);
+
 //
 // Forward declarations
 //
@@ -43,7 +48,9 @@ struct ComponentSet;
 struct AppData;
 class Renderer;
 class RendererOpenGL;
+class RendererD3D11;
 class Texture;
+class D3D11Texture2D;
 
 #include "game/enums.h"
 #include "core/constants.h"
@@ -58,6 +65,24 @@ class Texture;
 #include "renderer/texture.h"
 #include "renderer/renderTarget.h"
 #include "renderer/renderer.h"
+
+#ifdef INCLUDE_D3D
+#include "d3d11.h"
+#include "D3DCommon.h"
+#include "D3DCompiler.h"
+#define D3D_VALIDATE(statement) { HRESULT hr = statement;  if(FAILED(hr)) { chargeFatalError(#statement); } }
+#include "SDL_syswm.h"
+#include "d3d11/D3D11Utility.h"
+#include "d3d11/D3D11ConstantBuffer.h"
+#include "d3d11/D3D11VertexShader.h"
+#include "d3d11/D3D11PixelShader.h"
+#include "d3d11/D3D11ShaderManager.h"
+#include "d3d11/D3D11TriMesh.h"
+#include "renderer/rendererD3D11.h"
+#include "d3d11/D3D11RenderTarget.h"
+#include "d3d11/D3D11Texture2D.h"
+#endif
+
 #include "renderer/rendererOpenGL.h"
 #include "renderer/rendererSDL.h"
 
@@ -83,7 +108,5 @@ class Texture;
 #include "gameUI/gameController.h"
 
 #include "core/app.h"
-
-
 
 #endif

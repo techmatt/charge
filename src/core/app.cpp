@@ -98,7 +98,7 @@ void App::initRenderer()
     data.audio.init();
 
     data.renderer.init(window);
-    checkGLError();
+    if(data.renderer.type() == RendererType::OpenGL) checkGLError();
 }
 
 int App::runRendererTest()
@@ -148,20 +148,25 @@ int App::runRendererTest()
     return 0;
 }
 
+void App::checkpoint()
+{
+	if (data.renderer.type() == RendererType::OpenGL) checkGLError();
+}
+
 int App::run()
 {
 	//database().processAllCampaignLevels(data);
 
     initRenderer();
-    checkGLError();
+	checkpoint();
 
 	if(debugCalls) cout << "Doing database things..." << endl;
     database().initTextures(data.renderer);
-    checkGLError();
+	checkpoint();
 
     if (debugCalls) cout << "Doing data things..." << endl;
     data.state.init();
-    checkGLError();
+	checkpoint();
 
 	data.undoBuffer.init();
 	data.undoBuffer.reset(data.state);
@@ -170,14 +175,14 @@ int App::run()
     data.ui.init();
     data.canvas.init();
     data.controller.init();
-    checkGLError();
+	checkpoint();
 
     //
     // should init last to control motion blur state
     //
-    checkGLError();
+	checkpoint();
     data.splash.init();
-    checkGLError();
+	checkpoint();
     if (debugCalls) cout << "Running splash screen..." << endl;
 
     data.activeEventHandler = &data.splash;
@@ -203,7 +208,8 @@ int App::run()
             {
                 const bool shift = (event.key.keysym.mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (event.key.keysym.mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl);
+				const bool alt = (event.key.keysym.mod & KMOD_ALT) != 0;
+                data.activeEventHandler->keyDown(event.key.keysym.sym, shift, ctrl, alt);
 			}
             if (event.type == SDL_KEYUP)
             {
@@ -214,18 +220,21 @@ int App::run()
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseDown(event.button.button, event.button.x, event.button.y, event.button.clicks, shift, ctrl);
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
                 const SDL_Keymod mod = SDL_GetModState();
                 const bool shift = (mod & KMOD_SHIFT) != 0;
                 const bool ctrl = (mod & KMOD_CTRL) != 0;
-                data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, shift, ctrl);
+                data.activeEventHandler->mouseUp(event.button.button, event.button.x, event.button.y, event.button.clicks, shift, ctrl);
 			}
             if (event.type == SDL_MOUSEMOTION)
             {
-                data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y);
+				const SDL_Keymod mod = SDL_GetModState();
+				const bool shift = (mod & KMOD_SHIFT) != 0;
+				const bool ctrl = (mod & KMOD_CTRL) != 0;
+                data.activeEventHandler->mouseMove(event.motion.state, event.motion.x, event.motion.y, shift, ctrl);
             }
             if (event.type == SDL_MOUSEWHEEL)
             {
@@ -252,10 +261,10 @@ int App::run()
         //
         // render frame only if necessary
         //
-        bool renderFrame = !minimized && (eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing);
+        bool renderFrame = !minimized && (eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing || params().alwaysRender);
         if (renderFrame)
         {
-            checkGLError();
+            if(data.renderer.type() == RendererType::OpenGL) checkGLError();
 
             //
             // render the game

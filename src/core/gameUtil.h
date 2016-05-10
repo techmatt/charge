@@ -200,6 +200,8 @@ public:
     static pair<vec2f, float> computeChargeScreenPos(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
     static pair<vec2f, float> computeChargeScreenPosCircuit(const GameLocation &locationA, const GameLocation &locationB, float s, ChargeType level, const vec2f &canonicalDims);
 
+    static Bitmap processGlow(const Bitmap &bmpStart, float glowStrength, const vec3f &glowColor, const vec3f &textColor);
+
     static vector< map< string, string > > readTSVFile(const string &filename);
 };
 

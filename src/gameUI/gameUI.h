@@ -1,15 +1,26 @@
 
+enum class GameSpeed
+{
+	x0,
+	Quarter,
+	x1,
+	x3,
+	x5,
+	x10,
+	x20,
+};
+
 class GameUI : public EventHandler
 {
 public:
     GameUI(AppData &_app) : app(_app) {}
     void init();
     
-    void mouseDown(Uint8 button, int x, int y, bool shift, bool ctrl) override;
-    void mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl) override;
-    void mouseMove(Uint32 buttonState, int x, int y) override;
+    void mouseDown(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
+    void mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl) override;
+    void mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl) override;
     void mouseWheel(int x, int y, bool shift, bool ctrl) override;
-    void keyDown(SDL_Keycode key, bool shift, bool ctrl) override;
+    void keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt) override;
     void keyUp(SDL_Keycode key) override;
 
     GameLocation hoverLocation(bool constructionOffset, const vec2f mouseOffsetFromHover = vec2f(-1.0f, -1.0f)) const;
@@ -25,6 +36,11 @@ public:
 
 	void addHoverComponent(const GameLocation &location);
 
+	void cycleButtonSelection(ButtonType type, int direction, bool wrap);
+
+    void clearSelection();
+	void deleteSelection();
+	void cut();
 	void copy();
 	void paste();
 
@@ -47,6 +63,9 @@ public:
 
     int hoverButtonIndex;
 
+	// the speed we will return to when pause is toggled
+	GameSpeed cachedSpeed;
+
 private:
 
     AppData &app;
@@ -54,6 +73,9 @@ private:
     void removeHoverComponent();
 
     // true if the space key has been observed to be up. used to avoid space repeat.
-    bool spaceUp;
-    
+    bool tabUp;
+	bool leftClickUp;
+	int leftClickCounter;
+	bool rightClickUp;
+	bool rightClickUpRequired;
 };

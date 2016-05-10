@@ -83,7 +83,7 @@ struct UserSession
 
     const UserSessionLevelInfo* getLevelInfo(const string &levelPack, int puzzleIndex) const
     {
-		if (levelPack == "Campaign")
+		if (levelPack == "Campaign" && puzzleIndex < campaignLevels.size())
 		{
 			return &campaignLevels[puzzleIndex];
 		}

@@ -6,9 +6,9 @@ const bool dumpHighlightMode = false;
 void SplashScreen::init()
 {
     srand((unsigned int)time(nullptr));
-    checkGLError();
+	//checkGLError();
     app.renderer.initMotionBlur(0.5f, numeric_limits<int>::max());
-    checkGLError();
+    //checkGLError();
 
     app.renderer.bindMainRenderTarget();
 
@@ -159,7 +159,7 @@ void SplashScreen::transferToPuzzleMode(int slotIndex)
     app.renderer.initMotionBlur(0.1f, 80);
 }
 
-void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
+void SplashScreen::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
 {
     if (dumpHighlightMode)
     {
@@ -175,7 +175,7 @@ void SplashScreen::mouseMove(Uint32 buttonState, int x, int y)
     }
 }
 
-void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
+void SplashScreen::mouseUp(Uint8 button, int x, int y, int clicks, bool shift, bool ctrl)
 {
     if (dumpHighlightMode)
     {
@@ -188,7 +188,7 @@ void SplashScreen::mouseUp(Uint8 button, int x, int y, bool shift, bool ctrl)
     }
 }
 
-void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl)
+void SplashScreen::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 {
     transferToPuzzleMode(0);
 }

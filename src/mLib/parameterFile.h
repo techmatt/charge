@@ -12,13 +12,13 @@
 class ParameterFile {
 public:
 	ParameterFile(char separator = '=', bool caseSensitive = true) {
-		m_Separator = separator;
-		m_CaseSensitive = caseSensitive;
+		_Separator = separator;
+		_CaseSensitive = caseSensitive;
 	}
 
 	ParameterFile(const std::string& filename, char separator = '=', bool caseSensitive = true) {
-		m_Separator = separator;
-		m_CaseSensitive = caseSensitive;
+		_Separator = separator;
+		_CaseSensitive = caseSensitive;
 		addParameterFile(filename);
 	}
 
@@ -33,7 +33,7 @@ public:
 			removeSpecialCharacters(line);
 			if (line.length() == 0) continue;
 
-			size_t separator = line.find(m_Separator);	//split the string at separator
+			size_t separator = line.find(_Separator);	//split the string at separator
 			if (separator == std::string::npos)	{
 				MLIB_WARNING("No seperator found in line");
 				continue;
@@ -46,21 +46,21 @@ public:
 				MLIB_WARNING("Invalid attribute or value");
 				continue;
 			}
-			if (!m_CaseSensitive)	attr_name = util::toLower(attr_name);
-			m_Values[attr_name] = attr_value;
+			if (!_CaseSensitive)	attr_name = util::toLower(attr_name);
+			_Values[attr_name] = attr_value;
 		}
 		file.close();
 
 		bool found = false;
-		for (const auto &file : m_Filenames) {
+		for (const auto &file : _Filenames) {
 			if (file == filename)	found = true;
 		}
-		if (!found)	m_Filenames.push_back(filename);
+		if (!found)	_Filenames.push_back(filename);
 	}
 
 	void reload() {
-		m_Values.clear();
-		for(const auto &file : m_Filenames)
+		_Values.clear();
+		for(const auto &file : _Filenames)
 		{
 			addParameterFile(file);
 		}
@@ -68,9 +68,9 @@ public:
 
 	template<class T>
 	bool readParameter(const std::string& name, T& value) const {
-		if (m_CaseSensitive) {
-			const auto s = m_Values.find(name);
-			if (s == m_Values.end()) {
+		if (_CaseSensitive) {
+			const auto s = _Values.find(name);
+			if (s == _Values.end()) {
 				return false; 
 			} else {
 				util::convertTo(s->second, value);
@@ -78,8 +78,8 @@ public:
 			}
 		} else {
 			std::string lname(name);	lname = util::toLower(lname);
-			const auto s = m_Values.find(name);
-			if (s == m_Values.end()) {
+			const auto s = _Values.find(name);
+			if (s == _Values.end()) {
 				return false; 
 			} else {
 				util::convertTo(s->second, value);
@@ -123,14 +123,14 @@ public:
 	}
 	
 	void print() const {
-		for (auto iter = m_Values.begin(); iter != m_Values.end(); iter++) {
-			std::cout << iter->first << " " << m_Separator << " " << iter->second << std::endl;
+		for (auto iter = _Values.begin(); iter != _Values.end(); iter++) {
+			std::cout << iter->first << " " << _Separator << " " << iter->second << std::endl;
 		}
 	}
 
     void overrideParameter(const std::string &parameter, const std::string &newValue)
     {
-        m_Values[parameter] = newValue;
+        _Values[parameter] = newValue;
     }
 
 private:
@@ -163,10 +163,10 @@ private:
 			}
 		}
 	}
-	std::map<std::string, std::string> m_Values;
-	char m_Separator;
-	bool m_CaseSensitive;
-	std::list<std::string> m_Filenames;
+	std::map<std::string, std::string> _Values;
+	char _Separator;
+	bool _CaseSensitive;
+	std::list<std::string> _Filenames;
 };
 
 #endif  // CORE_UTIL_PARAMETERFILE_H_

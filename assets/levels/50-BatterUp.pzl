@@ -131,7 +131,7 @@ component0012~9
 Component~8~8
 boardPos=18 18
 chargePreference=4
-chargesLostPerDischarge=16
+chargesLostPerDischarge=18
 color=3
 name=MegaHold
 puzzleType=1
@@ -250,7 +250,7 @@ puzzleType=1
 componentCost=-1
 componentCount=33
 levelPack=Campaign
-levelPackPuzzleIndex=55
+levelPackPuzzleIndex=56
 levelPackPuzzleName=Batter Up
 puzzleFileType=BasePuzzle
 stepCount=-1

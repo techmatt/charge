@@ -4,6 +4,7 @@
 void GameButton::initTooltip()
 {
     tooltip = component;
+	modifierKey = ModifierKey::None;
 
     hotkeyCode = 0;
     hotkey = "!";
@@ -12,6 +13,21 @@ void GameButton::initTooltip()
     hotkey = component->hotkey;
     if (hotkey.size() == 0)
         hotkey = "!";
+	if (util::contains(hotkey, "Alt"))
+	{
+		modifierKey = ModifierKey::Alt;
+		hotkey = util::remove(hotkey, "Alt");
+	}
+	if (util::contains(hotkey, "Shift"))
+	{
+		modifierKey = ModifierKey::Shift;
+		hotkey = util::remove(hotkey, "Shift");
+	}
+	if (util::contains(hotkey, "Ctrl"))
+	{
+		modifierKey = ModifierKey::Ctrl;
+		hotkey = util::remove(hotkey, "Ctrl");
+	}
 
     if (hotkey == "Enter") hotkeyCode = SDLK_RETURN;
     if (hotkey == "Left") hotkeyCode = SDLK_LEFT;
@@ -19,16 +35,23 @@ void GameButton::initTooltip()
     if (hotkey == "Up") hotkeyCode = SDLK_UP;
     if (hotkey == "Down") hotkeyCode = SDLK_DOWN;
 
+	if (hotkey == "F1") hotkeyCode = SDLK_F1;
+	if (hotkey == "F2") hotkeyCode = SDLK_F2;
+	if (hotkey == "F3") hotkeyCode = SDLK_F3;
+	if (hotkey == "F4") hotkeyCode = SDLK_F4;
+	if (hotkey == "F5") hotkeyCode = SDLK_F5;
+	if (hotkey == "F6") hotkeyCode = SDLK_F6;
+
     if (type == ButtonType::ChargePreference)
     {
         tooltip = &database().getComponent("Preference" + to_string((int)modifiers.chargePreference));
         switch ((int)modifiers.chargePreference)
         {
-        case 0: hotkey = "7"; break;
-        case 1: hotkey = "8"; break;
-        case 2: hotkey = "9"; break;
-        case 3: hotkey = "0"; break;
-        case 4: hotkey = "-"; break;
+		case 0: hotkey = "1"; modifierKey = ModifierKey::Shift; break;
+        case 1: hotkey = "2"; modifierKey = ModifierKey::Shift; break;
+        case 2: hotkey = "3"; modifierKey = ModifierKey::Shift; break;
+        case 3: hotkey = "4"; modifierKey = ModifierKey::Shift; break;
+        case 4: hotkey = "5"; modifierKey = ModifierKey::Shift; break;
         }
     }
 
@@ -56,8 +79,8 @@ void GameButton::initTooltip()
 
     if (type == ButtonType::TrapState || type == ButtonType::GateState)
     {
-        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "Y";
-        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "U";
+        if (component->name == "TrapOpen" || component->name == "GateOpen") hotkey = "~";
+        if (component->name == "TrapSprung" || component->name == "GateClosed") hotkey = "~";
     }
 
     if (type == ButtonType::CircuitBoundary)
@@ -73,14 +96,18 @@ void GameButton::initTooltip()
     if (hotkey.size() == 1 && hotkey[0] >= '0' && hotkey[0] <= '9')
         hotkeyCode = SDLK_0 + hotkey[0] - '0';
 
-    if (hotkey[0] == '-')
-        hotkeyCode = SDLK_MINUS;
+    //if (hotkey[0] == '-')
+        //hotkeyCode = SDLK_MINUS;
+
+	if (modifierKey == ModifierKey::Alt) hotkey = "Alt+" + hotkey;
+	if (modifierKey == ModifierKey::Shift) hotkey = "Shift+" + hotkey;
+	if (modifierKey == ModifierKey::Ctrl) hotkey = "Ctrl+" + hotkey;
 
     if (tooltip == nullptr && database().hasComponent(name))
         tooltip = &database().getComponent(name);
 }
 
-void GameButton::leftClick(AppData &app, Component *selectedComponent) const
+void GameButton::leftClick(AppData &app, const vector<Component*> &selectedComponents) const
 {
     if (type == ButtonType::Component)
     {
@@ -88,59 +115,96 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
         app.ui.selectedMenuComponentColor = modifiers.color;
 
         app.ui.activePlacementBuffer.clear();
-        app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, app.ui.selectedMenuComponentColor);
+        app.ui.activePlacementBuffer = ComponentSet(app.ui.selectedMenuComponent, modifiers.color);
     }
 
-    if (selectedComponent != nullptr && selectedComponent->modifiers.puzzleType == ComponentPuzzleType::User)
+	if (app.ui.activePlacementBuffer.components.size() == 1)
+	{
+		ComponentDefiningProperties &component = app.ui.activePlacementBuffer.components[0];
+		if (type == ButtonType::ChargeColor)
+		{
+			component.modifiers.color = modifiers.color;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::ChargePreference)
+		{
+			component.modifiers.chargePreference = modifiers.chargePreference;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::WireSpeed)
+		{
+			component.modifiers.speed = modifiers.speed;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::GateState || type == ButtonType::TrapState)
+		{
+			component.baseInfo = &database().getComponent(name);
+			app.controller.recordDesignAction();
+		}
+	}
+    else if (selectedComponents.size() > 0 && selectedComponents[0]->modifiers.puzzleType == ComponentPuzzleType::User)
     {
-        if (type == ButtonType::ChargeColor)
-        {
-            selectedComponent->modifiers.color = modifiers.color;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::ChargePreference)
-        {
-            selectedComponent->modifiers.chargePreference = modifiers.chargePreference;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::WireSpeed)
-        {
-            selectedComponent->modifiers.speed = modifiers.speed;
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::CircuitBoundary)
-        {
-            if (name == "CloseAll")
-            {
-                if (app.activeCircuit())
-                {
-                    for (auto &component : app.state.components)
-                    {
-                        if (component->location.boardPos == app.activeCircuit()->location.boardPos &&
-                            component->inactiveBoundary())
-                        {
-                            component->modifiers.boundary = CircuitBoundaryType::Closed;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                selectedComponent->modifiers.boundary = modifiers.boundary;
-            }
-            app.controller.recordDesignAction();
-        }
-        if (type == ButtonType::GateState || type == ButtonType::TrapState)
-        {
-            selectedComponent->baseInfo = selectedComponent->info = &database().getComponent(name);
-            app.controller.recordDesignAction();
-        }
+		if (type == ButtonType::ChargeColor)
+		{
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.color = modifiers.color;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::ChargePreference)
+		{
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.chargePreference = modifiers.chargePreference;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::WireSpeed)
+		{
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->modifiers.speed = modifiers.speed;
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::GateState || type == ButtonType::TrapState)
+		{
+			for (Component *c : selectedComponents)
+				if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+					c->baseInfo = c->info = &database().getComponent(name);
+			app.controller.recordDesignAction();
+		}
+		if (type == ButtonType::CircuitBoundary)
+		{
+			if (name == "CloseAll")
+			{
+				if (app.activeCircuit())
+				{
+					for (auto &component : app.state.components)
+					{
+						if (component->location.boardPos == app.activeCircuit()->location.boardPos &&
+							component->inactiveBoundary())
+						{
+							component->modifiers.boundary = CircuitBoundaryType::Closed;
+						}
+					}
+				}
+			}
+			else
+			{
+				for (Component *c : selectedComponents)
+					if (c->modifiers.puzzleType == ComponentPuzzleType::User)
+						c->modifiers.boundary = modifiers.boundary;
+			}
+			app.controller.recordDesignAction();
+		}
     }
     if (name == "Start")
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
-        app.controller.speed = GameSpeed::x1;
+		if(app.ui.cachedSpeed == GameSpeed::x0)
+			app.ui.cachedSpeed = GameSpeed::x1;
+		if (app.controller.speed == GameSpeed::x0)
+			app.controller.speed = app.ui.cachedSpeed;
         app.state.resetPuzzle();
         app.renderer.initMotionBlur(0.5f, 5);
     }
@@ -176,6 +240,16 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
     if (name == "SoundEffect")
     {
         app.audio.playSoundEffects = !app.audio.playSoundEffects;
+    }
+    if (name == "LevelSelect")
+    {
+        app.controller.levelSelectMenu = true;
+        app.ui.clearSelection();
+        if (app.controller.puzzleMode != PuzzleMode::Design)
+        {
+            app.controller.puzzleMode = PuzzleMode::Design;
+            app.state.resetPuzzle();
+        }
     }
     if (name == "Save")
     {
@@ -279,6 +353,7 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 				if (c->info->name == "Circuit" && c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece &&
 					(name == "CircuitRotateN90" || name == "CircuitRotate90" || name == "CircuitFlipHorizontal" || name == "CircuitFlipVertical"))
 				{
+                    app.controller.recordDesignAction();
 					tempSelection.newSelectionFromComponent(c);
 
 					ComponentSet cSet;
@@ -320,4 +395,16 @@ void GameButton::leftClick(AppData &app, Component *selectedComponent) const
 	{
 		app.ui.paste();
 	}
+
+    if (name == "ChoosePuzzle")
+    {
+        if (levelIndex > app.session.highestAccessiblePuzzle())
+        {
+            app.controller.recordError("Not enough puzzles completed!", "You can only skip up to three puzzles ahead.  Try going back and beating an earlier puzzle.");
+        }
+        else
+        {
+            app.controller.levelSelectMenu = false;
+        }
+    }
 }

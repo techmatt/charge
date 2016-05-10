@@ -1,6 +1,6 @@
-Puzzle~53~297
-buildableComponents~38
-ComponentBuildState~37~37
+Puzzle~63~344
+buildableComponents~32
+ComponentBuildState~31~31
 Amplifier=1
 ChargeFilterBlue=1
 ChargeFilterGreen=1
@@ -12,7 +12,6 @@ FilteredAmplifierGreen=1
 FilteredAmplifierOrange=1
 FilteredAmplifierYellow=1
 GateClosedBlue=1
-GateClosedGray=1
 GateClosedGreen=1
 GateClosedOrange=1
 GateClosedRed=1
@@ -27,12 +26,7 @@ TeleportSourceGreen=1
 TeleportSourceOrange=1
 TeleportSourceRed=1
 TeleportSourceYellow=1
-TrapOpenBlue=1
 TrapOpenGray=1
-TrapOpenGreen=1
-TrapOpenOrange=1
-TrapOpenRed=1
-TrapOpenYellow=1
 Wire=1
 WireMajorAccelerator=1
 WireMajorDelay=1
@@ -40,7 +34,7 @@ WireMinorAccelerator=1
 WireMinorDelay=1
 component0000~8
 Component~7~7
-boardPos=0 11
+boardPos=0 12
 color=1
 name=PowerSource
 puzzleType=1
@@ -179,15 +173,11 @@ Component~3~3
 boardPos=18 22
 name=Blocker
 puzzleType=1
-component0026~8
-Component~7~7
-boardPos=0 22
-color=1
-name=PowerSource
+component0026~4
+Component~3~3
+boardPos=2 2
+name=Blocker
 puzzleType=1
-secondsBeforeFirstEmission=0
-secondsPerEmission=5
-totalCharges=1000
 component0027~5
 Component~4~4
 boardPos=18 20
@@ -252,47 +242,104 @@ Component~3~3
 boardPos=18 2
 name=Blocker
 puzzleType=1
-component0038~5
-Component~4~4
-boardPos=2 22
-color=1
-name=GateClosed
+component0038~4
+Component~3~3
+boardPos=0 2
+name=Blocker
 puzzleType=1
-component0039~5
-Component~4~4
-boardPos=4 22
-color=5
-name=GateSwitch
+component0039~4
+Component~3~3
+boardPos=2 0
+name=Hold
 puzzleType=1
 component0040~4
 Component~3~3
-boardPos=0 20
+boardPos=4 2
 name=Blocker
 puzzleType=1
 component0041~4
 Component~3~3
-boardPos=2 20
+boardPos=6 2
 name=Blocker
 puzzleType=1
 component0042~4
 Component~3~3
-boardPos=4 20
+boardPos=8 2
 name=Blocker
 puzzleType=1
-component0043~4
+component0043~5
+Component~4~4
+boardPos=6 0
+name=Wire
+puzzleType=1
+speed=0
+component0044~5
+Component~4~4
+boardPos=4 0
+color=1
+name=GateClosed
+puzzleType=1
+component0045~8
+Component~7~7
+boardPos=0 0
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
+component0046~4
 Component~3~3
-boardPos=6 20
+boardPos=12 2
 name=Blocker
 puzzleType=1
-component0044~4
+component0047~4
 Component~3~3
-boardPos=6 22
+boardPos=14 0
 name=Blocker
 puzzleType=1
-componentCost=-1
-componentCount=45
+component0048~4
+Component~3~3
+boardPos=16 0
+name=Blocker
+puzzleType=1
+component0049~5
+Component~4~4
+boardPos=8 0
+name=Wire
+puzzleType=1
+speed=0
+component0050~4
+Component~3~3
+boardPos=16 2
+name=Blocker
+puzzleType=1
+component0051~5
+Component~4~4
+boardPos=12 0
+color=5
+name=GateSwitch
+puzzleType=1
+component0052~4
+Component~3~3
+boardPos=14 2
+name=Blocker
+puzzleType=1
+component0053~5
+Component~4~4
+boardPos=10 0
+name=Wire
+puzzleType=1
+speed=0
+component0054~4
+Component~3~3
+boardPos=10 2
+name=Blocker
+puzzleType=1
+componentCost=197
+componentCount=55
 levelPack=Campaign
-levelPackPuzzleIndex=52
+levelPackPuzzleIndex=53
 levelPackPuzzleName=Ye Who Enter Here
 puzzleFileType=BasePuzzle
-stepCount=-1
+stepCount=3510

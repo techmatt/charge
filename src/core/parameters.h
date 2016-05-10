@@ -8,8 +8,9 @@ struct GameParameters
         assetDir = util::getWorkingDirectory() + assetDirBase;
         rootDir = assetDir + "../";
 
-        params.readParameter("canonicalDims", canonicalDims);
+        params.readParameter("graphics", graphics);
 
+        params.readParameter("canonicalDims", canonicalDims);
         params.readParameter("boardDims", boardDims);
         
         params.readParameter("boardCanonicalStart", boardCanonicalStart);
@@ -35,6 +36,7 @@ struct GameParameters
         params.readParameter("puzzleMenuECanonicalStart", puzzleMenuECanonicalStart);
 		params.readParameter("puzzleMenuFCanonicalStart", puzzleMenuFCanonicalStart);
         params.readParameter("puzzleMenuCanonicalEntrySize", puzzleMenuCanonicalEntrySize);
+        params.readParameter("levelSelectMenuCanonicalEntrySize", levelSelectMenuCanonicalEntrySize);
 
         params.readParameter("attributeMenuCanonicalStart", attributeMenuCanonicalStart);
         params.readParameter("attributeMenuCanonicalEntrySize", attributeMenuCanonicalEntrySize);
@@ -45,6 +47,7 @@ struct GameParameters
         params.readParameter("godMode", godMode);
         params.readParameter("useSDLFallback", useSDLFallback);
 		params.readParameter("useMipmaps", useMipmaps);
+        params.readParameter("alwaysRender", alwaysRender);
 		
 
         params.readParameter("maxSkippedLevels", maxSkippedLevels);
@@ -69,6 +72,8 @@ struct GameParameters
 		circuitInWindow = CoordinateFrame(circuitCanonicalRect, vec2f(circuitDims));
     }
 
+    string graphics;
+
     string rootDir;
     string assetDir;
     string assetDirBase;
@@ -91,6 +96,7 @@ struct GameParameters
     vec2f doorMenuCanonicalStart;
     vec2f typeMenuCanonicalStart;
 	int componentMenuCanonicalEntrySize;
+    int levelSelectMenuCanonicalEntrySize;
 
     vec2f puzzleMenuACanonicalStart;
     vec2f puzzleMenuBCanonicalStart;
@@ -120,6 +126,7 @@ struct GameParameters
 
     bool useSDLFallback;
 	bool useMipmaps;
+    bool alwaysRender;
 
     int maxSkippedLevels;
 

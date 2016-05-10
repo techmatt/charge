@@ -27,7 +27,7 @@ Texture& GameCanvas::getFontTexture(const string &text, FontType font, int wrapW
     if (cache.count(text) == 0)
     {
         auto &info = database().fonts[(int)font];
-        Texture *t = new Texture(app.renderer, database().getFont(info.name), text, info.color, wrapWidth);
+        Texture *t = new Texture(app.renderer, database().getFont(info.name), text, info.color, wrapWidth, info.glowStrength, info.glowColor);
         cache[text] = t;
     }
     return *cache[text];
@@ -91,6 +91,7 @@ void GameCanvas::render()
     canonicalDims = GameUtil::getCanonicalSize();
     coordinateFrame = app.renderer.getWindowCoordinateFrame();
 
+    //const bool updateBackground = params().alwaysUpdateBackground || backgroundDirty;
     if (backgroundDirty)
     {
         backgroundDirty = false;
@@ -359,36 +360,43 @@ void GameCanvas::updateBackgroundObjects()
 
     app.controller.updateButtonList();
 
-    Component *selectedComponent = app.ui.selection.singleElement();
-
     //app.renderer.setRenderTarget(background);
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
-    renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
-
-    const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
-    const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
-    renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
-
-    if (app.controller.transformMenu)
+    if (app.controller.levelSelectMenu)
     {
-        const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
-        const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
-        renderMenuBackground("Transform options", transformMenuStart, transformRect);
+        const vec2f start = params().componentMenuCanonicalStart;
+        const vec2f size(260.0f, 250.0f);
+        renderMenuBackground("Puzzle select", start, rect2f(start, start + size));
     }
-
-    if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
-    if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
-    if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
-    if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
-    if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
-    if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
-
-    if (app.activeCircuit() != nullptr)
+    else
     {
-        const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
-        addBackgroundObject(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+        renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
+
+        const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
+        const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
+        renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+
+        if (app.controller.transformMenu)
+        {
+            const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
+            const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
+            renderMenuBackground("Transform options", transformMenuStart, transformRect);
+        }
+
+        if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
+        if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
+
+        if (app.activeCircuit() != nullptr)
+        {
+            const rect2f rect(params().circuitCanonicalStart - vec2f(params().circuitBackgroundCanonicalBoundarySize), params().circuitCanonicalStart + (float)constants::circuitBoardSize * params().canonicalCellSize + vec2f(params().circuitBackgroundCanonicalBoundarySize));
+            addBackgroundObject(database().getTexture(app.renderer, "CircuitBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+        }
     }
 
     renderBuildingGrid();
@@ -400,18 +408,26 @@ void GameCanvas::updateBackgroundObjects()
         renderSpokes(*component);
     }
 
+	vector<ComponentDefiningProperties> referenceComponents;
+	if (app.ui.activePlacementBuffer.components.size() == 1)
+		referenceComponents.push_back(app.ui.activePlacementBuffer.components[0]);
+	else if (app.ui.selection.components.size() > 0)
+		referenceComponents.push_back(ComponentDefiningProperties(*app.ui.selection.components[0]));
+
     for (auto &button : app.controller.buttons)
     {
         bool selected = false;
         selected |= (button.type == ButtonType::Component && app.ui.selectedMenuComponent == button.component && app.ui.selectedMenuComponentColor == button.modifiers.color);
-        if (selectedComponent != nullptr)
+        if (referenceComponents.size() > 0)
         {
-            selected |= (button.type == ButtonType::ChargePreference && selectedComponent->modifiers.chargePreference == button.modifiers.chargePreference);
-            selected |= (button.type == ButtonType::ChargeColor && selectedComponent->modifiers.color == button.modifiers.color);
-            selected |= (button.type == ButtonType::WireSpeed && selectedComponent->modifiers.speed == button.modifiers.speed);
-            selected |= (button.type == ButtonType::CircuitBoundary && selectedComponent->modifiers.boundary == button.modifiers.boundary);
-            selected |= (button.type == ButtonType::TrapState && selectedComponent->info->name == button.name);
-            selected |= (button.type == ButtonType::GateState && selectedComponent->info->name == button.name);
+			const ComponentModifiers &modifiers = referenceComponents[0].modifiers;
+			const ComponentInfo &info = *referenceComponents[0].baseInfo;
+            selected |= (button.type == ButtonType::ChargePreference && modifiers.chargePreference == button.modifiers.chargePreference);
+            selected |= (button.type == ButtonType::ChargeColor && modifiers.color == button.modifiers.color);
+            selected |= (button.type == ButtonType::WireSpeed && modifiers.speed == button.modifiers.speed);
+            selected |= (button.type == ButtonType::CircuitBoundary && modifiers.boundary == button.modifiers.boundary);
+            selected |= (button.type == ButtonType::TrapState && info.name == button.name);
+            selected |= (button.type == ButtonType::GateState && info.name == button.name);
         }
         if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {
@@ -561,7 +577,11 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
 {
     if (button.type == ButtonType::ComponentAttribute)
     {
-        renderText(getFontTexture(button.text, FontType::LevelName), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+        renderText(getFontTexture(button.text, FontType::LevelSelectIndex), button.canonicalRect.min(), (float)button.canonicalRect.extentY());
+    }
+    if (button.type == ButtonType::LevelSelect)
+    {
+        renderText(getFontTexture(to_string(button.levelIndex + 1), FontType::LevelSelectIndex), button.canonicalRect.min() + vec2f(4.0f, 3.0f), 12.0f);
     }
 }
 
@@ -594,8 +614,8 @@ void GameCanvas::renderTooltip()
         }
         else
         {
-            start.y = button->canonicalRect.max().y + 5.0f;
-            transparent = true;
+            //start.y = button->canonicalRect.max().y + 5.0f;
+            transparent = false;
         }
 
         renderTooltip(start, button->tooltip->semanticName, button->tooltip->description, button->modifiers, button->tooltipHotkey(), nullptr, false, transparent);
@@ -663,7 +683,7 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
 
     if (hotkey.size() > 0 && hotkey[0] != '!')
     {
-        float offset = hotkey.size() > 1 ? 5.0f : 0.0f;
+        float offset = hotkey.size() > 1 ? 22.0f : 0.0f;
         renderText(getFontTexture("Key", FontType::TooltipKeyA), canonicalStart + vec2f(210.0f - offset, attributeBottom), 12.0f);
         renderText(getFontTexture(hotkey, FontType::TooltipKeyB), canonicalStart + vec2f(230.0f - offset, attributeBottom), 12.0f);
     }
@@ -705,7 +725,7 @@ void GameCanvas::renderVictoryPanel()
 
     glDisable(GL_BLEND);
 
-    const vec2i victoryPanelStart(403, 350);
+    const vec2i victoryPanelStart(403, 370);
     const vec2i victoryPanelSize(254, 82);
 
     const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 31.0f);
@@ -751,6 +771,25 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
 
         const rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), button.canonicalRect);
         addBackgroundObject(borderTex, screenRect, depthLayers::background);
+
+
+        if (button.type == ButtonType::LevelSelect)
+        {
+            string suffix;
+            auto info = app.session.getLevelInfo("Campaign", button.levelIndex);
+            if (button.levelIndex > app.session.highestAccessiblePuzzle())
+                suffix = "Inaccessible";
+            else if (info->state == LevelState::Solved)
+                suffix = "Solved";
+            else if (info->state == LevelState::Unsolved)
+                suffix = "Accessible";
+            renderLocalizedComponent("ChoosePuzzle" + suffix, nullptr, screenRect, 0.0f, IconState(button.modifiers, false));
+            return;
+        }
+
+        //if (levelIndex > app.session.highestAccessiblePuzzle())
+        //if (info->state == LevelState::Solved)
+
 
         renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
 

@@ -18,15 +18,6 @@ enum class EditorMode
     UserSolution,
 };*/
 
-enum class GameSpeed
-{
-    x0,
-    Quarter,
-    x1,
-    x3,
-    x5,
-    x10,
-};
 
 inline int ticksFromSpeed(GameSpeed speed)
 {
@@ -36,8 +27,9 @@ inline int ticksFromSpeed(GameSpeed speed)
     case GameSpeed::Quarter: return 1;
     case GameSpeed::x1: return 1;
     case GameSpeed::x3: return 3;
-    case GameSpeed::x5: return 5;
+	case GameSpeed::x5: return 5;
     case GameSpeed::x10: return 10;
+    case GameSpeed::x20: return 20;
     default: return 0;
     }
 }
@@ -50,8 +42,9 @@ inline string buttonNameFromSpeed(GameSpeed speed)
     case GameSpeed::Quarter: return "speedQuarter";
     case GameSpeed::x1: return "speedX1";
     case GameSpeed::x3: return "speedX3";
-    case GameSpeed::x5: return "speedX5";
+	case GameSpeed::x5: return "speedX5";
     case GameSpeed::x10: return "speedX10";
+    case GameSpeed::x20: return "speedX20";
     default: return 0;
     }
 }
@@ -59,7 +52,9 @@ inline string buttonNameFromSpeed(GameSpeed speed)
 class GameController
 {
 public:
-    GameController(AppData &_app) : app(_app) {}
+    GameController(AppData &_app) : app(_app) {
+        levelSelectMenu = false;
+    }
     void init();
     void step();
 
@@ -72,6 +67,7 @@ public:
 
     void loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType);
     void loadCurrentProvidedSolution();
+    bool userSolutionExists();
     void loadUserSolution();
 
     void recordDesignAction();
@@ -97,6 +93,7 @@ public:
     }
 
     vector<GameButton> buttons;
+    bool levelSelectMenu;
     bool affinityMenu;
     bool gateMenu;
     bool trapMenu;

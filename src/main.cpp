@@ -8,6 +8,13 @@
 
 GameParameters g_gameParams;
 
+void chargeFatalError(const string &text)
+{
+    cout << "Fatal error: " << text << endl;
+    cin.get();
+    exit(1);
+}
+
 void initGameParams(const ParameterFile &params)
 {
     g_gameParams.load(params);
@@ -33,12 +40,20 @@ int main(int argc, char* argv[])
     ParameterFile parameterFile(paramFilename);
     initGameParams(parameterFile);
 
-    Renderer *renderer;
+    Renderer *renderer = nullptr;
 
     if (params().useSDLFallback)
         renderer = new RendererSDL();
-    else
+    else if (params().graphics == "OpenGL")
         renderer = new RendererOpenGL();
+	else if (params().graphics == "D3D11")
+	{
+#ifdef INCLUDE_D3D
+		renderer = new RendererD3D11();
+#endif
+	}
+    else
+        chargeFatalError("Unrecognized graphics type: " + params().graphics);
 
     App app(*renderer);
     return app.run();

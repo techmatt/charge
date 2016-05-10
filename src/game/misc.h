@@ -86,17 +86,16 @@ struct GameLocation
 		double distance = 0.0;
 
 		if (boardPos != loc.boardPos)
-			distance += 100; //prioritize things on the same square
+			distance += 100.0; //prioritize things on the same square
 
 		// use the actual length
 		vec2d diff = loc.boardFrameLocationOfCenter() - this->boardFrameLocationOfCenter();
 		distance += diff.length();
 
 		// add in an additional bit for the angle
-		double angle = math::radiansToDegrees(atan2f((float)diff.y, (float) diff.x));
-		if (angle + .00001 > 360.0) angle += .00001 - 360.0;
-
-		distance += angle * 0.000000001;
+		//double angle = math::radiansToDegrees(atan2f((float)diff.y, (float) diff.x));
+		//if (angle + .00001 > 360.0) angle += .00001 - 360.0;
+		//distance += angle * 0.000000001;
 
 		return distance;
 	}

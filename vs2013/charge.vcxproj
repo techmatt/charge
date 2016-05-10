@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -13,12 +13,13 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B51C8B6C-1472-438B-9CC5-C0387737C021}</ProjectGuid>
     <RootNamespace>charge</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -39,14 +40,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\</IncludePath>
+    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
     <OutDir>$(SolutionDir)\..\bin\debug\</OutDir>
-    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\</IncludePath>
+    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
     <OutDir>$(SolutionDir)\..\bin\release\</OutDir>
-    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -88,6 +89,13 @@
   <ItemGroup>
     <ClCompile Include="..\src\core\app.cpp" />
     <ClCompile Include="..\src\core\gameUtil.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11PixelShader.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11RenderTarget.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11ShaderManager.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11Texture2D.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11TriMesh.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11Utility.cpp" />
+    <ClCompile Include="..\src\d3d11\D3D11VertexShader.cpp" />
     <ClCompile Include="..\src\gameUI\coordinates.cpp" />
     <ClCompile Include="..\src\gameUI\gameButton.cpp" />
     <ClCompile Include="..\src\gameUI\gameCanvas.cpp" />
@@ -116,6 +124,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\mLib\utility.cpp" />
+    <ClCompile Include="..\src\renderer\rendererD3D11.cpp" />
     <ClCompile Include="..\src\renderer\rendererOpenGL.cpp" />
     <ClCompile Include="..\src\renderer\rendererSDL.cpp" />
     <ClCompile Include="..\src\renderer\renderTarget.cpp" />
@@ -127,6 +136,14 @@
     <ClInclude Include="..\src\core\constants.h" />
     <ClInclude Include="..\src\core\gameUtil.h" />
     <ClInclude Include="..\src\core\parameters.h" />
+    <ClInclude Include="..\src\d3d11\D3D11ConstantBuffer.h" />
+    <ClInclude Include="..\src\d3d11\D3D11PixelShader.h" />
+    <ClInclude Include="..\src\d3d11\D3D11RenderTarget.h" />
+    <ClInclude Include="..\src\d3d11\D3D11ShaderManager.h" />
+    <ClInclude Include="..\src\d3d11\D3D11Texture2D.h" />
+    <ClInclude Include="..\src\d3d11\D3D11TriMesh.h" />
+    <ClInclude Include="..\src\d3d11\D3D11Utility.h" />
+    <ClInclude Include="..\src\d3d11\D3D11VertexShader.h" />
     <ClInclude Include="..\src\gameUI\coordinates.h" />
     <ClInclude Include="..\src\gameUI\gameButton.h" />
     <ClInclude Include="..\src\gameUI\gameCanvas.h" />
@@ -169,6 +186,7 @@
     <ClInclude Include="..\src\mLib\vec3.h" />
     <ClInclude Include="..\src\mLib\vec4.h" />
     <ClInclude Include="..\src\renderer\renderer.h" />
+    <ClInclude Include="..\src\renderer\rendererD3D11.h" />
     <ClInclude Include="..\src\renderer\rendererOpenGL.h" />
     <ClInclude Include="..\src\renderer\rendererSDL.h" />
     <ClInclude Include="..\src\renderer\renderTarget.h" />
@@ -191,6 +209,12 @@
     <None Include="..\assets\shaders\splashB.frag" />
     <None Include="..\assets\shaders\splashB.vert" />
     <None Include="..\src\mLib\grid2.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\assets\shaders\quad.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
