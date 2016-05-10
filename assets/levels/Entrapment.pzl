@@ -1,0 +1,178 @@
+Puzzle~36~177
+buildableComponents~5
+ComponentBuildState~4~4
+TrapOpenBlue=1
+TrapOpenGreen=1
+TrapOpenRed=1
+TrapOpenYellow=1
+component0000~8
+Component~7~7
+boardPos=0 0
+color=1
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
+component0001~8
+Component~7~7
+boardPos=0 22
+color=5
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
+component0002~8
+Component~7~7
+boardPos=0 8
+color=3
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
+component0003~8
+Component~7~7
+boardPos=0 14
+color=4
+name=PowerSource
+puzzleType=0
+secondsBeforeFirstEmission=0
+secondsPerEmission=1
+totalCharges=1
+component0004~4
+Component~3~3
+boardPos=20 20
+name=Blocker
+puzzleType=0
+component0005~4
+Component~3~3
+boardPos=22 20
+name=Blocker
+puzzleType=0
+component0006~4
+Component~3~3
+boardPos=20 16
+name=Blocker
+puzzleType=0
+component0007~4
+Component~3~3
+boardPos=20 18
+name=Blocker
+puzzleType=0
+component0008~4
+Component~3~3
+boardPos=22 18
+name=Blocker
+puzzleType=0
+component0009~4
+Component~3~3
+boardPos=22 16
+name=Blocker
+puzzleType=0
+component0010~4
+Component~3~3
+boardPos=20 12
+name=Blocker
+puzzleType=0
+component0011~4
+Component~3~3
+boardPos=22 12
+name=Blocker
+puzzleType=0
+component0012~4
+Component~3~3
+boardPos=22 10
+name=Blocker
+puzzleType=0
+component0013~4
+Component~3~3
+boardPos=20 10
+name=Blocker
+puzzleType=0
+component0014~4
+Component~3~3
+boardPos=20 6
+name=Blocker
+puzzleType=0
+component0015~4
+Component~3~3
+boardPos=22 6
+name=Blocker
+puzzleType=0
+component0016~4
+Component~3~3
+boardPos=22 4
+name=Blocker
+puzzleType=0
+component0017~4
+Component~3~3
+boardPos=22 2
+name=Blocker
+puzzleType=0
+component0018~4
+Component~3~3
+boardPos=20 2
+name=Blocker
+puzzleType=0
+component0019~4
+Component~3~3
+boardPos=20 4
+name=Blocker
+puzzleType=0
+component0020~5
+Component~4~4
+boardPos=22 0
+color=5
+name=ChargeGoal
+puzzleType=0
+component0021~5
+Component~4~4
+boardPos=22 8
+color=4
+name=ChargeGoal
+puzzleType=0
+component0022~5
+Component~4~4
+boardPos=22 14
+color=3
+name=ChargeGoal
+puzzleType=0
+component0023~5
+Component~4~4
+boardPos=22 22
+color=1
+name=ChargeGoal
+puzzleType=0
+component0024~5
+Component~4~4
+boardPos=20 0
+color=5
+name=TrapReset
+puzzleType=0
+component0025~5
+Component~4~4
+boardPos=20 8
+color=4
+name=TrapReset
+puzzleType=0
+component0026~5
+Component~4~4
+boardPos=20 14
+color=3
+name=TrapReset
+puzzleType=0
+component0027~5
+Component~4~4
+boardPos=20 22
+color=1
+name=TrapReset
+puzzleType=0
+componentCost=238
+componentCount=28
+levelPack=Campaign
+levelPackPuzzleIndex=2
+levelPackPuzzleName=Kinder Garden
+puzzleFileType=BasePuzzle
+stepCount=542
