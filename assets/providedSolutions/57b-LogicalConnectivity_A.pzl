@@ -14858,5 +14858,5 @@ componentCount=2144
 levelPack=Campaign
 levelPackPuzzleIndex=60
 levelPackPuzzleName=Logically Connected
-puzzleFileType=BasePuzzle
+puzzleFileType=ProvidedSolution
 stepCount=5767

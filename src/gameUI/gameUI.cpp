@@ -266,7 +266,7 @@ void GameUI::mouseDown(Uint8 mouseButton, int x, int y, int clicks, bool shift, 
     //
     app.canvas.backgroundDirty = true;
     const bool eraserSelected = (app.ui.selectedMenuComponent != nullptr && app.ui.selectedMenuComponent->name == "Eraser");
-    if (eraserSelected && (mouseButton == SDL_BUTTON_RIGHT || mouseButton == SDL_BUTTON_LEFT))
+    if (eraserSelected && mouseButton == SDL_BUTTON_LEFT)
     {
         removeHoverComponent();
     }

@@ -341,5 +341,5 @@ componentCount=55
 levelPack=Campaign
 levelPackPuzzleIndex=53
 levelPackPuzzleName=Ye Who Enter Here
-puzzleFileType=ProvidedSolution
+puzzleFileType=BasePuzzle
 stepCount=3510

@@ -119,6 +119,8 @@ void Database::processAllCampaignLevels(AppData &app)
 
         puzzleIndex++;
 	}
+
+    util::copyFile(params().assetDir + "levelsProcessed.txt", params().assetDir + "levels.txt");
 }
 
 Texture& Database::getTexture(Renderer &renderer, const string &textureName)

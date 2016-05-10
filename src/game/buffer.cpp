@@ -190,7 +190,7 @@ ComponentSet ComponentSet::toBuffer(const vector<Component*> &components)
 void ComponentSet::takeCircuitToBoard()
 {
     // forget that the component set isn't in the circuit;
-    for (ComponentDefiningProperties c : components)
+    for (ComponentDefiningProperties &c : components)
     {
         MLIB_ASSERT_STR(c.location.inCircuit(), "Component is not already in a circuit"); //TODO Check that this isn't a circuit-boundary part
         c.location = GameLocation(c.location.circuitPos);
@@ -200,7 +200,7 @@ void ComponentSet::takeCircuitToBoard()
 void ComponentSet::takeBoardToCircuit(vec2i boardLocation)
 {
     // forget that the component set isn't in the circuit;
-    for (ComponentDefiningProperties c : components)
+    for (ComponentDefiningProperties &c : components)
     {
         MLIB_ASSERT_STR(!c.location.inCircuit(), "Component is already in a circuit"); //TODO Check that this isn't a circuit-boundary part
         c.location = GameLocation(boardLocation, c.location.boardPos);

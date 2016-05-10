@@ -8,8 +8,8 @@ bool ComponentSelection::isValidCopy() const
             return false;
 
         // TODO: this is wrong, but not doing this will crash
-        if (c->location.circuitPos != constants::invalidCoord)
-            return false;
+        //if (c->location.circuitPos != constants::invalidCoord)
+        //    return false;
     }
     return true;
 }
@@ -19,32 +19,56 @@ void ComponentSelection::copyToComponentSet(ComponentSet &cset, GameState &state
 	//empty the set
 	cset.clear();
 
-	//remember where all the circuits are
-	set<vec2i> circuitLocations = {};
+    int userCircuitCount = 0;
+    for (Component* c : components)
+    {
+        if (c->isCircuit() && c->modifiers.puzzleType == ComponentPuzzleType::User) userCircuitCount++;
+    }
 
-	// add the components in the selection
-	for (Component* c : components)
-	{
-		ComponentDefiningProperties cProp(*c);
-		cset.components.push_back(cProp);
-		if (c->circuitBoard != nullptr)
-			circuitLocations.insert(c->location.boardPos);
-	}
+    /*if (userCircuitCount == 1 && components.size() > 1)
+    {
+        // in-circuit copy
+        for (Component* c : components)
+        {
+            if (c->info->name == "CircuitBoundary" || c->isCircuit()) continue;
+            
+            ComponentDefiningProperties cProp(*c);
+            cProp.location.boardPos = cProp.location.circuitPos;
+            cProp.location.circuitPos = constants::invalidCoord;
+            cset.components.push_back(cProp);
+        }
+    }
+    else*/
+    {
+        //remember where all the circuits are
+        set<vec2i> circuitLocations = {};
 
-	// add the components in circuit boards in the selection
-	for (Component *c : state.components)
-	{
-		bool inList = circuitLocations.find(c->location.boardPos) != circuitLocations.end();
-		if (c->location.inCircuit() && inList)
-		{
-			// the circuit here is in the selection set.
-			ComponentDefiningProperties cProp(*c);
-			cset.components.push_back(cProp);
-		}
-	}
+        // add the components in the selection
+        for (Component* c : components)
+        {
+            if (c->info->name == "CircuitBoundary") continue;
 
-	// make everything a board component
-	if (selectionIsInCircuit)
-		cset.takeCircuitToBoard();
+            ComponentDefiningProperties cProp(*c);
+            cset.components.push_back(cProp);
+            if (c->circuitBoard != nullptr)
+                circuitLocations.insert(c->location.boardPos);
+        }
+
+        // add the components in circuit boards in the selection
+        for (Component *c : state.components)
+        {
+            bool inList = circuitLocations.find(c->location.boardPos) != circuitLocations.end();
+            if (c->location.inCircuit() && inList)
+            {
+                // the circuit here is in the selection set.
+                ComponentDefiningProperties cProp(*c);
+                cset.components.push_back(cProp);
+            }
+        }
+
+        // make everything a board component
+        if (selectionIsInCircuit)
+            cset.takeCircuitToBoard();
+    }
 }
 

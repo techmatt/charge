@@ -282,6 +282,7 @@ void GameController::updateButtonList()
 
 			if (c.modifiers.puzzleType != ComponentPuzzleType::User)
 				componentsModifyable = false;
+            if (info.name == "Eraser") showAffinity = false;
 			if (info.name == "Circuit" || info.name == "Blocker" || info.name == "PowerSource") showAffinity = false;
 			if (info.name != "Wire") showSpeed = false;
 			if (info.name != "CircuitBoundary") showCircuitBoundary = false;
