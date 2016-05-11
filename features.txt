@@ -6,20 +6,10 @@ SPLASH SCREEN
  * Level editor (different background etc. to make it very clear?)
  * Play mode has an exit to the splash screen, that then connects back to the level editor, to avoid people getting confused about what mode they are in.
 
-PLAY MODE
- * select level
- * load saved progress (last save, regardless of whether it was a good solution)
- * load most recent user-solution
- * load other user-solutions
- * load provided solution(s)
-
 GAME UI
  * level editor
- * splash screen
- * level selection
 
 CHANGES
- * Multi-select, modification of shared properties
  * ability to copy between levels for both components and circuits
 
 CHANGES: GAME UI
