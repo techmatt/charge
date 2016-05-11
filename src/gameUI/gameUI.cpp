@@ -236,7 +236,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
             else
             {
                 //selectedGameLocation = hover;
-                if (hoverComponent != nullptr)
+                if (hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
                     selection.newSelectionFromComponent(hoverComponent);
             }
 
