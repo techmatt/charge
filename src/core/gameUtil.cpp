@@ -74,6 +74,7 @@ rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, cons
             containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
             );
     }
+
     if (containingLocation.inCircuit() && !location.inCircuit())
         return circuitToWindowRect(canonicalDims, location.boardPos, size);
 
