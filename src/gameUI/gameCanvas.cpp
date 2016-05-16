@@ -364,6 +364,24 @@ void GameCanvas::updateBackgroundObjects()
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
+	const vec2f iconMenuOffset = vec2f(7.0f, 15.0f);
+	const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - iconMenuOffset;
+	const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(95, 40));
+	renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+
+	if (app.controller.transformMenu)
+	{
+		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
+		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
+		renderMenuBackground("Transform options", transformMenuStart, transformRect);
+	}
+	if (app.controller.editMenu)
+	{
+		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
+		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
+		renderMenuBackground("Edit menu", transformMenuStart, transformRect);
+	}
+
     if (app.controller.levelSelectMenu)
     {
         const vec2f start = params().componentMenuCanonicalStart;
@@ -373,17 +391,6 @@ void GameCanvas::updateBackgroundObjects()
     else
     {
         renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
-
-        const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
-        const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
-        renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
-
-        if (app.controller.transformMenu)
-        {
-            const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
-            const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
-            renderMenuBackground("Transform options", transformMenuStart, transformRect);
-        }
 
         if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
         if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
@@ -432,6 +439,7 @@ void GameCanvas::updateBackgroundObjects()
         if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {
             selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
+			selected |= (button.name == "Pause" && app.controller.paused);
             selected |= (button.name == "ModePuzzle" && app.controller.editorMode == EditorMode::Campaign);
             selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == EditorMode::LevelEditor);
             selected |= (button.name == "Music" && app.audio.playMusic);

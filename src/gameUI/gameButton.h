@@ -73,6 +73,10 @@ struct GameButton
 			return "V";
 		if (name == "CircuitCut")
 			return "X";
+		if (name == "Undo")
+			return "Ctrl+Z";
+		if (name == "Pause")
+			return "Space";
 		return hotkey;
 	}
 
@@ -104,8 +108,8 @@ private:
         }
         else if (type == ButtonType::PuzzleControlB)
         {
-            const vec2i base = params().puzzleMenuBCanonicalStart + vec2i(menuCoord.x * (sizeA - 4), 0);
-            return rect2i(base, base + sizeA - 4);
+            const vec2i base = params().puzzleMenuBCanonicalStart + vec2i(menuCoord.x * (sizeA - 8), 0);
+            return rect2i(base, base + sizeA - 8);
         }
         else if (type == ButtonType::PuzzleControlC)
         {
@@ -114,8 +118,8 @@ private:
         }
         else if (type == ButtonType::PuzzleControlD)
         {
-            const vec2i base = params().puzzleMenuDCanonicalStart + vec2i(menuCoord.x * (sizeA - 4), 0);
-            return rect2i(base, base + sizeA - 4);
+			const vec2i base = params().puzzleMenuDCanonicalStart + vec2i(menuCoord.x * (sizeA - 2), 0);
+			return rect2i(base, base + sizeA - 4);
         }
         else if (type == ButtonType::PuzzleControlE)
         {
@@ -127,13 +131,16 @@ private:
 			}
 			else
 			{
-				const vec2i base = params().puzzleMenuECanonicalStart + menuCoord * sizeA;
-				return rect2i(base, base + sizeA - 4);
+				const int w = 29, h = sizeA;
+				const vec2i base = params().puzzleMenuECanonicalStart + vec2i(menuCoord.x * w, menuCoord.y * h);
+				return rect2i(base, base + vec2i(w - 4, h - 4));
 			}
         }
 		else if (type == ButtonType::PuzzleControlF)
 		{
-			const vec2i base = params().puzzleMenuFCanonicalStart + menuCoord * sizeA;
+			//const vec2i base = params().puzzleMenuFCanonicalStart + menuCoord * sizeA;
+			//return rect2i(base, base + sizeA - 4);
+			const vec2i base = params().puzzleMenuDCanonicalStart + vec2i(menuCoord.x * (sizeA - 2), 0);
 			return rect2i(base, base + sizeA - 4);
 		}
         else if (type == ButtonType::ComponentAttribute)

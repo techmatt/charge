@@ -212,7 +212,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     }
     if (name == "Pause")
     {
-		app.controller.paused = true;
+		app.controller.paused = !app.controller.paused;
     }
     if (name == "ModePuzzle")
     {
@@ -378,7 +378,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
         transformComponentSet(app.ui.activePlacementBuffer);
     }
 
-    for (int speed = (int)GameSpeed::Quarter; speed <= (int)GameSpeed::x5; speed++)
+    for (int speed = (int)GameSpeed::Quarter; speed <= (int)GameSpeed::x10; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
         {
             app.controller.speed = (GameSpeed)speed;
@@ -391,6 +391,14 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
 	if (name == "CircuitPaste")
 	{
 		app.ui.paste();
+	}
+	if (name == "CircuitCut")
+	{
+		app.ui.cut();
+	}
+	if (name == "Undo")
+	{
+		app.undoBuffer.back(app.state);
 	}
 
     if (name == "ChoosePuzzle")

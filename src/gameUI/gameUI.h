@@ -70,6 +70,7 @@ private:
 
     // true if the space key has been observed to be up. used to avoid space repeat.
     bool tabUp;
+	bool tabIsPause;
 	bool leftClickUp;
 	int leftClickCounter;
 	bool rightClickUp;
