@@ -1,8 +1,8 @@
 
 assetDir = ../assets/
 
-#graphics=OpenGL
-graphics=D3D11
+graphics=OpenGL
+#graphics=D3D11
 
 canonicalDims = 672, 464
 
@@ -41,7 +41,7 @@ attributeMenuCanonicalEntrySize = 100, 15
 tooltipDefaultStart = 403, 240
 tooltipSize = 254, 120
 
-godMode = false
+godMode = true
 useSDLFallback = false
 useMipmaps = true
 alwaysRender = true

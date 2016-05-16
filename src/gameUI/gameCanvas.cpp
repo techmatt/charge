@@ -784,13 +784,20 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
         if (button.type == ButtonType::LevelSelect)
         {
             string suffix;
-            auto info = app.session.getLevelInfo("Campaign", button.levelIndex);
+            auto userInfo = app.session.getLevelInfo("Campaign", button.levelIndex);
+			const auto &puzzleInfo = database().getPuzzleInfo("Campaign", button.levelIndex);
             if (button.levelIndex > app.session.highestAccessiblePuzzle())
                 suffix = "Inaccessible";
-            else if (info->state == LevelState::Solved)
+            else if (userInfo->state == LevelState::Solved)
                 suffix = "Solved";
-            else if (info->state == LevelState::Unsolved)
-                suffix = "Accessible";
+			else if (userInfo->state == LevelState::Unsolved)
+			{
+				const string filenameProgress = app.session.getSolutionFilename("Campaign", puzzleInfo.name, SolutionType::Progress);
+				if(util::fileExists(filenameProgress))
+					suffix = "Attempted";
+				else
+					suffix = "Accessible";
+			}
             renderLocalizedComponent("ChoosePuzzle" + suffix, nullptr, screenRect, 0.0f, IconState(button.modifiers, false));
             return;
         }
