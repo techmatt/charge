@@ -1,7 +1,6 @@
 
 enum class GameSpeed
 {
-	x0,
 	Quarter,
 	x1,
 	x3,
@@ -62,9 +61,6 @@ public:
     vec2f clickScreenLocation;
 
     int hoverButtonIndex;
-
-	// the speed we will return to when pause is toggled
-	GameSpeed cachedSpeed;
 
 private:
 

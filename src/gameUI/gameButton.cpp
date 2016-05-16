@@ -201,11 +201,8 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
-		if(app.ui.cachedSpeed == GameSpeed::x0)
-			app.ui.cachedSpeed = GameSpeed::x1;
-		if (app.controller.speed == GameSpeed::x0)
-			app.controller.speed = app.ui.cachedSpeed;
-        app.state.resetPuzzle();
+		app.controller.paused = false;
+		app.state.resetPuzzle();
         app.renderer.initMotionBlur(0.5f, 5);
     }
     if (name == "Stop")
@@ -215,7 +212,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     }
     if (name == "Pause")
     {
-        app.controller.speed = GameSpeed::x0;
+		app.controller.paused = true;
     }
     if (name == "ModePuzzle")
     {
@@ -381,7 +378,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
         transformComponentSet(app.ui.activePlacementBuffer);
     }
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+    for (int speed = (int)GameSpeed::Quarter; speed <= (int)GameSpeed::x5; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
         {
             app.controller.speed = (GameSpeed)speed;

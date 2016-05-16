@@ -26,7 +26,7 @@ menuTextOffset = 3, 2
 menuBorderOffset = 4, 3
 
 puzzleMenuACanonicalStart = 7, 429
-puzzleMenuBCanonicalStart = 42, 435
+puzzleMenuBCanonicalStart = 55, 435
 puzzleMenuCCanonicalStart = 155, 418
 puzzleMenuDCanonicalStart = 212, 435
 puzzleMenuECanonicalStart = 308, 418

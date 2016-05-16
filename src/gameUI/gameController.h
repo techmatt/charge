@@ -23,7 +23,6 @@ inline int ticksFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
-    case GameSpeed::x0: return 0;
     case GameSpeed::Quarter: return 1;
     case GameSpeed::x1: return 1;
     case GameSpeed::x3: return 3;
@@ -38,7 +37,6 @@ inline string buttonNameFromSpeed(GameSpeed speed)
 {
     switch (speed)
     {
-    case GameSpeed::x0: return "speedPause";
     case GameSpeed::Quarter: return "speedQuarter";
     case GameSpeed::x1: return "speedX1";
     case GameSpeed::x3: return "speedX3";
@@ -54,6 +52,7 @@ class GameController
 public:
     GameController(AppData &_app) : app(_app) {
         levelSelectMenu = false;
+		paused = false;
     }
     void init();
     void step();
@@ -101,11 +100,13 @@ public:
     bool colorMenu;
     bool circuitBoundaryMenu;
     bool transformMenu;
+	bool editMenu;
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;
     //ControllerViewMode viewMode;
 
+	bool paused;
     GameSpeed speed;
     bool designActionTaken;
 
