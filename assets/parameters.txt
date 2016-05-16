@@ -26,7 +26,7 @@ menuTextOffset = 3, 2
 menuBorderOffset = 4, 3
 
 puzzleMenuACanonicalStart = 4, 429
-puzzleMenuBCanonicalStart = 59, 435
+puzzleMenuBCanonicalStart = 60, 435
 puzzleMenuCCanonicalStart = 154, 418
 puzzleMenuDCanonicalStart = 212, 435
 puzzleMenuECanonicalStart = 308, 418
@@ -46,4 +46,4 @@ useSDLFallback = false
 useMipmaps = true
 alwaysRender = true
 
-maxSkippedLevels = 500
+maxSkippedLevels = 20

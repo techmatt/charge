@@ -125,13 +125,13 @@ private:
         {
 			if (menuCoord.y == 0)
 			{
-				const vec2f buttonSize((sizeA - 4) * 2.0f, sizeA - 4.0f);
+				const vec2f buttonSize((sizeA - 4) * 2.0f + 1.0f, sizeA - 4.0f);
 				const vec2f base = params().puzzleMenuECanonicalStart + vec2f(menuCoord.x * (buttonSize.x + 4.0f), menuCoord.y * (buttonSize.y + 4.0f));
 				return rect2i(base, base + buttonSize);
 			}
 			else
 			{
-				const int w = 29, h = sizeA;
+				const int w = 30, h = sizeA;
 				const vec2i base = params().puzzleMenuECanonicalStart + vec2i(menuCoord.x * w, menuCoord.y * h);
 				return rect2i(base, base + vec2i(w - 4, h - 4));
 			}

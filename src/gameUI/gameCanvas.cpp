@@ -366,7 +366,7 @@ void GameCanvas::updateBackgroundObjects()
 
 	const vec2f iconMenuOffset = vec2f(7.0f, 15.0f);
 	const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - iconMenuOffset;
-	const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(95, 40));
+	const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(94, 40));
 	renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
 
 	if (app.controller.transformMenu)
@@ -589,7 +589,9 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
     }
     if (button.type == ButtonType::LevelSelect)
     {
-        renderText(getFontTexture(to_string(button.levelIndex + 1), FontType::LevelSelectIndex), button.canonicalRect.min() + vec2f(4.0f, 3.0f), 12.0f);
+		const string levelText = to_string(button.levelIndex + 1);
+		const vec2f offset = (levelText.length() == 1) ? vec2f(7.0f, 3.0f) : vec2f(4.0f, 3.0f);
+        renderText(getFontTexture(levelText, FontType::LevelSelectIndex), button.canonicalRect.min() + offset, 12.0f);
     }
 }
 
@@ -754,18 +756,24 @@ void GameCanvas::renderVictoryPanel()
 
     renderText(getFontTexture("Puzzle solved!", FontType::TooltipName), victoryPanelStart + vec2f(15.0f, 9.0f), 18.0f);
 
-    renderText(getFontTexture("Your score", FontType::TooltipDescriptionA), vec2i(col1, row0), 12.0f);
-    renderText(getFontTexture("Your best", FontType::TooltipDescriptionA), vec2i(col2, row0), 12.0f);
-    renderText(getFontTexture("Par", FontType::TooltipDescriptionA), vec2i(col3, row0), 12.0f);
+    renderText(getFontTexture("Your score", FontType::VictoryPanelStandard), vec2i(col1, row0), 12.0f);
+    renderText(getFontTexture("Your best", FontType::VictoryPanelStandard), vec2i(col2, row0), 12.0f);
+    renderText(getFontTexture("Par", FontType::VictoryPanelStandard), vec2i(col3, row0), 12.0f);
 
-    renderText(getFontTexture("Solve time", FontType::TooltipDescriptionA), vec2i(col0, row1), 12.0f);
-    renderText(getFontTexture("Component cost", FontType::TooltipDescriptionA), vec2i(col0, row2), 12.0f);
+    renderText(getFontTexture("Solve time", FontType::VictoryPanelStandard), vec2i(col0, row1), 12.0f);
+    renderText(getFontTexture("Component cost", FontType::VictoryPanelStandard), vec2i(col0, row2), 12.0f);
 
-	renderText(getFontTexture(formatSteps(sessionInfo->recentStepCount), FontType::TooltipDescriptionA), vec2i(col1, row1), 12.0f);
-	renderText(getFontTexture(to_string(sessionInfo->recentComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col1, row2), 12.0f);
+	auto getFont = [](int a, int b) {
+		if (a < b) return FontType::VictoryPanelGood;
+		else if (a == b) return FontType::VictoryPanelStandard;
+		else return FontType::VictoryPanelBad;
+	};
 
-    renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
-    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row2), 12.0f);
+	renderText(getFontTexture(formatSteps(sessionInfo->recentStepCount), getFont(sessionInfo->recentStepCount, curPuzzle.stepCountPar)), vec2i(col1, row1), 12.0f);
+	renderText(getFontTexture(to_string(sessionInfo->recentComponentCost - curPuzzle.baseComponentCost), getFont(sessionInfo->recentComponentCost, curPuzzle.componentCostPar)), vec2i(col1, row2), 12.0f);
+
+    renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), getFont(sessionInfo->bestStepCount, curPuzzle.stepCountPar)), vec2i(col2, row1), 12.0f);
+    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), getFont(sessionInfo->bestComponentCost, curPuzzle.componentCostPar)), vec2i(col2, row2), 12.0f);
 
 	renderText(getFontTexture(formatSteps(curPuzzle.stepCountPar), FontType::TooltipDescriptionA), vec2i(col3, row1), 12.0f);
 	renderText(getFontTexture(to_string(curPuzzle.componentCostPar - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col3, row2), 12.0f);
