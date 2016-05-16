@@ -15,7 +15,6 @@ void GameUI::init()
     tabUp = true;
 	leftClickUp = true;
 	rightClickUp = true;
-	cachedSpeed = GameSpeed::x1;
 	leftClickCounter = 0;
 }
 
@@ -124,13 +123,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		}
 		else if (app.controller.puzzleMode == PuzzleMode::Executing)
 		{
-			if (app.controller.speed == GameSpeed::x0)
-				app.controller.speed = cachedSpeed;
-			else
-			{
-				cachedSpeed = app.controller.speed;
-				app.controller.speed = GameSpeed::x0;
-			}
+			app.controller.paused = !app.controller.paused;
 		}
 	}
 
@@ -148,8 +141,10 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
     if (key == SDLK_TAB && tabUp)
     {
 		tabUp = false;
-		if(app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x20)
-            app.controller.speed = GameSpeed((int)app.controller.speed + 1);
+		if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x20)
+		{
+			app.controller.speed = GameSpeed((int)app.controller.speed + 1);
+		}
     }
 }
 
@@ -158,7 +153,7 @@ void GameUI::keyUp(SDL_Keycode key)
     if (key == SDLK_TAB)
     {
 		tabUp = true;
-        if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x0)
+        if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::Quarter)
             app.controller.speed = GameSpeed((int)app.controller.speed - 1);
         app.canvas.backgroundDirty = true;
     }
