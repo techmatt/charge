@@ -829,7 +829,18 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
 
 void GameCanvas::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
 {
-    Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
+	//Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
+
+	string baseTexName = "WireBase";
+	if (icon.orientation != CircuitBoundaryOrientation::None)
+	{
+		if (icon.orientation == CircuitBoundaryOrientation::Left)   baseTexName = "CircuitBoundaryLeft";
+		if (icon.orientation == CircuitBoundaryOrientation::Right)  baseTexName = "CircuitBoundaryRight";
+		if (icon.orientation == CircuitBoundaryOrientation::Top)    baseTexName = "CircuitBoundaryTop";
+		if (icon.orientation == CircuitBoundaryOrientation::Bottom) baseTexName = "CircuitBoundaryBottom";
+	}
+
+    Texture &baseTex = database().getTexture(app.renderer, baseTexName);
     Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
     Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
 
@@ -893,9 +904,10 @@ void GameCanvas::renderComponent(const Component &component)
         // if the component is in the active circuit, render it in the selected circuit area
         if (app.activeCircuit() != nullptr && component.location.boardPos == app.activeCircuit()->location.boardPos && !component.circuitCorner())
         {
-            const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
+			const CircuitBoundaryOrientation orientation = component.location.getCircuitBoundaryOrientation();
+			const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
             const bool faded = component.inactiveBoundary();
-            renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected, true, faded));
+            renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected, true, faded, orientation));
         }
         // regardless, we'll need to render it in the main grid, but we'll wait until later
     }
@@ -916,7 +928,10 @@ void GameCanvas::renderCircuitComponent(const Component &component)
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
-    renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffsetStandard, IconState(component.modifiers, false));
+	
+	const CircuitBoundaryOrientation orientation = component.location.getCircuitBoundaryOrientation();
+
+	renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffsetStandard, IconState(component.modifiers, false, true, false, orientation));
 }
 
 void GameCanvas::renderSpokesMiniCircuit(const Component &component)

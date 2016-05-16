@@ -119,9 +119,17 @@ private:
         }
         else if (type == ButtonType::PuzzleControlE)
         {
-            const vec2f buttonSize((sizeA - 4) * 2.0f, sizeA - 4.0f);
-            const vec2f base = params().puzzleMenuECanonicalStart + vec2f(menuCoord.x * (buttonSize.x + 4.0f), menuCoord.y * (buttonSize.y + 4.0f));
-            return rect2i(base, base + buttonSize);
+			if (menuCoord.y == 0)
+			{
+				const vec2f buttonSize((sizeA - 4) * 2.0f, sizeA - 4.0f);
+				const vec2f base = params().puzzleMenuECanonicalStart + vec2f(menuCoord.x * (buttonSize.x + 4.0f), menuCoord.y * (buttonSize.y + 4.0f));
+				return rect2i(base, base + buttonSize);
+			}
+			else
+			{
+				const vec2i base = params().puzzleMenuECanonicalStart + menuCoord * sizeA;
+				return rect2i(base, base + sizeA - 4);
+			}
         }
 		else if (type == ButtonType::PuzzleControlF)
 		{
