@@ -28,6 +28,7 @@ void GameUI::clearSelection()
 
 void GameUI::deleteSelection()
 {
+    const vec2i cachedCircuitCoord = selection.circuitLocation;
 	for (Component *c : selection.components)
 	{
 		if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece && c->baseInfo->name != "CircuitBoundary")
@@ -38,6 +39,12 @@ void GameUI::deleteSelection()
 		}
 	}
 	selection.empty();
+    if (cachedCircuitCoord != constants::invalidCoord)
+    {
+        Component *circuit = app.state.getComponent(GameLocation(cachedCircuitCoord));
+        if (circuit != nullptr && circuit->isCircuit())
+            selection.newSelectionFromComponent(circuit);
+    }
 }
 
 void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
@@ -219,8 +226,8 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
     if (mouseDelta.length() > constants::dragThreshold)
     {
         // The mouse was dragged
-		if(!shift)
-			cut();
+		//if(!shift)
+		//	cut();
     }
     else
     {
@@ -240,7 +247,7 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
                     selection.newSelectionFromComponent(hoverComponent);
             }
 
-			if (clicks == 2 && leftClickCounter >= 2 && hoverComponent != nullptr)
+            if (clicks == 2 && leftClickCounter >= 2 && hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
 			{
 				cut();
 			}
@@ -646,12 +653,12 @@ void GameUI::addHoverComponent(const GameLocation &location)
     if (location.inCircuit())
     {
         vec2i offset = location.circuitPos - buffermin;
-        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset, preferenceOverride);
+        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset);
     }
     else
     {
         vec2i offset = location.boardPos - buffermin;
-        activePlacementBuffer.addToComponents(app.state, offset, preferenceOverride);
+        activePlacementBuffer.addToComponents(app.state, offset);
     }
 
     app.controller.recordDesignAction();

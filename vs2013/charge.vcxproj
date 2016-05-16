@@ -45,9 +45,9 @@
     <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>.\;..\;..\src;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
+    <IncludePath>.\;..\;..\src;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;..\SDL2\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\glew\include\;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</IncludePath>
     <OutDir>$(SolutionDir)\..\bin\release\</OutDir>
-    <LibraryPath>..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64;..\SDL2\libWindows;..\glew\libWindows;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Program Files\Microsoft SDKs\Windows\v7.0\Lib\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

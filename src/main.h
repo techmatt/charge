@@ -3,7 +3,13 @@
 #define __CHARGE_MAIN
 
 #define GLEW_NO_GLU
-//#define INCLUDE_D3D
+#define INCLUDE_D3D
+//#define USE_D3D_COMPILER
+
+#ifdef INCLUDE_D3D
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3dcompiler.lib")
+#endif
 
 #ifdef __APPLE__
 #include <SDL2/SDL.h>

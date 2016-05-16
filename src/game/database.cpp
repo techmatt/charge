@@ -162,7 +162,8 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         {
             int alpha = 105;
             if (componentName == "Faded") alpha = 150;
-            if (componentName == "Tooltip") alpha = 180;
+            //if (componentName == "Tooltip") alpha = 180;
+			if (componentName == "Tooltip") alpha = 255;
             for (const auto &p : bmp)
                 p.value.a = alpha;
         }
