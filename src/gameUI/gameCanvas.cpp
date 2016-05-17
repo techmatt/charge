@@ -810,11 +810,18 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
             return;
         }
 
-        //if (levelIndex > app.session.highestAccessiblePuzzle())
-        //if (info->state == LevelState::Solved)
+		//string name = button.name;
+		ComponentModifiers modifiers = button.modifiers;
 
+		if (button.type == ButtonType::Component && button.modifiers.color != ChargeType::Gray &&
+			(button.name == "TeleportSource" || button.name == "TeleportDestination" || button.name == "GateClosed" || 
+			 button.name == "GateSwitch"))
+		{
+			modifiers.color = ChargeType::Rainbow;
+			//name = button.name + "Rainbow";
+		}
 
-        renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
+        renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(modifiers, selected));
 
         if (app.controller.editorMode == EditorMode::LevelEditor &&
             app.state.buildableComponents.canBuild(button.name, button.modifiers) &&

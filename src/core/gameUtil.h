@@ -144,6 +144,8 @@ public:
             return "Blue";
         case ChargeType::None:
             return "";
+		case ChargeType::Rainbow:
+			return "Rainbow";
         }
         return "Invalid";
     }

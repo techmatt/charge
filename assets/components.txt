@@ -3,6 +3,8 @@ Wire	0	0	W	no	no	Wire	"Allows charge to flow.  Starting at puzzle 4, wires can b
 Splitter	1	0	S	no	no	Splitter	Splits a large charge into multiple smaller charges.|Orange splits into 2 Red|Yellow splits into 3 Red|Green splits into 2 Orange|Blue splits into 2 Yellow
 Amplifier	2	0	A	no	no	Amplifier	"Accepts two charges and emits a charge that is one level higher than the larger of the receieved charges.|Red = 1, Orange = 2, Yellow = 3, Green = 4, Blue = 5"
 FilteredAmplifier	3	0	L	yes	no	# Amplifier	Accept two charges and emits a # charge.  Will not accept a second charge unless the sum is strong enough to produce a # charge.
+TeleportSourceRainbow	-1	-1	!	yes	no	Transmitter	Teleports a charge to the closest receiver of the same color.
+TeleportDestinationRainbow	-1	-1	!	yes	no	Receiver	Accepts charges from transmitters of the same color.  Otherwise behave like a normal wire.
 TeleportSource	4	0	T	yes	no	# Transmitter	Teleports a charge to the closest # receiver.
 TeleportDestination	5	0	R	yes	no	# Receiver	Accepts charges from # transmitters.  Otherwise behave like a normal wire.
 ChargeFilter	6	0	F	yes	no	# Filter	Only allows # charge to pass through.
@@ -10,7 +12,9 @@ Hold	5	1	H	no	no	Hold	Holds will accept a charge and keep it until the charge ha
 GateOpen	-1	-1	!	yes	yes	# Gate (Open)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateClosed	0	1	G	yes	yes	# Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.  # gates are controlled by a # switch."
 GateSwitch	1	1	B	yes	yes	# Switch	Toggles all # gates.
-Circuit	4	1	D	no	no	Chip	"Allows you to build a 5x5 grid of components on a single tile. Can be flipped and rotated, as well as copied (c) and pasted (v)."
+GateClosedRainbow	-1	-1	!	yes	yes	Colored Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.  Colored gates are controlled by any colored switch."
+GateSwitchRainbow	-1	-1	!	yes	yes	Colored Switch	Toggles all # gates.
+Circuit	4	1	D	no	no	Chip	"Allows you to build a 5x5 grid of components on a single tile. Can be flipped and rotated, as well as copied (C) and pasted (V)."
 TrapOpen	2	1	P	yes	yes	# Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
 TrapSprung	-1	-1	!	yes	yes	# Trap (Closed)	"Behaves like a normal wire for the first charge that passes through it, then it will close. |Can be reset by a # crank."
 TrapReset	3	1	!	yes	yes	# Crank	Resets all # traps.
