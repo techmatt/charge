@@ -74,10 +74,15 @@ void GameButton::initTooltip()
     if (type == ButtonType::Component && modifiers.color == ChargeType::Gray)
         hotkey = database().getComponent(name + "GrayProxy").hotkey;
 
-    if (modifiers.color == ChargeType::Gray && (component->name == "GateSwitch" || component->name == "TrapReset" || component->name == "MegaHold"))
+    if (modifiers.color == ChargeType::Gray &&
+	   (component->name == "GateSwitch" || component->name == "TrapReset" || component->name == "MegaHold" ||
+		component->name == "GateClosed" || component->name == "TrapOpen"))
         tooltip = &database().getComponent(component->name + "GrayProxy");
 
-	if (modifiers.color == ChargeType::Red && (component->name == "TeleportSource" || component->name == "TeleportDestination" || component->name == "GateClosed"))
+	if (modifiers.color != ChargeType::Gray && type == ButtonType::Component &&
+		(component->name == "TeleportSource" || component->name == "TeleportDestination" || component->name == "GateClosed" ||
+		 component->name == "ChargeFilter" || component->name == "GateSwitch" || component->name == "TrapOpen" || component->name == "TrapReset" ||
+			component->name == "FilteredAmplifier"))
 		tooltip = &database().getComponent(component->name + "Rainbow");
 
     if (type == ButtonType::TrapState || type == ButtonType::GateState)

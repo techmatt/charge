@@ -814,8 +814,9 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
 		ComponentModifiers modifiers = button.modifiers;
 
 		if (button.type == ButtonType::Component && button.modifiers.color != ChargeType::Gray &&
-			(button.name == "TeleportSource" || button.name == "TeleportDestination" || button.name == "GateClosed" || 
-			 button.name == "GateSwitch"))
+			(button.name == "TeleportSource" || button.name == "TeleportDestination" || button.name == "GateClosed" ||
+			 button.name == "ChargeFilter" || button.name == "GateSwitch" || button.name == "TrapOpen" || button.name == "TrapReset" ||
+			 button.name == "FilteredAmplifier"))
 		{
 			modifiers.color = ChargeType::Rainbow;
 			//name = button.name + "Rainbow";
