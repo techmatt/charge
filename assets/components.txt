@@ -38,11 +38,11 @@ CircuitRotate90	-1	-1	Right	no	no	Rotate Clockwise	"Rotates the selected compone
 CircuitRotateN90	-1	-1	Left	no	no	Rotate Counter-clockwise	"Rotates the selected components.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipHorizontal	-1	-1	Up	no	no	Flip Horizontal	"Flips the current selection horizontally.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
 CircuitFlipVertical	-1	-1	Down	no	no	Flip Vertical	"Flips the current selection vertically.||You cannot modify chips that are part of the puzzle, but you can copy (C) or paste (V) them."
-CircuitCopy	-1	-1	!	no	no	Copy Selection	Copies all selected components.  Use shift to select multiple components.  You can rotate and flip components once they are copied.
+CircuitCopy	-1	-1	!	no	no	Copy Selection	Copies all selected components.  You cannot copy components that are part of the level.  Use shift to select multiple components.  You can rotate and flip components once they are copied.
 CircuitCut	-1	-1	!	no	no	Cut Selection	Copies all selected components then deletes them.  Use shift to select multiple components.  You can rotate and flip components once they are copied.
-CircuitPaste	-1	-1	!	no	no	Paste Components	Pastes all copied components.  Use shift to select multiple components.  You can rotate and flip components once they are copied.
+CircuitPaste	-1	-1	!	no	no	Paste Components	Pastes all copied components.
 Undo	-1	-1	!	no	no	Undo	Undoes the last action taken.
-GateClosedGrayProxy	0	2	N	no	no	Gray Gate	"Gates don't allow charge to pass when closed, but behave like wires when open.||Gray gates are controlled by nearby gray switches."
+GateClosedGrayProxy	0	2	N	no	no	Gray Gate (Closed)	"Gates don't allow charge to pass when closed, but behave like wires when open.||Gray gates are controlled by nearby gray switches."
 GateSwitchGrayProxy	1	2	M	no	no	Gray Button	Toggles the closest gray gate.
 TrapOpenGrayProxy	2	2	J	no	no	Gray Trap (Open)	"Behaves like a normal wire for the first charge that passes through it, then it will close.||Gray traps are reset by nearby gray cranks."
 TrapResetGrayProxy	3	2	K	no	no	Gray Crank	Resets the closest gray trap.

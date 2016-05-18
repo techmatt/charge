@@ -205,6 +205,16 @@ public:
     static Bitmap processGlow(const Bitmap &bmpStart, float glowStrength, const vec3f &glowColor, const vec3f &textColor);
 
     static vector< map< string, string > > readTSVFile(const string &filename);
+
+	static Bitmap colorify(const Bitmap &bmp, const vec3f &color)
+	{
+		Bitmap result = bmp;
+		for (auto &p : bmp)
+		{
+
+		}
+		return result;
+	}
 };
 
 namespace math
