@@ -223,7 +223,7 @@ void GameController::updateButtonList()
 
     if (levelSelectMenu)
     {
-        const int gridSize = 10;
+        const int gridSize = 11;
         int levelIndex = 0;
         for (int y = 0; y < gridSize; y++)
             for (int x = 0; x < gridSize; x++)

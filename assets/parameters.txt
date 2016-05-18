@@ -33,7 +33,7 @@ puzzleMenuECanonicalStart = 308, 418
 puzzleMenuFCanonicalStart = 228, 428
 
 puzzleMenuCanonicalEntrySize = 24
-levelSelectMenuCanonicalEntrySize = 25
+levelSelectMenuCanonicalEntrySize = 23
 
 attributeMenuCanonicalStart = 210, 415
 attributeMenuCanonicalEntrySize = 100, 15

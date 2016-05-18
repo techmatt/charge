@@ -385,7 +385,7 @@ void GameCanvas::updateBackgroundObjects()
     if (app.controller.levelSelectMenu)
     {
         const vec2f start = params().componentMenuCanonicalStart;
-        const vec2f size(260.0f, 250.0f);
+        const vec2f size(262.0f, 230.0f);
         renderMenuBackground("Puzzle select", start, rect2f(start, start + size));
     }
     else
@@ -590,8 +590,8 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
     if (button.type == ButtonType::LevelSelect)
     {
 		const string levelText = to_string(button.levelIndex + 1);
-		const vec2f offset = (levelText.length() == 1) ? vec2f(7.0f, 3.0f) : vec2f(4.0f, 3.0f);
-        renderText(getFontTexture(levelText, FontType::LevelSelectIndex), button.canonicalRect.min() + offset, 12.0f);
+		const vec2f offset = (levelText.length() == 1) ? vec2f(6.0f, 3.0f) : vec2f(4.0f, 3.0f);
+        renderText(getFontTexture(levelText, FontType::LevelSelectIndex), button.canonicalRect.min() + offset, 11.0f);
     }
 }
 
