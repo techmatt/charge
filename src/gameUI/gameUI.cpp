@@ -518,8 +518,8 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
         if (button->levelIndex > app.session.highestAccessiblePuzzle())
             return;
         app.controller.loadLevelPackPuzzle("Campaign", button->levelIndex, "BasePuzzle");
-        if (app.controller.userSolutionExists())
-            app.controller.loadUserSolution();
+        //if (app.controller.userSolutionExists())
+        //    app.controller.loadUserSolution();
     }
 }
 
