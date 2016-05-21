@@ -16,14 +16,13 @@ ID3DBlob* D3D11Utility::CompileShader(const string &filename, const string &entr
 	static const bool s_bUsePreCompiledShaders = true;
 	static bool b_CompiledShaderDirectoryCreated = false;
 
-	const string path = getExecutablePath();
-	const string compiledShaderDirectory(path + "/CompiledShaders/");
+	const string shaderDir = params().assetDir + "compiledShaders/";
 	if (!b_CompiledShaderDirectoryCreated) {
 		//CreateDirectory(compiledShaderDirectory.c_str(), NULL);
-		util::makeDirectory(compiledShaderDirectory);
+		util::makeDirectory(shaderDir);
 		b_CompiledShaderDirectoryCreated = true;
 	}
-	string compiledFilename(compiledShaderDirectory);
+	string compiledFilename(shaderDir);
 
 	string fileName(filename.begin(), filename.end());
 	unsigned int found = (unsigned int)fileName.find_last_of("/\\");
@@ -75,6 +74,9 @@ ID3DBlob* D3D11Utility::CompileShader(const string &filename, const string &entr
 	ID3DBlob* blob = nullptr;
 
 	if (!s_bUsePreCompiledShaders || hFindCompiled == INVALID_HANDLE_VALUE || CompareFileTime(&findData_shader.ftLastWriteTime, &findData_compiled.ftLastWriteTime) > 0) {
+		HRESULT hr = E_FAIL;
+
+#ifdef USE_D3D_COMPILER
 		DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 #if defined( DEBUG ) || defined( _DEBUG )
 		// Set the D3DCOMPILE_DEBUG flag to embed debug information in the shaders.
@@ -92,8 +94,9 @@ ID3DBlob* D3D11Utility::CompileShader(const string &filename, const string &entr
 //		string s(filename.begin(), filename.end());
 //#endif
 
+		
 		//HRESULT hr = D3DX11CompileFromFile(s.c_str(), shader_macros, nullptr, entryPoint.c_str(), shaderModel.c_str(), shaderFlags, 0, nullptr, &blob, &errorBlob, nullptr);
-		HRESULT hr = D3DCompileFromFile(s.c_str(), shader_macros, nullptr, entryPoint.c_str(), shaderModel.c_str(), shaderFlags, 0, &blob, &errorBlob);
+		hr = D3DCompileFromFile(s.c_str(), shader_macros, nullptr, entryPoint.c_str(), shaderModel.c_str(), shaderFlags, 0, &blob, &errorBlob);
 
 		if (FAILED(hr)) {
 			string errorBlobText;
@@ -111,6 +114,7 @@ ID3DBlob* D3D11Utility::CompileShader(const string &filename, const string &entr
 			compiledFile.write((char*)(blob)->GetBufferPointer(), (blob)->GetBufferSize());
 			compiledFile.close();
 		}
+#endif
 	}
 	else {
 		ifstream compiledFile(compiledFilename.c_str(), ios::in | ios::binary);

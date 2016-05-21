@@ -37,4 +37,9 @@ enum class ChargeType
     //
     
     Gray = 6,
+
+	//
+	// Rainbow is a special charge type used only for the component menu.
+	//
+	Rainbow = 7,
 };

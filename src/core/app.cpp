@@ -261,10 +261,10 @@ int App::run()
         //
         // render frame only if necessary
         //
-        bool renderFrame = !minimized && (eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing || params().alwaysRender);
+        bool renderFrame = !minimized && (params().alwaysRender || eventFound || data.renderer.motionBlurActive() || data.controller.puzzleMode == PuzzleMode::Executing);
         if (renderFrame)
         {
-            if(data.renderer.type() == RendererType::OpenGL) checkGLError();
+            checkpoint();
 
             //
             // render the game

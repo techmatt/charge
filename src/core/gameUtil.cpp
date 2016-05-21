@@ -6,11 +6,11 @@ Bitmap GameUtil::processGlow(const Bitmap &bmpStart, float glowStrength, const v
     const int border = 4;
     const float glowStrength2 = glowStrength * glowStrength;
     Bitmap bmpExpanded(bmpStart.dimX() + border * 2, bmpStart.dimY() + border * 2, bmpStart(0, 0));
-    for (auto &p : bmpStart)
+    for (const auto &p : bmpStart)
         bmpExpanded(p.x + border, p.y + border) = p.value;
 
     Grid2f bmpAdd(bmpExpanded.dimX(), bmpExpanded.dimY(), 0.0f);
-    for (auto &p : bmpExpanded)
+    for (const auto &p : bmpExpanded)
     {
         const int glowRadius = 4;
 
@@ -33,7 +33,7 @@ Bitmap GameUtil::processGlow(const Bitmap &bmpStart, float glowStrength, const v
     }
 
     Bitmap bmpOut = bmpExpanded;
-    for (auto &p : bmpOut)
+    for (const auto &p : bmpOut)
     {
         if (p.value.a == 255)
             continue;
@@ -74,6 +74,7 @@ rect2f GameUtil::locationInLocationToWindowRect(const vec2f &canonicalDims, cons
             containingRect.min().y + subboxSize.y*(size + location.circuitPos.y)
             );
     }
+
     if (containingLocation.inCircuit() && !location.inCircuit())
         return circuitToWindowRect(canonicalDims, location.boardPos, size);
 

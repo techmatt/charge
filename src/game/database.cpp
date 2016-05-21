@@ -32,6 +32,9 @@ void Database::init()
     fonts[(int)FontType::ComponentAttribute] = FontInfo("trebuc", 36.0f, RGBColor(0, 0, 0), 2.0f, RGBColor(0, 0, 0));
     fonts[(int)FontType::MenuTitle] = FontInfo("trebuc", 36.0f, RGBColor(255, 255, 255), 2.0f, RGBColor(0, 0, 0));
     fonts[(int)FontType::LevelSelectIndex] = FontInfo("trebuc", 36.0f, RGBColor(255, 255, 255), 2.0f, RGBColor(0, 0, 0));
+	fonts[(int)FontType::VictoryPanelStandard] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250), 2.0f, RGBColor(0, 0, 0));
+	fonts[(int)FontType::VictoryPanelGood] = FontInfo("trebuc", 36.0f, RGBColor(200, 250, 200), 2.0f, RGBColor(0, 0, 0));
+	fonts[(int)FontType::VictoryPanelBad] = FontInfo("trebuc", 36.0f, RGBColor(250, 200, 200), 2.0f, RGBColor(0, 0, 0));
 }
 
 TTF_Font* Database::getFont(const string &fontName)
@@ -162,7 +165,8 @@ Texture& Database::getTexture(Renderer &renderer, const string &componentName, c
         {
             int alpha = 105;
             if (componentName == "Faded") alpha = 150;
-            if (componentName == "Tooltip") alpha = 180;
+            //if (componentName == "Tooltip") alpha = 180;
+			if (componentName == "Tooltip") alpha = 255;
             for (const auto &p : bmp)
                 p.value.a = alpha;
         }

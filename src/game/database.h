@@ -10,6 +10,9 @@ enum class FontType
     ComponentAttribute,
     MenuTitle,
     LevelSelectIndex,
+	VictoryPanelStandard,
+	VictoryPanelGood,
+	VictoryPanelBad,
     Count,
 };
 

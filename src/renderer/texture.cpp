@@ -38,7 +38,7 @@ void Texture::drawText(Renderer &renderer, TTF_Font *font, const string &text, R
 	if (renderer.type() == RendererType::SDL)
 		initSDL();
 	else if (renderer.type() == RendererType::OpenGL)
-		initOpenGL(false);
+		initOpenGL(true);
 	else if (renderer.type() == RendererType::D3D11)
 		initD3D11();
 

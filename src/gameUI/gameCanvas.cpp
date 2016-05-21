@@ -364,26 +364,33 @@ void GameCanvas::updateBackgroundObjects()
 
     addBackgroundObject(database().getTexture(app.renderer, "Background"), rect2f(vec2f(0.0f, 0.0f), canonicalDims), depthLayers::background);
 
+	const vec2f iconMenuOffset = vec2f(7.0f, 15.0f);
+	const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - iconMenuOffset;
+	const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(94, 40));
+	renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+
+	if (app.controller.transformMenu)
+	{
+		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
+		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
+		renderMenuBackground("Transform options", transformMenuStart, transformRect);
+	}
+	if (app.controller.editMenu)
+	{
+		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
+		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
+		renderMenuBackground("Edit menu", transformMenuStart, transformRect);
+	}
+
     if (app.controller.levelSelectMenu)
     {
         const vec2f start = params().componentMenuCanonicalStart;
-        const vec2f size(260.0f, 250.0f);
+        const vec2f size(262.0f, 230.0f);
         renderMenuBackground("Puzzle select", start, rect2f(start, start + size));
     }
     else
     {
         renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
-
-        const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - vec2f(5.0f, 15.0f);
-        const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(110, 40));
-        renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
-
-        if (app.controller.transformMenu)
-        {
-            const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - vec2f(5.0f, 15.0f);
-            const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(90, 40));
-            renderMenuBackground("Transform options", transformMenuStart, transformRect);
-        }
 
         if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
         if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
@@ -432,6 +439,7 @@ void GameCanvas::updateBackgroundObjects()
         if (button.type == ButtonType::PuzzleControlA || button.type == ButtonType::PuzzleControlB || button.type == ButtonType::PuzzleControlC)
         {
             selected |= (button.name == buttonNameFromSpeed(app.controller.speed));
+			selected |= (button.name == "Pause" && app.controller.paused);
             selected |= (button.name == "ModePuzzle" && app.controller.editorMode == EditorMode::Campaign);
             selected |= (button.name == "ModeLevelEditor" && app.controller.editorMode == EditorMode::LevelEditor);
             selected |= (button.name == "Music" && app.audio.playMusic);
@@ -581,7 +589,9 @@ void GameCanvas::renderButtonForeground(const GameButton &button, bool selected)
     }
     if (button.type == ButtonType::LevelSelect)
     {
-        renderText(getFontTexture(to_string(button.levelIndex + 1), FontType::LevelSelectIndex), button.canonicalRect.min() + vec2f(4.0f, 3.0f), 12.0f);
+		const string levelText = to_string(button.levelIndex + 1);
+		const vec2f offset = (levelText.length() == 1) ? vec2f(6.0f, 3.0f) : vec2f(4.0f, 3.0f);
+        renderText(getFontTexture(levelText, FontType::LevelSelectIndex), button.canonicalRect.min() + offset, 11.0f);
     }
 }
 
@@ -746,18 +756,24 @@ void GameCanvas::renderVictoryPanel()
 
     renderText(getFontTexture("Puzzle solved!", FontType::TooltipName), victoryPanelStart + vec2f(15.0f, 9.0f), 18.0f);
 
-    renderText(getFontTexture("Your score", FontType::TooltipDescriptionA), vec2i(col1, row0), 12.0f);
-    renderText(getFontTexture("Your best", FontType::TooltipDescriptionA), vec2i(col2, row0), 12.0f);
-    renderText(getFontTexture("Par", FontType::TooltipDescriptionA), vec2i(col3, row0), 12.0f);
+    renderText(getFontTexture("Your score", FontType::VictoryPanelStandard), vec2i(col1, row0), 12.0f);
+    renderText(getFontTexture("Your best", FontType::VictoryPanelStandard), vec2i(col2, row0), 12.0f);
+    renderText(getFontTexture("Par", FontType::VictoryPanelStandard), vec2i(col3, row0), 12.0f);
 
-    renderText(getFontTexture("Solve time", FontType::TooltipDescriptionA), vec2i(col0, row1), 12.0f);
-    renderText(getFontTexture("Component cost", FontType::TooltipDescriptionA), vec2i(col0, row2), 12.0f);
+    renderText(getFontTexture("Solve time", FontType::VictoryPanelStandard), vec2i(col0, row1), 12.0f);
+    renderText(getFontTexture("Component cost", FontType::VictoryPanelStandard), vec2i(col0, row2), 12.0f);
 
-	renderText(getFontTexture(formatSteps(sessionInfo->recentStepCount), FontType::TooltipDescriptionA), vec2i(col1, row1), 12.0f);
-	renderText(getFontTexture(to_string(sessionInfo->recentComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col1, row2), 12.0f);
+	auto getFont = [](int a, int b) {
+		if (a < b) return FontType::VictoryPanelGood;
+		else if (a == b) return FontType::VictoryPanelStandard;
+		else return FontType::VictoryPanelBad;
+	};
 
-    renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), FontType::TooltipDescriptionA), vec2i(col2, row1), 12.0f);
-    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col2, row2), 12.0f);
+	renderText(getFontTexture(formatSteps(sessionInfo->recentStepCount), getFont(sessionInfo->recentStepCount, curPuzzle.stepCountPar)), vec2i(col1, row1), 12.0f);
+	renderText(getFontTexture(to_string(sessionInfo->recentComponentCost - curPuzzle.baseComponentCost), getFont(sessionInfo->recentComponentCost, curPuzzle.componentCostPar)), vec2i(col1, row2), 12.0f);
+
+    renderText(getFontTexture(formatSteps(sessionInfo->bestStepCount), getFont(sessionInfo->bestStepCount, curPuzzle.stepCountPar)), vec2i(col2, row1), 12.0f);
+    renderText(getFontTexture(to_string(sessionInfo->bestComponentCost - curPuzzle.baseComponentCost), getFont(sessionInfo->bestComponentCost, curPuzzle.componentCostPar)), vec2i(col2, row2), 12.0f);
 
 	renderText(getFontTexture(formatSteps(curPuzzle.stepCountPar), FontType::TooltipDescriptionA), vec2i(col3, row1), 12.0f);
 	renderText(getFontTexture(to_string(curPuzzle.componentCostPar - curPuzzle.baseComponentCost), FontType::TooltipDescriptionA), vec2i(col3, row2), 12.0f);
@@ -776,22 +792,37 @@ void GameCanvas::renderButtonBackground(const GameButton &button, bool selected)
         if (button.type == ButtonType::LevelSelect)
         {
             string suffix;
-            auto info = app.session.getLevelInfo("Campaign", button.levelIndex);
+            auto userInfo = app.session.getLevelInfo("Campaign", button.levelIndex);
+			const auto &puzzleInfo = database().getPuzzleInfo("Campaign", button.levelIndex);
             if (button.levelIndex > app.session.highestAccessiblePuzzle())
                 suffix = "Inaccessible";
-            else if (info->state == LevelState::Solved)
+            else if (userInfo->state == LevelState::Solved)
                 suffix = "Solved";
-            else if (info->state == LevelState::Unsolved)
-                suffix = "Accessible";
+			else if (userInfo->state == LevelState::Unsolved)
+			{
+				const string filenameProgress = app.session.getSolutionFilename("Campaign", puzzleInfo.name, SolutionType::Progress);
+				if(util::fileExists(filenameProgress))
+					suffix = "Attempted";
+				else
+					suffix = "Accessible";
+			}
             renderLocalizedComponent("ChoosePuzzle" + suffix, nullptr, screenRect, 0.0f, IconState(button.modifiers, false));
             return;
         }
 
-        //if (levelIndex > app.session.highestAccessiblePuzzle())
-        //if (info->state == LevelState::Solved)
+		//string name = button.name;
+		ComponentModifiers modifiers = button.modifiers;
 
+		if (button.type == ButtonType::Component && button.modifiers.color != ChargeType::Gray &&
+			(button.name == "TeleportSource" || button.name == "TeleportDestination" || button.name == "GateClosed" ||
+			 button.name == "ChargeFilter" || button.name == "GateSwitch" || button.name == "TrapOpen" || button.name == "TrapReset" ||
+			 button.name == "FilteredAmplifier"))
+		{
+			modifiers.color = ChargeType::Rainbow;
+			//name = button.name + "Rainbow";
+		}
 
-        renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(button.modifiers, selected));
+        renderLocalizedComponent(button.name, nullptr, screenRect, 0.0f, IconState(modifiers, selected));
 
         if (app.controller.editorMode == EditorMode::LevelEditor &&
             app.state.buildableComponents.canBuild(button.name, button.modifiers) &&
@@ -829,7 +860,18 @@ void GameCanvas::renderLocalizedComponentHover(const string &name, const rect2f 
 
 void GameCanvas::renderLocalizedComponent(const string &name, const Component *dynamicComponent, const rect2f &screenRect, float depthOffset, const IconState &icon)
 {
-    Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
+	//Texture &baseTex = database().getTexture(app.renderer, constants::useSmallWire && name == "Wire" ? "PureWire" : "WireBase");
+
+	string baseTexName = "WireBase";
+	if (icon.orientation != CircuitBoundaryOrientation::None)
+	{
+		if (icon.orientation == CircuitBoundaryOrientation::Left)   baseTexName = "CircuitBoundaryLeft";
+		if (icon.orientation == CircuitBoundaryOrientation::Right)  baseTexName = "CircuitBoundaryRight";
+		if (icon.orientation == CircuitBoundaryOrientation::Top)    baseTexName = "CircuitBoundaryTop";
+		if (icon.orientation == CircuitBoundaryOrientation::Bottom) baseTexName = "CircuitBoundaryBottom";
+	}
+
+    Texture &baseTex = database().getTexture(app.renderer, baseTexName);
     Texture &componentTex = database().getTexture(app.renderer, name, icon.modifiers);
     Texture &preferenceTex = *database().preferenceTextures[icon.modifiers.chargePreference];
 
@@ -893,9 +935,10 @@ void GameCanvas::renderComponent(const Component &component)
         // if the component is in the active circuit, render it in the selected circuit area
         if (app.activeCircuit() != nullptr && component.location.boardPos == app.activeCircuit()->location.boardPos && !component.circuitCorner())
         {
-            const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
+			const CircuitBoundaryOrientation orientation = component.location.getCircuitBoundaryOrientation();
+			const rect2f screenRect = GameUtil::circuitToWindowRect(canonicalDims, component.location.circuitPos, 2);
             const bool faded = component.inactiveBoundary();
-            renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected, true, faded));
+            renderLocalizedComponent(component.info->name, &component, screenRect, 0.0f, IconState(component.modifiers, selected, true, faded, orientation));
         }
         // regardless, we'll need to render it in the main grid, but we'll wait until later
     }
@@ -916,7 +959,10 @@ void GameCanvas::renderCircuitComponent(const Component &component)
     const CoordinateFrame frame = CoordinateFrame(component.location.boardPos, component.location.boardPos + vec2f(2.0f, 2.0f), vec2i(constants::circuitBoardSize, constants::circuitBoardSize));
     const rect2f circuitRect = rect2f(component.location.circuitPos, component.location.circuitPos + 2);
     const rect2f screenRect = params().boardInWindow.toContainer(frame.toContainer(circuitRect));
-    renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffsetStandard, IconState(component.modifiers, false));
+	
+	const CircuitBoundaryOrientation orientation = component.location.getCircuitBoundaryOrientation();
+
+	renderLocalizedComponent(component.info->name, &component, screenRect, depthLayers::miniCircuitOffsetStandard, IconState(component.modifiers, false, true, false, orientation));
 }
 
 void GameCanvas::renderSpokesMiniCircuit(const Component &component)

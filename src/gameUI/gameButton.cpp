@@ -74,8 +74,16 @@ void GameButton::initTooltip()
     if (type == ButtonType::Component && modifiers.color == ChargeType::Gray)
         hotkey = database().getComponent(name + "GrayProxy").hotkey;
 
-    if (modifiers.color == ChargeType::Gray && (component->name == "GateSwitch" || component->name == "TrapReset" || component->name == "MegaHold"))
+    if (modifiers.color == ChargeType::Gray &&
+	   (component->name == "GateSwitch" || component->name == "TrapReset" || component->name == "MegaHold" ||
+		component->name == "GateClosed" || component->name == "TrapOpen"))
         tooltip = &database().getComponent(component->name + "GrayProxy");
+
+	if (modifiers.color != ChargeType::Gray && type == ButtonType::Component &&
+		(component->name == "TeleportSource" || component->name == "TeleportDestination" || component->name == "GateClosed" ||
+		 component->name == "ChargeFilter" || component->name == "GateSwitch" || component->name == "TrapOpen" || component->name == "TrapReset" ||
+			component->name == "FilteredAmplifier"))
+		tooltip = &database().getComponent(component->name + "Rainbow");
 
     if (type == ButtonType::TrapState || type == ButtonType::GateState)
     {
@@ -201,11 +209,8 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     {
         app.controller.designActionTaken = false;
         app.controller.puzzleMode = PuzzleMode::Executing;
-		if(app.ui.cachedSpeed == GameSpeed::x0)
-			app.ui.cachedSpeed = GameSpeed::x1;
-		if (app.controller.speed == GameSpeed::x0)
-			app.controller.speed = app.ui.cachedSpeed;
-        app.state.resetPuzzle();
+		app.controller.paused = false;
+		app.state.resetPuzzle();
         app.renderer.initMotionBlur(0.5f, 5);
     }
     if (name == "Stop")
@@ -215,7 +220,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     }
     if (name == "Pause")
     {
-        app.controller.speed = GameSpeed::x0;
+		app.controller.paused = !app.controller.paused;
     }
     if (name == "ModePuzzle")
     {
@@ -381,7 +386,7 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
         transformComponentSet(app.ui.activePlacementBuffer);
     }
 
-    for (int speed = (int)GameSpeed::x0; speed <= (int)GameSpeed::x5; speed++)
+    for (int speed = (int)GameSpeed::Quarter; speed <= (int)GameSpeed::x10; speed++)
         if (name == buttonNameFromSpeed((GameSpeed)speed))
         {
             app.controller.speed = (GameSpeed)speed;
@@ -394,6 +399,14 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
 	if (name == "CircuitPaste")
 	{
 		app.ui.paste();
+	}
+	if (name == "CircuitCut")
+	{
+		app.ui.cut();
+	}
+	if (name == "Undo")
+	{
+		app.undoBuffer.back(app.state);
 	}
 
     if (name == "ChoosePuzzle")

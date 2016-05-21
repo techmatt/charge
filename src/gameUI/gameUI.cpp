@@ -15,7 +15,6 @@ void GameUI::init()
     tabUp = true;
 	leftClickUp = true;
 	rightClickUp = true;
-	cachedSpeed = GameSpeed::x1;
 	leftClickCounter = 0;
 }
 
@@ -28,6 +27,7 @@ void GameUI::clearSelection()
 
 void GameUI::deleteSelection()
 {
+    const vec2i cachedCircuitCoord = selection.circuitLocation;
 	for (Component *c : selection.components)
 	{
 		if (c->modifiers.puzzleType != ComponentPuzzleType::PuzzlePiece && c->baseInfo->name != "CircuitBoundary")
@@ -38,6 +38,12 @@ void GameUI::deleteSelection()
 		}
 	}
 	selection.empty();
+    if (cachedCircuitCoord != constants::invalidCoord)
+    {
+        Component *circuit = app.state.getComponent(GameLocation(cachedCircuitCoord));
+        if (circuit != nullptr && circuit->isCircuit())
+            selection.newSelectionFromComponent(circuit);
+    }
 }
 
 void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
@@ -124,13 +130,7 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
 		}
 		else if (app.controller.puzzleMode == PuzzleMode::Executing)
 		{
-			if (app.controller.speed == GameSpeed::x0)
-				app.controller.speed = cachedSpeed;
-			else
-			{
-				cachedSpeed = app.controller.speed;
-				app.controller.speed = GameSpeed::x0;
-			}
+			app.controller.paused = !app.controller.paused;
 		}
 	}
 
@@ -148,8 +148,17 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
     if (key == SDLK_TAB && tabUp)
     {
 		tabUp = false;
-		if(app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x20)
-            app.controller.speed = GameSpeed((int)app.controller.speed + 1);
+		tabIsPause = false;
+		if (app.controller.puzzleMode == PuzzleMode::Executing)
+		{
+			if (app.controller.paused)
+			{
+				app.controller.paused = false;
+				tabIsPause = true;
+			}
+			else if(app.controller.speed != GameSpeed::x20)
+				app.controller.speed = GameSpeed((int)app.controller.speed + 1);
+		}
     }
 }
 
@@ -158,7 +167,11 @@ void GameUI::keyUp(SDL_Keycode key)
     if (key == SDLK_TAB)
     {
 		tabUp = true;
-        if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::x0)
+		if (tabIsPause)
+		{
+			app.controller.paused = true;
+		}
+		else if (app.controller.puzzleMode == PuzzleMode::Executing && app.controller.speed != GameSpeed::Quarter)
             app.controller.speed = GameSpeed((int)app.controller.speed - 1);
         app.canvas.backgroundDirty = true;
     }
@@ -219,8 +232,8 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
     if (mouseDelta.length() > constants::dragThreshold)
     {
         // The mouse was dragged
-		if(!shift)
-			cut();
+		//if(!shift)
+		//	cut();
     }
     else
     {
@@ -236,11 +249,11 @@ void GameUI::mouseUp(Uint8 mouseButton, int x, int y, int clicks, bool shift, bo
             else
             {
                 //selectedGameLocation = hover;
-                if (hoverComponent != nullptr)
+                if (hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
                     selection.newSelectionFromComponent(hoverComponent);
             }
 
-			if (clicks == 2 && leftClickCounter >= 2 && hoverComponent != nullptr)
+            if (clicks == 2 && leftClickCounter >= 2 && hoverComponent != nullptr && hoverComponent->info->name != "Blocker")
 			{
 				cut();
 			}
@@ -505,8 +518,8 @@ void GameUI::mouseMove(Uint32 buttonState, int x, int y, bool shift, bool ctrl)
         if (button->levelIndex > app.session.highestAccessiblePuzzle())
             return;
         app.controller.loadLevelPackPuzzle("Campaign", button->levelIndex, "BasePuzzle");
-        if (app.controller.userSolutionExists())
-            app.controller.loadUserSolution();
+        //if (app.controller.userSolutionExists())
+        //    app.controller.loadUserSolution();
     }
 }
 
@@ -646,12 +659,12 @@ void GameUI::addHoverComponent(const GameLocation &location)
     if (location.inCircuit())
     {
         vec2i offset = location.circuitPos - buffermin;
-        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset, preferenceOverride);
+        activePlacementBuffer.addToCircuit(app.state, location.boardPos, offset);
     }
     else
     {
         vec2i offset = location.boardPos - buffermin;
-        activePlacementBuffer.addToComponents(app.state, offset, preferenceOverride);
+        activePlacementBuffer.addToComponents(app.state, offset);
     }
 
     app.controller.recordDesignAction();

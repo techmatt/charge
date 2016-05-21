@@ -1,7 +1,6 @@
 
 enum class GameSpeed
 {
-	x0,
 	Quarter,
 	x1,
 	x3,
@@ -63,9 +62,6 @@ public:
 
     int hoverButtonIndex;
 
-	// the speed we will return to when pause is toggled
-	GameSpeed cachedSpeed;
-
 private:
 
     AppData &app;
@@ -74,6 +70,7 @@ private:
 
     // true if the space key has been observed to be up. used to avoid space repeat.
     bool tabUp;
+	bool tabIsPause;
 	bool leftClickUp;
 	int leftClickCounter;
 	bool rightClickUp;

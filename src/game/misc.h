@@ -1,4 +1,13 @@
 
+enum class CircuitBoundaryOrientation
+{
+	None,
+	Top,
+	Bottom,
+	Left,
+	Right
+};
+
 struct GameLocation
 {
     GameLocation()
@@ -58,7 +67,15 @@ struct GameLocation
 		return frame.toContainer(this->circuitPos + vec2f(1.0f, 1.0f));
 	}
 
-
+	CircuitBoundaryOrientation getCircuitBoundaryOrientation() const
+	{
+		CircuitBoundaryOrientation orientation = CircuitBoundaryOrientation::None;
+		if (circuitPos.x == 0) orientation = CircuitBoundaryOrientation::Left;
+		if (circuitPos.x == constants::circuitBoardSize - 2) orientation = CircuitBoundaryOrientation::Right;
+		if (circuitPos.y == 0) orientation = CircuitBoundaryOrientation::Top;
+		if (circuitPos.y == constants::circuitBoardSize - 2) orientation = CircuitBoundaryOrientation::Bottom;
+		return orientation;
+	}
 
     vec2f toScreenCoordMainBoard(const vec2f &canonicalDims) const
     {
