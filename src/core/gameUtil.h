@@ -209,7 +209,7 @@ public:
 	static Bitmap colorify(const Bitmap &bmp, const vec3f &color)
 	{
 		Bitmap result = bmp;
-		for (auto &p : bmp)
+		for (const auto &p : bmp)
 		{
 
 		}
