@@ -65,8 +65,11 @@ public:
     const PuzzleInfo& getActivePuzzle();
 
     void loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType);
-    void loadCurrentProvidedSolution();
-    bool userSolutionExists();
+
+	string providedSolutionFilename(int index);
+    void loadCurrentProvidedSolution(int index);
+    
+	bool userSolutionExists();
     void loadUserSolution();
 
     void recordDesignAction();

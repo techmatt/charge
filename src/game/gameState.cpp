@@ -81,6 +81,8 @@ void GameState::init()
         tableB(i, 0) = vec2i(0, -2);
         tableB(i, 6) = vec2i(0, 2);
     }
+
+	providedSolutionIndex = -1;
 }
 
 void GameState::savePuzzle(const string &filename)

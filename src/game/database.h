@@ -88,13 +88,28 @@ struct PuzzleInfo
     {
         index = _index;
         name = m.at("Puzzle name");
-        filename = m.at("Puzzle file");
+        //filename = m.at("Puzzle file");
+		filename = purifiedName();
         stepCountPar = convert::toInt(m.at("Step count par"));
         componentCostPar = convert::toInt(m.at("Component cost par"));
         baseComponentCost = convert::toInt(m.at("Base component cost"));
+		solutionCount = convert::toInt(m.at("Solution count"));
         rawTip = m.at("Tip");
         tip = util::replace(m.at("Tip"), '|', '\n');
     }
+
+	string purifiedName() const
+	{
+		string result;
+		for (char c : name)
+		{
+			if ((c >= 'A' && c <= 'Z') ||
+				(c >= 'a' && c <= 'z') ||
+				(c >= '0' && c <= '9'))
+				result += c;
+		}
+		return result;
+	}
 
     int index;
     string name;
@@ -105,6 +120,8 @@ struct PuzzleInfo
     int stepCountPar;
     int componentCostPar;
     int baseComponentCost;
+	
+	int solutionCount;
 };
 
 struct Database

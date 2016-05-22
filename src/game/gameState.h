@@ -96,6 +96,7 @@ struct GameState
 	string levelPack;
 	string levelPackPuzzleName;
 	int levelPackPuzzleIndex;
+	int providedSolutionIndex;
 
     // map from 7x7 circuit coordinate to the offset from the circuit's origin
     // to the neighboring component. Aligned refers to the case where two circuits are perfectly aligned.

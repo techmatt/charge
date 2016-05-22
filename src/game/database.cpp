@@ -88,37 +88,55 @@ void Database::processAllCampaignLevels(AppData &app)
 
         puzzle.baseComponentCost = state.componentCost();
 
-		state.savePuzzle(basePuzzleFilename);
+		const string correctPuzzleFilename = params().assetDir + "levels/" + puzzle.purifiedName() + ".pzl";
+		state.savePuzzle(correctPuzzleFilename);
         puzzleIndex++;
 	}
 
     ofstream file(params().assetDir + "levelsProcessed.txt");
-    file << "Puzzle name\tPuzzle file\tTip\tStep count par\tComponent cost par\tBase component cost" << endl;
+    file << "Puzzle name\tTip\tSolution count\tStep count par\tComponent cost par\tBase component cost" << endl;
     puzzleIndex = 0;
 	for (auto &puzzle : allPuzzles)
 	{
 		cout << "Processing puzzle solution " << puzzle.filename << endl;
 
-		GameState state(app);
-		const string basePuzzleFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
-		state.loadPuzzle(basePuzzleFilename, "none");
-		state.rezeroFirstEmission();
+		int solutionCount = 0;
+		for (int solutionIndex = 0; solutionIndex < 10; solutionIndex++)
+		{
+			GameState state(app);
+			
+			string suffix = "A";
+			suffix[0] += solutionIndex;
+			const string solutionFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_" + suffix + ".pzl";
+			const string correctSolutionFilename = params().assetDir + "providedSolutions/" + puzzle.purifiedName() + "_" + suffix + ".pzl";
+			if (!util::fileExists(solutionFilename)) continue;
+			solutionCount++;
+			state.loadPuzzle(solutionFilename, "none");
+			state.rezeroFirstEmission();
 
-		state.levelPack = "Campaign";
-		state.levelPackPuzzleIndex = puzzleIndex;
-		state.levelPackPuzzleName = puzzle.name;
-		state.puzzleFileType = "ProvidedSolution";
+			state.levelPack = "Campaign";
+			state.levelPackPuzzleIndex = puzzleIndex;
+			state.levelPackPuzzleName = puzzle.name;
+			state.puzzleFileType = "ProvidedSolution";
 
-		state.savePuzzle(basePuzzleFilename);
+			state.savePuzzle(correctSolutionFilename);
 
-        while (!state.victory)
-            state.step(app);
+			while (!state.victory)
+				state.step(app);
 
-        puzzle.stepCountPar = state.victoryInfo.stepCount;
-        
-        puzzle.componentCostPar = state.componentCost();
+			if (solutionIndex == 0)
+			{
+				puzzle.stepCountPar = state.victoryInfo.stepCount;
+				puzzle.componentCostPar = state.componentCost();
+			}
+			else
+			{
+				puzzle.stepCountPar = min(puzzle.stepCountPar, state.victoryInfo.stepCount);
+				puzzle.componentCostPar = min(puzzle.componentCostPar, state.componentCost());
+			}
+		}
 
-        file << puzzle.name << "\t" << puzzle.filename << "\t" << puzzle.rawTip << "\t" << puzzle.stepCountPar << "\t" << puzzle.componentCostPar << "\t" << puzzle.baseComponentCost << endl;
+        file << puzzle.name << "\t" << puzzle.rawTip << "\t" << solutionCount << "\t" << puzzle.stepCountPar << "\t" << puzzle.componentCostPar << "\t" << puzzle.baseComponentCost << endl;
 
         puzzleIndex++;
 	}

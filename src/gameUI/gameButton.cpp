@@ -231,12 +231,6 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
     {
         app.controller.puzzleVerificationMode = false;
         app.controller.changeEditorMode(EditorMode::LevelEditor);
-
-        if (SDL_GetModState() & KMOD_SHIFT)
-        {
-            app.controller.puzzleVerificationMode = true;
-            app.controller.loadCurrentProvidedSolution();
-        }
     }
     if (name == "Music")
     {
@@ -306,7 +300,10 @@ void GameButton::leftClick(AppData &app, const vector<Component*> &selectedCompo
 
     if (name == "ViewProvidedSolution")
     {
-        app.controller.loadCurrentProvidedSolution();
+		int newSolutionIndex = app.state.providedSolutionIndex + 1;
+		if (!util::fileExists(app.controller.providedSolutionFilename(newSolutionIndex)))
+			newSolutionIndex = 0;
+        app.controller.loadCurrentProvidedSolution(newSolutionIndex);
     }
 
 	if (name == "ViewYourProgress" || name == "ViewYourSolution")

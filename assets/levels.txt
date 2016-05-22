@@ -1,88 +1,88 @@
-Puzzle name	Puzzle file	Tip	Step count par	Component cost par	Base component cost
-The Path to Success	1-PathToSuccess	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	82	254	243
-The Bent Road	2-BentRoad	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	387	155	147
-Kinder Garden	3-KinderGarden	There are five colors of charge.||Your progress and solutions for each puzzle are saved automatically.	112	47	20
-Speed Racer	4-SpeedRacer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	89	160	143
-Sensitivity Training	5-SensitivityTraining	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	152	219	206
-Dealing with Rejection	6-DealingRejection	You cannot modify components that are part of the level.  You can use Ctrl+Z to undo multiple actions.	322	237	231
-A Stitch in Time	7-StitchTime	A charge will stay in a Goal if the other destinations it can move towards are blocked.	176	263	230
-Power to the People	8-PowerPeople	Amplifiers can produce stronger charges. Red is the weakest charge, while Blue is the strongest.	1393	23	8
-Lemon-aid	9-LemonAid	Charges can interfere with each other in undesired ways.	329	113	78
-There and Back Again	10-ThereAndBackAgain	Charge prefers less recently used components.	394	72	67
-Tower of Babel	11-TowerBabel	High-level charges can be split into smaller charges.	92	77	50
-One Small Step	12-OneSmallStep	Splitting and ampiflying can act in complimentary ways.	102	39	24
-One Giant Leap	13-OneGiantLeap	You might learn something new from the official solution for levels you have already solved.	141	54	36
-Ding Dong Ditch	14-DingDong	Gates and switches can let charges control themselves.	414	56	46
-Minimum Security	15-MinSecurity	New components can overcome new obstacles.	553	267	255
-Double Trouble	16-DoubleTrouble	Charges are easier to control when they have similar timing along a wire.	214	136	104
-Beam Me Up	17-BeamUp	Click on a Generator to see how many charges it emits and how frequently it emits them.	193	142	120
-Six String Samurai	18-SixStringSamurai	You can hold down tab to temporarially speed up the game.	214	62	32
-Reindeer Games	19-ReindeerGames	Some puzzles are harder than they seem.	1024	227	158
-The Green-Eyed Monster	20-GreenMonster	Select multiple components with Control or Shift. You can copy (C), paste (V), and cut (X) components.	354	51	12
-Stations of Life	21-StationsOfLife	Colored Amplifiers can be more efficient than regular ones.	606	19	4
-A Penny Saved	22-PennySaved	Efficiency in both space and charge is important.	966	252	238
-Red Tide	23-RedTide	Delays and Accelerators can help to prevent charge destruction.	197	66	29
-Moment of Glory	24-MomentOfGlory	Sometimes you have nothing better to do than wait.	1164	140	122
-It's a Trap!	26-Trap	Traps force you to consider other options.	384	77	40
-Trapasaurus	27-Trapasarus	Traps can be useful.	676	71	21
-Bonanza	28-Bonanza	Traps can be tricky.	403	76	6
-Hold Your Horses	29-HoldYourHorses	Holds allow charge to wait until there is a valid destination for the charge to move to.	85	218	206
-Cram Time	25-CramTime	At a junction, charge will pick a different direction each time.	272	123	102
-Open Sesame	30-OpenSesame	Cranks let you open Traps of the corresponding color.	1483	190	160
-A Silver Lining	31-SilverLining	A Gray Crank will only open the closest Gray Trap.  A Gray Switch will only open the closest Gray Gate.	1502	157	119
-We Require More	32-WeRequireMore	Sometimes it is a bad idea to open a Gate.	1494	102	42
-Cornered	33-Cornered	Timing can be everything.|To advance more slowly, pause the game then use the space bar.	519	76	16
-Doom House	34-DoomHouse	Some puzzles have to be solved one step at a time.	527	163	120
-Different Strokes	35-DifferentStrokes	Colored Amplifiers will only produce charge of the right color.	2072	81	54
-Labyrinth	36-Labyrinth	Some tasks are easier with the right components.	652	227	156
-Color Queue	37-ColorQueue	Pressing a Switch twice in a row will allow only a single charge to pass through a Gate.	720	209	166
-Infinite Possibilities	38-InfinitePossibilites	Finite input can beget infinite output.	687	69	46
-New Horizons	39-NewHorizons	Chips are a powerful tool to eliminate certain space constraints.	606	401	280
-Punch the Keys	40-PunchTheKeys	Pay attention to the already existing chips.	380	183	99
-One With Nothing	41-OneWithNothing	Chips built into the level can be copied (C), pasted (V), rotated, and flipped.	912	634	34
-To Each His Own	42-ToEachHisOwn	Chips you build now might come in handy later.	442	255	229
-Creative License	43-CreativeLicense	Sitting back and thinking can sometimes produce better results.	586	111	86
-One for All	44-OneForAll	Sometimes lots of small charges are more useful than larger ones.	3016	520	490
-Wishing Well	45-WishingWell	Charge is a precious resource.	1660	356	224
-Infinite Regress	46-InfiniteRegress	Many puzzles have multiple solutions.	542	193	172
-Trick or Treat	47-TrickOrTreat	111,111,111 x 111,111,111 = 12,345,678,987,654,321	2002	658	374
-Smorgasbord	48-Smorgasbord	Sometimes, working with short bursts of charge is important.	1073	257	240
-Deja Vu	49-DejaVu	You should be able to handle this one.	1152	92	60
-Some Assembly Required	52b-SomeAssemblyRequired	Fabrication companies like Intel have full time employees whose primary job is to layout wires efficiently.	6979	888	589
-Discharged	49b-Discharged	Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels.	1330	144	98
-Jacob's Ladder	51-JacobsLadder	Batteries do not accept charge of the wrong color.	2068	388	128
-Thinking Inside the Box	52-ThinkingBox	You can skip up to three levels and come back to them later.	922	1392	325
-Ye Who Enter Here	53-YeWhoEnterHere	Abandon all hope.	2016	202	109
-Ramming Speed	54-RammingSpeed	The charge must flow. . .	5242	705	68
-Compressor	55-Compressor	Figuring out what's going on is the key to some puzzles.	2575	1310	1156
-Batter Up	50-BatterUp	Some Goal Batteries discharge very quickly.	782	250	66
-Web We Weave	56-WebWeWeave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	1134	632	218
-Size Isn't Everything	61-SizeEverything	Shave and a haircut, one chip.	925	260	226
-Mob Rule	57-MobRule	A held charge will exit back to the component it came from if that path becomes unblocked.	1026	202	120
-Logically Connected	57b-LogicalConnectivity	Charge is a Turing-complete machine.	5767	2210	2087
-The Butterfly Effect	58-TheButterflyEffect	The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.	2882	853	207
-The Unfiltered Filter	58b-TheUnfilteredFilter	Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations.	2398	601	460
-Misfit Mayhem	59-MisfitMayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	1979	1710	978
-Baby Busy Beaver	60b-BabyBusyBeaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	4134	216	135
-Brave New World	62-BraveNewWorld	Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games.	7075	221	44
-Turn the Other Cheek	63-TurnTheOtherCheek	Fools rush in where angels fear to tread.	1544	303	266
-Double Cross	64-DoubleCross	Charge is not always good.	4491	479	237
-Fun For the Whole Family	60-FunFamily	Almost is the longest word in the English language with all the letters in alphabetical order.	146	111	22
-Rocket Science	65-RocketScience	Four out of five rocket surgeons agree.	8399	685	648
-Overengineering	66-Overengineering	Try working from both the beginning and the end to solve a puzzle.	2818	1526	166
-Entrapment	Entrapment	The path of sorrow, and that path alone, leads to the land where sorrow is unknown.	282	184	56
-Do-Se-Do	67-DoSeDo	I just wish I had time for one more bowl of Chili.	1948	428	244
-Deus Ex Machina	68-DeusExMachina	Boss time!	3135	403	46
-Power Overwhelming	71-PowerOverwhelming	Super Goal Batteries sometimes require a LOT of Charge.	343	860	280
-The Three Stooges	69-ThreeStooges	The level editor lets you make new Charge puzzles.	3477	1646	413
-Pride Parade	70-PrideParade	All together now!	3548	385	57
-Through the Filter Glass	70b-ThroughTheFilterGlass	If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?	10249	1122	787
-Jigsaw	73-Jigsaw	This puzzle was made easier for your protection.	5213	874	512
-Quantity Control	72-QuantityControl	Earth is the only planet not named after a god.	927	230	70
-Adult Busy Beaver	72b-AdultBusyBeaver	Busy beaver is so hard to compute that given 6 possible states and 2 symbols, all we know is that the value is at least 3.5 × 10^18267.	2197	231	183
-Turing Complete	74-TuringComplete	Proof by construction.	5964	430	352
-Doppleganger	75-Doppleganger	A lot of complexity can be packed into a single chip.	3169	288	234
-Chargin' Up	76-ChargingUp	Some levels have lasers.	1998	995	70
-Line Dancing	77-LineDancing	You may want to get a pen for this level.	16373	1255	523
-Chips Ahoy	78-ChipsAhoy	Do it yourself!	22122	1065	136
-Final Destination	79-FinalDestination	Good luck!	10670	5183	62
+Puzzle name	Tip	Solution count	Step count par	Component cost par	Base component cost
+The Path to Success	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	1	82	254	243
+The Bent Road	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	1	387	155	147
+Kinder Garden	There are five colors of charge.||Your progress and solutions for each puzzle are saved automatically.	1	112	47	20
+Speed Racer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	1	89	160	143
+Sensitivity Training	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	1	152	219	206
+Dealing with Rejection	You cannot modify components that are part of the level.  You can use Ctrl+Z to undo multiple actions.	1	322	237	231
+A Stitch in Time	A charge will stay in a Goal if the other destinations it can move towards are blocked.	1	176	263	230
+Power to the People	Amplifiers can produce stronger charges. Red is the weakest charge, while Blue is the strongest.	1	1393	23	8
+Lemon-aid	Charges can interfere with each other in undesired ways.	1	329	113	78
+There and Back Again	Charge prefers less recently used components.	1	394	72	67
+Tower of Babel	High-level charges can be split into smaller charges.	1	92	77	50
+One Small Step	Splitting and ampiflying can act in complimentary ways.	1	102	39	24
+One Giant Leap	You might learn something new from the official solution for levels you have already solved.	1	141	54	36
+Ding Dong Ditch	Gates and switches can let charges control themselves.	1	414	56	46
+Minimum Security	New components can overcome new obstacles.	1	553	267	255
+Double Trouble	Charges are easier to control when they have similar timing along a wire.	1	214	136	104
+Beam Me Up	Click on a Generator to see how many charges it emits and how frequently it emits them.	1	193	142	120
+Six String Samurai	You can hold down tab to temporarially speed up the game.	1	214	62	32
+Reindeer Games	Some puzzles are harder than they seem.	1	1024	227	158
+The Green-Eyed Monster	Select multiple components with Control or Shift. You can copy (C), paste (V), and cut (X) components.	1	354	51	12
+Stations of Life	Colored Amplifiers can be more efficient than regular ones.	1	606	19	4
+A Penny Saved	Efficiency in both space and charge is important.	1	966	252	238
+Red Tide	Delays and Accelerators can help to prevent charge destruction.	1	197	66	29
+Moment of Glory	Sometimes you have nothing better to do than wait.	1	1164	140	122
+It's a Trap!	Traps force you to consider other options.	1	384	77	40
+Trapasaurus	Traps can be useful.	1	676	71	21
+Bonanza	Traps can be tricky.	1	403	76	6
+Hold Your Horses	Holds allow charge to wait until there is a valid destination for the charge to move to.	1	85	218	206
+Cram Time	At a junction, charge will pick a different direction each time.	1	272	123	102
+Open Sesame	Cranks let you open Traps of the corresponding color.	1	1483	190	160
+A Silver Lining	A Gray Crank will only open the closest Gray Trap.  A Gray Switch will only open the closest Gray Gate.	1	1502	157	119
+We Require More	Sometimes it is a bad idea to open a Gate.	1	1494	102	42
+Cornered	Timing can be everything.|To advance more slowly, pause the game then use the space bar.	1	519	76	16
+Doom House	Some puzzles have to be solved one step at a time.	1	527	163	120
+Different Strokes	Colored Amplifiers will only produce charge of the right color.	1	2072	81	54
+Labyrinth	Some tasks are easier with the right components.	1	652	227	156
+Color Queue	Pressing a Switch twice in a row will allow only a single charge to pass through a Gate.	1	720	209	166
+Infinite Possibilities	Finite input can beget infinite output.	1	687	69	46
+New Horizons	Chips are a powerful tool to eliminate certain space constraints.	1	606	401	280
+Punch the Keys	Pay attention to the already existing chips.	1	380	183	99
+One With Nothing	Chips built into the level can be copied (C), pasted (V), rotated, and flipped.	1	912	634	34
+To Each His Own	Chips you build now might come in handy later.	1	442	255	229
+Creative License	Sitting back and thinking can sometimes produce better results.	1	586	111	86
+One for All	Sometimes lots of small charges are more useful than larger ones.	1	3016	520	490
+Wishing Well	Charge is a precious resource.	1	1660	356	224
+Infinite Regress	Many puzzles have multiple solutions.	1	542	193	172
+Trick or Treat	111,111,111 x 111,111,111 = 12,345,678,987,654,321	1	2002	658	374
+Smorgasbord	Sometimes, working with short bursts of charge is important.	1	1073	257	240
+Deja Vu	You should be able to handle this one.	1	1152	92	60
+Some Assembly Required	Fabrication companies like Intel have full time employees whose primary job is to layout wires efficiently.	1	6979	888	589
+Discharged	Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels.	1	1330	144	98
+Jacob's Ladder	Batteries do not accept charge of the wrong color.	1	2068	388	128
+Thinking Inside the Box	You can skip up to three levels and come back to them later.	1	922	1392	325
+Ye Who Enter Here	Abandon all hope.	1	2016	202	109
+Ramming Speed	The charge must flow. . .	1	5242	705	68
+Compressor	Figuring out what's going on is the key to some puzzles.	1	2575	1310	1156
+Batter Up	Some Goal Batteries discharge very quickly.	1	782	250	66
+Web We Weave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	1	1134	632	218
+Size Isn't Everything	Shave and a haircut, one chip.	1	925	260	226
+Mob Rule	A held charge will exit back to the component it came from if that path becomes unblocked.	1	1026	202	120
+Logically Connected	Charge is a Turing-complete machine.	1	5767	2210	2087
+The Butterfly Effect	The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.	1	2882	853	207
+The Unfiltered Filter	Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations.	1	2398	601	460
+Misfit Mayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	1	1979	1710	978
+Baby Busy Beaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	1	4134	216	135
+Brave New World	Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games.	1	7075	221	44
+Turn the Other Cheek	Fools rush in where angels fear to tread.	1	1544	303	266
+Double Cross	Charge is not always good.	1	4491	479	237
+Fun For the Whole Family	Almost is the longest word in the English language with all the letters in alphabetical order.	1	146	111	22
+Rocket Science	Four out of five rocket surgeons agree.	1	8399	685	648
+Overengineering	Try working from both the beginning and the end to solve a puzzle.	1	2818	1526	166
+Entrapment	The path of sorrow, and that path alone, leads to the land where sorrow is unknown.	2	282	184	56
+Do-Se-Do	I just wish I had time for one more bowl of Chili.	1	1948	428	244
+Deus Ex Machina	Boss time!	1	3135	403	46
+Power Overwhelming	Super Goal Batteries sometimes require a LOT of Charge.	1	343	860	280
+The Three Stooges	The level editor lets you make new Charge puzzles.	1	3477	1646	413
+Pride Parade	All together now!	1	3548	385	57
+Through the Filter Glass	If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?	2	8642	1079	787
+Jigsaw	This puzzle was made easier for your protection.	1	5213	874	512
+Quantity Control	Earth is the only planet not named after a god.	1	927	230	70
+Adult Busy Beaver	Busy beaver is so hard to compute that given 6 possible states and 2 symbols, all we know is that the value is at least 3.5 × 10^18267.	2	2197	223	183
+Turing Complete	Proof by construction.	1	5964	430	352
+Doppleganger	A lot of complexity can be packed into a single chip.	1	3169	288	234
+Chargin' Up	Some levels have lasers.	1	1998	995	70
+Line Dancing	You may want to get a pen for this level.	1	16373	1255	523
+Chips Ahoy	Do it yourself!	1	22122	1065	136
+Final Destination	Good luck!	1	10670	5183	62

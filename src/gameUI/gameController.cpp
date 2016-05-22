@@ -125,11 +125,18 @@ void GameController::loadLevelPackPuzzle(const string &levelPack, int newIndex, 
     app.state.puzzleFileType = puzzleFileType;
 }
 
-void GameController::loadCurrentProvidedSolution()
+string GameController::providedSolutionFilename(int index)
+{
+	string suffix = "A";
+	if (index < 26) suffix[0] += index;
+	return params().assetDir + "providedSolutions/" + getActivePuzzle().filename + "_" + suffix + ".pzl";
+}
+
+void GameController::loadCurrentProvidedSolution(int index)
 {
     const PuzzleInfo &puzzle = getActivePuzzle();
     const string puzzleFilename = params().assetDir + "levels/" + puzzle.filename + ".pzl";
-    const string solutionFilename = params().assetDir + "providedSolutions/" + puzzle.filename + "_A.pzl";
+    const string solutionFilename = providedSolutionFilename(index);
 
     if (!util::fileExists(puzzleFilename) || !util::fileExists(solutionFilename))
     {
@@ -145,6 +152,7 @@ void GameController::loadCurrentProvidedSolution()
     }
 
     app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution)");
+	app.state.providedSolutionIndex = index;
     app.state.disableEditing();
 }
 
@@ -285,8 +293,8 @@ void GameController::updateButtonList()
 
 			if (c.modifiers.puzzleType != ComponentPuzzleType::User)
 				componentsModifyable = false;
-            if (info.name == "Eraser") showAffinity = false;
-			if (info.name == "Circuit" || info.name == "Blocker" || info.name == "PowerSource") showAffinity = false;
+			if (info.name == "Eraser" || info.name == "Circuit" || info.name == "Blocker" || info.name == "PowerSource") showAffinity = false;
+			if (app.state.levelPackPuzzleIndex <= 3) showAffinity = false;
 			if (info.name != "Wire") showSpeed = false;
 			if (info.name != "CircuitBoundary") showCircuitBoundary = false;
 			if (info.name != allComponents[0].baseInfo->name) homogenous = false;
