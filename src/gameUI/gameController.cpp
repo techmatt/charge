@@ -151,7 +151,7 @@ void GameController::loadCurrentProvidedSolution(int index)
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution)");
+    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution " + to_string(index + 1) + ")");
 	app.state.providedSolutionIndex = index;
     app.state.disableEditing();
 }

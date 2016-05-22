@@ -135,6 +135,8 @@ void GameState::rezeroFirstEmission()
 
 void GameState::loadPuzzle(const string &filename, const string &_puzzleName)
 {
+	providedSolutionIndex = -1;
+
     clearAndResetBoard();
 
     //name = util::removeExtensions(util::fileNameFromPath(filename));

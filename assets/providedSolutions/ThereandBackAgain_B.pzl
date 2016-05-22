@@ -1,0 +1,243 @@
+Puzzle~52~242
+buildableComponents~7
+ComponentBuildState~6~6
+Amplifier=1
+Wire=1
+WireMajorAccelerator=1
+WireMajorDelay=1
+WireMinorAccelerator=1
+WireMinorDelay=1
+component0000~8
+Component~7~7
+boardPos=3 11
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=3
+component0001~5
+Component~4~4
+boardPos=3 13
+color=3
+name=ChargeGoal
+puzzleType=1
+component0002~5
+Component~4~4
+boardPos=5 12
+chargePreference=4
+name=Wire
+puzzleType=1
+component0003~5
+Component~4~4
+boardPos=7 12
+chargePreference=3
+name=Wire
+puzzleType=1
+component0004~4
+Component~3~3
+boardPos=9 12
+name=Wire
+puzzleType=1
+component0005~4
+Component~3~3
+boardPos=11 12
+name=Wire
+puzzleType=1
+component0006~4
+Component~3~3
+boardPos=13 12
+name=Wire
+puzzleType=1
+component0007~4
+Component~3~3
+boardPos=13 10
+name=Blocker
+puzzleType=1
+component0008~4
+Component~3~3
+boardPos=1 14
+name=Blocker
+puzzleType=1
+component0009~4
+Component~3~3
+boardPos=1 12
+name=Blocker
+puzzleType=1
+component0010~4
+Component~3~3
+boardPos=1 10
+name=Blocker
+puzzleType=1
+component0011~4
+Component~3~3
+boardPos=3 9
+name=Blocker
+puzzleType=1
+component0012~4
+Component~3~3
+boardPos=5 10
+name=Blocker
+puzzleType=1
+component0013~4
+Component~3~3
+boardPos=3 15
+name=Blocker
+puzzleType=1
+component0014~4
+Component~3~3
+boardPos=5 14
+name=Blocker
+puzzleType=1
+component0015~4
+Component~3~3
+boardPos=7 14
+name=Blocker
+puzzleType=1
+component0016~4
+Component~3~3
+boardPos=9 14
+name=Blocker
+puzzleType=1
+component0017~4
+Component~3~3
+boardPos=11 14
+name=Blocker
+puzzleType=1
+component0018~4
+Component~3~3
+boardPos=13 14
+name=Blocker
+puzzleType=1
+component0019~4
+Component~3~3
+boardPos=11 10
+name=Blocker
+puzzleType=1
+component0020~4
+Component~3~3
+boardPos=7 10
+name=Blocker
+puzzleType=1
+component0021~4
+Component~3~3
+boardPos=9 10
+name=Blocker
+puzzleType=1
+component0022~4
+Component~3~3
+boardPos=13 17
+name=Blocker
+puzzleType=1
+component0023~4
+Component~3~3
+boardPos=11 17
+name=Blocker
+puzzleType=1
+component0024~4
+Component~3~3
+boardPos=9 17
+name=Blocker
+puzzleType=1
+component0025~4
+Component~3~3
+boardPos=7 17
+name=Blocker
+puzzleType=1
+component0026~4
+Component~3~3
+boardPos=5 17
+name=Blocker
+puzzleType=1
+component0027~4
+Component~3~3
+boardPos=3 17
+name=Blocker
+puzzleType=1
+component0028~4
+Component~3~3
+boardPos=1 17
+name=Blocker
+puzzleType=1
+component0029~4
+Component~3~3
+boardPos=13 7
+name=Blocker
+puzzleType=1
+component0030~4
+Component~3~3
+boardPos=11 7
+name=Blocker
+puzzleType=1
+component0031~4
+Component~3~3
+boardPos=9 7
+name=Blocker
+puzzleType=1
+component0032~4
+Component~3~3
+boardPos=7 7
+name=Blocker
+puzzleType=1
+component0033~4
+Component~3~3
+boardPos=5 7
+name=Blocker
+puzzleType=1
+component0034~4
+Component~3~3
+boardPos=3 7
+name=Blocker
+puzzleType=1
+component0035~4
+Component~3~3
+boardPos=1 7
+name=Blocker
+puzzleType=1
+component0036~4
+Component~3~3
+boardPos=15 12
+name=Wire
+puzzleType=0
+component0037~4
+Component~3~3
+boardPos=15 10
+name=Wire
+puzzleType=0
+component0038~4
+Component~3~3
+boardPos=19 12
+name=Wire
+puzzleType=0
+component0039~4
+Component~3~3
+boardPos=19 10
+name=Wire
+puzzleType=0
+component0040~4
+Component~3~3
+boardPos=17 12
+name=Wire
+puzzleType=0
+component0041~4
+Component~3~3
+boardPos=15 8
+name=Amplifier
+puzzleType=0
+component0042~4
+Component~3~3
+boardPos=17 8
+name=Wire
+puzzleType=0
+component0043~4
+Component~3~3
+boardPos=19 8
+name=Amplifier
+puzzleType=0
+componentCost=79
+componentCount=44
+levelPack=Campaign
+levelPackPuzzleIndex=9
+levelPackPuzzleName=There and Back Again
+puzzleFileType=ProvidedSolution
+stepCount=464

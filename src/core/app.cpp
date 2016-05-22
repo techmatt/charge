@@ -155,7 +155,8 @@ void App::checkpoint()
 
 int App::run()
 {
-	//database().processAllCampaignLevels(data);
+	if(params().processCampaignLevels)
+	database().processAllCampaignLevels(data);
 
     initRenderer();
 	checkpoint();

@@ -67,7 +67,7 @@ Music	-1	-1	!	no	no	Toggle Music	Toggles game music.
 SoundEffect	-1	-1	!	no	no	Toggle Sound	Toggles audio effects.
 PrevLevel	-1	-1	LeftAlt	no	no	Previous Puzzle	 Your progress on each level is automatically saved.
 NextLevel	-1	-1	RightAlt	no	no	Next Puzzle	 Your progress on each level is automatically saved.
-ViewProvidedSolution	-1	-1	UpAlt	no	no	See Provided Solution	 Your progress on each level is automatically saved.
+ViewProvidedSolution	-1	-1	UpAlt	no	no	See Provided Solutions	Cycles through the example solutions for this level.
 ViewYourProgress	-1	-1	DownAlt	no	no	Load Progress	 Your progress on each level is automatically saved.
 ViewYourSolution	-1	-1	DownAlt	no	no	Load Your Solution	Loads your most recent solution.
 ClearPuzzle	-1	-1	!	no	no	Clear Puzzle	Deletes all added components in the puzzle.

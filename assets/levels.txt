@@ -1,16 +1,16 @@
 Puzzle name	Tip	Solution count	Step count par	Component cost par	Base component cost
 The Path to Success	Welcome to Charge!  The objective is to fill each Goal with a charge of the same color.||Left click adds a new component.  Right click deletes a component.  Press enter to start the puzzle.	1	82	254	243
 The Bent Road	Charge will pick a different path each time it hits a junction.||Click on components for additional information.	1	387	155	147
-Kinder Garden	There are five colors of charge.||Your progress and solutions for each puzzle are saved automatically.	1	112	47	20
-Speed Racer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	1	89	160	143
+Kinder Garden	There are five colors of charge.||Your progress and solutions for each puzzle are saved automatically.	2	112	47	20
+Speed Racer	Wires can be upgraded to accelerators that move charge faster.||Click on a component you have built to see its possible upgrades.	2	89	160	143
 Sensitivity Training	You can modify components to control the flow of charge.  Charge will prefer to move towards Acceptors and away from Rejectors.	1	152	219	206
 Dealing with Rejection	You cannot modify components that are part of the level.  You can use Ctrl+Z to undo multiple actions.	1	322	237	231
 A Stitch in Time	A charge will stay in a Goal if the other destinations it can move towards are blocked.	1	176	263	230
 Power to the People	Amplifiers can produce stronger charges. Red is the weakest charge, while Blue is the strongest.	1	1393	23	8
 Lemon-aid	Charges can interfere with each other in undesired ways.	1	329	113	78
-There and Back Again	Charge prefers less recently used components.	1	394	72	67
+There and Back Again	Charge prefers less recently used components.	2	394	72	67
 Tower of Babel	High-level charges can be split into smaller charges.	1	92	77	50
-One Small Step	Splitting and ampiflying can act in complimentary ways.	1	102	39	24
+One Small Step	Splitting and ampiflying can act in complimentary ways.	2	102	39	24
 One Giant Leap	You might learn something new from the official solution for levels you have already solved.	1	141	54	36
 Ding Dong Ditch	Gates and switches can let charges control themselves.	1	414	56	46
 Minimum Security	New components can overcome new obstacles.	1	553	267	255

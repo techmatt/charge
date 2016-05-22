@@ -1,0 +1,281 @@
+Puzzle~57~280
+buildableComponents~2
+ComponentBuildState~1~1
+Wire=1
+component0000~8
+Component~7~7
+boardPos=7 11
+color=3
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0001~8
+Component~7~7
+boardPos=7 15
+color=4
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0002~8
+Component~7~7
+boardPos=7 19
+color=5
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0003~8
+Component~7~7
+boardPos=7 7
+color=2
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0004~8
+Component~7~7
+boardPos=7 3
+color=1
+name=PowerSource
+puzzleType=1
+secondsBeforeFirstEmission=0
+secondsPerEmission=2
+totalCharges=1000
+component0005~5
+Component~4~4
+boardPos=15 19
+color=4
+name=ChargeGoal
+puzzleType=1
+component0006~5
+Component~4~4
+boardPos=15 7
+color=1
+name=ChargeGoal
+puzzleType=1
+component0007~5
+Component~4~4
+boardPos=15 11
+color=2
+name=ChargeGoal
+puzzleType=1
+component0008~5
+Component~4~4
+boardPos=15 15
+color=5
+name=ChargeGoal
+puzzleType=1
+component0009~5
+Component~4~4
+boardPos=15 3
+color=3
+name=ChargeGoal
+puzzleType=1
+component0010~4
+Component~3~3
+boardPos=9 3
+name=Wire
+puzzleType=0
+component0011~4
+Component~3~3
+boardPos=11 3
+name=Wire
+puzzleType=0
+component0012~4
+Component~3~3
+boardPos=11 5
+name=Wire
+puzzleType=0
+component0013~4
+Component~3~3
+boardPos=13 5
+name=Wire
+puzzleType=0
+component0014~4
+Component~3~3
+boardPos=13 7
+name=Wire
+puzzleType=0
+component0015~4
+Component~3~3
+boardPos=9 7
+name=Wire
+puzzleType=0
+component0016~4
+Component~3~3
+boardPos=9 9
+name=Wire
+puzzleType=0
+component0017~4
+Component~3~3
+boardPos=11 9
+name=Wire
+puzzleType=0
+component0018~4
+Component~3~3
+boardPos=11 11
+name=Wire
+puzzleType=0
+component0019~4
+Component~3~3
+boardPos=13 11
+name=Wire
+puzzleType=0
+component0020~4
+Component~3~3
+boardPos=5 11
+name=Wire
+puzzleType=0
+component0021~4
+Component~3~3
+boardPos=3 10
+name=Wire
+puzzleType=0
+component0022~4
+Component~3~3
+boardPos=3 8
+name=Wire
+puzzleType=0
+component0023~4
+Component~3~3
+boardPos=3 6
+name=Wire
+puzzleType=0
+component0024~4
+Component~3~3
+boardPos=3 4
+name=Wire
+puzzleType=0
+component0025~4
+Component~3~3
+boardPos=3 2
+name=Wire
+puzzleType=0
+component0026~4
+Component~3~3
+boardPos=3 0
+name=Wire
+puzzleType=0
+component0027~4
+Component~3~3
+boardPos=5 0
+name=Wire
+puzzleType=0
+component0028~4
+Component~3~3
+boardPos=7 0
+name=Wire
+puzzleType=0
+component0029~4
+Component~3~3
+boardPos=9 0
+name=Wire
+puzzleType=0
+component0030~4
+Component~3~3
+boardPos=11 0
+name=Wire
+puzzleType=0
+component0031~4
+Component~3~3
+boardPos=15 1
+name=Wire
+puzzleType=0
+component0032~4
+Component~3~3
+boardPos=13 0
+name=Wire
+puzzleType=0
+component0033~4
+Component~3~3
+boardPos=9 15
+name=Wire
+puzzleType=0
+component0034~4
+Component~3~3
+boardPos=11 15
+name=Wire
+puzzleType=0
+component0035~4
+Component~3~3
+boardPos=11 17
+name=Wire
+puzzleType=0
+component0036~4
+Component~3~3
+boardPos=11 19
+name=Wire
+puzzleType=0
+component0037~4
+Component~3~3
+boardPos=13 19
+name=Wire
+puzzleType=0
+component0038~4
+Component~3~3
+boardPos=7 21
+name=Wire
+puzzleType=0
+component0039~4
+Component~3~3
+boardPos=9 22
+name=Wire
+puzzleType=0
+component0040~4
+Component~3~3
+boardPos=11 22
+name=Wire
+puzzleType=0
+component0041~4
+Component~3~3
+boardPos=13 22
+name=Wire
+puzzleType=0
+component0042~4
+Component~3~3
+boardPos=15 22
+name=Wire
+puzzleType=0
+component0043~4
+Component~3~3
+boardPos=17 22
+name=Wire
+puzzleType=0
+component0044~4
+Component~3~3
+boardPos=17 15
+name=Wire
+puzzleType=0
+component0045~4
+Component~3~3
+boardPos=19 15
+name=Wire
+puzzleType=0
+component0046~4
+Component~3~3
+boardPos=19 17
+name=Wire
+puzzleType=0
+component0047~4
+Component~3~3
+boardPos=19 19
+name=Wire
+puzzleType=0
+component0048~4
+Component~3~3
+boardPos=19 21
+name=Wire
+puzzleType=0
+componentCost=59
+componentCount=49
+levelPack=Campaign
+levelPackPuzzleIndex=2
+levelPackPuzzleName=Kinder Garden
+puzzleFileType=ProvidedSolution
+stepCount=142
