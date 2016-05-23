@@ -226,6 +226,17 @@ void GameController::updateButtonList()
     circuitBoundaryMenu = false;
     transformMenu = false;
 	editMenu = false;
+    victoryPanel = false;
+
+    auto sessionInfo = app.session.getLevelInfo(app.state.levelPack, app.state.levelPackPuzzleIndex);
+    const PuzzleInfo &curPuzzle = app.controller.getActivePuzzle();
+    if (sessionInfo != nullptr && sessionInfo->state == LevelState::Solved && app.activeCircuit() == nullptr)
+        victoryPanel = true;
+
+    if (victoryPanel)
+    {
+        buttons.push_back(GameButton("ComponentCost", vec2i(-1, -1), ButtonType::TooltipOnly, ComponentModifiers()));
+    }
 
     Component *singleComponent = app.ui.selection.singleElement();
     if (singleComponent != nullptr && singleComponent->inactiveCircuitMegaHold(app.state))

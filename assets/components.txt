@@ -72,3 +72,4 @@ ViewYourProgress	-1	-1	DownAlt	no	no	Load Progress	 Your progress on each level 
 ViewYourSolution	-1	-1	DownAlt	no	no	Load Your Solution	Loads your most recent solution.
 ClearPuzzle	-1	-1	!	no	no	Clear Puzzle	Deletes all added components in the puzzle.
 LevelSelect	-1	-1	!	no	no	Level Select	Brings up the level selection menu.
+ComponentCost	-1	-1	!	no	no	Component Cost	"A standard wire costs 1.  An upgraded wire or any other component costs 2.  A chip costs 10, plus all its internal components."

@@ -16,6 +16,7 @@ enum class ButtonType
 	PuzzleControlF,
     LevelSelect,
     ComponentAttribute,
+    TooltipOnly,
 };
 
 enum class ModifierKey
@@ -29,35 +30,38 @@ enum class ModifierKey
 struct GameButton
 {
     GameButton() {}
-    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const ComponentModifiers &_modifiers)
+    GameButton(const string &_name, const vec2i &_menuCoord, ButtonType _type, const ComponentModifiers &_modifiers)
     {
         component = nullptr;
 		name = _name;
         type = _type;
         modifiers = _modifiers;
-        canonicalRect = getCanonicalRect(menuCoord, type);
+        menuCoord = _menuCoord;
+        canonicalRect = getCanonicalRect();
 
         if (database().components.count(name) > 0)
             component = database().components.at(name);
 
         initTooltip();
     }
-    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const string &_text)
+    GameButton(const string &_name, const vec2i &_menuCoord, ButtonType _type, const string &_text)
     {
         component = nullptr;
         name = _name;
         type = _type;
-        canonicalRect = getCanonicalRect(menuCoord, type);
+        menuCoord = _menuCoord;
+        canonicalRect = getCanonicalRect();
         text = _text;
 
         initTooltip();
     }
-    GameButton(const string &_name, const vec2i &menuCoord, ButtonType _type, const int _levelIndex)
+    GameButton(const string &_name, const vec2i &_menuCoord, ButtonType _type, const int _levelIndex)
     {
         component = nullptr;
         name = _name;
         type = _type;
-        canonicalRect = getCanonicalRect(menuCoord, type);
+        menuCoord = _menuCoord;
+        canonicalRect = getCanonicalRect();
         levelIndex = _levelIndex;
 
         initTooltip();
@@ -92,15 +96,24 @@ struct GameButton
     SDL_Keycode hotkeyCode;
 	ModifierKey modifierKey;
     int levelIndex;
+    vec2i menuCoord;
 
 private:
     void initTooltip();
 
-    static rect2i getCanonicalRect(const vec2i &menuCoord, ButtonType type)
+    rect2i getCanonicalRect()
     {
         const int sizeA = params().puzzleMenuCanonicalEntrySize;
         const int sizeB = params().componentMenuCanonicalEntrySize;
         const int sizeC = params().levelSelectMenuCanonicalEntrySize;
+        if (type == ButtonType::TooltipOnly)
+        {
+            if (name == "ComponentCost")
+            {
+                const vec2i start(410, 425);
+                return rect2i(start, start + vec2i(200, 20));
+            }
+        }
         if (type == ButtonType::PuzzleControlA)
         {
             const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
