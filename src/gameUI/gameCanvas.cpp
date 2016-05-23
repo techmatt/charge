@@ -673,6 +673,12 @@ void GameCanvas::renderTooltip(const vec2f &canonicalStart, const string &title,
     auto splice = [&](const string &s) {
         string r = util::replace(s, "#", GameUtil::suffixFromCharge(modifiers.color));
         r = util::replace(r, "a Orange", "an Orange");
+		if (s == "See Provided Solutions")
+		{
+			int solutionCount = app.controller.getActivePuzzle().solutionCount;
+			//if (solutionCount > 1)
+			return "See Provided Solutions (" + to_string(max(app.state.providedSolutionIndex + 1, 1)) + " / " + to_string(solutionCount) + ")";
+		}
         return r;
     };
 

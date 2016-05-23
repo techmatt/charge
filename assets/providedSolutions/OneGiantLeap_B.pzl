@@ -223,5 +223,5 @@ componentCount=41
 levelPack=Campaign
 levelPackPuzzleIndex=12
 levelPackPuzzleName=One Giant Leap
-puzzleFileType=BasePuzzle
+puzzleFileType=ProvidedSolution
 stepCount=192

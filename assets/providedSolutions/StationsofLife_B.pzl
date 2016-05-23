@@ -184,5 +184,5 @@ componentCount=32
 levelPack=Campaign
 levelPackPuzzleIndex=20
 levelPackPuzzleName=Stations of Life
-puzzleFileType=BasePuzzle
+puzzleFileType=ProvidedSolution
 stepCount=676

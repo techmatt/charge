@@ -151,7 +151,8 @@ void GameController::loadCurrentProvidedSolution(int index)
         return;
     }
 
-    app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution " + to_string(index + 1) + ")");
+    //app.controller.loadPuzzle(solutionFilename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (example solution " + to_string(index + 1) + ")");
+	app.controller.loadPuzzle(solutionFilename, puzzle.name + " (example solution " + to_string(index + 1) + ")");
 	app.state.providedSolutionIndex = index;
     app.state.disableEditing();
 }
@@ -184,7 +185,8 @@ void GameController::loadUserSolution()
         filename = filenameRecent;
     }
     
-    app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (" + description + ")");
+    //app.controller.loadPuzzle(filename, "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name + " (" + description + ")");
+	app.controller.loadPuzzle(filename, puzzle.name + " (" + description + ")");
 }
 
 void GameController::recordDesignAction()
@@ -414,7 +416,7 @@ void GameController::updateButtonList()
         if (levelInfo->state == LevelState::Solved || params().godMode)
         {
             buttons.push_back(GameButton("ViewProvidedSolution", vec2i(1, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
-            buttons.push_back(GameButton("ViewYourSolution", vec2i(2, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
+			buttons.push_back(GameButton("ViewYourSolution", vec2i(2, 1), ButtonType::PuzzleControlE, ComponentModifiers()));
         }
         else if (util::fileExists(app.session.getSolutionFilename(app.state.levelPack, app.state.levelPackPuzzleName, SolutionType::Progress)))
         {

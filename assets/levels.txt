@@ -11,15 +11,15 @@ Lemon-aid	Charges can interfere with each other in undesired ways.	1	329	113	78
 There and Back Again	Charge prefers less recently used components.	2	394	72	67
 Tower of Babel	High-level charges can be split into smaller charges.	1	92	77	50
 One Small Step	Splitting and ampiflying can act in complimentary ways.	2	102	39	24
-One Giant Leap	You might learn something new from the official solution for levels you have already solved.	1	141	54	36
+One Giant Leap	You might learn something new from the official solution for levels you have already solved.	2	141	54	36
 Ding Dong Ditch	Gates and switches can let charges control themselves.	1	414	56	46
 Minimum Security	New components can overcome new obstacles.	1	553	267	255
-Double Trouble	Charges are easier to control when they have similar timing along a wire.	1	214	136	104
+Double Trouble	Charges are easier to control when they have similar timing along a wire.	2	174	136	104
 Beam Me Up	Click on a Generator to see how many charges it emits and how frequently it emits them.	1	193	142	120
 Six String Samurai	You can hold down tab to temporarially speed up the game.	1	214	62	32
 Reindeer Games	Some puzzles are harder than they seem.	1	1024	227	158
 The Green-Eyed Monster	Select multiple components with Control or Shift. You can copy (C), paste (V), and cut (X) components.	1	354	51	12
-Stations of Life	Colored Amplifiers can be more efficient than regular ones.	1	606	19	4
+Stations of Life	Colored Amplifiers can be more efficient than regular ones.	2	606	19	4
 A Penny Saved	Efficiency in both space and charge is important.	1	966	252	238
 Red Tide	Delays and Accelerators can help to prevent charge destruction.	1	197	66	29
 Moment of Glory	Sometimes you have nothing better to do than wait.	1	1164	140	122
@@ -59,7 +59,7 @@ Batter Up	Some Goal Batteries discharge very quickly.	1	782	250	66
 Web We Weave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	1	1134	632	218
 Size Isn't Everything	Shave and a haircut, one chip.	1	925	260	226
 Mob Rule	A held charge will exit back to the component it came from if that path becomes unblocked.	1	1026	202	120
-Logically Connected	Charge is a Turing-complete machine.	1	5767	2210	2087
+Logically Connected	Charge is a Turing-complete machine.	2	5757	2211	2068
 The Butterfly Effect	The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.	1	2882	853	207
 The Unfiltered Filter	Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations.	1	2398	601	460
 Misfit Mayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	1	1979	1710	978
@@ -67,11 +67,11 @@ Baby Busy Beaver	The busy beaver function computes the longest time a program of
 Brave New World	Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games.	1	7075	221	44
 Turn the Other Cheek	Fools rush in where angels fear to tread.	1	1544	303	266
 Double Cross	Charge is not always good.	1	4491	479	237
-Fun For the Whole Family	Almost is the longest word in the English language with all the letters in alphabetical order.	1	146	111	22
+Fun For the Whole Family	Almost is the longest word in the English language with all the letters in alphabetical order.	2	146	70	22
 Rocket Science	Four out of five rocket surgeons agree.	1	8399	685	648
 Overengineering	Try working from both the beginning and the end to solve a puzzle.	1	2818	1526	166
 Entrapment	The path of sorrow, and that path alone, leads to the land where sorrow is unknown.	2	282	184	56
-Do-Se-Do	I just wish I had time for one more bowl of Chili.	1	1948	428	244
+Do-Se-Do	I just wish I had time for one more bowl of Chili.	2	1948	428	244
 Deus Ex Machina	Boss time!	1	3135	403	46
 Power Overwhelming	Super Goal Batteries sometimes require a LOT of Charge.	1	343	860	280
 The Three Stooges	The level editor lets you make new Charge puzzles.	1	3477	1646	413

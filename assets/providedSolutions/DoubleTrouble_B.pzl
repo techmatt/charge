@@ -423,5 +423,5 @@ componentCount=74
 levelPack=Campaign
 levelPackPuzzleIndex=15
 levelPackPuzzleName=Double Trouble
-puzzleFileType=BasePuzzle
+puzzleFileType=ProvidedSolution
 stepCount=174
