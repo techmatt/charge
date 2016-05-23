@@ -63,7 +63,7 @@ Logically Connected	Charge is a Turing-complete machine.	2	5757	2211	2068
 The Butterfly Effect	The average lead pencil will write a line about 35 miles long or write approximately 50,000 English words.	1	2882	853	207
 The Unfiltered Filter	Particle filtering methodology uses a genetic type mutation-selection sampling approach, with a set of particles to represent the posterior distribution of some stochastic process given some noisy observations.	1	2398	601	460
 Misfit Mayhem	Slowing down or pausing the game can help figure out what is going on in a chip.	1	1979	1710	978
-Baby Busy Beaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	1	4134	216	135
+Baby Busy Beaver	The busy beaver function computes the longest time a program of a given size can run and still terminate.  No machine is capable of computing it.	2	4129	216	135
 Brave New World	Charge was originally a Warcraft 3 Tower Defense map, but it proved to be too complicated for the game engine to handle in multiplayer games.	1	7075	221	44
 Turn the Other Cheek	Fools rush in where angels fear to tread.	1	1544	303	266
 Double Cross	Charge is not always good.	1	4491	479	237

@@ -710,5 +710,5 @@ componentCount=114
 levelPack=Campaign
 levelPackPuzzleIndex=64
 levelPackPuzzleName=Baby Busy Beaver
-puzzleFileType=BasePuzzle
+puzzleFileType=ProvidedSolution
 stepCount=4129
