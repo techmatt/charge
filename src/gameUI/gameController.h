@@ -104,6 +104,7 @@ public:
     bool circuitBoundaryMenu;
     bool transformMenu;
 	bool editMenu;
+    bool victoryPanel;
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;

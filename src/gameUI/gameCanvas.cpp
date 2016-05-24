@@ -171,7 +171,7 @@ void GameCanvas::render()
 
     renderTooltip();
 
-    if (app.activeCircuit() == nullptr)
+    if (app.controller.victoryPanel)
     {
         renderVictoryPanel();
     }
@@ -736,7 +736,7 @@ void GameCanvas::renderVictoryPanel()
     const PuzzleInfo &curPuzzle = app.controller.getActivePuzzle();
     if (sessionInfo == nullptr || sessionInfo->state != LevelState::Solved)
         return;
-
+    //ComponentCost
     Texture &tex = database().getTexture(app.renderer, "VictoryPanel");
 
     glDisable(GL_BLEND);
