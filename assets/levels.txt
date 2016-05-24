@@ -80,10 +80,10 @@ Pride Parade	All together now!	1	3548	385	57
 Through the Filter Glass	If I had a world of my own, everything would be nonsense. Nothing would be what it is, because everything would be what it isn't. And contrary wise, what is, it wouldn't be. And what it wouldn't be, it would. You see?	2	8642	1079	787
 Jigsaw	This puzzle was made easier for your protection.	1	5213	874	512
 Quantity Control	Earth is the only planet not named after a god.	1	927	230	70
-Adult Busy Beaver	Busy beaver is so hard to compute that given 6 possible states and 2 symbols, all we know is that the value is at least 3.5 × 10^18267.	2	2197	223	183
+Adult Busy Beaver	Busy beaver is so hard to compute that given 6 possible states and 2 symbols, all we know is that the value is at least 3.5 × 10^18267.	3	2197	223	183
 Turing Complete	Proof by construction.	1	5964	430	352
 Doppleganger	A lot of complexity can be packed into a single chip.	1	3169	288	234
 Chargin' Up	Some levels have lasers.	1	1998	995	70
 Line Dancing	You may want to get a pen for this level.	1	16373	1255	523
-Chips Ahoy	Do it yourself!	1	22122	1065	136
+Chips Ahoy	Do it yourself!	1	22122	1065	138
 Final Destination	Good luck!	1	10670	5183	62

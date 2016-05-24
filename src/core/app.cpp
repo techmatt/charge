@@ -257,6 +257,7 @@ int App::run()
         // advance the game
         //
         data.frameTimer.frame();
+		data.globalTime += 1.0 / (double)constants::FPSlimit;
         data.controller.step();
 
         //

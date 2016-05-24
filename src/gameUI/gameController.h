@@ -53,6 +53,7 @@ public:
     GameController(AppData &_app) : app(_app) {
         levelSelectMenu = false;
 		paused = false;
+		pulsingNextPuzzle = false;
     }
     void init();
     void step();
@@ -105,6 +106,7 @@ public:
     bool transformMenu;
 	bool editMenu;
     bool victoryPanel;
+	bool pulsingNextPuzzle;
 
     PuzzleMode puzzleMode;
     EditorMode editorMode;

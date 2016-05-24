@@ -45,6 +45,6 @@ godMode = true
 useSDLFallback = false
 useMipmaps = true
 alwaysRender = true
-processCampaignLevels = true
+processCampaignLevels = false
 
-maxSkippedLevels = 10
+maxSkippedLevels = 100

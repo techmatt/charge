@@ -20,7 +20,7 @@ void GameUI::init()
 
 void GameUI::clearSelection()
 {
-    selectedMenuComponent = nullptr;
+	selectedMenuComponent = nullptr;
     activePlacementBuffer.clear();
     selection.empty();
 }
@@ -64,7 +64,16 @@ void GameUI::keyDown(SDL_Keycode key, bool shift, bool ctrl, bool alt)
         }
 		else
 		{
-			clearSelection();
+			if (selection.components.size() >= 1 && selection.components[0]->location.inCircuit())
+			{
+				const vec2i circuitCoord = selection.components[0]->location.boardPos;
+				clearSelection();
+				Component *circuit = app.state.getComponent(GameLocation(circuitCoord));
+				if (circuit != nullptr && circuit->isCircuit())
+					selection.newSelectionFromComponent(circuit);
+			}
+			else
+				clearSelection();
 		}
     }
 

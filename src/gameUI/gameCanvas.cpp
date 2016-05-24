@@ -176,6 +176,26 @@ void GameCanvas::render()
         renderVictoryPanel();
     }
 
+	if (app.state.levelPackPuzzleIndex == 0)
+	{
+		renderTutorial();
+	}
+
+	if (app.controller.pulsingNextPuzzle)
+	{
+		for (auto &b : app.controller.buttons)
+		{
+			if (b.name == "NextLevel")
+			{
+				Texture &selectionTex = database().getTexture(app.renderer, "Pulse");
+				rect2f screenRect = GameUtil::canonicalToWindow(GameUtil::getCanonicalSize(), b.canonicalRect);
+				const double scale = (cos(app.globalTime * 3.0) + 1.0) * 0.5;
+				const BYTE alpha = util::boundToByte(math::linearMap(0.0, 1.0, 0.3, 0.7, scale) * 255.0);
+				render(selectionTex, screenRect, depthLayers::selection, RGBColor(255, 255, 255, alpha));
+			}
+		}
+	}
+
     if (SDL_GetModState() & KMOD_ALT)
     {
         float fps = app.frameTimer.framesPerSecond();
@@ -1219,6 +1239,27 @@ void GameCanvas::renderSuperMegaHold(const Component &component)
                       params().circuitCanonicalStart + float(params().canonicalCellSize) * vec2f(constants::circuitBoardSize - 2.0f));
 
     render(tex, rect, depthLayers::superMegaHold);
+}
+
+void GameCanvas::renderTutorial()
+{
+	Texture &tex = database().getTexture(app.renderer, "TutorialBox");
+	const vec2f size(42.0f, 42.0f);
+	const vec2f wireStart(308.0f, 119.0f);
+	const vec2f wireText(260.0f, 160.0f);
+	const vec2f generatorStart(35.0f, 311.0f);
+	const vec2f generatorText(10.0f, 352.0f);
+	const vec2f goalStart(164.0f, 53.5f);
+	const vec2f goalText(136.0f, 96.0f);
+
+	render(tex, rect2f(wireStart, wireStart + size), depthLayers::selection);
+	renderText(getFontTexture("This wire allows charge to flow.", FontType::Tutorial), wireText, 12.0f);
+
+	render(tex, rect2f(generatorStart, generatorStart + size), depthLayers::selection);
+	renderText(getFontTexture("This generator produces charge.", FontType::Tutorial), generatorText, 12.0f);
+
+	render(tex, rect2f(goalStart, goalStart + size), depthLayers::selection);
+	renderText(getFontTexture("This goal holds charge.", FontType::Tutorial), goalText, 12.0f);
 }
 
 void GameCanvas::renderExplodingCharge(const ExplodingCharge &charge)

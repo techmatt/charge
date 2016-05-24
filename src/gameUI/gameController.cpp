@@ -59,6 +59,7 @@ void GameController::step()
 
 void GameController::loadPuzzle(const string &filename, const string &puzzleName)
 {
+	pulsingNextPuzzle = false;
     //if (app.renderer.motionBlurActive() == 0)
     //    app.renderer.initMotionBlur(0.3f, 100);
     //else
@@ -116,7 +117,7 @@ const PuzzleInfo& GameController::getActivePuzzle()
 
 void GameController::loadLevelPackPuzzle(const string &levelPack, int newIndex, const string &puzzleFileType)
 {
-    app.session.saveProgress(app);
+	app.session.saveProgress(app);
 
     const PuzzleInfo &puzzle = database().getPuzzleInfo(levelPack, newIndex);
     loadPuzzle(params().assetDir + "levels/" + puzzle.filename + ".pzl", "Puzzle " + to_string(puzzle.index + 1) + ": " + puzzle.name);
@@ -498,11 +499,12 @@ void GameController::recordVictory()
     app.ui.activePlacementBuffer.clear();
     app.ui.selection.empty();
     app.canvas.backgroundDirty = true;
-
+	
     //if (viewMode != ControllerViewMode::ProvidedSolution)
     //BasePuzzle,ProvidedSolution,UserProgress,UserSolution,Custom
     if (app.state.puzzleFileType == "BasePuzzle" || app.state.puzzleFileType == "UserProgress" || app.state.puzzleFileType == "UserSolution")
     {
+		pulsingNextPuzzle = true;
         app.session.recordVictory(app);
     }
 

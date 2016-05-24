@@ -3,7 +3,7 @@ struct AppData
 {
     AppData(Renderer &_renderer) : ui(*this), canvas(*this), controller(*this), splash(*this), renderer(_renderer), state(*this)
     {
-        
+		globalTime = 0.0;
     }
 
     void playEffect(const string &name, const GameLocation &locationA, GameLocation locationB = GameLocation())
@@ -18,7 +18,7 @@ struct AppData
             return;
 
         //Component *selectedComponent = state.getComponent(ui.selectedGameLocation);
-		Component* selectedComponent=ui.selection.singleElement();
+		Component* selectedComponent = ui.selection.singleElement();
         if (!locationA.inCircuit() || !locationB.inCircuit() || (!soundPlayedThisSecond && activeCircuit() == nullptr) ||
             (selectedComponent != nullptr && (selectedComponent->location.boardPos == locationA.boardPos || selectedComponent->location.boardPos == locationB.boardPos)) || name == "ChargeDeath" || name == "GoalHold")
         {
@@ -62,6 +62,7 @@ struct AppData
     set<string> soundsPlayedThisTick;
     int soundCountTicks;
     bool soundPlayedThisSecond;
+	double globalTime;
 };
 
 class App

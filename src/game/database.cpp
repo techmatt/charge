@@ -35,6 +35,7 @@ void Database::init()
 	fonts[(int)FontType::VictoryPanelStandard] = FontInfo("trebuc", 36.0f, RGBColor(250, 250, 250), 2.0f, RGBColor(0, 0, 0));
 	fonts[(int)FontType::VictoryPanelGood] = FontInfo("trebuc", 36.0f, RGBColor(200, 250, 200), 2.0f, RGBColor(0, 0, 0));
 	fonts[(int)FontType::VictoryPanelBad] = FontInfo("trebuc", 36.0f, RGBColor(250, 200, 200), 2.0f, RGBColor(0, 0, 0));
+	fonts[(int)FontType::Tutorial] = FontInfo("Ubuntu-B", 36.0f, RGBColor(250, 250, 250), 2.0f, RGBColor(0, 0, 0));
 }
 
 TTF_Font* Database::getFont(const string &fontName)

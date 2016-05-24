@@ -13,6 +13,7 @@ enum class FontType
 	VictoryPanelStandard,
 	VictoryPanelGood,
 	VictoryPanelBad,
+	Tutorial,
     Count,
 };
 

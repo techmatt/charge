@@ -80,6 +80,7 @@ private:
     void renderMegaHoldCircuit(const Component &component, bool trailRender);
 
     void renderSuperMegaHold(const Component &component);
+	void renderTutorial();
 
     void renderButtonBackground(const GameButton &button, bool selected);
     void renderButtonForeground(const GameButton &button, bool selected);
