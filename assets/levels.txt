@@ -46,7 +46,7 @@ One for All	Sometimes lots of small charges are more useful than larger ones.	1	
 Wishing Well	Charge is a precious resource.	1	1660	356	224
 Infinite Regress	Many puzzles have multiple solutions.	1	542	193	172
 Trick or Treat	111,111,111 x 111,111,111 = 12,345,678,987,654,321	1	2002	658	374
-Smorgasbord	Sometimes, working with short bursts of charge is important.	1	1073	257	240
+Smorgasbord	Sometimes, working with short bursts of charge is important.	2	1073	257	240
 Deja Vu	You should be able to handle this one.	1	1152	92	60
 Some Assembly Required	Fabrication companies like Intel have full time employees whose primary job is to layout wires efficiently.	1	6979	888	589
 Discharged	Goal Batteries can accept charge from multiple sources at once but lose charge over time.  A red charge counts as a single level of charge, while a blue charge counts as five charge levels.	1	1330	144	98
@@ -55,6 +55,7 @@ Thinking Inside the Box	You can skip up to three levels and come back to them la
 Ye Who Enter Here	Abandon all hope.	1	2016	202	109
 Ramming Speed	The charge must flow. . .	1	5242	705	68
 Compressor	Figuring out what's going on is the key to some puzzles.	1	2575	1310	1156
+Maze Runner	When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us.	2	586	475	231
 Batter Up	Some Goal Batteries discharge very quickly.	1	782	250	66
 Web We Weave	A Boeing 747's wingspan is longer than the Wright brothers' first flight.	1	1134	632	218
 Size Isn't Everything	Shave and a haircut, one chip.	1	925	260	226
