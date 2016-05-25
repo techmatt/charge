@@ -85,5 +85,5 @@ Turing Complete	Proof by construction.	1	5964	430	352
 Doppleganger	A lot of complexity can be packed into a single chip.	1	3169	288	234
 Chargin' Up	Some levels have lasers.	1	1998	995	70
 Line Dancing	You may want to get a pen for this level.	1	16373	1255	523
-Chips Ahoy	Do it yourself!	1	22122	1065	138
+Chips Ahoy	Do it yourself!	1	23512	1073	144
 Final Destination	Good luck!	1	10670	5183	62
