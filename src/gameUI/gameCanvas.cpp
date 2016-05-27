@@ -1249,7 +1249,7 @@ void GameCanvas::renderTutorial()
 	const vec2f wireText(260.0f, 160.0f);
 	const vec2f generatorStart(35.0f, 311.0f);
 	const vec2f generatorText(10.0f, 352.0f);
-	const vec2f goalStart(164.0f, 53.5f);
+	const vec2f goalStart(163.5f, 53.5f);
 	const vec2f goalText(136.0f, 96.0f);
 
 	render(tex, rect2f(wireStart, wireStart + size), depthLayers::selection);
