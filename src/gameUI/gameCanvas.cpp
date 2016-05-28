@@ -1256,7 +1256,7 @@ void GameCanvas::renderTutorial()
 	renderText(getFontTexture("This wire allows charge to flow.", FontType::Tutorial), wireText, 12.0f);
 
 	render(tex, rect2f(generatorStart, generatorStart + size), depthLayers::selection);
-	renderText(getFontTexture("This generator produces charge.", FontType::Tutorial), generatorText, 12.0f);
+	renderText(getFontTexture("This generator produces charges.", FontType::Tutorial), generatorText, 12.0f);
 
 	render(tex, rect2f(goalStart, goalStart + size), depthLayers::selection);
 	renderText(getFontTexture("This goal holds charge.", FontType::Tutorial), goalText, 12.0f);
