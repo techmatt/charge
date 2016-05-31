@@ -116,8 +116,16 @@ private:
         }
         if (type == ButtonType::PuzzleControlA)
         {
-            const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
-            return rect2i(base, base + sizeA - 4);
+            if (name == "Start")
+            {
+                const vec2i base = vec2i(7, 419);
+                return rect2i(base, base + vec2i(39, 39));
+            }
+            else
+            {
+                const vec2i base = params().puzzleMenuACanonicalStart + menuCoord * sizeA;
+                return rect2i(base, base + sizeA - 4);
+            }
         }
         else if (type == ButtonType::PuzzleControlB)
         {

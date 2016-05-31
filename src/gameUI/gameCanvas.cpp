@@ -357,15 +357,15 @@ void GameCanvas::renderHoverComponent()
     }
 }
 
-void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension)
+void GameCanvas::renderMenuBackground(const string &menuName, const string &menuTextureSuffix, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension)
 {
     const rect2f rect(canonicalStartCoord, canonicalStartCoord + params().menuButtonOffset + params().menuBorderOffset + vec2f::directProduct(vec2f(gridDimensions), vec2f((float)params().componentMenuCanonicalEntrySize) + extension));
-    renderMenuBackground(menuName, canonicalStartCoord, rect);
+    renderMenuBackground(menuName, menuTextureSuffix, canonicalStartCoord, rect);
 }
 
-void GameCanvas::renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const rect2f &rect)
+void GameCanvas::renderMenuBackground(const string &menuName, const string &menuTextureSuffix, const vec2f &canonicalStartCoord, const rect2f &rect)
 {
-    addBackgroundObject(database().getTexture(app.renderer, "MenuBackground"), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
+    addBackgroundObject(database().getTexture(app.renderer, "MenuBackground" + menuTextureSuffix), GameUtil::canonicalToWindow(canonicalDims, rect), depthLayers::background);
 
     MenuTextEntry entry;
     entry.coord = canonicalStartCoord + params().menuTextOffset;
@@ -387,37 +387,37 @@ void GameCanvas::updateBackgroundObjects()
 	const vec2f iconMenuOffset = vec2f(7.0f, 15.0f);
 	const vec2f gameSpeedMenuStart = params().puzzleMenuBCanonicalStart - iconMenuOffset;
 	const rect2f gameSpeedRect(gameSpeedMenuStart, gameSpeedMenuStart + vec2i(94, 40));
-	renderMenuBackground("Game speed", gameSpeedMenuStart, gameSpeedRect);
+	renderMenuBackground("Game speed", "Speed", gameSpeedMenuStart, gameSpeedRect);
 
 	if (app.controller.transformMenu)
 	{
 		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
 		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
-		renderMenuBackground("Transform options", transformMenuStart, transformRect);
+        renderMenuBackground("Transform options", "Edit", transformMenuStart, transformRect);
 	}
 	if (app.controller.editMenu)
 	{
 		const vec2f transformMenuStart = params().puzzleMenuDCanonicalStart - iconMenuOffset;
 		const rect2f transformRect(transformMenuStart, transformMenuStart + vec2i(99, 40));
-		renderMenuBackground("Edit menu", transformMenuStart, transformRect);
+        renderMenuBackground("Edit menu", "Edit", transformMenuStart, transformRect);
 	}
 
     if (app.controller.levelSelectMenu)
     {
         const vec2f start = params().componentMenuCanonicalStart;
         const vec2f size(262.0f, 230.0f);
-        renderMenuBackground("Puzzle select", start, rect2f(start, start + size));
+        renderMenuBackground("Puzzle select", "Puzzle", start, rect2f(start, start + size));
     }
     else
     {
-        renderMenuBackground("Available components", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
+        renderMenuBackground("Available components", "Component", params().componentMenuCanonicalStart, vec2i(7, 3), vec2f(1.65f, 0));
 
-        if (app.controller.affinityMenu) renderMenuBackground("Component affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
-        if (app.controller.gateMenu) renderMenuBackground("Gate state", params().doorMenuCanonicalStart, vec2i(2, 1));
-        if (app.controller.trapMenu) renderMenuBackground("Trap state", params().doorMenuCanonicalStart, vec2i(2, 1));
-        if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", params().typeMenuCanonicalStart, vec2i(5, 1));
-        if (app.controller.colorMenu) renderMenuBackground("Component color", params().typeMenuCanonicalStart, vec2i(6, 1));
-        if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", params().typeMenuCanonicalStart, vec2i(3, 1));
+        if (app.controller.affinityMenu) renderMenuBackground("Component affinity", "Affinity", params().affinityMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.gateMenu) renderMenuBackground("Gate state", "GateState", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.trapMenu) renderMenuBackground("Trap state", "GateState", params().doorMenuCanonicalStart, vec2i(2, 1));
+        if (app.controller.wireSpeedMenu) renderMenuBackground("Wire speed", "Color", params().typeMenuCanonicalStart, vec2i(5, 1));
+        if (app.controller.colorMenu) renderMenuBackground("Component color", "Color", params().typeMenuCanonicalStart, vec2i(6, 1));
+        if (app.controller.circuitBoundaryMenu) renderMenuBackground("Circuit boundary type", "Color", params().typeMenuCanonicalStart, vec2i(3, 1));
 
         if (app.activeCircuit() != nullptr)
         {
@@ -761,8 +761,8 @@ void GameCanvas::renderVictoryPanel()
 
     glDisable(GL_BLEND);
 
-    const vec2i victoryPanelStart(403, 370);
-    const vec2i victoryPanelSize(254, 82);
+    const vec2i victoryPanelStart((int)params().tooltipDefaultStart.x, 370);
+    const vec2i victoryPanelSize((int)params().tooltipSize.x, 82);
 
     const vec2i tableStart = victoryPanelStart + vec2f(15.0f, 31.0f);
     const int tableHeight = 15;

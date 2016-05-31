@@ -58,8 +58,8 @@ private:
     }
 
     void updateBackgroundObjects();
-    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension = vec2f(0.0f, 0.0f));
-    void renderMenuBackground(const string &menuName, const vec2f &canonicalStartCoord, const rect2f &rect);
+    void renderMenuBackground(const string &menuName, const string &menuTextureSuffix, const vec2f &canonicalStartCoord, const vec2i &gridDimensions, vec2f extension = vec2f(0.0f, 0.0f));
+    void renderMenuBackground(const string &menuName, const string &menuTextureSuffix, const vec2f &canonicalStartCoord, const rect2f &rect);
     void renderBuildingGrid();
 
     void renderComponents();

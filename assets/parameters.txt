@@ -9,17 +9,17 @@ canonicalDims = 672, 464
 boardDims = 24, 24
 
 boardCanonicalStart = 8, 27
-circuitCanonicalStart = 419, 232
+circuitCanonicalStart = 425, 232
 circuitBackgroundCanonicalBoundarySize = 4
 
 canonicalCellSize = 16
 
-componentMenuCanonicalStart = 402, 3
+componentMenuCanonicalStart = 406, 5
 componentMenuCanonicalEntrySize = 34
 
-affinityMenuCanonicalStart = 402, 122
-doorMenuCanonicalStart = 583, 122
-typeMenuCanonicalStart = 402, 173
+affinityMenuCanonicalStart = 406, 124
+doorMenuCanonicalStart = 587, 124
+typeMenuCanonicalStart = 406, 175
 
 menuButtonOffset = 7, 14
 menuTextOffset = 3, 2
@@ -38,10 +38,10 @@ levelSelectMenuCanonicalEntrySize = 23
 attributeMenuCanonicalStart = 210, 415
 attributeMenuCanonicalEntrySize = 100, 15
 
-tooltipDefaultStart = 403, 240
-tooltipSize = 254, 120
+tooltipDefaultStart = 406, 240
+tooltipSize = 260, 120
 
-godMode = true
+godMode = false
 useSDLFallback = false
 useMipmaps = true
 alwaysRender = true
