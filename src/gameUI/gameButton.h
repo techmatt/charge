@@ -118,7 +118,7 @@ private:
         {
             if (name == "Start")
             {
-                const vec2i base = vec2i(7, 419);
+                const vec2i base = vec2i(7, 420);
                 return rect2i(base, base + vec2i(39, 39));
             }
             else
