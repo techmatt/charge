@@ -22,7 +22,7 @@ void initGameParams(const ParameterFile &params)
     g_gameParams.database->init();
 }
 
-int binarySearch(const vector<float> &v, float target, int low = 0, int high = std::numeric_limits<int>::max())
+/*int binarySearch(const vector<float> &v, float target, int low = 0, int high = std::numeric_limits<int>::max())
 {
     high = std::min(high, (int)v.size() - 1);
     if (abs(high - low) <= 1)
@@ -98,10 +98,6 @@ Bitmap normalizeColors(const Bitmap &bmpSource, const Bitmap &bmpTarget)
         const float scale = targetL / max(sourceL, 0.001f);
         //const float scale = 1.0f;
         const float newL = L(s * scale);
-        /*if (fabs(newL - targetL) > 0.01f)
-        {
-            cout << "mismatch" << endl;
-        }*/
         const vec3f cOut = s * 255.0f * scale;
         p.value.r = util::boundToByte(cOut.r);
         p.value.g = util::boundToByte(cOut.g);
@@ -117,12 +113,12 @@ void processVideo()
     Bitmap bmpStyle = LodePNG::load(baseDir + "picasso.png");
     Bitmap bmpContent = LodePNG::load(baseDir + "clipA.png");
 
-    /*bmpStyle.allocate(10, 1, RGBColor(0, 0, 0));
+    bmpStyle.allocate(10, 1, RGBColor(0, 0, 0));
     for (auto &p : bmpStyle)
         p.value.g = util::boundToByte(p.x * 10);
     bmpContent.allocate(10, 1, RGBColor(0, 0, 0));
     for (auto &p : bmpContent)
-        p.value.g = util::boundToByte(p.x * 10 + 100);*/
+        p.value.g = util::boundToByte(p.x * 10 + 100);
 
     Bitmap bmpNormalized = normalizeColors(bmpStyle, bmpContent);
 
@@ -131,11 +127,11 @@ void processVideo()
     outputLHistogram(bmpNormalized, baseDir + "noramlized.csv");
 
     LodePNG::save(bmpNormalized, baseDir + "clipAOut.png");
-}
+}*/
 
 int main(int argc, char* argv[])
 {
-    processVideo();
+    //processVideo();
 #ifdef __APPLE__
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyPrivateFrameworksURL(mainBundle);
