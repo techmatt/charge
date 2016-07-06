@@ -1246,7 +1246,7 @@ void GameCanvas::renderTutorial()
 	Texture &tex = database().getTexture(app.renderer, "TutorialBox");
 	const vec2f size(42.0f, 42.0f);
 	const vec2f wireStart(308.0f, 119.0f);
-	const vec2f wireText(260.0f, 160.0f);
+	const vec2f wireText(235.0f, 160.0f);
 	const vec2f generatorStart(35.0f, 311.0f);
 	const vec2f generatorText(10.0f, 352.0f);
 	const vec2f goalStart(163.5f, 53.5f);
