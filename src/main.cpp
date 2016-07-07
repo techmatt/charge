@@ -129,8 +129,63 @@ void processVideo()
     LodePNG::save(bmpNormalized, baseDir + "clipAOut.png");
 }*/
 
+void makeAffinityImage(const vec3f &baseColor, int size, const string &baseOut, float baseAlpha, bool big)
+{
+    float innerRadius, middleRadius, outerRadius;
+    if (big)
+    {
+        innerRadius = 0.3f;
+        middleRadius = 0.38f;
+        outerRadius = 0.45f;
+    }
+    else
+    {
+        innerRadius = 0.3f;
+        middleRadius = 0.33f;
+        outerRadius = 0.41f;
+    }
+    Bitmap bmpColor(size, size);
+    Bitmap bmpAlpha(size, size);
+    for (auto &p : bmpColor)
+    {
+        const float dist = vec2f::dist(vec2f(p.x, p.y) / size, vec2f(0.5f, 0.5f));
+        if (dist <= innerRadius)
+        {
+            bmpColor(p.x, p.y) = RGBColor(vec3f(0.0f, 0.0f, 0.0f));
+            bmpAlpha(p.x, p.y) = RGBColor(vec3f(0.0f));
+        }
+        else if (dist <= middleRadius)
+        {
+            bmpColor(p.x, p.y) = RGBColor(baseColor);
+            bmpAlpha(p.x, p.y) = RGBColor(vec3f(baseAlpha));
+        }
+        else if (dist >= outerRadius)
+        {
+            bmpColor(p.x, p.y) = RGBColor(vec3f(1.0f, 1.0f, 1.0f));
+            bmpAlpha(p.x, p.y) = RGBColor(vec3f(0.0f, 0.0f, 0.0f));
+        }
+        else
+        {
+            const float s = math::linearMap(middleRadius, outerRadius, 0.0f, 1.0f, dist);
+            bmpColor(p.x, p.y) = math::lerp(baseColor, vec3f(1.0f, 1.0f, 1.0f), s);
+            bmpAlpha(p.x, p.y) = RGBColor(vec3f(math::lerp(baseAlpha, 0.5f, s)));
+        }
+    }
+    LodePNG::save(bmpColor, baseOut + ".png");
+    LodePNG::save(bmpAlpha, baseOut + "Alpha.png");
+}
+
+void makeAffinityStuff()
+{
+    makeAffinityImage(vec3f(0.95f, 0.25f, 0.25f), 512, R"(C:\Code\Charge\temp\PreferenceMask0)", 0.95f, true);
+    makeAffinityImage(vec3f(0.95f, 0.5f, 0.5f), 512, R"(C:\Code\Charge\temp\PreferenceMask1)", 0.95f, false);
+    makeAffinityImage(vec3f(0.5f, 0.95f, 0.5f), 512, R"(C:\Code\Charge\temp\PreferenceMask3)", 0.95f, false);
+    makeAffinityImage(vec3f(0.25f, 0.95f, 0.25f), 512, R"(C:\Code\Charge\temp\PreferenceMask4)", 0.95f, true);
+}
+
 int main(int argc, char* argv[])
 {
+    makeAffinityStuff();
     //processVideo();
 #ifdef __APPLE__
     CFBundleRef mainBundle = CFBundleGetMainBundle();
