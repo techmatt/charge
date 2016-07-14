@@ -47,4 +47,4 @@ useMipmaps = true
 alwaysRender = true
 processCampaignLevels = false
 
-maxSkippedLevels = 3
+maxSkippedLevels = 300
