@@ -28,7 +28,7 @@ menuBorderOffset = 4, 3
 puzzleMenuACanonicalStart = 4, 429
 puzzleMenuBCanonicalStart = 60, 435
 puzzleMenuCCanonicalStart = 154, 418
-puzzleMenuDCanonicalStart = 211, 435
+puzzleMenuDCanonicalStart = 212, 435
 puzzleMenuECanonicalStart = 308, 418
 puzzleMenuFCanonicalStart = 228, 428
 
@@ -47,4 +47,4 @@ useMipmaps = true
 alwaysRender = true
 processCampaignLevels = false
 
-maxSkippedLevels = 200
+maxSkippedLevels = 300
