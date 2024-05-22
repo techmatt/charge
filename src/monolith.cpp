@@ -48,3 +48,11 @@
 #include "renderer/renderTarget.cpp"
 #include "renderer/rendererOpenGL.cpp"
 #include "renderer/rendererSDL.cpp"
+
+//Matt 2024: I have no idea why this was in the code tree.
+FILE _iob[] = {*stdin, *stdout, *stderr};
+
+extern "C" FILE * __cdecl __iob_func(void)
+{
+    return _iob;
+}

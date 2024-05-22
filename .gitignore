@@ -143,3 +143,7 @@ vs2013/highlights.txt
 /bin/release/CompiledShaders/quad.hlsl.pixelShaderMain.p
 /bin/release/CompiledShaders/quad.hlsl.vertexShaderMain.p
 /assets/textures/GateSwitchRainbow - Copy.png
+/vs2013Monolith/x64
+/vs2013Monolith/.vs/chargeMonolith/v15
+/vs2013Monolith/.vs/chargeMonolith/v16
+/vs2013Monolith/UpgradeLog.htm
